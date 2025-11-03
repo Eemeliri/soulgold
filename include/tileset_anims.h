@@ -31,5 +31,10 @@ void InitTilesetAnim_MauvilleGym(void);
 void InitTilesetAnim_EliteFour(void);
 void InitTilesetAnim_BattleDome(void);
 void InitTilesetAnim_BattlePyramid(void);
+void InitTilesetAnim_SilphCo(void);
+void InitTilesetAnim_NationalPark(void);
+void InitTilesetAnim_ecruteak_theater(void);
+void InitTilesetAnim_AzaleaTown_Gym(void);
+void InitTilesetAnim_CeladonCity(void);
 
 #endif // GUARD_TILESET_ANIMS_H
