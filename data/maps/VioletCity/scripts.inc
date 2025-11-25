@@ -19,6 +19,7 @@ VioletCity_OnTransition::
 
 VioletCity_OnLoad::
 	setrespawn HEAL_LOCATION_VIOLET_CITY
+	setflag FLAG_VISITED_VIOLET_CITY
 	end
 
 VioletCity_EventScript_Trigger::
@@ -47,7 +48,6 @@ VioletCity_EventScript_Trigger::
 	setflag FLAG_ITEM_OLD_AMBER
 	setflag FLAG_HIDE_TRAINER_SCHOOL_EARL
 	setflag FLAG_HIDE_VIOLET_CITY_AIDE
-	setflag FLAG_VISITED_VIOLET_CITY
 	setflag FLAG_HIDE_VIOLET_CITY_KIMONO_GIRL
 	
 	setvar VAR_SPROUT_TOWER, 0
