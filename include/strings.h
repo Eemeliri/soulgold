@@ -2531,4 +2531,8 @@ extern const u8 gText_PSS[];
 extern const u8 gText_Terrain[];
 extern const u8 gText_RunType[];
 extern const u8 gText_Difficulty[];
+extern const u8 gText_Music[];
+extern const u8 gText_MusicJohto[];
+extern const u8 gText_MusicSinnoh[];
+extern const u8 gText_MusicHoenn[];
 #endif // GUARD_STRINGS_H

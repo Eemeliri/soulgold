@@ -590,6 +590,7 @@ struct SaveBlock2
              u16 optionsRunType:3;
              u16 optionsDifficulty:3;
              u16 optionsFont:2;
+             u16 optionsMusic:2;
              //u16 padding1:4;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;

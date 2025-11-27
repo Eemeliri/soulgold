@@ -27,15 +27,16 @@ EWRAM_DATA static u8 sCurrPage = 0;
 #define tSound data[4]
 #define tButtonMode data[5]
 #define tWindowFrameType data[6]
+#define tMusic data[7]
 
-#define tFont data[7]
-#define tEXPShare data[8]
-#define tAutoHMs data[9]
-#define tFollowers data[10]
-#define tPSS data[11]
-#define tTerrain data[12]
-#define tRunType data[13]
-#define tDifficulty data[14]
+#define tFont data[8]
+#define tEXPShare data[9]
+#define tAutoHMs data[10]
+#define tFollowers data[11]
+#define tPSS data[12]
+#define tTerrain data[13]
+#define tRunType data[14]
+#define tDifficulty data[15]
 
 enum
 {
@@ -45,6 +46,7 @@ enum
     MENUITEM_SOUND,
     MENUITEM_FONT,
     MENUITEM_FRAMETYPE,
+    MENUITEM_MUSIC,
     MENUITEM_CANCEL,
     MENUITEM_COUNT,
 };
@@ -76,6 +78,7 @@ enum
 #define YPOS_BUTTONMODE   (0 * 16)
 #define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * 16)
 #define YPOS_FONT    (MENUITEM_FONT * 16)
+#define YPOS_MUSIC        (MENUITEM_MUSIC * 16)
 #define YPOS_EXP_SHARE    (MENUITEM_EXP_SHARE * 16)
 #define YPOS_AUTO_HMS  (MENUITEM_AUTO_HMS * 16)
 #define YPOS_FOLLOWERS  (MENUITEM_FOLLOWERS * 16)
@@ -122,6 +125,8 @@ static u8 RunType_ProcessInput(u8 selection);
 static void RunType_DrawChoices(u8 selection);
 static u8 Difficulty_ProcessInput(u8 selection);
 static void Difficulty_DrawChoices(u8 selection);
+static u8 Music_ProcessInput(u8 selection);
+static void Music_DrawChoices(u8 selection);
 
 static void DrawTextOption(void);
 
@@ -143,6 +148,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = gText_Sound,
     [MENUITEM_FONT]        = gText_Font,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
+    [MENUITEM_MUSIC]   = gText_Music,
     [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
 };
 
@@ -236,6 +242,7 @@ static void ReadAllCurrentSettings(u8 taskId)
         gTasks[taskId].tTerrain = gSaveBlock2Ptr->optionsTerrain;
         gTasks[taskId].tRunType = gSaveBlock2Ptr->optionsRunType;
         gTasks[taskId].tDifficulty = gSaveBlock2Ptr->optionsDifficulty;
+        gTasks[taskId].tMusic = gSaveBlock2Ptr->optionsMusic;
 }
 
 static void DrawOptionsPg1(u8 taskId)
@@ -247,6 +254,7 @@ static void DrawOptionsPg1(u8 taskId)
     Sound_DrawChoices(gTasks[taskId].tSound);
     Font_DrawChoices(gTasks[taskId].tFont);
     FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
+    Music_DrawChoices(gTasks[taskId].tMusic);
     HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
     CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
 }
@@ -416,7 +424,7 @@ static void Task_OptionMenuProcessInput(u8 taskId)
    }
    else if (JOY_NEW(A_BUTTON))
     {
-        if (gTasks[taskId].tMenuSelection == MENUITEM_CANCEL)
+        if (gTasks[taskId].tMenuSelection == MENUITEM_MUSIC)
             gTasks[taskId].func = Task_OptionMenuSave;
     }
     else if (JOY_NEW(B_BUTTON))
@@ -428,12 +436,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
         if (gTasks[taskId].tMenuSelection > 0)
             gTasks[taskId].tMenuSelection--;
         else
-            gTasks[taskId].tMenuSelection = MENUITEM_CANCEL;
+            gTasks[taskId].tMenuSelection = MENUITEM_MUSIC;
         HighlightOptionMenuItem(gTasks[taskId].tMenuSelection);
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if (gTasks[taskId].tMenuSelection < MENUITEM_CANCEL)
+        if (gTasks[taskId].tMenuSelection < MENUITEM_MUSIC)
             gTasks[taskId].tMenuSelection++;
         else
             gTasks[taskId].tMenuSelection = 0;
@@ -486,6 +494,13 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 
             if (previousOption != gTasks[taskId].tWindowFrameType)
                 FrameType_DrawChoices(gTasks[taskId].tWindowFrameType);
+            break;
+        case MENUITEM_MUSIC:
+            previousOption = gTasks[taskId].tMusic;
+            gTasks[taskId].tMusic = Music_ProcessInput(gTasks[taskId].tMusic);
+
+            if (previousOption != gTasks[taskId].tMusic)
+                Music_DrawChoices(gTasks[taskId].tMusic);
             break;
         default:
             return;
@@ -655,6 +670,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsTerrain = gTasks[taskId].tTerrain;
     gSaveBlock2Ptr->optionsRunType = gTasks[taskId].tRunType;
     gSaveBlock2Ptr->optionsDifficulty = gTasks[taskId].tDifficulty;
+    gSaveBlock2Ptr->optionsMusic = gTasks[taskId].tMusic;
 
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -1098,6 +1114,52 @@ static void Difficulty_DrawChoices(u8 selection)
     
     DrawOptionMenuChoice(gText_BattleSceneOff, 104, YPOS_DIFFICULTY, styles[0]);
     DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOn, 198), YPOS_DIFFICULTY, styles[1]);
+}
+
+static u8 Music_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        if (selection <= 1)
+            selection++;
+        else
+            selection = 0;
+
+        sArrowPressed = TRUE;
+    }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 2;
+
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void Music_DrawChoices(u8 selection)
+{
+    s32 widthJohto, widthSinnoh, widthHoenn, xSinnoh;
+    u8 styles[3];
+
+    styles[0] = 0;
+    styles[1] = 0;
+    styles[2] = 0;
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_MusicJohto, 104, YPOS_MUSIC, styles[0]);
+
+    widthJohto = GetStringWidth(FONT_NORMAL, gText_MusicJohto, 0);
+    widthSinnoh = GetStringWidth(FONT_NORMAL, gText_MusicSinnoh, 0);
+    widthHoenn = GetStringWidth(FONT_NORMAL, gText_MusicHoenn, 0);
+
+    widthSinnoh -= 94;
+    xSinnoh = (widthJohto - widthSinnoh - widthHoenn) / 2 + 104;
+    DrawOptionMenuChoice(gText_MusicSinnoh, xSinnoh, YPOS_MUSIC, styles[1]);
+
+    DrawOptionMenuChoice(gText_MusicHoenn, GetStringRightAlignXOffset(FONT_NORMAL, gText_MusicHoenn, 198), YPOS_MUSIC, styles[2]);
 }
 
 static void DrawHeaderText(void)

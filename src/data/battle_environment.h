@@ -104,11 +104,11 @@ const u16 gBattleTerrainPalette_StadiumGlacia[] = INCBIN_U16("graphics/battle_en
 const u16 gBattleTerrainPalette_StadiumDrake[] = INCBIN_U16("graphics/battle_environment/stadium/palette6.gbapal.lz");
 const u16 gBattleTerrainPalette_StadiumWallace[] = INCBIN_U16("graphics/battle_environment/stadium/palette7.gbapal.lz");
 
-const u16 gBattleTerrainPalette_StadiumWill_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette3.gbapal.lz");
-const u16 gBattleTerrainPalette_StadiumKoga_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette4.gbapal.lz");
-const u16 gBattleTerrainPalette_StadiumBruno_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette5.gbapal.lz");
-const u16 gBattleTerrainPalette_StadiumKaren_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette6.gbapal.lz");
-const u16 gBattleTerrainPalette_StadiumLance_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette7.gbapal.lz");
+const u16 gBattleTerrainPalette_StadiumWill_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette3.gbapal");
+const u16 gBattleTerrainPalette_StadiumKoga_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette4.gbapal");
+const u16 gBattleTerrainPalette_StadiumBruno_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette5.gbapal");
+const u16 gBattleTerrainPalette_StadiumKaren_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette6.gbapal");
+const u16 gBattleTerrainPalette_StadiumLance_2[] = INCBIN_U16("graphics/battle_environment/stadium_2/palette7.gbapal");
 
 const u16 gBattleTerrainPalette_Rayquaza_2[] = INCBIN_U16("graphics/battle_environment/sky_2/palette.gbapal");
 const u16 gBattleTerrainPalette_Rayquaza_2_Night[] = INCBIN_U16("graphics/battle_environment/sky_2/palette_night.gbapal.lz");
@@ -835,7 +835,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo2[BATTLE_ENVIRONMENT_COUNT]
             .tilemap = gBattleTerrainTilemap_Stadium_2,
             .entryTileset = gBattleTerrainAnimTiles_Building_2,
             .entryTilemap = gBattleTerrainAnimTilemap_Building_2,
-            .palette = gBattleTerrainPalette_StadiumWallace,
+            .palette = gBattleTerrainPalette_StadiumLance_2,
         },
     },
 
