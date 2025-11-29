@@ -8,13 +8,19 @@ Also there is no bug catching contest as of now. Sorry if you enjoyed that.
 LIST OF FEATURES:
 Implemented
 Music choices from Johto, Sinnoh, and Hoenn.
+
 Generation 6 EXP Share from the menu.
+
 Ability to toggle between the backgrounds used for HnS or the default ones from Hoenn.
+
 Auto-HMs from Pokémon Clover, where you don't need a prompt in order to use a field move.
+
 
 Not Yet Implemented
 Difficulty Modes/Nuzlocke
+
 Ability to run away from wild battles/trainers
+
 
 ![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
 
