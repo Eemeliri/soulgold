@@ -1,9 +1,20 @@
 # About `Gold and Silver Generation 3 Decomp`
 
-I (smithk200) wanted to modify Pokémon HeartGold and SoulSilver, but am unfamiliar with Gen 4 decomp and don't want to make a binary hack of HGSS because *binary sucks*... I mean, binary is prone to crashes and requires a lot of tools to modify a ton of parameters. Plus I want to make a challenge hack based around Johto that had things like Gen 6 EXP share because grinding for EXP is no fun. Plus some other things that are too lengthy to mention here because I work 51 hours a week and need to sleep.
+I (smithk200) wanted to modify Pokémon HeartGold and SoulSilver, but am unfamiliar with Gen 4 decomp and don't want to make a binary hack of HGSS because *binary sucks*... I mean, binary is prone to crashes and requires a lot of tools to modify a ton of parameters. Plus, I want to make a challenge hack based around Johto that had features from later Pokémon games, such as Gen 6 EXP share (because grinding for EXP is no fun). Also, I wanted to add some other features to this game but simply do not have the time.
 
 DISCLAIMER: This is not an official port of Pokémon Heart and Soul to pokeemerald-expansion; this is a fan-based project. This is not the 2.0 update, but if you don't want to wait for the official 2.0 update then this might be a good fit for you. This also removes the Nuzlocke feature and many toggelable features from Heart and Soul, but they will be added as I see fit.
 Also there is no bug catching contest as of now. Sorry if you enjoyed that.
+
+LIST OF FEATURES:
+Implemented
+Music choices from Johto, Sinnoh, and Hoenn.
+Generation 6 EXP Share from the menu.
+Ability to toggle between the backgrounds used for HnS or the default ones from Hoenn.
+Auto-HMs from Pokémon Clover, where you don't need a prompt in order to use a field move.
+
+Not Yet Implemented
+Difficulty Modes/Nuzlocke
+Ability to run away from wild battles/trainers
 
 ![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
 

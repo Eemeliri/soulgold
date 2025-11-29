@@ -572,9 +572,9 @@ static void Task_OptionMenuProcessInput_Pg2(u8 taskId)
             if (previousOption != gTasks[taskId].tAutoHMs)
                 AutoHMs_DrawChoices(gTasks[taskId].tAutoHMs);
             if (gSaveBlock2Ptr->optionsAutoHMs == TRUE)
-                FlagClear(FLAG_AUTO_HMS);
-            if (gSaveBlock2Ptr->optionsAutoHMs == FALSE)
                 FlagSet(FLAG_AUTO_HMS);
+            if (gSaveBlock2Ptr->optionsAutoHMs == FALSE)
+                FlagClear(FLAG_AUTO_HMS);
             break;
         case MENUITEM_FOLLOWERS:
             previousOption = gTasks[taskId].tFollowers;
