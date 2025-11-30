@@ -417,15 +417,15 @@ static void Task_OptionMenuProcessInput(u8 taskId)
 {
     if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
    {
-       FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
-       ClearStdWindowAndFrame(WIN_OPTIONS, FALSE);
-       sCurrPage = Process_ChangePage(sCurrPage);
-       gTasks[taskId].func = Task_ChangePage;
+        gTasks[taskId].func = Task_OptionMenuSave; 
+        FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
+        ClearStdWindowAndFrame(WIN_OPTIONS, FALSE);
+        sCurrPage = Process_ChangePage(sCurrPage);
+        gTasks[taskId].func = Task_ChangePage;
    }
    else if (JOY_NEW(A_BUTTON))
     {
-        if (gTasks[taskId].tMenuSelection == MENUITEM_MUSIC)
-            gTasks[taskId].func = Task_OptionMenuSave;
+        gTasks[taskId].func = Task_OptionMenuSave;
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -523,6 +523,7 @@ static void Task_OptionMenuProcessInput_Pg2(u8 taskId)
 {
     if (JOY_NEW(L_BUTTON) || JOY_NEW(R_BUTTON))
     {
+        gTasks[taskId].func = Task_OptionMenuSave;
         FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));
         ClearStdWindowAndFrame(WIN_OPTIONS, FALSE);
         sCurrPage = Process_ChangePage(sCurrPage);
@@ -1094,26 +1095,49 @@ static void RunType_DrawChoices(u8 selection)
 }
 static u8 Difficulty_ProcessInput(u8 selection)
 {
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    if (JOY_NEW(DPAD_RIGHT))
     {
-        selection ^= 1;
+        if (selection <= 1)
+            selection++;
+        else
+            selection = 0;
+
         sArrowPressed = TRUE;
     }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 2;
 
+        sArrowPressed = TRUE;
+    }
     return selection;
 }
 
 
 static void Difficulty_DrawChoices(u8 selection)
 {
-    u8 styles[2];
+    s32 widthEasy, widthNormal, widthHard, xNormal;
+    u8 styles[3];
 
     styles[0] = 0;
     styles[1] = 0;
+    styles[2] = 0;
     styles[selection] = 1;
-    
-    DrawOptionMenuChoice(gText_BattleSceneOff, 104, YPOS_DIFFICULTY, styles[0]);
-    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOn, 198), YPOS_DIFFICULTY, styles[1]);
+
+    DrawOptionMenuChoice(gText_EasyOption, 104, YPOS_DIFFICULTY, styles[0]);
+
+    widthEasy = GetStringWidth(FONT_NORMAL, gText_EasyOption, 0);
+    widthNormal = GetStringWidth(FONT_NORMAL, gText_NormalOption, 0);
+    widthHard = GetStringWidth(FONT_NORMAL, gText_HardOption, 0);
+
+    widthNormal -= 94;
+    xNormal = (widthEasy - widthNormal - widthHard) / 2 + 104;
+    DrawOptionMenuChoice(gText_NormalOption, xNormal, YPOS_DIFFICULTY, styles[1]);
+
+    DrawOptionMenuChoice(gText_HardOption, GetStringRightAlignXOffset(FONT_NORMAL, gText_HardOption, 198), YPOS_DIFFICULTY, styles[2]);
 }
 
 static u8 Music_ProcessInput(u8 selection)
@@ -1149,14 +1173,14 @@ static void Music_DrawChoices(u8 selection)
     styles[2] = 0;
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_MusicJohto, 104, YPOS_MUSIC, styles[0]);
+    DrawOptionMenuChoice(gText_MusicJohto, 92, YPOS_MUSIC, styles[0]);
 
     widthJohto = GetStringWidth(FONT_NORMAL, gText_MusicJohto, 0);
     widthSinnoh = GetStringWidth(FONT_NORMAL, gText_MusicSinnoh, 0);
     widthHoenn = GetStringWidth(FONT_NORMAL, gText_MusicHoenn, 0);
 
     widthSinnoh -= 94;
-    xSinnoh = (widthJohto - widthSinnoh - widthHoenn) / 2 + 104;
+    xSinnoh = (widthJohto - widthSinnoh - widthHoenn) / 2 + 100;
     DrawOptionMenuChoice(gText_MusicSinnoh, xSinnoh, YPOS_MUSIC, styles[1]);
 
     DrawOptionMenuChoice(gText_MusicHoenn, GetStringRightAlignXOffset(FONT_NORMAL, gText_MusicHoenn, 198), YPOS_MUSIC, styles[2]);

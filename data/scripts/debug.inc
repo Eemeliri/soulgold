@@ -9,20 +9,10 @@ Debug_ShowFieldMessageStringVar4::
 	goto Debug_MessageEnd
 
 Debug_CheatStart::
-	givemon SPECIES_MEGANIUM, 100, ITEM_NONE
-	givemon SPECIES_TYPHLOSION, 100, ITEM_NONE
-	givemon SPECIES_FERALIGATR, 100, ITEM_NONE
-	givemon SPECIES_UMBREON, 100, ITEM_NONE
-	givemon SPECIES_JOLTEON, 100, ITEM_NONE
-	givemon SPECIES_GLACEON, 100, ITEM_NONE
-	setflag FLAG_BADGE01_GET
-	setflag FLAG_BADGE02_GET
-	setflag FLAG_BADGE03_GET
-	setflag FLAG_BADGE04_GET
-	setflag FLAG_BADGE05_GET
-	setflag FLAG_BADGE06_GET
-	setflag FLAG_BADGE07_GET
-	setflag FLAG_BADGE08_GET
+	givemon SPECIES_CYNDAQUIL, 10, ITEM_NONE
+	setvar VAR_NEWBARKTOWN_LABSTATE, 6
+	setvar VAR_NEWBARK_TOWN_STATE, 5
+	setflag FLAG_SYS_POKEMON_GET
 	giveitem ITEM_HM_SURF
 	special SetUnlockedPokedexFlags
 	special EnableNationalPokedex

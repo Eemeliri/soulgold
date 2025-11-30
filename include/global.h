@@ -588,9 +588,9 @@ struct SaveBlock2
              u16 optionsPSS:1;
              u16 optionsTerrain:1;
              u16 optionsRunType:3;
-             u16 optionsDifficulty:3;
-             u16 optionsFont:2;
-             u16 optionsMusic:2;
+             u16 optionsDifficulty:3; //0 = easy, 1 = normal, 2 = hard
+             u16 optionsFont:2; //0 = emerald, 1 = fire red
+             u16 optionsMusic:3; //0 = johto, 1 = sinnoh, 2 = hoenn
              //u16 padding1:4;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;

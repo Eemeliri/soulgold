@@ -71,7 +71,7 @@ CeladonMansion2F_Text_LilDill:
 
 CeladonMansion2F_Text_InfiniteBacon:
 	.string "We're working to rebuild this game\n"
-	.string "in pokeemerald expansion!p"
+	.string "in pokeemerald expansion!\p"
 	.string "Huh?\p"
 	.string "Someone's already done that!$"
 

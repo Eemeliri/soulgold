@@ -755,6 +755,11 @@ static u16 FontFunc_Normal(struct TextPrinter *textPrinter)
         subStruct->fontId = FONT_NORMAL;
         subStruct->hasFontIdBeenSet = TRUE;
     }
+    if (gSaveBlock2Ptr->optionsFont == 1)
+    {
+        subStruct->fontId = FONT_SHORT;
+        subStruct->hasFontIdBeenSet = TRUE;
+    }
     return RenderText(textPrinter);
 }
 

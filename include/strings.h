@@ -2535,4 +2535,7 @@ extern const u8 gText_Music[];
 extern const u8 gText_MusicJohto[];
 extern const u8 gText_MusicSinnoh[];
 extern const u8 gText_MusicHoenn[];
+extern const u8 gText_EasyOption[];
+extern const u8 gText_NormalOption[];
+extern const u8 gText_HardOption[];
 #endif // GUARD_STRINGS_H

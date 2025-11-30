@@ -1,0 +1,1 @@
+python.exe triple_layer_converter.py --tsroot "C:\decomps\HNSPort\data\tilesets"
