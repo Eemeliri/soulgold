@@ -47,6 +47,7 @@
 #include "pokemon_summary_screen.h"
 #include "type_icons.h"
 #include "pokedex.h"
+#include "nuzlocke.h"
 
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
@@ -1220,6 +1221,7 @@ void SetBattleEndCallbacks(u32 battler)
         }
         else
         {
+            NuzlockeOnBattleEnd();
             m4aSongNumStop(SE_LOW_HEALTH);
             gMain.inBattle = FALSE;
             gMain.callback1 = gPreBattleCallback1;

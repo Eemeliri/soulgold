@@ -137,6 +137,7 @@ This list was last updated 2025 April 1.
 | [SBird](https://github.com/SBird1337) | karathan | ✅ | Dynamic Multichoice, Damage Calculation, Animations, Trainer Control, Tests
 | [Agustin](https://github.com/AgustinGDLV) | agustingdlv | Inactive | Gimmicks, Battle Engine, Tests, Items
 | [tertu](https://github.com/tertu-m) | tertu | Inactive | Randomizer
+| [smithk200/IAnAwesome2](https://github.com/smithk200) | tertu | ✅ | HnS Port
 
 ## Attribution
 This guide is based on the [contributing.md](https://contributing.md/generator)!

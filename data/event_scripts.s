@@ -595,6 +595,50 @@ EventScript_WhiteOut::
 
 EventScript_AfterWhiteOutHeal::
 	lockall
+	@ Check if Nuzlocke is enabled and player has Pokédex
+	goto_if_unset FLAG_NUZLOCKE, EventScript_AfterWhiteOutHeal_Normal
+	goto_if_unset FLAG_SYS_POKEDEX_GET, EventScript_AfterWhiteOutHeal_Normal
+	@ Nuzlocke whiteout - show special message and ask if they want to disable
+	msgbox gText_NuzlockeWhiteOut, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EventScript_AfterWhiteOutHeal_AskDisableConfirm
+	goto_if_eq VAR_RESULT, NO, EventScript_AfterWhiteOutHeal_AskContinueConfirm
+	end
+
+EventScript_AfterWhiteOutHeal_AskDisableConfirm::
+	@ Player wants to disable - ask for confirmation
+	msgbox gText_ConfirmDisableNuzlocke, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EventScript_AfterWhiteOutHeal_DisableNuzlocke
+	@ Player changed their mind - ask if they want to continue instead
+	goto EventScript_AfterWhiteOutHeal_AskContinueConfirm
+
+EventScript_AfterWhiteOutHeal_AskContinueConfirm::
+	@ Player wants to continue - ask for confirmation
+	msgbox gText_ConfirmContinueNuzlocke, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EventScript_AfterWhiteOutHeal_ContinueNuzlocke
+	@ Player changed their mind - ask if they want to disable instead
+	goto EventScript_AfterWhiteOutHeal_AskDisableConfirm
+
+EventScript_AfterWhiteOutHeal_DisableNuzlocke::
+	@ Disable Nuzlocke flag
+	clearflag FLAG_NUZLOCKE
+	msgbox gText_NuzlockeDisabled, MSGBOX_DEFAULT
+	@ Auto-save the game (silent, no prompt)
+	special NuzlockeSilentSave
+	msgbox gText_NuzlockeDisabledSave, MSGBOX_DEFAULT
+	@ Now proceed with normal healing since Pokémon can be healed again
+	goto EventScript_AfterWhiteOutHeal_Normal
+
+EventScript_AfterWhiteOutHeal_ContinueNuzlocke::
+	@ Player continues with Nuzlocke - Pokémon stay dead, no healing
+	msgbox gText_ContinueNuzlockeMode, MSGBOX_DEFAULT
+	applymovement VAR_LAST_TALKED, Movement_PkmnCenterNurse_Bow
+	waitmovement 0
+	fadedefaultbgm
+	releaseall
+	end
+
+EventScript_AfterWhiteOutHeal_Normal::
+	@ Normal whiteout flow (non-Nuzlocke or Nuzlocke disabled)
 	msgbox gText_FirstShouldRestoreMonsHealth
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	call_if_unset FLAG_DEFEATED_VIOLET_GYM, EventScript_AfterWhiteOutHealMsgPreRoxanne
@@ -947,6 +991,43 @@ gText_MonsHealed::
 	.string "Your POKéMON have been healed\n"
 	.string "to perfect health.\p"
 	.string "We hope you excel!$"
+
+gText_NuzlockeWhiteOut::
+	.string "Oh dear! I’m so sorry.\p"
+	.string "Your whole team fainted during\n"
+	.string "Nuzlocke Mode.\p"
+	.string "If you have any healthy Pokémon in PC\n"
+	.string "storage, you can swap them into your\l"
+	.string "party and try again.\p"
+	.string "If you’d like, I can also disable\n"
+	.string "Nuzlocke Mode so you can continue\l"
+	.string "adventuring with the Pokémon you have.\p"
+	.string "Would you like me to disable\n"
+	.string "Nuzlocke Mode for this save?$"
+
+gText_ContinueNuzlockeMode::
+	.string "That’s the spirit! Take care out there.\p"
+	.string "Remember to stock up on potions and\n"
+	.string "status-healing items.\p"
+	.string "Come back when you’re ready and\n"
+	.string "I’ll heal your team.$"
+
+gText_NuzlockeDisabled::
+	.string "You have Failed the Nuzlocke Challenge.\p"
+	.string "This decision cannot be undone.$"
+
+gText_ConfirmDisableNuzlocke::
+	.string "Are you sure you want to disable\n"
+	.string "Nuzlocke Mode?\p"
+	.string "This action is non-reversible.$"
+
+gText_ConfirmContinueNuzlocke::
+	.string "Are you sure you'd like to continue\n"
+	.string "in Nuzlocke Mode?$"
+
+gText_NuzlockeDisabledSave::
+	.string "{PLAYER} saved the game.\p"
+	.string "Nuzlocke Disabled$"
 
 gText_HadQuiteAnExperienceTakeRest::
 	.string "MOM: {PLAYER}!\n"

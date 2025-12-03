@@ -172,20 +172,20 @@
 #define VAR_TOHJO_FALLS_GIOVANNI_STATE                   0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE                 0x4099 //Not used in HnS but may be later
 #define VAR_ROUTE22_GIOVANNI_STATE                       0x409A
-#define VAR_ROUTE27_BAOBA_CALL                              0x409B 
-#define VAR_UNUSED_HNS_VAR4                              0x409C
-#define VAR_UNUSED_HNS_VAR5                              0x409D 
-#define VAR_UNUSED_HNS_VAR6                              0x409E
-#define VAR_UNUSED_HNS_VAR7                              0x409F// HnS Vars end
+#define VAR_ROUTE27_BAOBA_CALL                           0x409B 
+#define VAR_NEW_MAUVILLE_STATE                           0x409C
+#define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON                0x409D 
+#define VAR_JAGGED_PASS_ASH_WEATHER                      0x409E
+#define VAR_METEOR_FALLS_STATE                           0x409F// HnS Vars end
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
-#define VAR_UNUSED_0x40A1                                0x40A1 
+#define VAR_GLASS_WORKSHOP_STATE                         0x40A1 
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
 #define VAR_CABLE_CAR_STATION_STATE                      0x40A3
 #define VAR_SAFARI_ZONE_STATE                            0x40A4  // 0: In or out of SZ, 1: Player exiting SZ, 2: Player entering SZ
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE              0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER               0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE                   0x40A7
-#define VAR_UNUSED_0x40A8                                0x40A8 
+#define VAR_MT_PYRE_STATE                                0x40A8 
 #define VAR_CYCLING_CHALLENGE_STATE                      0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE                    0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE                   0x40AB
@@ -201,14 +201,14 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR              0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2                 0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE                     0x40B7
-#define VAR_UNUSED_0x40B8                                0x40B8 // Unused Var
-#define VAR_MT_PYRE_STATE                                0x40B9
-#define VAR_NEW_MAUVILLE_STATE                           0x40BA
-#define VAR_UNUSED_0x40BB                                0x40BB // Unused Var
-#define VAR_BRAVO_TRAINER_BATTLE_TOWER_ON                0x40BC
-#define VAR_JAGGED_PASS_ASH_WEATHER                      0x40BD
-#define VAR_GLASS_WORKSHOP_STATE                         0x40BE
-#define VAR_METEOR_FALLS_STATE                           0x40BF
+#define VAR_NUZLOCKE_ENCOUNTERS_1                        0x40B8 //Nuzlocke vars start Nuzlocke: Track first encounters in routes/areas (32 bits)
+#define VAR_NUZLOCKE_ENCOUNTERS_2                        0x40B9 // Nuzlocke: Track first encounters in routes/areas (32 bits)
+#define VAR_NUZLOCKE_ENCOUNTERS_3                        0x40BA // Nuzlocke: Track first encounters in routes/areas (32 bits)
+#define VAR_NUZLOCKE_ENCOUNTERS_4                        0x40BB // Nuzlocke: Track first encounters in routes/areas (32 bits)
+#define VAR_NUZLOCKE_CATCHES_1                           0x40BC // Nuzlocke: Track successful catches in routes/areas (32 bits)
+#define VAR_NUZLOCKE_CATCHES_2                           0x40BD // Nuzlocke: Track successful catches in routes/areas (32 bits)
+#define VAR_NUZLOCKE_CATCHES_3                           0x40BE // Nuzlocke: Track successful catches in routes/areas (32 bits)
+#define VAR_NUZLOCKE_CATCHES_4                           0x40BF // Nuzlocke: Track successful catches in routes/areas (32 bits)
 #define VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE              0x40C0
 #define VAR_TRICK_HOUSE_PRIZE_PICKUP                     0x40C1
 #define VAR_PACIFIDLOG_TM_RECEIVED_DAY                   0x40C2

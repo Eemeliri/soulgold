@@ -49,6 +49,8 @@
 #include "difficulty.h"
 #include "follower_npc.h"
 #include "constants/heal_locations.h"
+#include "main_menu.h"
+#include "constants/flags.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -224,6 +226,12 @@ void NewGameInitData(void)
     ResetDexNav();
     ClearFollowerNPCData();
     SetLastHealLocationWarp(HEAL_LOCATION_NEW_BARK_TOWN_PLAYERS_HOUSE_2F);
+        // Set Nuzlocke flag if it was selected during Birch's speech
+    if (WasNuzlockeModeSelected())
+    {
+        FlagSet(FLAG_NUZLOCKE);
+        ClearNuzlockeModeSelection(); // Reset the selection variable
+    }
 }
 
 static void ResetMiniGamesRecords(void)

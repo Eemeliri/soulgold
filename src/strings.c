@@ -1533,3 +1533,8 @@ const u8 gText_MusicHoenn[]= _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hoenn");
 const u8 gText_NormalOption[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
 const u8 gText_EasyOption[]= _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Easy");
 const u8 gText_HardOption[]= _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Hard");
+// Nuzlocke strings
+const u8 gText_NuzlockeFirstEncounter[] = _("Alright, here's the first POKéMON\nof the area. Better make it count!\p");
+const u8 gText_NuzlockeDuplicate[] = _("We've already caught this POKéMON.\pThe Duplicate Clause lets us try\nfor another after this battle.\p");
+const u8 gText_NuzlockeShiny[] = _("Oh wow, a Shiny!\pThe Shiny Clause lets us try to\ncatch this no matter what!\p");
+const u8 gText_TrainerCardNuzlockePokedex[] = _("NUZLOCKE POKéDEX");

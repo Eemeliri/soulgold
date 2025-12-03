@@ -27,6 +27,16 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/weather.h"
+#include "constants/pokemon.h"
+#include "nuzlocke.h"
+
+// Global variable to track if current wild Pokemon is catchable in Nuzlocke
+static bool8 gWildPokemonIsCatchableInNuzlocke = FALSE;
+
+bool8 IsWildPokemonCatchableInNuzlocke(void)
+{
+    return gWildPokemonIsCatchableInNuzlocke;
+}
 
 extern const u8 EventScript_SprayWoreOff[];
 
@@ -484,6 +494,9 @@ void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm = TRUE;
 
+    // Reset Nuzlocke indicator state - will be set after Pokemon is created
+    gWildPokemonIsCatchableInNuzlocke = FALSE;
+
     ZeroEnemyPartyMons();
 
     switch (gSpeciesInfo[species].genderRatio)
@@ -511,10 +524,34 @@ void CreateWildMon(u16 species, u8 level)
             gender = MON_FEMALE;
 
         CreateMonWithGenderNatureLetter(&gEnemyParty[0], species, level, USE_RANDOM_IVS, gender, PickWildMonNature(), 0);
-        return;
     }
-
-    CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, PickWildMonNature());
+    else
+    {
+        CreateMonWithNature(&gEnemyParty[0], species, level, USE_RANDOM_IVS, PickWildMonNature());
+    }
+    
+    // NOW check Nuzlocke indicator after Pokemon is created and has personality
+    if (IsNuzlockeActive() && FlagGet(FLAG_SYS_POKEDEX_GET))
+    {
+        u8 currentLocation = GetCurrentRegionMapSectionId();
+        bool8 locationAlreadyUsed = HasWildPokemonBeenSeenInLocation(currentLocation, FALSE);
+        
+        if (!locationAlreadyUsed)
+        {
+            // Get Pokemon info to check if shiny
+            u32 personality = GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY);
+            u32 otId = GetMonData(&gEnemyParty[0], MON_DATA_OT_ID);
+            u32 shinyValue = ((personality >> 16) ^ (personality & 0xFFFF)) ^ ((otId >> 16) ^ (otId & 0xFFFF));
+            bool8 isShiny = (shinyValue < 8);
+            
+            // Only set indicator if NOT shiny and NOT duplicate
+            if (!isShiny && !PlayerOwnsSpecies(species))
+            {
+                // This is a catchable first encounter (not shiny, not duplicate)
+                gWildPokemonIsCatchableInNuzlocke = TRUE;
+            }
+        }
+    }
 }
 #ifdef BUGFIX
 #define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr, count) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr, count)
@@ -1231,6 +1268,15 @@ static void ApplyCleanseTagEncounterRateMod(u32 *encRate)
 
 bool8 TryDoDoubleWildBattle(void)
 {
+    // Prevent double battles on first encounters in Nuzlocke mode
+    if (IsNuzlockeActive())
+    {
+        u16 mapGroup = gSaveBlock1Ptr->location.mapGroup;
+        u16 mapNum = gSaveBlock1Ptr->location.mapNum;
+        if (IsFirstEncounterInArea(mapGroup, mapNum))
+            return FALSE;
+    }
+
     if (GetSafariZoneFlag()
       || (B_DOUBLE_WILD_REQUIRE_2_MONS == TRUE && GetMonsStateToDoubles() != PLAYER_HAS_TWO_USABLE_MONS))
         return FALSE;

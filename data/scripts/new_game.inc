@@ -231,10 +231,6 @@ EventScript_ResetAllMapFlags::
 	setvar VAR_TOHJO_FALLS_GIOVANNI_STATE, 0
 	setvar VAR_ROUTE22_GIOVANNI_STATE, 0
 	setvar VAR_ROUTE27_BAOBA_CALL, 0
-	setvar VAR_UNUSED_HNS_VAR4, 0
-	setvar VAR_UNUSED_HNS_VAR5, 0
-	setvar VAR_UNUSED_HNS_VAR6, 0
-	setvar VAR_UNUSED_HNS_VAR7, 0
 
 	call EventScript_ResetAllBerries
 	end

@@ -17,6 +17,17 @@ extern const u8 gText_ExpandedPlaceholder_Groudon[];
 extern const u8 gText_ExpandedPlaceholder_Brendan[];
 extern const u8 gText_ExpandedPlaceholder_May[];
 
+// Nuzlocke strings
+extern const u8 gText_NuzlockeFirstEncounter[];
+extern const u8 gText_NuzlockeDuplicate[];
+extern const u8 gText_NuzlockeShiny[];
+extern const u8 gText_Birch_NuzlockeChallenge[];
+extern const u8 gText_Birch_NoNuzlocke[];
+extern const u8 gText_Birch_YesNuzlocke[];
+extern const u8 gText_BallsCannotBeUsedNuz[];
+extern const u8 gText_TrainerCardNuzlockePokedex[];
+extern const u8 gText_Birch_Farewell[];
+
 extern const u8 gText_FromSpace[];
 
 extern const u8 gText_Lv50[];

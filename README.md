@@ -16,10 +16,10 @@ Implemented
 - Difficulty mode. Easy gives double the EXP, Normal is normal EXP, and Hard mode is having a level cap which the highest level you can reach is the Gym Leader's ace Pokémon. Defeat the Gym Leaders to lift the cap.
 - Battle Frontier! (After defeating Red, you gain the option of traveling to the Battle Frontier. You can leave from either Olivine or Vermilion. However, leaving the Battle Frontier takes you to Vermilion.)
 - Bug catching contest (albeit with a few bugs)
+- Optional Nuzlocke Mode
 
 
 Not Yet Implemented
-- Nuzlocke
 - Ability to run away from wild battles/trainers
 
 

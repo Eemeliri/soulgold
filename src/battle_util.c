@@ -51,6 +51,7 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "constants/pokemon.h"
+#include "nuzlocke.h"
 
 /*
 NOTE: The data and functions in this file up until (but not including) sSoundMovesTable
@@ -689,6 +690,8 @@ bool32 TryRunFromBattle(u32 battler)
     {
         gCurrentTurnActionNumber = gBattlersCount;
         gBattleOutcome = B_OUTCOME_RAN;
+        // Nuzlocke: Mark area as used if running from catchable Pokemon (not duplicate/shiny)
+        NuzlockeOnBattleEnd();
     }
 
     return effect;
@@ -843,6 +846,8 @@ void HandleAction_SafariZoneRun(void)
     PlaySE(SE_FLEE);
     gCurrentTurnActionNumber = gBattlersCount;
     gBattleOutcome = B_OUTCOME_RAN;
+    // Nuzlocke: Mark area as used if running from catchable Pokemon (not duplicate/shiny)
+    NuzlockeOnBattleEnd();
 }
 
 void HandleAction_WallyBallThrow(void)
