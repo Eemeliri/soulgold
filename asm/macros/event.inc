@@ -2852,3 +2852,16 @@
 	callnative ScrCmd_setstartingstatus
 	.byte \status
 	.endm
+
+	@ Creates a movement script automatically by using Weighted A*.
+	@ This is meant to be used to remove branching in scripts,
+	@ since the algorithm can be very slow.
+	.macro moveobjecttocoords localId:req, x:req, y:req, facing:req, speed=1, maxnodes=256
+	callnative ScrCmd_moveobjecttocoords
+	.2byte \localId
+	.2byte \x
+	.2byte \y
+	.byte \facing
+	.byte \speed
+	.4byte \maxnodes
+	.endm

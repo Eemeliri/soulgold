@@ -134,8 +134,12 @@ NewBarkTown_Lab_EventScript_ElmAccepted::
 	end
 
 NewBarkTown_Lab_EventScript_ElmChoosePokemon::
+    applymovement LOCALID_ELM, NewBarkTownLab_Movement_Elm_Right
+    waitmovement 0
 	msgbox NewBarkTown_Lab_Text_ElmChooseAPokemon, MSGBOX_DEFAULT
 	closemessage
+    applymovement LOCALID_ELM, NewBarkTownLab_Movement_Elm_Down
+    waitmovement 0
 	setvar VAR_NEWBARKTOWN_LABSTATE, 1
 	release
 	end
@@ -181,8 +185,13 @@ NewBarkTown_Lab_EventScript_ChoseStarter::
 	waitfanfare
     hidemonpic
 	msgbox NewBarkTown_Lab_Text_ChoseStarter, MSGBOX_DEFAULT
-	release
-	end
+	waitmessage
+    closemessage
+    moveobjecttocoords OBJ_EVENT_ID_PLAYER, 6, 4, DIR_NONE
+    waitmovement 0
+    applymovement OBJ_EVENT_ID_PLAYER, NewBarkTown_Lab_Movement_Look_Up
+    waitmovement 0
+    goto NewBarkTown_Lab_EventScript_Elm
 
 NewBarkTown_Lab_EventScript_DeclinedStarter::
 	hidemonpic
@@ -552,6 +561,14 @@ NeBarkTownLab_Movement_PlayerWalkToCop:
 	walk_fast_up
 	face_right
 	step_end
+
+NewBarkTownLab_Movement_Elm_Right:
+    face_right
+    step_end
+
+NewBarkTownLab_Movement_Elm_Down:
+    face_down
+    step_end
 
 NewBarkTown_Lab_Movement_CopLeaves:
 	walk_down
