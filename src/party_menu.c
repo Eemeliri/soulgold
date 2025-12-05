@@ -78,6 +78,7 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "nuzlocke.h"
 
 enum {
     MENU_SUMMARY,
@@ -4748,7 +4749,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     {
         cannotUse = TRUE;
     }
-    if ((ITEM4_REVIVE) && (FlagGet(FLAG_NUZLOCKE)))
+    if ((ITEM4_REVIVE) && (FlagGet(FLAG_NUZLOCKE)) && IsMonDead(mon))
     {
         cannotUse = TRUE;
     }

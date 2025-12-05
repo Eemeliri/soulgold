@@ -1072,26 +1072,49 @@ static void Terrain_DrawChoices(u8 selection)
 }
 static u8 RunType_ProcessInput(u8 selection)
 {
-    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    if (JOY_NEW(DPAD_RIGHT))
     {
-        selection ^= 1;
+        if (selection <= 1)
+            selection++;
+        else
+            selection = 0;
+
         sArrowPressed = TRUE;
     }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 2;
 
+        sArrowPressed = TRUE;
+    }
     return selection;
 }
 
 
 static void RunType_DrawChoices(u8 selection)
 {
-    u8 styles[2];
+    s32 widthRun1, widthRun2, widthRun3, xOption2;
+    u8 styles[3];
 
     styles[0] = 0;
     styles[1] = 0;
+    styles[2] = 0;
     styles[selection] = 1;
-    
-    DrawOptionMenuChoice(gText_BattleSceneOff, 104, YPOS_RUN_TYPE, styles[0]);
-    DrawOptionMenuChoice(gText_BattleSceneOn, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOn, 198), YPOS_RUN_TYPE, styles[1]);
+
+    DrawOptionMenuChoice(gText_RunOptionEnabled1, 104, YPOS_RUN_TYPE, styles[0]);
+
+    widthRun1 = GetStringWidth(FONT_NORMAL, gText_RunOptionEnabled1, 0);
+    widthRun2 = GetStringWidth(FONT_NORMAL, gText_RunOptionEnabled2, 0);
+    widthRun3 = GetStringWidth(FONT_NORMAL, gText_RunOptionDisabled, 0);
+
+    widthRun2 -= 94;
+    xOption2 = (widthRun1 - widthRun2 - widthRun3) / 2 + 104;
+    DrawOptionMenuChoice(gText_RunOptionEnabled2, xOption2, YPOS_RUN_TYPE, styles[1]);
+
+    DrawOptionMenuChoice(gText_RunOptionDisabled, GetStringRightAlignXOffset(FONT_NORMAL, gText_RunOptionDisabled, 198), YPOS_RUN_TYPE, styles[2]);
 }
 static u8 Difficulty_ProcessInput(u8 selection)
 {

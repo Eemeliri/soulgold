@@ -46,12 +46,11 @@ gText_Birch_YourePlayer::
 	.string "$"
 
 gText_Birch_AreYouReady::
-	.string "All right, are you ready?\p"
-	.string "Your very own adventure is about\n"
-	.string "to unfold.\p"
-	.string "Take courage, and leap into the\n"
-	.string "world of POKéMON where dreams,\l"
-	.string "adventure, and friendships await!\p"
+	.string "You'll face fun times and tough\n"
+	.string "challenges.\p"
+	.string "A world of dreams and adventures\n"
+	.string "with Pokémon awaits! Let's go!\p"
+	.string "I'll be seeing you later!\p"
 	.string "$"
 
 gText_Birch_NuzlockeChallenge::

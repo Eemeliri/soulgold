@@ -247,6 +247,7 @@ static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
+static void NewGameBirchSpeech_ShowNuzlockeMenu(void);
 
 //Nuzlocke
 static void Task_NewGameBirchSpeech_NuzlockeChallenge(u8);
@@ -496,6 +497,11 @@ static const u8 *const sMalePresetNames[] = {
 static const u8 *const sFemalePresetNames[] = {
     COMPOUND_STRING("Lyra"),
     COMPOUND_STRING("Kris")
+};
+
+static const struct MenuAction sMenuActions_Nuzlocke[] = {
+    {COMPOUND_STRING("No"), {NULL}},
+    {COMPOUND_STRING("Yes"), {NULL}}
 };
 
 // The number of male vs. female names is assumed to be the same.
@@ -1718,9 +1724,9 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         gTasks[taskId].tPlayerSpriteId = spriteId;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
-        StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
-        AddTextPrinterForMessage(TRUE);
-         gTasks[taskId].func = Task_NewGameBirchSpeech_NuzlockeChallenge;
+        //StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
+        //AddTextPrinterForMessage(TRUE);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_NuzlockeChallenge; //if you don't want to show the Nuzlocke challenge at all, you can just set this to Task_NewGameBirchSpeech_Farewell
     }
 }
 
@@ -1742,7 +1748,7 @@ static void Task_NewGameBirchSpeech_CreateNuzlockeYesNo(u8 taskId)
 {
     if (!RunTextPrintersAndIsPrinter0Active())
     {
-        CreateYesNoMenuParameterized(2, 1, 0xF3, 0xDF, 2, 15);
+        NewGameBirchSpeech_ShowNuzlockeMenu();
         gTasks[taskId].func = Task_NewGameBirchSpeech_ProcessNuzlockeYesNoMenu;
     }
 }
@@ -1751,16 +1757,30 @@ static void Task_NewGameBirchSpeech_ProcessNuzlockeYesNoMenu(u8 taskId)
 {
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
-    case 0: // YES
-        PlaySE(SE_SELECT);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_YesNuzlocke;
-        break;
-    case 1: // NO
+    case 0: // NO
     case MENU_B_PRESSED:
         PlaySE(SE_SELECT);
         gTasks[taskId].func = Task_NewGameBirchSpeech_NoNuzlocke;
         break;
+    case 1: // YES
+        PlaySE(SE_SELECT);
+        gTasks[taskId].func = Task_NewGameBirchSpeech_YesNuzlocke;
+        break;
     }
+}
+
+static void NewGameBirchSpeech_ClearNuzlockeWindowTilemap(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 unused)
+{
+    FillBgTilemapBufferRect(bg, 0, x + 255, y + 255, width + 2, height + 2, 2);
+}
+
+static void NewGameBirchSpeech_ClearNuzlockeWindow(u8 windowId, bool8 copyToVram)
+{
+    CallWindowFunction(windowId, NewGameBirchSpeech_ClearNuzlockeWindowTilemap);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
+    ClearWindowTilemap(windowId);
+    if (copyToVram == TRUE)
+        CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
 static void Task_NewGameBirchSpeech_YesNuzlocke(u8 taskId)
@@ -1768,6 +1788,7 @@ static void Task_NewGameBirchSpeech_YesNuzlocke(u8 taskId)
     FlagSet(FLAG_NUZLOCKE);
     sNuzlockeModeSelected = TRUE;
     NewGameBirchSpeech_ClearWindow(0);
+    NewGameBirchSpeech_ClearNuzlockeWindow(1, 1);
     StringExpandPlaceholders(gStringVar4, gText_Birch_YesNuzlocke);
     AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameBirchSpeech_Farewell;
@@ -1777,6 +1798,7 @@ static void Task_NewGameBirchSpeech_NoNuzlocke(u8 taskId)
 {
     FlagClear(FLAG_NUZLOCKE);
     NewGameBirchSpeech_ClearWindow(0);
+    NewGameBirchSpeech_ClearNuzlockeWindow(1, 1);
     StringExpandPlaceholders(gStringVar4, gText_Birch_NoNuzlocke);
     AddTextPrinterForMessage(TRUE);
     gTasks[taskId].func = Task_NewGameBirchSpeech_Farewell;
@@ -2157,6 +2179,16 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
     FillWindowPixelBuffer(1, PIXEL_FILL(1));
     PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Gender), sMenuActions_Gender);
     InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Gender), 0);
+    PutWindowTilemap(1);
+    CopyWindowToVram(1, COPYWIN_FULL);
+}
+
+static void NewGameBirchSpeech_ShowNuzlockeMenu(void)
+{
+    DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[1], 0xF3);
+    FillWindowPixelBuffer(1, PIXEL_FILL(1));
+    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Nuzlocke), sMenuActions_Nuzlocke);
+    InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Nuzlocke), 0);
     PutWindowTilemap(1);
     CopyWindowToVram(1, COPYWIN_FULL);
 }

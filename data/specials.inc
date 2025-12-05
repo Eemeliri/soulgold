@@ -588,3 +588,4 @@ gSpecials::
 	def_special RemoveSafariBalls
 	def_special ShowBugContestChosenMon
 	def_special NuzlockeSilentSave
+	def_special LevelCapToString

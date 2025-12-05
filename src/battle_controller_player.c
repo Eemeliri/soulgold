@@ -48,6 +48,7 @@
 #include "type_icons.h"
 #include "pokedex.h"
 #include "nuzlocke.h"
+#include "event_data.h"
 
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
@@ -251,6 +252,17 @@ static void HandleInputChooseAction(u32 battler)
         gPlayerDpadHoldFrames++;
     else
         gPlayerDpadHoldFrames = 0;
+    if ((gSaveBlock2Ptr->optionsRunType == 0) && JOY_HELD(L_BUTTON) && JOY_HELD(A_BUTTON))
+        {
+            if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing R+A moves cursor to "Run".
+            {
+                PlaySE(SE_SELECT);
+                ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
+                gActionSelectionCursor[battler] = 3;
+                ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
+                FlagSet(FLAG_RAN_FROM_BATTLE);
+            }
+        }
 
     if (B_LAST_USED_BALL == TRUE && B_LAST_USED_BALL_CYCLE == TRUE)
     {
@@ -388,7 +400,7 @@ static void HandleInputChooseAction(u32 battler)
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_CANCEL_PARTNER, 0);
             BtlController_Complete(battler);
         }
-        else if (B_QUICK_MOVE_CURSOR_TO_RUN)
+        else if ((B_QUICK_MOVE_CURSOR_TO_RUN) || gSaveBlock2Ptr->optionsRunType == 1)
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing B moves cursor to "Run".
             {
@@ -396,6 +408,7 @@ static void HandleInputChooseAction(u32 battler)
                 ActionSelectionDestroyCursorAt(gActionSelectionCursor[battler]);
                 gActionSelectionCursor[battler] = 3;
                 ActionSelectionCreateCursorAt(gActionSelectionCursor[battler], 0);
+                FlagSet(FLAG_RAN_FROM_BATTLE);
             }
         }
     }

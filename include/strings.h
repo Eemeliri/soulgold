@@ -2549,4 +2549,7 @@ extern const u8 gText_MusicHoenn[];
 extern const u8 gText_EasyOption[];
 extern const u8 gText_NormalOption[];
 extern const u8 gText_HardOption[];
+extern const u8 gText_HnSHardcore[];
+extern const u8 gText_HnSNuzlocke[];
+extern const u8 gText_HnS[];
 #endif // GUARD_STRINGS_H

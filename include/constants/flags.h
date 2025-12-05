@@ -715,7 +715,7 @@
 #define FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT  0x29C // Unused Flag
 #define FLAG_SYS_BUG_CONTEST_MODE  0x29D // Unused Flag
 #define FLAG_NUZLOCKE      0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
+#define FLAG_RAN_FROM_BATTLE  0x29F // Unused Flag
 #define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
 #define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
 #define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
@@ -1253,7 +1253,7 @@
 #define FLAG_ITEM_DOME_FOSSIL                                       0x4AC 
 #define FLAG_ITEM_OLD_AMBER                                         0x4AD 
 #define FLAG_ITEM_GS_BALL                                           0x4AE 
-#define FLAG_GARBAGEFLAG3                                           0x4AF 
+#define FLAG_USED_ITEM_NUZLOCKE                                     0x4AF 
 #define FLAG_ITEM_ROUTE_32_GREATBALL                                0x4B0 
 #define FLAG_ITEM_ROUTE_32_GREATBALL2                               0x4B1 
 #define FLAG_ITEM_ROUTE_32_POTION                                   0x4B2 

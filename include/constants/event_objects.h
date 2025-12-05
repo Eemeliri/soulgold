@@ -486,6 +486,7 @@
 #define OBJ_EVENT_PAL_TAG_SLOWPOKE              0x113C
 #define OBJ_EVENT_PAL_TAG_SCIENTIST_F              0x113D
 #define OBJ_EVENT_PAL_TAG_PROTON              0x113E
+#define OBJ_EVENT_PAL_TAG_NPC_5                   0x113F
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

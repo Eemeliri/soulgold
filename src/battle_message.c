@@ -79,7 +79,9 @@ static const u8 sText_WildFled[] = _("{PLAY_SE SE_FLEE}{B_LINK_OPPONENT1_NAME} f
 static const u8 sText_TwoWildFled[] = _("{PLAY_SE SE_FLEE}{B_LINK_OPPONENT1_NAME} and {B_LINK_OPPONENT2_NAME} fled!"); //not in gen 5+, replaced with match was forfeited text
 static const u8 sText_PlayerDefeatedLinkTrainerTrainer1[] = _("You defeated {B_TRAINER1_NAME_WITH_CLASS}!\p");
 static const u8 sText_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME} appeared!\p");
-static const u8 sText_WildPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
+static const u8 sText_WildPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\nRun? {L_BUTTON}+{A_BUTTON}\p");
+static const u8 sText_WildPkmnAppeared_B[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\nRun? Hold {B_BUTTON}.\p");
+static const u8 sText_WildPkmnAppearedOld[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
 static const u8 sText_LegendaryPkmnAppeared[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!\p");
 static const u8 sText_WildPkmnAppearedPause[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!{PAUSE 127}");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! A wild {B_OPPONENT_MON1_NAME} and {B_OPPONENT_MON2_NAME} appeared!\p");
@@ -2142,8 +2144,12 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                 stringPtr = sText_TwoWildPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
                 stringPtr = sText_WildPkmnAppearedPause;
-            else
+            else if (gSaveBlock2Ptr->optionsRunType == 0)
                 stringPtr = sText_WildPkmnAppeared;
+            else if (gSaveBlock2Ptr->optionsRunType == 1)
+                stringPtr = sText_WildPkmnAppeared_B;
+            else
+                stringPtr = sText_WildPkmnAppearedOld;
         }
         break;
     case STRINGID_INTROSENDOUT: // poke first send-out

@@ -52,6 +52,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "wild_encounter.h"
+#include "caps.h"
 
 enum {
     TRANSITION_TYPE_NORMAL,
@@ -1933,4 +1934,10 @@ u16 CountBattledRematchTeams(u16 trainerId)
     }
 
     return i;
+}
+
+void LevelCapToString(void){
+    u8 lvl_txt[3];
+    ConvertIntToDecimalStringN(lvl_txt, GetCurrentLevelCap(), STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringCopy(gStringVar1, lvl_txt);
 }

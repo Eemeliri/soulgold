@@ -1,6 +1,7 @@
 Common_EventScript_PkmnCenterNurse::
 	lock
 	faceplayer
+	special LevelCapToString
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, CountPlayerTrainerStars
 	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
@@ -56,8 +57,14 @@ EventScript_PkmnCenterNurse_ReturnPkmn::
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
+	goto_if_set FLAG_NUZLOCKE, EventScript_PkmnCenterNurse_ReturnPkmnNuzlocke
 	message gText_WeHopeToSeeYouAgain
 	closemessage
+	goto EventScript_PkmnCenterNurse_PlayerTurn
+	end
+
+EventScript_PkmnCenterNurse_ReturnPkmnNuzlocke::
+	msgbox gText_WeHopeToSeeYouAgain4, MSGBOX_DEFAULT
 	goto EventScript_PkmnCenterNurse_PlayerTurn
 	end
 
