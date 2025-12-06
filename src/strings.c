@@ -1541,3 +1541,4 @@ const u8 gText_TrainerCardNuzlockePokedex[] = _("NUZLOCKE POKéDEX");
 const u8 gText_HnSHardcore[]= _("HARDCORE NUZLOCKED!");
 const u8 gText_HnSNuzlocke[]= _("NUZLOCKED!");
 const u8 gText_HnS[]= _("HEART AND SOUL");
+const u8 gText_ExpandedPlaceholder_Silver[]= _("SILVER");

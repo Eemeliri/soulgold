@@ -589,3 +589,4 @@ gSpecials::
 	def_special ShowBugContestChosenMon
 	def_special NuzlockeSilentSave
 	def_special LevelCapToString
+	def_special NameRival

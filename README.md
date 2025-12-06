@@ -19,6 +19,8 @@ Implemented
 - Optional Nuzlocke Mode. Note that this will use a no overleveling rule. If you use ANY item during combat, the only thing that will be different is that it will show a "Nuzlocke Complete!" at the Hall of Fame screen rather than "Hardcore Nuzlocked!"
 - Options to run: Button Combo (L+A), (B), or Default. The reason why it's (L+A) is because of expansion's new feature where you select a Pokeball with the (R) button.
 
+Note: this uses 92.09% of ROM space, last I checked.
+
 
 ![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
 

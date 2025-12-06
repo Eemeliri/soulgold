@@ -3,6 +3,8 @@
 #include "text.h"
 #include "strings.h"
 #include "union_room_chat.h"
+#include "constants/flags.h"
+#include "event_data.h"
 
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
@@ -478,11 +480,11 @@ static const u8 *ExpandPlaceholder_KunChan(void)
 
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return gText_ExpandedPlaceholder_May;
-    else
-        return gText_ExpandedPlaceholder_Brendan;
+    if (!(FlagGet(FLAG_NAMED_SILVER)))
+        return gText_ExpandedPlaceholder_Silver;
+    return gSaveBlock2Ptr->rivalName;
 }
+
 
 static const u8 *ExpandPlaceholder_Version(void)
 {

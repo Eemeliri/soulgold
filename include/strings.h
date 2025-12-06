@@ -2552,4 +2552,5 @@ extern const u8 gText_HardOption[];
 extern const u8 gText_HnSHardcore[];
 extern const u8 gText_HnSNuzlocke[];
 extern const u8 gText_HnS[];
+extern const u8 gText_ExpandedPlaceholder_Silver[];
 #endif // GUARD_STRINGS_H

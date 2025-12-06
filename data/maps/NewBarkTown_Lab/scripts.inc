@@ -326,8 +326,8 @@ NewBarkTown_Lab_EventScript_PoliceEpisode::
 	setflag FLAG_HIDE_LAB_POLICEMAN
 	turnobject LOCALID_COP DIR_WEST
 	msgbox NewBarkTown_Lab_Text_Officer1, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_PoliceYes
-	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_PoliceNo
+	goto_if_eq VAR_RESULT, YES, NewBarkTown_Lab_EventScript_PoliceNameRival
+	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_PoliceYes
 	end
 
 NewBarkTown_Lab_EventScript_PoliceNo::
@@ -336,9 +336,55 @@ NewBarkTown_Lab_EventScript_PoliceNo::
 	goto_if_eq VAR_RESULT, NO, NewBarkTown_Lab_EventScript_PoliceNo
 	end
 
+NewBarkTown_Lab_EventScript_PoliceNameRival::
+	special NameRival
+	setflag FLAG_NAMED_SILVER
+	goto NewBarkTown_Lab_EventScript_PoliceYes3
+
+
+NewBarkTown_Lab_EventScript_PoliceNameRival2::
+	msgbox NewBarkTown_Lab_Text_Officer3, MSGBOX_DEFAULT
+	closemessage
+	goto NewBarkTown_Lab_EventScript_PoliceYes3
+
 NewBarkTown_Lab_EventScript_PoliceYes::
 	msgbox NewBarkTown_Lab_Text_Officer2, MSGBOX_DEFAULT
 	closemessage
+	goto NewBarkTown_Lab_EventScript_PoliceYes2
+
+NewBarkTown_Lab_EventScript_PoliceYes3::
+	msgbox NewBarkTown_Lab_Text_Officer3, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_Officer3, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_COP, NewBarkTown_Lab_Movement_CopLeaves
+	waitmovement 0
+	removeobject LOCALID_COP
+
+	@ setobjectxyperm LOCALID_COP, 25, 4
+	applymovement OBJ_EVENT_ID_PLAYER, NewBarkTown_Lab_Movement_PlayerStepsToElm
+	waitmovement 0
+	msgbox NewBarkTown_Lab_Text_ElmAfterTheft1, MSGBOX_DEFAULT
+	msgbox NewBarkTown_Lab_Text_ElmAfterTheft2, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_ELM, NewBarkTown_Lab_Movement_ElmStepBack
+	waitmovement 0
+	msgbox NewBarkTown_Lab_Text_ElmAfterTheft3, MSGBOX_DEFAULT
+	delay 20
+	closemessage
+	applymovement LOCALID_ELM, NewBarkTown_Lab_Movement_ElmStepForward
+	waitmovement 0
+	msgbox NewBarkTown_Lab_Text_ElmAfterTheft4, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_NEWBARKTOWN_LABSTATE, 5
+	setvar VAR_NEWBARK_TOWN_STATE, 4
+	setflag FLAG_HIDE_MOMS_FRIEND
+	clearflag FLAG_HIDE_MOMS_FRIEND2
+	setflag FLAG_ADVENTURE_STARTED
+	setflag FLAG_EXP_SHARE
+	removeitem ITEM_MYSTERY_EGG
+	end
+
+NewBarkTown_Lab_EventScript_PoliceYes2::
 	applymovement LOCALID_COP, NewBarkTown_Lab_Movement_CopLeaves
 	waitmovement 0
 	removeobject LOCALID_COP
@@ -717,7 +763,7 @@ NewBarkTown_Lab_Text_ElmPokeBall:
 @THEFT================================================================================
 
 NewBarkTown_Lab_Text_ElmAfterTheft1:
-	.string "ELM: {PLAYER}, this is terrible…\p"
+	.string "ELM: {PLAYER}, this is {RIVAL} terrible…\p"
 	.string "Oh, yes, what was MR. POKéMON's\n"
 	.string "big discovery?$"
 
@@ -939,6 +985,11 @@ NewBarkTown_Lab_Text_Officer1:
 
 NewBarkTown_Lab_Text_Officer2:
 	.string "OK! So SILVER was his name.\p"
+	.string "Thanks for helping my\n"
+	.string "investigation!$"
+
+NewBarkTown_Lab_Text_Officer3:
+	.string "OK! So {RIVAL} was his name.\p"
 	.string "Thanks for helping my\n"
 	.string "investigation!$"
 

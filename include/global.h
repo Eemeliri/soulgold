@@ -591,6 +591,7 @@ struct SaveBlock2
              u16 optionsDifficulty:3; //0 = easy, 1 = normal, 2 = hard
              u16 optionsFont:2; //0 = emerald, 1 = fire red
              u16 optionsMusic:3; //0 = johto, 1 = sinnoh, 2 = hoenn
+             u8 rivalName[PLAYER_NAME_LENGTH + 1];
              //u16 padding1:4;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;
