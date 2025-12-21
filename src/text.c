@@ -820,6 +820,11 @@ static u16 FontFunc_Narrow(struct TextPrinter *textPrinter)
         subStruct->fontId = FONT_NARROW;
         subStruct->hasFontIdBeenSet = TRUE;
     }
+    if (gSaveBlock2Ptr->optionsFont == 1)
+    {
+        subStruct->fontId = FONT_SHORT_NARROW;
+        subStruct->hasFontIdBeenSet = TRUE;
+    }
     return RenderText(textPrinter);
 }
 

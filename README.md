@@ -21,6 +21,8 @@ Implemented
 
 Note: this uses 92.09% of ROM space, last I checked.
 
+![Battle text during Nuzlocke Mode](nuzlocke_text.png)![Gym Leaders and Elite Four can use this cool transition.](mugshot_transition.png)![The new terrain and run modes from HnS have been ported over!](run_modes.png)
+![New options from the option menu, and they all work!](new_options.png)
 ## CREDITS
 - HnS Dev Team for their amazing work!
 - RHH and pokeemerald expansion dev team, of course!
