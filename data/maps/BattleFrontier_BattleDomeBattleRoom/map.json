@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_ANNOUNCER",
+      "local_id": "LOCALID_ANNOUNCER_DOME",
       "graphics_id": "OBJ_EVENT_GFX_GYM_GUY",
       "x": 5,
       "y": 4,
@@ -201,7 +201,7 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_OPPONENT",
+      "local_id": "LOCALID_OPPONENT_DOME",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 11,
       "y": 6,

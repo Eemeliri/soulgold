@@ -5499,6 +5499,26 @@ Fearow
 Level: 59
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
+=== TRAINER_ROUTE_31_EXPERT ===
+Name: Nate
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Hg Boy 2
+Double Battle: No
+AI: Check Bad Move
+
+Geodude Alola @ Air Balloon
+Level: 7
+Ability: Sturdy
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+Mareep @ Air Balloon
+Ability: Motor Drive
+Level: 8
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+
+
 === TRAINER_ETHAN ===
 Name: Ethan
 Class: Pokemaniac

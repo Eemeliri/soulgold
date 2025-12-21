@@ -6,7 +6,7 @@ BattleFrontier_BattlePalaceBattleRoom_MapScripts::
 
 	@ On this map the player (OBJ_EVENT_ID_PLAYER) is hidden
 	@ The player is represented instead by LOCALID_PLAYER, which has the gfx id VAR_OBJ_GFX_ID_0
-	@ The opponent is represented by LOCALID_OPPONENT, which has the gfx id VAR_OBJ_GFX_ID_1
+	@ The opponent is represented by LOCALID_OPPONENT_PALACE, which has the gfx id VAR_OBJ_GFX_ID_1
 
 BattleFrontier_BattlePalaceBattleRoom_OnTransition:
 	frontier_settrainers
@@ -50,8 +50,8 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_BeginChallenge::
 	waitmovement 0
 BattleFrontier_BattlePalaceBattleRoom_EventScript_NextOpponentEnter::
 	tower_setopponent
-	addobject LOCALID_OPPONENT
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattlePalaceBattleRoom_Movement_OpponentEnter
+	addobject LOCALID_OPPONENT_PALACE
+	applymovement LOCALID_OPPONENT_PALACE, BattleFrontier_BattlePalaceBattleRoom_Movement_OpponentEnter
 	waitmovement 0
 	palace_getopponentintro
 	msgbox gStringVar4, MSGBOX_DEFAULT
@@ -70,9 +70,9 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_DefeatedOpponent::
 	frontier_set FRONTIER_DATA_BATTLE_NUM, VAR_RESULT
 	switch VAR_RESULT
 	case 7, BattleFrontier_BattlePalaceBattleRoom_EventScript_WarpToLobbyWon
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattlePalaceBattleRoom_Movement_OpponentExit
+	applymovement LOCALID_OPPONENT_PALACE, BattleFrontier_BattlePalaceBattleRoom_Movement_OpponentExit
 	waitmovement 0
-	removeobject LOCALID_OPPONENT
+	removeobject LOCALID_OPPONENT_PALACE
 	applymovement LOCALID_PLAYER, BattleFrontier_BattlePalaceBattleRoom_Movement_FaceUp
 	applymovement LOCALID_ATTENDANT, BattleFrontier_BattlePalaceBattleRoom_Movement_FaceDown
 	waitmovement 0
@@ -192,14 +192,14 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_BattleSpenser::
 	closemessage
 	applymovement LOCALID_PLAYER, BattleFrontier_BattlePalaceBattleRoom_Movement_FaceRight
 	applymovement LOCALID_ATTENDANT, BattleFrontier_BattlePalaceBattleRoom_Movement_FaceRight
-	setobjectxyperm LOCALID_OPPONENT, 15, 1
-	addobject LOCALID_OPPONENT
-	hideobjectat LOCALID_OPPONENT, MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM
-	setobjectxy LOCALID_OPPONENT, 13, 1
-	setobjectxyperm LOCALID_OPPONENT, 13, 1
+	setobjectxyperm LOCALID_OPPONENT_PALACE, 15, 1
+	addobject LOCALID_OPPONENT_PALACE
+	hideobjectat LOCALID_OPPONENT_PALACE, MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM
+	setobjectxy LOCALID_OPPONENT_PALACE, 13, 1
+	setobjectxyperm LOCALID_OPPONENT_PALACE, 13, 1
 	applymovement LOCALID_DUSCLOPS, BattleFrontier_BattlePalaceBattleRoom_Movement_DusclopsEnter
 	applymovement LOCALID_AZURILL, BattleFrontier_BattlePalaceBattleRoom_Movement_AzurillEnter
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattlePalaceBattleRoom_Movement_SpenserEnter
+	applymovement LOCALID_OPPONENT_PALACE, BattleFrontier_BattlePalaceBattleRoom_Movement_SpenserEnter
 	waitmovement 0
 	switch VAR_TEMP_F
 	case FRONTIER_BRAIN_GOLD, BattleFrontier_BattlePalaceBattleRoom_EventScript_IntroSpenserGold
@@ -228,7 +228,7 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_DefeatedSpenserSilver::
 	waitmessage
 	waitfanfare
 	frontier_givesymbol
-	applymovement LOCALID_OPPONENT, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_OPPONENT_PALACE, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_ATTENDANT, Common_Movement_WalkInPlaceFasterRight
@@ -260,7 +260,7 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_DefeatedSpenserGold::
 	waitmessage
 	waitfanfare
 	frontier_givesymbol
-	applymovement LOCALID_OPPONENT, Common_Movement_WalkInPlaceLeft
+	applymovement LOCALID_OPPONENT_PALACE, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	applymovement LOCALID_ATTENDANT, Common_Movement_WalkInPlaceFasterRight
@@ -291,7 +291,7 @@ BattleFrontier_BattlePalaceBattleRoom_EventScript_SetUpRoomObjects::
 	call BattleFrontier_BattlePalaceBattleRoom_EventScript_SetPlayerGfx
 	setvar VAR_TEMP_1, 1
 	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattlePalaceBattleRoom_Movement_SetInvisible
-	removeobject LOCALID_OPPONENT
+	removeobject LOCALID_OPPONENT_PALACE
 	applymovement LOCALID_DUSCLOPS, BattleFrontier_BattlePalaceBattleRoom_Movement_SetInvisible
 	applymovement LOCALID_AZURILL, BattleFrontier_BattlePalaceBattleRoom_Movement_SetInvisible
 	end

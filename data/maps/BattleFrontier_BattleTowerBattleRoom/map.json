@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_OPPONENT",
+      "local_id": "LOCALID_OPPONENT_TOWER",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 5,
       "y": 1,
@@ -43,7 +43,7 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_ATTENDANT_2",
+      "local_id": "LOCALID_ATTENDANT_3",
       "graphics_id": "OBJ_EVENT_GFX_WORKER_F",
       "x": 4,
       "y": 8,

@@ -89,7 +89,7 @@ lt_PCM_DMA_BUF_SIZE:      .word PCM_DMA_BUF_SIZE
  * licensed under GPLv3, see LICENSE.txt for details */
 
 	.equ ENABLE_REVERB, 1                        @ <-- if you want faster code or don't like reverb, set this to '0', set to '1' otherwise
-	.equ ENABLE_DMA, 1                           @ <-- Using DMA produces smaller code and has better performance. Disable it if your case does not allow to use DMA.
+	.equ ENABLE_DMA, 0                           @ <-- Using DMA produces smaller code and has better performance. Disable it if your case does not allow to use DMA.
 
 	/*****************
 	 * END OF CONFIG *

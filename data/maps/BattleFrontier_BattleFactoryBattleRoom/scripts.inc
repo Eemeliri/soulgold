@@ -19,7 +19,7 @@ BattleFrontier_BattleFactoryBattleRoom_OnTransition:
 
 BattleFrontier_BattleFactoryBattleRoom_EventScript_SetUpFactoryHeadObj::
 	call BattleFrontier_EventScript_SetBrainObjectGfx
-	setobjectxyperm LOCALID_OPPONENT, 7, 9
+	setobjectxyperm LOCALID_OPPONENT_FACTORY, 7, 9
 	end
 
 BattleFrontier_BattleFactoryBattleRoom_OnWarp:
@@ -30,7 +30,7 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_HideObjects::
 	setvar VAR_TEMP_1, 1
 	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM
 	goto_if_ne VAR_TEMP_F, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleFactoryBattleRoom_EventScript_EndHideObjects
-	hideobjectat LOCALID_OPPONENT, MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM
+	hideobjectat LOCALID_OPPONENT_FACTORY, MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM
 BattleFrontier_BattleFactoryBattleRoom_EventScript_EndHideObjects::
 	end
 
@@ -49,7 +49,7 @@ BattleFrontier_BattleFactoryBattleRoom_OnFrame:
 BattleFrontier_BattleFactoryBattleRoom_EventScript_EnterRoomFactoryHeadBattle::
 	msgbox BattleFrontier_BattleFactoryBattleRoom_Text_GetAMoveOn, MSGBOX_DEFAULT
 	closemessage
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattleFactoryBattleRoom_Movement_NolandMoveToBattle
+	applymovement LOCALID_OPPONENT_FACTORY, BattleFrontier_BattleFactoryBattleRoom_Movement_NolandMoveToBattle
 	applymovement LOCALID_PLAYER, BattleFrontier_BattleFactoryBattleRoom_Movement_PlayerEnterRoom
 	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleFactoryBattleRoom_Movement_PlayerEnterRoom
 	waitmovement 0
@@ -64,10 +64,10 @@ BattleFrontier_BattleFactoryBattleRoom_EventScript_EnterRoom::
 	waitmovement 0
 	call BattleFrontier_BattleFactoryBattleRoom_EventScript_ScientistsFaceBattle
 	factory_setopponentgfx
-	removeobject LOCALID_OPPONENT
-	setobjectxyperm LOCALID_OPPONENT, 7, 1
-	addobject LOCALID_OPPONENT
-	applymovement LOCALID_OPPONENT, BattleFrontier_BattleFactoryBattleRoom_Movement_OpponentEnter
+	removeobject LOCALID_OPPONENT_FACTORY
+	setobjectxyperm LOCALID_OPPONENT_FACTORY, 7, 1
+	addobject LOCALID_OPPONENT_FACTORY
+	applymovement LOCALID_OPPONENT_FACTORY, BattleFrontier_BattleFactoryBattleRoom_Movement_OpponentEnter
 	waitmovement 0
 BattleFrontier_BattleFactoryBattleRoom_EventScript_BattleOpponent::
 	goto_if_ne VAR_TEMP_F, FRONTIER_BRAIN_NOT_READY, BattleFrontier_BattleFactoryBattleRoom_EventScript_BattleNoland

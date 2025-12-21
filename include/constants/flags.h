@@ -718,7 +718,7 @@
 #define FLAG_RAN_FROM_BATTLE  0x29F // Unused Flag
 #define FLAG_NAMED_SILVER  0x2A0 // Unused Flag
 #define FLAG_RANDOMIZER    0x2A1 // Unused Flag
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
+#define FLAG_ROUTE31_EXPERT  0x2A2 // Flag for defeating Route 31 expert
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
 #define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag

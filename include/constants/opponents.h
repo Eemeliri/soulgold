@@ -868,12 +868,64 @@
 #define TRAINER_PROTON_1                     862 //85E
 #define TRAINER_KIP2                      863 //85F
 
+#define TRAINER_ROUTE_31_EXPERT           864
+#define TRAINER_UNUSED_1                  865
+#define TRAINER_UNUSED_2                  866
+#define TRAINER_UNUSED_3                  867
+#define TRAINER_UNUSED_4                  868
+#define TRAINER_UNUSED_5                  869
+#define TRAINER_UNUSED_6                  870
+#define TRAINER_UNUSED_7                  871
+#define TRAINER_UNUSED_8                  872
+#define TRAINER_UNUSED_9                  873
+#define TRAINER_UNUSED_10                 874
+#define TRAINER_UNUSED_11                 875
+#define TRAINER_UNUSED_12                 876
+#define TRAINER_UNUSED_13                 877
+#define TRAINER_UNUSED_14                 878
+#define TRAINER_UNUSED_15                 879
+#define TRAINER_UNUSED_16                 880
+#define TRAINER_UNUSED_17                 881
+#define TRAINER_UNUSED_18                 882
+#define TRAINER_UNUSED_19                 883
+#define TRAINER_UNUSED_20                 884
+#define TRAINER_UNUSED_21                 885
+#define TRAINER_UNUSED_22                 886
+#define TRAINER_UNUSED_23                 887
+#define TRAINER_UNUSED_24                 888
+#define TRAINER_UNUSED_25                 889
+#define TRAINER_UNUSED_26                 890
+#define TRAINER_UNUSED_27                 891
+#define TRAINER_UNUSED_28                 892
+#define TRAINER_UNUSED_29                 893
+#define TRAINER_UNUSED_30                 894
+#define TRAINER_UNUSED_31                 895
+#define TRAINER_UNUSED_32                 896
+#define TRAINER_UNUSED_33                 897
+#define TRAINER_UNUSED_34                 898
+#define TRAINER_UNUSED_35                 899
+#define TRAINER_UNUSED_36                 900
+#define TRAINER_UNUSED_37                 901
+#define TRAINER_UNUSED_38                 902
+#define TRAINER_UNUSED_39                 903
+#define TRAINER_UNUSED_40                 904
+#define TRAINER_UNUSED_41                 905
+#define TRAINER_UNUSED_42                 906
+#define TRAINER_UNUSED_43                 907
+#define TRAINER_UNUSED_44                 908
+#define TRAINER_UNUSED_45                 909
+#define TRAINER_UNUSED_46                 910
+#define TRAINER_UNUSED_47                 911
+#define TRAINER_UNUSED_48                 912
+#define TRAINER_UNUSED_49                 913
+#define TRAINER_UNUSED_50                 914
+
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      864
-#define MAX_TRAINERS_COUNT                  864
+#define TRAINERS_COUNT                      915
+#define MAX_TRAINERS_COUNT                  915
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

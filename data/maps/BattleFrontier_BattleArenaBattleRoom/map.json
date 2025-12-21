@@ -97,7 +97,7 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_OPPONENT",
+      "local_id": "LOCALID_OPPONENT_ARENA",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 15,
       "y": 6,
@@ -124,7 +124,7 @@
       "flag": "0"
     },
     {
-      "local_id": "LOCALID_ANNOUNCER",
+      "local_id": "LOCALID_ANNOUNCER_ARENA",
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
       "x": 7,
       "y": 4,
