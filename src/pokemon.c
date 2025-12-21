@@ -7785,7 +7785,6 @@ static u16 GetRandomSpecies(u16 species, u8 mapBased, u8 type, u16 additionalOff
 u16 GetSpeciesRandomSeeded(u16 species, u8 type, u16 additionalOffset)
 {
     u16 speciesResult = species;
-    u8 mapBased = FALSE;
     //generate species based on the type
     //different types have different parameters, e.g. abilities are never mapBased
     //speciesResult = GetRandomSpecies(species, mapBased, type, additionalOffset);
