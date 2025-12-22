@@ -148,7 +148,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATTATA)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SENTRET)",
       "x": 15,
       "y": 23,
       "elevation": 0,
@@ -161,7 +161,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOOTHOOT)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SENTRET)",
       "x": 62,
       "y": 5,
       "elevation": 0,
@@ -187,7 +187,7 @@
       "flag": "FLAG_DAY_POKEMON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RATTATA)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SENTRET)",
       "x": 23,
       "y": 29,
       "elevation": 0,
@@ -200,7 +200,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOOTHOOT)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SENTRET)",
       "x": 58,
       "y": 29,
       "elevation": 0,

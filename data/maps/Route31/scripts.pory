@@ -186,7 +186,7 @@ script Route31_Expert {
         release
         end
     }
-    msgbox(format("I'm what they call a route master. If you manage to beat every trainer on this route, come find me again and we will have a battle. I'll make it worth your while if you manage to win."))
+    msgbox(format("I'm what they call a route master. If you manage to beat every trainer on Route 30 and 31, come find me again and we will have a battle. I'll make it worth your while if you manage to win."))
     if (defeated(TRAINER_WADE) && defeated(TRAINER_JOEY) && defeated(TRAINER_DON)) {
         msgbox(format("Oh, you have indeed defeated all the trainers on this route. I will battle you as promised."))
         trainerbattle_no_intro(TRAINER_ROUTE_31_EXPERT, "Popped off...")

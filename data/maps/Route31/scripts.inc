@@ -418,8 +418,8 @@ Route31_Expert_Text_1:
 # 189 "data/maps/Route31/scripts.pory"
 	.string "I'm what they call a route master. If\n"
 	.string "you manage to beat every trainer on\l"
-	.string "this route, come find me again and we\l"
-	.string "will have a battle. I'll make it worth\l"
+	.string "Route 30 and 31, come find me again and\l"
+	.string "we will have a battle. I'll make it worth\l"
 	.string "your while if you manage to win.$"
 
 Route31_Expert_Text_2:

@@ -169,7 +169,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPINARAK)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COTTONEE)",
       "x": 39,
       "y": 21,
       "elevation": 0,
@@ -260,7 +260,7 @@
       "flag": "FLAG_NIGHT_POKEMON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COTTONEE)",
       "x": 39,
       "y": 11,
       "elevation": 0,
@@ -325,7 +325,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPINARAK)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COTTONEE)",
       "x": 13,
       "y": 13,
       "elevation": 0,
