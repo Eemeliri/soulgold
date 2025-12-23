@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Encounters Viewer</title>
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border-color: #dddddd;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --card-bg: #ffffff;
+            --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body.dark-mode {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #444444;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --card-bg: #2d2d2d;
+            --header-bg: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,6 +38,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            color: var(--text-primary);
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
         }
 
         .container {
@@ -24,29 +51,29 @@
         }
 
         header {
-            background: white;
+            background: var(--bg-primary);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px var(--shadow-color);
             margin-bottom: 30px;
         }
 
         h1 {
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 10px;
             font-size: 2.5em;
         }
 
         .subtitle {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 1.1em;
         }
 
         .controls {
-            background: white;
+            background: var(--bg-primary);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px var(--shadow-color);
             margin-bottom: 30px;
             display: flex;
             gap: 15px;
@@ -67,12 +94,12 @@
 
         .toggle-btn {
             padding: 8px 16px;
-            border: 2px solid #ddd;
+            border: 2px solid var(--border-color);
             border-radius: 5px;
             font-size: 0.9em;
             font-weight: 600;
-            background: white;
-            color: #333;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -89,16 +116,18 @@
 
         label {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
         }
 
         input[type="text"],
         select {
             padding: 10px 15px;
-            border: 2px solid #ddd;
+            border: 2px solid var(--border-color);
             border-radius: 5px;
             font-size: 1em;
             transition: border-color 0.3s;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
         }
 
         input[type="text"]:focus,
@@ -115,16 +144,16 @@
         }
 
         .encounter-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px var(--shadow-color);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .encounter-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px var(--shadow-color);
         }
 
         .card-header {
@@ -171,18 +200,18 @@
         }
 
         .encounter-type-title {
-            background: #f5f5f5;
+            background: var(--bg-secondary);
             padding: 10px 15px;
             border-left: 4px solid #667eea;
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 10px;
             border-radius: 3px;
         }
 
         .encounter-rate {
             font-size: 0.85em;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 10px;
             padding: 5px 0;
         }
@@ -192,7 +221,7 @@
         }
 
         .pokemon-item {
-            background: #f9f9f9;
+            background: var(--bg-secondary);
             padding: 10px;
             margin-bottom: 8px;
             border-radius: 5px;
@@ -217,7 +246,7 @@
 
         .pokemon-name {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             flex: 1;
         }
 
@@ -232,7 +261,7 @@
         }
 
         .fishing-groups {
-            background: #f0f0f0;
+            background: var(--bg-secondary);
             padding: 10px;
             border-radius: 5px;
             margin-top: 10px;
@@ -241,16 +270,16 @@
 
         .group-label {
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             margin-top: 5px;
         }
 
         .no-results {
             text-align: center;
             padding: 40px;
-            background: white;
+            background: var(--card-bg);
             border-radius: 10px;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 1.1em;
         }
 
@@ -267,6 +296,27 @@
             image-rendering: crisp-edges;
             -ms-interpolation-mode: nearest-neighbor;
             vertical-align: middle;
+        }
+
+        .night-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 2px 8px var(--shadow-color);
+        }
+
+        .night-mode-toggle:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -293,6 +343,26 @@
             }
         }
 
+        .night-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .night-mode-toggle:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
         .loading {
             text-align: center;
             padding: 40px;
@@ -310,6 +380,7 @@
     </style>
 </head>
 <body>
+    <button class="night-mode-toggle" id="nightModeToggle">🌙 Dark Mode</button>
     <div class="container">
         <header>
             <h1><div class="header-icon" id="headerPikachuIcon" data-icon-path="./graphics/pokemon/celebi/anim_front.png"></div> Wild Encounters Viewer</h1>
@@ -760,6 +831,22 @@
 
         // Load data on page load
         window.addEventListener('DOMContentLoaded', async () => {
+            // Load dark mode preference
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('nightModeToggle').textContent = '☀️ Light Mode';
+            }
+
+            // Setup night mode toggle
+            const nightModeToggle = document.getElementById('nightModeToggle');
+            nightModeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('darkMode', isDark);
+                nightModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+            });
+
             // Load header icon first (64x64 frame)
             const headerIcon = document.getElementById('headerPikachuIcon');
             if (headerIcon) {
