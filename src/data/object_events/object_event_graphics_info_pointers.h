@@ -53,6 +53,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RunningTria
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RunningTriathleteF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TuberF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TuberM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TowerBeam;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hiker;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CyclingTriathleteM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CyclingTriathleteF;
@@ -647,6 +648,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SWIMMER_M_WATER] =                &gObjectEventGraphicsInfo_SwimmerM,
     [OBJ_EVENT_GFX_SWIMMER_F_WATER] =                &gObjectEventGraphicsInfo_SwimmerF,
     [OBJ_EVENT_GFX_TUBER_M_WATER] =                &gObjectEventGraphicsInfo_TuberM,
+    [OBJ_EVENT_GFX_TOWER_BEAM] =                &gObjectEventGraphicsInfo_TowerBeam,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

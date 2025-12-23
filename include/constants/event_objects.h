@@ -326,11 +326,12 @@
 #define OBJ_EVENT_GFX_TRAIN_MID                319
 #define OBJ_EVENT_GFX_TRAIN_BACK                320
 #define OBJ_EVENT_GFX_LEGENDARY_SHADOW          321
+#define OBJ_EVENT_GFX_TOWER_BEAM                322
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        322
+#define NUM_OBJ_EVENT_GFX                        323
 
 
 // These are dynamic object gfx ids.
@@ -460,37 +461,38 @@
 #define OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122
 #define OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123
 #define OBJ_EVENT_PAL_TAG_DYNAMIC                 0x1124
-#define OBJ_EVENT_PAL_TAG_ROCKET_1                 0x1125
-#define OBJ_EVENT_PAL_TAG_ROCKET_2                 0x1126
-#define OBJ_EVENT_PAL_TAG_ROCKET_3                 0x1127
+#define OBJ_EVENT_PAL_TAG_ROCKET_1                0x1125
+#define OBJ_EVENT_PAL_TAG_ROCKET_2                0x1126
+#define OBJ_EVENT_PAL_TAG_ROCKET_3                0x1127
 #define OBJ_EVENT_PAL_TAG_ROCKET_4                0x1128
 #define OBJ_EVENT_PAL_TAG_FALKNER                 0x1129
-#define OBJ_EVENT_PAL_TAG_BUGSY                 0x112A
+#define OBJ_EVENT_PAL_TAG_BUGSY                   0x112A
 #define OBJ_EVENT_PAL_TAG_WHITNEY                 0x112B
-#define OBJ_EVENT_PAL_TAG_MORTY                 0x112C
+#define OBJ_EVENT_PAL_TAG_MORTY                   0x112C
 #define OBJ_EVENT_PAL_TAG_JASMINE                 0x112D
-#define OBJ_EVENT_PAL_TAG_CHUCK                 0x112E
-#define OBJ_EVENT_PAL_TAG_PRYCE                 0x112F
-#define OBJ_EVENT_PAL_TAG_JANINE                 0x1130
-#define OBJ_EVENT_PAL_TAG_WILL                 0x1131
-#define OBJ_EVENT_PAL_TAG_KAREN                 0x1132
-#define OBJ_EVENT_PAL_TAG_LANCE                 0x1133
-#define OBJ_EVENT_PAL_TAG_SILVER                 0x1134
-#define OBJ_EVENT_PAL_TAG_EUSINE                 0x1135
-#define OBJ_EVENT_PAL_TAG_ELM                    0x1136
-#define OBJ_EVENT_PAL_TAG_SAGE                   0x1137
+#define OBJ_EVENT_PAL_TAG_CHUCK                   0x112E
+#define OBJ_EVENT_PAL_TAG_PRYCE                   0x112F
+#define OBJ_EVENT_PAL_TAG_JANINE                  0x1130
+#define OBJ_EVENT_PAL_TAG_WILL                    0x1131
+#define OBJ_EVENT_PAL_TAG_KAREN                   0x1132
+#define OBJ_EVENT_PAL_TAG_LANCE                   0x1133
+#define OBJ_EVENT_PAL_TAG_SILVER                  0x1134
+#define OBJ_EVENT_PAL_TAG_EUSINE                  0x1135
+#define OBJ_EVENT_PAL_TAG_ELM                     0x1136
+#define OBJ_EVENT_PAL_TAG_SAGE                    0x1137
 #define OBJ_EVENT_PAL_TAG_CLAIR                   0x1138
 #define OBJ_EVENT_PAL_TAG_SHINY_GYARADOS          0x1139
 #define OBJ_EVENT_PAL_TAG_WHIRLPOOL               0x113A
-#define OBJ_EVENT_PAL_TAG_KIMONO               0x113B
-#define OBJ_EVENT_PAL_TAG_SLOWPOKE              0x113C
-#define OBJ_EVENT_PAL_TAG_SCIENTIST_F              0x113D
-#define OBJ_EVENT_PAL_TAG_PROTON              0x113E
+#define OBJ_EVENT_PAL_TAG_KIMONO                  0x113B
+#define OBJ_EVENT_PAL_TAG_SLOWPOKE                0x113C
+#define OBJ_EVENT_PAL_TAG_SCIENTIST_F             0x113D
+#define OBJ_EVENT_PAL_TAG_PROTON                  0x113E
 #define OBJ_EVENT_PAL_TAG_NPC_5                   0x113F
-#define OBJ_EVENT_PAL_TAG_NPC_WHITE              0x1140
-#define OBJ_EVENT_PAL_TAG_NPC_GREEN              0x1141
-#define OBJ_EVENT_PAL_TAG_NPC_BLUE              0x1142
-#define OBJ_EVENT_PAL_TAG_NPC_PINK             0x1143
+#define OBJ_EVENT_PAL_TAG_NPC_WHITE               0x1140
+#define OBJ_EVENT_PAL_TAG_NPC_GREEN               0x1141
+#define OBJ_EVENT_PAL_TAG_NPC_BLUE                0x1142
+#define OBJ_EVENT_PAL_TAG_NPC_PINK                0x1143
+#define OBJ_EVENT_PAL_TAG_TOWER_BEAM              0x1144
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

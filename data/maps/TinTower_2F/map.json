@@ -12,12 +12,12 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA",
+      "graphics_id": "OBJ_EVENT_GFX_TOWER_BEAM",
       "x": 9,
-      "y": 11,
+      "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_TOWER_BEAM",
       "movement_range_x": 0,
@@ -44,9 +44,7 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

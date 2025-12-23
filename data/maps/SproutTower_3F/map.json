@@ -145,9 +145,9 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA",
+      "graphics_id": "OBJ_EVENT_GFX_TOWER_BEAM",
       "x": 11,
-      "y": 10,
+      "y": 11,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_TOWER_BEAM",
       "movement_range_x": 0,
