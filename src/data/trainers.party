@@ -954,7 +954,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Rattata
-Level: 4
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MARY ===
@@ -2330,7 +2330,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Spearow
-Level: 9
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Wattrel
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_NEAL ===
@@ -2342,8 +2346,8 @@ Music: Hg Sage
 Double Battle: No
 AI: Check Bad Move
 
-Bellsprout
-Level: 6
+Yamask
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CARLENE ===
@@ -2510,18 +2514,18 @@ Pic: Mr Fuji
 Gender: Male
 Music: Hg Sage
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer
 
-Oddish
-Level: 7
+Natu
+Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sunkern
-Level: 8
+Ralts
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Bellsprout
-Level: 9
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MILLER ===
@@ -3228,15 +3232,15 @@ Double Battle: No
 AI: Check Bad Move
 
 Bellsprout
-Level: 3
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Hoppip
-Level: 4
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Bellsprout
-Level: 3
+Cottonee
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BENNY ===
@@ -3502,10 +3506,10 @@ Double Battle: No
 AI: Check Bad Move
 
 Hoothoot
-Level: 2
+Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Sentret
+Zigzagoon
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -5054,12 +5058,12 @@ Music: Hg Sage
 Double Battle: No
 AI: Check Bad Move
 
-Hoppip
-Level: 7
+Zigzagoon
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Bellsprout
-Level: 7
+Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_PAT ===
@@ -5506,18 +5510,25 @@ Pic: Cooltrainer M
 Gender: Male
 Music: Hg Boy 2
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer
 
 Geodude Alola @ Air Balloon
-Level: 7
+Level: 8
 Ability: Sturdy
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Tackle
+- Defense Curl
+- Rollout
+- Mud Slap
 
 Mareep @ Air Balloon
-Ability: Motor Drive
+Ability: Static
 Level: 8
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-
+- Thundershock
+- Tackle
+- Thunder Wave
+- Growl
 
 === TRAINER_ETHAN ===
 Name: Ethan
@@ -7298,16 +7309,16 @@ Music: Hg Sage
 Double Battle: No
 AI: Check Bad Move
 
-Bellsprout
-Level: 3
+Hoothoot
+Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Bellsprout
-Level: 3
+Shuppet
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Bellsprout
-Level: 3
+Duskull
+Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_NARD ===
@@ -8144,12 +8155,12 @@ Music: Hg Boy 1
 Double Battle: No
 AI: Check Bad Move
 
-Ledyba
-Level: 3
+Cottonee
+Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Spinarak
-Level: 3
+Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_THOM_AND_KAE ===
@@ -8349,11 +8360,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Pidgey
-Level: 7
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Natu
-Level: 7
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BILL ===
@@ -8723,13 +8734,13 @@ Music: Hg Boy 1
 Double Battle: No
 AI: Check Bad Move
 
-Weedle
-Level: 4
+Spinarak
+Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Pineco
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Budew
+Level: 6
+IVs: 10 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DWAYNE ===
 Name: Dwayne
@@ -9148,8 +9159,8 @@ Music: Hg Sage
 Double Battle: No
 AI: Check Bad Move
 
-Bellsprout
-Level: 6
+Misdreavus
+Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_ELLEN ===
@@ -10287,23 +10298,31 @@ Pic: Leader Falkner
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 Mugshot: Blue
 
 Pidgey
-Level: 8
+Level: 11
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Tackle
 - Mud Slap
 - Quick Attack
 - None
 
+Gligar
+Level: 12
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mud Slap
+- Quick Attack
+- Poison Sting
+- Harden
+
 Noctowl @ Sitrus Berry
-Level: 11
+Level: 13
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Tackle
 - Mud Slap
-- Growl
+- Confusion
 - Peck
 
 === TRAINER_CHUCK_1 ===
@@ -10539,15 +10558,15 @@ Double Battle: No
 AI: Check Bad Move
 
 Bellsprout
-Level: 3
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Sunkern
-Level: 3
+Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Bellsprout
-Level: 3
+Gastly
+Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRAD ===

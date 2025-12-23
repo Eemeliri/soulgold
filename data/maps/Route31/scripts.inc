@@ -396,14 +396,20 @@ Route31_Expert_5:
 
 Route31_Expert_6:
 # 190 "data/maps/Route31/scripts.pory"
-	checktrainerflag TRAINER_DON
-	goto_if 1, Route31_Expert_5
+	checktrainerflag TRAINER_MIKEY
+	goto_if 1, Route31_Expert_10
 	goto Route31_Expert_4
 
 Route31_Expert_7:
 # 190 "data/maps/Route31/scripts.pory"
 	checktrainerflag TRAINER_JOEY
 	goto_if 1, Route31_Expert_6
+	goto Route31_Expert_4
+
+Route31_Expert_10:
+# 190 "data/maps/Route31/scripts.pory"
+	checktrainerflag TRAINER_DON
+	goto_if 1, Route31_Expert_5
 	goto Route31_Expert_4
 
 
