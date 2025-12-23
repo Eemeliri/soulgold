@@ -84,6 +84,12 @@
 	special CallFrontierUtilFunc
 	.endm
 
+	@ Awards battle points in tower based on current winstreak
+	.macro tower_givepoints
+	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_GIVE_TOWER_BP
+	special CallFrontierUtilFunc
+	.endm
+
 	@ Returns 0-2 for the number of facility symbols the player has
 	.macro frontier_getsymbols
 	setvar VAR_0x8004, FRONTIER_UTIL_FUNC_GET_FACILITY_SYMBOLS

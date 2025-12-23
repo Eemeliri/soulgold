@@ -106,6 +106,7 @@ BattleFrontier_BattleTowerLobby_EventScript_LostChallenge::
 	goto_if_ne VAR_RESULT, 0, BattleFrontier_BattleTowerLobby_EventScript_LostThanksForPlaying
 BattleFrontier_BattleTowerLobby_EventScript_CancelWinStreak::
 	tower_set TOWER_DATA_WIN_STREAK_ACTIVE, FALSE
+	setvar VAR_BATTLE_TOWER_STREAK, 0
 BattleFrontier_BattleTowerLobby_EventScript_LostThanksForPlaying::
 	lock
 	faceplayer

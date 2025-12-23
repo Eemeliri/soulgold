@@ -7773,7 +7773,7 @@ static const u16 sRandomSpecies[] =
     // SPECIES_EGG       ,
 };
 
-static u16 GetRandomSpecies(u16 species, u8 mapBased, u8 type, u16 additionalOffset) //INTERNAL use only!
+static u16 UNUSED GetRandomSpecies(u16 species, u8 mapBased, u8 type, u16 additionalOffset) //INTERNAL use only!
 {
     u16 mapOffset = 0; //12289, 49157
     if (mapBased)

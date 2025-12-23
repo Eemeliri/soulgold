@@ -73,6 +73,7 @@ static void CheckPutFrontierTVShowOnAir(void);
 static void Script_GetFrontierBrainStatus(void);
 static void IsTrainerFrontierBrain(void);
 static void GiveBattlePoints(void);
+static void GiveTowerBattlePoints();
 static void GetFacilitySymbolCount(void);
 static void GiveFacilitySymbol(void);
 static void CheckBattleTypeFlag(void);
@@ -715,6 +716,7 @@ static void (*const sFrontierUtilFuncs[])(void) =
     [FRONTIER_UTIL_FUNC_BUFFER_TRAINER_NAME]   = BufferFrontierTrainerName,
     [FRONTIER_UTIL_FUNC_RESET_SKETCH_MOVES]    = ResetSketchedMoves,
     [FRONTIER_UTIL_FUNC_SET_BRAIN_OBJECT]      = SetFacilityBrainObjectEvent,
+    [FRONTIER_UTIL_FUNC_GIVE_TOWER_BP]         = GiveTowerBattlePoints,
 };
 
 static const struct WindowTemplate sFrontierResultsWindowTemplate =
@@ -1861,6 +1863,96 @@ u8 GetPlayerSymbolCountForFacility(u8 facility)
          + FlagGet(FLAG_SYS_TOWER_GOLD + facility * 2);
 }
 
+
+#define TOWER_BP_MILESTONE_10     10
+#define TOWER_BP_MILESTONE_20     20
+#define TOWER_BP_MILESTONE_50     50
+#define TOWER_BP_MILESTONE_100    100
+#define TOWER_BP_MILESTONE_500    500
+#define TOWER_BP_MILESTONE_1000   1000
+#define TOWER_BP_MILESTONE_5000   5000
+#define TOWER_BP_MILESTONE_10000  10000
+
+static void GiveTowerBattlePoints(void)
+{
+    u16 toGive = 1;
+    s32 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    s32 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    s32 streakLength = GetCurrentBattleTowerWinStreak(lvlMode, battleMode);
+
+    if (streakLength != 0 && streakLength % TOWER_BP_MILESTONE_10000 == 0)
+    {
+        toGive = TOWER_BP_MILESTONE_10000;
+    }
+    else if (streakLength != 0 && streakLength % TOWER_BP_MILESTONE_1000 == 0)
+    {
+        toGive = TOWER_BP_MILESTONE_1000;
+    }
+    else if (streakLength == TOWER_BP_MILESTONE_100)
+    {
+        toGive = TOWER_BP_MILESTONE_100;
+    }
+    else if (streakLength == TOWER_BP_MILESTONE_500)
+    {
+        toGive = TOWER_BP_MILESTONE_500;
+    }
+    else if (streakLength > TOWER_BP_MILESTONE_10000)
+    {
+        toGive = 50;
+    }
+    else if (streakLength > TOWER_BP_MILESTONE_5000)
+    {
+        toGive = 30;
+    }
+    else if (streakLength > TOWER_BP_MILESTONE_1000)
+    {
+        toGive = 20;
+    }
+    else if (streakLength > TOWER_BP_MILESTONE_500)
+    {
+        toGive = 15;
+    }
+    else if (streakLength > TOWER_BP_MILESTONE_100)
+    {
+        toGive = 10;
+    }
+    else if (streakLength == TOWER_BP_MILESTONE_50)
+    {
+        toGive = 6;
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+            toGive = TOWER_BP_MILESTONE_50;
+    }
+    else if (streakLength > 40)
+    {
+        toGive = 7;
+    }
+    else if (streakLength > 30)
+    {
+        toGive = 6;
+    }
+    else if (streakLength > 20)
+    {
+        toGive = 5;
+    }
+    else if (streakLength == TOWER_BP_MILESTONE_20)
+    {
+        toGive = 3;
+        if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
+            toGive = TOWER_BP_MILESTONE_20;
+    }
+    else if (streakLength > TOWER_BP_MILESTONE_10)
+    {
+        toGive = 3;
+    }
+    else if (streakLength > 0)
+    {
+        toGive = (battleMode == FRONTIER_MODE_SINGLES) ? 2 : 3;
+    }
+
+    ConvertIntToDecimalStringN(gStringVar1, toGive, STR_CONV_MODE_LEFT_ALIGN, 5);
+    IncrementDailyBattlePoints(toGive);
+}
+
 static void GiveBattlePoints(void)
 {
     s32 challengeNum = 0;
@@ -1872,7 +1964,7 @@ static void GiveBattlePoints(void)
     switch (facility)
     {
     case FRONTIER_FACILITY_TOWER:
-        challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode] / FRONTIER_STAGES_PER_CHALLENGE;
+        challengeNum = gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode];
         break;
     case FRONTIER_FACILITY_DOME:
         challengeNum = gSaveBlock2Ptr->frontier.domeWinStreaks[battleMode][lvlMode];
