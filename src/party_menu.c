@@ -78,7 +78,6 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "nuzlocke.h"
 
 enum {
     MENU_SUMMARY,
@@ -4746,10 +4745,6 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     u32 oldStatus = GetMonData(mon, MON_DATA_STATUS);
 
     if (NotUsingHPEVItemOnShedinja(mon, item) == FALSE)
-    {
-        cannotUse = TRUE;
-    }
-    if ((ITEM4_REVIVE) && (FlagGet(FLAG_NUZLOCKE)) && IsMonDead(mon))
     {
         cannotUse = TRUE;
     }

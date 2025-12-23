@@ -201,14 +201,14 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR              0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2                 0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE                     0x40B7
-#define VAR_NUZLOCKE_ENCOUNTERS_1                        0x40B8 //Nuzlocke vars start Nuzlocke: Track first encounters in routes/areas (32 bits)
-#define VAR_NUZLOCKE_ENCOUNTERS_2                        0x40B9 // Nuzlocke: Track first encounters in routes/areas (32 bits)
-#define VAR_NUZLOCKE_ENCOUNTERS_3                        0x40BA // Nuzlocke: Track first encounters in routes/areas (32 bits)
-#define VAR_NUZLOCKE_ENCOUNTERS_4                        0x40BB // Nuzlocke: Track first encounters in routes/areas (32 bits)
-#define VAR_NUZLOCKE_CATCHES_1                           0x40BC // Nuzlocke: Track successful catches in routes/areas (32 bits)
-#define VAR_NUZLOCKE_CATCHES_2                           0x40BD // Nuzlocke: Track successful catches in routes/areas (32 bits)
-#define VAR_NUZLOCKE_CATCHES_3                           0x40BE // Nuzlocke: Track successful catches in routes/areas (32 bits)
-#define VAR_NUZLOCKE_CATCHES_4                           0x40BF // Nuzlocke: Track successful catches in routes/areas (32 bits)
+#define VAR_UNUSED_0x40B8                                0x40B8 // Unused
+#define VAR_UNUSED_0x40B9                                0x40B9 // Unused
+#define VAR_UNUSED_0x40BA                                0x40BA // Unused
+#define VAR_UNUSED_0x40BB                                0x40BB // Unused
+#define VAR_UNUSED_0x40BC                                0x40BC // Unused
+#define VAR_UNUSED_0x40BD                                0x40BD // Unused
+#define VAR_UNUSED_0x40BE                                0x40BE // Unused
+#define VAR_UNUSED_0x40BF                                0x40BF // Unused
 #define VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE              0x40C0
 #define VAR_TRICK_HOUSE_PRIZE_PICKUP                     0x40C1
 #define VAR_PACIFIDLOG_TM_RECEIVED_DAY                   0x40C2

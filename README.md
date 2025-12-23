@@ -16,17 +16,15 @@ Implemented
 - Difficulty mode. Easy gives double the EXP, Normal is normal EXP, and Hard mode is having a level cap which the highest level you can reach is the Gym Leader's ace Pokémon. Defeat the Gym Leaders to lift the cap.
 - Battle Frontier! (After defeating Red, you gain the option of traveling to the Battle Frontier. You can leave from either Olivine or Vermilion. However, leaving the Battle Frontier takes you to Vermilion.)
 - Bug catching contest (albeit with a few bugs)
-- Optional Nuzlocke Mode. Note that this will use a no overleveling rule. If you use ANY item during combat, the only thing that will be different is that it will show a "Nuzlocke Complete!" at the Hall of Fame screen rather than "Hardcore Nuzlocked!"
 - Options to run: Button Combo (L+A), (B), or Default. The reason why it's (L+A) is because of expansion's new feature where you select a Pokeball with the (R) button.
 
 Note: this uses 91.71% of ROM space, last I checked. I'm trying to get this down to around 90%, and this can probably be done by removing some instrument samples.
 
-![Battle text during Nuzlocke Mode](nuzlocke_text.png)![Gym Leaders and Elite Four can use this cool transition.](mugshot_transition.png)![The new terrain and run modes from HnS have been ported over!](run_modes.png)
+![Gym Leaders and Elite Four can use this cool transition.](mugshot_transition.png)![The new terrain and run modes from HnS have been ported over!](run_modes.png)
 ![New options from the option menu, and they all work!](new_options.png)
 ## CREDITS
 - HnS Dev Team for their amazing work!
 - RHH and pokeemerald expansion dev team, of course!
-- NecroDingo- Nuzlocke mode (initial codebase)
 
 
 ![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)

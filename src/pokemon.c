@@ -66,7 +66,6 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 #include "wild_encounter.h"
-#include "nuzlocke.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
 
@@ -2824,9 +2823,6 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_DAYS_SINCE_FORM_CHANGE:
             retVal = boxMon->daysSinceFormChange;
             break;
-        case MON_DATA_IS_DEAD:
-            retVal = boxMon->isDead;
-            break;
         default:
             break;
         }
@@ -2879,8 +2875,6 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
         SET16(mon->hp);
         hpLost = mon->maxHP - mon->hp;
         SetBoxMonData(&mon->box, MON_DATA_HP_LOST, &hpLost);
-        // Check for Nuzlocke fainting
-        NuzlockeHandleFaint(mon);
         break;
     }
     case MON_DATA_HP_LOST:
@@ -2889,8 +2883,6 @@ void SetMonData(struct Pokemon *mon, s32 field, const void *dataArg)
         SET16(hpLost);
         mon->hp = mon->maxHP - hpLost;
         SetBoxMonData(&mon->box, MON_DATA_HP_LOST, &hpLost);
-    // Check for Nuzlocke fainting
-        NuzlockeHandleFaint(mon);
         break;
     }
     case MON_DATA_MAX_HP:
@@ -3258,9 +3250,6 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         }
         case MON_DATA_DAYS_SINCE_FORM_CHANGE:
             SET8(boxMon->daysSinceFormChange);
-            break;
-        case MON_DATA_IS_DEAD:
-            SET8(boxMon->isDead);
             break;
         }
     }
@@ -3860,12 +3849,6 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     dataUnsigned = sExpCandyExperienceTable[param - 1] + GetMonData(mon, MON_DATA_EXP, NULL);
 
                     if (B_RARE_CANDY_CAP && B_EXP_CAP_TYPE == EXP_CAP_HARD)
-                    {
-                        u32 currentLevelCap = GetCurrentLevelCap();
-                        if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][currentLevelCap])
-                            dataUnsigned = gExperienceTables[gSpeciesInfo[species].growthRate][currentLevelCap];
-                    }
-                    if ((gSaveBlock2Ptr->optionsDifficulty == OPTIONS_DIFFICULTY_HARD) || IsNuzlockeActive()) //nuzlocke will include level cap
                     {
                         u32 currentLevelCap = GetCurrentLevelCap();
                         if (dataUnsigned > gExperienceTables[gSpeciesInfo[species].growthRate][currentLevelCap])
@@ -7095,12 +7078,6 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
 
 void HealPokemon(struct Pokemon *mon)
 {
-    if (IsNuzlockeActive() && IsMonDead(mon))
-    {
-        // Don't heal dead Pokemon in Nuzlocke mode
-        return;
-    }
-    
     u32 data;
 
     data = GetMonData(mon, MON_DATA_MAX_HP);
@@ -7114,12 +7091,6 @@ void HealPokemon(struct Pokemon *mon)
 
 void HealBoxPokemon(struct BoxPokemon *boxMon)
 {
-    if (IsNuzlockeActive() && IsBoxMonDead(boxMon))
-    {
-        // Don't heal dead Pokemon in Nuzlocke mode
-        return;
-    }
-    
     u32 data;
 
     data = 0;
@@ -7772,15 +7743,6 @@ static const u16 sRandomSpecies[] =
     //SPECIES_UNUSED_SPACE10            ,
     // SPECIES_EGG       ,
 };
-
-static u16 UNUSED GetRandomSpecies(u16 species, u8 mapBased, u8 type, u16 additionalOffset) //INTERNAL use only!
-{
-    u16 mapOffset = 0; //12289, 49157
-    if (mapBased)
-        mapOffset = NuzlockeGetCurrentRegionMapSectionId();
-
-    return sRandomSpecies[RandomSeededModulo(species + mapOffset + additionalOffset, RANDOM_SPECIES_COUNT)];
-}
 
 u16 GetSpeciesRandomSeeded(u16 species, u8 type, u16 additionalOffset)
 {

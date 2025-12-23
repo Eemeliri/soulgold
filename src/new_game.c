@@ -228,12 +228,6 @@ void NewGameInitData(void)
     ResetDexNav();
     ClearFollowerNPCData();
     SetLastHealLocationWarp(HEAL_LOCATION_NEW_BARK_TOWN_PLAYERS_HOUSE_2F);
-        // Set Nuzlocke flag if it was selected during Birch's speech
-    if (WasNuzlockeModeSelected())
-    {
-        FlagSet(FLAG_NUZLOCKE);
-        ClearNuzlockeModeSelection(); // Reset the selection variable
-    }
 }
 
 static void ResetMiniGamesRecords(void)

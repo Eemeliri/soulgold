@@ -174,7 +174,6 @@ bool32 Overworld_SendKeysToLinkIsRunning(void);
 bool32 IsSendingKeysOverCable(void);
 void ClearLinkPlayerObjectEvents(void);
 bool16 SetTimeOfDay(u16 hours);
-u8 NuzlockeGetCurrentRegionMapSectionId(void);
 
 // Item Description Headers
 enum ItemObtainFlags

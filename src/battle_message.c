@@ -86,7 +86,6 @@ static const u8 sText_LegendaryPkmnAppeared[] = _("You encountered a wild {B_OPP
 static const u8 sText_WildPkmnAppearedPause[] = _("You encountered a wild {B_OPPONENT_MON1_NAME}!{PAUSE 127}");
 static const u8 sText_TwoWildPkmnAppeared[] = _("Oh! A wild {B_OPPONENT_MON1_NAME} and {B_OPPONENT_MON2_NAME} appeared!\p");
 static const u8 sText_Trainer1WantsToBattle[] = _("{B_TRAINER1_NAME_WITH_CLASS}\nwould like to battle!\p");
-static const u8 sText_Trainer1WantsToBattleNuzlocke[] = _("{B_TRAINER1_NAME_WITH_CLASS}\nis trying to end your run!\p");
 static const u8 sText_LinkTrainerWantsToBattle[] = _("{B_LINK_OPPONENT1_NAME}\nwould like to battle!");
 static const u8 sText_TwoLinkTrainersWantToBattle[] = _("{B_LINK_OPPONENT1_NAME} and {B_LINK_OPPONENT2_NAME}!\nwould like to battle!");
 static const u8 sText_Trainer1SentOutPkmn[] = _("{B_TRAINER1_NAME_WITH_CLASS} sent out {B_OPPONENT_MON1_NAME}!");
@@ -427,7 +426,6 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_WALLYUSEDITEM]                        = COMPOUND_STRING("WALLY used {B_LAST_ITEM}!"), //no decapitalize until it is everywhere
     [STRINGID_TRAINERBLOCKEDBALL]                   = COMPOUND_STRING("The Trainer blocked your Poké Ball!"),
     [STRINGID_DONTBEATHIEF]                         = COMPOUND_STRING("Don't be a thief!"),
-    [STRINGID_NUZLOCKEBLOCKEDBALL]                  = COMPOUND_STRING("Nuzlocke rules prevent you from catching this Pokémon!"),
     [STRINGID_ITDODGEDBALL]                         = COMPOUND_STRING("It dodged your thrown Poké Ball! This Pokémon can't be caught!"),
     [STRINGID_YOUMISSEDPKMN]                        = COMPOUND_STRING("You missed the Pokémon!"),
     [STRINGID_PKMNBROKEFREE]                        = COMPOUND_STRING("Oh no! The Pokémon broke free!"),
@@ -2132,8 +2130,6 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
                     stringPtr = sText_TwoTrainersWantToBattle;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                     stringPtr = sText_TwoTrainersWantToBattle;
-                else if (FlagGet(FLAG_NUZLOCKE))
-                    stringPtr = sText_Trainer1WantsToBattleNuzlocke;
                 else
                     stringPtr = sText_Trainer1WantsToBattle;
             }
@@ -2357,15 +2353,6 @@ void BufferStringBattle(enum StringID stringID, u32 battler)
         break;
     case STRINGID_TRAINERSLIDE:
         stringPtr = gBattleStruct->trainerSlideMsg;
-        break;
-    case STRINGID_NUZLOCKE_FIRST_ENCOUNTER:
-        stringPtr = gText_NuzlockeFirstEncounter;
-        break;
-    case STRINGID_NUZLOCKE_DUPLICATE:
-        stringPtr = gText_NuzlockeDuplicate;
-        break;
-    case STRINGID_NUZLOCKE_SHINY:
-        stringPtr = gText_NuzlockeShiny;
         break;
     default: // load a string from the table
         if (stringID >= STRINGID_COUNT)

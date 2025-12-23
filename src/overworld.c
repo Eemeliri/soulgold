@@ -77,7 +77,6 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
-#include "nuzlocke.h"
 
 STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
 
@@ -3731,15 +3730,4 @@ void CB2_BugContestWhiteOut(void){
         SetMainCallback2(CB2_Overworld);
         ScriptContext_SetupScript(BugContest_EventScript_WhiteOut);
     }
-}
-
-u8 NuzlockeGetCurrentRegionMapSectionId(void) //tx_randomizer_and_challenges @Kurausukun
-{
-    u8 regionMapSectionId = GetCurrentRegionMapSectionId();
-
-    #ifndef NDEBUG
-    MgbaPrintf(MGBA_LOG_DEBUG, "location.mapGroup=%d; location.mapNum=%d; location.regionMapSectionId=%d", gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum)->regionMapSectionId);
-    #endif
-
-    return regionMapSectionId;
 }

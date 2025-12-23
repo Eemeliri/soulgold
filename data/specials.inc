@@ -587,7 +587,6 @@ gSpecials::
 	def_special JudgeBugContestMon
 	def_special RemoveSafariBalls
 	def_special ShowBugContestChosenMon
-	def_special NuzlockeSilentSave
 	def_special LevelCapToString
 	def_special NameRival
 	def_special GetRandomSpeciesScripted

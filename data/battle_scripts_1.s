@@ -5108,41 +5108,6 @@ BattleScript_FaintTarget::
 	trytrainerslidemsgfirstoff BS_TARGET
 	return
 
-BattleScript_FaintAttackerNuzlocke::
-	tryillusionoff BS_ATTACKER
-	tryactivategulpmissile
-	playfaintcry BS_ATTACKER
-	pause B_WAIT_TIME_LONG
-	dofaintanimation BS_ATTACKER
-	printstring STRINGID_MON_DIED
-	cleareffectsonfaint BS_ATTACKER
-	trytoclearprimalweather
-	tryrevertweatherform
-	flushtextbox
-	waitanimation
-	tryactivatesoulheart
-	tryactivatereceiver BS_ATTACKER
-	trytrainerslidemsgfirstoff BS_ATTACKER
-	return
-
-BattleScript_FaintTargetNuzlocke::
-	tryillusionoff BS_TARGET
-	tryactivategulpmissile
-	tryupdateleaderscresttracker
-	playfaintcry BS_TARGET
-	pause B_WAIT_TIME_LONG
-	dofaintanimation BS_TARGET
-	printstring STRINGID_MON_DIED_2
-	cleareffectsonfaint BS_TARGET
-	trytoclearprimalweather
-	tryrevertweatherform
-	flushtextbox
-	waitanimation
-	tryactivatesoulheart
-	tryactivatereceiver BS_TARGET
-	trytrainerslidemsgfirstoff BS_TARGET
-	return
-
 BattleScript_GiveExp::
 	setbyte sGIVEEXP_STATE, 0
 	getexp BS_TARGET

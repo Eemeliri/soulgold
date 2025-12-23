@@ -35,7 +35,6 @@
 #include "constants/items.h"
 #include "caps.h"
 #include "wild_encounter.h"
-#include "nuzlocke.h"
 #include "event_data.h"
 
 enum
@@ -171,7 +170,6 @@ enum
     HEALTHBOX_GFX_123,
     HEALTHBOX_GFX_FRAME_END,
     HEALTHBOX_GFX_FRAME_END_BAR,
-    HEALTHBOX_GFX_NUZLOCKE_INDICATOR, // Nuzlocke first encounter indicator
 };
 
 static const u8 *GetHealthboxElementGfxPtr(u8);
@@ -1788,19 +1786,13 @@ static void TryAddPokeballIconToHealthbox(u8 healthboxSpriteId, bool8 noStatus)
     battler = gSprites[healthboxSpriteId].hMain_Battler;
     if (IsOnPlayerSide(battler))
         return;
-    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES)), FLAG_GET_CAUGHT) 
-    && (!IsWildPokemonCatchableInNuzlocke() || !IsNuzlockeActive() || !FlagGet(FLAG_RECEIVED_FIRST_BALLS)))
+    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES)), FLAG_GET_CAUGHT))
         return;
 
     healthBarSpriteId = gSprites[healthboxSpriteId].hMain_HealthBarSpriteId;
 
-      if (noStatus) 
-    {
-        if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(GetMonData(GetBattlerMon(battler), MON_DATA_SPECIES)), FLAG_GET_CAUGHT))
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_STATUS_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
-        else if (IsWildPokemonCatchableInNuzlocke() && IsNuzlockeActive() && FlagGet(FLAG_RECEIVED_FIRST_BALLS))
-            CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_NUZLOCKE_INDICATOR), (void*)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
-    }
+    if (noStatus)
+        CpuCopy32(GetHealthboxElementGfxPtr(HEALTHBOX_GFX_STATUS_BALL_CAUGHT), (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
     else
         CpuFill32(0, (void *)(OBJ_VRAM0 + (gSprites[healthBarSpriteId].oam.tileNum + 8) * TILE_SIZE_4BPP), 32);
 }

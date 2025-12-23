@@ -291,9 +291,3 @@ BattleScript_TrainerBSlideMsgRet::
 BattleScript_TrainerBSlideMsgEnd2::
 	call BattleScript_TrainerBSlideMsgRet
 	end2
-
-BattleScript_NuzlockeBallBlock::
-	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_NUZLOCKEBLOCKEDBALL
-	waitmessage B_WAIT_TIME_LONG
-	finishaction

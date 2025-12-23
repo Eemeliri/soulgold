@@ -867,8 +867,5 @@ extern const u8 BattleScript_FickleBeamDoubled[];
 extern const u8 BattleScript_QuestionForfeitBattle[];
 extern const u8 BattleScript_ForfeitBattleGaveMoney[];
 extern const u8 BattleScript_AbilityPopUp[];
-extern const u8 BattleScript_NuzlockeBallBlock[];
-extern const u8 BattleScript_FaintTargetNuzlocke[];
-extern const u8 BattleScript_FaintAttackerNuzlocke[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

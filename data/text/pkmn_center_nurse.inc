@@ -50,6 +50,3 @@ gText_ThankYouForWaiting::
 gText_WeHopeToSeeYouAgain2::
 	.string "We hope to see you again!$"
 
-gText_WeHopeToSeeYouAgain4::
-	.string "Your POKéMON are healed, but cannot\n"
-	.string "level over {STR_VAR_1} due to Nuzlocke.$"

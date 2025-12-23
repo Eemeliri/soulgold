@@ -38,7 +38,6 @@
 #include "title_screen.h"
 #include "window.h"
 #include "mystery_gift_menu.h"
-#include "nuzlocke.h"
 #include "constants/flags.h"
 
 /*
@@ -175,7 +174,6 @@ static EWRAM_DATA bool8 sStartedPokeBallTask = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
 
 static u8 sBirchSpeechMainTaskId;
-static bool8 sNuzlockeModeSelected = FALSE;
 
 // Static ROM declarations
 
@@ -247,15 +245,6 @@ static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
-static void NewGameBirchSpeech_ShowNuzlockeMenu(void);
-
-//Nuzlocke
-static void Task_NewGameBirchSpeech_NuzlockeChallenge(u8);
-static void Task_NewGameBirchSpeech_CreateNuzlockeYesNo(u8);
-static void Task_NewGameBirchSpeech_ProcessNuzlockeYesNoMenu(u8);
-static void Task_NewGameBirchSpeech_YesNuzlocke(u8);
-static void Task_NewGameBirchSpeech_NoNuzlocke(u8);
-static void Task_NewGameBirchSpeech_Farewell(u8);
 
 // .rodata
 
@@ -497,11 +486,6 @@ static const u8 *const sMalePresetNames[] = {
 static const u8 *const sFemalePresetNames[] = {
     COMPOUND_STRING("Lyra"),
     COMPOUND_STRING("Kris")
-};
-
-static const struct MenuAction sMenuActions_Nuzlocke[] = {
-    {COMPOUND_STRING("No"), {NULL}},
-    {COMPOUND_STRING("Yes"), {NULL}}
 };
 
 // The number of male vs. female names is assumed to be the same.
@@ -1724,91 +1708,7 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         gTasks[taskId].tPlayerSpriteId = spriteId;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
-        //StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
-        //AddTextPrinterForMessage(TRUE);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_NuzlockeChallenge; //if you don't want to show the Nuzlocke challenge at all, you can just set this to Task_NewGameBirchSpeech_Farewell
-    }
-}
-
-static void Task_NewGameBirchSpeech_NuzlockeChallenge(u8 taskId)
-{
-    if (gTasks[taskId].tIsDoneFadingSprites)
-    {
-        if (!RunTextPrintersAndIsPrinter0Active())
-        {
-            NewGameBirchSpeech_ClearWindow(0);
-            StringExpandPlaceholders(gStringVar4, gText_Birch_NuzlockeChallenge);
-            AddTextPrinterForMessage(TRUE);
-            gTasks[taskId].func = Task_NewGameBirchSpeech_CreateNuzlockeYesNo;
-        }
-    }
-}
-
-static void Task_NewGameBirchSpeech_CreateNuzlockeYesNo(u8 taskId)
-{
-    if (!RunTextPrintersAndIsPrinter0Active())
-    {
-        NewGameBirchSpeech_ShowNuzlockeMenu();
-        gTasks[taskId].func = Task_NewGameBirchSpeech_ProcessNuzlockeYesNoMenu;
-    }
-}
-
-static void Task_NewGameBirchSpeech_ProcessNuzlockeYesNoMenu(u8 taskId)
-{
-    switch (Menu_ProcessInputNoWrapClearOnChoose())
-    {
-    case 0: // NO
-    case MENU_B_PRESSED:
-        PlaySE(SE_SELECT);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_NoNuzlocke;
-        break;
-    case 1: // YES
-        PlaySE(SE_SELECT);
-        gTasks[taskId].func = Task_NewGameBirchSpeech_YesNuzlocke;
-        break;
-    }
-}
-
-static void NewGameBirchSpeech_ClearNuzlockeWindowTilemap(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 unused)
-{
-    FillBgTilemapBufferRect(bg, 0, x + 255, y + 255, width + 2, height + 2, 2);
-}
-
-static void NewGameBirchSpeech_ClearNuzlockeWindow(u8 windowId, bool8 copyToVram)
-{
-    CallWindowFunction(windowId, NewGameBirchSpeech_ClearNuzlockeWindowTilemap);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    ClearWindowTilemap(windowId);
-    if (copyToVram == TRUE)
-        CopyWindowToVram(windowId, COPYWIN_FULL);
-}
-
-static void Task_NewGameBirchSpeech_YesNuzlocke(u8 taskId)
-{
-    FlagSet(FLAG_NUZLOCKE);
-    sNuzlockeModeSelected = TRUE;
-    NewGameBirchSpeech_ClearWindow(0);
-    NewGameBirchSpeech_ClearNuzlockeWindow(1, 1);
-    StringExpandPlaceholders(gStringVar4, gText_Birch_YesNuzlocke);
-    AddTextPrinterForMessage(TRUE);
-    gTasks[taskId].func = Task_NewGameBirchSpeech_Farewell;
-}
-
-static void Task_NewGameBirchSpeech_NoNuzlocke(u8 taskId)
-{
-    FlagClear(FLAG_NUZLOCKE);
-    NewGameBirchSpeech_ClearWindow(0);
-    NewGameBirchSpeech_ClearNuzlockeWindow(1, 1);
-    StringExpandPlaceholders(gStringVar4, gText_Birch_NoNuzlocke);
-    AddTextPrinterForMessage(TRUE);
-    gTasks[taskId].func = Task_NewGameBirchSpeech_Farewell;
-}
-
-static void Task_NewGameBirchSpeech_Farewell(u8 taskId)
-{
-    if (!RunTextPrintersAndIsPrinter0Active())
-    {
-        StringExpandPlaceholders(gStringVar4, gText_Birch_Farewell);
+        StringExpandPlaceholders(gStringVar4, gText_Birch_AreYouReady);
         AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_ShrinkPlayer;
     }
@@ -1961,7 +1861,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
 
 static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 {
-    return CreateMonPicSprite_Affine(SPECIES_WOOPER, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
+    return CreateMonPicSprite_Affine(SPECIES_WOOPER_PALDEA, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
 
 static void AddBirchSpeechObjects(u8 taskId)
@@ -2183,16 +2083,6 @@ static void NewGameBirchSpeech_ShowGenderMenu(void)
     CopyWindowToVram(1, COPYWIN_FULL);
 }
 
-static void NewGameBirchSpeech_ShowNuzlockeMenu(void)
-{
-    DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[1], 0xF3);
-    FillWindowPixelBuffer(1, PIXEL_FILL(1));
-    PrintMenuTable(1, ARRAY_COUNT(sMenuActions_Nuzlocke), sMenuActions_Nuzlocke);
-    InitMenuInUpperLeftCornerNormal(1, ARRAY_COUNT(sMenuActions_Nuzlocke), 0);
-    PutWindowTilemap(1);
-    CopyWindowToVram(1, COPYWIN_FULL);
-}
-
 static s8 NewGameBirchSpeech_ProcessGenderMenuInput(void)
 {
     return Menu_ProcessInputNoWrap();
@@ -2399,13 +2289,3 @@ static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 }
 
 #undef tTimer
-
-bool8 WasNuzlockeModeSelected(void)
-{
-    return sNuzlockeModeSelected;
-}
-
-void ClearNuzlockeModeSelection(void)
-{
-    sNuzlockeModeSelected = FALSE;
-}
