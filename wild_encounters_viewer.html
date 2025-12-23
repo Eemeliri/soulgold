@@ -318,8 +318,8 @@
 
         <div class="controls">
             <div class="control-group">
-                <label for="searchInput">🔍 Search by Map/Location:</label>
-                <input type="text" id="searchInput" placeholder="e.g., Route 101, Forest...">
+                <label for="searchInput">🔍 Search by Map/Pokémon:</label>
+                <input type="text" id="searchInput" placeholder="e.g., Route 101, Pikachu...">
             </div>
             <div class="control-group">
                 <label>📋 Filter by Type:</label>
@@ -532,6 +532,23 @@
                 
                 // Allow searching by either the formatted name (e.g., "Route 101") or raw name (e.g., "ROUTE101")
                 const mapMatch = !searchTerm || formattedMapName.includes(searchTerm) || mapLower.includes(searchTerm);
+                
+                // Search by Pokémon name
+                let pokemonMatch = false;
+                if (searchTerm) {
+                    const allMons = [
+                        ...(enc.land_mons?.mons || []),
+                        ...(enc.water_mons?.mons || []),
+                        ...(enc.fishing_mons?.mons || []),
+                        ...(enc.rock_smash_mons?.mons || [])
+                    ];
+                    pokemonMatch = allMons.some(mon => {
+                        const species = mon.species.replace('SPECIES_', '').toLowerCase();
+                        return species.includes(searchTerm);
+                    });
+                } else {
+                    pokemonMatch = true; // If no search term, match all
+                }
 
                 let typeMatch = true;
                 // If no specific types are selected, show all (multi-select logic)
@@ -553,7 +570,7 @@
                     timeMatch = baseLbl.includes('night');
                 }
 
-                return mapMatch && typeMatch && timeMatch;
+                return (mapMatch || pokemonMatch) && typeMatch && timeMatch;
             });
 
             const container = document.getElementById('encountersContainer');
