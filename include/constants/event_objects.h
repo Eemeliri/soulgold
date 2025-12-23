@@ -487,6 +487,10 @@
 #define OBJ_EVENT_PAL_TAG_SCIENTIST_F              0x113D
 #define OBJ_EVENT_PAL_TAG_PROTON              0x113E
 #define OBJ_EVENT_PAL_TAG_NPC_5                   0x113F
+#define OBJ_EVENT_PAL_TAG_NPC_WHITE              0x1140
+#define OBJ_EVENT_PAL_TAG_NPC_GREEN              0x1141
+#define OBJ_EVENT_PAL_TAG_NPC_BLUE              0x1142
+#define OBJ_EVENT_PAL_TAG_NPC_PINK             0x1143
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

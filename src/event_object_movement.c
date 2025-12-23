@@ -553,6 +553,10 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Slowpoke,                  OBJ_EVENT_PAL_TAG_SLOWPOKE},
     {gObjectEventPal_ScientistF,                  OBJ_EVENT_PAL_TAG_SCIENTIST_F},
     {gObjectEventPal_Proton,                  OBJ_EVENT_PAL_TAG_PROTON},
+    {gObjectEventPal_White,                  OBJ_EVENT_PAL_TAG_NPC_WHITE},
+    {gObjectEventPal_Green,                  OBJ_EVENT_PAL_TAG_NPC_GREEN},
+    {gObjectEventPal_Blue,                  OBJ_EVENT_PAL_TAG_NPC_BLUE},
+    {gObjectEventPal_Pink,                  OBJ_EVENT_PAL_TAG_NPC_PINK},
     
 
 #if OW_FOLLOWERS_POKEBALLS
