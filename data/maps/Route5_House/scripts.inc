@@ -32,4 +32,3 @@ Route5_House_Text_Woman:
 	.string "My grandma is into warding off what\n"
 	.string "she believes to be evil spirits.\p"
 	.string "I'm sorry that she startled you.$"
-	

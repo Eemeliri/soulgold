@@ -12,10 +12,11 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
+      "local_id": "LOCALID_PALACE_CORRIDOR_ATTENDANT",
+      "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 8,
       "y": 12,
       "elevation": 3,
@@ -28,7 +29,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AZURILL)",
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
       "x": 3,
       "y": 5,
       "elevation": 0,
@@ -41,7 +42,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KIRLIA)",
+      "graphics_id": "OBJ_EVENT_GFX_KIRLIA",
       "x": 12,
       "y": 6,
       "elevation": 0,
@@ -54,7 +55,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(PICHU)",
+      "graphics_id": "OBJ_EVENT_GFX_PIKACHU",
       "x": 15,
       "y": 5,
       "elevation": 0,
@@ -67,7 +68,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)",
+      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
       "x": 4,
       "y": 9,
       "elevation": 0,
@@ -80,7 +81,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(AZUMARILL)",
+      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
       "x": 13,
       "y": 9,
       "elevation": 0,
@@ -93,7 +94,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(MACHOP)",
+      "graphics_id": "OBJ_EVENT_GFX_WINGULL",
       "x": 3,
       "y": 10,
       "elevation": 0,
@@ -136,10 +137,6 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

@@ -1341,6 +1341,7 @@ Common_Text_ReceivedMon:
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/dexnav.inc"
 	.include "data/maps/ShoalCave_LowTideIceRoom_Suicune/scripts.inc"
+	.include "data/scripts/battle_frontier.inc"
 
 	.include "data/maps/NewMauville_Inside_Raikou/scripts.inc"
 

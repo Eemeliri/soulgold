@@ -12,10 +12,11 @@
   "allow_running": false,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_M",
+      "local_id": "LOCALID_FACTORY_PRE_BATTLE_ATTENDANT",
+      "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
       "x": 8,
       "y": 12,
       "elevation": 0,
@@ -28,13 +29,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

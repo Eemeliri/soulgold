@@ -2,8 +2,8 @@
   "id": "MAP_BATTLE_FRONTIER_BATTLE_TOWER_CORRIDOR",
   "name": "BattleFrontier_BattleTowerCorridor",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_TOWER_CORRIDOR",
-  "music": "MUS_HG_B_TOWER",
-  "region_map_section": "MAPSEC_ROUTE_40",
+  "music": "MUS_B_TOWER",
+  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -11,11 +11,12 @@
   "allow_escaping": false,
   "allow_running": false,
   "show_map_name": false,
-  "battle_scene": "MAP_BATTLE_SCENE_FRONTIER",
-  "connections": 0,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WORKER_F",
+      "local_id": "LOCALID_TOWER_CORRIDOR_ATTENDANT",
+      "graphics_id": "OBJ_EVENT_GFX_TEALA",
       "x": 9,
       "y": 2,
       "elevation": 3,
@@ -28,13 +29,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

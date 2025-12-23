@@ -1,6 +1,3 @@
-.set LOCALID_ATTENDANT_SINGLES, 1
-.set LOCALID_ATTENDANT_DOUBLES, 6
-
 BattleFrontier_BattleDomeLobby_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, BattleFrontier_BattleDomeLobby_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_BattleDomeLobby_OnFrame
@@ -17,7 +14,7 @@ BattleFrontier_BattleDomeLobby_OnWarp:
 
 BattleFrontier_BattleDomeLobby_EventScript_TurnPlayerNorth::
 	setvar VAR_TEMP_1, 1
-	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
+	turnobject LOCALID_PLAYER, DIR_NORTH
 	end
 
 BattleFrontier_BattleDomeLobby_OnFrame:
@@ -213,10 +210,14 @@ BattleFrontier_BattleDomeLobby_EventScript_NotEnoughValidMons::
 
 BattleFrontier_BattleDomeLobby_EventScript_NotEnoughValidMonsLv50::
 	msgbox BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsLv50, MSGBOX_DEFAULT
+	call BattleFrontier_ShowCaughtBannedSpecies
+	msgbox BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsEnd, MSGBOX_DEFAULT
 	goto BattleFrontier_BattleDomeLobby_EventScript_EndCancelChallenge
 
 BattleFrontier_BattleDomeLobby_EventScript_NotEnoughValidMonsLvOpen::
 	msgbox BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsLvOpen, MSGBOX_DEFAULT
+	call BattleFrontier_ShowCaughtBannedSpecies
+	msgbox BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsEnd, MSGBOX_DEFAULT
 	goto BattleFrontier_BattleDomeLobby_EventScript_EndCancelChallenge
 
 BattleFrontier_BattleDomeLobby_EventScript_CancelChallengeSaveFailed::
@@ -235,14 +236,14 @@ BattleFrontier_BattleDomeLobby_EventScript_EndCancelChallenge::
 BattleFrontier_BattleDomeLobby_EventScript_WalkToDoor::
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES, BattleFrontier_BattleDomeLobby_EventScript_SinglesAttendantWalkToDoor
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES, BattleFrontier_BattleDomeLobby_EventScript_DoublesAttendantWalkToDoor
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleDomeLobby_Movement_WalkToDoor
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleDomeLobby_Movement_WalkToDoor
 	waitmovement 0
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES, BattleFrontier_BattleDomeLobby_EventScript_OpenSinglesDoor
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES, BattleFrontier_BattleDomeLobby_EventScript_OpenDoublesDoor
 	waitdooranim
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES, BattleFrontier_BattleDomeLobby_EventScript_SinglesAttendantEnterDoor
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES, BattleFrontier_BattleDomeLobby_EventScript_DoublesAttendantEnterDoor
-	applymovement OBJ_EVENT_ID_PLAYER, BattleFrontier_BattleDomeLobby_Movement_PlayerEnterDoor
+	applymovement LOCALID_PLAYER, BattleFrontier_BattleDomeLobby_Movement_PlayerEnterDoor
 	waitmovement 0
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES, BattleFrontier_BattleDomeLobby_EventScript_CloseSinglesDoor
 	call_if_eq VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES, BattleFrontier_BattleDomeLobby_EventScript_CloseDoublesDoor
@@ -250,19 +251,19 @@ BattleFrontier_BattleDomeLobby_EventScript_WalkToDoor::
 	return
 
 BattleFrontier_BattleDomeLobby_EventScript_SinglesAttendantWalkToDoor::
-	applymovement LOCALID_ATTENDANT_SINGLES, BattleFrontier_BattleDomeLobby_Movement_WalkToDoor
+	applymovement LOCALID_DOME_ATTENDANT_SINGLES, BattleFrontier_BattleDomeLobby_Movement_WalkToDoor
 	return
 
 BattleFrontier_BattleDomeLobby_EventScript_DoublesAttendantWalkToDoor::
-	applymovement LOCALID_ATTENDANT_DOUBLES, BattleFrontier_BattleDomeLobby_Movement_WalkToDoor
+	applymovement LOCALID_DOME_ATTENDANT_DOUBLES, BattleFrontier_BattleDomeLobby_Movement_WalkToDoor
 	return
 
 BattleFrontier_BattleDomeLobby_EventScript_SinglesAttendantEnterDoor::
-	applymovement LOCALID_ATTENDANT_SINGLES, BattleFrontier_BattleDomeLobby_Movement_AttendantEnterDoor
+	applymovement LOCALID_DOME_ATTENDANT_SINGLES, BattleFrontier_BattleDomeLobby_Movement_AttendantEnterDoor
 	return
 
 BattleFrontier_BattleDomeLobby_EventScript_DoublesAttendantEnterDoor::
-	applymovement LOCALID_ATTENDANT_DOUBLES, BattleFrontier_BattleDomeLobby_Movement_AttendantEnterDoor
+	applymovement LOCALID_DOME_ATTENDANT_DOUBLES, BattleFrontier_BattleDomeLobby_Movement_AttendantEnterDoor
 	return
 
 BattleFrontier_BattleDomeLobby_EventScript_WelcomeSingles::
@@ -477,7 +478,7 @@ BattleFrontier_BattleDomeLobby_Text_OkayToSaveBeforeChallenge:
 
 BattleFrontier_BattleDomeLobby_Text_WhichLevelMode:
 	.string "The tournament offers two levels\n"
-	.string "of challenge, NORMAL and HARD.\l"
+	.string "of challenge, Level 50 and Open Level.\l"
 	.string "Which is your choice?$"
 
 BattleFrontier_BattleDomeLobby_Text_SelectThreeMons:
@@ -489,17 +490,19 @@ BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsLvOpen:
 	.string "You don't have three eligible POKéMON.\p"
 	.string "Also, the POKéMON must be holding\n"
 	.string "different kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
+	.string "EGGS{STR_VAR_1}.$"
+
+BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsEnd:
 	.string "Please come see me when you are ready.$"
 
 BattleFrontier_BattleDomeLobby_Text_NotEnoughValidMonsLv50:
 	.string "Excuse me!\p"
 	.string "You don't have three eligible POKéMON.\p"
-	.string "You must have three different POKéMON.\p"
+	.string "You must have three different POKéMON\n"
+	.string "of Level 50 or less to enter.\p"
 	.string "They also must be holding different\n"
 	.string "kinds of items.\p"
-	.string "EGGS{STR_VAR_1} ineligible.\p"
-	.string "Please come see me when you are ready.$"
+	.string "EGGS{STR_VAR_1}.$"
 
 BattleFrontier_BattleDomeLobby_Text_ShowYouToBattleDome:
 	.string "I will now show you to\n"
@@ -580,19 +583,19 @@ BattleFrontier_BattleDomeLobby_Text_ExplainDoublesChallenge:
 
 BattleFrontier_BattleDomeLobby_Text_PrevTourneyResultsSinglesLv50:
 	.string "They're the results of the last\n"
-	.string "NORMAL LVL SINGLE BATTLE Tournament.$"
+	.string "Level 50 SINGLE BATTLE Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_PrevTourneyResultsDoublesLv50:
 	.string "They're the results of the last\n"
-	.string "NORMAL LVL DOUBLE BATTLE Tournament.$"
+	.string "Level 50 DOUBLE BATTLE Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_PrevTourneyResultsSinglesLvOpen:
 	.string "They're the results of the last\n"
-	.string "HARD LVL SINGLE BATTLE Tournament.$"
+	.string "Open Level SINGLE BATTLE Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_PrevTourneyResultsDoublesLvOpen:
 	.string "They're the results of the last\n"
-	.string "HARD LVL DOUBLE BATTLE Tournament.$"
+	.string "Open Level DOUBLE BATTLE Tournament.$"
 
 BattleFrontier_BattleDomeLobby_Text_LastWinnerWasTough:
 	.string "Did you see it?\n"

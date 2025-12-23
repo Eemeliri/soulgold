@@ -12,9 +12,10 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_PYRAMID_TOP_ATTENDANT",
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
       "x": 17,
       "y": 11,
@@ -28,7 +29,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIOVANNI",
+      "local_id": "LOCALID_BRANDON",
+      "graphics_id": "OBJ_EVENT_GFX_BRANDON",
       "x": 17,
       "y": 7,
       "elevation": 0,
@@ -41,9 +43,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
@@ -55,7 +55,5 @@
       "script": "BattleFrontier_BattlePyramidTop_EventScript_BattleBrandon"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

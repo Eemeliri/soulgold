@@ -3793,7 +3793,7 @@ bool8 ScrCmd_givebp(struct ScriptContext *ctx)
 
 bool8 ScrCmd_checkpartymonlevel(struct ScriptContext *ctx)
 {
-    u16 speciesLook = VarGet(ScriptReadHalfword(ctx));
+    //u16 speciesLook = VarGet(ScriptReadHalfword(ctx));
 
     gSpecialVar_Result = PARTY_SIZE;
     struct Pokemon *pokemon = &gPlayerParty[gSpecialVar_0x8004];

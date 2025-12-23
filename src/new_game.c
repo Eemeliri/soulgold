@@ -111,7 +111,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsTerrain = FALSE;
     gSaveBlock2Ptr->optionsRunType = 0;
     gSaveBlock2Ptr->optionsDifficulty = OPTIONS_DIFFICULTY_NORMAL;
-    gSaveBlock2Ptr->optionsFont = 1;
+    gSaveBlock2Ptr->optionsFont = 0;
     gSaveBlock2Ptr->optionsMusic = 0;
                
 }

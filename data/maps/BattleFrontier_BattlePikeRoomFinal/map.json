@@ -12,9 +12,10 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_PIKE_FINAL_ROOM_ATTENDANT",
       "graphics_id": "OBJ_EVENT_GFX_LINK_RECEPTIONIST",
       "x": 2,
       "y": 4,
@@ -28,13 +29,7 @@
       "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

@@ -247,4 +247,3 @@ CeladonDeptElevator_EventScript_Cancel::
 	waitdooranim
 	release
 	end
-	
