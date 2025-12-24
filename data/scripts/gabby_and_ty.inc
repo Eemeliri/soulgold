@@ -1,10 +1,17 @@
-@ Gabby and Ty always move to the same spots for the first 5 battles
-@ From the 6th battle onwards, they move randomly between locations 6-8
-@ Note: The local IDs of Gabby and Ty are hard-coded in GetGabbyAndTyLocalIds
+@ Gabby and Ty can appear in a fixed location on 3 different routes.
+@ Each time they are battled they will disappear from the route they're on
+@ and relocate to the next one, in the order Route 111 -> Route 118 -> Route 120.
+@ Gabby and Ty have 6 different parties which will get cycled on each appearance.
+@ After they're defeated 6 times they will stick to their 6th party but continue
+@ cycling between the 3 routes. To determine which trainer party gets used GF created
+@ multiple object events for Gabby and Ty on each of the 3 routes. The scripts below
+@ handle hiding and showing these objects so the correct party appears on the correct route.
+@ Route 111 and Route 118 have 3 object events each (parties 1,4,6 and 2,5,6 respectively)
+@ and Route 120 has 2 object events each (parties 3 and 6).
 GabbyAndTy_EventScript_UpdateLocation::
-	cleartrainerflag TRAINER_NONE
-	specialvar FLAG_GARBAGEFLAG, GabbyAndTyGetBattleNum
-	switch FLAG_GARBAGEFLAG
+	cleartrainerflag TRAINER_NONE  @ Clear flag for their final party to allow infinite rematches.
+	specialvar VAR_RESULT, GabbyAndTyGetBattleNum
+	switch VAR_RESULT
 	case 0, GabbyAndTy_EventScript_MoveForBattle1
 	case 1, GabbyAndTy_EventScript_MoveForBattle2
 	case 2, GabbyAndTy_EventScript_MoveForBattle3
@@ -31,13 +38,13 @@ GabbyAndTy_EventScript_MoveForBattle3::
 	return
 
 GabbyAndTy_EventScript_MoveForBattle4::
-	call GabbyAndTy_EventScript_ShowAtRoute111_3
+	call GabbyAndTy_EventScript_ShowAtRoute111_2
 	call GabbyAndTy_EventScript_HideAtRoute120_1
 	return
 
 GabbyAndTy_EventScript_MoveForBattle5::
 	call GabbyAndTy_EventScript_ShowAtRoute118_2
-	call GabbyAndTy_EventScript_HideAtRoute111_3
+	call GabbyAndTy_EventScript_HideAtRoute111_2
 	return
 
 GabbyAndTy_EventScript_MoveForBattle6::
@@ -46,13 +53,13 @@ GabbyAndTy_EventScript_MoveForBattle6::
 	return
 
 GabbyAndTy_EventScript_MoveForBattle7::
-	call GabbyAndTy_EventScript_ShowAtRoute111_2
+	call GabbyAndTy_EventScript_ShowAtRoute111_3
 	call GabbyAndTy_EventScript_HideAtRoute120_2
 	return
 
 GabbyAndTy_EventScript_MoveForBattle8::
 	call GabbyAndTy_EventScript_ShowAtRoute118_3
-	call GabbyAndTy_EventScript_HideAtRoute111_2
+	call GabbyAndTy_EventScript_HideAtRoute111_3
 	return
 
 GabbyAndTy_EventScript_MoveForBattle9::
@@ -84,11 +91,11 @@ GabbyAndTy_EventScript_ShowAtRoute120_1::
 	clearflag FLAG_GARBAGEFLAG
 	return
 
-GabbyAndTy_EventScript_HideAtRoute111_3::
+GabbyAndTy_EventScript_HideAtRoute111_2::
 	setflag FLAG_GARBAGEFLAG
 	return
 
-GabbyAndTy_EventScript_ShowAtRoute111_3::
+GabbyAndTy_EventScript_ShowAtRoute111_2::
 	clearflag FLAG_GARBAGEFLAG
 	return
 
@@ -108,11 +115,11 @@ GabbyAndTy_EventScript_ShowAtRoute120_2::
 	clearflag FLAG_GARBAGEFLAG
 	return
 
-GabbyAndTy_EventScript_HideAtRoute111_2::
+GabbyAndTy_EventScript_HideAtRoute111_3::
 	setflag FLAG_GARBAGEFLAG
 	return
 
-GabbyAndTy_EventScript_ShowAtRoute111_2::
+GabbyAndTy_EventScript_ShowAtRoute111_3::
 	clearflag FLAG_GARBAGEFLAG
 	return
 
@@ -199,43 +206,43 @@ GabbyAndTy_EventScript_TyBattle6::
 GabbyAndTy_EventScript_FirstInterview::
 	special GabbyAndTyBeforeInterview
 	special GetGabbyAndTyLocalIds
-	call_if_eq FLAG_GARBAGEFLAG, DIR_NORTH, GabbyAndTy_EventScript_FacePlayerNorth
-	call_if_eq FLAG_GARBAGEFLAG, DIR_SOUTH, GabbyAndTy_EventScript_FacePlayerSouth
-	call_if_eq FLAG_GARBAGEFLAG, DIR_EAST, GabbyAndTy_EventScript_FacePlayerEast
+	call_if_eq VAR_FACING, DIR_NORTH, GabbyAndTy_EventScript_FacePlayerNorth
+	call_if_eq VAR_FACING, DIR_SOUTH, GabbyAndTy_EventScript_FacePlayerSouth
+	call_if_eq VAR_FACING, DIR_EAST, GabbyAndTy_EventScript_FacePlayerEast
 	goto_if_set FLAG_GARBAGEFLAG, GabbyAndTy_EventScript_KeepingAnEyeOutForYou
 	msgbox GabbyAndTy_Text_WhoAreYouInterview, MSGBOX_YESNO
 	goto GabbyAndTy_EventScript_Interview
 	end
 
 GabbyAndTy_EventScript_FacePlayerNorth::
-	applymovement FLAG_GARBAGEFLAG, GabbyAndTy_Movement_WalkInPlaceDown
+	applymovement VAR_0x8004, GabbyAndTy_Movement_WalkInPlaceDown
 	waitmovement 0
 	return
 
 GabbyAndTy_EventScript_FacePlayerSouth::
-	applymovement FLAG_GARBAGEFLAG, GabbyAndTy_Movement_WalkInPlaceUp
-	applymovement FLAG_GARBAGEFLAG, Common_Movement_WalkInPlaceFasterUp
+	applymovement VAR_0x8004, GabbyAndTy_Movement_WalkInPlaceUp
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	return
 
 GabbyAndTy_EventScript_FacePlayerEast::
-	applymovement FLAG_GARBAGEFLAG, GabbyAndTy_Movement_WalkInPlaceLeft
-	applymovement FLAG_GARBAGEFLAG, Common_Movement_WalkInPlaceFasterLeft
+	applymovement VAR_0x8004, GabbyAndTy_Movement_WalkInPlaceLeft
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
 GabbyAndTy_EventScript_RequestInterview::
 	special GabbyAndTyBeforeInterview
 	special GetGabbyAndTyLocalIds
-	call_if_eq FLAG_GARBAGEFLAG, DIR_NORTH, GabbyAndTy_EventScript_FacePlayerNorth
-	call_if_eq FLAG_GARBAGEFLAG, DIR_SOUTH, GabbyAndTy_EventScript_FacePlayerSouth
-	call_if_eq FLAG_GARBAGEFLAG, DIR_EAST, GabbyAndTy_EventScript_FacePlayerEast
+	call_if_eq VAR_FACING, DIR_NORTH, GabbyAndTy_EventScript_FacePlayerNorth
+	call_if_eq VAR_FACING, DIR_SOUTH, GabbyAndTy_EventScript_FacePlayerSouth
+	call_if_eq VAR_FACING, DIR_EAST, GabbyAndTy_EventScript_FacePlayerEast
 	goto_if_set FLAG_GARBAGEFLAG, GabbyAndTy_EventScript_KeepingAnEyeOutForYou
-	specialvar FLAG_GARBAGEFLAG, GabbyAndTyGetLastQuote
-	goto_if_eq FLAG_GARBAGEFLAG, 0, GabbyAndTy_EventScript_DidntInterviewLastTime
+	specialvar VAR_RESULT, GabbyAndTyGetLastQuote
+	goto_if_eq VAR_RESULT, 0, GabbyAndTy_EventScript_DidntInterviewLastTime
 	msgbox GabbyAndTy_Text_QuoteFromLastInterview, MSGBOX_DEFAULT
-	specialvar FLAG_GARBAGEFLAG, GabbyAndTyGetLastBattleTrivia
-	switch FLAG_GARBAGEFLAG
+	specialvar VAR_RESULT, GabbyAndTyGetLastBattleTrivia
+	switch VAR_RESULT
 	case 0, GabbyAndTy_EventScript_RequestInterviewNoTrivia
 	case 1, GabbyAndTy_EventScript_RequestInterviewShortBattle
 	case 2, GabbyAndTy_EventScript_RequestInterviewThrewBall
@@ -286,13 +293,13 @@ GabbyAndTy_EventScript_RequestInterviewLostAMon::
 	end
 
 GabbyAndTy_EventScript_Interview::
-	goto_if_eq FLAG_GARBAGEFLAG, NO, GabbyAndTy_EventScript_DontGiveUpKeepingEyeOut
+	goto_if_eq VAR_RESULT, NO, GabbyAndTy_EventScript_DontGiveUpKeepingEyeOut
 	msgbox GabbyAndTy_Text_DescribeYourFeelings, MSGBOX_DEFAULT
-	setvar FLAG_GARBAGEFLAG, EASY_CHAT_TYPE_GABBY_AND_TY
+	setvar VAR_0x8004, EASY_CHAT_TYPE_GABBY_AND_TY
 	call Common_ShowEasyChatScreen
 	lock
 	faceplayer
-	goto_if_eq FLAG_GARBAGEFLAG, 0, GabbyAndTy_EventScript_DontGiveUpKeepingEyeOut
+	goto_if_eq VAR_RESULT, 0, GabbyAndTy_EventScript_DontGiveUpKeepingEyeOut
 	msgbox GabbyAndTy_Text_PerfectWellBeSeeingYou, MSGBOX_DEFAULT
 	special GabbyAndTyAfterInterview
 	setflag FLAG_GARBAGEFLAG

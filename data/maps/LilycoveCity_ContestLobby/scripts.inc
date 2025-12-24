@@ -349,7 +349,7 @@ LilycoveCity_ContestLobby_EventScript_SetMasterContestType::
 @ Functionally unused
 LilycoveCity_ContestLobby_EventScript_SetDebug::
 	setflag FLAG_GARBAGEFLAG
-	copyvar VAR_GARBAGEVAR, 1
+	setvar VAR_GARBAGEVAR, 1
 	additem ITEM_CONTEST_PASS
 	setvar VAR_0x800B, 8
 	setvar VAR_CONTEST_RANK, CONTEST_RANK_MASTER

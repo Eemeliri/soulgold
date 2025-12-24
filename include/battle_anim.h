@@ -42,13 +42,25 @@ struct BattleAnimBackground
     const u32 *tilemap;
 };
 
+// Helper struct for link battles to show correct animations and transformations that can change their look
+// Used by EmitBattleAnimation and EmitMoveAnimation
+struct LinkBattleAnim
+{
+    u32 transformedMonPID;
+    u8 rolloutTimer;
+    u8 furyCutterCounter;
+    u8 syrupBombIsShiny:1;
+    u8 isTransformedMonShiny:1;
+    u8 padding:4;
+};
+
 #define ANIM_ARGS_COUNT 8
 
 extern void (*gAnimScriptCallback)(void);
 extern bool8 gAnimScriptActive;
 extern u8 gAnimVisualTaskCount;
 extern u8 gAnimSoundTaskCount;
-extern struct DisableStruct *gAnimDisableStructPtr;
+extern struct LinkBattleAnim *gAnimDisableStructPtr;
 extern s32 gAnimMoveDmg;
 extern u16 gAnimMovePower;
 extern u8 gAnimFriendship;
@@ -211,7 +223,8 @@ u8 GetSubstituteSpriteDefault_Y(u8 battler);
 #define STAT_ANIM_MULTIPLE_MINUS1 57
 #define STAT_ANIM_MULTIPLE_MINUS2 58
 
-enum {
+enum StatAnimPal
+{
     STAT_ANIM_PAL_ATK,
     STAT_ANIM_PAL_DEF,
     STAT_ANIM_PAL_ACC,

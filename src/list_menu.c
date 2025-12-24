@@ -13,6 +13,10 @@
 #include "sound.h"
 #include "constants/songs.h"
 
+// GF cast Task data to ListMenu in many places, which effectively puts
+// an upper bound on sizeof(struct ListMenu).
+STATIC_ASSERT(sizeof(struct ListMenu) <= sizeof(((struct Task *)NULL)->data), ListMenuTooLargeForTaskData);
+
 // Cursors after this point are created using a sprite with their own task.
 // This allows them to have idle animations. Cursors prior to this are simply printed text.
 #define CURSOR_OBJECT_START CURSOR_RED_OUTLINE
@@ -157,8 +161,6 @@ static const struct SpriteTemplate sSpriteTemplate_ScrollArrowIndicator =
     .paletteTag = 0,
     .oam = &sOamData_ScrollArrowIndicator,
     .anims = sSpriteAnimTable_ScrollArrowIndicator,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallback_ScrollIndicatorArrow,
 };
 
@@ -276,8 +278,6 @@ static const struct SpriteTemplate sSpriteTemplate_RedArrowCursor =
     .paletteTag = 0,
     .oam = &sOamData_RedArrowCursor,
     .anims = sSpriteAnimTable_RedArrowCursor,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallback_RedArrowCursor,
 };
 
@@ -614,7 +614,6 @@ static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOff
     s32 i;
     u8 x, y;
     u8 yMultiplier = GetFontAttribute(list->template.fontId, FONTATTR_MAX_LETTER_HEIGHT) + list->template.itemVerticalPadding;
-
     for (i = 0; i < count; i++)
     {
         if (list->template.items[startIndex].id != LIST_HEADER)

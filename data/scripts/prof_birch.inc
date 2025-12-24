@@ -51,7 +51,7 @@ ProfBirch_EventScript_DeclineRating::
 	end
 
 ProfBirch_EventScript_ShowRatingMessage::
-	copyvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
+	setvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
 	special ShowPokedexRatingMessage
 	waitmessage
 	waitbuttonpress
@@ -60,9 +60,9 @@ ProfBirch_EventScript_ShowRatingMessage::
 ProfBirch_EventScript_RatePokedex::
 	setvar FLAG_GARBAGEFLAG, 0
 	specialvar FLAG_GARBAGEFLAG, ScriptGetPokedexInfo
-	copyvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
-	copyvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
-	copyvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
+	setvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
+	setvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
+	setvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
 	buffernumberstring STR_VAR_1, FLAG_GARBAGEFLAG  @ Num Hoenn seen
 	buffernumberstring STR_VAR_2, FLAG_GARBAGEFLAG  @ Num Hoenn caught
 	msgbox gBirchDexRatingText_SoYouveSeenAndCaught, MSGBOX_DEFAULT
@@ -70,8 +70,8 @@ ProfBirch_EventScript_RatePokedex::
 	goto_if_eq FLAG_GARBAGEFLAG, 0, Common_EventScript_NopReturn  @ National dex not enabled
 	setvar FLAG_GARBAGEFLAG, 1
 	specialvar FLAG_GARBAGEFLAG, ScriptGetPokedexInfo
-	copyvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
-	copyvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
+	setvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
+	setvar FLAG_GARBAGEFLAG, FLAG_GARBAGEFLAG
 	buffernumberstring STR_VAR_1, FLAG_GARBAGEFLAG  @ Num National seen
 	buffernumberstring STR_VAR_2, FLAG_GARBAGEFLAG  @ Num National caught
 	msgbox gBirchDexRatingText_OnANationwideBasis, MSGBOX_DEFAULT

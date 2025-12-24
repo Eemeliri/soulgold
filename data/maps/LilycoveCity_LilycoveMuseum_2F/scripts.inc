@@ -76,7 +76,7 @@ LilycoveCity_LilycoveMuseum_2F_EventScript_ShowExhibitHall::
 	applymovement LOCALID_PLAYER, LilycoveCity_LilycoveMuseum_2F_Movement_PlayerWalkInPlaceLeft
 	waitmovement 0
 	msgbox LilycoveCity_LilycoveMuseum_2F_Text_PleaseObtainPaintingsForExhibit, MSGBOX_SIGN
-	copyvar VAR_GARBAGEVAR, 1
+	setvar VAR_GARBAGEVAR, 1
 	releaseall
 	end
 

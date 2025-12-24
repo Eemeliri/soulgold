@@ -5,7 +5,7 @@ SeafoamIslands_1F_MapScripts::
 	.byte 0
 
 SeafoamIslands_1F_OnTransition: 
-	copyvar VAR_ICE_STEP_COUNT, 1
+	setvar VAR_ICE_STEP_COUNT, 1
 	end
 
 SeafoamIslands_1F_SetHoleWarp:

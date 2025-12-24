@@ -225,6 +225,7 @@ void NewGameInitData(void)
     ResetContestLinkResults();
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
+    gSpecialVar_MonBoxId = 0xFF;
     ResetDexNav();
     ClearFollowerNPCData();
     SetLastHealLocationWarp(HEAL_LOCATION_NEW_BARK_TOWN_PLAYERS_HOUSE_2F);

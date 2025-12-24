@@ -518,4 +518,6 @@ u8 MovementType_TowerBeam_Step2(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_TowerBeam_Step3(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_TowerBeam_Step4(struct ObjectEvent *, struct Sprite *);
 
+u8 GetObjectEventApricornTreeId(u8 objectEventId);
+
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H
