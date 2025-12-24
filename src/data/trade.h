@@ -986,19 +986,19 @@ static const struct InGameTrade sIngameTrades[] =
     },
     [INGAME_TRADE_ONIX] =
     {
-        .nickname = _("ROCKY"),
-        .species = SPECIES_ONIX,
-        .ivs = {4, 4, 4, 5, 5, 4},
-        .abilityNum = 1,
+        .nickname = _("WOOFE"),
+        .species = SPECIES_ROCKRUFF_OWN_TEMPO,
+        .ivs = {31, 31, 31, 31, 31, 31},
+        .abilityNum = 0,
         .otId = 48926,
-        .conditions = {5, 5, 30, 5, 5},
+        .conditions = {30, 30, 30, 30, 30},
         .personality = 0x96,
-        .heldItem = ITEM_PERSIM_BERRY,
+        .heldItem = ITEM_SHUCA_BERRY,
         .mailNum = 0,
         .otName = _("RUDY"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_BELLSPROUT
+        .requestedSpecies = SPECIES_COTTONEE
     },
     [INGAME_TRADE_HORSEA] =
     {
