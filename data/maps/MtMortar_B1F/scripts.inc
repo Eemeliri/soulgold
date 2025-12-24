@@ -7,26 +7,6 @@ MtMortar_B1F_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-MtMortar_B1F_EventScript_Item_HyperPotion::
-    finditem ITEM_HYPER_POTION
-    end
-
-MtMortar_B1F_EventScript_Item_Carbos::
-    finditem ITEM_CARBOS
-    end
-
-MtMortar_B1F_EventScript_Item_PPUp::
-    finditem ITEM_PP_UP
-    end
-
-MtMortar_B1F_EventScript_Item_MaxEther::
-    finditem ITEM_MAX_ETHER
-    end
-
-MtMortar_B1F_EventScript_Item_MaxRevive::
-    finditem ITEM_MAX_REVIVE
-    end
-
 MountMortar4_EventScript_Kiyo::
 	lock
 	faceplayer

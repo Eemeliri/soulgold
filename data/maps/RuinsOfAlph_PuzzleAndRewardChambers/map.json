@@ -36,8 +36,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_LumBerry1",
+      "trainer_sight_or_berry_tree_id": "ITEM_LUM_BERRY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_LUM_BERRY_1"
     },
     {
@@ -49,8 +49,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_Charcoal",
+      "trainer_sight_or_berry_tree_id": "ITEM_CHARCOAL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_CHARCOAL"
     },
     {
@@ -62,8 +62,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_MaxRevive1",
+      "trainer_sight_or_berry_tree_id": "ITEM_MAX_REVIVE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_MAX_REVIVE_1"
     },
     {
@@ -75,8 +75,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_SacredAsh",
+      "trainer_sight_or_berry_tree_id": "ITEM_SACRED_ASH",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_SACRED_ASH"
     },
     {
@@ -88,8 +88,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_HealPowder1",
+      "trainer_sight_or_berry_tree_id": "ITEM_HEAL_POWDER",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_HEAL_POWDER_1"
     },
     {
@@ -101,8 +101,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_EnergyRoot",
+      "trainer_sight_or_berry_tree_id": "ITEM_ENERGY_ROOT",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_ENERGY_ROOT"
     },
     {
@@ -114,8 +114,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_SitrusBerry2",
+      "trainer_sight_or_berry_tree_id": "ITEM_SITRUS_BERRY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_SITRUS_BERRY_2"
     },
     {
@@ -127,8 +127,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_MoonStone",
+      "trainer_sight_or_berry_tree_id": "ITEM_MOON_STONE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_MOON_STONE"
     },
     {
@@ -140,8 +140,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_PechaBerry",
+      "trainer_sight_or_berry_tree_id": "ITEM_PECHA_BERRY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_PECHA_BERRY"
     },
     {
@@ -153,8 +153,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_EnergyPowder",
+      "trainer_sight_or_berry_tree_id": "ITEM_ENERGY_POWDER",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_ENERGY_POWDER"
     },
     {
@@ -166,8 +166,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_HealPowder2",
+      "trainer_sight_or_berry_tree_id": "ITEM_HEAL_POWDER",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_HEAL_POWDER_2"
     },
     {
@@ -179,8 +179,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_OranBerry",
+      "trainer_sight_or_berry_tree_id": "ITEM_ORAN_BERRY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_ORAN_BERRY"
     },
     {
@@ -192,8 +192,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_WaterStone",
+      "trainer_sight_or_berry_tree_id": "ITEM_WATER_STONE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_WATER_STONE"
     },
     {
@@ -205,8 +205,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_StarPiece",
+      "trainer_sight_or_berry_tree_id": "ITEM_STAR_PIECE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_STAR_PIECE"
     },
     {
@@ -218,8 +218,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_Stardust",
+      "trainer_sight_or_berry_tree_id": "ITEM_STARDUST",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_STARDUST"
     },
     {
@@ -231,8 +231,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RuinsOfAlph_EventScript_Item_LumBerry2",
+      "trainer_sight_or_berry_tree_id": "ITEM_LUM_BERRY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RUINSOFALPH_LUM_BERRY_2"
     }
   ],
@@ -434,9 +434,7 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

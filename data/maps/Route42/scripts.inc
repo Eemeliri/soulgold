@@ -195,16 +195,6 @@ Route42_EventScript_Philip::
 	msgbox Route42_Text_SawyerPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route42_EventScript_Item_SuperPotion::
-	finditem ITEM_SUPER_POTION
-	end
-Route42_EventScript_Item_Mint::
-	finditem ITEM_MODEST_MINT
-	end
-Route42_EventScript_Item_UltraBall::
-	finditem ITEM_ULTRA_BALL
-	end
-
 Route42_Text_SawyerIntro:
 	.string "If this crashes the game,\n"
 	.string "I will be very disappointed.$"

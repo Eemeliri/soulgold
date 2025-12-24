@@ -31,14 +31,6 @@ Route12_EventScript_NewFisher::
 	msgbox Route12_Text_NewFisher, MSGBOX_NPC
 	end
 
-Route12_EventScript_Elixir::
-	finditem ITEM_ELIXIR
-	end
-
-Route12_EventScript_Calcium::
-	finditem ITEM_CALCIUM
-	end
-
 Route12_EventScript_Tentacruel::
 	lock
 	faceplayer

@@ -41,10 +41,6 @@ Route15_EventScript_Sign::
 	msgbox Route15_Text_Sign, MSGBOX_SIGN
 	end
 
-Route15_EventScript_PPup::
-	finditem ITEM_PP_UP
-	end
-
 Route15_Text_TeacherColetteSeen:
 	.string "Have you forgotten anything?$"
 

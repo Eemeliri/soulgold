@@ -142,7 +142,5 @@
       "script": "Route26North_Trigger"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

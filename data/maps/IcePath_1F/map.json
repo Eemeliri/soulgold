@@ -23,8 +23,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IcePath_1F_EventScript_Item_PpUp",
+      "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ICEPATH1_PP_UP"
     },
     {
@@ -36,8 +36,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IcePath_1F_EventScript_Item_HM_Waterfall",
+      "trainer_sight_or_berry_tree_id": "ITEM_HM_WATERFALL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ICEPATH1_HM_WATERFALL"
     },
     {
@@ -49,8 +49,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IcePath_1F_EventScript_Item_Protein",
+      "trainer_sight_or_berry_tree_id": "ITEM_PROTEIN",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ICEPATH1_PROTEIN"
     },
     {
@@ -199,7 +199,5 @@
       "script": "IcePath_1F_Trigger_KimonoGirl"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

@@ -3,10 +3,6 @@
 SlowpokeWell_B2F_MapScripts::
 	.byte 0
 
-SlowpokeWell_EventScript_Item_Kings_Rock::
-	finditem ITEM_KINGS_ROCK
-	end
-
 SlowpokeWell_EventScript_Slowking::
 	lock
 	faceplayer

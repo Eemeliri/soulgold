@@ -54,22 +54,6 @@ UnionCave_1F_EventScript_FirebreatherRay::
 	msgbox UnionCave_1F_Text_FirebreatherRayAfter, MSGBOX_AUTOCLOSE
 	end	
 
-UnionCave_1F_EventScript_Item_Potion::
-	finditem ITEM_POTION
-	end
-
-UnionCave_1F_EventScript_Item_GreatBall::
-	finditem ITEM_GREAT_BALL
-	end
-
-UnionCave_1F_EventScript_Item_Xattack::
-	finditem ITEM_X_ATTACK
-	end
-
-UnionCave_1F_EventScript_Item_Awakening::
-	finditem ITEM_AWAKENING
-	end
-
 UnionCave_1F_Text_HikerRussellSeen:
 	.string "You're headed to AZALEA, are you?\p"
 	.string "Let my POKéMON see if you are good\n"

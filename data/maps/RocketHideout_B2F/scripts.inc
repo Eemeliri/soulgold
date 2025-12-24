@@ -699,10 +699,6 @@ RocketHideout_B2F_Text_B2FDeactivateTransmitter:
 
 @===========================================================================================================================================
 
-RocketHideout_EventScript_Item_Thief::
-	finditem ITEM_TM_THIEF
-	end
-
 RocketHideout_B2F_EventScript_LanceTriggerLeft::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1

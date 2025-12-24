@@ -133,8 +133,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IlexForest_EventScript_SunnyDay",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_SUNNY_DAY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ILEX_FOREST_TM_SUNNY_DAY"
     },
     {
@@ -146,8 +146,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IlexForest_EventScript_FullHeal",
+      "trainer_sight_or_berry_tree_id": "ITEM_FULL_HEAL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ILEX_FOREST_FULL_HEAL"
     },
     {
@@ -159,8 +159,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IlexForest_EventScript_Ether",
+      "trainer_sight_or_berry_tree_id": "ITEM_ETHER",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ILEX_FOREST_ETHER"
     },
     {
@@ -172,8 +172,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "IlexForest_EventScript_SuperPotion",
+      "trainer_sight_or_berry_tree_id": "ITEM_SUPER_POTION",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ILEX_FOREST_SUPER_POTION"
     },
     {

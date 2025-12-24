@@ -8,16 +8,6 @@ IcePath_1F_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-IcePath_1F_EventScript_Item_PpUp::
-	finditem ITEM_PP_UP
-	end
-IcePath_1F_EventScript_Item_Protein::
-	finditem ITEM_PROTEIN
-	end
-IcePath_1F_EventScript_Item_HM_Waterfall::
-	finditem ITEM_HM_WATERFALL
-	end
-
 IcePath_1F_EventScript_KimonoGirl::
 	lock
 	playbgm MUS_HG_KIMONO_GIRL, TRUE

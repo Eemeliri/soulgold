@@ -123,16 +123,6 @@ LakeOfRage_EventScript_Ran_Gyarados::
 	release
 	end
 
-LakeOfRage_EventScript_Item_Full_Restore::
-	finditem ITEM_FULL_RESTORE
-	end
-LakeOfRage_EventScript_Item_Max_Revive::
-	finditem ITEM_MAX_REVIVE
-	end
-LakeOfRage_EventScript_Item_Red_Flute::
-	finditem ITEM_RED_FLUTE
-	end
-
 LakeOfRage_EventScript_Dragonite::
 	lock
 	faceplayer

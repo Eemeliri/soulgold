@@ -73,7 +73,5 @@
       "script": "Gate_CeladonCity_Route16_TriggerScript"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

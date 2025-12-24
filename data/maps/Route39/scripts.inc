@@ -10,14 +10,6 @@ Route39_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-Route39_EventScript_Item_TM::
-	finditem ITEM_TM_BRICK_BREAK
-	end
-
-Route39_EventScript_Item_Nugget::
-	finditem ITEM_BIG_NUGGET
-	end
-
 Route39_EventScript_LegendaryTrigger::
 	lock
 	clearflag FLAG_HIDE_ROUTE39_SHADOW

@@ -38,10 +38,6 @@ SproutTower_1F_EventScript_Teacher::
 	release
 	end
 
-SproutTower_1F_EventScript_ItemParalyzeHeal::
-	finditem ITEM_PARALYZE_HEAL
-	end
-
 SproutTower_Text_SageChow_Seen:
 	.string "We stand guard in this tower.\p"
 	.string "Here, we express our gratitude\n"

@@ -51,10 +51,6 @@ Route38_EventScript_Sign2::
 	release
 	end
 
-Route38_EventScript_Item_LaxIncense::
-	finditem ITEM_LAX_INCENSE
-	end
-
 Route38_Text_BirdKeeperTobySeen:
 	.string "Fly high into the sky,\n"
 	.string "my beloved bird POKéMON!$"

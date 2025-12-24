@@ -23,10 +23,6 @@ SproutTower_2F_EventScript_Statue::
 	release
 	end
 
-SproutTower_2F_EventScript_Xdefend::
-	finditem ITEM_X_DEFEND
-	end
-
 SproutTower_Text_SageNico_Seen:
 	.string "However hard we battle,\n"
 	.string "the TOWER will stand strong.$"

@@ -7,10 +7,3 @@ RockTunnel_1F_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-RockTunnel_1F_EventScript_ItemIron::
-	finditem ITEM_IRON
-	end
-
-RockTunnel_1F_EventScript_PPup::
-	finditem ITEM_PP_UP
-	end

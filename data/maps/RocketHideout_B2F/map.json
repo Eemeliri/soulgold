@@ -179,8 +179,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RocketHideout_EventScript_Item_Thief",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_THIEF",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROCKETHIDEOUT2_TM_THIEF"
     },
     {

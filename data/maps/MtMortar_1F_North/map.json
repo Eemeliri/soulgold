@@ -23,8 +23,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_MaxRepel",
+      "trainer_sight_or_berry_tree_id": "ITEM_MAX_REPEL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_MAX_REPEL"
     },
     {
@@ -36,8 +36,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_EscapeRope",
+      "trainer_sight_or_berry_tree_id": "ITEM_ESCAPE_ROPE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_ESCAPE_ROPE"
     },
     {
@@ -49,8 +49,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_UltraBall",
+      "trainer_sight_or_berry_tree_id": "ITEM_ULTRA_BALL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_ULTRA_BALL"
     },
     {
@@ -62,8 +62,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_Nugget",
+      "trainer_sight_or_berry_tree_id": "ITEM_NUGGET",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_NUGGET"
     },
     {
@@ -75,8 +75,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_MaxPotion",
+      "trainer_sight_or_berry_tree_id": "ITEM_MAX_POTION",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_MAX_POTION"
     },
     {
@@ -88,8 +88,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_FullIncense",
+      "trainer_sight_or_berry_tree_id": "ITEM_REVIVE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_REVIVE"
     },
     {
@@ -101,8 +101,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtMortar_1F_North_EventScript_Item_KingsRock",
+      "trainer_sight_or_berry_tree_id": "ITEM_KINGS_ROCK",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTMORTAR2_KINGS_ROCK"
     },
     {
@@ -254,10 +254,6 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

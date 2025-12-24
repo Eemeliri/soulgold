@@ -99,7 +99,5 @@
       "script": "ChampionRoom_Trigger"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

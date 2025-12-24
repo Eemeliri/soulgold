@@ -35,18 +35,6 @@ GoldenrodCity_UndergroundStorage_EventScript_Eto::
 	msgbox RadioTowerBasement_Text_GruntM15After, MSGBOX_AUTOCLOSE
 	end
 
-GoldenrodCity_UndergroundStorage_EventScript_Item_TM_CALM_MIND::
-    finditem ITEM_TM_CALM_MIND
-    end
-
-GoldenrodCity_UndergroundStorage_EventScript_Item_UltraBall::
-    finditem ITEM_ULTRA_BALL
-    end
-
-GoldenrodCity_UndergroundStorage_EventScript_Item_MaxEther::
-    finditem ITEM_MAX_ETHER
-    end
-
 RadioTowerBasement_Text_GruntM24Seen:
     .string "How did you get this far?\p"
     .string "I guess it can't be helped. I'll\n"

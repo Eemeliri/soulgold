@@ -88,8 +88,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DragonsDen_Cavern_EventScript_Item_PP_Max",
+      "trainer_sight_or_berry_tree_id": "ITEM_PP_MAX",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_DRAGONSDEN2_PP_MAX"
     },
     {
@@ -101,8 +101,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DragonsDen_Cavern_EventScript_Item_Max_Potion",
+      "trainer_sight_or_berry_tree_id": "ITEM_MAX_POTION",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_DRAGONSDEN2_MAX_POTION"
     },
     {
@@ -114,8 +114,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DragonsDen_Cavern_EventScript_Item_Dragon_Fang",
+      "trainer_sight_or_berry_tree_id": "ITEM_DRAGON_FANG",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_DRAGONSDEN2_DRAGON_FANG"
     },
     {

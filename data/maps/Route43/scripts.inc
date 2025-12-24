@@ -46,10 +46,6 @@ Route43_EventScript_Sign2::
 	msgbox Route43_TrainerTips, MSGBOX_SIGN
 	end
 
-Route43_EventScript_Item_Max_Ether::
-	finditem ITEM_MAX_ETHER
-	end
-
 Route43_Text_PokemaniacBenSeen:
     .string "I love POKéMON!\p"
     .string "That's why I started--and why I'll\n"

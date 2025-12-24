@@ -301,23 +301,6 @@ GoldenrodCity_UndergroundTunnel_EventScript_DoorAlreadyOpened::
 	end
 
 
-GoldenrodCity_UndergroundTunnel_EventScript_Item_CoinCase::
-	finditem ITEM_COIN_CASE
-	end
-
-GoldenrodCity_UndergroundTunnel_EventScript_Item_SuperPotion::
-	finditem ITEM_SUPER_POTION
-	end
-
-GoldenrodCity_UndergroundTunnel_EventScript_Item_ParalyzeHeal::
-	finditem ITEM_PARALYZE_HEAL
-	end
-
-GoldenrodCity_UndergroundTunnel_EventScript_Item_Antidote::
-	finditem ITEM_ANTIDOTE
-	end
-
-
 GoldenrodUnderground_Text_YoungerBrotherOffer:
     .string "Welcome to the POKéMON SALON!\p"
     .string "I'm the younger and less expensive\n"

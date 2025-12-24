@@ -107,7 +107,5 @@
       "script": "Route10_PowerPlantEntrance_Trigger_Cop"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

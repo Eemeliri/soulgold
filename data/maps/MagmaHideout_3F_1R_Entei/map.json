@@ -114,7 +114,5 @@
       "script": "MagmaHideout_3F_1R_EntranceTrigger"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

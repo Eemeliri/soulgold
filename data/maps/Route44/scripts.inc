@@ -50,18 +50,6 @@ Route44_EventScript_Sign2::
 	msgbox Route44_Text_Sign2, MSGBOX_SIGN
 	end
 
-Route44_EventScript_Item_MaxRepel::
-	finditem ITEM_MAX_REPEL
-	end
-
-Route44_EventScript_Item_UltraBall::
-	finditem ITEM_ULTRA_BALL
-	end
-
-Route44_EventScript_Item_Elixir::
-	finditem ITEM_ELIXIR
-	end
-
 Route44_Text_FisherWilton1Seen:
     .string "Aack!\p"
     .string "You made me lose a POLIWAG!\n"

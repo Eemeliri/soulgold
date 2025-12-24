@@ -32,14 +32,6 @@ SproutTower_3F_EventScript_Painting::
 	release
 	end
 
-SproutTower_3F_EventScript_Potion::
-	finditem ITEM_POTION
-	end
-
-SproutTower_3F_EventScript_EscapeRope::
-	finditem ITEM_ESCAPE_ROPE
-	end
-
 SproutTower_3F_EventScript_TriggerSceneLeft::
 	lock
 	playbgm MUS_HG_ENCOUNTER_RIVAL, TRUE

@@ -24,11 +24,3 @@ CeruleanCave3_EventScript_MewtwoRan::
 	release
 	end
 
-CeruleanCave3_EventScript_MaxRevive::
-    finditem ITEM_MAX_REVIVE
-    end
-
-CeruleanCave3_EventScript_UltraBall::
-    finditem ITEM_ULTRA_BALL
-    end
-

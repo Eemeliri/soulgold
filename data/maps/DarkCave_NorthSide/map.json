@@ -23,8 +23,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DarkCave2_EventScript_Item_BlackFlute",
+      "trainer_sight_or_berry_tree_id": "ITEM_BLACK_FLUTE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_DARKCAVE2_BLACK_FLUTE"
     },
     {
@@ -36,8 +36,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "DarkCave2_EventScript_Item_StarPiece",
+      "trainer_sight_or_berry_tree_id": "ITEM_STAR_PIECE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_DARKCAVE2_STAR_PIECE"
     },
     {
@@ -161,10 +161,6 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

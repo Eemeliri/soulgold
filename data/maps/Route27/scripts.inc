@@ -65,22 +65,6 @@ Route27_Movement_WalkBot:
     walk_left
     step_end
 
-Route27_EventScript_Item_Moonstone::
-    finditem ITEM_MOON_STONE
-    end
-
-Route27_EventScript_Item_RareCandy::
-    finditem ITEM_RARE_CANDY
-    end
-
-Route27_EventScript_Item_SolarBeam::
-    finditem ITEM_TM_SOLAR_BEAM
-    end
-
-Route27_EventScript_Item_Revive::
-    finditem ITEM_REVIVE
-    end
-
 Route27_EventScript_Fatman::
     msgbox Route27_Text_FisherMessage, MSGBOX_NPC
     end

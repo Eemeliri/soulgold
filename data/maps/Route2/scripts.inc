@@ -30,14 +30,6 @@ Route2_EventScript_CaveSign::
 	msgbox Route2_Text_DiglettsCaveSign, MSGBOX_SIGN
 	end
 
-Route2_EventScript_Carbos::
-    finditem ITEM_CARBOS
-    end
-
-Route2_EventScript_Nugget::
-    finditem ITEM_NUGGET
-    end
-
 Route2_Text_BugCatcherRob_Seen:
 	.string "My bug POKéMON are tough. Prepare to\n"
 	.string "lose!$"

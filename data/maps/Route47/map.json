@@ -55,8 +55,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route47_EventScript_Item_Revive",
+      "trainer_sight_or_berry_tree_id": "ITEM_REVIVE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE47_REVIVE"
     },
     {
@@ -94,8 +94,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route47_EventScript_Item_WhiteFlute",
+      "trainer_sight_or_berry_tree_id": "ITEM_WHITE_FLUTE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE47_WHITE_FLUTE"
     },
     {
@@ -146,8 +146,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route47_EventScript_Item_Pearl",
+      "trainer_sight_or_berry_tree_id": "ITEM_PEARL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE47_PEARL"
     },
     {
@@ -159,8 +159,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route47_EventScript_Item_Stardust",
+      "trainer_sight_or_berry_tree_id": "ITEM_STARDUST",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE47_STARDUST"
     },
     {
@@ -445,8 +445,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route47_EventScript_Item_LuckyPunch",
+      "trainer_sight_or_berry_tree_id": "ITEM_LUCKY_PUNCH",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LUCKY_PUNCH"
     }
   ],
@@ -487,10 +487,6 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

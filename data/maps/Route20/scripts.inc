@@ -3,10 +3,6 @@ Route20_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SetTimeEncounters
 	.byte 0
 
-Route20_EventScript_ShellBell::
-	finditem ITEM_SHELL_BELL
-	end
-
 Route20_OnTransition:
 	callnative SetTimeBasedEncounters
 	end

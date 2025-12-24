@@ -36,22 +36,6 @@ RuinsOfAlph_B1F_EventScript_Gramps::
 	release
 	end
 
-RuinsOfAlph_PuzzleAndRewardChambers_EventScript_HelixFossil::
-	finditem ITEM_HELIX_FOSSIL
-	end
-
-RuinsOfAlph_PuzzleAndRewardChambers_EventScript_DomeFossil::
-	finditem ITEM_DOME_FOSSIL
-	end
-
-RuinsOfAlph_PuzzleAndRewardChambers_EventScript_OldAmber::
-	finditem ITEM_OLD_AMBER
-	end
-
-RuinsOfAlph_PuzzleAndRewardChambers_EventScript_GSBALL::
-	finditem ITEM_HEAVY_BALL
-	end
-
 RuinsOfAlph_B1F_Text_Presence:
 	.string "There is a strange presence here.$"
 

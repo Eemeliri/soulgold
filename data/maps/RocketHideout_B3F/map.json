@@ -88,8 +88,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RocketHideout_B3F_EventScript_Item_Protein",
+      "trainer_sight_or_berry_tree_id": "ITEM_PROTEIN",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROCKETHIDEOUT3_PROTEIN"
     },
     {
@@ -101,8 +101,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RocketHideout_B3F_EventScript_Item_IceHeal",
+      "trainer_sight_or_berry_tree_id": "ITEM_ICE_HEAL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROCKETHIDEOUT3_ICE_HEAL"
     },
     {
@@ -114,8 +114,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RocketHideout_B3F_EventScript_Item_HyperPotion",
+      "trainer_sight_or_berry_tree_id": "ITEM_HYPER_POTION",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROCKETHIDEOUT3_HYPER_POTION"
     },
     {
@@ -127,8 +127,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RocketHideout_B3F_EventScript_Item_GuardSpec",
+      "trainer_sight_or_berry_tree_id": "ITEM_GUARD_SPEC",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROCKETHIDEOUT3_GUARD_SPEC"
     },
     {
@@ -166,8 +166,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RocketHideout_B3F_EventScript_Item_FullHeal",
+      "trainer_sight_or_berry_tree_id": "ITEM_FULL_HEAL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROCKETHIDEOUT3_FULL_HEAL"
     },
     {

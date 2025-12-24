@@ -7,14 +7,6 @@ Route4_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-Route4_EventScript_HpUp::
-	finditem ITEM_HP_UP
-	end
-
-Route4_EventScript_UltraBall::
-	finditem ITEM_ULTRA_BALL
-	end
-
 Route4_EventScript_Hank::
 	trainerbattle_single TRAINER_HANK, Route4_Text_BirdKeeperHank_Seen, Route4_Text_BirdKeeperHank_Beaten
 	msgbox Route4_Text_BirdKeeperHank_AfterBattle, MSGBOX_AUTOCLOSE

@@ -473,18 +473,6 @@ GoldenrodCity_UndergroundSwitches_EventScript_Grunt27::
 	msgbox GoldenrodUnderground_Text_GruntF3After, MSGBOX_AUTOCLOSE
 	end
 
-GoldenrodCity_UndergroundSwitches_EventScript_Item_Revive::
-	finditem ITEM_MAX_REVIVE
-	end
-
-GoldenrodCity_UndergroundSwitches_EventScript_Item_MaxPotion::
-	finditem ITEM_MAX_POTION
-	end
-
-GoldenrodCity_UndergroundSwitches_EventScript_Item_SmokeBall::
-	finditem ITEM_SMOKE_BALL
-	end
-
 GoldenrodUnderground_Text_SilverBefore:
     .string "Hold it!\p"
     .string "I saw you, so I tailed you.\p"

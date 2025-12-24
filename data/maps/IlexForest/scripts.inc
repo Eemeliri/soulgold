@@ -389,22 +389,6 @@ IlexForest_EventScript_Kimono::
 	release
 	end
 
-IlexForest_EventScript_SuperPotion::
-	finditem ITEM_SUPER_POTION
-	end
-
-IlexForest_EventScript_Ether::
-	finditem ITEM_ETHER
-	end
-
-IlexForest_EventScript_FullHeal::
-	finditem ITEM_FULL_HEAL
-	end
-
-IlexForest_EventScript_SunnyDay::
-	finditem ITEM_TM_SUNNY_DAY
-	end
-
 IlexForest_Movement_Kimono_Girl1:
 	walk_right
 	face_down

@@ -127,26 +127,6 @@ EmbeddedTower_Text_OldManIntro:
 	.string "the entrance and its interior, where\l"
 	.string "you'll see strange patterns.$"
 
-Route47_EventScript_Item_Pearl::
-    finditem ITEM_PEARL
-    end
-
-Route47_EventScript_Item_Revive::
-    finditem ITEM_REVIVE
-    end
-
-Route47_EventScript_Item_WhiteFlute::
-    finditem ITEM_WHITE_FLUTE
-    end
-
-Route47_EventScript_Item_Stardust::
-	finditem ITEM_STARDUST
-	end
-
-Route47_EventScript_Item_LuckyPunch::
-	finditem ITEM_LUCKY_PUNCH
-	end
-
 Route47_EventScript_Chinchou::
 	lock
 	faceplayer

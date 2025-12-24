@@ -82,19 +82,6 @@ Route34_EventScript_Sign3::
 	release
 	end
 
-Route34_EventScript_Item_SoftSand::
-	finditem ITEM_SOFT_SAND
-	end
-
-Route34_EventScript_Item_RareCandy::
-	finditem ITEM_RARE_CANDY
-	end
-
-Route34_EventScript_Item_SuperPotion::
-	finditem ITEM_SUPER_POTION
-	end
-
-
 Route34_Text_YoungsterSamuel_Seen:
 	.string "Hey! I'm looking for MANKEY!$"
 

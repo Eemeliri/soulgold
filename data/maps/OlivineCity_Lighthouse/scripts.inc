@@ -4,26 +4,6 @@
 OlivineCity_Lighthouse_MapScripts::
 	.byte 0
 
-OlivineLighthouse_EventScript_Item_Ether::
-    finditem ITEM_ETHER
-    end
-
-OlivineLighthouse_EventScript_Item_RareCandy::
-    finditem ITEM_RARE_CANDY
-    end
-
-OlivineLighthouse_EventScript_Item_TMBulkUp::
-    finditem ITEM_TM_BULK_UP
-    end
-
-OlivineLighthouse_EventScript_Item_HyperPotion::
-    finditem ITEM_HYPER_POTION
-    end
-
-OlivineLighthouse_EventScript_Item_Protein::
-    finditem ITEM_PROTEIN
-    end
-
 OlivineLighthouse_EventScript_1FSailor::
 	lock
 	faceplayer

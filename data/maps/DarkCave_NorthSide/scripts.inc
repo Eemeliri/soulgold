@@ -7,14 +7,6 @@ DarkCave_NorthSide_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-DarkCave2_EventScript_Item_BlackFlute::
-	finditem ITEM_BLACK_FLUTE
-	end
-
-DarkCave2_EventScript_Item_StarPiece::
-	finditem ITEM_STAR_PIECE
-	end
-
 DarkCave2_EventScript_BlackGlasses::
 	lock
 	faceplayer

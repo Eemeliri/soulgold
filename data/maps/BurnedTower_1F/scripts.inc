@@ -61,14 +61,6 @@ BurnedTower_1FEusineIntroText:
 	.string "to check it out.\p"
 	.string "But where exactly could it be?$"
 
-BurnedTower_1F_EventScript_Item_HpUp::
-	finditem ITEM_HP_UP
-	end
-
-BurnedTower_1F_EventScript_Item_Ether::
-	finditem ITEM_ETHER
-	end
-
 BurnedTower_1F_EventScript_Eusine::
 	lock
 	faceplayer

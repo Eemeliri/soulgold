@@ -303,18 +303,6 @@ RocketHideout_B1F_EventScript_Rocket16::
 	msgbox RocketHideout_B1F_Text_GruntM16After, MSGBOX_AUTOCLOSE
 	end
 
-RocketHideout_B1F_EventScript_Item_BigNugget::
-	finditem ITEM_BIG_NUGGET
-	end
-
-RocketHideout_B1F_EventScript_Item_HyperPotion::
-	finditem ITEM_HYPER_POTION
-	end
-
-RocketHideout_B1F_EventScript_Item_Revive::
-	finditem ITEM_REVIVE
-	end
-
 RocketHideout_B1F_EventScript_Persian::
 	msgbox RocketHideout_B1F_Text_SecurityCameraStatue, MSGBOX_NPC
 	end

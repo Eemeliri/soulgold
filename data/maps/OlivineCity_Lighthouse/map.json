@@ -192,8 +192,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "OlivineLighthouse_EventScript_Item_Protein",
+      "trainer_sight_or_berry_tree_id": "ITEM_PROTEIN",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LIGHTHOUSE_PROTEIN"
     },
     {
@@ -205,8 +205,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "OlivineLighthouse_EventScript_Item_HyperPotion",
+      "trainer_sight_or_berry_tree_id": "ITEM_HYPER_POTION",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LIGHTHOUSE_HYPER_POTION"
     },
     {
@@ -218,8 +218,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "OlivineCity_EventScript_Item_Shockwave",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_SHOCK_WAVE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_OLIVINE_TM_SHOCKWAVE"
     },
     {
@@ -231,8 +231,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "OlivineLighthouse_EventScript_Item_RareCandy",
+      "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LIGHTHOUSE_RARE_CANDY"
     },
     {
@@ -244,8 +244,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "OlivineLighthouse_EventScript_Item_Ether",
+      "trainer_sight_or_berry_tree_id": "ITEM_ETHER",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LIGHTHOUSE_ETHER"
     }
   ],
@@ -524,10 +524,6 @@
       "dest_warp_id": "16"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

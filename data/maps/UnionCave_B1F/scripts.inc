@@ -21,14 +21,6 @@ UnionCave_B1F_EventScript_PokemaniacCalvin::
 	msgbox UnionCave_B1F_Text_PokemaniacCalvinAfter, MSGBOX_AUTOCLOSE
 	end
 
-UnionCave_B1F_EventScript_Item_SecretPower::
-	finditem ITEM_TM_SECRET_POWER
-	end
-
-UnionCave_B1F_EventScript_Item_Xdefend::
-	finditem ITEM_X_DEFEND
-	end
-
 UnionCave_B1F_Text_HikerPhillipSeen:
 	.string "It's been a while since I last saw\n"
 	.string "another person.\p"

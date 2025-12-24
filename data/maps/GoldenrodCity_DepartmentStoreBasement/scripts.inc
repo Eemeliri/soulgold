@@ -125,22 +125,6 @@ GoldenrodCity_DepartmentStoreBasement_EventScript_MachokeMoveBoulder3::
 	release
 	end
 
-GoldenrodCity_DepartmentStoreBasement_EventScript_Item_AmuletCoin::
-	finditem ITEM_AMULET_COIN
-	end
-
-GoldenrodCity_DepartmentStoreBasement_EventScript_Item_Ether::
-	finditem ITEM_ETHER
-	end
-
-GoldenrodCity_DepartmentStoreBasement_EventScript_Item_UltraBall::
-	finditem ITEM_ULTRA_BALL
-	end
-
-GoldenrodCity_DepartmentStoreBasement_EventScript_Item_ExpShare::
-	finditem ITEM_EXP_SHARE
-	end
-
 GoldenrodCity_DepartmentStoreBasement_Movement_Machoke1:
 	walk_left
 	walk_left

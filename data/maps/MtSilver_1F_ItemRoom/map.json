@@ -23,8 +23,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtSilver_1F_WaterfallRoom_EventScript_SpellTag",
+      "trainer_sight_or_berry_tree_id": "ITEM_SPELL_TAG",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_MTSILVER_SPELL_TAG"
     },
     {
@@ -89,10 +89,6 @@
       "dest_warp_id": "5"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

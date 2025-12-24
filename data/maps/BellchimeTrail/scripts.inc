@@ -27,10 +27,6 @@ BellchimeTrail_Text_Morty:
 	.string "If you seek another battle, find\n"
 	.string "me at the FIGHTING DOJO.$"
 
-EcruteakBellchimeTrail_EventScript_Item_BigMushroom::
-	finditem ITEM_BIG_MUSHROOM
-	end
-
 EcruteakBellchimeTrail_EventScript_DoorTrigger::
 	lock
 	opendoor 28, 12

@@ -7,34 +7,6 @@ MtMortar_1F_North_OnTransition:
 	callnative SetTimeBasedEncounters
 	end
 
-MtMortar_1F_North_EventScript_Item_MaxRepel::
-    finditem ITEM_MAX_REPEL
-    end
-
-MtMortar_1F_North_EventScript_Item_EscapeRope::
-    finditem ITEM_ESCAPE_ROPE
-    end
-
-MtMortar_1F_North_EventScript_Item_MaxPotion::
-    finditem ITEM_MAX_POTION
-    end
-
-MtMortar_1F_North_EventScript_Item_Nugget::
-    finditem ITEM_NUGGET
-    end
-
-MtMortar_1F_North_EventScript_Item_UltraBall::
-    finditem ITEM_ULTRA_BALL
-    end
-
-MtMortar_1F_North_EventScript_Item_FullIncense::
-    finditem ITEM_REVIVE
-    end
-
-MtMortar_1F_North_EventScript_Item_KingsRock::
-    finditem ITEM_KINGS_ROCK
-    end
-
 MtMortar_1F_North_EventScript_Miller::
 	trainerbattle_single TRAINER_MILLER MountMortar2_Text_PokemaniacMillerSeen, MountMortar2_Text_PokemaniacMillerBeaten
 	msgbox MountMortar2_Text_PokemaniacMillerAfter, MSGBOX_AUTOCLOSE

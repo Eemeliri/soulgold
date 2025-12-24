@@ -1,10 +1,6 @@
 MtMoon_Outside_MapScripts::
 	.byte 0
 
-MtMoon_EventScript_Moonstone::
-	finditem ITEM_MOON_STONE
-	end
-
 MtMoon_Outside_EventScript_Sign::
 	msgbox MtMoon_Outside_Text_DontLitterSign, MSGBOX_SIGN
 	end

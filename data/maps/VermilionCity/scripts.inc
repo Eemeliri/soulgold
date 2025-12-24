@@ -24,10 +24,6 @@ VermilionCity_EventScript_SetSuicuneScene::
 	callnative SetTimeBasedEncounters
 	end
 
-VermilionCity_EventScript_OldSeaMap::
-	finditem ITEM_OLD_SEA_MAP
-	end
-
 VermilionCity_TriggerSuicuneTop::
 	lock
 	playse SE_PIN

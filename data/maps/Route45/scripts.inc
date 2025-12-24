@@ -45,22 +45,6 @@ Route45_EventScript_Sign::
 	msgbox Route45_Text_Sign, MSGBOX_SIGN
 	end
 
-Route45_EventScript_Item_Elixir::
-	finditem ITEM_ELIXIR
-	end
-
-Route45_EventScript_Item_Max_Potion::
-	finditem ITEM_MAX_POTION
-	end
-
-Route45_EventScript_Item_Full_Heal::
-	finditem ITEM_FULL_HEAL
-	end
-
-Route45_EventScript_Item_Nugget::
-	finditem ITEM_NUGGET
-	end
-
 Route45_Text_HikerErikSeen:
     .string "Be prepared for anything!\p"
     .string "Let me see if your POKéMON have\n"

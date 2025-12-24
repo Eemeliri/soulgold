@@ -182,18 +182,6 @@ DragonsDen_Cavern_EventScript_TwinPia::
 	release
 	end
 
-DragonsDen_Cavern_EventScript_Item_Dragon_Fang::
-	finditem ITEM_DRAGON_FANG
-	end
-DragonsDen_Cavern_EventScript_Item_Max_Potion::
-	finditem ITEM_MAX_POTION
-	end
-DragonsDen_Cavern_EventScript_Item_PP_Max::
-	finditem ITEM_PP_MAX
-	end
-
-
-
 DragonsDen_Cavern_Text_DragonShrineSign:
     .string "DRAGON SHRINE\p"
     .string "A shrine honoring the dragon\n"

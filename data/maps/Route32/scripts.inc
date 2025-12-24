@@ -264,19 +264,6 @@ Route32_EventScript_BaldingManEgg::
 	release
 	end
 
-Route32_EventScript_Potion::
-	finditem ITEM_POTION
-	end
-Route32_EventScript_GreatBall::
-	finditem ITEM_GREAT_BALL
-	end
-Route32_EventScript_GreatBallII::
-	finditem ITEM_GREAT_BALL
-	end
-Route32_EventScript_SuperPotion::
-	finditem ITEM_SUPER_POTION
-	end
-
 Route32_EventScript_Sign1::
 	lock
 	msgbox Route32_Text_Sign1, MSGBOX_SIGN

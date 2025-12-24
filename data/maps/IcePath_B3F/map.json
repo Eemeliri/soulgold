@@ -120,7 +120,5 @@
       "script": "IcePath_B3F_Trigger_Swinub_Jump"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

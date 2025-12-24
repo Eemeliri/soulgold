@@ -39,18 +39,6 @@ UnionCave_B2F_EventScript_LaprasRan::
 	end
 
 
-UnionCave_B2F_EventScript_Item_Ether::
-	finditem ITEM_ETHER
-	end
-
-UnionCave_B2F_EventScript_Item_HyperPotion::
-	finditem ITEM_HYPER_POTION
-	end
-
-UnionCave_B2F_EventScript_Item_MaxRevive::
-	finditem ITEM_MAX_REVIVE
-	end
-
 UnionCave_B2F_Text_CooltrainermNickSeen:
 	.string "There are two kinds of people.\p"
 	.string "Those who have style, and those\n"

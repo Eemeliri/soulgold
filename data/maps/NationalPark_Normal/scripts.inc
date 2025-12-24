@@ -126,14 +126,6 @@ NationalPark_Normal_EventScript_Krise::
 	msgbox NationalPark_Normal_Text_LassKrise_After, MSGBOX_AUTOCLOSE
 	end
 
-NationalPark_Normal_EventScript_TM_Dig::
-	finditem ITEM_TM_DIG
-	end
-
-NationalPark_Normal_EventScript_Item_Soothe_Bell::
-	finditem ITEM_SOOTHE_BELL
-	end
-
 NationalPark_Normal_Text_SchoolboyJack1_Seen:
 	.string "The world of POKéMON is deep.\p"
 	.string "There are still lots of things we\n"

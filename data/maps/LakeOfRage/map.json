@@ -146,8 +146,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LakeOfRage_EventScript_Item_Full_Restore",
+      "trainer_sight_or_berry_tree_id": "ITEM_FULL_RESTORE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LAKEOFRAGE_FULL_RESTORE"
     },
     {
@@ -159,8 +159,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LakeOfRage_EventScript_Item_Max_Revive",
+      "trainer_sight_or_berry_tree_id": "ITEM_MAX_REVIVE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LAKEOFRAGE_MAX_REVIVE"
     },
     {
@@ -172,8 +172,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "LakeOfRage_EventScript_Item_Red_Flute",
+      "trainer_sight_or_berry_tree_id": "ITEM_RED_FLUTE",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_LAKEOFRAGE_RED_FLUTE"
     },
     {

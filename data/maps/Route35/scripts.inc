@@ -66,18 +66,6 @@ Route35_EventScript_Sign2::
 	release
 	end
 
-Route35_EventScript_Item_RockTomb::
-	finditem ITEM_TM_ROCK_TOMB
-	end
-
-Route35_EventScript_Item_Nugget::
-	finditem ITEM_BIG_NUGGET
-	end
-
-Route35_EventScript_Item_ParalyzeHeal::
-	finditem ITEM_PARALYZE_HEAL
-	end
-
 Route35_Text_CamperIvanSeen:
 	.string "I've been getting POKéMON data off\n"
 	.string "my radio. I think I'm good.$"

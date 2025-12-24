@@ -68,7 +68,5 @@
       "script": "VioletCity_EventScript_Trigger"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

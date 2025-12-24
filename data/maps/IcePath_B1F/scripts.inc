@@ -36,13 +36,6 @@ IcePath_B1F_Text_PuzzleSkipButton::
 	.string "Would you like to skip this\n"
 	.string "puzzle?$"
 
-IcePath_B1F_EventScript_Item_Iron::
-	finditem ITEM_IRON
-	end
-IcePath_B1F_EventScript_Item_Revive::
-	finditem ITEM_REVIVE
-	end
-
 IcePath_B1F_EventScript_Sign::
 	msgbox IcePath_B1F_Text_Sign, MSGBOX_SIGN
 	end
