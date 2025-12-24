@@ -174,14 +174,17 @@ const void *RandomElementArray(enum RandomTag tag, const void *array, size_t siz
 
 u32 RandomUniformDefault(enum RandomTag tag, u32 lo, u32 hi)
 {
+    assertf(lo <= hi);
     return lo + (((hi - lo + 1) * Random()) >> 16);
 }
 
 u32 RandomUniformExceptDefault(enum RandomTag tag, u32 lo, u32 hi, bool32 (*reject)(u32))
 {
+    assertf(lo <= hi);
     LOOP_RANDOM_START;
     while (TRUE)
     {
+        // TODO: assertf to abort after too many iterations.
         u32 n = lo + (((hi - lo + 1) * LOOP_RANDOM) >> 16);
         if (!reject(n))
             return n;
@@ -191,6 +194,7 @@ u32 RandomUniformExceptDefault(enum RandomTag tag, u32 lo, u32 hi, bool32 (*reje
 
 u32 RandomWeightedArrayDefault(enum RandomTag tag, u32 sum, u32 n, const u8 *weights)
 {
+    assertf(n > 0);
     s32 i, targetSum;
     targetSum = (sum * Random()) >> 16;
     for (i = 0; i < n - 1; i++)
@@ -204,6 +208,7 @@ u32 RandomWeightedArrayDefault(enum RandomTag tag, u32 sum, u32 n, const u8 *wei
 
 const void *RandomElementArrayDefault(enum RandomTag tag, const void *array, size_t size, size_t count)
 {
+    assertf(count > 0);
     return (const u8 *)array + size * RandomUniformDefault(tag, 0, count - 1);
 }
 
@@ -225,22 +230,37 @@ u8 RandomWeightedIndex(u8 *weights, u8 length)
     }
     return 0;
 }
-#define I_MAX 5
-u32 RandomSeededModulo(u32 value, u16 modulo)
+
+// Returns whole word with just the random bit set; don't call with no set bits
+u32 RandomBit(enum RandomTag tag, u32 bits)
 {
-    u32 otId;
-    u32 RAND_MAX;
-    u32 result = 0;
-    u8 i = 0;
+  u32 setBits[32];
+  u32 n = 0;
+  for (u32 mask = 1; mask != 0; mask <<= 1)
+  {
+    if (bits & mask)
+        setBits[n++] = mask;
+  }
 
-    otId = GetTrainerId(gSaveBlock2Ptr->playerTrainerId);
-    RAND_MAX = 0xFFFFFFFF - (0xFFFFFFFF % modulo);
+  if (n == 0)
+    return 0; // This is a little awkward, there are no set bits!
+  else
+    return setBits[RandomUniform(tag, 0, n-1)];
+}
 
-    do
-    {
-        result = ISO_RANDOMIZE1(otId + value + result);
-    }
-    while ((result >= RAND_MAX) && (++i != I_MAX));
+// Returns the index instead; don't call with no set bits
+u32 RandomBitIndex(enum RandomTag tag, u32 bits)
+{
+  u8 setIndexes[32];
+  u32 n = 0;
+  for (u32 i = 0; i < 32; i++)
+  {
+    if (bits & (1 << i))
+      setIndexes[n++] = i;
+  }
 
-    return (result % modulo);
+  if (n == 0)
+    return 0; // This is a little awkward, there are no set bits!
+  else
+    return setIndexes[RandomUniform(tag, 0, n-1)];
 }

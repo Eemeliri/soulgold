@@ -77,5 +77,6 @@ bool32 IsWaldaPhraseEmpty(void);
 void EnterPokeStorage(u8 boxOption);
 u32 CountPartyNonEggMons(void);
 s32 StorePokemonInBox(struct BoxPokemon *src, u8 *boxId, u8 *position); //HnS
+void ChooseBoxMon(void);
 
 #endif // GUARD_POKEMON_STORAGE_SYSTEM_H

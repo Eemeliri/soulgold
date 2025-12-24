@@ -590,3 +590,8 @@ gSpecials::
 	def_special LevelCapToString
 	def_special NameRival
 	def_special GetRandomSpeciesScripted
+	def_special SetAbility
+	def_special ChooseBoxMon
+	def_special CanTeachMoveBoxMon
+	def_special ObjectEventInteractionGetApricornTreeData
+	def_special ObjectEventInteractionPickApricornTree

@@ -48,7 +48,7 @@ Also please credit the makers of Pokémon Heart and Soul because their assets ar
 https://github.com/PokemonHnS-Development/pokemonHnS
 
 ```
-Based off RHH's pokeemerald-expansion 1.13.3 https://github.com/rh-hideout/pokeemerald-expansion/
+Based off RHH's pokeemerald-expansion 1.14.1 https://github.com/rh-hideout/pokeemerald-expansion/
 ```
 
 Please consider [crediting all contributors](CREDITS.md) involved in the project!

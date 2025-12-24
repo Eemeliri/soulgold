@@ -1008,10 +1008,37 @@
 #define ITEM_TIDAL_BELL 838
 #define ITEM_RADIO 839
 
+#define ITEM_CLEFABLITE 840
+#define ITEM_VICTREEBELITE 841
+#define ITEM_STARMINITE 842
+#define ITEM_DRAGONINITE 843
+#define ITEM_MEGANIUMITE 844
+#define ITEM_FERALIGITE 845
+#define ITEM_SKARMORITE 846
+#define ITEM_FROSLASSITE 847
+#define ITEM_EMBOARITE 848
+#define ITEM_EXCADRITE 849
+#define ITEM_SCOLIPITE 850
+#define ITEM_SCRAFTINITE 851
+#define ITEM_EELEKTROSSITE 852
+#define ITEM_CHANDELURITE 853
+#define ITEM_CHESNAUGHTITE 854
+#define ITEM_DELPHOXITE 855
+#define ITEM_GRENINJITE 856
+#define ITEM_PYROARITE 857
+#define ITEM_FLOETTITE 858
+#define ITEM_MALAMARITE 859
+#define ITEM_BARBARACITE 860
+#define ITEM_DRAGALGITE 861
+#define ITEM_HAWLUCHANITE 862
+#define ITEM_ZYGARDITE 863
+#define ITEM_DRAMPANITE 864
+#define ITEM_FALINKSITE 865
+
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT 840
+#define ITEMS_COUNT 866
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
@@ -1071,6 +1098,7 @@
 #define ITEM_USE_PBLOCK_CASE      3
 #define ITEM_USE_BAG_MENU         4 // No exit callback, stays in bag menu
 #define ITEM_USE_PARTY_MENU_MOVES 5
+#define ITEM_USE_BATTLER          6 // Auto-select in Singles but lets you choose from party menu in Doubles
 
 // Item battle script IDs (need to be non-zero)
 #define EFFECT_ITEM_RESTORE_HP              1

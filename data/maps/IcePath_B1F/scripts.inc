@@ -10,7 +10,7 @@ IcePath_B1F_MapScripts::
 	.byte 0
 
 IcePath_B1F_OnTransition: 
-	copyvar VAR_ICE_STEP_COUNT, 1
+	setvar VAR_ICE_STEP_COUNT, 1
 	callnative SetTimeBasedEncounters
 	end
 
