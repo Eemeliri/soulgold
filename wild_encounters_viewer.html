@@ -1,519 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wild Encounters Viewer</title>
     <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f5f5f5;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --border-color: #dddddd;
-            --shadow-color: rgba(0, 0, 0, 0.2);
-            --card-bg: #ffffff;
-            --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+      :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f5f5f5;
+        --text-primary: #333333;
+        --text-secondary: #666666;
+        --border-color: #dddddd;
+        --shadow-color: rgba(0, 0, 0, 0.2);
+        --card-bg: #ffffff;
+        --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
 
-        body.dark-mode {
-            --bg-primary: #1e1e1e;
-            --bg-secondary: #2d2d2d;
-            --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --border-color: #444444;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --card-bg: #2d2d2d;
-            --header-bg: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-        }
+      body.dark-mode {
+        --bg-primary: #1e1e1e;
+        --bg-secondary: #2d2d2d;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --border-color: #444444;
+        --shadow-color: rgba(0, 0, 0, 0.5);
+        --card-bg: #2d2d2d;
+        --header-bg: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: var(--text-primary);
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+        color: var(--text-primary);
+      }
 
-        body.dark-mode {
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
-        }
+      body.dark-mode {
+        background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+      }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
 
-        header {
-            background: var(--bg-primary);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            margin-bottom: 30px;
-        }
+      header {
+        background: var(--bg-primary);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        margin-bottom: 30px;
+      }
 
-        h1 {
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
+      h1 {
+        color: var(--text-primary);
+        margin-bottom: 10px;
+        font-size: 2.5em;
+      }
 
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1em;
+      .subtitle {
+        color: var(--text-secondary);
+        font-size: 1.1em;
+      }
+
+      .controls {
+        background: var(--bg-primary);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        margin-bottom: 30px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .control-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .toggle-group {
+        display: flex;
+        gap: 5px;
+      }
+
+      .toggle-btn {
+        padding: 8px 16px;
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 0.9em;
+        font-weight: 600;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .toggle-btn:hover {
+        border-color: #667eea;
+      }
+
+      .toggle-btn.active {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+      }
+
+      label {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      input[type="text"],
+      select {
+        padding: 10px 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        font-size: 1em;
+        transition: border-color 0.3s;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+      }
+
+      input[type="text"]:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .encounters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 20px;
+      }
+
+      @media (min-width: 1600px) {
+        .encounters-grid {
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        }
+      }
+
+      @media (min-width: 2100px) {
+        .encounters-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+      }
+
+      .encounter-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        box-shadow: 0 10px 30px var(--shadow-color);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .encounter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px var(--shadow-color);
+      }
+
+      .card-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-bottom: 3px solid #764ba2;
+      }
+
+      .card-header.day {
+        background: linear-gradient(135deg, #daa520 0%, #cd853f 100%);
+        border-bottom-color: #b8860b;
+      }
+
+      .card-header.night {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-bottom-color: #764ba2;
+      }
+
+      .card-header h2 {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+      }
+
+      .time-label {
+        font-size: 0.85em;
+        opacity: 0.9;
+        font-style: italic;
+        margin-top: 5px;
+      }
+
+      .map-name {
+        font-size: 0.9em;
+        opacity: 0.9;
+        font-style: italic;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .encounter-type {
+        margin-bottom: 20px;
+      }
+
+      .encounter-type-title {
+        background: var(--bg-secondary);
+        padding: 10px 15px;
+        border-left: 4px solid #667eea;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+        border-radius: 3px;
+      }
+
+      .encounter-rate {
+        font-size: 0.85em;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+        padding: 5px 0;
+      }
+
+      .pokemon-list {
+        list-style: none;
+      }
+
+      .pokemon-item {
+        background: var(--bg-secondary);
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        border-left: 3px solid #764ba2;
+        font-size: 0.9em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .pokemon-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        background-size: 32px 64px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+      }
+
+      .pokemon-name {
+        font-weight: 600;
+        color: var(--text-primary);
+        flex: 1;
+      }
+
+      .pokemon-level {
+        background: #667eea;
+        color: white;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        white-space: nowrap;
+        margin-left: 10px;
+      }
+
+      .fishing-groups {
+        background: var(--bg-secondary);
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-size: 0.85em;
+      }
+
+      .group-label {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-top: 5px;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 10px;
+        color: var(--text-secondary);
+        font-size: 1.1em;
+      }
+
+      .header-icon {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        background-size: 64px 128px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode: nearest-neighbor;
+        vertical-align: middle;
+      }
+
+      .night-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        z-index: 1000;
+        box-shadow: 0 2px 8px var(--shadow-color);
+      }
+
+      .night-mode-toggle:hover {
+        border-color: #667eea;
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .encounters-grid {
+          grid-template-columns: 1fr;
         }
 
         .controls {
-            background: var(--bg-primary);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            margin-bottom: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
+          flex-direction: column;
+          align-items: stretch;
         }
 
         .control-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .toggle-group {
-            display: flex;
-            gap: 5px;
-        }
-
-        .toggle-btn {
-            padding: 8px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
-            font-size: 0.9em;
-            font-weight: 600;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .toggle-btn:hover {
-            border-color: #667eea;
-        }
-
-        .toggle-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        label {
-            font-weight: 600;
-            color: var(--text-primary);
+          flex-direction: column;
         }
 
         input[type="text"],
         select {
-            padding: 10px 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
-            font-size: 1em;
-            transition: border-color 0.3s;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
+          width: 100%;
         }
 
-        input[type="text"]:focus,
-        select:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        h1 {
+          font-size: 1.8em;
         }
+      }
 
-        .encounters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 20px;
-        }
+      .night-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        z-index: 1000;
+      }
 
-        .encounter-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px var(--shadow-color);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+      .night-mode-toggle:hover {
+        border-color: #667eea;
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+      }
 
-        .encounter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px var(--shadow-color);
-        }
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: white;
+        font-size: 1.2em;
+      }
 
-        .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-bottom: 3px solid #764ba2;
-        }
-
-        .card-header.day {
-            background: linear-gradient(135deg, #daa520 0%, #cd853f 100%);
-            border-bottom-color: #b8860b;
-        }
-
-        .card-header.night {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-bottom-color: #764ba2;
-        }
-
-        .card-header h2 {
-            font-size: 1.5em;
-            margin-bottom: 5px;
-        }
-
-        .time-label {
-            font-size: 0.85em;
-            opacity: 0.9;
-            font-style: italic;
-            margin-top: 5px;
-        }
-
-        .map-name {
-            font-size: 0.9em;
-            opacity: 0.9;
-            font-style: italic;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .encounter-type {
-            margin-bottom: 20px;
-        }
-
-        .encounter-type-title {
-            background: var(--bg-secondary);
-            padding: 10px 15px;
-            border-left: 4px solid #667eea;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            border-radius: 3px;
-        }
-
-        .encounter-rate {
-            font-size: 0.85em;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-            padding: 5px 0;
-        }
-
-        .pokemon-list {
-            list-style: none;
-        }
-
-        .pokemon-item {
-            background: var(--bg-secondary);
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            border-left: 3px solid #764ba2;
-            font-size: 0.9em;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pokemon-icon {
-            width: 32px;
-            height: 32px;
-            flex-shrink: 0;
-            background-size: 32px 64px;
-            background-position: 0 0;
-            background-repeat: no-repeat;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;
-        }
-
-        .pokemon-name {
-            font-weight: 600;
-            color: var(--text-primary);
-            flex: 1;
-        }
-
-        .pokemon-level {
-            background: #667eea;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            white-space: nowrap;
-            margin-left: 10px;
-        }
-
-        .fishing-groups {
-            background: var(--bg-secondary);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 0.85em;
-        }
-
-        .group-label {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 5px;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            color: var(--text-secondary);
-            font-size: 1.1em;
-        }
-
-
-
-        .header-icon {
-            display: inline-block;
-            width: 64px;
-            height: 64px;
-            background-size: 64px 128px;
-            background-position: 0 0;
-            background-repeat: no-repeat;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: nearest-neighbor;
-            vertical-align: middle;
-        }
-
-        .night-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            z-index: 1000;
-            box-shadow: 0 2px 8px var(--shadow-color);
-        }
-
-        .night-mode-toggle:hover {
-            border-color: #667eea;
-            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
-        }
-
-        @media (max-width: 768px) {
-            .encounters-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .control-group {
-                flex-direction: column;
-            }
-
-            input[type="text"],
-            select {
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 1.8em;
-            }
-        }
-
-        .night-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            border: 2px solid var(--border-color);
-            border-radius: 5px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .night-mode-toggle:hover {
-            border-color: #667eea;
-            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: white;
-            font-size: 1.2em;
-        }
-
-        .error {
-            background: #ff6b6b;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+      .error {
+        background: #ff6b6b;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <button class="night-mode-toggle" id="nightModeToggle">🌙 Dark Mode</button>
     <div class="container">
-        <header>
-            <h1><div class="header-icon" id="headerPikachuIcon" data-icon-path="./graphics/pokemon/celebi/anim_front.png"></div> Wild Encounters Viewer</h1>
-            <p class="subtitle">Explore Pokémon wild encounters by location</p>
-        </header>
+      <header>
+        <h1>
+          <div
+            class="header-icon"
+            id="headerPikachuIcon"
+            data-icon-path="./graphics/pokemon/celebi/anim_front.png"
+          ></div>
+          Wild Encounters Viewer
+        </h1>
+        <p class="subtitle">Explore Pokémon wild encounters by location</p>
+      </header>
 
-        <div class="controls">
-            <div class="control-group">
-                <label for="searchInput">🔍 Search by Map/Pokémon:</label>
-                <input type="text" id="searchInput" placeholder="e.g., Route 101, Pikachu...">
-            </div>
-            <div class="control-group">
-                <label>📋 Filter by Type:</label>
-                <div class="toggle-group">
-                    <button class="toggle-btn active" data-type="">All Types</button>
-                    <button class="toggle-btn" data-type="land">Land</button>
-                    <button class="toggle-btn" data-type="water">Water</button>
-                    <button class="toggle-btn" data-type="fishing">Fishing</button>
-                    <button class="toggle-btn" data-type="rock_smash">Rock Smash</button>
-                </div>
-            </div>
-            <div class="control-group">
-                <label>🌗 Time of Day:</label>
-                <div class="toggle-group">
-                    <button class="toggle-btn active" data-time="all">All</button>
-                    <button class="toggle-btn" data-time="day">Day</button>
-                    <button class="toggle-btn" data-time="night">Night</button>
-                </div>
-            </div>
+      <div class="controls">
+        <div class="control-group">
+          <label for="searchInput">🔍 Search by Map/Pokémon:</label>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="e.g., Route 101, Pikachu..."
+          />
         </div>
+        <div class="control-group">
+          <label>📋 Filter by Type:</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-type="">All Types</button>
+            <button class="toggle-btn" data-type="land">Land</button>
+            <button class="toggle-btn" data-type="water">Water</button>
+            <button class="toggle-btn" data-type="fishing">Fishing</button>
+            <button class="toggle-btn" data-type="rock_smash">
+              Rock Smash
+            </button>
+          </div>
+        </div>
+        <div class="control-group">
+          <label>🌗 Time of Day:</label>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-time="all">All</button>
+            <button class="toggle-btn" data-time="day">Day</button>
+            <button class="toggle-btn" data-time="night">Night</button>
+          </div>
+        </div>
+      </div>
 
-        <div id="errorContainer"></div>
-        <div id="loading" class="loading">Loading wild encounters data...</div>
-        <div class="encounters-grid" id="encountersContainer"></div>
+      <div id="errorContainer"></div>
+      <div id="loading" class="loading">Loading wild encounters data...</div>
+      <div class="encounters-grid" id="encountersContainer"></div>
     </div>
 
     <script>
-        let allEncounters = [];
-        const iconCache = new Map();
-        let showAllEncounters = false;
-        let displayLimit = 9;
+      let allEncounters = [];
+      const iconCache = new Map();
+      let showAllEncounters = false;
+      let displayLimit = 9;
 
-        // Function to convert image background color to transparency
-        function getTransparentIcon(imagePath, frameSize = 32) {
-            return new Promise((resolve) => {
-                const cacheKey = `${imagePath}_${frameSize}`;
-                if (iconCache.has(cacheKey)) {
-                    resolve(iconCache.get(cacheKey));
-                    return;
-                }
+      function calculateDisplayLimit() {
+        const width = window.innerWidth;
+        const containerWidth = Math.min(width - 40, 1400);
+        const gap = 20;
 
-                const img = new Image();
-                img.crossOrigin = 'anonymous';
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = frameSize;
-                    canvas.height = frameSize;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, frameSize, frameSize);
-                    
-                    const imageData = ctx.getImageData(0, 0, frameSize, frameSize);
-                    const data = imageData.data;
-                    
-                    // Get the color of the first pixel as the background color
-                    const bgColor = {
-                        r: data[0],
-                        g: data[1],
-                        b: data[2]
-                    };
-                    
-                    // Replace all pixels matching the background color with transparent
-                    for (let i = 0; i < data.length; i += 4) {
-                        const r = data[i];
-                        const g = data[i + 1];
-                        const b = data[i + 2];
-                        
-                        if (r === bgColor.r && g === bgColor.g && b === bgColor.b) {
-                            data[i + 3] = 0; // Set alpha to 0 (transparent)
-                        }
-                    }
-                    
-                    ctx.putImageData(imageData, 0, 0);
-                    const dataUrl = canvas.toDataURL('image/png');
-                    iconCache.set(cacheKey, dataUrl);
-                    resolve(dataUrl);
-                };
-                img.onerror = () => {
-                    // If the original icon fails to load, try loading the question mark fallback
-                    if (imagePath !== './graphics/pokemon/question_mark/icon.png') {
-                        getTransparentIcon('./graphics/pokemon/question_mark/icon.png', frameSize).then(resolve);
-                    } else {
-                        // If even the fallback fails, resolve with empty string
-                        resolve('');
-                    }
-                };
-                img.src = imagePath;
-            });
+        let itemsPerRow;
+        if (width >= 2100) {
+          itemsPerRow = Math.floor(containerWidth / (300 + gap));
+        } else if (width >= 1600) {
+          itemsPerRow = Math.floor(containerWidth / (350 + gap));
+        } else {
+          itemsPerRow = Math.floor(containerWidth / (400 + gap));
         }
 
-        async function loadData() {
-            try {
-                // Try to fetch from server first
-                let data;
-                try {
-                    const response = await fetch('src/data/wild_encounters.json');
-                    if (response.ok) {
-                        data = await response.json();
-                    } else {
-                        throw new Error('Server fetch failed');
-                    }
-                } catch (fetchError) {
-                    // If server fetch fails, try loading from current directory
-                    const response = await fetch('./wild_encounters.json');
-                    if (!response.ok) throw new Error('Failed to load wild_encounters.json');
-                    data = await response.json();
-                }
-                
-                // Flatten encounters from all groups
-                allEncounters = [];
-                data.wild_encounter_groups.forEach(group => {
-                    if (group.encounters) {
-                        allEncounters.push(...group.encounters);
-                    }
-                });
+        itemsPerRow = Math.max(1, itemsPerRow);
 
-                document.getElementById('loading').style.display = 'none';
-                renderEncounters();
-                setupEventListeners();
-            } catch (error) {
-                document.getElementById('loading').innerHTML = '';
-                const errorContainer = document.getElementById('errorContainer');
-                errorContainer.innerHTML = `
+        return itemsPerRow * 3;
+      }
+
+      // Function to convert image background color to transparency
+      function getTransparentIcon(imagePath, frameSize = 32) {
+        return new Promise((resolve) => {
+          const cacheKey = `${imagePath}_${frameSize}`;
+          if (iconCache.has(cacheKey)) {
+            resolve(iconCache.get(cacheKey));
+            return;
+          }
+
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = frameSize;
+            canvas.height = frameSize;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, frameSize, frameSize);
+
+            const imageData = ctx.getImageData(0, 0, frameSize, frameSize);
+            const data = imageData.data;
+
+            // Get the color of the first pixel as the background color
+            const bgColor = {
+              r: data[0],
+              g: data[1],
+              b: data[2],
+            };
+
+            // Replace all pixels matching the background color with transparent
+            for (let i = 0; i < data.length; i += 4) {
+              const r = data[i];
+              const g = data[i + 1];
+              const b = data[i + 2];
+
+              if (r === bgColor.r && g === bgColor.g && b === bgColor.b) {
+                data[i + 3] = 0; // Set alpha to 0 (transparent)
+              }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            const dataUrl = canvas.toDataURL("image/png");
+            iconCache.set(cacheKey, dataUrl);
+            resolve(dataUrl);
+          };
+          img.onerror = () => {
+            // If the original icon fails to load, try loading the question mark fallback
+            if (imagePath !== "./graphics/pokemon/question_mark/icon.png") {
+              getTransparentIcon(
+                "./graphics/pokemon/question_mark/icon.png",
+                frameSize
+              ).then(resolve);
+            } else {
+              // If even the fallback fails, resolve with empty string
+              resolve("");
+            }
+          };
+          img.src = imagePath;
+        });
+      }
+
+      async function loadData() {
+        try {
+          // Try to fetch from server first
+          let data;
+          try {
+            const response = await fetch("src/data/wild_encounters.json");
+            if (response.ok) {
+              data = await response.json();
+            } else {
+              throw new Error("Server fetch failed");
+            }
+          } catch (fetchError) {
+            // If server fetch fails, try loading from current directory
+            const response = await fetch("./wild_encounters.json");
+            if (!response.ok)
+              throw new Error("Failed to load wild_encounters.json");
+            data = await response.json();
+          }
+
+          // Flatten encounters from all groups
+          allEncounters = [];
+          data.wild_encounter_groups.forEach((group) => {
+            if (group.encounters) {
+              allEncounters.push(...group.encounters);
+            }
+          });
+
+          document.getElementById("loading").style.display = "none";
+          renderEncounters();
+          setupEventListeners();
+        } catch (error) {
+          document.getElementById("loading").innerHTML = "";
+          const errorContainer = document.getElementById("errorContainer");
+          errorContainer.innerHTML = `
                     <div class="error">
                         <h3>⚠️ Error loading data</h3>
                         <p>To fix this, run the HTML file from a web server.</p>
@@ -529,211 +575,409 @@
                         <p style="margin-top: 10px; font-size: 0.9em;">Technical: ${error.message}</p>
                     </div>
                 `;
-                console.error('Error:', error);
-            }
+          console.error("Error:", error);
+        }
+      }
+
+      function formatMapName(rawMapName) {
+        // Format map name: "MAP_ROUTE101" -> "Route 101", "MAP_DARK_CAVE" -> "Dark Cave"
+        let formatted = rawMapName.replace("MAP_", "").replace(/_/g, " ");
+        // Add space before numbers in patterns like ROUTE101 -> ROUTE 101
+        formatted = formatted.replace(/([A-Z])(\d+)/g, "$1 $2");
+        // Capitalize properly: convert to title case
+        formatted = formatted
+          .split(" ")
+          .map(
+            (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          )
+          .join(" ");
+        return formatted;
+      }
+
+      function renderEncounters() {
+        const searchTerm = document
+          .getElementById("searchInput")
+          .value.trim()
+          .toLowerCase();
+
+        // If there's a search term, reset display limit to show all matching results
+        if (searchTerm) {
+          displayLimit = Infinity;
         }
 
+        // Maps to filter out (not in the game)
+        const blockedMaps = new Set([
+          "MAP_LITTLEROOT_TOWN",
+          "MAP_OLDALE_TOWN",
+          "MAP_DEWFORD_TOWN",
+          "MAP_LAVARIDGE_TOWN",
+          "MAP_FALLARBOR_TOWN",
+          "MAP_VERDANTURF_TOWN",
+          "MAP_PACIFIDLOG_TOWN",
+          "MAP_PETALBURG_CITY",
+          "MAP_SLATEPORT_CITY",
+          "MAP_MAUVILLE_CITY",
+          "MAP_RUSTBORO_CITY",
+          "MAP_FORTREE_CITY",
+          "MAP_LILYCOVE_CITY",
+          "MAP_MOSSDEEP_CITY",
+          "MAP_SOOTOPOLIS_CITY",
+          "MAP_EVER_GRANDE_CITY",
+          "MAP_ROUTE_113",
+          "MAP_ROUTE_114",
+          "MAP_ROUTE_115",
+          "MAP_ROUTE_116",
+          "MAP_ROUTE_117",
+          "MAP_ROUTE_118",
+          "MAP_ROUTE_119",
+          "MAP_ROUTE_120",
+          "MAP_ROUTE_121",
+          "MAP_ROUTE_122",
+          "MAP_ROUTE_123",
+          "MAP_ROUTE_124",
+          "MAP_ROUTE_125",
+          "MAP_ROUTE_126",
+          "MAP_ROUTE_127",
+          "MAP_ROUTE_128",
+          "MAP_ROUTE_129",
+          "MAP_ROUTE_130",
+          "MAP_ROUTE_131",
+          "MAP_ROUTE_132",
+          "MAP_ROUTE_133",
+          "MAP_ROUTE_134",
+          "MAP_UNDERWATER_124",
+          "MAP_UNDERWATER_126",
+          "MAP_UNDERWATER_127",
+          "MAP_UNDERWATER_128",
+          "MAP_UNDERWATER_SOOTOPOLIS",
+          "MAP_GRANITE_CAVE",
+          "MAP_MT_CHIMNEY",
+          "MAP_BATTLE_FRONTIER",
+          "MAP_PETALBURG_WOODS",
+          "MAP_RUSTURF_TUNNEL",
+          "MAP_ABANDONED_SHIP",
+          "MAP_NEW_MAUVILLE",
+          "MAP_METEOR_FALLS",
+          "MAP_METEOR_FALLS2",
+          "MAP_MT_PYRE",
+          "MAP_AQUA_HIDEOUT_OLD",
+          "MAP_SHOAL_CAVE",
+          "MAP_SEAFLOOR_CAVERN",
+          "MAP_UNDERWATER_SEAFLOOR_CAVERN",
+          "MAP_MIRAGE_ISLAND",
+          "MAP_CAVE_OF_ORIGIN",
+          "MAP_SOUTHERN_ISLAND",
+          "MAP_FIERY_PATH",
+          "MAP_FIERY_PATH2",
+          "MAP_JAGGED_PASS",
+          "MAP_JAGGED_PASS2",
+          "MAP_SEALED_CHAMBER",
+          "MAP_UNDERWATER_SEALED_CHAMBER",
+          "MAP_SCORCHED_SLAB",
+          "MAP_ISLAND_CAVE",
+          "MAP_DESERT_RUINS",
+          "MAP_ANCIENT_TOMB",
+          "MAP_INSIDE_OF_TRUCK",
+          "MAP_SKY_PILLAR",
+          "MAP_SECRET_BASE",
+          "MAP_DYNAMIC",
+          "MAP_GRANITE_CAVE_1F",
+          "MAP_GRANITE_CAVE_B1F",
+          "MAP_GRANITE_CAVE_B2F",
+          "MAP_MT_PYRE_1F",
+          "MAP_MT_PYRE_2F",
+          "MAP_MT_PYRE_3F",
+          "MAP_MT_PYRE_4F",
+          "MAP_SHOAL_CAVE_LOWER",
+          "MAP_SHOAL_CAVE_UPPER",
+          "MAP_SEAFLOOR_CAVERN_B1F",
+          "MAP_SEAFLOOR_CAVERN_B2F",
+          "MAP_VICTORY_ROAD_1F",
+          "MAP_VICTORY_ROAD_B1F",
+          "MAP_VICTORY_ROAD_B2F",
+          "MAP_ABANDONED_SHIP_1F",
+          "MAP_ABANDONED_SHIP_B1F",
+          "MAP_ABANDONED_SHIP_B2F",
+          "MAP_ABANDONED_SHIP_ROOMS_1F",
+          "MAP_ABANDONED_SHIP_ROOMS_B1F",
+          "MAP_METEOR_FALLS_1F",
+          "MAP_METEOR_FALLS_B1F",
+          "MAP_METEOR_FALLS_B2F",
+          "MAP_NEW_MAUVILLE_INSIDE",
+          "MAP_MT_PYRE_5F",
+          "MAP_MT_PYRE_6F",
+          "MAP_MT_PYRE_EXTERIOR",
+          "MAP_METEOR_FALLS_B1F_2R",
+          "MAP_MT_PYRE_SUMMIT",
+          "MAP_GRANITE_CAVE_STEVENS_ROOM",
+          "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS",
+          "MAP_SEAFLOOR_CAVERN_ROOM1",
+          "MAP_SEAFLOOR_CAVERN_ROOM2",
+          "MAP_SEAFLOOR_CAVERN_ROOM3",
+          "MAP_SEAFLOOR_CAVERN_ROOM4",
+          "MAP_SEAFLOOR_CAVERN_ROOM5",
+          "MAP_SEAFLOOR_CAVERN_ROOM6",
+          "MAP_SEAFLOOR_CAVERN_ROOM7",
+          "MAP_SEAFLOOR_CAVERN_ROOM8",
+          "MAP_SEAFLOOR_CAVERN_ENTRANCE",
+          "MAP_CAVE_OF_ORIGIN_ENTRANCE",
+          "MAP_CAVE_OF_ORIGIN",
+          "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1",
+          "MAP_CAVE_OF_ORIGIN_1F",
+          "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3",
+          "MAP_NEW_MAUVILLE_ENTRANCE",
+          "MAP_METEOR_FALLS_1F_1R",
+          "MAP_METEOR_FALLS_1F_2R",
+          "MAP_METEOR_FALLS_B1F_1R",
+          "MAP_SHOAL_CAVE_LOW_TIDE_STAIRS_ROOM",
+          "MAP_SHOAL_CAVE_HIGH_TIDE_STAIRS_ROOM",
+          "MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM",
+          "MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM",
+        ]);
 
+        // Get all active type filters (multi-select)
+        const activeTypeButtons = document.querySelectorAll(
+          ".toggle-btn[data-type].active"
+        );
+        let typeFilters = Array.from(activeTypeButtons)
+          .map((btn) => btn.getAttribute("data-type"))
+          .filter((t) => t !== "");
 
-        function formatMapName(rawMapName) {
-            // Format map name: "MAP_ROUTE101" -> "Route 101", "MAP_DARK_CAVE" -> "Dark Cave"
-            let formatted = rawMapName.replace('MAP_', '').replace(/_/g, ' ');
-            // Add space before numbers in patterns like ROUTE101 -> ROUTE 101
-            formatted = formatted.replace(/([A-Z])(\d+)/g, '$1 $2');
-            // Capitalize properly: convert to title case
-            formatted = formatted.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
-            return formatted;
-        }
+        const timeOfDayFilter =
+          document
+            .querySelector(".toggle-btn[data-time].active")
+            ?.getAttribute("data-time") || "all";
 
-        function renderEncounters() {
-            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
-            
-            // If there's a search term, reset display limit to show all matching results
-            if (searchTerm) {
-                displayLimit = Infinity;
-            }
-            
-            // Maps to filter out (not in the game)
-            const blockedMaps = new Set([
-                'MAP_LITTLEROOT_TOWN', 'MAP_OLDALE_TOWN', 'MAP_DEWFORD_TOWN', 'MAP_LAVARIDGE_TOWN',
-                'MAP_FALLARBOR_TOWN', 'MAP_VERDANTURF_TOWN', 'MAP_PACIFIDLOG_TOWN', 'MAP_PETALBURG_CITY',
-                'MAP_SLATEPORT_CITY', 'MAP_MAUVILLE_CITY', 'MAP_RUSTBORO_CITY', 'MAP_FORTREE_CITY',
-                'MAP_LILYCOVE_CITY', 'MAP_MOSSDEEP_CITY', 'MAP_SOOTOPOLIS_CITY', 'MAP_EVER_GRANDE_CITY',
-                'MAP_ROUTE_113', 'MAP_ROUTE_114', 'MAP_ROUTE_115', 'MAP_ROUTE_116', 'MAP_ROUTE_117',
-                'MAP_ROUTE_118', 'MAP_ROUTE_119', 'MAP_ROUTE_120', 'MAP_ROUTE_121', 'MAP_ROUTE_122',
-                'MAP_ROUTE_123', 'MAP_ROUTE_124', 'MAP_ROUTE_125', 'MAP_ROUTE_126', 'MAP_ROUTE_127',
-                'MAP_ROUTE_128', 'MAP_ROUTE_129', 'MAP_ROUTE_130', 'MAP_ROUTE_131', 'MAP_ROUTE_132',
-                'MAP_ROUTE_133', 'MAP_ROUTE_134', 'MAP_UNDERWATER_124', 'MAP_UNDERWATER_126',
-                'MAP_UNDERWATER_127', 'MAP_UNDERWATER_128', 'MAP_UNDERWATER_SOOTOPOLIS', 'MAP_GRANITE_CAVE',
-                'MAP_MT_CHIMNEY', 'MAP_BATTLE_FRONTIER', 'MAP_PETALBURG_WOODS', 'MAP_RUSTURF_TUNNEL',
-                'MAP_ABANDONED_SHIP', 'MAP_NEW_MAUVILLE', 'MAP_METEOR_FALLS', 'MAP_METEOR_FALLS2',
-                'MAP_MT_PYRE', 'MAP_AQUA_HIDEOUT_OLD', 'MAP_SHOAL_CAVE', 'MAP_SEAFLOOR_CAVERN',
-                'MAP_UNDERWATER_SEAFLOOR_CAVERN', 'MAP_MIRAGE_ISLAND', 'MAP_CAVE_OF_ORIGIN',
-                'MAP_SOUTHERN_ISLAND', 'MAP_FIERY_PATH', 'MAP_FIERY_PATH2', 'MAP_JAGGED_PASS',
-                'MAP_JAGGED_PASS2', 'MAP_SEALED_CHAMBER', 'MAP_UNDERWATER_SEALED_CHAMBER',
-                'MAP_SCORCHED_SLAB', 'MAP_ISLAND_CAVE', 'MAP_DESERT_RUINS', 'MAP_ANCIENT_TOMB',
-                'MAP_INSIDE_OF_TRUCK', 'MAP_SKY_PILLAR', 'MAP_SECRET_BASE', 'MAP_DYNAMIC',
-                "MAP_GRANITE_CAVE_1F", "MAP_GRANITE_CAVE_B1F", "MAP_GRANITE_CAVE_B2F",
-                "MAP_MT_PYRE_1F", "MAP_MT_PYRE_2F", "MAP_MT_PYRE_3F", "MAP_MT_PYRE_4F",
-                "MAP_SHOAL_CAVE_LOWER", "MAP_SHOAL_CAVE_UPPER",
-                "MAP_SEAFLOOR_CAVERN_B1F", "MAP_SEAFLOOR_CAVERN_B2F",
-                "MAP_VICTORY_ROAD_1F", "MAP_VICTORY_ROAD_B1F", "MAP_VICTORY_ROAD_B2F",
-                "MAP_ABANDONED_SHIP_1F", "MAP_ABANDONED_SHIP_B1F", "MAP_ABANDONED_SHIP_B2F",
-                "MAP_ABANDONED_SHIP_ROOMS_1F", "MAP_ABANDONED_SHIP_ROOMS_B1F",
-                "MAP_METEOR_FALLS_1F", "MAP_METEOR_FALLS_B1F", "MAP_METEOR_FALLS_B2F",
-                "MAP_NEW_MAUVILLE_INSIDE", "MAP_MT_PYRE_5F", "MAP_MT_PYRE_6F", "MAP_MT_PYRE_EXTERIOR",
-                "MAP_METEOR_FALLS_B1F_2R", "MAP_MT_PYRE_SUMMIT", "MAP_GRANITE_CAVE_STEVENS_ROOM",
-                "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS", "MAP_SEAFLOOR_CAVERN_ROOM1",
-                "MAP_SEAFLOOR_CAVERN_ROOM2", "MAP_SEAFLOOR_CAVERN_ROOM3", "MAP_SEAFLOOR_CAVERN_ROOM4",
-                "MAP_SEAFLOOR_CAVERN_ROOM5", "MAP_SEAFLOOR_CAVERN_ROOM6", "MAP_SEAFLOOR_CAVERN_ROOM7",
-                "MAP_SEAFLOOR_CAVERN_ROOM8", "MAP_SEAFLOOR_CAVERN_ENTRANCE", "MAP_CAVE_OF_ORIGIN_ENTRANCE",
-                "MAP_CAVE_OF_ORIGIN", "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1", "MAP_CAVE_OF_ORIGIN_1F",
-                "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3", "MAP_NEW_MAUVILLE_ENTRANCE", "MAP_METEOR_FALLS_1F_1R",
-                "MAP_METEOR_FALLS_1F_2R", "MAP_METEOR_FALLS_B1F_1R", "MAP_SHOAL_CAVE_LOW_TIDE_STAIRS_ROOM",
-                "MAP_SHOAL_CAVE_HIGH_TIDE_STAIRS_ROOM", "MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM", "MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM",
-            ]);
-            
-            // Get all active type filters (multi-select)
-            const activeTypeButtons = document.querySelectorAll('.toggle-btn[data-type].active');
-            let typeFilters = Array.from(activeTypeButtons).map(btn => btn.getAttribute('data-type')).filter(t => t !== '');
-            
-            const timeOfDayFilter = document.querySelector('.toggle-btn[data-time].active')?.getAttribute('data-time') || 'all';
+        const filtered = allEncounters.filter((enc) => {
+          // Filter out blocked maps
+          if (blockedMaps.has(enc.map)) {
+            return false;
+          }
 
-            const filtered = allEncounters.filter(enc => {
-                // Filter out blocked maps
-                if (blockedMaps.has(enc.map)) {
-                    return false;
-                }
-                
-                // Format the map name to match the human-readable display format
-                const formattedMapName = formatMapName(enc && enc.map ? String(enc.map) : '').toLowerCase();
-                const mapLower = enc && enc.map ? String(enc.map).toLowerCase() : '';
-                
-                // Filter out 3-digit routes (e.g., Route 101, 102, etc.)
-                const threeDigitRouteRegex = /route\s*\d{3}($|\s)/i;
-                if (threeDigitRouteRegex.test(formattedMapName)) {
-                    return false;
-                }
-                
-                // Allow searching by either the formatted name (e.g., "Route 101") or raw name (e.g., "ROUTE101")
-                const mapMatch = !searchTerm || formattedMapName.includes(searchTerm) || mapLower.includes(searchTerm);
-                
-                // Search by Pokémon name
-                let pokemonMatch = false;
-                if (searchTerm) {
-                    const allMons = [
-                        ...(enc.land_mons?.mons || []),
-                        ...(enc.water_mons?.mons || []),
-                        ...(enc.fishing_mons?.mons || []),
-                        ...(enc.rock_smash_mons?.mons || [])
-                    ];
-                    pokemonMatch = allMons.some(mon => {
-                        const species = mon.species.replace('SPECIES_', '').toLowerCase();
-                        return species.includes(searchTerm);
-                    });
-                } else {
-                    pokemonMatch = true; // If no search term, match all (when showing all)
-                }
+          // Format the map name to match the human-readable display format
+          const formattedMapName = formatMapName(
+            enc && enc.map ? String(enc.map) : ""
+          ).toLowerCase();
+          const mapLower = enc && enc.map ? String(enc.map).toLowerCase() : "";
 
-                let typeMatch = true;
-                // If no specific types are selected, show all (multi-select logic)
-                if (typeFilters.length > 0) {
-                    typeMatch = false;
-                    if (typeFilters.includes('land') && enc && enc.land_mons && enc.land_mons.mons && enc.land_mons.mons.length > 0) typeMatch = true;
-                    if (typeFilters.includes('water') && enc && enc.water_mons && enc.water_mons.mons && enc.water_mons.mons.length > 0) typeMatch = true;
-                    if (typeFilters.includes('fishing') && enc && enc.fishing_mons && enc.fishing_mons.mons && enc.fishing_mons.mons.length > 0) typeMatch = true;
-                    if (typeFilters.includes('rock_smash') && enc && enc.rock_smash_mons && enc.rock_smash_mons.mons && enc.rock_smash_mons.mons.length > 0) typeMatch = true;
-                }
+          // Filter out 3-digit routes (e.g., Route 101, 102, etc.)
+          const threeDigitRouteRegex = /route\s*\d{3}($|\s)/i;
+          if (threeDigitRouteRegex.test(formattedMapName)) {
+            return false;
+          }
 
-                // Time-of-day filtering: entries that explicitly contain "night" in their base_label
-                // are treated as night-only. When 'day' is selected, exclude explicit night entries.
-                let timeMatch = true;
-                const baseLbl = (enc && enc.base_label ? String(enc.base_label) : '').toLowerCase();
-                if (timeOfDayFilter === 'day') {
-                    timeMatch = !baseLbl.includes('night');
-                } else if (timeOfDayFilter === 'night') {
-                    timeMatch = baseLbl.includes('night');
-                }
+          // Allow searching by either the formatted name (e.g., "Route 101") or raw name (e.g., "ROUTE101")
+          const mapMatch =
+            !searchTerm ||
+            formattedMapName.includes(searchTerm) ||
+            mapLower.includes(searchTerm);
 
-                return (mapMatch || pokemonMatch) && typeMatch && timeMatch;
+          // Search by Pokémon name
+          let pokemonMatch = false;
+          if (searchTerm) {
+            const allMons = [
+              ...(enc.land_mons?.mons || []),
+              ...(enc.water_mons?.mons || []),
+              ...(enc.fishing_mons?.mons || []),
+              ...(enc.rock_smash_mons?.mons || []),
+            ];
+            pokemonMatch = allMons.some((mon) => {
+              const species = mon.species.replace("SPECIES_", "").toLowerCase();
+              return species.includes(searchTerm);
             });
+          } else {
+            pokemonMatch = true; // If no search term, match all (when showing all)
+          }
 
-            const container = document.getElementById('encountersContainer');
+          let typeMatch = true;
+          // If no specific types are selected, show all (multi-select logic)
+          if (typeFilters.length > 0) {
+            typeMatch = false;
+            if (
+              typeFilters.includes("land") &&
+              enc &&
+              enc.land_mons &&
+              enc.land_mons.mons &&
+              enc.land_mons.mons.length > 0
+            )
+              typeMatch = true;
+            if (
+              typeFilters.includes("water") &&
+              enc &&
+              enc.water_mons &&
+              enc.water_mons.mons &&
+              enc.water_mons.mons.length > 0
+            )
+              typeMatch = true;
+            if (
+              typeFilters.includes("fishing") &&
+              enc &&
+              enc.fishing_mons &&
+              enc.fishing_mons.mons &&
+              enc.fishing_mons.mons.length > 0
+            )
+              typeMatch = true;
+            if (
+              typeFilters.includes("rock_smash") &&
+              enc &&
+              enc.rock_smash_mons &&
+              enc.rock_smash_mons.mons &&
+              enc.rock_smash_mons.mons.length > 0
+            )
+              typeMatch = true;
+          }
 
-            if (filtered.length === 0) {
-                container.innerHTML = '<div class="no-results">No encounters found matching your search criteria</div>';
-                return;
-            }
+          // Time-of-day filtering: entries that explicitly contain "night" in their base_label
+          // are treated as night-only. When 'day' is selected, exclude explicit night entries.
+          let timeMatch = true;
+          const baseLbl = (
+            enc && enc.base_label ? String(enc.base_label) : ""
+          ).toLowerCase();
+          if (timeOfDayFilter === "day") {
+            timeMatch = !baseLbl.includes("night");
+          } else if (timeOfDayFilter === "night") {
+            timeMatch = baseLbl.includes("night");
+          }
 
-            // Limit the displayed encounters unless searching or showing all
-            const displayedEncounters = searchTerm ? filtered : filtered.slice(0, displayLimit);
-            const hasMore = !searchTerm && filtered.length > displayLimit;
-            
-            const encountersHtml = displayedEncounters.map(enc => createEncounterCard(enc, typeFilters)).join('');
-            
-            let showMoreBtn = '';
-            if (hasMore) {
-                showMoreBtn = `
+          return (mapMatch || pokemonMatch) && typeMatch && timeMatch;
+        });
+
+        const container = document.getElementById("encountersContainer");
+
+        if (filtered.length === 0) {
+          container.innerHTML =
+            '<div class="no-results">No encounters found matching your search criteria</div>';
+          return;
+        }
+
+        // Limit the displayed encounters unless searching or showing all
+        const displayedEncounters = searchTerm
+          ? filtered
+          : filtered.slice(0, displayLimit);
+        const hasMore = !searchTerm && filtered.length > displayLimit;
+
+        const encountersHtml = displayedEncounters
+          .map((enc) => createEncounterCard(enc, typeFilters))
+          .join("");
+
+        let showMoreBtn = "";
+        if (hasMore) {
+          showMoreBtn = `
                     <div style="grid-column: 1 / -1; text-align: center; padding: 20px; display: flex; gap: 10px; justify-content: center;">
-                        <button id="showMoreBtn" style="padding: 12px 32px; background: #667eea; color: white; border: none; border-radius: 5px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s;">Show More (${filtered.length - displayLimit} remaining)</button>
+                        <button id="showMoreBtn" style="padding: 12px 32px; background: #667eea; color: white; border: none; border-radius: 5px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s;">Show More (${
+                          filtered.length - displayLimit
+                        } remaining)</button>
                         <button id="showAllBtn" style="padding: 12px 32px; background: #764ba2; color: white; border: none; border-radius: 5px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s;">Show All</button>
                     </div>
                 `;
-            }
-
-            container.innerHTML = `<div style="display: contents;\">${encountersHtml}</div>${showMoreBtn}`;
-            
-            if (hasMore) {
-                document.getElementById('showMoreBtn').addEventListener('click', () => {
-                    displayLimit += 9;
-                    renderEncounters();
-                });
-                document.getElementById('showAllBtn').addEventListener('click', () => {
-                    displayLimit = Infinity;
-                    renderEncounters();
-                });
-            }
-            
-            // Load icons after DOM is updated
-            loadPokemonIcons();
         }
 
-        function createEncounterCard(encounter, typeFilters) {
-            // Handle missing map property
-            if (!encounter.map) return '';
-            
-            const mapName = formatMapName(encounter.map);
-            
-            // Determine if this is a night encounter
-            const isNight = encounter.base_label && String(encounter.base_label).toLowerCase().includes('night');
-            
-            // Check if this map has multiple encounter types (day and night variants)
-            const mapEncounters = allEncounters.filter(e => e.map === encounter.map);
-            const hasMultipleVariants = mapEncounters.length > 1;
-            
-            // Only show time label if there are multiple variants for this location
-            const timeLabel = hasMultipleVariants ? `<div class="time-label">${isNight ? '🌙 Night' : '☀️ Day'}</div>` : '';
-            const headerClass = hasMultipleVariants ? (isNight ? 'night' : 'day') : '';
+        container.innerHTML = `<div style="display: contents;\">${encountersHtml}</div>${showMoreBtn}`;
 
-            let contentHtml = '';
+        if (hasMore) {
+          document
+            .getElementById("showMoreBtn")
+            .addEventListener("click", () => {
+              displayLimit += 9;
+              renderEncounters();
+            });
 
-            if ((typeFilters.length === 0 || typeFilters.includes('land')) && encounter.land_mons && encounter.land_mons.mons && encounter.land_mons.mons.length > 0) {
-                contentHtml += createEncounterSection('🌿 Land Pokémon', encounter.land_mons, encounter.land_mons.encounter_rate);
-            }
-            if ((typeFilters.length === 0 || typeFilters.includes('water')) && encounter.water_mons && encounter.water_mons.mons && encounter.water_mons.mons.length > 0) {
-                contentHtml += createEncounterSection('💧 Water Pokémon', encounter.water_mons, encounter.water_mons.encounter_rate);
-            }
-            if ((typeFilters.length === 0 || typeFilters.includes('fishing')) && encounter.fishing_mons && encounter.fishing_mons.mons && encounter.fishing_mons.mons.length > 0) {
-                contentHtml += createEncounterSection('🎣 Fishing', encounter.fishing_mons, encounter.fishing_mons.encounter_rate, encounter.fishing_mons);
-            }
-            if ((typeFilters.length === 0 || typeFilters.includes('rock_smash')) && encounter.rock_smash_mons && encounter.rock_smash_mons.mons && encounter.rock_smash_mons.mons.length > 0) {
-                contentHtml += createEncounterSection('⛏️ Rock Smash', encounter.rock_smash_mons, encounter.rock_smash_mons.encounter_rate);
-            }
-            
-            // If no encounter types found, skip this card
-            if (!contentHtml) return '';
+          document
+            .getElementById("showAllBtn")
+            .addEventListener("click", () => {
+              showAllEncounters = true;
+              displayLimit = Infinity;
+              renderEncounters();
+            });
+        }
 
-            return `
+        // Load icons after DOM is updated
+        loadPokemonIcons();
+      }
+
+      function createEncounterCard(encounter, typeFilters) {
+        // Handle missing map property
+        if (!encounter.map) return "";
+
+        const mapName = formatMapName(encounter.map);
+
+        // Determine if this is a night encounter
+        const isNight =
+          encounter.base_label &&
+          String(encounter.base_label).toLowerCase().includes("night");
+
+        // Check if this map has multiple encounter types (day and night variants)
+        const mapEncounters = allEncounters.filter(
+          (e) => e.map === encounter.map
+        );
+        const hasMultipleVariants = mapEncounters.length > 1;
+
+        // Only show time label if there are multiple variants for this location
+        const timeLabel = hasMultipleVariants
+          ? `<div class="time-label">${isNight ? "🌙 Night" : "☀️ Day"}</div>`
+          : "";
+        const headerClass = hasMultipleVariants
+          ? isNight
+            ? "night"
+            : "day"
+          : "";
+
+        let contentHtml = "";
+
+        if (
+          (typeFilters.length === 0 || typeFilters.includes("land")) &&
+          encounter.land_mons &&
+          encounter.land_mons.mons &&
+          encounter.land_mons.mons.length > 0
+        ) {
+          contentHtml += createEncounterSection(
+            "🌿 Land Pokémon",
+            encounter.land_mons,
+            encounter.land_mons.encounter_rate
+          );
+        }
+        if (
+          (typeFilters.length === 0 || typeFilters.includes("water")) &&
+          encounter.water_mons &&
+          encounter.water_mons.mons &&
+          encounter.water_mons.mons.length > 0
+        ) {
+          contentHtml += createEncounterSection(
+            "💧 Water Pokémon",
+            encounter.water_mons,
+            encounter.water_mons.encounter_rate
+          );
+        }
+        if (
+          (typeFilters.length === 0 || typeFilters.includes("fishing")) &&
+          encounter.fishing_mons &&
+          encounter.fishing_mons.mons &&
+          encounter.fishing_mons.mons.length > 0
+        ) {
+          contentHtml += createEncounterSection(
+            "🎣 Fishing",
+            encounter.fishing_mons,
+            encounter.fishing_mons.encounter_rate,
+            encounter.fishing_mons
+          );
+        }
+        if (
+          (typeFilters.length === 0 || typeFilters.includes("rock_smash")) &&
+          encounter.rock_smash_mons &&
+          encounter.rock_smash_mons.mons &&
+          encounter.rock_smash_mons.mons.length > 0
+        ) {
+          contentHtml += createEncounterSection(
+            "⛏️ Rock Smash",
+            encounter.rock_smash_mons,
+            encounter.rock_smash_mons.encounter_rate
+          );
+        }
+
+        // If no encounter types found, skip this card
+        if (!contentHtml) return "";
+
+        return `
                 <div class="encounter-card">
                     <div class="card-header ${headerClass}">
                         <h2>${mapName}</h2>
@@ -744,71 +988,88 @@
                     </div>
                 </div>
             `;
+      }
+
+      function createEncounterSection(title, monData, rate, fullData) {
+        if (!monData || !monData.mons || monData.mons.length === 0) {
+          return "";
         }
 
-        function createEncounterSection(title, monData, rate, fullData) {
-            if (!monData || !monData.mons || monData.mons.length === 0) {
-                return '';
-            }
+        const pokemonHtml = monData.mons
+          .map((mon, index) => {
+            const species = mon.species.replace("SPECIES_", "");
+            const speciesLower = species.toLowerCase();
 
-            const pokemonHtml = monData.mons
-                .map((mon, index) => {
-                    const species = mon.species.replace('SPECIES_', '');
-                    const speciesLower = species.toLowerCase();
-                    
-                    // Format species name for display (e.g., MEOWTH_ALOLA -> Meowth Alola)
-                    const displayName = species.replace(/_/g, ' ')
-                        .split(' ')
-                        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                        .join(' ');
-                    
-                    const levelText = mon.min_level === mon.max_level 
-                        ? `Lv. ${mon.min_level}` 
-                        : `Lv. ${mon.min_level}-${mon.max_level}`;
-                    
-                    // Handle regional variants (e.g., MEOWTH_ALOLA -> meowth/alola)
-                    let iconPath;
-                    
-                    // Skip invalid species
-                    if (!speciesLower || speciesLower === 'none' || speciesLower.trim() === '') {
-                        iconPath = './graphics/pokemon/question_mark/icon.png';
-                    } else {
-                        const regionMatch = speciesLower.match(/^([a-z_]+?)_(alola|galar|hisui|paldea)$/i);
-                        if (regionMatch) {
-                            const baseName = regionMatch[1];
-                            const regionName = regionMatch[2].toLowerCase();
-                            iconPath = `./graphics/pokemon/${baseName}/${regionName}/icon.png`;
-                        } else {
-                            iconPath = `./graphics/pokemon/${speciesLower}/icon.png`;
-                        }
-                    }
-                    return `
+            // Format species name for display (e.g., MEOWTH_ALOLA -> Meowth Alola)
+            const displayName = species
+              .replace(/_/g, " ")
+              .split(" ")
+              .map(
+                (word) =>
+                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+              )
+              .join(" ");
+
+            const levelText =
+              mon.min_level === mon.max_level
+                ? `Lv. ${mon.min_level}`
+                : `Lv. ${mon.min_level}-${mon.max_level}`;
+
+            // Handle regional variants (e.g., MEOWTH_ALOLA -> meowth/alola)
+            let iconPath;
+
+            // Skip invalid species
+            if (
+              !speciesLower ||
+              speciesLower === "none" ||
+              speciesLower.trim() === ""
+            ) {
+              iconPath = "./graphics/pokemon/question_mark/icon.png";
+            } else {
+              const regionMatch = speciesLower.match(
+                /^([a-z_]+?)_(alola|galar|hisui|paldea)$/i
+              );
+              if (regionMatch) {
+                const baseName = regionMatch[1];
+                const regionName = regionMatch[2].toLowerCase();
+                iconPath = `./graphics/pokemon/${baseName}/${regionName}/icon.png`;
+              } else {
+                iconPath = `./graphics/pokemon/${speciesLower}/icon.png`;
+              }
+            }
+            return `
                         <li class="pokemon-item" data-icon-path="${iconPath}">
                             <div class="pokemon-icon"></div>
                             <span class="pokemon-name">${displayName}</span>
                             <span class="pokemon-level">${levelText}</span>
                         </li>
                     `;
-                })
-                .join('');
+          })
+          .join("");
 
-            let fishingInfo = '';
-            if (fullData && fullData.groups) {
-                const groups = fullData.groups;
-                fishingInfo = '<div class="fishing-groups">';
-                if (groups.old_rod) {
-                    fishingInfo += `<div class="group-label">Old Rod (Slots ${groups.old_rod.join(', ')})</div>`;
-                }
-                if (groups.good_rod) {
-                    fishingInfo += `<div class="group-label">Good Rod (Slots ${groups.good_rod.join(', ')})</div>`;
-                }
-                if (groups.super_rod) {
-                    fishingInfo += `<div class="group-label">Super Rod (Slots ${groups.super_rod.join(', ')})</div>`;
-                }
-                fishingInfo += '</div>';
-            }
+        let fishingInfo = "";
+        if (fullData && fullData.groups) {
+          const groups = fullData.groups;
+          fishingInfo = '<div class="fishing-groups">';
+          if (groups.old_rod) {
+            fishingInfo += `<div class="group-label">Old Rod (Slots ${groups.old_rod.join(
+              ", "
+            )})</div>`;
+          }
+          if (groups.good_rod) {
+            fishingInfo += `<div class="group-label">Good Rod (Slots ${groups.good_rod.join(
+              ", "
+            )})</div>`;
+          }
+          if (groups.super_rod) {
+            fishingInfo += `<div class="group-label">Super Rod (Slots ${groups.super_rod.join(
+              ", "
+            )})</div>`;
+          }
+          fishingInfo += "</div>";
+        }
 
-            return `
+        return `
                 <div class="encounter-type">
                     <div class="encounter-type-title">${title}</div>
                     <div class="encounter-rate">Encounter Rate: ${rate}%</div>
@@ -816,100 +1077,124 @@
                     ${fishingInfo}
                 </div>
             `;
-        }
+      }
 
-        async function loadPokemonIcons() {
-            const iconElements = document.querySelectorAll('[data-icon-path]');
-            for (const el of iconElements) {
-                const iconPath = el.getAttribute('data-icon-path');
-                const iconDiv = el.querySelector('.pokemon-icon');
-                if (iconDiv) {
-                    const dataUrl = await getTransparentIcon(iconPath);
-                    if (dataUrl) {
-                        iconDiv.style.backgroundImage = `url('${dataUrl}')`;
-                    }
-                }
+      async function loadPokemonIcons() {
+        const iconElements = document.querySelectorAll("[data-icon-path]");
+        for (const el of iconElements) {
+          const iconPath = el.getAttribute("data-icon-path");
+          const iconDiv = el.querySelector(".pokemon-icon");
+          if (iconDiv) {
+            const dataUrl = await getTransparentIcon(iconPath);
+            if (dataUrl) {
+              iconDiv.style.backgroundImage = `url('${dataUrl}')`;
             }
+          }
         }
+      }
 
-        function setupEventListeners() {
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                // Reset display limit when searching
-                displayLimit = 9;
-                renderEncounters();
-            });
-            
-            // Setup toggle buttons for time of day
-            const timeToggleBtns = document.querySelectorAll('.toggle-btn[data-time]');
-            timeToggleBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    timeToggleBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    renderEncounters();
-                });
-            });
-            
-            // Setup toggle buttons for encounter type (multi-select)
-            const typeToggleBtns = document.querySelectorAll('.toggle-btn[data-type]');
-            typeToggleBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const dataType = btn.getAttribute('data-type');
-                    
-                    if (dataType === '') {
-                        // "All Types" button - deactivate all specific types and activate "All Types"
-                        typeToggleBtns.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                    } else {
-                        // Specific type button - toggle it
-                        const allTypesBtn = document.querySelector('.toggle-btn[data-type=""]');
-                        btn.classList.toggle('active');
-                        
-                        // If no types are selected, activate "All Types"
-                        const activeTypes = document.querySelectorAll('.toggle-btn[data-type]:not([data-type=""]).active');
-                        if (activeTypes.length === 0) {
-                            typeToggleBtns.forEach(b => b.classList.remove('active'));
-                            allTypesBtn.classList.add('active');
-                        } else {
-                            // Deactivate "All Types" if any specific type is selected
-                            allTypesBtn.classList.remove('active');
-                        }
-                    }
-                    
-                    renderEncounters();
-                });
-            });
-        }
-
-        // Load data on page load
-        window.addEventListener('DOMContentLoaded', async () => {
-            // Load dark mode preference
-            const isDarkMode = localStorage.getItem('darkMode') === 'true';
-            if (isDarkMode) {
-                document.body.classList.add('dark-mode');
-                document.getElementById('nightModeToggle').textContent = '☀️ Light Mode';
-            }
-
-            // Setup night mode toggle
-            const nightModeToggle = document.getElementById('nightModeToggle');
-            nightModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDark = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDark);
-                nightModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
-            });
-
-            // Load header icon first (64x64 frame)
-            const headerIcon = document.getElementById('headerPikachuIcon');
-            if (headerIcon) {
-                const iconPath = headerIcon.getAttribute('data-icon-path');
-                const dataUrl = await getTransparentIcon(iconPath, 64);
-                if (dataUrl) {
-                    headerIcon.style.backgroundImage = `url('${dataUrl}')`;    
-                }
-            }
-            // Then load the encounter data
-            loadData();
+      function setupEventListeners() {
+        document.getElementById("searchInput").addEventListener("input", () => {
+          showAllEncounters = false;
+          displayLimit = 9;
+          renderEncounters();
         });
+
+        // Recalculate display limit on window resize
+        window.addEventListener("resize", () => {
+          if (
+            !document.getElementById("searchInput").value.trim() &&
+            !showAllEncounters
+          ) {
+            displayLimit = calculateDisplayLimit();
+            renderEncounters();
+          }
+        });
+
+        // Setup toggle buttons for time of day
+        const timeToggleBtns = document.querySelectorAll(
+          ".toggle-btn[data-time]"
+        );
+        timeToggleBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            timeToggleBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderEncounters();
+          });
+        });
+
+        // Setup toggle buttons for encounter type (multi-select)
+        const typeToggleBtns = document.querySelectorAll(
+          ".toggle-btn[data-type]"
+        );
+        typeToggleBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const dataType = btn.getAttribute("data-type");
+
+            if (dataType === "") {
+              // "All Types" button - deactivate all specific types and activate "All Types"
+              typeToggleBtns.forEach((b) => b.classList.remove("active"));
+              btn.classList.add("active");
+            } else {
+              // Specific type button - toggle it
+              const allTypesBtn = document.querySelector(
+                '.toggle-btn[data-type=""]'
+              );
+              btn.classList.toggle("active");
+
+              // If no types are selected, activate "All Types"
+              const activeTypes = document.querySelectorAll(
+                '.toggle-btn[data-type]:not([data-type=""]).active'
+              );
+              if (activeTypes.length === 0) {
+                typeToggleBtns.forEach((b) => b.classList.remove("active"));
+                allTypesBtn.classList.add("active");
+              } else {
+                // Deactivate "All Types" if any specific type is selected
+                allTypesBtn.classList.remove("active");
+              }
+            }
+
+            renderEncounters();
+          });
+        });
+      }
+
+      // Load data on page load
+      window.addEventListener("DOMContentLoaded", async () => {
+        displayLimit = calculateDisplayLimit();
+
+        // Load dark mode preference
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        if (isDarkMode) {
+          document.body.classList.add("dark-mode");
+          document.getElementById("nightModeToggle").textContent =
+            "☀️ Light Mode";
+        }
+
+        // Setup night mode toggle
+        const nightModeToggle = document.getElementById("nightModeToggle");
+        nightModeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          const isDark = document.body.classList.contains("dark-mode");
+          localStorage.setItem("darkMode", isDark);
+          nightModeToggle.textContent = isDark
+            ? "☀️ Light Mode"
+            : "🌙 Dark Mode";
+        });
+
+        // Load header icon first (64x64 frame)
+        const headerIcon = document.getElementById("headerPikachuIcon");
+        if (headerIcon) {
+          const iconPath = headerIcon.getAttribute("data-icon-path");
+          const dataUrl = await getTransparentIcon(iconPath, 64);
+          if (dataUrl) {
+            headerIcon.style.backgroundImage = `url('${dataUrl}')`;
+          }
+        }
+        // Then load the encounter data
+        loadData();
+      });
     </script>
-</body>
+  </body>
 </html>
