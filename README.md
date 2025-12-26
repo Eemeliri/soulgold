@@ -1,27 +1,5 @@
-# About `Gold and Silver Generation 3 Decomp`
+TODO
 
-I (smithk200) wanted to modify Pokémon HeartGold and SoulSilver, but am unfamiliar with Gen 4 decomp and don't want to make a binary hack of HGSS because *binary sucks*... I mean, binary is prone to crashes and requires a lot of tools to modify a ton of parameters. Plus, I want to make a challenge hack based around Johto that had features from later Pokémon games, such as Gen 6 EXP share (because grinding for EXP is no fun). Also, I wanted to add some other features to this game but simply do not have the time.
-
-DISCLAIMER: This is not an official port of Pokémon Heart and Soul to pokeemerald-expansion; this is a fan-based project. This is not the 2.0 update, but if you don't want to wait for the official 2.0 update then this might be a good fit for you.
-
-
-## LIST OF FEATURES:
-
-Implemented
-
-- Music choices from Johto, Sinnoh, and Hoenn.
-- Generation 6 EXP Share from the menu.
-- Ability to toggle between the backgrounds used for HnS or the default ones from Hoenn.
-- Auto-HMs from Pokémon Clover, where you don't need a prompt in order to use a field move.
-- Difficulty mode. Easy gives double the EXP, Normal is normal EXP, and Hard mode is having a level cap which the highest level you can reach is the Gym Leader's ace Pokémon. Defeat the Gym Leaders to lift the cap.
-- Battle Frontier! (After defeating Red, you gain the option of traveling to the Battle Frontier. You can leave from either Olivine or Vermilion. However, leaving the Battle Frontier takes you to Vermilion.)
-- Bug catching contest (albeit with a few bugs)
-- Options to run: Button Combo (L+A), (B), or Default. The reason why it's (L+A) is because of expansion's new feature where you select a Pokeball with the (R) button.
-
-Note: this uses 91.71% of ROM space, last I checked. I'm trying to get this down to around 90%, and this can probably be done by removing some instrument samples.
-
-![Gym Leaders and Elite Four can use this cool transition.](mugshot_transition.png)![The new terrain and run modes from HnS have been ported over!](run_modes.png)
-![New options from the option menu, and they all work!](new_options.png)
 ## CREDITS
 - HnS Dev Team for their amazing work!
 - RHH and pokeemerald expansion dev team, of course!
