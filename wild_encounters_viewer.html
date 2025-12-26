@@ -242,6 +242,7 @@
             background-repeat: no-repeat;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
+            -ms-interpolation-mode: nearest-neighbor;
         }
 
         .pokemon-name {
@@ -420,6 +421,8 @@
     <script>
         let allEncounters = [];
         const iconCache = new Map();
+        let showAllEncounters = false;
+        let displayLimit = 9;
 
         // Function to convert image background color to transparency
         function getTransparentIcon(imagePath, frameSize = 32) {
@@ -466,7 +469,13 @@
                     resolve(dataUrl);
                 };
                 img.onerror = () => {
-                    resolve(''); // Return empty string on error
+                    // If the original icon fails to load, try loading the question mark fallback
+                    if (imagePath !== './graphics/pokemon/question_mark/icon.png') {
+                        getTransparentIcon('./graphics/pokemon/question_mark/icon.png', frameSize).then(resolve);
+                    } else {
+                        // If even the fallback fails, resolve with empty string
+                        resolve('');
+                    }
                 };
                 img.src = imagePath;
             });
@@ -538,6 +547,11 @@
 
         function renderEncounters() {
             const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            
+            // If there's a search term, reset display limit to show all matching results
+            if (searchTerm) {
+                displayLimit = Infinity;
+            }
             
             // Maps to filter out (not in the game)
             const blockedMaps = new Set([
@@ -618,7 +632,7 @@
                         return species.includes(searchTerm);
                     });
                 } else {
-                    pokemonMatch = true; // If no search term, match all
+                    pokemonMatch = true; // If no search term, match all (when showing all)
                 }
 
                 let typeMatch = true;
@@ -651,7 +665,34 @@
                 return;
             }
 
-            container.innerHTML = filtered.map(enc => createEncounterCard(enc, typeFilters)).join('');
+            // Limit the displayed encounters unless searching or showing all
+            const displayedEncounters = searchTerm ? filtered : filtered.slice(0, displayLimit);
+            const hasMore = !searchTerm && filtered.length > displayLimit;
+            
+            const encountersHtml = displayedEncounters.map(enc => createEncounterCard(enc, typeFilters)).join('');
+            
+            let showMoreBtn = '';
+            if (hasMore) {
+                showMoreBtn = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 20px; display: flex; gap: 10px; justify-content: center;">
+                        <button id="showMoreBtn" style="padding: 12px 32px; background: #667eea; color: white; border: none; border-radius: 5px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s;">Show More (${filtered.length - displayLimit} remaining)</button>
+                        <button id="showAllBtn" style="padding: 12px 32px; background: #764ba2; color: white; border: none; border-radius: 5px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.3s;">Show All</button>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `<div style="display: contents;\">${encountersHtml}</div>${showMoreBtn}`;
+            
+            if (hasMore) {
+                document.getElementById('showMoreBtn').addEventListener('click', () => {
+                    displayLimit += 9;
+                    renderEncounters();
+                });
+                document.getElementById('showAllBtn').addEventListener('click', () => {
+                    displayLimit = Infinity;
+                    renderEncounters();
+                });
+            }
             
             // Load icons after DOM is updated
             loadPokemonIcons();
@@ -727,13 +768,19 @@
                     
                     // Handle regional variants (e.g., MEOWTH_ALOLA -> meowth/alola)
                     let iconPath;
-                    const regionMatch = speciesLower.match(/^([a-z_]+?)_(alola|galar|hisui|paldea)$/i);
-                    if (regionMatch) {
-                        const baseName = regionMatch[1];
-                        const regionName = regionMatch[2].toLowerCase();
-                        iconPath = `./graphics/pokemon/${baseName}/${regionName}/icon.png`;
+                    
+                    // Skip invalid species
+                    if (!speciesLower || speciesLower === 'none' || speciesLower.trim() === '') {
+                        iconPath = './graphics/pokemon/question_mark/icon.png';
                     } else {
-                        iconPath = `./graphics/pokemon/${speciesLower}/icon.png`;
+                        const regionMatch = speciesLower.match(/^([a-z_]+?)_(alola|galar|hisui|paldea)$/i);
+                        if (regionMatch) {
+                            const baseName = regionMatch[1];
+                            const regionName = regionMatch[2].toLowerCase();
+                            iconPath = `./graphics/pokemon/${baseName}/${regionName}/icon.png`;
+                        } else {
+                            iconPath = `./graphics/pokemon/${speciesLower}/icon.png`;
+                        }
                     }
                     return `
                         <li class="pokemon-item" data-icon-path="${iconPath}">
@@ -786,7 +833,11 @@
         }
 
         function setupEventListeners() {
-            document.getElementById('searchInput').addEventListener('input', renderEncounters);
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                // Reset display limit when searching
+                displayLimit = 9;
+                renderEncounters();
+            });
             
             // Setup toggle buttons for time of day
             const timeToggleBtns = document.querySelectorAll('.toggle-btn[data-time]');
