@@ -2178,3 +2178,7 @@ static const struct SpriteFrameImage sPicTable_ScientistM[] = {
 static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
     overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
 };
+
+static const struct SpriteFrameImage sPicTable_Case[] = {
+    overworld_frame(gObjectEventPic_Case, 2, 2, 0),
+};

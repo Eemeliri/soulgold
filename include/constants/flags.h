@@ -919,9 +919,9 @@
 #define FLAG_HIDE_MOMS_FRIEND                                       0x364 //HnS NormalFlags Block 1
 #define FLAG_MOM_VISITED                                            0x365 //mom gives good luck speech
 #define FLAG_HIDE_SILVER_NEWBARKTOWN                                0x366 //for beginning
-#define FLAG_HIDE_CHIKORITABALL                                     0x367 
-#define FLAG_HIDE_CYNDAQUILBALL                                     0x368
-#define FLAG_HIDE_TOTODILEBALL                                      0x369
+#define FLAG_UNUSED_0x367                                           0x367 
+#define FLAG_HIDE_STARTER_CASE                                      0x368
+#define FLAG_UNUSED_0x369                                           0x369
 #define FLAG_RECEIVED_FIRST_POTION                                  0x36A
 #define FLAG_RECEIVED_FIRST_BALLS                                   0x36B
 #define FLAG_HIDE_LAB_POLICEMAN                                     0x36C

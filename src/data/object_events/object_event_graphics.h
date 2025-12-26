@@ -504,6 +504,7 @@ const u16 gObjectEventPal_White[] = INCBIN_U16("graphics/object_events/palettes/
 const u16 gObjectEventPal_Green[] = INCBIN_U16("graphics/object_events/palettes/npc_green.gbapal");
 const u16 gObjectEventPal_Blue[] = INCBIN_U16("graphics/object_events/palettes/npc_blue.gbapal");
 const u16 gObjectEventPal_Pink[] = INCBIN_U16("graphics/object_events/palettes/npc_pink.gbapal");
+const u16 gObjectEventPal_Case[] = INCBIN_U16("graphics/object_events/palettes/case.gbapal");
 
 #if OW_FOLLOWERS_POKEBALLS
 const u32 gObjectEventPic_MasterBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_master.4bpp");
@@ -580,3 +581,4 @@ const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/
 const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");
 
 const u32 gObjectEventPic_ApricornTree[] = INCBIN_U32("graphics/object_events/pics/misc/apricorn_tree.4bpp");
+const u32 gObjectEventPic_Case[] = INCBIN_U32("graphics/object_events/pics/misc/case.4bpp");

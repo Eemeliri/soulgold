@@ -57,45 +57,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 8,
-      "y": 4,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NewBarkTown_Lab_EventScript_ChikoritaBall",
-      "flag": "FLAG_HIDE_CHIKORITABALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 9,
-      "y": 4,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NewBarkTown_Lab_EventScript_CyndaquilBall",
-      "flag": "FLAG_HIDE_CYNDAQUILBALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
-      "x": 10,
-      "y": 4,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NewBarkTown_Lab_EventScript_TotodileBall",
-      "flag": "FLAG_HIDE_TOTODILEBALL"
-    },
-    {
       "local_id": "LOCALID_COP",
       "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
       "x": 6,
@@ -108,6 +69,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0",
       "flag": "FLAG_HIDE_LAB_POLICEMAN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CASE",
+      "x": 9,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NewBarkTown_Lab_EventScript_StarterCase",
+      "flag": "FLAG_HIDE_STARTER_CASE"
     }
   ],
   "warp_events": [

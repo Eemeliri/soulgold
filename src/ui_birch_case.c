@@ -114,6 +114,7 @@ enum BallPositions
 struct MonChoiceData{ // This is the format used to define a mon, everything left out will default to 0 and be blank or use the in game defaults
     u16 species; // Mon Species ID
     u8 level;   // Mon Level 5
+    u8 starterChoice;
     u16 item;   // Held item, just ITEM_POTION
     u8 ball; // this ballid does not change the design of the ball in the case, only in summary/throwing out to battle 
     u8 nature; // NATURE_JOLLY, NATURE_ETC...
@@ -132,17 +133,17 @@ struct MonChoiceData{ // This is the format used to define a mon, everything lef
 //
 static const struct MonChoiceData sStarterChoices[9] = 
 {
-    [BALL_TOP_FIRST]        = {SPECIES_CHESPIN, 5},
-    [BALL_TOP_SECOND]       = {SPECIES_FENNEKIN, 5},
-    [BALL_MIDDLE_FIRST]     = {SPECIES_FROAKIE, 5},
+    [BALL_TOP_FIRST]        = {SPECIES_CHESPIN, 5, 0},
+    [BALL_TOP_SECOND]       = {SPECIES_FENNEKIN, 5, 1},
+    [BALL_MIDDLE_FIRST]     = {SPECIES_FROAKIE, 5, 2},
 
-    [BALL_TOP_THIRD]        = {SPECIES_CHIKORITA, 5},
-    [BALL_TOP_FOURTH]       = {SPECIES_TOTODILE, 5},
-    [BALL_MIDDLE_THIRD]     = {SPECIES_CYNDAQUIL, 5},
+    [BALL_TOP_THIRD]        = {SPECIES_CHIKORITA, 5, 0},
+    [BALL_TOP_FOURTH]       = {SPECIES_TOTODILE, 5, 1},
+    [BALL_MIDDLE_THIRD]     = {SPECIES_CYNDAQUIL, 5, 2},
 
-    [BALL_MIDDLE_SECOND]    = {SPECIES_SPRIGATITO, 5},
-    [BALL_BOTTOM_FIRST]     = {SPECIES_TORCHIC, 5},
-    [BALL_BOTTOM_SECOND]    = {SPECIES_POPPLIO, 5},
+    [BALL_MIDDLE_SECOND]    = {SPECIES_SPRIGATITO, 5, 0},
+    [BALL_BOTTOM_FIRST]     = {SPECIES_TORCHIC, 5, 1},
+    [BALL_BOTTOM_SECOND]    = {SPECIES_POPPLIO, 5, 2},
 };
 
 //==========EWRAM==========//
@@ -841,6 +842,8 @@ static void Task_BirchCaseConfirmSelection(u8 taskId)
         PlaySE(SE_SELECT);
         PrintTextToBottomBar(RECIEVED_MON);
         FlagSet(FLAG_SYS_POKEMON_GET);
+        VarSet(VAR_STARTER_MON, sStarterChoices[sBirchCaseDataPtr->handPosition].starterChoice);
+        VarSet(VAR_PLAYER_STARTER_SPECIES, sStarterChoices[sBirchCaseDataPtr->handPosition].species);
         //BirchCase_GiveMon();
         ScriptGiveMon(sStarterChoices[sBirchCaseDataPtr->handPosition].species, 5, ITEM_NONE);
         gTasks[taskId].func = Task_BirchCaseRecievedMon;

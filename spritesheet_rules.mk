@@ -616,6 +616,9 @@ $(OBJEVENTGFXDIR)/berry_trees/micle.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/misc/apricorn_tree.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
+$(OBJEVENTGFXDIR)/misc/case.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
 $(OBJEVENTGFXDIR)/misc/breakable_rock.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
