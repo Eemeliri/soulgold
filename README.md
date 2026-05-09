@@ -10,7 +10,7 @@ How to use:
     
     > git fetch rahtak map-scrolling
     
-    > git cherry-pick (region map commit)
+    > git cherry-pick e265b3a5acf23c66da8613fc04ef71416e924d03
     
 2) find ``static const mapsec_u16_t (*const sRegionMapPageLayouts[REGION_MAP_PAGE_MAX])[MAP_WIDTH] =`` in region_map.c and change the " [REGION_MAP_PAGE_SECOND] = sRegionMapSections_Sevii123," to your second, third and fourth region layout, leave them as NULL if you want to have less than four. (This prevents scrolling to those pages)
 3) Note: you need to change all mentions of ``mapsec_u16`` into ``mapsec_u8`` if you have not expanded map sections to u16. 
