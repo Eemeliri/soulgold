@@ -76,7 +76,10 @@ struct RegionMap {
     /*0x081*/ u8 charBaseIdx;
     /*0x082*/ u8 mapBaseIdx;
     /*0x083*/ bool8 bgManaged;
-    /*0x084*/ u8 filler_084[0x100];
+    /*0x084*/ u8 mapPage;
+    /*0x085*/ u8 mapPageScrollAnim;
+    /*0x086*/ u8 targetMapPage;
+    /*0x087*/ u8 filler_087[0xfd];
     /*0x184*/ u8 cursorSmallImage[0x100];
     /*0x284*/ u8 cursorLargeImage[0x600];
 }; // size = 0x884
