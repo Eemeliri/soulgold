@@ -87,7 +87,7 @@ script KitakamiHouses_2_Steven {
                         up north. 
                         
                         You might find some use for it 
-                        near Route 46.")
+                        near Route 47.")
                 giveitem(ITEM_JADE_ORB)
                 waitmessage
                 msgbox("I think I'll start heading out to 

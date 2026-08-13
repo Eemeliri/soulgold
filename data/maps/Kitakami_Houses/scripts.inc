@@ -261,7 +261,7 @@ KitakamiHouses_2_Steven_Text_4:
 	.string "I excavated it from the mountain. \n"
 	.string "up north. \p"
 	.string "You might find some use for it \n"
-	.string "near Route 46.$"
+	.string "near Route 47.$"
 
 KitakamiHouses_2_Steven_Text_5:
 # 93 "data/maps/Kitakami_Houses/scripts.pory"
