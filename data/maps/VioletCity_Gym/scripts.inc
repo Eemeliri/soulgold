@@ -279,7 +279,7 @@ VioletGym_Text_GymGuide_Intro:
 # 140 "data/maps/VioletCity_Gym/scripts.pory"
 	.string "You believe? Then listen.\p"
 # 141 "data/maps/VioletCity_Gym/scripts.pory"
-	.string "Falkner's ace is a bulky owl\n"
+	.string "Falkner's ace is a bulky bird\n"
 # 142 "data/maps/VioletCity_Gym/scripts.pory"
 	.string "that loves to eat Berries.\p"
 # 143 "data/maps/VioletCity_Gym/scripts.pory"
