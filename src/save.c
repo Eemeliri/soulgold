@@ -22,9 +22,17 @@ static u8 HandleWriteSector(u16, const struct SaveSectorLocation *);
 static u8 HandleReplaceSector(u16, const struct SaveSectorLocation *);
 static void CopyToSaveBlock3(u32, struct SaveSector *);
 static void CopyFromSaveBlock3(u32, struct SaveSector *);
+static void PreparePokemonStorageExtensions(void);
 static u8 WritePokemonStorageOverflow(void);
 static bool8 IsPokemonStorageOverflowValid(u8, u32);
 static void LoadPokemonStorageOverflow(void);
+
+enum PokemonStorageOverflowStatus
+{
+    PKMN_STORAGE_OVERFLOW_INVALID,
+    PKMN_STORAGE_OVERFLOW_BX16,
+    PKMN_STORAGE_OVERFLOW_BX17,
+};
 
 // Divide save blocks into individual chunks to be written to flash sectors
 
@@ -104,12 +112,26 @@ STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C54, SaveBlock1LegacySize);
 
 #define PKMN_STORAGE_REGULAR_SIZE (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START + 1))
 #define PKMN_STORAGE_OVERFLOW_SIZE (sizeof(struct PokemonStorage) - PKMN_STORAGE_REGULAR_SIZE)
+#define PKMN_STORAGE_BX16_SIZE 37036
+#define PKMN_STORAGE_BX16_OVERFLOW_SIZE (PKMN_STORAGE_BX16_SIZE - PKMN_STORAGE_REGULAR_SIZE)
+#define PKMN_STORAGE_BX17_PAYLOAD_SIZE (sizeof(struct PokemonStorage) - offsetof(struct PokemonStorage, box17))
+#define PKMN_STORAGE_BX17_OVERFLOW_OFFSET (offsetof(struct PokemonStorage, box17ExtensionMagic) - PKMN_STORAGE_REGULAR_SIZE)
+#define PKMN_STORAGE_BX17_PAYLOAD_OVERFLOW_OFFSET (offsetof(struct PokemonStorage, box17) - PKMN_STORAGE_REGULAR_SIZE)
 #define PKMN_STORAGE_EXTENSION_SECTOR_OFFSET (offsetof(struct PokemonStorage, boxExtensionMagic) - (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START)))
 
 STATIC_ASSERT(offsetof(struct PokemonStorage, boxExtensionMagic) == 34740, PokemonStorageLegacyLayout);
+STATIC_ASSERT(PKMN_STORAGE_REGULAR_SIZE == 35712, PokemonStorageRegularSize);
+STATIC_ASSERT(PKMN_STORAGE_BX16_OVERFLOW_SIZE == 1324, PokemonStorageBx16OverflowSize);
+STATIC_ASSERT(PKMN_STORAGE_OVERFLOW_SIZE == 3624, PokemonStorageOverflowSize);
+STATIC_ASSERT(SECTOR_DATA_SIZE - PKMN_STORAGE_OVERFLOW_SIZE == 344, PokemonStorageOverflowTrailingFreeSpace);
+STATIC_ASSERT(PKMN_STORAGE_BX17_OVERFLOW_OFFSET == 1324, PokemonStorageBx17OverflowOffset);
+STATIC_ASSERT(PKMN_STORAGE_BX17_PAYLOAD_OVERFLOW_OFFSET == 1332, PokemonStorageBx17PayloadOverflowOffset);
+STATIC_ASSERT(PKMN_STORAGE_BX17_PAYLOAD_SIZE == 2292, PokemonStorageBx17PayloadSize);
 STATIC_ASSERT(sizeof(struct PokemonStorage) > PKMN_STORAGE_REGULAR_SIZE, PokemonStorageUsesOverflow);
 STATIC_ASSERT(PKMN_STORAGE_OVERFLOW_SIZE <= SECTOR_DATA_SIZE, PokemonStorageOverflowFreeSpace);
 STATIC_ASSERT(PKMN_STORAGE_OVERFLOW_SIZE % sizeof(u32) == 0, PokemonStorageOverflowChecksumAlignment);
+STATIC_ASSERT(PKMN_STORAGE_BX16_OVERFLOW_SIZE % sizeof(u32) == 0, PokemonStorageBx16OverflowChecksumAlignment);
+STATIC_ASSERT(PKMN_STORAGE_BX17_PAYLOAD_SIZE % sizeof(u32) == 0, PokemonStorageBx17ChecksumAlignment);
 
 COMMON_DATA u16 gLastWrittenSector = 0;
 COMMON_DATA u32 gLastSaveCounter = 0;
@@ -184,7 +206,7 @@ static u8 WriteSaveSectorOrSlot(u16 sectorId, const struct SaveSectorLocation *l
     else
     {
         // No sector was specified, write full save slot.
-        gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
+        PreparePokemonStorageExtensions();
         gLastKnownGoodSector = gLastWrittenSector; // backup the current written sector before attempting to write.
         gLastSaveCounter = gSaveCounter;
         gLastWrittenSector++;
@@ -298,37 +320,102 @@ static u8 WritePokemonStorageOverflow(void)
         gReadWriteSector->data[i] = src[i];
 
     gReadWriteSector->id = sectorId;
-    gReadWriteSector->checksum = CalculateChecksum(src, PKMN_STORAGE_OVERFLOW_SIZE);
+    // Keep this footer checksum limited to the historical BX16 prefix. An
+    // older BX16 ROM can therefore still validate and load Boxes 1-16.
+    gReadWriteSector->checksum = CalculateChecksum(src, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
     gReadWriteSector->signature = SECTOR_SIGNATURE;
     gReadWriteSector->counter = gSaveCounter;
 
     return TryWriteSector(sectorId, gReadWriteSector->data);
 }
 
-static bool8 IsPokemonStorageOverflowValid(u8 slotId, u32 counter)
+static bool8 IsZeroed(const u8 *data, u16 size)
+{
+    u16 i;
+
+    for (i = 0; i < size; i++)
+    {
+        if (data[i] != 0)
+            return FALSE;
+    }
+
+    return TRUE;
+}
+
+static enum PokemonStorageOverflowStatus GetPokemonStorageOverflowStatus(u8 slotId, u32 counter)
 {
     u8 sectorId = SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 + slotId;
+    u8 *data;
+    u16 checksum;
 
     ReadFlashSector(sectorId, gReadWriteSector);
-    return (gReadWriteSector->id == sectorId
-         && gReadWriteSector->checksum == CalculateChecksum(gReadWriteSector->data, PKMN_STORAGE_OVERFLOW_SIZE)
-         && gReadWriteSector->signature == SECTOR_SIGNATURE
-         && gReadWriteSector->counter == counter);
+    data = gReadWriteSector->data;
+    if (gReadWriteSector->id != sectorId
+     || gReadWriteSector->checksum != CalculateChecksum(data, PKMN_STORAGE_BX16_OVERFLOW_SIZE)
+     || gReadWriteSector->signature != SECTOR_SIGNATURE
+     || gReadWriteSector->counter != counter)
+        return PKMN_STORAGE_OVERFLOW_INVALID;
+
+    // BX16 ROMs zeroed the whole sector before writing their 1,324-byte
+    // overflow. Anything nonzero beyond that prefix must be a valid BX17 tail.
+    if (IsZeroed(&data[PKMN_STORAGE_BX17_OVERFLOW_OFFSET],
+                 SECTOR_DATA_SIZE - PKMN_STORAGE_BX17_OVERFLOW_OFFSET))
+        return PKMN_STORAGE_OVERFLOW_BX16;
+
+    if (!IsZeroed(&data[PKMN_STORAGE_OVERFLOW_SIZE],
+                  SECTOR_DATA_SIZE - PKMN_STORAGE_OVERFLOW_SIZE))
+        return PKMN_STORAGE_OVERFLOW_INVALID;
+    if (*(u32 *)&data[PKMN_STORAGE_BX17_OVERFLOW_OFFSET] != POKEMON_STORAGE_BOX17_MAGIC)
+        return PKMN_STORAGE_OVERFLOW_INVALID;
+
+    checksum = *(u16 *)&data[PKMN_STORAGE_BX17_OVERFLOW_OFFSET + sizeof(u32)];
+    if (*(u16 *)&data[PKMN_STORAGE_BX17_OVERFLOW_OFFSET + sizeof(u32) + sizeof(u16)] != (u16)~checksum
+     || checksum != CalculateChecksum(&data[PKMN_STORAGE_BX17_PAYLOAD_OVERFLOW_OFFSET], PKMN_STORAGE_BX17_PAYLOAD_SIZE))
+        return PKMN_STORAGE_OVERFLOW_INVALID;
+
+    return PKMN_STORAGE_OVERFLOW_BX17;
+}
+
+static bool8 IsPokemonStorageOverflowValid(u8 slotId, u32 counter)
+{
+    return GetPokemonStorageOverflowStatus(slotId, counter) != PKMN_STORAGE_OVERFLOW_INVALID;
 }
 
 static void LoadPokemonStorageOverflow(void)
 {
     u8 *dst;
+    enum PokemonStorageOverflowStatus status;
 
-    if (gPokemonStoragePtr->boxExtensionMagic != POKEMON_STORAGE_EXTENSION_MAGIC
-     || !IsPokemonStorageOverflowValid(gSaveCounter % NUM_SAVE_SLOTS, gSaveCounter))
+    if (gPokemonStoragePtr->boxExtensionMagic != POKEMON_STORAGE_EXTENSION_MAGIC)
     {
         InitPokemonStorageExtension();
         return;
     }
 
+    status = GetPokemonStorageOverflowStatus(gSaveCounter % NUM_SAVE_SLOTS, gSaveCounter);
+    if (status == PKMN_STORAGE_OVERFLOW_INVALID)
+        return;
+
     dst = (u8 *)gPokemonStoragePtr + PKMN_STORAGE_REGULAR_SIZE;
-    memcpy(dst, gReadWriteSector->data, PKMN_STORAGE_OVERFLOW_SIZE);
+    if (status == PKMN_STORAGE_OVERFLOW_BX16)
+    {
+        memcpy(dst, gReadWriteSector->data, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
+        InitPokemonStorageBox17Extension();
+    }
+    else
+    {
+        memcpy(dst, gReadWriteSector->data, PKMN_STORAGE_OVERFLOW_SIZE);
+    }
+}
+
+static void PreparePokemonStorageExtensions(void)
+{
+    gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
+    gPokemonStoragePtr->box17ExtensionMagic = POKEMON_STORAGE_BOX17_MAGIC;
+    gPokemonStoragePtr->box17Checksum = CalculateChecksum(
+        &gPokemonStoragePtr->box17,
+        PKMN_STORAGE_BX17_PAYLOAD_SIZE);
+    gPokemonStoragePtr->box17ChecksumInverse = (u16)~gPokemonStoragePtr->box17Checksum;
 }
 
 static u32 RestoreSaveBackupVarsAndIncrement(const struct SaveSectorLocation *locations)
@@ -903,7 +990,7 @@ bool8 LinkFullSave_Init(void)
         return TRUE;
     UpdateSaveAddresses();
     CopyPartyAndObjectsToSave();
-    gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
+    PreparePokemonStorageExtensions();
     RestoreSaveBackupVarsAndIncrement(gRamSaveSectorLocations);
     if (WritePokemonStorageOverflow() != SAVE_STATUS_OK)
     {

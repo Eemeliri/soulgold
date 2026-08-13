@@ -34,6 +34,14 @@ STATIC_ASSERT(sizeof(struct RecordedBattleSave) <= SECTOR_COUNTER_OFFSET, Record
 
 EWRAM_DATA rng_value_t gRecordedBattleRngSeed = RNG_VALUE_EMPTY;
 EWRAM_DATA rng_value_t gBattlePalaceMoveSelectionRngValue = RNG_VALUE_EMPTY;
+EWRAM_DATA u8 gRecordedBattleMultiplayerId = 0;
+
+// Recorded-battle flash storage was repurposed for the Pokemon Storage
+// extension. Keep the implementation for the battle test runner, which uses
+// recorded battles to provide scripted inputs, but do not permanently reserve
+// its working memory in normal builds.
+#if TESTING
+
 EWRAM_DATA static u8 sBattleRecords[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE] = {0};
 EWRAM_DATA static u16 sBattlerRecordSizes[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA static u16 sBattlerPrevRecordSizes[MAX_BATTLERS_COUNT] = {0};
@@ -43,7 +51,6 @@ EWRAM_DATA static u8 sLvlMode = 0;
 EWRAM_DATA static u8 sFrontierFacility = 0;
 EWRAM_DATA static u8 sFrontierBrainSymbol = 0;
 EWRAM_DATA static MainCallback sCallback2_AfterRecordedBattle = NULL;
-EWRAM_DATA u8 gRecordedBattleMultiplayerId = 0;
 EWRAM_DATA static u8 sFrontierPassFlag = 0;
 EWRAM_DATA static u8 sBattleScene = 0;
 EWRAM_DATA static u8 sTextSpeed = 0;
@@ -827,3 +834,175 @@ u16 *GetRecordedBattleEasyChatSpeech(void)
 {
     return sEasyChatSpeech;
 }
+
+#else // TESTING
+
+static const u16 sDisabledRecordedBattleEasyChatSpeech[EASY_CHAT_BATTLE_WORDS_COUNT] = {0};
+
+void RecordedBattle_Init(u8 mode)
+{
+}
+
+void RecordedBattle_SetTrainerInfo(void)
+{
+    // Live link battles still exchange this seed to stay synchronized.
+    gRecordedBattleRngSeed = gRngValue;
+    if (gBattleTypeFlags & BATTLE_TYPE_LINK)
+        gRecordedBattleMultiplayerId = GetMultiplayerId();
+}
+
+void RecordedBattle_SetBattlerAction(enum BattlerId battler, u8 action)
+{
+}
+
+void RecordedBattle_ClearBattlerAction(enum BattlerId battler, u8 bytesToClear)
+{
+}
+
+u8 RecordedBattle_GetBattlerAction(u32 actionType, enum BattlerId battler)
+{
+    return 0xFF;
+}
+
+u8 RecordedBattle_BufferNewBattlerData(u8 *dst)
+{
+    return 0;
+}
+
+void RecordedBattle_RecordAllBattlerData(u8 *src)
+{
+}
+
+bool32 CanCopyRecordedBattleSaveData(void)
+{
+    return FALSE;
+}
+
+bool32 MoveRecordedBattleToSaveData(void)
+{
+    return FALSE;
+}
+
+void SetPartiesFromRecordedSave(struct RecordedBattleSave *src)
+{
+}
+
+void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
+{
+}
+
+void PlayRecordedBattle(void (*CB2_After)(void))
+{
+    // This path is no longer exposed by the Frontier Pass, but returning to
+    // the caller makes an accidental invocation fail safely.
+    if (CB2_After != NULL)
+        SetMainCallback2(CB2_After);
+}
+
+u8 GetRecordedBattleFrontierFacility(void)
+{
+    return 0;
+}
+
+u8 GetRecordedBattleFronterBrainSymbol(void)
+{
+    return 0;
+}
+
+void RecordedBattle_SaveParties(void)
+{
+}
+
+u8 GetBattlerLinkPlayerGender(enum BattlerId battler)
+{
+    u32 i;
+
+    for (i = 0; i < MAX_LINK_PLAYERS; i++)
+    {
+        if (gLinkPlayers[i].id == battler)
+            return gLinkPlayers[i].gender;
+    }
+
+    return 0;
+}
+
+void RecordedBattle_ClearFrontierPassFlag(void)
+{
+}
+
+void RecordedBattle_SetFrontierPassFlagFromHword(u16 flags)
+{
+}
+
+u8 RecordedBattle_GetFrontierPassFlag(void)
+{
+    return FALSE;
+}
+
+u8 GetBattleSceneInRecordedBattle(void)
+{
+    return FALSE;
+}
+
+u8 GetTextSpeedInRecordedBattle(void)
+{
+    return 0;
+}
+
+void RecordedBattle_CopyBattlerMoves(enum BattlerId battler)
+{
+}
+
+void RecordedBattle_CheckMovesetChanges(u8 mode)
+{
+}
+
+u64 GetAiScriptsInRecordedBattle(enum BattlerId battler)
+{
+    return 0;
+}
+
+void RecordedBattle_SetPlaybackFinished(void)
+{
+}
+
+bool8 RecordedBattle_CanStopPlayback(void)
+{
+    return FALSE;
+}
+
+void GetRecordedBattleRecordMixFriendName(u8 *dst)
+{
+    dst[0] = EOS;
+}
+
+u8 GetRecordedBattleRecordMixFriendClass(void)
+{
+    return 0;
+}
+
+u8 GetRecordedBattleApprenticeId(void)
+{
+    return 0;
+}
+
+u8 GetRecordedBattleRecordMixFriendLanguage(void)
+{
+    return 0;
+}
+
+u8 GetRecordedBattleApprenticeLanguage(void)
+{
+    return 0;
+}
+
+void RecordedBattle_SaveBattleOutcome(void)
+{
+}
+
+u16 *GetRecordedBattleEasyChatSpeech(void)
+{
+    return (u16 *)sDisabledRecordedBattleEasyChatSpeech;
+}
+
+#endif // TESTING

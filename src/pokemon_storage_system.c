@@ -1816,7 +1816,7 @@ void ResetPokemonStorageSystem(void)
     for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
         SetBoxWallpaper(boxId, boxId % (MAX_DEFAULT_WALLPAPER + 1));
 
-    gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
+    InitPokemonStorageExtension();
     ResetWaldaWallpaper();
 }
 
@@ -1828,8 +1828,21 @@ void InitPokemonStorageExtension(void)
            sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, boxExtensionMagic));
     gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
     dest = StringCopy(gPokemonStoragePtr->extraBoxName, gText_Box);
+    ConvertIntToDecimalStringN(dest, LEGACY_BOXES_COUNT + 1, STR_CONV_MODE_LEFT_ALIGN, 2);
+    gPokemonStoragePtr->extraBoxWallpaper = LEGACY_BOXES_COUNT % (MAX_DEFAULT_WALLPAPER + 1);
+    InitPokemonStorageBox17Extension();
+}
+
+void InitPokemonStorageBox17Extension(void)
+{
+    u8 *dest;
+
+    memset(&gPokemonStoragePtr->box17ExtensionMagic, 0,
+           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, box17ExtensionMagic));
+    gPokemonStoragePtr->box17ExtensionMagic = POKEMON_STORAGE_BOX17_MAGIC;
+    dest = StringCopy(gPokemonStoragePtr->box17Name, gText_Box);
     ConvertIntToDecimalStringN(dest, TOTAL_BOXES_COUNT, STR_CONV_MODE_LEFT_ALIGN, 2);
-    gPokemonStoragePtr->extraBoxWallpaper = (TOTAL_BOXES_COUNT - 1) % (MAX_DEFAULT_WALLPAPER + 1);
+    gPokemonStoragePtr->box17Wallpaper = (TOTAL_BOXES_COUNT - 1) % (MAX_DEFAULT_WALLPAPER + 1);
 }
 
 
@@ -5853,8 +5866,15 @@ static s8 DetermineBoxScrollDirection(u8 boxId)
             currentBox = 0;
     }
 
-    return (i < TOTAL_BOXES_COUNT / 2) ? 1 : -1;
+    return (i * 2 < TOTAL_BOXES_COUNT) ? 1 : -1;
 }
+
+#if TESTING
+s8 PokemonStorageSystem_TestDetermineBoxScrollDirection(u8 boxId)
+{
+    return DetermineBoxScrollDirection(boxId);
+}
+#endif
 
 
 //------------------------------------------------------------------------------
@@ -10280,8 +10300,10 @@ struct BoxPokemon *GetBoxedMonPtr(u8 boxId, u8 boxPosition)
     {
         if (boxId < LEGACY_BOXES_COUNT)
             return &gPokemonStoragePtr->legacyBoxes[boxId][boxPosition];
-        else
+        else if (boxId == LEGACY_BOXES_COUNT)
             return &gPokemonStoragePtr->extraBox[boxPosition];
+        else
+            return &gPokemonStoragePtr->box17[boxPosition];
     }
     else
         return NULL;
@@ -10291,8 +10313,10 @@ u8 *GetBoxNamePtr(u8 boxId)
 {
     if (boxId < LEGACY_BOXES_COUNT)
         return gPokemonStoragePtr->legacyBoxNames[boxId];
-    else if (boxId < TOTAL_BOXES_COUNT)
+    else if (boxId == LEGACY_BOXES_COUNT)
         return gPokemonStoragePtr->extraBoxName;
+    else if (boxId < TOTAL_BOXES_COUNT)
+        return gPokemonStoragePtr->box17Name;
     else
         return NULL;
 }
@@ -10301,8 +10325,10 @@ static u8 GetBoxWallpaper(u8 boxId)
 {
     if (boxId < LEGACY_BOXES_COUNT)
         return gPokemonStoragePtr->legacyBoxWallpapers[boxId];
-    else if (boxId < TOTAL_BOXES_COUNT)
+    else if (boxId == LEGACY_BOXES_COUNT)
         return gPokemonStoragePtr->extraBoxWallpaper;
+    else if (boxId < TOTAL_BOXES_COUNT)
+        return gPokemonStoragePtr->box17Wallpaper;
     else
         return 0;
 }
@@ -10313,10 +10339,24 @@ static void SetBoxWallpaper(u8 boxId, u8 wallpaperId)
     {
         if (boxId < LEGACY_BOXES_COUNT)
             gPokemonStoragePtr->legacyBoxWallpapers[boxId] = wallpaperId;
-        else
+        else if (boxId == LEGACY_BOXES_COUNT)
             gPokemonStoragePtr->extraBoxWallpaper = wallpaperId;
+        else
+            gPokemonStoragePtr->box17Wallpaper = wallpaperId;
     }
 }
+
+#if TESTING
+u8 PokemonStorageSystem_TestGetBoxWallpaper(u8 boxId)
+{
+    return GetBoxWallpaper(boxId);
+}
+
+void PokemonStorageSystem_TestSetBoxWallpaper(u8 boxId, u8 wallpaperId)
+{
+    SetBoxWallpaper(boxId, wallpaperId);
+}
+#endif
 
 // For moving to the next Pokémon while viewing the summary screen
 s16 AdvanceStorageMonIndex(struct BoxPokemon *boxMons, u8 currIndex, u8 maxIndex, u8 mode)

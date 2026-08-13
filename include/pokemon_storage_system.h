@@ -4,7 +4,7 @@
 #include "main.h"
 
 #define LEGACY_BOXES_COUNT      15
-#define TOTAL_BOXES_COUNT       16
+#define TOTAL_BOXES_COUNT       17
 #define IN_BOX_ROWS             5 // Number of rows, 6 Pokémon per row
 #define IN_BOX_COLUMNS          6 // Number of columns, 5 Pokémon per column
 #define IN_BOX_COUNT            (IN_BOX_ROWS * IN_BOX_COLUMNS)
@@ -13,6 +13,8 @@
 
 // Marks saves which use sectors 30 and 31 for the sixteenth box overflow data.
 #define POKEMON_STORAGE_EXTENSION_MAGIC 0x36315842 // "BX16"
+// Marks the separately checksummed seventeenth box appended to the BX16 data.
+#define POKEMON_STORAGE_BOX17_MAGIC     0x37315842 // "BX17"
 
 /*
             COLUMNS
@@ -26,8 +28,8 @@ ROWS        0   1   2   3   4   5
 struct PokemonStorage
 {
     /*0x0000*/ u8 currentBox;
-    // Access these legacy arrays through the storage accessors below so Box 16
-    // cannot accidentally be omitted.
+    // Access these legacy arrays through the storage accessors below so the
+    // extension boxes cannot accidentally be omitted.
     /*0x0004*/ struct BoxPokemon legacyBoxes[LEGACY_BOXES_COUNT][IN_BOX_COUNT];
     /*0x859C*/ u8 legacyBoxNames[LEGACY_BOXES_COUNT][BOX_NAME_LENGTH + 1];
     /*0x8623*/ u8 legacyBoxWallpapers[LEGACY_BOXES_COUNT];
@@ -38,6 +40,18 @@ struct PokemonStorage
     /*0x87B8*/ struct BoxPokemon extraBox[IN_BOX_COUNT];
     /*0x90A0*/ u8 extraBoxName[BOX_NAME_LENGTH + 1];
     /*0x90A9*/ u8 extraBoxWallpaper;
+    /*0x90AA*/ u8 extraBoxPadding[2];
+
+    // Keep the complete BX16 layout above byte-for-byte compatible. Box 17 is
+    // an append-only extension with its own checksum because the overflow
+    // sector footer remains compatible with BX16 ROMs.
+    /*0x90AC*/ u32 box17ExtensionMagic;
+    /*0x90B0*/ u16 box17Checksum;
+    /*0x90B2*/ u16 box17ChecksumInverse;
+    /*0x90B4*/ struct BoxPokemon box17[IN_BOX_COUNT];
+    /*0x999C*/ u8 box17Name[BOX_NAME_LENGTH + 1];
+    /*0x99A5*/ u8 box17Wallpaper;
+    /*0x99A6*/ u8 box17Padding[2];
 };
 
 // Save-format contract. If one of these fails, the storage migration and
@@ -52,7 +66,15 @@ STATIC_ASSERT(offsetof(struct PokemonStorage, boxExtensionMagic) == 34740, Pokem
 STATIC_ASSERT(offsetof(struct PokemonStorage, extraBox) == 34744, PokemonStorageExtraBoxOffset);
 STATIC_ASSERT(offsetof(struct PokemonStorage, extraBoxName) == 37024, PokemonStorageExtraBoxNameOffset);
 STATIC_ASSERT(offsetof(struct PokemonStorage, extraBoxWallpaper) == 37033, PokemonStorageExtraBoxWallpaperOffset);
-STATIC_ASSERT(sizeof(struct PokemonStorage) == 37036, PokemonStorageSize);
+STATIC_ASSERT(offsetof(struct PokemonStorage, extraBoxPadding) == 37034, PokemonStorageExtraBoxPaddingOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17ExtensionMagic) == 37036, PokemonStorageBox17MagicOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17Checksum) == 37040, PokemonStorageBox17ChecksumOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17ChecksumInverse) == 37042, PokemonStorageBox17ChecksumInverseOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17) == 37044, PokemonStorageBox17Offset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17Name) == 39324, PokemonStorageBox17NameOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17Wallpaper) == 39333, PokemonStorageBox17WallpaperOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, box17Padding) == 39334, PokemonStorageBox17PaddingOffset);
+STATIC_ASSERT(sizeof(struct PokemonStorage) == 39336, PokemonStorageSize);
 
 extern struct PokemonStorage *gPokemonStoragePtr;
 
@@ -69,6 +91,7 @@ void CB2_ShowPokemonPCFromParty(void);
 void PokemonPC_SetReturnToPartyCallback(MainCallback cb);
 void ResetPokemonStorageSystem(void);
 void InitPokemonStorageExtension(void);
+void InitPokemonStorageBox17Extension(void);
 s16 CompactPartySlots(void);
 u8 StorageGetCurrentBox(void);
 u32 GetBoxMonDataAt(u8 boxId, u8 boxPosition, s32 request);
@@ -91,6 +114,9 @@ bool32 AnyStorageMonWithMove(enum Move move);
 
 #if TESTING
 bool32 PokemonStorageSystem_TestTakeItemToBag(u8 boxId, u8 boxPosition);
+s8 PokemonStorageSystem_TestDetermineBoxScrollDirection(u8 boxId);
+u8 PokemonStorageSystem_TestGetBoxWallpaper(u8 boxId);
+void PokemonStorageSystem_TestSetBoxWallpaper(u8 boxId, u8 wallpaperId);
 #endif
 
 void ResetWaldaWallpaper(void);
