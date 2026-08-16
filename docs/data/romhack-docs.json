@@ -40537,7 +40537,7 @@
           "map": "MAP_RUINS_OF_ALPH_LAB",
           "name": "Ruins of Alph Lab",
           "time": "",
-          "method": "Gift",
+          "method": "Revived from Dome Fossil (before 4th badge); fossil found via Rock Smash in Ruins of Alph",
           "minLevel": 5,
           "maxLevel": 5,
           "rate": null
@@ -40546,7 +40546,7 @@
           "map": "MAP_RUINS_OF_ALPH_LAB",
           "name": "Ruins of Alph Lab",
           "time": "",
-          "method": "Gift",
+          "method": "Revived from Dome Fossil (after 4th badge); fossil found via Rock Smash in Ruins of Alph",
           "minLevel": 20,
           "maxLevel": 20,
           "rate": null
@@ -40978,7 +40978,7 @@
           "map": "MAP_RUINS_OF_ALPH_LAB",
           "name": "Ruins of Alph Lab",
           "time": "",
-          "method": "Gift",
+          "method": "Revived from Old Amber; fossil found via Rock Smash in Ruins of Alph",
           "minLevel": 20,
           "maxLevel": 20,
           "rate": null
@@ -41332,6 +41332,14 @@
         {
           "level": 56,
           "move": "MOVE_GIGA_IMPACT"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_GRAV_APPLE"
+        },
+        {
+          "level": 64,
+          "move": "MOVE_WOOD_HAMMER"
         }
       ],
       "tmhm": [
@@ -41423,7 +41431,8 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_UPROAR",
-        "MOVE_ZEN_HEADBUTT"
+        "MOVE_ZEN_HEADBUTT",
+        "MOVE_POWER_WHIP"
       ],
       "eggMoves": [
         "MOVE_LICK",
@@ -41457,7 +41466,7 @@
       "name": "Snorlax",
       "types": [
         "TYPE_NORMAL",
-        "TYPE_NORMAL"
+        "TYPE_GRASS"
       ],
       "stats": {
         "hp": 160,
@@ -41478,21 +41487,21 @@
       ],
       "bst": 640,
       "abilities": [
-        "ABILITY_IMMUNITY",
         "ABILITY_THICK_FAT",
-        "ABILITY_GLUTTONY"
+        "ABILITY_THICK_FAT",
+        "ABILITY_THICK_FAT"
       ],
       "regularAbilities": [
-        "ABILITY_IMMUNITY",
+        "ABILITY_THICK_FAT",
         "ABILITY_THICK_FAT"
       ],
       "hiddenAbilities": [
-        "ABILITY_GLUTTONY"
+        "ABILITY_THICK_FAT"
       ],
       "innates": [
         "ABILITY_BULLETPROOF",
-        "ABILITY_ROOTED",
-        "ABILITY_OVERCOAT"
+        "ABILITY_SEED_SOWER",
+        "ABILITY_ROOTED"
       ],
       "sprite": "sprites/pokemon/snorlax_gmax.png",
       "shinySprite": "sprites/pokemon/snorlax_gmax_shiny.png",
@@ -41604,6 +41613,14 @@
         {
           "level": 56,
           "move": "MOVE_GIGA_IMPACT"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_GRAV_APPLE"
+        },
+        {
+          "level": 64,
+          "move": "MOVE_WOOD_HAMMER"
         }
       ],
       "tmhm": [
@@ -41695,7 +41712,8 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_UPROAR",
-        "MOVE_ZEN_HEADBUTT"
+        "MOVE_ZEN_HEADBUTT",
+        "MOVE_POWER_WHIP"
       ],
       "eggMoves": [
         "MOVE_LICK",
@@ -66834,8 +66852,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -66843,8 +66861,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -81535,10 +81553,10 @@
       "categories": [],
       "bst": 500,
       "abilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_ALLSEEING_IDOL"
       ],
       "regularAbilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_ALLSEEING_IDOL"
       ],
       "hiddenAbilities": [],
       "innates": [
@@ -81909,7 +81927,7 @@
           "map": "MAP_RUINS_OF_ALPH_LAB",
           "name": "Ruins of Alph Lab",
           "time": "",
-          "method": "Gift",
+          "method": "Revived from Root Fossil; fossil found via Rock Smash in Ruins of Alph",
           "minLevel": 20,
           "maxLevel": 20,
           "rate": null
@@ -123963,7 +123981,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_RUINS_OF_ALPH_LAB",
+          "name": "Ruins of Alph Lab",
+          "time": "",
+          "method": "Revived from Plume Fossil; fossil found via Rock Smash in Ruins of Alph",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "archen"
     },
@@ -142508,8 +142536,8 @@
       ],
       "innates": [
         "ABILITY_UNCANNY",
-        "ABILITY_SHOWTIME",
-        "ABILITY_THINK_AHEAD"
+        "ABILITY_TELEPATHY",
+        "ABILITY_FRIEND_GUARD"
       ],
       "sprite": "sprites/pokemon/meowstic_m.png",
       "shinySprite": "sprites/pokemon/meowstic_m_shiny.png",
@@ -142565,6 +142593,10 @@
         {
           "level": 29,
           "move": "MOVE_ROLE_PLAY"
+        },
+        {
+          "level": 31,
+          "move": "MOVE_HYPNOSIS"
         },
         {
           "level": 34,
@@ -142722,7 +142754,7 @@
       "innates": [
         "ABILITY_UNCANNY",
         "ABILITY_PSYCHIC_SURGE",
-        "ABILITY_GRAVITY_WELL"
+        "ABILITY_OPPORTUNIST"
       ],
       "sprite": "sprites/pokemon/meowstic_f.png",
       "shinySprite": "sprites/pokemon/meowstic_f_shiny.png",
@@ -142778,6 +142810,10 @@
         {
           "level": 29,
           "move": "MOVE_ROLE_PLAY"
+        },
+        {
+          "level": 31,
+          "move": "MOVE_HYPNOSIS"
         },
         {
           "level": 34,
@@ -142934,8 +142970,8 @@
       ],
       "innates": [
         "ABILITY_UNCANNY",
-        "ABILITY_PSYCHIC_SURGE",
-        "ABILITY_MYSTIC_FORCE"
+        "ABILITY_GRAVITY_WELL",
+        "ABILITY_PRANKSTER"
       ],
       "sprite": "sprites/pokemon/meowstic_m_mega.png",
       "shinySprite": "sprites/pokemon/meowstic_m_mega_shiny.png",
@@ -142991,6 +143027,10 @@
         {
           "level": 29,
           "move": "MOVE_ROLE_PLAY"
+        },
+        {
+          "level": 31,
+          "move": "MOVE_HYPNOSIS"
         },
         {
           "level": 34,
@@ -143135,7 +143175,7 @@
       "innates": [
         "ABILITY_UNCANNY",
         "ABILITY_PSYCHIC_SURGE",
-        "ABILITY_GRAVITY_WELL"
+        "ABILITY_COMPETITIVE"
       ],
       "sprite": "sprites/pokemon/meowstic_f_mega.png",
       "shinySprite": "sprites/pokemon/meowstic_f_mega_shiny.png",
@@ -143191,6 +143231,10 @@
         {
           "level": 29,
           "move": "MOVE_ROLE_PLAY"
+        },
+        {
+          "level": 31,
+          "move": "MOVE_HYPNOSIS"
         },
         {
           "level": 34,
@@ -146535,7 +146579,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_RUINS_OF_ALPH_LAB",
+          "name": "Ruins of Alph Lab",
+          "time": "",
+          "method": "Revived from Jaw Fossil; fossil found via Rock Smash in Ruins of Alph",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "tyrunt"
     },
@@ -146931,7 +146985,17 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_RUINS_OF_ALPH_LAB",
+          "name": "Ruins of Alph Lab",
+          "time": "",
+          "method": "Revived from Sail Fossil; fossil found via Rock Smash in Ruins of Alph",
+          "minLevel": 20,
+          "maxLevel": 20,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "amaura"
     },
@@ -213066,12 +213130,6 @@
             "sprite": "sprites/pokemon/snorlax.png"
           },
           {
-            "species": "SPECIES_SNORLAX_GMAX",
-            "name": "Snorlax",
-            "dex": 124,
-            "sprite": "sprites/pokemon/snorlax_gmax.png"
-          },
-          {
             "species": "SPECIES_GLIGAR",
             "name": "Gligar",
             "dex": 180,
@@ -214250,12 +214308,6 @@
             "name": "Baltoy",
             "dex": 265,
             "sprite": "sprites/pokemon/baltoy.png"
-          },
-          {
-            "species": "SPECIES_CLAYDOL",
-            "name": "Claydol",
-            "dex": 266,
-            "sprite": "sprites/pokemon/claydol.png"
           },
           {
             "species": "SPECIES_DUSKULL",
@@ -222170,12 +222222,6 @@
             "sprite": "sprites/pokemon/snorlax.png"
           },
           {
-            "species": "SPECIES_SNORLAX_GMAX",
-            "name": "Snorlax",
-            "dex": 124,
-            "sprite": "sprites/pokemon/snorlax_gmax.png"
-          },
-          {
             "species": "SPECIES_ZIGZAGOON",
             "name": "Zigzagoon",
             "dex": 225,
@@ -228224,6 +228270,12 @@
             "sprite": "sprites/pokemon/audino_mega.png"
           },
           {
+            "species": "SPECIES_MEOWSTIC_M",
+            "name": "Meowstic",
+            "dex": 487,
+            "sprite": "sprites/pokemon/meowstic_m.png"
+          },
+          {
             "species": "SPECIES_KLEFKI",
             "name": "Klefki",
             "dex": 508,
@@ -228850,6 +228902,12 @@
             "sprite": "sprites/pokemon/duosion.png"
           },
           {
+            "species": "SPECIES_MEOWSTIC_M",
+            "name": "Meowstic",
+            "dex": 487,
+            "sprite": "sprites/pokemon/meowstic_m.png"
+          },
+          {
             "species": "SPECIES_MALAMAR",
             "name": "Malamar",
             "dex": 492,
@@ -229118,12 +229176,6 @@
             "name": "Wigglytuff",
             "dex": 38,
             "sprite": "sprites/pokemon/wigglytuff.png"
-          },
-          {
-            "species": "SPECIES_SNORLAX_GMAX",
-            "name": "Snorlax",
-            "dex": 124,
-            "sprite": "sprites/pokemon/snorlax_gmax.png"
           },
           {
             "species": "SPECIES_ROWLET",
@@ -230956,6 +231008,12 @@
             "name": "Rotom",
             "dex": 367,
             "sprite": "sprites/pokemon/rotom.png"
+          },
+          {
+            "species": "SPECIES_MEOWSTIC_M_MEGA",
+            "name": "Meowstic",
+            "dex": 487,
+            "sprite": "sprites/pokemon/meowstic_m_mega.png"
           }
         ]
       }
@@ -231983,6 +232041,12 @@
             "name": "Azelf",
             "dex": 370,
             "sprite": "sprites/pokemon/azelf.png"
+          },
+          {
+            "species": "SPECIES_MEOWSTIC_F_MEGA",
+            "name": "Meowstic",
+            "dex": 487,
+            "sprite": "sprites/pokemon/meowstic_f_mega.png"
           }
         ]
       }
@@ -235198,12 +235262,6 @@
             "sprite": "sprites/pokemon/meowstic_f.png"
           },
           {
-            "species": "SPECIES_MEOWSTIC_M_MEGA",
-            "name": "Meowstic",
-            "dex": 487,
-            "sprite": "sprites/pokemon/meowstic_m_mega.png"
-          },
-          {
             "species": "SPECIES_MEOWSTIC_F_MEGA",
             "name": "Meowstic",
             "dex": 487,
@@ -236846,6 +236904,12 @@
             "sprite": "sprites/pokemon/venusaur_mega.png"
           },
           {
+            "species": "SPECIES_SNORLAX_GMAX",
+            "name": "Snorlax",
+            "dex": 124,
+            "sprite": "sprites/pokemon/snorlax_gmax.png"
+          },
+          {
             "species": "SPECIES_ROTOM_MOW",
             "name": "Rotom",
             "dex": 367,
@@ -237755,6 +237819,12 @@
             "name": "Staraptor",
             "dex": 311,
             "sprite": "sprites/pokemon/staraptor.png"
+          },
+          {
+            "species": "SPECIES_MEOWSTIC_F",
+            "name": "Meowstic",
+            "dex": 487,
+            "sprite": "sprites/pokemon/meowstic_f.png"
           },
           {
             "species": "SPECIES_HOOPA_CONFINED",
@@ -239456,12 +239526,6 @@
             "name": "Delphox",
             "dex": 472,
             "sprite": "sprites/pokemon/delphox.png"
-          },
-          {
-            "species": "SPECIES_MEOWSTIC_M_MEGA",
-            "name": "Meowstic",
-            "dex": 487,
-            "sprite": "sprites/pokemon/meowstic_m_mega.png"
           }
         ]
       }
@@ -240719,12 +240783,6 @@
             "name": "Meloetta",
             "dex": 465,
             "sprite": "sprites/pokemon/meloetta_aria.png"
-          },
-          {
-            "species": "SPECIES_MEOWSTIC_M",
-            "name": "Meowstic",
-            "dex": 487,
-            "sprite": "sprites/pokemon/meowstic_m.png"
           }
         ]
       }
@@ -241211,12 +241269,6 @@
             "name": "Braviary",
             "dex": 447,
             "sprite": "sprites/pokemon/braviary_hisui.png"
-          },
-          {
-            "species": "SPECIES_MEOWSTIC_M",
-            "name": "Meowstic",
-            "dex": 487,
-            "sprite": "sprites/pokemon/meowstic_m.png"
           }
         ]
       }
@@ -245699,16 +245751,10 @@
             "sprite": "sprites/pokemon/claydol.png"
           },
           {
-            "species": "SPECIES_MEOWSTIC_F",
+            "species": "SPECIES_MEOWSTIC_M_MEGA",
             "name": "Meowstic",
             "dex": 487,
-            "sprite": "sprites/pokemon/meowstic_f.png"
-          },
-          {
-            "species": "SPECIES_MEOWSTIC_F_MEGA",
-            "name": "Meowstic",
-            "dex": 487,
-            "sprite": "sprites/pokemon/meowstic_f_mega.png"
+            "sprite": "sprites/pokemon/meowstic_m_mega.png"
           },
           {
             "species": "SPECIES_INDEEDEE_F",
@@ -245717,6 +245763,29 @@
             "sprite": "sprites/pokemon/indeedee_f.png"
           }
         ]
+      }
+    },
+    "ABILITY_ALLSEEING_IDOL": {
+      "constant": "ABILITY_ALLSEEING_IDOL",
+      "name": "Allseeing Idol",
+      "description": "The Pokemon is immune to Ground moves and hazards, even during Gravity, which also boosts Defense by 30%.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "allseeing-idol",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_CLAYDOL",
+            "name": "Claydol",
+            "dex": 266,
+            "sprite": "sprites/pokemon/claydol.png"
+          }
+        ],
+        "innate": []
       }
     }
   },
@@ -277406,8 +277475,8 @@
           "displayName": "Meowstic",
           "innates": [
             "ABILITY_UNCANNY",
-            "ABILITY_SHOWTIME",
-            "ABILITY_THINK_AHEAD"
+            "ABILITY_TELEPATHY",
+            "ABILITY_FRIEND_GUARD"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -279584,8 +279653,8 @@
           "displayName": "Meowstic M",
           "innates": [
             "ABILITY_UNCANNY",
-            "ABILITY_SHOWTIME",
-            "ABILITY_THINK_AHEAD"
+            "ABILITY_TELEPATHY",
+            "ABILITY_FRIEND_GUARD"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -279614,7 +279683,7 @@
           "innates": [
             "ABILITY_UNCANNY",
             "ABILITY_PSYCHIC_SURGE",
-            "ABILITY_GRAVITY_WELL"
+            "ABILITY_OPPORTUNIST"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -305871,7 +305940,7 @@
           "name": "Claydol",
           "item": "Focus Sash",
           "level": 72,
-          "ability": "Levitate",
+          "ability": "",
           "nature": "",
           "evs": {},
           "ivs": {
@@ -305968,7 +306037,7 @@
           "name": "Claydol",
           "item": "Focus Sash",
           "level": 72,
-          "ability": "Levitate",
+          "ability": "",
           "nature": "",
           "evs": {
             "spa": 252,
@@ -325617,7 +325686,7 @@
       "category": "Information",
       "order": 1,
       "source": "guides/FAQ.md",
-      "content": "### Exp. Share?\n- Given right before arriving in the Violet City.\n\n### HMs?\n- Requires only owning them, Fly requires owning a Pok\u00e9mon that can learn it.\n\n### Hard mode differences?\n- Gym battles are double battles unless enforced into singles by another setting\n- Trainers with no pre-assigned moves for their Pok\u00e9mon generate slightly smarter movepools based on progression.\n\n### How do I access Whitney's Gym?\n- Go to the Radio Tower and complete the quiz on the first floor\n\n### How do I remove the weird tree after beating 3rd Gym?\n- Go to Goldenrod Flower Shop next to the gym and get Squirtbottle to wake up the tree.\n\n### How do I go past level 85 cap?\n- If you are on old version, beat Leaf in the Nameless Cave accessible via Rock Climb from Kitakami Border. Newer versions don't have this level cap.\n\n### Strength HM?\n- Olivine Cafe.\n\n### Dexnav?\n- After obtaining first set of Pok\u00e9 Balls.\n\n### Unregistering dexnav species?\n- Select in the dexnav screen.\n\n### Saves compatible between versions?\n- Always\n\n### What's Candy Jar and how do I get it?\n- After beating the first gym, Elm's aide will give it to you alongside the egg. It will accumulate extra exp from battles and convert them to Exp Candy on use.\n\n### Shiny odds?\n- 1/256. Eggs will show with blue dots if they are shiny.\n\n### Shiny locks?\n- None. Even NPC trades can be shiny.\n\n### Type changes?\n- None during the main game. Only some might gain one extra type during postgame from an innate.\n\n### BST Changes?\n- None.\n\n### Moves changes?\n- Yes, some Pok\u00e9mon learn extra moves for a bit more late game power. Such as Attack Order Beedrill.\n\n### Mega Ring?\n- After Team Rocket takeover event in Goldenrod City.\n\n### How to mega evolve?\n- Press start when selecting moves while the Pok\u00e9mon is wielding appropriate Mega stone and you have the Mega Ring\n\n### How to get starter megastone/bondstone?\n- Given to you by Elm at a certain point in story.\n\n### How to get the other starters?\n- Gachapon machine in Goldenrod Casino, behind the rewards counter. 3000 Coins is the minimum entry, but putting more increases the chance of not receiving a duplicate starter.\n\n### Coin case?\n- Goldenrod Underground\n\n### Nature mints?\n- Olivine beach cafe sells them.\n\n### Ability changing?\n- Battle Factory (after 3rd gym) offers them for playing a few rounds. Few can also be found in the overworld.\n\n### Tutor moves?\n- There's a tutor move master in Olivine City in the top-right house who will sell you infinite access to all Tutor moves for 44444 pokedollars. After buying it, you can teach tutor moves from the summary screen.\n\n### Egg moves?\n- Blackthorn City egg move master sells you infinite access to egg moves for 88888 pokedollars similar to tutor move master.\n\n### When does night time start?\n- 20:00 ingame time.\n\n### Tips for finding items that are held by wild Pok\u00e9mon?\n- Have a Pok\u00e9mon with ability Compoundeyes or Super Luck in the first party slot to increase the chances of wild Pok\u00e9mon holding an item.\n\n### Tips for getting money?\n- Early game, have a Pok\u00e9mon with ability Pickup. In this hack if the held item slot is occuped, items picked by Pickup will still go to bag. Later on you can fish feathers or smash rocks for shards and sell them for quick cash. After obtaining 8 badges, Battle Factory will stock Nuggets and Big Nuggets. In the post game you can farm money from the Rocket Arcade facility.\n\n### What items can Pickup find?\n- Below is the table of items found with Pickup. Note that the items go straight to bag if held item slot is occupied.\n\n| Item | Lv. 1\u201310 | Lv. 11\u201320 | Lv. 21\u201330 | Lv. 31\u201340 | Lv. 41\u201350 | Lv. 51\u201360 | Lv. 61\u201370 | Lv. 71\u201380 | Lv. 81\u201390 | Lv. 91\u2013100 |\n| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n| Potion | 35% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Tiny Mushroom | 25% | 10% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Repel | 8% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Super Potion | 8% | 10% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Pok\u00e9 Doll | 8% | 10% | 9% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Big Mushroom | 3% | 10% | 9% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Super Repel | 3% | 10% | 9% | 9% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Full Heal | 3% | 3% | 9% | 8% | 9% | 30% | \u2014 | \u2014 | \u2014 | \u2014 |\n| Revive | 3% | 3% | 3% | 8% | 8% | 9% | 30% | \u2014 | \u2014 | \u2014 |\n| Hyper Potion | 3% | 3% | 3% | 4% | 8% | 9% | 8% | 30% | \u2014 | \u2014 |\n| Ether | 1% | 1% | 3% | 4% | 4% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Max Repel | \u2014 | 3% | 3% | 4% | 4% | 9% | 8% | 8% | 30% | \u2014 |\n| Moon Stone | \u2014 | 3% | 3% | 4% | 4% | 4% | 4% | 5% | 9% | 10% |\n| Sun Stone | \u2014 | 3% | 3% | 4% | 4% | 4% | 4% | 5% | 9% | 10% |\n| Rare Candy | \u2014 | 1% | 1% | 1% | 1% | 4% | 4% | 5% | 4% | 5% |\n| Nugget | \u2014 | \u2014 | 3% | 4% | 4% | 4% | 4% | 5% | 4% | 5% |\n| Max Potion | \u2014 | \u2014 | 3% | 4% | 4% | 4% | 8% | 8% | 9% | 30% |\n| Max Ether | \u2014 | \u2014 | 1% | 1% | 4% | 4% | 4% | \u2014 | \u2014 | \u2014 |\n| PP Up | \u2014 | \u2014 | 1% | 1% | 1% | 4% | 4% | 5% | 4% | 5% |\n| Big Nugget | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 4% | 5% | 4% | 5% |\n| Destiny Knot | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Leftovers | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Mental Herb | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Power Herb | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| White Herb | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Balm Mushroom | \u2014 | \u2014 | 1% | 4% | 4% | 4% | 4% | 5% | 4% | 5% |\n| Max Revive | \u2014 | \u2014 | \u2014 | 4% | 4% | 4% | 4% | 7% | 9% | 9% |\n| Ability Capsule | \u2014 | \u2014 | \u2014 | \u2014 | 1% | 1% | 4% | 5% | 4% | 5% |\n| Ability Patch | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | 1% | 1% | 4% | 5% |\n| Bottle Cap | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | 1% | 1% | 1% |\n\n### Why do innates unlock so late?\n- They are meant to act as a form of postgame progression. Most Pok\u00e9mon stop learning moves around 60~ usually, so this gives something to look forward to after that. If you really want to play with innates during the main game, you can activate them from the bookcase behind the starter case table in Elm's lab. However this will be a very unbalanced experience and not the intended way to play.\n\n### Where is X Item/Pok\u00e9mon/TM?\n- Check docs or ingame pokedex.\n\n### Raising IVs?\n- Fishing and Battle Factory (after gym 3) can net you feather items which permanently raise your IVs by 4 with each use. Additionally Hyper Training is available in Rinto Village with Bottle Caps (which can also be obtained by fishing with Super Rod).\n\n### Raising EVs?\n- EV items such as Power Weight have been greatly buffed, and they are buyable in Goldenrod. Additionally vitamins like Protein are not capped at 100 EVs anymore, and there are EX versions of the items that raise the stats instantly to max.\n\n### Lowering EVs?\n- Goldenrod Dept. Store sells EV reducing berries?\n\n### Regional Pok\u00e9mon?\n- Most are available in the Baoba's Safari Zone, but several can be found before this.\n\n### Baby forms?\n- Breed with incenses, see https://bulbapedia.bulbagarden.net/wiki/Baby_Pok%C3%A9mon#List_of_baby_Pok%C3%A9mon for more information.\n\n### Should I hold off evolving Growlithe/Vulpix/etc?\n- No, the evolved forms learn all the moves the pre-evoluion form does.\n\n### How often do Hidden Grotto contents respawn?\n- Once per day, but you can also use Beckoning Bell item from Battle Factory after Gym 3.\n\n### How do I change Rotom form?\n- After obtaining a Rotom, bring it to the guard on the first floor of Goldenrod Apartment building. You can then access the basement with form changing appliances.\n\n### Are Pok\u00e9mon found from Hidden Grottos any different from regular wild ones?\n- Pok\u00e9mon from Hidden Grottos have atleast two perfect IVs and their Hidden Ability. They have 60% chance of containing a Pok\u00e9mon, 30% of having a generic item and 10% of having a grotto specific item \n\n### Fossils?\n- Smash rocks in Ruins of Alph.\n\n### Kanto?\n- No kanto, pure Johto focus.\n\n### How do I get other starters?\n- Goldenrod Casino has a gachapon machine that can give starters from any generation.\n\n### What are the ingame trades?\n- Pawmi in Violet (for Cottonee)\n- G-Slowpoke in Azalea (for regular Slowpoke)\n- Honedge in Goldenrod Dept Store (for Clefairy),\n- Hisui-Voltorb in Olivine (for Mareanie)\n- Gabite in Blackthorn City (for Dragonair) \n- Meltan in Rinto Village (for Tinkaton) \n\n### Gym leader rematch locations in postgame?\n- Falkner: Violet City school\n- Bugsy: National Park\n- Whitney: Goldenrod Dept. Store\n- Morty: Bellchime Trail\n- Chuck: Route 47 bridge\n- Jasmine: Olivine cafe\n- Pryce: Lake of Rage\n- Clair: Dragon's Den cave"
+      "content": "### Exp. Share?\n- Given right before arriving in the Violet City.\n\n### HMs?\n- Requires only owning them, Fly requires owning a Pok\u00e9mon that can learn it.\n\n### Hard mode differences?\n- Gym battles are double battles unless enforced into singles by another setting\n- Trainers with no pre-assigned moves for their Pok\u00e9mon generate slightly smarter movepools based on progression.\n\n### How do I access Whitney's Gym?\n- Go to the Radio Tower and complete the quiz on the first floor\n\n### How do I remove the weird tree after beating 3rd Gym?\n- Go to Goldenrod Flower Shop next to the gym and get Squirtbottle to wake up the tree.\n\n### How do I go past level 85 cap?\n- If you are on old version, beat Leaf in the Nameless Cave accessible via Rock Climb from Kitakami Border. Newer versions don't have this level cap.\n\n### Strength HM?\n- Olivine Cafe.\n\n### Waterfall hM?\n- Ice path.\n\n### Dexnav?\n- After obtaining first set of Pok\u00e9 Balls.\n\n### Unregistering dexnav species?\n- Select in the dexnav screen.\n\n### Saves compatible between versions?\n- Always\n\n### What's Candy Jar and how do I get it?\n- After beating the first gym, Elm's aide will give it to you alongside the egg. It will accumulate extra exp from battles and convert them to Exp Candy on use.\n\n### Shiny odds?\n- 1/256. Eggs will show with blue dots if they are shiny.\n\n### Shiny locks?\n- None. Even NPC trades can be shiny.\n\n### Type changes?\n- None during the main game. Only some might gain one extra type during postgame from an innate.\n\n### BST Changes?\n- None.\n\n### Moves changes?\n- Yes, some Pok\u00e9mon learn extra moves for a bit more late game power. Such as Attack Order Beedrill.\n\n### When is Morning/Day/Evening/Night?\n- Morning is 06:00-10:00, Day 10:00-19:00, Evening 19:00-20:00 and Night 20:00-06:00.\n\n### Mega Ring?\n- After Team Rocket takeover event in Goldenrod City.\n\n### How to mega evolve?\n- Press start when selecting moves while the Pok\u00e9mon is wielding appropriate Mega stone and you have the Mega Ring\n\n### How to get starter megastone/bondstone?\n- Given to you by Elm at a certain point in story.\n\n### How to get the other starters?\n- Gachapon machine in Goldenrod Casino, behind the rewards counter. 3000 Coins is the minimum entry, but putting more increases the chance of not receiving a duplicate starter.\n\n### Coin case?\n- Goldenrod Underground\n\n### Grinding Exp for late game?\n- Kitakami has an Audino/Blissey trainer for a fee of 10,000 pokedollars.\n\n### Nature mints?\n- Olivine beach cafe sells them.\n\n### Ability changing?\n- Battle Factory (after 3rd gym) offers them for playing a few rounds. Few can also be found in the overworld.\n\n### Tutor moves?\n- There's a tutor move master in Olivine City in the top-right house who will sell you infinite access to all Tutor moves for 44444 pokedollars. After buying it, you can teach tutor moves from the summary screen.\n\n### Egg moves?\n- Blackthorn City egg move master sells you infinite access to egg moves for 88888 pokedollars similar to tutor move master.\n\n### When does night time start?\n- 20:00 ingame time.\n\n### Tips for finding items that are held by wild Pok\u00e9mon?\n- Have a Pok\u00e9mon with ability Compoundeyes or Super Luck in the first party slot to increase the chances of wild Pok\u00e9mon holding an item.\n\n### Tips for getting money?\n- Early game, have a Pok\u00e9mon with ability Pickup. In this hack if the held item slot is occuped, items picked by Pickup will still go to bag. Later on you can fish feathers or smash rocks for shards and sell them for quick cash. After reaching Goldenrod, you can start coveting/thieving Yanmas on Route 35 for Wide Lenses, they sell for a lot of money and can be easily farmed with Dexnav chain. Butterfree learns Covet and Persian learns Thief. After obtaining 8 badges, Battle Factory will stock Nuggets and Big Nuggets. In the post game you can farm money from the Rocket Arcade facility.\n\n### What items can Pickup find?\n- Below is the table of items found with Pickup. Note that the items go straight to bag if held item slot is occupied.\n\n| Item | Lv. 1\u201310 | Lv. 11\u201320 | Lv. 21\u201330 | Lv. 31\u201340 | Lv. 41\u201350 | Lv. 51\u201360 | Lv. 61\u201370 | Lv. 71\u201380 | Lv. 81\u201390 | Lv. 91\u2013100 |\n| :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n| Potion | 35% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Tiny Mushroom | 25% | 10% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Repel | 8% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Super Potion | 8% | 10% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Pok\u00e9 Doll | 8% | 10% | 9% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Big Mushroom | 3% | 10% | 9% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Super Repel | 3% | 10% | 9% | 9% | 30% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Full Heal | 3% | 3% | 9% | 8% | 9% | 30% | \u2014 | \u2014 | \u2014 | \u2014 |\n| Revive | 3% | 3% | 3% | 8% | 8% | 9% | 30% | \u2014 | \u2014 | \u2014 |\n| Hyper Potion | 3% | 3% | 3% | 4% | 8% | 9% | 8% | 30% | \u2014 | \u2014 |\n| Ether | 1% | 1% | 3% | 4% | 4% | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 |\n| Max Repel | \u2014 | 3% | 3% | 4% | 4% | 9% | 8% | 8% | 30% | \u2014 |\n| Moon Stone | \u2014 | 3% | 3% | 4% | 4% | 4% | 4% | 5% | 9% | 10% |\n| Sun Stone | \u2014 | 3% | 3% | 4% | 4% | 4% | 4% | 5% | 9% | 10% |\n| Rare Candy | \u2014 | 1% | 1% | 1% | 1% | 4% | 4% | 5% | 4% | 5% |\n| Nugget | \u2014 | \u2014 | 3% | 4% | 4% | 4% | 4% | 5% | 4% | 5% |\n| Max Potion | \u2014 | \u2014 | 3% | 4% | 4% | 4% | 8% | 8% | 9% | 30% |\n| Max Ether | \u2014 | \u2014 | 1% | 1% | 4% | 4% | 4% | \u2014 | \u2014 | \u2014 |\n| PP Up | \u2014 | \u2014 | 1% | 1% | 1% | 4% | 4% | 5% | 4% | 5% |\n| Big Nugget | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 4% | 5% | 4% | 5% |\n| Destiny Knot | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Leftovers | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Mental Herb | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Power Herb | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| White Herb | \u2014 | \u2014 | 1% | 1% | 1% | 1% | 1% | 1% | 1% | 1% |\n| Balm Mushroom | \u2014 | \u2014 | 1% | 4% | 4% | 4% | 4% | 5% | 4% | 5% |\n| Max Revive | \u2014 | \u2014 | \u2014 | 4% | 4% | 4% | 4% | 7% | 9% | 9% |\n| Ability Capsule | \u2014 | \u2014 | \u2014 | \u2014 | 1% | 1% | 4% | 5% | 4% | 5% |\n| Ability Patch | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | 1% | 1% | 4% | 5% |\n| Bottle Cap | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | \u2014 | 1% | 1% | 1% |\n\n### Why do innates unlock so late?\n- They are meant to act as a form of postgame progression. Most Pok\u00e9mon stop learning moves around 60~ usually, so this gives something to look forward to after that. If you really want to play with innates during the main game, you can activate them from the bookcase behind the starter case table in Elm's lab. However this will be a very unbalanced experience and not the intended way to play.\n\n### Where is X Item/Pok\u00e9mon/TM?\n- Check docs or ingame pokedex.\n\n### Raising IVs?\n- Fishing and Battle Factory (after gym 3) can net you feather items which permanently raise your IVs by 4 with each use. Additionally Hyper Training is available in Rinto Village with Bottle Caps (which can also be obtained by fishing with Super Rod).\n\n### Raising EVs?\n- EV items such as Power Weight have been greatly buffed, and they are buyable in Goldenrod. Additionally vitamins like Protein are not capped at 100 EVs anymore, and there are EX versions of the items that raise the stats instantly to max.\n\n### Lowering EVs?\n- Goldenrod Dept. Store sells EV reducing berries?\n\n### Regional Pok\u00e9mon?\n- Most are available in the Baoba's Safari Zone, but several can be found before this.\n\n### Baby forms?\n- Breed with incenses, see https://bulbapedia.bulbagarden.net/wiki/Baby_Pok%C3%A9mon#List_of_baby_Pok%C3%A9mon for more information.\n\n### Should I hold off evolving Growlithe/Vulpix/etc?\n- No, the evolved forms learn all the moves the pre-evoluion form does.\n\n### How often do Hidden Grotto contents respawn?\n- Once per day, but you can also use Beckoning Bell item from Battle Factory after Gym 3.\n\n### How do I change Rotom form?\n- After obtaining a Rotom, bring it to the guard on the first floor of Goldenrod Apartment building. You can then access the basement with form changing appliances.\n\n### Are Pok\u00e9mon found from Hidden Grottos any different from regular wild ones?\n- Pok\u00e9mon from Hidden Grottos have atleast two perfect IVs and their Hidden Ability. They have 60% chance of containing a Pok\u00e9mon, 30% of having a generic item and 10% of having a grotto specific item \n\n### Fossils?\n- Smash rocks in Ruins of Alph.\n\n### Kanto?\n- No kanto, pure Johto focus.\n\n### How do I get other starters?\n- Goldenrod Casino has a gachapon machine that can give starters from any generation.\n\n### What are the ingame trades?\n- Pawmi in Violet (for Cottonee)\n- G-Slowpoke in Azalea (for regular Slowpoke)\n- Honedge in Goldenrod Dept Store (for Clefairy),\n- Hisui-Voltorb in Olivine (for Mareanie)\n- Gabite in Blackthorn City (for Dragonair) \n- Meltan in Rinto Village (for Tinkaton) \n\n### Where are the Route Experts?\n- Route 31, Goldenrod Shore, Route 47, Route 43 and Route 27.\n\n### Gym leader rematch locations in postgame?\n- Falkner: Violet City school\n- Bugsy: National Park\n- Whitney: Goldenrod Dept. Store\n- Morty: Bellchime Trail\n- Chuck: Route 47 bridge\n- Jasmine: Olivine cafe\n- Pryce: Lake of Rage\n- Clair: Dragon's Den cave"
     },
     {
       "slug": "howtoreportbugs",
@@ -325645,6 +325714,15 @@
       "order": 4,
       "source": "guides/hidden-grottos.md",
       "content": "### How Hidden Grottos work\n\n- Interact with suspicious paths behind trees to enter a Grotto.\n- Grottos repopulate once per day. A Beckoning Bell can also refresh them (One is obtained for free in Ilex Forest from an npc, more can be farmed from Battle Factory after beating the third gym).\n- A Hidden Grotto has a 60% chance to contain a Pok\u00e9mon, a 32% chance to be a generic item such as Rare Candy, PP Up and such, and a 8% chance to contain a grotto specific item.\n- Grotto Pok\u00e9mon have two guaranteed 31 IVs and their Hidden Ability. Each of the four Pok\u00e9mon in a grotto is equally likely to spawn when the grotto rolls a Pok\u00e9mon spawn.\n- The Grotto specific item listed below is one possible result and is not guaranteed.\n\n### Locations\n\n- **Route 32 (Lv. 10):** Applin, Paldean Wooper, Mareep, or Misdreavus. Grotto specific item: Everstone.\n\n![](images/grotto-route32.png){small}\n\n- **Route 33 (Lv. 14):** Pachirisu, Mienfoo, Darumaka, or Cottonee. Grotto specific item: Sun Stone.\n\n![](images/grotto-route33.png){small}\n\n- **Ilex Forest (Lv. 15):** Oddish, Ferroseed, Roselia, or Exeggcute. Grotto specific item: Leaf Stone.\n\n![](images/grotto-ilex.png){small}\n\n- **Route 35 (Lv. 18):** Rookidee, Pikachu, Poltchageist, or Eevee. Grotto specific item: Unremarkable Teacup.\n\n![](images/grotto-route35.png){small}\n\n- **Goldenrod Shore (Lv. 20):** Minccino, Shroomish, Own Tempo Rockruff, or Heracross. Grotto specific item: Light Clay.\n\n![](images/grotto-goldenrodshore.png){small}\n\n- **Route 38 (Lv. 30):** Munchlax, Male Meowstic, Female Meowstic, or Espathra. Grotto specific item: Stardust.\n\n![](images/grotto-route38.png){small}\n\n- **Vajra Desert (Lv. 30):** Baltoy, Vullaby, Larvitar, or Gible. Grotto specific item: Smooth Rock.\n\n![](images/grotto-vajradesert.png){small}\n\n- **Lake of Rage (Lv. 35):** Cyclizar, Maushold, Falinks, or Drampa. Grotto specific item: Eviolite.\n\n![](images/grotto-lakeofrage.png){small}\n\n- **Route 44 (Lv. 40):** Arctibax, Bergmite, Lopunny, or Hisuian Zorua. Grotto specific item: Ice Stone.\n\n![](images/grotto-route44.png){small}\n\n- **Route 47 (Lv. 40):** Chansey, Larvesta, Ditto, or Zorua. Grotto specific item: Lucky Egg.\n\n![](images/grotto-route47.png){small}"
+    },
+    {
+      "slug": "shiny-hunting",
+      "title": "Shiny hunting tips",
+      "summary": "A short guide for hunting shinies.",
+      "category": "Guide",
+      "order": 5,
+      "source": "guides/shiny-hunting.md",
+      "content": "## Basics\n\n- Every Pok\u00e9mon you can obtain can be shiny, even traded Pok\u00e9mon. There are no shiny locks.\n- The shiny odds are 1/256.\n- DexNav Pok\u00e9mon have a higher chance of being shiny at streaks of 50 and 100.\n\n## Elm's lab starters\n\n1. Save in front of the starter case before opening it.\n2. Open the case and check the starters. A shiny starter has a gold colored ball, and its sprite is shiny when hovered.\n3. If the starter you want is not shiny, soft reset the game and check again.\n\n## Eggs\n\n- Eggs use the base 1/256 odds. The Masuda Method is not enabled in this hack.\n- Gift eggs can be shiny just like any regular gift Pok\u00e9mon.\n- Shiny eggs have blue dots on their sprite.\n- An egg's shininess when breeding at the Day Care is decided when the egg is spawned at the Daycare Man, not when it's accepted/hatches.\n- The Day-Care Man says, \"This Egg looks quite different from the ones we usually see!\" when a shiny egg is ready. This message is shown before he asks if you want the egg.\n- Accept the egg after the special message. Otherwise, decline it and walk until another egg is ready.\n\n## Legendaries, statis encounters and gifts\n\nSave directly before starting the encounter or receiving the Pok\u00e9mon. If it is not shiny, soft reset and try again.\nGift Pok\u00e9mon show as shiny in the preview screen when received.\n\nRaikou, Entei and Suicune are rolled when they are released in Burned Tower. Their shininess does not change each time they are encountered. It is recommended that you instead Shiny Genome them if you wish to have them as shiny.\n\n## NPC trades\n\nNPC trades can be shiny and have 12 times the normal shiny chance. Save before completing the trade, then soft reset if needed. The sprite will show as shiny during the trade animation.\n\n\n## Note about save states\n\nYou may use save states to shiny hunt many of these faster, but you have to occasionally advance the RNG by opening a bag or taking a few steps for example, so that you don't get stuck in the same outcomes."
     },
     {
       "slug": "megaevolutions",

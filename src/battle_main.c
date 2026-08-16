@@ -6202,11 +6202,11 @@ static bool32 IsPartyMonGrounded(struct Pokemon *mon)
 
     if (PartyMonHasHeldItemEffect(mon, HOLD_EFFECT_IRON_BALL))
         return TRUE;
-    if (gFieldStatuses & STATUS_FIELD_GRAVITY)
+    if (gFieldStatuses & STATUS_FIELD_GRAVITY && !MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
         return TRUE;
     if (PartyMonHasHeldItemEffect(mon, HOLD_EFFECT_AIR_BALLOON))
         return FALSE;
-    if (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE))
+    if (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
         return FALSE;
     if (GetSpeciesType(species, 0) == TYPE_FLYING || GetSpeciesType(species, 1) == TYPE_FLYING)
         return FALSE;

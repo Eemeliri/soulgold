@@ -7834,11 +7834,11 @@ enum IronBallCheck
     IGNORE_IRON_BALL
 };
 
-static bool32 IsBattlerGroundedInverseCheck(enum BattlerId battler, enum InverseBattleCheck checkInverse, bool32 isAnticipation, bool32 hasLevitate, bool32 skipIronBall)
+static bool32 IsBattlerGroundedInverseCheck(enum BattlerId battler, enum InverseBattleCheck checkInverse, bool32 isAnticipation, bool32 hasLevitate, bool32 ignoresGravity, bool32 skipIronBall)
 {
     if (skipIronBall == FALSE && BattlerHasHeldItemEffect(battler, HOLD_EFFECT_IRON_BALL, TRUE))
         return TRUE;
-    if (gFieldStatuses & STATUS_FIELD_GRAVITY && isAnticipation == FALSE)
+    if (gFieldStatuses & STATUS_FIELD_GRAVITY && isAnticipation == FALSE && !ignoresGravity)
         return TRUE;
     if (B_ROOTED_GROUNDING >= GEN_4 && gBattleMons[battler].volatiles.root)
         return TRUE;
@@ -7858,14 +7858,19 @@ static bool32 IsBattlerGroundedInverseCheck(enum BattlerId battler, enum Inverse
 }
 
 bool32 IsBattlerGrounded(enum BattlerId battler)
-{   bool32 hasLevitate;
+{
+    bool32 hasLevitate;
+    bool32 ignoresGravity;
 
     // Regular ability check split out here as the AI switching logic uses battle context to figure out the Ability instead. (Multi)
     hasLevitate = gAiLogicData->aiCalcInProgress
-                ? (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE))
-                : (BattlerHasTrait(battler, ABILITY_LEVITATE) || BattlerHasTrait(battler, ABILITY_EELEVATE));
+                ? (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
+                : (BattlerHasTrait(battler, ABILITY_LEVITATE) || BattlerHasTrait(battler, ABILITY_EELEVATE) || BattlerHasTrait(battler, ABILITY_ALLSEEING_IDOL));
+    ignoresGravity = gAiLogicData->aiCalcInProgress
+                   ? AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL)
+                   : BattlerHasTrait(battler, ABILITY_ALLSEEING_IDOL);
 
-    return IsBattlerGroundedInverseCheck(battler, NOT_INVERSE_BATTLE, FALSE, hasLevitate, FALSE);
+    return IsBattlerGroundedInverseCheck(battler, NOT_INVERSE_BATTLE, FALSE, hasLevitate, ignoresGravity, FALSE);
 }
 
 u32 GetMoveSlot(u16 *moves, enum Move move)
@@ -9292,6 +9297,13 @@ static inline u32 CalcDefenseStat(struct BattleContext *ctx)
         if (ctx->updateFlags)
             RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
     }
+    if (SearchTraits(battlerTraits, ABILITY_ALLSEEING_IDOL)
+     && ctx->fieldStatuses & STATUS_FIELD_GRAVITY && usesDefStat)
+    {
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.3));
+        if (ctx->updateFlags)
+            RecordAbilityBattle(battlerDef, ABILITY_ALLSEEING_IDOL);
+    }
     if (SearchTraits(battlerTraits, ABILITY_FLOWER_GIFT)
      && gBattleMons[battlerDef].species == SPECIES_CHERRIM_SUNSHINE && IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN) && !usesDefStat)
     {
@@ -10655,6 +10667,8 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
         levitatingAbility = ABILITY_LEVITATE;
     else if (SearchTraits(battlerTraits, ABILITY_EELEVATE))
         levitatingAbility = ABILITY_EELEVATE;
+    else if (SearchTraits(battlerTraits, ABILITY_ALLSEEING_IDOL))
+        levitatingAbility = ABILITY_ALLSEEING_IDOL;
 
     ctx->invertDefenderTypeMatchups = SearchTraits(battlerTraits, ABILITY_INVERSION) && !ctx->isAnticipation;
 
@@ -10694,7 +10708,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
         if (B_GLARE_GHOST < GEN_4 && ctx->move == MOVE_GLARE && IS_BATTLER_OF_TYPE(ctx->battlerDef, TYPE_GHOST))
             modifier = UQ_4_12(0.0);
     }
-    else if (ctx->moveType == TYPE_GROUND && !IsBattlerGroundedInverseCheck(ctx->battlerDef, INVERSE_BATTLE, ctx->isAnticipation, levitatingAbility != ABILITY_NONE, FALSE)
+    else if (ctx->moveType == TYPE_GROUND && !IsBattlerGroundedInverseCheck(ctx->battlerDef, INVERSE_BATTLE, ctx->isAnticipation, levitatingAbility != ABILITY_NONE, SearchTraits(battlerTraits, ABILITY_ALLSEEING_IDOL), FALSE)
      && !MoveIgnoresTypeIfFlyingAndUngrounded(ctx->move)
      && !BattlerHasHeldItemEffect(ctx->battlerDef, HOLD_EFFECT_RING_TARGET, TRUE)
      && !MoveIgnoresTargetAbility(ctx->move) && (BattlerHasHeldItemEffect(ctx->battlerDef, HOLD_EFFECT_ABILITY_SHIELD, TRUE) || !HasMoldBreakerTypeAbility(ctx->battlerAtk)))
@@ -10747,7 +10761,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
         && ctx->moveType == TYPE_GROUND
         && BattlerHasHeldItemEffect(ctx->battlerDef, HOLD_EFFECT_IRON_BALL, TRUE)
         && IS_BATTLER_OF_TYPE(ctx->battlerDef, TYPE_FLYING)
-        && !IsBattlerGroundedInverseCheck(ctx->battlerDef, NOT_INVERSE_BATTLE, FALSE, BattlerHasTrait(ctx->battlerDef, ABILITY_LEVITATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_EELEVATE), TRUE) // We want to ignore Iron Ball so skip item check // We want to ignore Iron Ball so skip item check
+        && !IsBattlerGroundedInverseCheck(ctx->battlerDef, NOT_INVERSE_BATTLE, FALSE, BattlerHasTrait(ctx->battlerDef, ABILITY_LEVITATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_EELEVATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_ALLSEEING_IDOL), BattlerHasTrait(ctx->battlerDef, ABILITY_ALLSEEING_IDOL), TRUE) // We want to ignore Iron Ball so skip item check // We want to ignore Iron Ball so skip item check
         && !FlagGet(B_FLAG_INVERSE_BATTLE))
     {
         modifier = UQ_4_12(1.0);
@@ -10873,14 +10887,18 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef,
 
         if (mon == 0) //catch for non Pokemon struct entries, only checks Ability
         {
-            if (ctx.moveType == TYPE_GROUND && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE)) && !(gFieldStatuses & STATUS_FIELD_GRAVITY))
+            if (ctx.moveType == TYPE_GROUND
+             && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
+             && (!(gFieldStatuses & STATUS_FIELD_GRAVITY) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL)))
                 modifier = UQ_4_12(0.0);
             if (MonHasTrait(mon, ABILITY_WONDER_GUARD) && modifier <= UQ_4_12(1.0) && GetMovePower(move) != 0)
                 modifier = UQ_4_12(0.0);
         }
         else
         {
-            if (ctx.moveType == TYPE_GROUND && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE)) && !(gFieldStatuses & STATUS_FIELD_GRAVITY))
+            if (ctx.moveType == TYPE_GROUND
+             && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
+             && (!(gFieldStatuses & STATUS_FIELD_GRAVITY) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL)))
                 modifier = UQ_4_12(0.0);
             if (MonHasTrait(mon, ABILITY_WONDER_GUARD) && modifier <= UQ_4_12(1.0) && GetMovePower(move) != 0)
                 modifier = UQ_4_12(0.0);
@@ -11323,6 +11341,11 @@ bool32 CanBattlerGetOrLoseItem(enum BattlerId fromBattler, enum BattlerId battle
     if (ItemIsMail(itemId))
         return FALSE;
     else if (itemId == ITEM_ENIGMA_BERRY_E_READER)
+        return FALSE;
+    else if (itemId != ITEM_NONE
+          && GET_BASE_SPECIES_ID(fromSpecies) == SPECIES_ARCEUS
+          && BattlerHasTrait(fromBattler, ABILITY_MULTITYPE)
+          && BattlerHasHeldItem(fromBattler, itemId, FALSE))
         return FALSE;
     else if (DoesSpeciesUseHoldItemToChangeForm(fromSpecies, itemId))
         return FALSE;
@@ -12303,7 +12326,7 @@ bool32 CanMonParticipateInSkyBattle(struct Pokemon *mon)
 {
     u32 species = GetMonData(mon, MON_DATA_SPECIES);
 
-    bool32 hasLevitateAbility = (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE));
+    bool32 hasLevitateAbility = (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL));
     bool32 isFlyingType = GetSpeciesType(species, 0) == TYPE_FLYING || GetSpeciesType(species, 1) == TYPE_FLYING;
     bool32 monIsValidAndNotEgg = GetMonData(mon, MON_DATA_SANITY_HAS_SPECIES) && !GetMonData(mon, MON_DATA_IS_EGG);
 

@@ -892,6 +892,9 @@ static void StartArcadeGameBoardFromOverworld(void)
 
 static void GenerateArcadeOpponent(void)
 {
+    gBattleScripting.specialTrainerBattleType = FACILITY_BATTLE_ARCADE;
+    SetArcadeBattleFlags();
+
     switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
     {
         case FRONTIER_MODE_SINGLES:

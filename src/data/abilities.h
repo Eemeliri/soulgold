@@ -5621,4 +5621,16 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
                                            "enters battle."),
         .aiRating = 6,
     },
+
+    [ABILITY_ALLSEEING_IDOL] =
+    {
+        .name = _("Allseeing Idol"),
+        .description = COMPOUND_STRING("Levitate; Gravity ups Def."),
+        .longDescription = COMPOUND_STRING("The Pokémon is immune to\n"
+                                           "Ground moves and hazards,\n"
+                                           "even during Gravity, which\n"
+                                           "also boosts Defense by 30%."),
+        .aiRating = 8,
+        .breakable = TRUE,
+    },
 };

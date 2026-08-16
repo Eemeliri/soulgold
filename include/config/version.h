@@ -1,4 +1,4 @@
 #ifndef GUARD_CONFIG_VERSION_H
 #define GUARD_CONFIG_VERSION_H
-#define DISPLAY_VERSION "v1.0.4.2"
+#define DISPLAY_VERSION "v1.0.4.3"
 #endif

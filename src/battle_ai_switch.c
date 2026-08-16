@@ -592,7 +592,7 @@ static bool32 FindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
 {
     enum BattlerId battlerIn1, battlerIn2;
     u8 numAbsorbingAbilities = 0;
-    enum Ability absorbingTypeAbilities[8]; // Max needed for type + move property absorbers
+    enum Ability absorbingTypeAbilities[9]; // Max needed for type + move property absorbers
     s32 firstId;
     s32 lastId;
     struct Pokemon *party;
@@ -661,6 +661,7 @@ static bool32 FindMonThatAbsorbsOpponentsMove(enum BattlerId battler)
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_EARTH_EATER;
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_LEVITATE;
         absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_EELEVATE;
+        absorbingTypeAbilities[numAbsorbingAbilities++] = ABILITY_ALLSEEING_IDOL;
     }
     if (IsSoundMove(incomingMove))
     {

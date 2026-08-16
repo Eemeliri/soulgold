@@ -136,6 +136,22 @@ TEST("Rocket Arcade opponent setup preserves the local round after an early cash
     EXPECT_EQ(FRONTIER_SAVEDATA.curChallengeBattleNum, 1);
 }
 
+TEST("Rocket Arcade Classic opponent generation ignores stale Battle Cafe state")
+{
+    VarSet(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_ARCADE);
+    VarSet(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES);
+    FRONTIER_SAVEDATA.lvlMode = FRONTIER_LVL_50;
+    TRAINER_BATTLE_PARAM.opponentA = FRONTIER_TRAINER_BRADY;
+    CreateMon(&gPlayerParty[0], SPECIES_BULBASAUR, FRONTIER_MAX_LEVEL_50, 0, OTID_STRUCT_PLAYER_ID);
+
+    gBattleScripting.specialTrainerBattleType = FACILITY_BATTLE_CAFE;
+    gSpecialVar_0x8004 = ARCADE_FUNC_GENERATE_OPPONENT;
+    CallBattleArcadeFunc();
+
+    for (u32 i = 0; i < FRONTIER_PARTY_SIZE; i++)
+        EXPECT_EQ(GetMonData(&gEnemyParty[i], MON_DATA_LEVEL), FRONTIER_MAX_LEVEL_50);
+}
+
 TEST("Rocket Arcade schedules the Brain for the final battle of a set")
 {
     VarSet(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES);

@@ -4541,7 +4541,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
         .heldItem = ITEM_LEFTOVERS,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 0, 0, 31),
         .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 0, 4),
-        .ability = ABILITY_LEVITATE,
+        .ability = ABILITY_ALLSEEING_IDOL,
         .nature = NATURE_RELAXED
     },
     [FRONTIER_MON_CLAYDOL_2] = {
@@ -4550,7 +4550,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
         .heldItem = ITEM_LIGHT_CLAY,
         .iv = TRAINER_PARTY_IVS(31, 0, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 0, 252),
-        .ability = ABILITY_LEVITATE,
+        .ability = ABILITY_ALLSEEING_IDOL,
         .nature = NATURE_CALM
     },
     [FRONTIER_MON_CLAYDOL_3] = {
@@ -4559,7 +4559,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
         .heldItem = ITEM_LIFE_ORB,
         .iv = TRAINER_PARTY_IVS(31, 0, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(252, 0, 4, 0, 252, 0),
-        .ability = ABILITY_LEVITATE,
+        .ability = ABILITY_ALLSEEING_IDOL,
         .nature = NATURE_MODEST
     },
     [FRONTIER_MON_CLAYDOL_4] = {
@@ -4568,7 +4568,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
         .heldItem = ITEM_LEFTOVERS,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 0, 31),
         .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 0, 4),
-        .ability = ABILITY_LEVITATE,
+        .ability = ABILITY_ALLSEEING_IDOL,
         .nature = NATURE_IMPISH
     },
     [FRONTIER_MON_TORKOAL_1] = {

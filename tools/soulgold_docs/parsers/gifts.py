@@ -42,6 +42,20 @@ GIFT_LOCATION_NAME_OVERRIDES = {
 LEGENDARY_LOCATION_NAME_OVERRIDES = {
     "MAP_CERULEAN_CAVE_B2F": "Nameless Cave",
 }
+FOSSIL_REVIVAL_ITEMS = {
+    "SPECIES_LILEEP": "ITEM_ROOT_FOSSIL",
+    "SPECIES_ANORITH": "ITEM_CLAW_FOSSIL",
+    "SPECIES_OMANYTE": "ITEM_HELIX_FOSSIL",
+    "SPECIES_KABUTO": "ITEM_DOME_FOSSIL",
+    "SPECIES_AERODACTYL": "ITEM_OLD_AMBER",
+    "SPECIES_ARCHEN": "ITEM_PLUME_FOSSIL",
+    "SPECIES_TYRUNT": "ITEM_JAW_FOSSIL",
+    "SPECIES_AMAURA": "ITEM_SAIL_FOSSIL",
+}
+FOSSIL_REVIVAL_LEVELS = {
+    "SPECIES_KABUTO": ((5, "before 4th badge"), (20, "after 4th badge")),
+}
+FOSSIL_LAB_MAP = "MAP_RUINS_OF_ALPH_LAB"
 
 
 def species_aliases() -> dict[str, str]:
@@ -79,6 +93,50 @@ def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, st
     return reachable
 
 
+def ruins_of_alph_rock_smash_fossils() -> set[str]:
+    """Return the fossils currently available from the Ruins of Alph rocks."""
+    try:
+        text = strip_c_comments(read(REPO_ROOT / "src/wild_encounter.c"))
+    except FileNotFoundError:
+        return set()
+    match = re.search(
+        r"sRockSmashItems_RuinsOfAlph\[\]\s*=\s*\{(.*?)\n\};",
+        text,
+        re.DOTALL,
+    )
+    return set(re.findall(r"\bITEM_(?:[A-Z0-9_]*FOSSIL|OLD_AMBER)\b", match.group(1))) if match else set()
+
+
+def add_fossil_revival_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """Document fossil revivals separately from ordinary scripted gifts."""
+    rock_smash_fossils = ruins_of_alph_rock_smash_fossils()
+    for species, fossil in FOSSIL_REVIVAL_ITEMS.items():
+        if species not in by_species:
+            continue
+        fossil_name = fossil.removeprefix("ITEM_").replace("_", " ").title()
+        for level, condition in FOSSIL_REVIVAL_LEVELS.get(species, ((20, ""),)):
+            method = f"Revived from {fossil_name}"
+            if condition:
+                method += f" ({condition})"
+            if fossil in rock_smash_fossils:
+                method += "; fossil found via Rock Smash in Ruins of Alph"
+            location: SpeciesLocation = {
+                "map": FOSSIL_LAB_MAP,
+                "name": "Ruins of Alph Lab",
+                "time": "",
+                "method": method,
+                "minLevel": level,
+                "maxLevel": level,
+                "rate": None,
+            }
+            locations.setdefault(species, [])
+            if location not in locations[species]:
+                locations[species].append(location)
+
+
 def add_gift_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
@@ -110,6 +168,8 @@ def add_gift_species_locations(
                     species = aliases.get(raw_species, raw_species)
                     if species not in by_species:
                         continue
+                    if map_constant == FOSSIL_LAB_MAP and species in FOSSIL_REVIVAL_ITEMS:
+                        continue
                     level = int(raw_level) if raw_level is not None else None
                     location_name = GIFT_LOCATION_NAME_OVERRIDES.get(
                         (species, map_constant),
@@ -126,6 +186,8 @@ def add_gift_species_locations(
                     }
                     if location not in gifts[species]:
                         gifts[species].append(location)
+
+    add_fossil_revival_locations(gifts, by_species)
 
     for species, gift_locations in gifts.items():
         locations.setdefault(species, [])

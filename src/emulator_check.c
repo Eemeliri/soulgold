@@ -73,7 +73,7 @@ static const struct BgTemplate sBgTemplates[] = {
 };
 
 #define WIN_WIDTH  23
-#define WIN_HEIGHT 10
+#define WIN_HEIGHT 11
 
 static const struct WindowTemplate sWindowTemplates[] = {
     [WIN_ERROR_MSG] = {
@@ -116,6 +116,7 @@ static const u8 sTextColors_Bottom[] = {TEXT_COLOR_TRANSPARENT, 1, 2};
 static const u8 sText_ErrorMessage[] = _(
     "Inaccurate emulator detected!\nPlease use mGBA or one of these:"
     VIABLE_MGBA_RA_IOS
+    VIABLE_MGBA_MANIC_IOS
     VIABLE_MGBA_RA_ANDROID
     VIABLE_LEMUROID
     VIABLE_PIZZABOY

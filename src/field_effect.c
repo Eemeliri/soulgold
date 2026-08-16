@@ -529,14 +529,13 @@ static const union AnimCmd sAnim_Static[] =
 
 static const union AnimCmd sAnim_Flicker[] =
 {
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 0, .duration = 16),
-    ANIMCMD_FRAME(.imageValue = 1, .duration = 16),
+    ANIMCMD_FRAME(.imageValue = 1, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 2, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 3, .duration = 7),
+    ANIMCMD_FRAME(.imageValue = 2, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 1, .duration = 5),
+    ANIMCMD_FRAME(.imageValue = 0, .duration = 5),
+    ANIMCMD_LOOP(3),
     ANIMCMD_END
 };
 
@@ -1083,7 +1082,7 @@ bool8 FldEff_PokecenterHeal(void)
     task->tNumMons = nPokemon;
     task->tFirstBallX = 93;
     task->tFirstBallY = 36;
-    task->tMonitorX = 124;
+    task->tMonitorX = 128;
     task->tMonitorY = 24;
     return FALSE;
 }
@@ -1336,8 +1335,7 @@ static u8 CreatePokecenterMonitorSprite(s16 x, s16 y)
 {
     u8 spriteId;
     struct Sprite *sprite;
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_PokecenterMonitor, x, y, 0);
-    SetSubspriteTables(&gSprites[spriteId], &sSubspriteTable_PokecenterMonitor);
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_PokecenterMonitor_FrLg, x, y, 0);
     sprite = &gSprites[spriteId];
     sprite->oam.priority = 2;
     sprite->invisible = TRUE;

@@ -69,7 +69,7 @@ bool32 AI_IsBattlerGrounded(enum BattlerId battler)
 {
     if (Ai_BattlerHasHoldEffect(battler, HOLD_EFFECT_IRON_BALL, gAiLogicData))
         return TRUE;
-    if (gFieldStatuses & STATUS_FIELD_GRAVITY)
+    if (gFieldStatuses & STATUS_FIELD_GRAVITY && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
         return TRUE;
     if (B_ROOTED_GROUNDING >= GEN_4 && gBattleMons[battler].volatiles.root)
         return TRUE;
@@ -81,7 +81,7 @@ bool32 AI_IsBattlerGrounded(enum BattlerId battler)
         return FALSE;
     if (Ai_BattlerHasHoldEffect(battler, HOLD_EFFECT_AIR_BALLOON, gAiLogicData))
         return FALSE;
-    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE))
+    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
         return FALSE;
     if (IS_BATTLER_OF_TYPE(battler, TYPE_FLYING) && !FlagGet(B_FLAG_INVERSE_BATTLE))
         return FALSE;

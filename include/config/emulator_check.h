@@ -53,7 +53,7 @@
 #define ACTIVE_EMU_CHECKS       (EMU_CHECK_SOUNDCNT_L)
 
 
-// Below are explanations for each check and their known results on popular emulators as of April 2026.
+// Below are explanations for each check and their known results on popular emulators as of August 2026.
 
 // === EMU_CHECK_REG_IMC ============================================== //
 //                                                                      //
@@ -63,6 +63,7 @@
 // works on:                                                            //
 //   - real hardware                                                    //
 //   - mGBA (desktop and RetroArch iOS)                                 //
+//   - mGBA (Manic iOS)                                                 //
 //   - Lemuroid                                                         //
 //                                                                      //
 // fails on:                                                            //
@@ -91,6 +92,7 @@
 // works on:                                                            //
 //   - real hardware                                                    //
 //   - mGBA (desktop, RetroArch iOS and Android)                        //
+//   - mGBA (Manic iOS)                                                 //
 //   - Lemuroid                                                         //
 //                                                                      //
 // fails on:                                                            //
@@ -115,6 +117,7 @@
 // works on:                                                            //
 //   - real hardware                                                    //
 //   - mGBA (desktop, RetroArch iOS and Android)                        //
+//   - mGBA (Manic iOS)                                                 //
 //   - Lemuroid                                                         //
 //   - VBA M 2.2.3                                                      //
 //   - Pizzaboy                                                         //
@@ -137,6 +140,7 @@
 // works on:                                                            //
 //   - real hardware                                                    //
 //   - mGBA (desktop, RetroArch iOS and Android)                        //
+//   - mGBA (Manic iOS)                                                 //
 //   - Lemuroid                                                         //
 //   - VBA M 2.2.3                                                      //
 //   - Delta                                                            //
@@ -160,6 +164,7 @@
 // works on:                                                            //
 //   - real hardware                                                    //
 //   - mGBA (desktop, RetroArch iOS and Android)                        //
+//   - mGBA (Manic iOS)                                                 //
 //   - Lemuroid                                                         //
 //   - Pizzaboy                                                         //
 //   - JohnGBA                                                          //
@@ -180,6 +185,7 @@
 // define which of the recommended platforms passes which check
 // clang-format off
 #define EMU_PASSES_MGBA_RA_IOS      (EMU_CHECK_REG_IMC | EMU_CHECK_TIMER_CASCADE | EMU_CHECK_SOUNDCNT_H | EMU_CHECK_KEYCNT | EMU_CHECK_SOUNDCNT_L)
+#define EMU_PASSES_MGBA_MANIC_IOS   (EMU_CHECK_REG_IMC | EMU_CHECK_TIMER_CASCADE | EMU_CHECK_SOUNDCNT_H | EMU_CHECK_KEYCNT | EMU_CHECK_SOUNDCNT_L)
 #define EMU_PASSES_MGBA_RA_ANDROID  (                    EMU_CHECK_TIMER_CASCADE | EMU_CHECK_SOUNDCNT_H | EMU_CHECK_KEYCNT | EMU_CHECK_SOUNDCNT_L)
 #define EMU_PASSES_LEMUROID         (EMU_CHECK_REG_IMC | EMU_CHECK_TIMER_CASCADE | EMU_CHECK_SOUNDCNT_H | EMU_CHECK_KEYCNT | EMU_CHECK_SOUNDCNT_L)
 #define EMU_PASSES_PIZZABOY         (                                              EMU_CHECK_SOUNDCNT_H |                    EMU_CHECK_SOUNDCNT_L)
@@ -193,6 +199,12 @@
  #define VIABLE_MGBA_RA_IOS     "\n- mGBA (RetroArch iOS)"
 #else
  #define VIABLE_MGBA_RA_IOS     ""
+#endif
+
+#if EMU_VIABLE(EMU_PASSES_MGBA_MANIC_IOS)
+ #define VIABLE_MGBA_MANIC_IOS  "\n- mGBA (Manic iOS)"
+#else
+ #define VIABLE_MGBA_MANIC_IOS  ""
 #endif
 
 #if EMU_VIABLE(EMU_PASSES_MGBA_RA_ANDROID)

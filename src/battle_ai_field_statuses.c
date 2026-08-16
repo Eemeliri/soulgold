@@ -194,6 +194,8 @@ static bool32 DoesBattlerBenefitFromFieldStatus(u32 battler, u32 fieldStatus)
         return (fieldStatus & STATUS_FIELD_ELECTRIC_TERRAIN);
     if (SearchTraits(AIBattlerTraits, ABILITY_GRASS_PELT))
         return (fieldStatus & STATUS_FIELD_GRASSY_TERRAIN);
+    if (SearchTraits(AIBattlerTraits, ABILITY_ALLSEEING_IDOL))
+        return (fieldStatus & STATUS_FIELD_GRAVITY);
     if (SearchTraits(AIBattlerTraits, ABILITY_ASH_ASSETS)
      || SearchTraits(AIBattlerTraits, ABILITY_LAVA_SURFER)
      || SearchTraits(AIBattlerTraits, ABILITY_COALWALKER))
@@ -497,6 +499,9 @@ static enum FieldEffectOutcome BenefitsFromScorchedField(enum BattlerId battler)
 
 static enum FieldEffectOutcome BenefitsFromGravity(enum BattlerId battler)
 {
+    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
+        return FIELD_EFFECT_POSITIVE;
+
     if (!AI_IsBattlerGrounded(battler))
         return FIELD_EFFECT_NEGATIVE;
 

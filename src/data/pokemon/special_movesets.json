@@ -154,6 +154,10 @@
         [
           "MOVE_AQUA_CUTTER",
           "MOVE_CROSS_POISON"
+        ],
+      "SNORLAX":
+        [
+          "MOVE_POWER_WHIP"
         ]
     }
 }
