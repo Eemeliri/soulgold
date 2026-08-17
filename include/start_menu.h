@@ -10,6 +10,10 @@ void ShowBattlePyramidStartMenu(void);
 void SaveGame(void);
 void CB2_SetUpSaveAfterLinkBattle(void);
 void SaveForBattleTowerLink(void);
+
+#if TESTING
+bool8 StartMenu_TestRunBattleTowerLinkSaveWaiter(void);
+#endif
 void HideStartMenu(void);
 void AppendToList(u8 *list, u8 *pos, u8 newEntry);
 

@@ -1263,8 +1263,9 @@ struct SaveBlock1
                u16 registeredShortcutsMagicInv;
                u8 registeredShortcutTypes[MAX_REGISTERED_ITEMS];
                u8 registeredPokegearApps[MAX_REGISTERED_ITEMS];
-    /*0x3???*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
-    // sizeof: 0x3???
+    /*0x349A*/ u8 pokemonStorageExtensionTail[POKEMON_STORAGE_EXTENSION_TAIL_BYTES];
+    /*0x3C32*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
+    // sizeof: 0x3C54
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

@@ -1830,19 +1830,35 @@ void InitPokemonStorageExtension(void)
     dest = StringCopy(gPokemonStoragePtr->extraBoxName, gText_Box);
     ConvertIntToDecimalStringN(dest, LEGACY_BOXES_COUNT + 1, STR_CONV_MODE_LEFT_ALIGN, 2);
     gPokemonStoragePtr->extraBoxWallpaper = LEGACY_BOXES_COUNT % (MAX_DEFAULT_WALLPAPER + 1);
-    InitPokemonStorageBox17Extension();
+    InitPokemonStorageBox18Extension();
 }
 
-void InitPokemonStorageBox17Extension(void)
+void InitPokemonStorageBox18Extension(void)
+{
+    u32 box;
+    u8 *dest;
+
+    memset(&gPokemonStoragePtr->box18ExtensionMagic, 0,
+           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, box18ExtensionMagic));
+    gPokemonStoragePtr->box18ExtensionMagic = POKEMON_STORAGE_BOX18_MAGIC;
+    for (box = 0; box < ARRAY_COUNT(gPokemonStoragePtr->extensionBoxes); box++)
+    {
+        dest = StringCopy(gPokemonStoragePtr->extensionBoxNames[box], gText_Box);
+        ConvertIntToDecimalStringN(dest, LEGACY_BOXES_COUNT + 2 + box, STR_CONV_MODE_LEFT_ALIGN, 2);
+        gPokemonStoragePtr->extensionBoxWallpapers[box] = (LEGACY_BOXES_COUNT + 1 + box) % (MAX_DEFAULT_WALLPAPER + 1);
+    }
+    InitPokemonStorageBox19Extension();
+}
+
+void InitPokemonStorageBox19Extension(void)
 {
     u8 *dest;
 
-    memset(&gPokemonStoragePtr->box17ExtensionMagic, 0,
-           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, box17ExtensionMagic));
-    gPokemonStoragePtr->box17ExtensionMagic = POKEMON_STORAGE_BOX17_MAGIC;
-    dest = StringCopy(gPokemonStoragePtr->box17Name, gText_Box);
+    memset(&gPokemonStoragePtr->box19, 0,
+           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, box19));
+    dest = StringCopy(gPokemonStoragePtr->box19Name, gText_Box);
     ConvertIntToDecimalStringN(dest, TOTAL_BOXES_COUNT, STR_CONV_MODE_LEFT_ALIGN, 2);
-    gPokemonStoragePtr->box17Wallpaper = (TOTAL_BOXES_COUNT - 1) % (MAX_DEFAULT_WALLPAPER + 1);
+    gPokemonStoragePtr->box19Wallpaper = (TOTAL_BOXES_COUNT - 1) % (MAX_DEFAULT_WALLPAPER + 1);
 }
 
 
@@ -10302,8 +10318,10 @@ struct BoxPokemon *GetBoxedMonPtr(u8 boxId, u8 boxPosition)
             return &gPokemonStoragePtr->legacyBoxes[boxId][boxPosition];
         else if (boxId == LEGACY_BOXES_COUNT)
             return &gPokemonStoragePtr->extraBox[boxPosition];
+        else if (boxId < TOTAL_BOXES_COUNT - 1)
+            return &gPokemonStoragePtr->extensionBoxes[boxId - LEGACY_BOXES_COUNT - 1][boxPosition];
         else
-            return &gPokemonStoragePtr->box17[boxPosition];
+            return &gPokemonStoragePtr->box19[boxPosition];
     }
     else
         return NULL;
@@ -10315,8 +10333,10 @@ u8 *GetBoxNamePtr(u8 boxId)
         return gPokemonStoragePtr->legacyBoxNames[boxId];
     else if (boxId == LEGACY_BOXES_COUNT)
         return gPokemonStoragePtr->extraBoxName;
+    else if (boxId < TOTAL_BOXES_COUNT - 1)
+        return gPokemonStoragePtr->extensionBoxNames[boxId - LEGACY_BOXES_COUNT - 1];
     else if (boxId < TOTAL_BOXES_COUNT)
-        return gPokemonStoragePtr->box17Name;
+        return gPokemonStoragePtr->box19Name;
     else
         return NULL;
 }
@@ -10327,8 +10347,10 @@ static u8 GetBoxWallpaper(u8 boxId)
         return gPokemonStoragePtr->legacyBoxWallpapers[boxId];
     else if (boxId == LEGACY_BOXES_COUNT)
         return gPokemonStoragePtr->extraBoxWallpaper;
+    else if (boxId < TOTAL_BOXES_COUNT - 1)
+        return gPokemonStoragePtr->extensionBoxWallpapers[boxId - LEGACY_BOXES_COUNT - 1];
     else if (boxId < TOTAL_BOXES_COUNT)
-        return gPokemonStoragePtr->box17Wallpaper;
+        return gPokemonStoragePtr->box19Wallpaper;
     else
         return 0;
 }
@@ -10341,8 +10363,10 @@ static void SetBoxWallpaper(u8 boxId, u8 wallpaperId)
             gPokemonStoragePtr->legacyBoxWallpapers[boxId] = wallpaperId;
         else if (boxId == LEGACY_BOXES_COUNT)
             gPokemonStoragePtr->extraBoxWallpaper = wallpaperId;
+        else if (boxId < TOTAL_BOXES_COUNT - 1)
+            gPokemonStoragePtr->extensionBoxWallpapers[boxId - LEGACY_BOXES_COUNT - 1] = wallpaperId;
         else
-            gPokemonStoragePtr->box17Wallpaper = wallpaperId;
+            gPokemonStoragePtr->box19Wallpaper = wallpaperId;
     }
 }
 

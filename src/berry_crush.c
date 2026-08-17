@@ -100,6 +100,7 @@ enum {
     MSG_DROPPED,
     MSG_TIMES_UP,
     MSG_COMM_STANDBY,
+    MSG_SAVE_FAILED,
 };
 
 #define F_MSG_CLEAR  (1 << 0)
@@ -288,7 +289,7 @@ struct BerryCrushGame
     u8 taskId;
     u8 textSpeed;
     u8 cmdState;
-    u8 unused; // Never read
+    bool8 saveFailed;
     u8 nextCmd;
     u8 afterPalFadeCmd;
     u16 cmdTimer;
@@ -413,6 +414,7 @@ static const u8 *const sMessages[] =
     [MSG_DROPPED]      = gText_MemberDroppedOut,
     [MSG_TIMES_UP]     = gText_TimesUpNoGoodPowder,
     [MSG_COMM_STANDBY] = gText_CommunicationStandby2,
+    [MSG_SAVE_FAILED]  = gText_SaveFailed,
 };
 
 static const struct BgTemplate sBgTemplates[4] =
@@ -3220,6 +3222,22 @@ static u32 Cmd_SaveGame(struct BerryCrushGame *game, u8 *args)
     case 3:
         if (FuncIsActiveTask(Task_LinkFullSave))
             return 0;
+        switch (GetLinkFullSaveResult())
+        {
+        case LINK_FULL_SAVE_RESULT_SUCCESS:
+            break;
+        case LINK_FULL_SAVE_RESULT_FLASH_ERROR:
+            return 0;
+        case LINK_FULL_SAVE_RESULT_FAILED:
+        case LINK_FULL_SAVE_RESULT_PENDING:
+            game->saveFailed = TRUE;
+            game->playAgainState = PLAY_AGAIN_NO;
+            SetPrintMessageArgs(args, MSG_SAVE_FAILED, 0, A_BUTTON | B_BUTTON, 0);
+            game->nextCmd = CMD_COMM_PLAY_AGAIN;
+            RunOrScheduleCommand(CMD_PRINT_MSG, SCHEDULE_CMD, NULL);
+            game->cmdState = 0;
+            return 0;
+        }
         break;
     case 4:
         RunOrScheduleCommand(CMD_ASK_PLAY_AGAIN, SCHEDULE_CMD, NULL);
@@ -3360,6 +3378,12 @@ static u32 Cmd_StopGame(struct BerryCrushGame *game, u8 *args)
     switch (game->cmdState)
     {
     case 0:
+        if (game->saveFailed)
+        {
+            game->gfx.counter = 0;
+            game->cmdState = 2;
+            return 0;
+        }
         DrawDialogueFrame(0, FALSE);
         if (game->playAgainState == PLAY_AGAIN_NO_BERRIES)
             AddTextPrinterParameterized2(0, FONT_NORMAL, sMessages[MSG_NO_BERRIES], game->textSpeed, 0, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
@@ -3423,7 +3447,7 @@ static void ResetGame(struct BerryCrushGame *game)
     u8 i = 0;
 
     IncrementGameStat(GAME_STAT_PLAYED_BERRY_CRUSH);
-    game->unused = 0;
+    game->saveFailed = FALSE;
     game->cmdTimer = 0;
     game->gameState = STATE_RESET;
     game->playAgainState = 0;

@@ -217,7 +217,7 @@ static void InitDomeTrainers(void);
 
 static EWRAM_DATA struct TourneyTreeInfoCard *sInfoCard = {0};
 static EWRAM_DATA u8 *sTilemapBuffer = NULL;
-static EWRAM_DATA struct PwtDomeMoveCache sPwtDomeMoveCache[DOME_TOURNAMENT_TRAINERS_COUNT][FRONTIER_PARTY_SIZE] = {0};
+static EWRAM_DATA struct PwtDomeMoveCache sPwtDomeMoveCache = {0};
 
 static const u8 sPwtDomeText_DefaultIntro[] = _("Show me what brought you this far.");
 static const u8 sPwtDomeText_DefaultPlayerWon[] = _("That was a championship-caliber battle.");
@@ -503,7 +503,7 @@ static enum Move GetDomeTournamentMove(u16 tournamentTrainerId, u8 tournamentMon
     else if (IsPwtDomeTrainerId(trainerId))
     {
         const struct TrainerMon *partyEntry = GetDomeTournamentMon(tournamentTrainerId, tournamentMonId);
-        struct PwtDomeMoveCache *cache = &sPwtDomeMoveCache[tournamentTrainerId][tournamentMonId];
+        struct PwtDomeMoveCache *cache = &sPwtDomeMoveCache;
         enum TrainerBattleType battleType = VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES
                                            ? TRAINER_BATTLE_TYPE_DOUBLES
                                            : TRAINER_BATTLE_TYPE_SINGLES;

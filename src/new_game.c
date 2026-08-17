@@ -41,6 +41,7 @@
 #include "contest.h"
 #include "item_menu.h"
 #include "pokemon_storage_system.h"
+#include "hall_of_fame.h"
 #include "pokemon_jump.h"
 #include "decoration_inventory.h"
 #include "secret_base.h"
@@ -263,6 +264,7 @@ void NewGameInitData(void)
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
+    ResetHallOfFameArchive();
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
     memset(gSaveBlock1Ptr->registeredItems, 0, sizeof(gSaveBlock1Ptr->registeredItems));

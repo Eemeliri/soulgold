@@ -868,6 +868,8 @@ static bool32 PrintThrownAway(u8 *textState, bool32 isWonderNews)
         return PrintMysteryGiftMenuMessage(textState, gText_WonderNewsThrownAway);
 }
 
+static const u8 sText_SaveFailedPressA[] = _("Save failed.\nPlease press the A Button.");
+
 static bool32 SaveOnMysteryGiftMenu(u8 *state)
 {
     switch (*state)
@@ -877,8 +879,10 @@ static bool32 SaveOnMysteryGiftMenu(u8 *state)
         (*state)++;
         break;
     case 1:
-        TrySavingData(SAVE_NORMAL);
-        (*state)++;
+        if (TrySavingData(SAVE_NORMAL) == SAVE_STATUS_OK)
+            *state = 2;
+        else
+            *state = 5;
         break;
     case 2:
         MG_AddMessageTextPrinter(gText_SaveCompletedPressA);
@@ -892,10 +896,26 @@ static bool32 SaveOnMysteryGiftMenu(u8 *state)
         *state = 0;
         ClearMessage();
         return TRUE;
+    case 5:
+        MG_AddMessageTextPrinter(sText_SaveFailedPressA);
+        (*state)++;
+        break;
+    case 6:
+        if (JOY_NEW(A_BUTTON | B_BUTTON))
+            *state = 4;
+        break;
     }
 
     return FALSE;
 }
+
+#if TESTING
+u8 MysteryGiftMenu_TestAdvanceSaveState(u8 *state)
+{
+    SaveOnMysteryGiftMenu(state);
+    return *state;
+}
+#endif
 
 static const u8 *GetClientResultMessage(bool32 *successMsg, bool8 isWonderNews, bool8 sourceIsFriend, u32 msgId)
 {

@@ -104,6 +104,7 @@ static struct PlayerHallRecords *sPartnerHallRecords[HALL_RECORDS_COUNT];
 static EWRAM_DATA struct RecordMixingDaycareMail sRecordMixMail = {0};
 static EWRAM_DATA union PlayerRecord *sReceivedRecords = NULL;
 static EWRAM_DATA union PlayerRecord *sSentRecord = NULL;
+static EWRAM_DATA bool8 sRecordMixingSaveFailed = FALSE;
 
 static void Task_RecordMixing_Main(u8);
 static void Task_MixingRecordsRecv(u8);
@@ -317,6 +318,7 @@ static void Task_RecordMixing_Main(u8 taskId)
     switch (tState)
     {
     case 0: // init
+        sRecordMixingSaveFailed = FALSE;
         sSentRecord = Alloc(sizeof(*sSentRecord));
         sReceivedRecords = Alloc(sizeof(*sReceivedRecords) * MAX_LINK_PLAYERS);
         SetLocalLinkPlayerId(gSpecialVar_0x8005);
@@ -345,11 +347,23 @@ static void Task_RecordMixing_Main(u8 taskId)
     case 3: // wait for Task_DoRecordMixing
         if (!gTasks[tLinkTaskId].isActive)
         {
+            if (sRecordMixingSaveFailed
+             && GetLinkFullSaveResult() == LINK_FULL_SAVE_RESULT_FLASH_ERROR)
+            {
+                Free(sReceivedRecords);
+                Free(sSentRecord);
+                DestroyTask(taskId);
+                return;
+            }
+
             tState = 4;
             if (gWirelessCommType == 0)
                 tLinkTaskId = CreateTask_ReestablishCableClubLink();
 
-            PrintTextOnRecordMixing(gText_RecordMixingComplete);
+            if (sRecordMixingSaveFailed)
+                PrintTextOnRecordMixing(gText_SaveFailed);
+            else
+                PrintTextOnRecordMixing(gText_RecordMixingComplete);
             tTimer = 0;
         }
         break;
@@ -1031,6 +1045,7 @@ static void Task_DoRecordMixing(u8 taskId)
     case 7: // wait for Task_LinkFullSave to finish.
         if (!FuncIsActiveTask(Task_LinkFullSave))
         {
+            sRecordMixingSaveFailed = GetLinkFullSaveResult() != LINK_FULL_SAVE_RESULT_SUCCESS;
             if (gWirelessCommType)
             {
                 Rfu_SetLinkRecovery(TRUE);
