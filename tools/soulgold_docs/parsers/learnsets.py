@@ -28,7 +28,24 @@ def canonical_move(move: str) -> str:
 
 def parse_level_up_learnsets() -> dict[str, list[LevelUpMove]]:
     learnsets: dict[str, list[LevelUpMove]] = {}
-    text = "\n".join(read(path) for path in sorted((REPO_ROOT / "src/data/pokemon/level_up_learnsets").glob("gen_*.h")))
+    learnset_dir = REPO_ROOT / "src/data/pokemon/level_up_learnsets"
+    paths = sorted(learnset_dir.glob("gen_*.h"))
+    legacy_config = read(REPO_ROOT / "include/config/pokemon.h")
+    legacy_enabled = re.search(
+        r"^#define\s+P_LEGACY_LVL_UP_LEARNSETS\s+(?:TRUE|1)\b",
+        legacy_config,
+        re.MULTILINE,
+    )
+    latest_level_ups = re.search(
+        r"^#define\s+P_LVL_UP_LEARNSETS\s+(?:GEN_LATEST|GEN_9)\b",
+        legacy_config,
+        re.MULTILINE,
+    )
+    generated_legacy = learnset_dir / "generated_legacy_level_up_learnsets.h"
+    if legacy_enabled and latest_level_ups and generated_legacy.exists():
+        paths.append(generated_legacy)
+
+    text = "\n".join(read(path) for path in paths)
     pattern = re.compile(r"static\s+const\s+struct\s+LevelUpMove\s+(s[A-Za-z0-9_]+LevelUpLearnset)\[\]\s*=\s*\{(.*?)\};", re.DOTALL)
     for symbol, body in pattern.findall(text):
         moves = []

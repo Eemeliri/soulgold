@@ -734,44 +734,52 @@ SouvenirMart:
 	.2byte ITEM_UNREMARKABLE_TEACUP
 # 376 "data/maps/OlivineCity/scripts.pory"
 	.2byte ITEM_UTILITY_UMBRELLA
+# 377 "data/maps/OlivineCity/scripts.pory"
+	.2byte ITEM_RED_NECTAR
+# 378 "data/maps/OlivineCity/scripts.pory"
+	.2byte ITEM_YELLOW_NECTAR
+# 379 "data/maps/OlivineCity/scripts.pory"
+	.2byte ITEM_PINK_NECTAR
+# 380 "data/maps/OlivineCity/scripts.pory"
+	.2byte ITEM_PURPLE_NECTAR
 	.2byte ITEM_NONE
 
 OlivineCity_RivalPier::
-# 380 "data/maps/OlivineCity/scripts.pory"
+# 384 "data/maps/OlivineCity/scripts.pory"
 	lock
-# 381 "data/maps/OlivineCity/scripts.pory"
-	faceplayer
-# 382 "data/maps/OlivineCity/scripts.pory"
-	createfieldmugshotrival
-# 383 "data/maps/OlivineCity/scripts.pory"
-	msgbox OlivineCity_RivalPier_Text_0
 # 385 "data/maps/OlivineCity/scripts.pory"
-	msgbox OlivineCity_RivalPier_Text_1
+	faceplayer
+# 386 "data/maps/OlivineCity/scripts.pory"
+	createfieldmugshotrival
 # 387 "data/maps/OlivineCity/scripts.pory"
-	msgbox OlivineCity_RivalPier_Text_2
+	msgbox OlivineCity_RivalPier_Text_0
 # 389 "data/maps/OlivineCity/scripts.pory"
-	msgbox OlivineCity_RivalPier_Text_3
+	msgbox OlivineCity_RivalPier_Text_1
 # 391 "data/maps/OlivineCity/scripts.pory"
-	msgbox OlivineCity_RivalPier_Text_4
+	msgbox OlivineCity_RivalPier_Text_2
 # 393 "data/maps/OlivineCity/scripts.pory"
-	msgbox OlivineCity_RivalPier_Text_5
-# 394 "data/maps/OlivineCity/scripts.pory"
-	removefieldmugshot
+	msgbox OlivineCity_RivalPier_Text_3
 # 395 "data/maps/OlivineCity/scripts.pory"
-	closemessage
-# 396 "data/maps/OlivineCity/scripts.pory"
-	moveobjecttocoords LOCALID_OLIVINE_RIVAL, 19, 49, DIR_NORTH
+	msgbox OlivineCity_RivalPier_Text_4
 # 397 "data/maps/OlivineCity/scripts.pory"
-	waitmovement 0
+	msgbox OlivineCity_RivalPier_Text_5
 # 398 "data/maps/OlivineCity/scripts.pory"
-	setvar VAR_RIVAL_STATE, 9
+	removefieldmugshot
 # 399 "data/maps/OlivineCity/scripts.pory"
-	setflag FLAG_HIDE_OLIVINE_RIVAL
+	closemessage
 # 400 "data/maps/OlivineCity/scripts.pory"
-	removeobject LOCALID_OLIVINE_RIVAL
+	moveobjecttocoords LOCALID_OLIVINE_RIVAL, 19, 49, DIR_NORTH
 # 401 "data/maps/OlivineCity/scripts.pory"
-	clearflag FLAG_HIDE_ICEPATH_RIVAL
+	waitmovement 0
 # 402 "data/maps/OlivineCity/scripts.pory"
+	setvar VAR_RIVAL_STATE, 9
+# 403 "data/maps/OlivineCity/scripts.pory"
+	setflag FLAG_HIDE_OLIVINE_RIVAL
+# 404 "data/maps/OlivineCity/scripts.pory"
+	removeobject LOCALID_OLIVINE_RIVAL
+# 405 "data/maps/OlivineCity/scripts.pory"
+	clearflag FLAG_HIDE_ICEPATH_RIVAL
+# 406 "data/maps/OlivineCity/scripts.pory"
 	release
 	end
 
@@ -794,30 +802,30 @@ OlivineSouvenirMart_Text_1:
 	.string "Come back soon!$"
 
 OlivineCity_RivalPier_Text_0:
-# 383 "data/maps/OlivineCity/scripts.pory"
+# 387 "data/maps/OlivineCity/scripts.pory"
 	.string "Oh. \n"
 	.string "Hey...$"
 
 OlivineCity_RivalPier_Text_1:
-# 385 "data/maps/OlivineCity/scripts.pory"
+# 389 "data/maps/OlivineCity/scripts.pory"
 	.string "Do you ever think that some people are\n"
 	.string "just not... built for this?$"
 
 OlivineCity_RivalPier_Text_2:
-# 387 "data/maps/OlivineCity/scripts.pory"
+# 391 "data/maps/OlivineCity/scripts.pory"
 	.string "Like it comes naturally\n"
 	.string "and for others it's just...$"
 
 OlivineCity_RivalPier_Text_3:
-# 389 "data/maps/OlivineCity/scripts.pory"
+# 393 "data/maps/OlivineCity/scripts.pory"
 	.string "Never mind.\n"
 	.string "It's a dumb question.$"
 
 OlivineCity_RivalPier_Text_4:
-# 391 "data/maps/OlivineCity/scripts.pory"
+# 395 "data/maps/OlivineCity/scripts.pory"
 	.string "Jasmine's Gym is closed.\n"
 	.string "You're already on it, I assume.$"
 
 OlivineCity_RivalPier_Text_5:
-# 393 "data/maps/OlivineCity/scripts.pory"
+# 397 "data/maps/OlivineCity/scripts.pory"
 	.string "See you around.$"

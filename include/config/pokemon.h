@@ -17,6 +17,8 @@
                                                 // GEN_1/2/3/4/5/6/7: Yellow, Crystal, RSE, HGSS, B2W2, ORAS, USUM learnsets respectively.
                                                 // GEN_8: Use the following priority: BDSP for Gen1-4 Pokémon, then LA for species introduced in that game, then SwSh for species present in those games. Otherwise, use GEN_7.
                                                 // GEN_9: SV For species present in those games. Otherwise use GEN_8.
+#define P_LEGACY_LVL_UP_LEARNSETS        TRUE   // If TRUE with Gen 9 learnsets, add missing USUM moves using the generated legacy compatibility layer.
+                                                // Configure exclusions, explicit levels, and automatic spacing in src/data/pokemon/legacy_level_up_config.json.
 #define P_EVOLUTION_LEVEL_1_LEARN   GEN_LATEST  // Since Gen 8, Pokémon evolving while at level 1 do not get the chance to learn their level 1 moves, while before they did.
 
 // Evolution settings

@@ -658,7 +658,11 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/experience_tables.h"
 
 #if P_LVL_UP_LEARNSETS >= GEN_9
+#if P_LEGACY_LVL_UP_LEARNSETS
+#include "data/pokemon/level_up_learnsets/generated_legacy_level_up_learnsets.h" // Scarlet/Violet with missing USUM moves
+#else
 #include "data/pokemon/level_up_learnsets/gen_9.h" // Scarlet/Violet
+#endif
 #elif P_LVL_UP_LEARNSETS >= GEN_8
 #include "data/pokemon/level_up_learnsets/gen_8.h" // Sword/Shield
 #elif P_LVL_UP_LEARNSETS >= GEN_7
