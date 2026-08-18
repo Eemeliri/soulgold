@@ -69740,8 +69740,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69749,8 +69749,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -93588,7 +93588,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_PRESSURE",
-        "ABILITY_HEATPROOF",
+        "ABILITY_RESTORING",
         "ABILITY_ROUGH_SKIN"
       ],
       "sprite": "sprites/pokemon/kyogre_primal.png",
@@ -203913,7 +203913,7 @@
         "ABILITY_TECHNICIAN"
       ],
       "innates": [
-        "ABILITY_POISON_POINT",
+        "ABILITY_CORROSION",
         "ABILITY_POISON_TOUCH",
         "ABILITY_LIQUID_OOZE"
       ],
@@ -224261,12 +224261,6 @@
             "sprite": "sprites/pokemon/eternatus_eternamax.png"
           },
           {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
-          },
-          {
             "species": "SPECIES_PECHARUNT",
             "name": "Pecharunt",
             "dex": 702,
@@ -230647,12 +230641,6 @@
             "name": "Lugia",
             "dex": 213,
             "sprite": "sprites/pokemon/lugia.png"
-          },
-          {
-            "species": "SPECIES_KYOGRE_PRIMAL",
-            "name": "Kyogre",
-            "dex": 295,
-            "sprite": "sprites/pokemon/kyogre_primal.png"
           },
           {
             "species": "SPECIES_BONSLY",
@@ -242709,6 +242697,12 @@
             "name": "Glimmora",
             "dex": 656,
             "sprite": "sprites/pokemon/glimmora_mega.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
           }
         ]
       }
@@ -248943,6 +248937,12 @@
             "name": "Lanturn",
             "dex": 148,
             "sprite": "sprites/pokemon/lanturn.png"
+          },
+          {
+            "species": "SPECIES_KYOGRE_PRIMAL",
+            "name": "Kyogre",
+            "dex": 295,
+            "sprite": "sprites/pokemon/kyogre_primal.png"
           },
           {
             "species": "SPECIES_OSHAWOTT",
