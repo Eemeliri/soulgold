@@ -90,7 +90,6 @@ const excludedDexSpecies = new Set([
   "SPECIES_KYUREM",
   "SPECIES_KYUREM_WHITE",
   "SPECIES_KYUREM_BLACK",
-  "SPECIES_GENESECT",
   "SPECIES_GENESECT_DOUSE",
   "SPECIES_GENESECT_SHOCK",
   "SPECIES_GENESECT_BURN",
@@ -132,7 +131,6 @@ const excludedDexSpecies = new Set([
   "SPECIES_TERAPAGOS_NORMAL",
   "SPECIES_TERAPAGOS_TERASTAL",
   "SPECIES_TERAPAGOS_STELLAR",
-  "SPECIES_CHI_YU",
 ]);
 const innateUnlockLevels = [75, 85, 95];
 const machineLocationOverrides = {

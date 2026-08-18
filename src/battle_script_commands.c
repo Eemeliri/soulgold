@@ -11411,10 +11411,10 @@ struct BallData
 
 #define CAPTURE_GUARANTEED -1
 
-static void ComputeBallData(u32 wildMonBattler, u32 playerBattler, struct BallData *ball)
+static void ComputeBallData(u32 wildMonBattler, u32 playerBattler, enum Item ballItem, struct BallData *ball)
 {
     u32 i;
-    u32 ballId = ItemIdToBallId(gLastUsedItem);
+    u32 ballId = ItemIdToBallId(ballItem);
     struct BattlePokemon *battleMon = &gBattleMons[wildMonBattler];
 
     ball->multiplier = 100;
@@ -11612,10 +11612,10 @@ static const u8 sBadgeLevel[] = {
     100,
 };
 
-static u32 ComputeCaptureOdds(u32 wildMonBattler, u32 playerBattler)
+static u32 ComputeCaptureOdds(u32 wildMonBattler, u32 playerBattler, enum Item ballItem)
 {
     struct BallData ball;
-    ComputeBallData(wildMonBattler, playerBattler, &ball);
+    ComputeBallData(wildMonBattler, playerBattler, ballItem, &ball);
 
     if (ball.guaranteedCapture)
         return CAPTURE_GUARANTEED;
@@ -11720,15 +11720,16 @@ static u32 ComputeBallShakeOdds(u32 odds)
     return odds;
 }
 
-static void SetBallThrowShakes(void)
+static void SetBallThrowShakes(enum Item ballItem)
 {
-    gBallToDisplay = gLastThrownBall = gLastUsedItem;
+    gLastUsedItem = ballItem;
+    gBallToDisplay = gLastThrownBall = ballItem;
 
-    u32 odds = ComputeCaptureOdds(gBattlerTarget, gBattlerAttacker);
+    u32 odds = ComputeCaptureOdds(gBattlerTarget, gBattlerAttacker, ballItem);
     if (gTestRunnerEnabled)
         TestRunner_Battle_RecordCatchChance(odds);
 
-    enum PokeBall ballId = ItemIdToBallId(gLastUsedItem);
+    enum PokeBall ballId = ItemIdToBallId(ballItem);
     if (gBattleResults.catchAttempts[ballId] < 255)
         gBattleResults.catchAttempts[ballId]++;
 
@@ -11776,7 +11777,7 @@ static void SetBallThrowShakes(void)
     }
 
     if (!gHasFetchedBall)
-        gLastUsedBall = gLastUsedItem;
+        gLastUsedBall = ballItem;
 
     if (IsCriticalCapture())
         gBattleCommunication[MULTISTRING_CHOOSER] = BALL_3_SHAKES_FAIL;
@@ -11811,7 +11812,22 @@ static void Cmd_handleballthrow(void)
     }
     else
     {
-        SetBallThrowShakes();
+        enum Item ballItem;
+
+        switch (gActionsByTurnOrder[gCurrentTurnActionNumber])
+        {
+        case B_ACTION_SAFARI_BALL:
+            ballItem = ITEM_SAFARI_BALL;
+            break;
+        case B_ACTION_THROW_BALL:
+            ballItem = gBallToDisplay;
+            break;
+        default:
+            ballItem = gBattleResources->bufferB[gBattlerAttacker][1]
+                     | (gBattleResources->bufferB[gBattlerAttacker][2] << 8);
+            break;
+        }
+        SetBallThrowShakes(ballItem);
     }
 }
 
@@ -16416,8 +16432,7 @@ void BS_CatchAfterVictory(void)
     }
     else if (gSpecialVar_ItemId != ITEM_NONE) // do catch sequence if ball selected
     {
-        gLastUsedItem = gSpecialVar_ItemId; // selected ball
-        SetBallThrowShakes();
+        SetBallThrowShakes(gSpecialVar_ItemId);
     }
     else // Bag was cancelled; return to the Catch / Don't Catch choice.
     {
