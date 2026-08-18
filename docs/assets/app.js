@@ -1660,7 +1660,7 @@ function renderSpeciesDetail(mon) {
     ${accordionSection("Evolution", `<div class="evolution-chain">${evolutionChain(mon)}${megaFormLinks(mon)}</div>`)}
     ${accordionSection("Locations", locationRows(mon.locations), { className: "species-locations" })}
     ${learnsetSection("Level-Up Learnset", mon.levelUp)}
-    ${learnsetSection("TM / TR Moves", mon.tmhm, { showLevel: false })}
+    ${learnsetSection("TM Moves", mon.tmhm, { showLevel: false })}
     ${learnsetSection("Tutor Moves", mon.tutors, { showLevel: false, moveNotes: state.data.dedicatedTutors })}
     ${learnsetSection("Egg Moves", mon.eggMoves || [], { showLevel: false })}
   `;
