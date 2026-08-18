@@ -1,5 +1,6 @@
 #include "global.h"
 #include "daycare.h"
+#include "egg_hatch.h"
 #include "event_data.h"
 #include "malloc.h"
 #include "party_menu.h"
@@ -42,6 +43,38 @@ TEST("(Daycare) Pokémon offspring species is based off the mother's species")
     STORE_IN_DAYCARE_AND_GET_EGG();
 
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), offspring);
+}
+
+TEST("(Daycare) a female Pokémon passes down its Hidden Ability after hatching")
+{
+    bool32 inheritedHiddenAbility = FALSE;
+
+    ASSUME(P_FAMILY_CYNDAQUIL == TRUE);
+    ASSUME(P_FAMILY_DRILBUR == TRUE);
+    ASSUME(GetSpeciesAbility(SPECIES_DRILBUR, NUM_NORMAL_ABILITY_SLOTS) == ABILITY_MOLD_BREAKER);
+
+    for (u32 i = 0; i < 100 && !inheritedHiddenAbility; i++)
+    {
+        ZeroPlayerPartyMons();
+        memset(&gSaveBlock1Ptr->daycare, 0, sizeof(gSaveBlock1Ptr->daycare));
+        RUN_OVERWORLD_SCRIPT(
+            givemon SPECIES_CYNDAQUIL, 100, gender=MON_MALE;
+            givemon SPECIES_DRILBUR, 100, abilityNum=2, gender=MON_FEMALE;
+        );
+        STORE_IN_DAYCARE_AND_GET_EGG();
+
+        if (GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM) == NUM_NORMAL_ABILITY_SLOTS)
+        {
+            inheritedHiddenAbility = TRUE;
+            gSpecialVar_0x8004 = 0;
+            ScriptHatchMon();
+
+            EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM), NUM_NORMAL_ABILITY_SLOTS);
+            EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), ABILITY_MOLD_BREAKER);
+        }
+    }
+
+    EXPECT(inheritedHiddenAbility);
 }
 
 TEST("(Daycare) Pokémon can breed with Ditto if they don't belong to the Ditto or No Eggs Discovered group")

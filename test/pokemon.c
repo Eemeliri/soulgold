@@ -349,6 +349,27 @@ TEST("Shininess set on an Egg persists after hatching")
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY), TRUE);
 }
 
+TEST("Ability slot set on an Egg persists after hatching")
+{
+    u8 abilityNum = NUM_NORMAL_ABILITY_SLOTS;
+    bool8 isEgg = TRUE;
+
+    ASSUME(P_FAMILY_DRILBUR == TRUE);
+    ASSUME(GetSpeciesAbility(SPECIES_DRILBUR, abilityNum) == ABILITY_MOLD_BREAKER);
+
+    CreateMon(&gPlayerParty[0], SPECIES_DRILBUR, EGG_HATCH_LEVEL, 0, OTID_STRUCT_PLAYER_ID);
+    SetMonData(&gPlayerParty[0], MON_DATA_IS_EGG, &isEgg);
+    SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM), abilityNum);
+
+    gSpecialVar_0x8004 = 0;
+    ScriptHatchMon();
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM), abilityNum);
+    EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), ABILITY_MOLD_BREAKER);
+}
+
 TEST("Egg sprite and icon palettes reflect shininess")
 {
     EXPECT(GetMonSpritePalFromSpeciesIsEgg(SPECIES_TOGEPI, FALSE, FALSE, TRUE) == gSpeciesInfo[SPECIES_EGG].palette);
