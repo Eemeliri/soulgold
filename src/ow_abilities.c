@@ -101,14 +101,26 @@ u32 GetSynchronizedNature(enum GeneratedMonOrigin origin, u32 species)
 
 u32 GetSynchronizedGender(enum GeneratedMonOrigin origin, u32 species)
 {
+    u8 targetGenderRatio;
+    u8 leadingMonGender;
+
     if (!IsCuteCharmActive())
         return MON_GENDER_RANDOM;
+
+    targetGenderRatio = gSpeciesInfo[species].genderRatio;
+    if (targetGenderRatio == MON_MALE
+     || targetGenderRatio == MON_FEMALE
+     || targetGenderRatio == MON_GENDERLESS)
+        return MON_GENDER_RANDOM;
+
     if (!(sCuteCharmModes[origin](species)))
         return MON_GENDER_RANDOM;
-    u8 leadingMonGender = GetMonGender(&gPlayerParty[0]);
-    // misses mon is genderless check, although no genderless mon can have cute charm as ability
+
+    leadingMonGender = GetMonGender(&gPlayerParty[0]);
     if (leadingMonGender == MON_FEMALE)
         return MON_MALE;
-    else
+    else if (leadingMonGender == MON_MALE)
         return MON_FEMALE;
+
+    return MON_GENDER_RANDOM;
 }

@@ -8,6 +8,7 @@
 #include "load_save.h"
 #include "move.h"
 #include "new_game.h"
+#include "ow_synchronize.h"
 #include "pokemon.h"
 #include "pokemon_icon.h"
 #include "string_util.h"
@@ -18,6 +19,18 @@
 #include "constants/move_relearner.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
+
+TEST("Cute Charm does not request an impossible wild Pokemon gender")
+{
+    CreateMon(&gPlayerParty[0], SPECIES_NINETALES_ALOLA, 100, 0, OTID_STRUCT_PLAYER_ID);
+
+    ASSUME(GetMonGender(&gPlayerParty[0]) == MON_FEMALE);
+    ASSUME(MonHasTrait(&gPlayerParty[0], ABILITY_CUTE_CHARM));
+
+    EXPECT_EQ(GetSynchronizedGender(WILDMON_ORIGIN, SPECIES_CHANSEY), MON_GENDER_RANDOM);
+    EXPECT_EQ(GetSynchronizedGender(WILDMON_ORIGIN, SPECIES_TAUROS), MON_GENDER_RANDOM);
+    EXPECT_EQ(GetSynchronizedGender(WILDMON_ORIGIN, SPECIES_MAGNEMITE), MON_GENDER_RANDOM);
+}
 
 TEST("Facility BGM overrides exclude Pyramid and Pike wild encounters")
 {
@@ -334,6 +347,27 @@ TEST("Shininess set on an Egg persists after hatching")
 
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_EGG), FALSE);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY), TRUE);
+}
+
+TEST("Ability slot set on an Egg persists after hatching")
+{
+    u8 abilityNum = NUM_NORMAL_ABILITY_SLOTS;
+    bool8 isEgg = TRUE;
+
+    ASSUME(P_FAMILY_DRILBUR == TRUE);
+    ASSUME(GetSpeciesAbility(SPECIES_DRILBUR, abilityNum) == ABILITY_MOLD_BREAKER);
+
+    CreateMon(&gPlayerParty[0], SPECIES_DRILBUR, EGG_HATCH_LEVEL, 0, OTID_STRUCT_PLAYER_ID);
+    SetMonData(&gPlayerParty[0], MON_DATA_IS_EGG, &isEgg);
+    SetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM, &abilityNum);
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM), abilityNum);
+
+    gSpecialVar_0x8004 = 0;
+    ScriptHatchMon();
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_ABILITY_NUM), abilityNum);
+    EXPECT_EQ(GetMonAbility(&gPlayerParty[0]), ABILITY_MOLD_BREAKER);
 }
 
 TEST("Egg sprite and icon palettes reflect shininess")

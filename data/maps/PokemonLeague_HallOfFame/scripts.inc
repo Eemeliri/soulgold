@@ -91,6 +91,9 @@ PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
 	clearflag FLAG_HIDE_SHAYMIN 
 	clearflag FLAG_HIDE_IRONVALIANT
 	clearflag FLAG_HIDE_FLUTTERMANE
+	clearflag FLAG_HIDE_REGIROCK
+	clearflag FLAG_HIDE_REGISTEEL
+	clearflag FLAG_HIDE_REGICE
 	clearflag FLAG_HIDE_SUDOWOODO
 	clearflag FLAG_HIDE_VIRIZION
 	clearflag FLAG_HIDE_REGIGIGAS 

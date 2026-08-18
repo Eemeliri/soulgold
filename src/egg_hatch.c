@@ -318,6 +318,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     u32 personality, pokerus;
     enum PokeBall ball;
     u8 i, friendship, language, gameMet, markings, isModernFatefulEncounter;
+    u8 abilityNum;
     bool32 isShiny;
     enum Move moves[MAX_MON_MOVES];
     u32 ivs[NUM_STATS];
@@ -340,9 +341,11 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     isModernFatefulEncounter = GetMonData(egg, MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     isShiny = GetMonData(egg, MON_DATA_IS_SHINY);
     ball = GetMonData(egg, MON_DATA_POKEBALL);
+    abilityNum = GetMonData(egg, MON_DATA_ABILITY_NUM);
 
     CreateMonWithIVs(temp, species, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
     SetMonData(temp, MON_DATA_IS_SHINY, &isShiny);
+    SetMonData(temp, MON_DATA_ABILITY_NUM, &abilityNum);
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonData(temp, MON_DATA_MOVE1 + i,  &moves[i]);
