@@ -69286,8 +69286,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69295,8 +69295,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -163740,7 +163740,7 @@
       "innates": [
         "ABILITY_STATIC",
         "ABILITY_LIGHTNING_ROD",
-        "ABILITY_VOLT_ABSORB"
+        "ABILITY_SHOCKWIRING"
       ],
       "sprite": "sprites/pokemon/oricorio_pom_pom.png",
       "shinySprite": "sprites/pokemon/oricorio_pom_pom_shiny.png",
@@ -220551,12 +220551,6 @@
             "sprite": "sprites/pokemon/zapdos.png"
           },
           {
-            "species": "SPECIES_ORICORIO_POM_POM",
-            "name": "Oricorio",
-            "dex": 535,
-            "sprite": "sprites/pokemon/oricorio_pom_pom.png"
-          },
-          {
             "species": "SPECIES_TAPU_KOKO",
             "name": "Tapu Koko",
             "dex": 551,
@@ -250999,6 +250993,12 @@
             "name": "Eelektross",
             "dex": 432,
             "sprite": "sprites/pokemon/eelektross_mega.png"
+          },
+          {
+            "species": "SPECIES_ORICORIO_POM_POM",
+            "name": "Oricorio",
+            "dex": 535,
+            "sprite": "sprites/pokemon/oricorio_pom_pom.png"
           }
         ]
       }
