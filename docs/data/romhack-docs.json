@@ -69286,8 +69286,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69295,8 +69295,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -69525,8 +69525,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69534,8 +69534,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -69740,8 +69740,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69749,8 +69749,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -256565,6 +256565,64 @@
       "slug": "carbos"
     },
     {
+      "id": 79,
+      "constant": "ITEM_ABILITY_CAPSULE",
+      "name": "Ability Capsule",
+      "description": "Switches a Pokemon's ability.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_FIELD_USE",
+      "itemIcon": "sprites/items/ability_capsule.png",
+      "locations": [
+        {
+          "map": "Goldenrod Shore",
+          "source": "Item ball"
+        },
+        {
+          "map": "Victory Road B2F",
+          "source": "Item ball"
+        },
+        {
+          "map": "Battle Frontier Battle Factory Lobby",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod Shore (Item ball); Victory Road B2F (Item ball); Battle Frontier Battle Factory Lobby (Mart)",
+      "slug": "ability-capsule"
+    },
+    {
+      "id": 80,
+      "constant": "ITEM_ABILITY_PATCH",
+      "name": "Ability Patch",
+      "description": "Turns the ability of a Pokemon into a rare ability.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_FIELD_USE",
+      "itemIcon": "sprites/items/ability_patch.png",
+      "locations": [
+        {
+          "map": "Route 27",
+          "source": "Item ball"
+        },
+        {
+          "map": "Tin Tower 4F",
+          "source": "Item ball"
+        },
+        {
+          "map": "Whirl Islands Descent",
+          "source": "Item ball"
+        },
+        {
+          "map": "Battle Frontier Battle Factory Lobby",
+          "source": "Mart"
+        },
+        {
+          "map": "Goldenrod City Radio Tower 2F",
+          "source": "Buena's Password prize"
+        }
+      ],
+      "location": "Route 27 (Item ball); Tin Tower 4F (Item ball); Whirl Islands Descent (Item ball); Battle Frontier Battle Factory Lobby (Mart); Goldenrod City Radio Tower 2F (Buena's Password prize)",
+      "slug": "ability-patch"
+    },
+    {
       "id": 133,
       "constant": "ITEM_BOTTLE_CAP",
       "name": "Bottle Cap",
@@ -259937,6 +259995,23 @@
       "slug": "utility-umbrella"
     },
     {
+      "id": 697,
+      "constant": "ITEM_GRACIDEA",
+      "name": "Gracidea",
+      "description": "Bouquets made with it are offered as a token of gratitude.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/gracidea.png",
+      "locations": [
+        {
+          "map": "Goldenrod Flower Shop by showing Shaymin",
+          "source": ""
+        }
+      ],
+      "location": "Goldenrod Flower Shop by showing Shaymin",
+      "slug": "gracidea"
+    },
+    {
       "id": 760,
       "constant": "ITEM_ABILITY_SHIELD",
       "name": "Ability Shield",
@@ -260957,11 +261032,11 @@
       "itemIcon": "sprites/items/audinite.png",
       "locations": [
         {
-          "map": "Given by Elm during the story",
+          "map": "Given by Elm during the story after 8th badge.",
           "source": ""
         }
       ],
-      "location": "Given by Elm during the story",
+      "location": "Given by Elm during the story after 8th badge.",
       "slug": "bondstone"
     }
   ],

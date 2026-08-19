@@ -193,10 +193,10 @@ TEST("Trainer default moveset Normal uses moves learned at the exact current lev
     static const struct TrainerMon partyEntry = { .species = SPECIES_CHARIZARD };
     static const enum Move expected[MAX_MON_MOVES] =
     {
-        MOVE_DRAGON_BREATH,
+        MOVE_DRAGON_RAGE,
         MOVE_FIRE_FANG,
         MOVE_SLASH,
-        MOVE_FLAMETHROWER,
+        MOVE_FLAMETHROWER
     };
     enum Move moves[MAX_MON_MOVES];
     u32 i;

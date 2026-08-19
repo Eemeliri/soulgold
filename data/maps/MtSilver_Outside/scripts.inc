@@ -5,7 +5,7 @@ MtSilver_Outside_MapScripts::
 
 MtSilver_Outside_OnTransition: 
 	callnative SetTimeBasedEncounters
-	setflag FLAG_GARBAGEFLAG
+	setflag FLAG_VISITED_MT_SILVER
 	end
 
 MtSilver_Outside_EventScript_Sign::
