@@ -129,6 +129,7 @@ extern const u16 gPokedexOrder_Weight[];
 static const u8 sText_No0000[] = _("0000");
 static const u8 sCaughtBall_Gfx[] = INCBIN_U8("graphics/pokedex/caught_ball.4bpp");
 static const u8 sText_TenDashes[] = _("----------");
+static const u8 sText_ThreeQuestionMarks[] = _("???");
 ALIGNED(4) static const u8 sExpandedPlaceholder_PokedexDescription[] = _("");
 static const u16 sSizeScreenSilhouette_Pal[] = INCBIN_U16("graphics/pokedex/size_silhouette.gbapal");
 
@@ -442,6 +443,7 @@ struct PokedexView
     u8 currentPage;
     u8 currentPageBackup;
     bool8 isSearchResults:1;
+    bool8 showUnseen:1;
     u8 selectedScreen;
     u8 screenSwitchState;
     u8 menuIsOpen;
@@ -474,7 +476,10 @@ static bool8 LoadPokedexListPage(u8);
 static void LoadPokedexBgPalette(bool8);
 static void FreeWindowAndBgBuffers(void);
 static void CreatePokedexList(u8, u8);
+static void AddPokedexListItem(enum NationalDexOrder dexNum);
 static bool8 TrySelectPokedexListDexNum(enum NationalDexOrder dexNum);
+static void TogglePokedexListView(void);
+static u16 GetFilteredPokedexListSelection(void);
 static void CreateMonDexNum(u16, u8, u8, u16);
 static void CreateCaughtBall(u16, u8, u8, u16);
 static u8 CreateMonName(u16, u8, u8);
@@ -2113,6 +2118,7 @@ static void ResetPokedexView(struct PokedexView *pokedexView)
     pokedexView->currentPage = PAGE_MAIN;
     pokedexView->currentPageBackup = PAGE_MAIN;
     pokedexView->isSearchResults = FALSE;
+    pokedexView->showUnseen = FALSE;
     pokedexView->selectedScreen = AREA_SCREEN;
     pokedexView->screenSwitchState = 0;
     pokedexView->menuIsOpen = 0;
@@ -2218,6 +2224,11 @@ static void Task_HandlePokedexInput(u8 taskId)
             gTasks[taskId].func = Task_WaitForExitSearch;
             PlaySE(SE_PC_LOGIN);
             FreeWindowAndBgBuffers();
+        }
+        else if (JOY_NEW(L_BUTTON))
+        {
+            PlaySE(SE_SELECT);
+            TogglePokedexListView();
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -2341,6 +2352,8 @@ static void Task_ClosePokedex(u8 taskId)
     {
         MainCallback callback = sPokedexReturnCallback != NULL ? sPokedexReturnCallback : CB2_ReturnToFieldWithOpenMenu;
 
+        sLastSelectedPokemon = GetFilteredPokedexListSelection();
+        sPokeBallRotation = sLastSelectedPokemon * 16 + POKEBALL_ROTATION_TOP;
         gSaveBlock2Ptr->pokedex.mode = sPokedexView->dexMode;
         if (!IsNationalPokedexEnabled())
             gSaveBlock2Ptr->pokedex.mode = DEX_MODE_HOENN;
@@ -2552,14 +2565,8 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 }
             
 
-            if (GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN))
-            {
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
-                sPokedexView->pokemonListCount++;
-                
-            }
+            if (sPokedexView->showUnseen || GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN))
+                AddPokedexListItem(temp_dexNum);
         }
         break;
     case ORDER_ALPHABETICAL:
@@ -2567,13 +2574,9 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Alphabetical[i];
 
-            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN))
-            {
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
-                sPokedexView->pokemonListCount++;
-            }
+            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0)
+             && (sPokedexView->showUnseen || GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN)))
+                AddPokedexListItem(temp_dexNum);
         }
         break;
     case ORDER_HEAVIEST:
@@ -2581,13 +2584,9 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Weight[i];
 
-            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
-            {
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
-                sPokedexView->pokemonListCount++;
-            }
+            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0)
+             && (sPokedexView->showUnseen || GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT)))
+                AddPokedexListItem(temp_dexNum);
         }
         break;
     case ORDER_LIGHTEST:
@@ -2595,13 +2594,9 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Weight[i];
 
-            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
-            {
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
-                sPokedexView->pokemonListCount++;
-            }
+            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0)
+             && (sPokedexView->showUnseen || GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT)))
+                AddPokedexListItem(temp_dexNum);
         }
         break;
     case ORDER_TALLEST:
@@ -2609,13 +2604,9 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Height[i];
 
-            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
-            {
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
-                sPokedexView->pokemonListCount++;
-            }
+            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0)
+             && (sPokedexView->showUnseen || GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT)))
+                AddPokedexListItem(temp_dexNum);
         }
         break;
     case ORDER_SMALLEST:
@@ -2623,13 +2614,9 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         {
             temp_dexNum = gPokedexOrder_Height[i];
 
-            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0) && GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT))
-            {
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
-                sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
-                sPokedexView->pokemonListCount++;
-            }
+            if ((!temp_isHoennDex || NationalToJohtoOrder(temp_dexNum) != 0)
+             && (sPokedexView->showUnseen || GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT)))
+                AddPokedexListItem(temp_dexNum);
         }
         break;
     }
@@ -2640,6 +2627,15 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         sPokedexView->pokedexList[i].seen = FALSE;
         sPokedexView->pokedexList[i].owned = FALSE;
     }
+}
+
+static void AddPokedexListItem(enum NationalDexOrder dexNum)
+{
+    struct PokedexListItem *item = &sPokedexView->pokedexList[sPokedexView->pokemonListCount++];
+
+    item->dexNum = dexNum;
+    item->seen = GetSetPokedexFlag(dexNum, FLAG_GET_SEEN);
+    item->owned = GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT);
 }
 
 static bool8 TrySelectPokedexListDexNum(enum NationalDexOrder dexNum)
@@ -2659,6 +2655,96 @@ static bool8 TrySelectPokedexListDexNum(enum NationalDexOrder dexNum)
     }
 
     return FALSE;
+}
+
+static bool8 IsPokedexListItemShownInFilteredView(const struct PokedexListItem *item)
+{
+    if (sPokedexView->dexOrder == ORDER_NUMERICAL || sPokedexView->dexOrder == ORDER_ALPHABETICAL)
+        return item->seen;
+    else
+        return item->owned;
+}
+
+static void TogglePokedexListView(void)
+{
+    enum NationalDexOrder selectedDexNum = sPokedexView->pokedexList[sPokedexView->selectedPokemon].dexNum;
+    enum NationalDexOrder fallbackDexNum = NATIONAL_DEX_NONE;
+    u16 oldListCount = sPokedexView->pokemonListCount;
+    u16 oldSelection = sPokedexView->selectedPokemon;
+    u16 lastSelectedPokemon = sLastSelectedPokemon;
+    u8 pokeBallRotation = sPokeBallRotation;
+    u16 distance;
+
+    sPokedexView->showUnseen ^= TRUE;
+
+    if (!sPokedexView->showUnseen)
+    {
+        for (distance = 0; distance < oldListCount; distance++)
+        {
+            if (distance <= oldSelection
+             && IsPokedexListItemShownInFilteredView(&sPokedexView->pokedexList[oldSelection - distance]))
+            {
+                fallbackDexNum = sPokedexView->pokedexList[oldSelection - distance].dexNum;
+                break;
+            }
+            if (oldSelection + distance < oldListCount
+             && IsPokedexListItemShownInFilteredView(&sPokedexView->pokedexList[oldSelection + distance]))
+            {
+                fallbackDexNum = sPokedexView->pokedexList[oldSelection + distance].dexNum;
+                break;
+            }
+        }
+    }
+
+    TryDestroyStatBars();
+    ClearMonSprites();
+    CreatePokedexList(sPokedexView->dexMode, sPokedexView->dexOrder);
+    sPokedexView->selectedPokemon = 0;
+    if (!TrySelectPokedexListDexNum(selectedDexNum) && fallbackDexNum != NATIONAL_DEX_NONE)
+        TrySelectPokedexListDexNum(fallbackDexNum);
+    sPokedexView->pokeBallRotation = sPokedexView->selectedPokemon * 16 + POKEBALL_ROTATION_TOP;
+    sLastSelectedPokemon = lastSelectedPokemon;
+    sPokeBallRotation = pokeBallRotation;
+    CreateMonSpritesAtPos(sPokedexView->selectedPokemon, 0xE);
+    CreateStatBars(&sPokedexView->pokedexList[sPokedexView->selectedPokemon]);
+}
+
+static u16 GetFilteredPokedexListSelection(void)
+{
+    u16 selection = sPokedexView->selectedPokemon;
+    u16 filteredSelection = 0;
+    u16 distance;
+    u16 i;
+
+    if (!sPokedexView->showUnseen || sPokedexView->pokemonListCount == 0)
+        return selection;
+
+    if (!IsPokedexListItemShownInFilteredView(&sPokedexView->pokedexList[selection]))
+    {
+        for (distance = 1; distance < sPokedexView->pokemonListCount; distance++)
+        {
+            if (distance <= selection
+             && IsPokedexListItemShownInFilteredView(&sPokedexView->pokedexList[selection - distance]))
+            {
+                selection -= distance;
+                break;
+            }
+            if (selection + distance < sPokedexView->pokemonListCount
+             && IsPokedexListItemShownInFilteredView(&sPokedexView->pokedexList[selection + distance]))
+            {
+                selection += distance;
+                break;
+            }
+        }
+    }
+
+    for (i = 0; i < selection; i++)
+    {
+        if (IsPokedexListItemShownInFilteredView(&sPokedexView->pokedexList[i]))
+            filteredSelection++;
+    }
+
+    return filteredSelection;
 }
 
 static void PrintMonDexNumAndName(u8 windowId, u8 fontId, const u8 *str, u8 left, u8 top)
@@ -2807,7 +2893,7 @@ static u8 CreateMonName(u16 num, u8 left, u8 top)
     if (num)
         str = GetSpeciesName(num);
     else
-        str = sText_TenDashes;
+        str = sText_ThreeQuestionMarks;
     PrintMonDexNumAndName_2(0, FONT_NARROW, str, left, top);
     return StringLength(str);
 }
