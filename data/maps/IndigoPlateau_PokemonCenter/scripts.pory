@@ -138,6 +138,17 @@ script IndigoPlateau_StoneMerchant {
     end
 }
 
+script IndigoPlateau_GemMerchant {
+    lock
+    faceplayer
+    message("Welcome! How may I help you?")
+    waitmessage
+    pokemart(IndigoPlateau_GemMerchantMart)
+    msgbox("Come back soon!")
+    release
+    end
+}
+
 mart IndigoPlateau_StoneMerchantMart {
     ITEM_FIRE_STONE
     ITEM_WATER_STONE
@@ -153,4 +164,25 @@ mart IndigoPlateau_StoneMerchantMart {
     ITEM_LINKING_CORD
     ITEM_AUSPICIOUS_ARMOR
     ITEM_MALICIOUS_ARMOR
+}
+
+mart IndigoPlateau_GemMerchantMart {
+    ITEM_NORMAL_GEM
+    ITEM_FIRE_GEM
+    ITEM_WATER_GEM
+    ITEM_ELECTRIC_GEM
+    ITEM_GRASS_GEM
+    ITEM_ICE_GEM
+    ITEM_FIGHTING_GEM
+    ITEM_POISON_GEM
+    ITEM_GROUND_GEM
+    ITEM_FLYING_GEM
+    ITEM_PSYCHIC_GEM
+    ITEM_BUG_GEM
+    ITEM_ROCK_GEM
+    ITEM_GHOST_GEM
+    ITEM_DRAGON_GEM
+    ITEM_DARK_GEM
+    ITEM_STEEL_GEM
+    ITEM_FAIRY_GEM
 }
