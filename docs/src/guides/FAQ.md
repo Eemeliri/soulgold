@@ -9,7 +9,7 @@ order: 1
 - Given right before arriving in the Violet City.
 
 ### HMs?
-- Requires only owning them, Fly requires owning a Pokémon that can learn it.
+- Requires only owning the HM and the corresponding badge. Additionally you can Fly using the Region Map in Pokégear after obtaining the HM.
 
 ### Hard mode differences?
 - Gym battles are double battles unless enforced into singles by another setting
