@@ -1,7 +1,33 @@
 import unittest
 from collections import defaultdict
 
-from tools.soulgold_docs.parsers.items import add_bug_contest_reward_locations
+from tools.soulgold_docs.constants import ADDITIONAL_IMPORTANT_ITEMS
+from tools.soulgold_docs.parsers.items import (
+    IMPORTANT_ITEM_LOCATION_OVERRIDES,
+    add_bug_contest_reward_locations,
+)
+
+
+class ImportantItemExceptionTests(unittest.TestCase):
+    def test_includes_special_use_items(self):
+        self.assertTrue(
+            {
+                "ITEM_ABILITY_CAPSULE",
+                "ITEM_ABILITY_PATCH",
+                "ITEM_GRACIDEA",
+            }.issubset(ADDITIONAL_IMPORTANT_ITEMS)
+        )
+
+    def test_gracidea_has_story_location_override(self):
+        self.assertEqual(
+            IMPORTANT_ITEM_LOCATION_OVERRIDES["ITEM_GRACIDEA"],
+            [
+                {
+                    "map": "Goldenrod Flower Shop after showing Shaymin",
+                    "source": "",
+                }
+            ],
+        )
 
 
 class BugContestItemLocationTests(unittest.TestCase):

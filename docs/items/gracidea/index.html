@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="../../">
+    <title>Soulgold Documentation</title>
+    <meta name="theme-color" content="#263532">
+    <link rel="stylesheet" href="assets/styles.css?v=20260815-1">
+    <link rel="stylesheet" href="assets/refined.css?v=20260815-1">
+  </head>
+  <body>
+    <div class="top-chrome">
+      <header class="site-header">
+        <div class="brand">
+          <div>
+            <h1>Soulgold Documentation</h1>
+          </div>
+        </div>
+        <button id="mobileMenuToggle" class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="sectionNav" aria-label="Open documentation sections">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <label class="search-wrap">
+          <span class="sr-only">Search the current section</span>
+          <input id="globalSearch" class="search" type="search" placeholder="Search Pokédex…" autocomplete="off">
+          <span class="search-icon" aria-hidden="true"></span>
+        </label>
+      </header>
+
+      <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+      <nav id="sectionNav" class="tabs" aria-label="Documentation sections">
+        <div class="mobile-nav-head">
+          <strong>Sections</strong>
+          <button id="mobileMenuClose" class="mobile-menu-close" type="button" aria-label="Close documentation sections">×</button>
+        </div>
+        <a class="tab active" data-tab="pokedex" href="pokedex/">Pokédex</a>
+        <a class="tab" data-tab="moves" href="moves/">Movedex</a>
+        <a class="tab" data-tab="encounters" href="encounters/">Wild Encounters</a>
+        <a class="tab" data-tab="machines" href="machines/">TMs/HMs</a>
+        <a class="tab" data-tab="items" href="items/">Items</a>
+        <a class="tab" data-tab="trainers" href="trainers/">Trainers</a>
+        <a class="tab" data-tab="abilities" href="abilities/">Abilities</a>
+        <a class="tab" data-tab="guides" href="guides/">Guides</a>
+      </nav>
+    </div>
+
+    <main>
+      <section id="pokedex" class="panel active" aria-label="Pokédex">
+        <div id="pokedexStatus" class="panel-status" role="status" aria-live="polite">Loading Pokédex…</div>
+        <div class="table-shell data-panel pokedex-shell">
+          <div class="dex-head dex-row">
+            <span>#</span><span></span><span>Name</span><span>Type</span>
+            <span class="dex-stats dex-stats-head"><span>HP</span><span>Atk</span><span>Def</span><span>SpA</span><span>SpD</span><span>Spe</span><span>BST</span></span>
+            <span>Abilities</span>
+          </div>
+          <div id="dexScroller" class="dex-scroller">
+            <div id="dexSpacer"></div>
+            <div id="dexRows"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="moves" class="panel" aria-label="Movedex">
+        <div id="movesStatus" class="panel-status" role="status" aria-live="polite">Loading moves…</div>
+        <div class="table-shell data-panel">
+          <table>
+            <thead>
+              <tr><th>#</th><th>Move</th><th>Type</th><th>Cat</th><th>Pow</th><th>Acc</th><th>PP</th><th>Priority</th><th>Description</th></tr>
+            </thead>
+            <tbody id="moveRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="encounters" class="panel" aria-label="Wild Encounters">
+        <div id="encountersStatus" class="panel-status" role="status" aria-live="polite">Loading encounters…</div>
+        <div id="encounterList" class="stack"></div>
+      </section>
+
+      <section id="machines" class="panel" aria-label="TMs and HMs">
+        <div id="machinesStatus" class="panel-status" role="status" aria-live="polite">Loading TMs and HMs…</div>
+        <div class="table-shell data-panel">
+          <table>
+            <thead>
+              <tr><th>ID</th><th>Move</th><th>Type</th><th>Cat</th><th>Pow</th><th>Acc</th><th>PP</th><th>Description</th><th>Location</th></tr>
+            </thead>
+            <tbody id="tmRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="abilities" class="panel" aria-label="Abilities">
+        <div id="abilitiesStatus" class="panel-status" role="status" aria-live="polite">Loading abilities…</div>
+        <div id="abilityList" class="ability-list data-panel"></div>
+      </section>
+
+      <section id="items" class="panel" aria-label="Items">
+        <div id="itemsStatus" class="panel-status" role="status" aria-live="polite">Loading items…</div>
+        <div class="table-shell data-panel">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Description</th><th>Location</th></tr>
+            </thead>
+            <tbody id="itemRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="trainers" class="panel" aria-label="Trainers">
+        <div id="trainersStatus" class="panel-status" role="status" aria-live="polite">Loading trainers…</div>
+        <div class="table-shell data-panel">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Party</th></tr>
+            </thead>
+            <tbody id="trainerRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="guides" class="panel" aria-label="Guides">
+        <div id="guidesStatus" class="panel-status" role="status" aria-live="polite">Loading guides…</div>
+        <div id="guideList" class="guide-list"></div>
+      </section>
+    </main>
+
+    <dialog id="detailDialog" aria-labelledby="modalTitle">
+      <span class="sheet-handle" aria-hidden="true"></span>
+      <div class="modal-head">
+        <h2 id="modalTitle"></h2>
+        <button id="closeDialog" class="icon-button" aria-label="Close detail view">×</button>
+      </div>
+      <div id="modalBody"></div>
+    </dialog>
+
+    <div id="typeFilter" class="type-filter">
+      <button id="typeFilterToggle" class="type-filter-toggle" type="button" aria-expanded="false" aria-controls="typeFilterPanel">Filter</button>
+      <div id="typeFilterPanel" class="type-filter-panel" hidden></div>
+    </div>
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+
+    <script src="assets/app.js?v=20260815-1"></script>
+  </body>
+</html>

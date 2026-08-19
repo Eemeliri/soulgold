@@ -176,6 +176,8 @@ IMPORTANT_ITEM_POCKETS = {
 # Useful training consumables live outside the pockets and sort types used by
 # the evolution-item index, so opt them into the Items page explicitly.
 ADDITIONAL_IMPORTANT_ITEMS = {
+    "ITEM_ABILITY_CAPSULE",
+    "ITEM_ABILITY_PATCH",
     "ITEM_BOTTLE_CAP",
     "ITEM_GOLD_BOTTLE_CAP",
     "ITEM_HP_UP",
@@ -190,6 +192,7 @@ ADDITIONAL_IMPORTANT_ITEMS = {
     "ITEM_CALCIUM_EX",
     "ITEM_ZINC_EX",
     "ITEM_CARBOS_EX",
+    "ITEM_GRACIDEA",
 }
 
 EXCLUDED_TRAINER_MAP_GROUPS = {
