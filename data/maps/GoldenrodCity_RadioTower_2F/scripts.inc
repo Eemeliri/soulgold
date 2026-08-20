@@ -705,11 +705,11 @@ GoldenrodCity_RadioTower_2F_Text_BuenaWrong:
 # 353 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
 GoldenrodCity_RadioTower_2F_Text_BuenaOffAir:
 # 354 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "Buena: Thank you for listening\n"
+	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
 # 355 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "in every day!\p"
+	.string "Use your Radio to hear the password,\n"
 # 356 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "Tune in to my password show!$"
+	.string "then come see me here!$"
 # 357 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
 
 # 358 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
@@ -1163,11 +1163,11 @@ GoldenrodCity_RadioTower_2F_Text_GruntF2After:
 # 582 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
 GoldenrodCity_RadioTower_2F_Text_BuenaShowPromo:
 # 583 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "Buena: Thank you for listening\n"
+	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
 # 584 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "in every day!\p"
+	.string "Once you have a Radio, tune in,\n"
 # 585 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "Tune in to my password show!$"
+	.string "then come see me here!$"
 # 586 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
 
 # 587 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"

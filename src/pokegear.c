@@ -137,10 +137,9 @@ static const u8 sText_JukeboxTitle[] = _("Jukebox");
 static const u8 sText_PlayMarker[] = _("{RIGHT_ARROW}");
 static const u8 sText_PokemonMarch[] = _("Pokemon March");
 static const u8 sText_PokemonLullaby[] = _("Pokemon Lullaby");
-static const u8 sText_UnownRadio[] = _("Unown Radio");
+static const u8 sText_HoennSound[] = _("Hoenn Sound");
 static const u8 sText_PokeFlute[] = _("Poke Flute");
 static const u8 sText_OaksTalk[] = _("Oak's Talk");
-static const u8 sText_BuenasPassword[] = _("Buena's Password");
 static const u8 sText_DpadUp[] = _(" {DPAD_UP}");
 static const u8 sText_DpadRight[] = _(" {DPAD_RIGHT}");
 static const u8 sText_DpadDown[] = _(" {DPAD_DOWN}");
@@ -168,7 +167,7 @@ static const struct PokegearTrack sJukeboxTracks[] =
     {sText_PokemonLullaby, MUS_HG_RADIO_LULLABY},
     {sText_PokeFlute, MUS_HG_RADIO_POKE_FLUTE},
     {sText_OaksTalk, MUS_HG_RADIO_OAK},
-    {sText_BuenasPassword, MUS_HG_RADIO_BUENA},
+    {sText_HoennSound, MUS_HG_RADIO_ROUTE101},
 };
 
 static const u8 sTextColor_White[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};

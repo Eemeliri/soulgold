@@ -45,6 +45,34 @@ TEST("(Daycare) Pokémon offspring species is based off the mother's species")
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), offspring);
 }
 
+TEST("(Daycare) Mirror Herb transfers an Egg Move to its holder and the offspring keeps it")
+{
+    u16 noMove = MOVE_NONE;
+
+    ASSUME(P_EGG_MOVE_TRANSFER >= GEN_9);
+    ASSUME(P_MOTHER_EGG_MOVE_INHERITANCE >= GEN_6);
+    ASSUME(P_FAMILY_BULBASAUR == TRUE);
+    ASSUME(P_FAMILY_SLOWPOKE == TRUE);
+
+    ZeroPlayerPartyMons();
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_BULBASAUR, 1, gender=MON_FEMALE, item=ITEM_MIRROR_HERB, move1=MOVE_TACKLE, move2=MOVE_NONE, move3=MOVE_NONE, move4=MOVE_NONE;
+        givemon SPECIES_SLOWPOKE, 1, gender=MON_MALE, move1=MOVE_CURSE, move2=MOVE_NONE, move3=MOVE_NONE, move4=MOVE_NONE;
+    );
+
+    StorePokemonInDaycare(&gPlayerParty[0], &gSaveBlock1Ptr->daycare.mons[0]);
+    StorePokemonInDaycare(&gPlayerParty[0], &gSaveBlock1Ptr->daycare.mons[1]);
+    EXPECT(BoxMonKnowsMove(&gSaveBlock1Ptr->daycare.mons[0].mon, MOVE_CURSE));
+
+    // Ensure the Egg can only inherit Curse from the Mirror Herb holder when it is built at acceptance.
+    SetBoxMonData(&gSaveBlock1Ptr->daycare.mons[1].mon, MON_DATA_MOVE1, &noMove);
+    TriggerPendingDaycareEgg();
+    RUN_OVERWORLD_SCRIPT(special GiveEggFromDaycare;);
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), SPECIES_BULBASAUR);
+    EXPECT(MonKnowsMove(&gPlayerParty[0], MOVE_CURSE));
+}
+
 TEST("(Daycare) a female Pokémon passes down its Hidden Ability after hatching")
 {
     bool32 inheritedHiddenAbility = FALSE;

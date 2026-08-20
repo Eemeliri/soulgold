@@ -206,7 +206,7 @@
 #define SONG_MUS_HG_HO_OH_APPEARS                       0
 #define SONG_MUS_HG_LUGIA_APPEARS                       0
 #define SONG_MUS_HG_SPIKY_EARED_PICHU                   0
-#define SONG_MUS_HG_RADIO_ROUTE101                      0
+#define SONG_MUS_HG_RADIO_ROUTE101                      1
 #define SONG_MUS_HG_RADIO_ROUTE201                      0
 #define SONG_MUS_HG_RADIO_TRAINER                       0
 #define SONG_MUS_HG_RADIO_VARIETY                       0

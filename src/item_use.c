@@ -107,6 +107,11 @@ static const u8 sText_PlayedPokeFluteCatchy[] = _("Played the Poké Flute.\pNow,
 static const u8 sText_PlayedPokeFlute[] = _("Played the Poké Flute.");
 static const u8 sText_PokeFluteAwakenedMon[] = _("The Poké Flute awakened sleeping\nPokémon.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_BeckoningBellChimes[] = _("The bell chimes, renewing all\nhidden grottos!{PAUSE_UNTIL_PRESS}");
+static const u8 sText_OaksTalkSchedule[] = _(
+    "Now airing: Prof. Oak's\n"
+    "Pokémon Talk!\p"
+    "Buena's Password airs daily\n"
+    "from 6 PM to midnight.\p");
 static const u8 sText_BeckoningBellCannotBeUsedHere[] =_("The bell cannot be used\ninside a Hidden Grotto!{PAUSE_UNTIL_PRESS}");
 
 #ifndef UINT16_MAX
@@ -224,9 +229,8 @@ static void Task_PartyMenuItemUseFromField(u8 taskId)
     }
 }
 
-static void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField, const u8 *str)
+static void DisplayCannotUseItemMessageFromBuffer(u8 taskId, bool8 isUsingRegisteredKeyItemOnField)
 {
-    StringExpandPlaceholders(gStringVar4, str);
     if (!isUsingRegisteredKeyItemOnField)
     {
         if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
@@ -238,6 +242,12 @@ static void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyIte
     {
         DisplayItemMessageOnField(taskId, gStringVar4, Task_CloseCantUseKeyItemMessage);
     }
+}
+
+static void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField, const u8 *str)
+{
+    StringExpandPlaceholders(gStringVar4, str);
+    DisplayCannotUseItemMessageFromBuffer(taskId, isUsingRegisteredKeyItemOnField);
 }
 
 void DisplayDadsAdviceCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField)
@@ -1913,7 +1923,9 @@ static void DisplayRadioMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField
         };
         SeedRng(gMain.vblankCounter1);
         const u8 *selectedMsg = sOakRadioMessages[Random() % ARRAY_COUNT(sOakRadioMessages)];
-        DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, selectedMsg);
+        StringCopy(gStringVar4, sText_OaksTalkSchedule);
+        StringAppend(gStringVar4, selectedMsg);
+        DisplayCannotUseItemMessageFromBuffer(taskId, isUsingRegisteredKeyItemOnField);
         //PlayBGM(MUS_HG_RADIO_OAK);
     }
 }
