@@ -43145,7 +43145,17 @@
         "MOVE_POWER_UP_PUNCH"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CERULEAN_CAVE_B2F",
+          "name": "Nameless Cave B2F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 58,
+          "maxLevel": 68,
+          "rate": 20
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_LEFTOVERS",
@@ -60838,24 +60848,6 @@
       "evolutions": [],
       "locations": [
         {
-          "map": "MAP_CERULEAN_CAVE_1F",
-          "name": "Nameless Cave 1F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 58,
-          "maxLevel": 68,
-          "rate": 30
-        },
-        {
-          "map": "MAP_CERULEAN_CAVE_B1F",
-          "name": "Nameless Cave B1F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 58,
-          "maxLevel": 68,
-          "rate": 30
-        },
-        {
           "map": "MAP_CERULEAN_CAVE_B2F",
           "name": "Nameless Cave B2F",
           "time": "",
@@ -69525,8 +69517,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69534,8 +69526,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -69740,8 +69732,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69749,8 +69741,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -110322,15 +110314,6 @@
           "minLevel": 58,
           "maxLevel": 68,
           "rate": 20
-        },
-        {
-          "map": "MAP_CERULEAN_CAVE_B2F",
-          "name": "Nameless Cave B2F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 58,
-          "maxLevel": 68,
-          "rate": 20
         }
       ],
       "heldItems": [],
@@ -137067,7 +137050,26 @@
           "itemName": ""
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_CERULEAN_CAVE_1F",
+          "name": "Nameless Cave 1F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 58,
+          "maxLevel": 68,
+          "rate": 30
+        },
+        {
+          "map": "MAP_CERULEAN_CAVE_B1F",
+          "name": "Nameless Cave B1F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 58,
+          "maxLevel": 68,
+          "rate": 30
+        }
+      ],
       "heldItems": [
         {
           "constant": "ITEM_LEADERS_CREST",
@@ -164238,6 +164240,15 @@
           "minLevel": 33,
           "maxLevel": 50,
           "rate": 9
+        },
+        {
+          "map": "MAP_LAKE_OF_RAGE",
+          "name": "Lake of Rage",
+          "time": "",
+          "method": "Hidden Grotto",
+          "minLevel": 35,
+          "maxLevel": 35,
+          "rate": 25
         }
       ],
       "heldItems": [
@@ -187146,17 +187157,7 @@
         "MOVE_TICKLE"
       ],
       "evolutions": [],
-      "locations": [
-        {
-          "map": "MAP_LAKE_OF_RAGE",
-          "name": "Lake of Rage",
-          "time": "",
-          "method": "Hidden Grotto",
-          "minLevel": 35,
-          "maxLevel": 35,
-          "rate": 25
-        }
-      ],
+      "locations": [],
       "heldItems": [],
       "slug": "maushold-three"
     },
@@ -277773,10 +277774,10 @@
               "method": "Land Mons",
               "mons": [
                 {
-                  "species": "SPECIES_SCIZOR",
+                  "species": "SPECIES_BISHARP",
                   "hasSpecies": true,
-                  "name": "Scizor",
-                  "sprite": "sprites/pokemon/scizor.png",
+                  "name": "Bisharp",
+                  "sprite": "sprites/pokemon/bisharp.png",
                   "minLevel": 58,
                   "maxLevel": 68,
                   "rate": 30
@@ -277848,10 +277849,10 @@
               "method": "Land Mons",
               "mons": [
                 {
-                  "species": "SPECIES_SCIZOR",
+                  "species": "SPECIES_BISHARP",
                   "hasSpecies": true,
-                  "name": "Scizor",
-                  "sprite": "sprites/pokemon/scizor.png",
+                  "name": "Bisharp",
+                  "sprite": "sprites/pokemon/bisharp.png",
                   "minLevel": 58,
                   "maxLevel": 68,
                   "rate": 30
@@ -277941,10 +277942,10 @@
                   "rate": 30
                 },
                 {
-                  "species": "SPECIES_TANGROWTH",
+                  "species": "SPECIES_SNORLAX",
                   "hasSpecies": true,
-                  "name": "Tangrowth",
-                  "sprite": "sprites/pokemon/tangrowth.png",
+                  "name": "Snorlax",
+                  "sprite": "sprites/pokemon/snorlax.png",
                   "minLevel": 58,
                   "maxLevel": 68,
                   "rate": 20
