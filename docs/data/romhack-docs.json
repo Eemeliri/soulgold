@@ -69278,8 +69278,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69287,8 +69287,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -71215,10 +71215,6 @@
         },
         {
           "level": 1,
-          "move": "MOVE_FLAMETHROWER"
-        },
-        {
-          "level": 1,
           "move": "MOVE_FEATHER_DANCE"
         },
         {
@@ -71266,7 +71262,11 @@
           "move": "MOVE_BOUNCE"
         },
         {
-          "level": 35,
+          "level": 33,
+          "move": "MOVE_FLAMETHROWER"
+        },
+        {
+          "level": 36,
           "move": "MOVE_FOCUS_ENERGY"
         },
         {
