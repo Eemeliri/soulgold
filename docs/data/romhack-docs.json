@@ -47957,6 +47957,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_MUD_SHOT"
+        },
+        {
+          "level": 1,
           "move": "MOVE_INCINERATE"
         },
         {
@@ -48105,7 +48109,8 @@
         "MOVE_SWIFT",
         "MOVE_TEMPER_FLARE",
         "MOVE_THROAT_CHOP",
-        "MOVE_ZEN_HEADBUTT"
+        "MOVE_ZEN_HEADBUTT",
+        "MOVE_EARTH_POWER"
       ],
       "eggMoves": [
         "MOVE_FURY_SWIPES",
@@ -48388,6 +48393,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_MUD_SHOT"
+        },
+        {
+          "level": 1,
           "move": "MOVE_INCINERATE"
         },
         {
@@ -48536,7 +48545,8 @@
         "MOVE_SWIFT",
         "MOVE_TEMPER_FLARE",
         "MOVE_THROAT_CHOP",
-        "MOVE_ZEN_HEADBUTT"
+        "MOVE_ZEN_HEADBUTT",
+        "MOVE_EARTH_POWER"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -69732,8 +69742,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69741,8 +69751,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],

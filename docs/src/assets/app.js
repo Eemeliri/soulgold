@@ -1516,10 +1516,10 @@ function speciesFormLabel(mon) {
   }
   if (mon.constant === "SPECIES_ZACIAN_CROWNED") return `${mon.name} (Crowned Sword)`;
   if (mon.constant === "SPECIES_ZAMAZENTA_CROWNED") return `${mon.name} (Crowned Shield)`;
-  if (mon.constant.includes("_MEGA_X")) return `${mon.name} X`;
-  if (mon.constant.includes("_MEGA_Y")) return `${mon.name} Y`;
-  if (mon.constant.includes("_MEGA_Z")) return `${mon.name} Z`;
-  if (mon.constant.includes("_MEGA")) return `${mon.name} Mega`;
+  if (mon.constant.endsWith("_MEGA_X")) return `${mon.name} X`;
+  if (mon.constant.endsWith("_MEGA_Y")) return `${mon.name} Y`;
+  if (mon.constant.endsWith("_MEGA_Z")) return `${mon.name} Z`;
+  if (mon.constant.endsWith("_MEGA")) return `${mon.name} Mega`;
   return mon.name;
 }
 
@@ -1527,7 +1527,7 @@ function megaTargetLabel(mon) {
   if (/^SPECIES_OGERPON_(?:TEAL|WELLSPRING|HEARTHFLAME|CORNERSTONE)_TERA$/.test(mon.constant)) {
     return `${speciesFormLabel(mon)} Mega`;
   }
-  if (mon.constant.includes("_GMAX") || mon.constant.includes("_DMAX")) return `${mon.name} Mega`;
+  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return `${mon.name} Mega`;
   return speciesFormLabel(mon);
 }
 
