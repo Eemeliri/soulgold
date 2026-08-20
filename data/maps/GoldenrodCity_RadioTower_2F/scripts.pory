@@ -351,9 +351,9 @@ GoldenrodCity_RadioTower_2F_Text_BuenaWrong:
 	.string "Did you forget the password?$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaOffAir:
-	.string "Buena: Thank you for listening\n"
-	.string "in every day!\p"
-	.string "Tune in to my password show!$"
+	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
+	.string "Use your Radio to hear the password,\n"
+	.string "then come see me here!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaAlreadyPlayed:
 	.string "Sorry... You get just one\n"
@@ -580,9 +580,9 @@ GoldenrodCity_RadioTower_2F_Text_GruntF2After:
 	.string "it!$"
 
 GoldenrodCity_RadioTower_2F_Text_BuenaShowPromo:
-	.string "Buena: Thank you for listening\n"
-	.string "in every day!\p"
-	.string "Tune in to my password show!$"
+	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
+	.string "Once you have a Radio, tune in,\n"
+	.string "then come see me here!$"
 
 GoldenrodCity_RadioTower_2F_Text_SalesSign:
 	.string "2F Sales$"
