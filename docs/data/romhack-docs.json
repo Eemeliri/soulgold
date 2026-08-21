@@ -69527,8 +69527,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69536,8 +69536,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -258543,9 +258543,13 @@
         {
           "map": "Union Cave B1F",
           "source": "Item ball"
+        },
+        {
+          "map": "Battle Tower",
+          "source": "BP shop"
         }
       ],
-      "location": "Union Cave B1F (Item ball)",
+      "location": "Union Cave B1F (Item ball); Battle Tower (BP shop)",
       "slug": "damp-rock"
     },
     {
@@ -258560,9 +258564,13 @@
         {
           "map": "Mt Mortar Depths 1",
           "source": "Item ball"
+        },
+        {
+          "map": "Battle Tower",
+          "source": "BP shop"
         }
       ],
-      "location": "Mt Mortar Depths 1 (Item ball)",
+      "location": "Mt Mortar Depths 1 (Item ball); Battle Tower (BP shop)",
       "slug": "heat-rock"
     },
     {
@@ -258583,11 +258591,15 @@
           "source": "Item ball"
         },
         {
+          "map": "Battle Tower",
+          "source": "BP shop"
+        },
+        {
           "map": "Vajra Desert West",
           "source": "Hidden Grotto rare item"
         }
       ],
-      "location": "Mt Mortar B1F (Item ball); Route 45 (Item ball); Vajra Desert West (Hidden Grotto rare item)",
+      "location": "Mt Mortar B1F (Item ball); Route 45 (Item ball); Battle Tower (BP shop); Vajra Desert West (Hidden Grotto rare item)",
       "slug": "smooth-rock"
     },
     {
@@ -258602,9 +258614,13 @@
         {
           "map": "Snowtop Mountain B1F",
           "source": "Item ball"
+        },
+        {
+          "map": "Battle Tower",
+          "source": "BP shop"
         }
       ],
-      "location": "Snowtop Mountain B1F (Item ball)",
+      "location": "Snowtop Mountain B1F (Item ball); Battle Tower (BP shop)",
       "slug": "icy-rock"
     },
     {
