@@ -69288,8 +69288,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69297,8 +69297,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -255393,10 +255393,10 @@
       "locations": [
         {
           "map": "Mahogany Town Shop",
-          "source": "Mart"
+          "source": "After Rocket Hideout event"
         }
       ],
-      "location": "Mahogany Town Shop (Mart)",
+      "location": "Mahogany Town Shop (After Rocket Hideout event)",
       "slug": "tm66"
     },
     {
@@ -255949,10 +255949,10 @@
       "locations": [
         {
           "map": "Mahogany Town Shop",
-          "source": "Mart"
+          "source": "After Rocket Hideout event"
         }
       ],
-      "location": "Mahogany Town Shop (Mart)",
+      "location": "Mahogany Town Shop (After Rocket Hideout event)",
       "slug": "tm90"
     },
     {
@@ -257155,7 +257155,7 @@
         },
         {
           "map": "Mahogany Town Shop",
-          "source": "Mart"
+          "source": "After Rocket Hideout event"
         },
         {
           "map": "Horsea",
@@ -257182,7 +257182,7 @@
           "source": "Wild held item (rare)"
         }
       ],
-      "location": "Mt Mortar 2F (Item ball); Mahogany Town Shop (Mart); Horsea (Wild held item (rare)); Seadra (Wild held item (rare)); Dratini (Wild held item (rare)); Dragonair (Wild held item (rare)); Dragonite (Wild held item (rare)); Kingdra (Wild held item (rare))",
+      "location": "Mt Mortar 2F (Item ball); Mahogany Town Shop (After Rocket Hideout event); Horsea (Wild held item (rare)); Seadra (Wild held item (rare)); Dratini (Wild held item (rare)); Dragonair (Wild held item (rare)); Dragonite (Wild held item (rare)); Kingdra (Wild held item (rare))",
       "slug": "dragon-scale"
     },
     {
@@ -257292,10 +257292,10 @@
       "locations": [
         {
           "map": "Mahogany Town Shop",
-          "source": "Mart"
+          "source": "After Rocket Hideout event"
         }
       ],
-      "location": "Mahogany Town Shop (Mart)",
+      "location": "Mahogany Town Shop (After Rocket Hideout event)",
       "slug": "dubious-disc"
     },
     {
@@ -258388,7 +258388,7 @@
       "locations": [
         {
           "map": "Mahogany Town Shop",
-          "source": "Mart"
+          "source": "After Rocket Hideout event"
         },
         {
           "map": "Magnemite",
@@ -258423,7 +258423,7 @@
           "source": "Wild held item (rare)"
         }
       ],
-      "location": "Mahogany Town Shop (Mart); Magnemite (Wild held item (rare)); Magneton (Wild held item (rare)); Steelix (Wild held item (rare)); Skarmory (Wild held item (rare)); Beldum (Wild held item (rare)); Metang (Wild held item (rare)); Metagross (Wild held item (rare)); Magnezone (Wild held item (rare))",
+      "location": "Mahogany Town Shop (After Rocket Hideout event); Magnemite (Wild held item (rare)); Magneton (Wild held item (rare)); Steelix (Wild held item (rare)); Skarmory (Wild held item (rare)); Beldum (Wild held item (rare)); Metang (Wild held item (rare)); Metagross (Wild held item (rare)); Magnezone (Wild held item (rare))",
       "slug": "metal-coat"
     },
     {
@@ -258951,7 +258951,7 @@
         },
         {
           "map": "Mahogany Town Shop",
-          "source": "Mart"
+          "source": "After Rocket Hideout event"
         },
         {
           "map": "Poliwhirl",
@@ -258982,7 +258982,7 @@
           "source": "Wild held item (rare)"
         }
       ],
-      "location": "Mt Mortar 1F North (Item ball); Slowpoke Well B2F (Item ball); Mahogany Town Shop (Mart); Poliwhirl (Wild held item (rare)); Poliwrath (Wild held item (rare)); Slowbro (Wild held item (rare)); Politoed (Wild held item (rare)); Slowking (Wild held item (rare)); Hariyama (Wild held item (rare)); Hawlucha (Wild held item (rare))",
+      "location": "Mt Mortar 1F North (Item ball); Slowpoke Well B2F (Item ball); Mahogany Town Shop (After Rocket Hideout event); Poliwhirl (Wild held item (rare)); Poliwrath (Wild held item (rare)); Slowbro (Wild held item (rare)); Politoed (Wild held item (rare)); Slowking (Wild held item (rare)); Hariyama (Wild held item (rare)); Hawlucha (Wild held item (rare))",
       "slug": "kings-rock"
     },
     {

@@ -1515,8 +1515,7 @@ function speciesFormLabel(mon) {
     return `${mon.name} (${form}${mon.constant.endsWith("_MEGA") ? " Mega" : ""})`;
   }
   if (mon.constant === "SPECIES_ZACIAN_CROWNED") return `${mon.name} (Crowned Sword)`;
-  if (mon.constant === "SPECIES_ZAMAZENTA_CROWNED") return `${mon.name} (Crowned Shield)`;
-  if (mon.constant.endsWith("_MEGA_X")) return `${mon.name} X`;
+  if (mon.constant === "SPECIES_ZAMAZENTA_CROWNED") return `${mon.name} (Crowned Shield)`;  if (mon.constant.endsWith("_MEGA_X")) return `${mon.name} X`;
   if (mon.constant.endsWith("_MEGA_Y")) return `${mon.name} Y`;
   if (mon.constant.endsWith("_MEGA_Z")) return `${mon.name} Z`;
   if (mon.constant.endsWith("_MEGA")) return `${mon.name} Mega`;
