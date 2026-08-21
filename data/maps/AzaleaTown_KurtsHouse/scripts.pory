@@ -347,7 +347,7 @@ AzaleaTown_KurtsHouse_EventScript_KurtGsBall3::
 	delay 30
 	msgbox KurtsHouse_Text_BallAnyway, MSGBOX_DEFAULT
 	closemessage
-	goto AzaleaTown_KurtsHouse_EventScript_Kurt2
+	goto KurtDaily
 	release
 	end
 KurtsHouse_Text_BallAnyway:
