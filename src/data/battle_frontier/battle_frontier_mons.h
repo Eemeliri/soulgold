@@ -12467,7 +12467,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
     [FRONTIER_MON_SNEASLER_3] = {
         .species = SPECIES_SNEASLER,
         .moves = {MOVE_CLOSE_COMBAT, MOVE_GUNK_SHOT, MOVE_DIG, MOVE_FAKE_OUT},
-        .heldItem = ITEM_CHOICE_BAND,
+        .heldItem = ITEM_LIFE_ORB,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 0, 31),
         .ev = TRAINER_PARTY_EVS(0, 252, 0, 252, 0, 4),
         .ability = ABILITY_POISON_TOUCH,
@@ -12479,7 +12479,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
         .heldItem = ITEM_NORMAL_GEM,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 0, 31),
         .ev = TRAINER_PARTY_EVS(0, 252, 0, 252, 0, 4),
-        .ability = ABILITY_POISON_TOUCH,
+        .ability = ABILITY_UNBURDEN,
         .nature = NATURE_ADAMANT
     },
     [FRONTIER_MON_GOODRA_HISUI_1] = {
