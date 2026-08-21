@@ -687,7 +687,11 @@ async function navigateDetail(kind, slug) {
   const tab = detailTabs[kind];
   if (!tab || !slug) return;
   if (state.detail?.kind === kind && state.detail.slug === slug) return;
-  const replacingDetail = Boolean(state.detail);
+  // Moving between entries of the same kind (for example, through an evolution
+  // chain) replaces the current detail so closing still returns straight to the
+  // list. Cross-kind links need their own entry so browser Back can return to
+  // the referring detail, such as a Pokemon after viewing its Mega Stone.
+  const replacingDetail = state.detail?.kind === kind;
   const detailOpenedInApp = replacingDetail
     ? Boolean(history.state?.detailOpenedInApp)
     : true;
@@ -1440,6 +1444,30 @@ function baseConstantForMega(constant) {
   return constant.replace(/_(?:MEGA(?:_[XYZ])?|GMAX|DMAX)$/, "");
 }
 
+function itemDetailLink(item, itemName) {
+  return `<button
+    class="evolution-item-link item-detail-link"
+    type="button"
+    data-item="${escapeHtml(item)}"
+    data-item-name="${escapeHtml(itemName)}"
+    aria-label="Open ${escapeHtml(itemName)} item details"
+  >${escapeHtml(itemName)}</button>`;
+}
+
+function labelWithItemLink(label, item, itemName) {
+  if (!item || !itemName) return escapeHtml(label || "");
+  const text = String(label || "");
+  const itemIndex = text.indexOf(itemName);
+  if (itemIndex < 0) return `${escapeHtml(text)} (${itemDetailLink(item, itemName)})`;
+  return `${escapeHtml(text.slice(0, itemIndex))}${itemDetailLink(item, itemName)}${escapeHtml(text.slice(itemIndex + itemName.length))}`;
+}
+
+function megaEvolutionMethod(edge) {
+  const label = edge.label || `Mega Evolution (${edge.itemName || "Mega Stone"})`;
+  if (!label.startsWith("Mega Evolution")) return escapeHtml(label);
+  return labelWithItemLink(label, edge.item, edge.itemName);
+}
+
 function evolutionMethod(edge) {
   if (edge.method !== "EVO_ITEM" || !edge.param?.startsWith("ITEM_") || !edge.itemName) {
     return escapeHtml(edge.label || "");
@@ -1447,13 +1475,7 @@ function evolutionMethod(edge) {
   const conditions = edge.conditions?.length
     ? ` (${edge.conditions.map((condition) => escapeHtml(condition)).join(", ")})`
     : "";
-  return `By Using Specific Item (<button
-    class="evolution-item-link item-detail-link"
-    type="button"
-    data-item="${escapeHtml(edge.param)}"
-    data-item-name="${escapeHtml(edge.itemName)}"
-    aria-label="Open ${escapeHtml(edge.itemName)} item details"
-  >${escapeHtml(edge.itemName)}</button>)${conditions}`;
+  return `By Using Specific Item (${itemDetailLink(edge.param, edge.itemName)})${conditions}`;
 }
 
 function evolutionChain(mon) {
@@ -1515,11 +1537,10 @@ function speciesFormLabel(mon) {
     return `${mon.name} (${form}${mon.constant.endsWith("_MEGA") ? " Mega" : ""})`;
   }
   if (mon.constant === "SPECIES_ZACIAN_CROWNED") return `${mon.name} (Crowned Sword)`;
-  if (mon.constant === "SPECIES_ZAMAZENTA_CROWNED") return `${mon.name} (Crowned Shield)`;
-  if (mon.constant.includes("_MEGA_X")) return `${mon.name} X`;
-  if (mon.constant.includes("_MEGA_Y")) return `${mon.name} Y`;
-  if (mon.constant.includes("_MEGA_Z")) return `${mon.name} Z`;
-  if (mon.constant.includes("_MEGA")) return `${mon.name} Mega`;
+  if (mon.constant === "SPECIES_ZAMAZENTA_CROWNED") return `${mon.name} (Crowned Shield)`;  if (mon.constant.endsWith("_MEGA_X")) return `${mon.name} X`;
+  if (mon.constant.endsWith("_MEGA_Y")) return `${mon.name} Y`;
+  if (mon.constant.endsWith("_MEGA_Z")) return `${mon.name} Z`;
+  if (mon.constant.endsWith("_MEGA")) return `${mon.name} Mega`;
   return mon.name;
 }
 
@@ -1527,7 +1548,7 @@ function megaTargetLabel(mon) {
   if (/^SPECIES_OGERPON_(?:TEAL|WELLSPRING|HEARTHFLAME|CORNERSTONE)_TERA$/.test(mon.constant)) {
     return `${speciesFormLabel(mon)} Mega`;
   }
-  if (mon.constant.includes("_GMAX") || mon.constant.includes("_DMAX")) return `${mon.name} Mega`;
+  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return `${mon.name} Mega`;
   return speciesFormLabel(mon);
 }
 
@@ -1569,7 +1590,7 @@ function megaFormLinks(mon) {
         <button class="evolution-name species-link" type="button" data-species="${base?.constant || chainMon.constant}">${sprite(base?.sprite || chainMon.sprite, "tiny-sprite")}<strong>${speciesFormLabel(base || chainMon)}</strong></button>
         <span class="evolution-arrow">-&gt;</span>
         <button class="evolution-name species-link" type="button" data-species="${form.constant}">${sprite(form.sprite, "tiny-sprite")}<strong>${megaTargetLabel(form)}</strong></button>
-        <span class="evolution-method">${edge.label || `Mega Evolution (${edge.itemName || "Mega Stone"})`}</span>
+        <span class="evolution-method">${megaEvolutionMethod(edge)}</span>
       </div>
     `;
   }).join("");

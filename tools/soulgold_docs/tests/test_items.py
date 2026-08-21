@@ -5,6 +5,7 @@ from tools.soulgold_docs.constants import ADDITIONAL_IMPORTANT_ITEMS
 from tools.soulgold_docs.parsers.items import (
     IMPORTANT_ITEM_LOCATION_OVERRIDES,
     add_bug_contest_reward_locations,
+    format_item_location,
 )
 
 
@@ -16,6 +17,16 @@ class ImportantItemExceptionTests(unittest.TestCase):
                 "ITEM_ABILITY_PATCH",
                 "ITEM_GRACIDEA",
             }.issubset(ADDITIONAL_IMPORTANT_ITEMS)
+        )
+
+    def test_mahogany_shop_mentions_its_story_requirement(self):
+        self.assertEqual(
+            format_item_location(
+                {"id": "MAP_MAHOGANY_TOWN_SHOP", "name": "MahoganyTown_Shop"},
+                "MahoganyTown_Shop",
+                "Mart",
+            ),
+            ("Mahogany Town Shop", "After Rocket Hideout event"),
         )
 
     def test_gracidea_has_story_location_override(self):

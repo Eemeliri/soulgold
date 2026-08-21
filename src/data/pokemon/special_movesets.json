@@ -158,6 +158,10 @@
       "SNORLAX":
         [
           "MOVE_POWER_WHIP"
+        ],
+      "TYPHLOSION":
+        [
+          "MOVE_EARTH_POWER"
         ]
     }
 }

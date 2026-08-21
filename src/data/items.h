@@ -2512,6 +2512,7 @@ const struct ItemInfo gItemsInfo[] =
             "amount of Exp. to\n"
             "a single Pokémon."),
         .pocket = POCKET_ITEMS,
+        .bpCost = 3,
         .sortType = ITEM_TYPE_LEVEL_UP_ITEM,
         .heldSlot = 0,
         .type = ITEM_USE_PARTY_MENU,
@@ -10196,6 +10197,7 @@ const struct ItemInfo gItemsInfo[] =
     #else
         .price = 200,
     #endif
+        .bpCost = 15,
         .holdEffect = HOLD_EFFECT_DAMP_ROCK,
         .description = COMPOUND_STRING(
             "Extends the length\n"
@@ -10221,6 +10223,7 @@ const struct ItemInfo gItemsInfo[] =
     #else
         .price = 200,
     #endif
+        .bpCost = 15,
         .holdEffect = HOLD_EFFECT_HEAT_ROCK,
         .description = COMPOUND_STRING(
             "Extends the length\n"
@@ -10246,6 +10249,7 @@ const struct ItemInfo gItemsInfo[] =
     #else
         .price = 200,
     #endif
+        .bpCost = 15,
         .holdEffect = HOLD_EFFECT_SMOOTH_ROCK,
         .description = COMPOUND_STRING(
             "Extends the length\n"
@@ -10271,6 +10275,7 @@ const struct ItemInfo gItemsInfo[] =
     #else
         .price = 200,
     #endif
+        .bpCost = 15,
         .holdEffect = HOLD_EFFECT_ICY_ROCK,
     #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
         .description = COMPOUND_STRING(

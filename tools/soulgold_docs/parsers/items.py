@@ -110,6 +110,8 @@ def add_location(
 def format_item_location(map_data: Mapping[str, object], fallback_name: str, source: str) -> tuple[str, str]:
     if map_data.get("layout") == "LAYOUT_MAUVILLE_CITY_GAME_CORNER":
         return "Goldenrod City Game Corner", "Bought"
+    if source == "Mart" and map_data.get("id") == "MAP_MAHOGANY_TOWN_SHOP":
+        return "Mahogany Town Shop", "After Rocket Hideout event"
     if source == "Mart" and map_data.get("id") == "MAP_BATTLE_FRONTIER_BATTLE_TOWER_LOBBY":
         return "Battle Tower", "BP shop"
     if source == "Mart" and map_data.get("id") == "MAP_GOLDENROD_BATTLE_ARACDE_LOBBY":
