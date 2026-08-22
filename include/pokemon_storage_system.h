@@ -90,6 +90,7 @@ u32 CountAllStorageMons(void);
 bool32 AnyStorageMonWithMove(enum Move move);
 
 #if TESTING
+bool32 PokemonStorageSystem_TestClearsStalePaletteSwapDestination(void);
 bool32 PokemonStorageSystem_TestTakeItemToBag(u8 boxId, u8 boxPosition);
 #endif
 
