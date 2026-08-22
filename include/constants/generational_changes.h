@@ -13,7 +13,8 @@
     F(B_LIGHT_BALL_ATTACK_BOOST,   lightBallAttackBoost,    (u32, GEN_COUNT - 1)) \
     /* Experience settings */ \
     F(B_EXP_CATCH,                 expCatch,                (u32, GEN_COUNT - 1)) \
-    F(B_TRAINER_EXP_MULTIPLIER,    trainerExpMultiplier,    (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
+    F(B_TRAINER_EXP_MULTIPLIER,    trainerExpMultiplier,    (u32, GEN_COUNT - 1)) \
+    F(B_MODERN_TRAINER_EXP_PERCENT, modernTrainerExpPercent, (u32, 200)) \
     F(B_SPLIT_EXP,                 splitExp,                (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(B_SCALED_EXP,                scaledExp,               (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(B_UNEVOLVED_EXP_MULTIPLIER,  unevolvedExpMultiplier,  (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
