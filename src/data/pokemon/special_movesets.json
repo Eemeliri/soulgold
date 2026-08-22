@@ -162,6 +162,12 @@
       "TYPHLOSION":
         [
           "MOVE_EARTH_POWER"
+        ],
+      "URSALUNA":
+        [
+          "MOVE_THUNDER_FANG",
+          "MOVE_ICE_FANG",
+          "MOVE_FIRE_FANG"
         ]
     }
 }
