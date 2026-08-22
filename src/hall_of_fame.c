@@ -51,6 +51,7 @@ struct HofGfx
 static EWRAM_DATA u32 sHofFadePalettes = 0;
 static EWRAM_DATA struct HallofFameTeam *sHofMonPtr = NULL;
 static EWRAM_DATA struct HofGfx *sHofGfxPtr = NULL;
+static EWRAM_DATA u16 sTitleDefenseRound = 0;
 EWRAM_DATA struct HallofFameTeam *gHoFSaveBuffer = NULL;
 
 static void ClearVramOamPltt_LoadHofPal(void);
@@ -138,6 +139,7 @@ static const u8 sPlayerInfoTextColors[4] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_D
 static const u8 sUnusedTextColors[4] = {TEXT_COLOR_RED, TEXT_COLOR_LIGHT_RED, TEXT_COLOR_TRANSPARENT};
 static const u8 sText_DifficultyNormal[] = _("Difficulty: Normal");
 static const u8 sText_DifficultyHard[] = _("Difficulty: Hard");
+static const u8 sText_TitleDefense[] = _(" · Title Defense ");
 
 static const struct CompressedSpriteSheet sSpriteSheet_Confetti[] =
 {
@@ -418,6 +420,14 @@ static void AllocateHoFTeams(void)
 
 void CB2_DoHallOfFameScreen(void)
 {
+    if (gMain.state == 0)
+    {
+        sTitleDefenseRound = 0;
+        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_POKEMON_LEAGUE_HALL_OF_FAME_TITLE_DEFENSE)
+         && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_POKEMON_LEAGUE_HALL_OF_FAME_TITLE_DEFENSE))
+            sTitleDefenseRound = VarGet(VAR_TITLE_DEFENSE_WINS);
+    }
+
     if (!InitHallOfFameScreen())
     {
         u8 taskId = CreateTask(Task_Hof_InitMonData, 0);
@@ -1173,9 +1183,17 @@ static void Task_HofPC_ExitOnButtonPress(u8 taskId)
 
 static void HallOfFame_PrintWelcomeText(u8 unusedPossiblyWindowId, u8 unused2)
 {
-    const u8 *difficultyText = GetCurrentDifficultyLevel() == DIFFICULTY_HARD
-                             ? sText_DifficultyHard
-                             : sText_DifficultyNormal;
+    const u8 *difficultyLabel = GetCurrentDifficultyLevel() == DIFFICULTY_HARD
+                              ? sText_DifficultyHard
+                              : sText_DifficultyNormal;
+    u8 difficultyText[48];
+    u8 *stringPtr = StringCopy(difficultyText, difficultyLabel);
+
+    if (sTitleDefenseRound != 0)
+    {
+        stringPtr = StringCopy(stringPtr, sText_TitleDefense);
+        ConvertIntToDecimalStringN(stringPtr, sTitleDefenseRound, STR_CONV_MODE_LEFT_ALIGN, 5);
+    }
 
     FillWindowPixelBuffer(0, PIXEL_FILL(0));
     PutWindowTilemap(0);
