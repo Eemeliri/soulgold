@@ -497,8 +497,9 @@ function bindEvents() {
   document.body.addEventListener("click", handleItemTooltipClick, true);
   window.addEventListener("resize", () => {
     updateStickyOffset();
-    syncMobileNav();
   });
+  if (mobileNavMedia.addEventListener) mobileNavMedia.addEventListener("change", syncMobileNav);
+  else mobileNavMedia.addListener(syncMobileNav);
   window.addEventListener("popstate", (event) => applyLocationRoute(event.state));
   document.addEventListener("keydown", handleMobileNavKeydown);
   document.getElementById("guideList").addEventListener("click", handleGuideSummaryClick);
