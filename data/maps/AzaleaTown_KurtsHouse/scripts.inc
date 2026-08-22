@@ -697,7 +697,7 @@ AzaleaTown_KurtsHouse_EventScript_KurtGsBall3::
 # 349 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	closemessage
 # 350 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
-	goto AzaleaTown_KurtsHouse_EventScript_Kurt2
+	goto KurtDaily
 # 351 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"
 	release
 # 352 "data/maps/AzaleaTown_KurtsHouse/scripts.pory"

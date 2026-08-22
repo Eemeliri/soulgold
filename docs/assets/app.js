@@ -497,8 +497,9 @@ function bindEvents() {
   document.body.addEventListener("click", handleItemTooltipClick, true);
   window.addEventListener("resize", () => {
     updateStickyOffset();
-    syncMobileNav();
   });
+  if (mobileNavMedia.addEventListener) mobileNavMedia.addEventListener("change", syncMobileNav);
+  else mobileNavMedia.addListener(syncMobileNav);
   window.addEventListener("popstate", (event) => applyLocationRoute(event.state));
   document.addEventListener("keydown", handleMobileNavKeydown);
   document.getElementById("guideList").addEventListener("click", handleGuideSummaryClick);
@@ -2162,13 +2163,49 @@ function syncGuideDetail() {
   const selected = state.detail?.kind === "guide"
     ? document.querySelector(`.guide-card[data-guide-slug="${CSS.escape(state.detail.slug)}"]`)
     : null;
-  if (selected) requestAnimationFrame(() => selected.scrollIntoView({ block: "start" }));
+  if (selected) requestAnimationFrame(() => {
+    let anchorId = window.location.hash.slice(1);
+    try {
+      anchorId = decodeURIComponent(anchorId);
+    } catch {
+      // Ignore malformed URL encoding and use the raw fragment.
+    }
+    const anchor = anchorId ? document.getElementById(anchorId) : null;
+    (anchor && selected.contains(anchor) ? anchor : selected).scrollIntoView({ block: "start" });
+  });
+}
+
+function guideHeadingSlug(value) {
+  return String(value || "")
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[`*_~]/g, "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function guideHeadingId(value, guide) {
+  let decoded = String(value || "").replace(/^#/, "");
+  try {
+    decoded = decodeURIComponent(decoded);
+  } catch {
+    // Keep malformed fragments usable instead of failing guide rendering.
+  }
+  const slug = guideHeadingSlug(decoded);
+  return slug ? `${guide.slug}-${slug}` : `guide-${guide.slug}`;
 }
 
 function guideUrl(value, guide, options = {}) {
   const url = String(value || "").trim().replace(/^<|>$/g, "");
   if (!url) return "#";
-  if (url.startsWith("#")) return url;
+  if (url.startsWith("#")) {
+    const guideRoute = routeUrl("guides", { kind: "guide", slug: guide.slug });
+    return `${guideRoute.href}#${guideHeadingId(url, guide)}`;
+  }
   if (url.startsWith("/")) return new URL(url.replace(/^\/+/, ""), siteRootUrl).href;
   if (/^https?:\/\//i.test(url)) return url;
   if (options.allowMail && /^mailto:/i.test(url)) return url;
@@ -2180,7 +2217,10 @@ function guideUrl(value, guide, options = {}) {
     if (resolved.pathname.toLowerCase().endsWith(".md")) {
       const source = decodeURIComponent(resolved.pathname.slice(siteRootUrl.pathname.length));
       const targetGuide = state.data.guides.find((entry) => entry.source === source);
-      if (targetGuide) return `${routeUrl("guides", { kind: "guide", slug: targetGuide.slug }).href}${resolved.hash}`;
+      if (targetGuide) {
+        const hash = resolved.hash ? `#${guideHeadingId(resolved.hash, targetGuide)}` : "";
+        return `${routeUrl("guides", { kind: "guide", slug: targetGuide.slug }).href}${hash}`;
+      }
     }
     return resolved.href;
   } catch (_error) {
@@ -2280,6 +2320,7 @@ function renderGuideMarkdown(markdown, guide) {
   let spoilerTitle = "";
   let spoilerInCode = false;
   let tableLinesToSkip = 0;
+  const headingIds = new Map();
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
@@ -2373,7 +2414,11 @@ function renderGuideMarkdown(markdown, guide) {
       flushParagraph();
       closeList();
       const level = heading[1].length;
-      output.push(`<h${level}>${guideInline(heading[2], guide)}</h${level}>`);
+      const baseId = guideHeadingId(heading[2], guide);
+      const occurrence = (headingIds.get(baseId) || 0) + 1;
+      headingIds.set(baseId, occurrence);
+      const id = occurrence === 1 ? baseId : `${baseId}-${occurrence}`;
+      output.push(`<h${level} id="${escapeHtml(id)}">${guideInline(heading[2], guide)}</h${level}>`);
       return;
     }
 

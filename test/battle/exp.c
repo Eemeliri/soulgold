@@ -48,6 +48,49 @@ WILD_BATTLE_TEST("Higher leveled Pokemon give more exp", s32 exp)
     }
 }
 
+AI_SINGLE_BATTLE_TEST("Trainer exp percentage is applied once to the modern exp formula")
+{
+    u32 trainerExpConfig = GEN_LATEST;
+    u32 modernTrainerExpPercent = 0;
+    s32 expectedExp = 0;
+
+    PARAMETRIZE { modernTrainerExpPercent = 100; expectedExp = 157; }
+    PARAMETRIZE { modernTrainerExpPercent = 120; expectedExp = 188; }
+    PARAMETRIZE { modernTrainerExpPercent = 150; expectedExp = 235; }
+    PARAMETRIZE { trainerExpConfig = GEN_7; modernTrainerExpPercent = 100; expectedExp = 235; }
+
+    GIVEN {
+        WITH_CONFIG(B_TRAINER_EXP_MULTIPLIER, trainerExpConfig);
+        WITH_CONFIG(B_MODERN_TRAINER_EXP_PERCENT, modernTrainerExpPercent);
+        PLAYER(SPECIES_WOBBUFFET) { Level(20); }
+        OPPONENT(SPECIES_CATERPIE) { Level(20); HP(1); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SCRATCH); }
+    } SCENE {
+        MESSAGE("The opposing Caterpie fainted!");
+    } THEN {
+        u32 startingExp = gExperienceTables[gSpeciesInfo[SPECIES_WOBBUFFET].growthRate][20];
+        EXPECT_EQ(startingExp + expectedExp, GetMonData(&gPlayerParty[0], MON_DATA_EXP));
+    }
+}
+
+WILD_BATTLE_TEST("Trainer exp percentage does not affect wild exp")
+{
+    GIVEN {
+        WITH_CONFIG(B_TRAINER_EXP_MULTIPLIER, GEN_LATEST);
+        WITH_CONFIG(B_MODERN_TRAINER_EXP_PERCENT, 200);
+        PLAYER(SPECIES_WOBBUFFET) { Level(20); }
+        OPPONENT(SPECIES_CATERPIE) { Level(20); HP(1); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SCRATCH); }
+    } SCENE {
+        MESSAGE("The wild Caterpie fainted!");
+    } THEN {
+        u32 startingExp = gExperienceTables[gSpeciesInfo[SPECIES_WOBBUFFET].growthRate][20];
+        EXPECT_EQ(startingExp + 157, GetMonData(&gPlayerParty[0], MON_DATA_EXP));
+    }
+}
+
 WILD_BATTLE_TEST("Lucky Egg boosts gained exp points by 50%", s32 exp)
 {
     enum Item item = ITEM_NONE;

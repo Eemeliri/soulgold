@@ -4674,8 +4674,13 @@ static void Cmd_getexp(void)
             else
                 calculatedExp /= 7;
 
-            if (B_TRAINER_EXP_MULTIPLIER <= GEN_7 && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-                calculatedExp = (calculatedExp * 150) / 100;
+            if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+            {
+                if (GetConfig(B_TRAINER_EXP_MULTIPLIER) <= GEN_7)
+                    calculatedExp = (calculatedExp * 150) / 100;
+                else
+                    calculatedExp = (calculatedExp * GetConfig(B_MODERN_TRAINER_EXP_PERCENT)) / 100;
+            }
 
             if (CheckBagHasItem(ITEM_CANDY_JAR, 1))
                 GiveCandyJarExp(calculatedExp * 9 / 10);
