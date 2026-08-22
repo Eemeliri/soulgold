@@ -2977,17 +2977,33 @@ body[data-active-tab="pokedex"] .type-filter {
 }
 
 .guide-content h2 {
-  padding-bottom: 7px;
-  border-bottom: 1px solid var(--line);
+  padding: 10px 12px 9px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  background: var(--surface-soft);
+  color: var(--gold);
   font-size: 22px;
+  font-weight: 800;
+  letter-spacing: .025em;
+}
+
+.guide-content h2:not(:first-child) {
+  margin-top: 34px;
 }
 
 .guide-content h3 {
   font-size: 18px;
+  font-weight: 700;
 }
 
 .guide-content h4 {
   font-size: 16px;
+}
+
+.guide-content h2[id],
+.guide-content h3[id],
+.guide-content h4[id] {
+  scroll-margin-top: calc(var(--top-chrome-height) + 18px);
 }
 
 .guide-content ul,
@@ -3853,7 +3869,6 @@ dialog::backdrop {
 }
 
 .guide-summary-copy strong,
-.guide-content h2,
 .guide-content h3,
 .guide-content h4 {
   color: var(--text);
