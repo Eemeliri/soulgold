@@ -17,6 +17,9 @@
 #define T_POKEMONSTORAGE_SIZE 37036
 #define T_POKEMONSTORAGE_LEGACY_SIZE 34740
 #define T_POKEMONSTORAGE_LEGACY_LAST_SECTOR_SIZE (T_POKEMONSTORAGE_LEGACY_SIZE - SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START))
+#define T_VS_SEEKER_SAVE_MAGIC_OFFSET 11109
+#define T_VS_SEEKER_CHARGE_STEPS_OFFSET 11110
+#define T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET 11120
 
 static void FillPokemonStoragePattern(u8 seed)
 {
@@ -55,6 +58,9 @@ static void ResetPokemonStorageTestFlash(void)
 TEST("SaveBlock1 is backwards compatible")
 {
     EXPECT_EQ(sizeof(struct SaveBlock1), T_SAVEBLOCK1_SIZE);
+    EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerSaveMagic), T_VS_SEEKER_SAVE_MAGIC_OFFSET);
+    EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerChargeSteps), T_VS_SEEKER_CHARGE_STEPS_OFFSET);
+    EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerSaveMagicInv), T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET);
 }
 
 TEST("SaveBlock2 is backwards compatible")
@@ -222,3 +228,6 @@ TEST("Pokemon save structs are expected sizes")
 #undef T_POKEMONSTORAGE_SIZE
 #undef T_POKEMONSTORAGE_LEGACY_SIZE
 #undef T_POKEMONSTORAGE_LEGACY_LAST_SECTOR_SIZE
+#undef T_VS_SEEKER_SAVE_MAGIC_OFFSET
+#undef T_VS_SEEKER_CHARGE_STEPS_OFFSET
+#undef T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET

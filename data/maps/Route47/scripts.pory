@@ -191,6 +191,7 @@ script Route47OrbExpert {
 	lock
 	faceplayer
 	if (flag(FLAG_ROUTE47_EXPERT)) {
+		setflag(FLAG_ROUTE47_EXPERT_QUALIFIED)
 		msgbox("There are many ways to pull potential
 					out of these orbs, I hope you can
 					find them all.")
@@ -206,10 +207,11 @@ script Route47OrbExpert {
 			Prove you are worthy of this
 			wisdom by defeating all trainers
 			on this route and then we'll talk.")
-	if (defeated(TRAINER_DEVIN) 
+	if (flag(FLAG_ROUTE47_EXPERT_QUALIFIED) || (defeated(TRAINER_DEVIN)
 		&& defeated(TRAINER_GRANT) 
 		&& defeated(TRAINER_THOM_AND_KAE) 
-		&& defeated(TRAINER_DUFF_AND_EDA)) {
+		&& defeated(TRAINER_DUFF_AND_EDA))) {
+			setflag(FLAG_ROUTE47_EXPERT_QUALIFIED)
 			playse(SE_PIN)
 			applymovement(LOCALID_R47_EXPERT, Common_Movement_ExclamationMark)
 			waitse

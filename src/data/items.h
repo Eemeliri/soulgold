@@ -15274,13 +15274,13 @@ const struct ItemInfo gItemsInfo[] =
         .price = 0,
         .description = COMPOUND_STRING(
             "A rechargeable unit\n"
-            "that flags battle-\n"
-            "ready Trainers."),
+            "that resets the\n"
+            "route Trainers."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .heldSlot = 0,
         .type = ITEM_USE_FIELD,
-    #if I_VS_SEEKER_CHARGING != 0
+    #if I_VS_SEEKER_ENABLED
         .fieldUseFunc = FieldUseFunc_VsSeeker,
     #else
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

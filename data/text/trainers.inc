@@ -4786,11 +4786,14 @@ VSSeeker_Text_BatteryNotChargedNeedXSteps::
 	.string "charge the battery: {STR_VAR_1}{PAUSE_UNTIL_PRESS}$"
 
 VSSeeker_Text_NoTrainersWithinRange::
-	.string "There are no Trainers within range\n"
-	.string "who can battle…\p"
-	.string "The VS Seeker was turned off.{PAUSE_UNTIL_PRESS}$"
+	.string "There are no defeated regular\n"
+	.string "Trainers to reset on this route.\p"
+	.string "The Vs. Seeker was turned off.{PAUSE_UNTIL_PRESS}$"
 
-VSSeeker_Text_TrainersNotReady::
-	.string "The other Trainers don't appear\n"
-	.string "to be ready for battle.\p"
-	.string "Let's wait till later.{PAUSE_UNTIL_PRESS}$"
+VSSeeker_Text_OnlyWorksOnRoutes::
+	.string "The Vs. Seeker can only be used\n"
+	.string "while traveling on a route.{PAUSE_UNTIL_PRESS}$"
+
+VSSeeker_Text_TrainersReset::
+	.string "Every defeated regular Trainer on\n"
+	.string "this route is ready to battle again!{PAUSE_UNTIL_PRESS}$"

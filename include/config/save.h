@@ -15,6 +15,9 @@
 #define FREE_MYSTERY_GIFT                   TRUE   // Frees up Mystery Gift data (876 bytes).
                                             // SaveBlock1 total: 2516 bytes
 
+// Vs. Seeker charge does not use freed Match Call data or futureReserved. It
+// reuses the three formerly unused live-outbreak members in place.
+
 // Explicit future-use space at the end of SaveBlock1. Consume bytes from this
 // reserve for new SaveBlock1 fields to avoid shifting existing savedata.
 #define SAVEBLOCK_MULTIREG_ITEMS            (MAX_REGISTERED_ITEMS * 2)

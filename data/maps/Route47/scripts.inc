@@ -350,64 +350,70 @@ Route47OrbExpert::
 	faceplayer
 # 193 "data/maps/Route47/scripts.pory"
 	goto_if_set FLAG_ROUTE47_EXPERT, Route47OrbExpert_2
-# 201 "data/maps/Route47/scripts.pory"
+# 202 "data/maps/Route47/scripts.pory"
 	msgbox Route47OrbExpert_Text_1
-# 209 "data/maps/Route47/scripts.pory"
+# 210 "data/maps/Route47/scripts.pory"
+	goto_if_set FLAG_ROUTE47_EXPERT_QUALIFIED, Route47OrbExpert_5
+# 210 "data/maps/Route47/scripts.pory"
 	checktrainerflag TRAINER_DEVIN
-	goto_if 1, Route47OrbExpert_7
+	goto_if 1, Route47OrbExpert_9
 Route47OrbExpert_4:
-# 231 "data/maps/Route47/scripts.pory"
+# 233 "data/maps/Route47/scripts.pory"
 	release
 	end
 
 Route47OrbExpert_2:
 # 194 "data/maps/Route47/scripts.pory"
+	setflag FLAG_ROUTE47_EXPERT_QUALIFIED
+# 195 "data/maps/Route47/scripts.pory"
 	msgbox Route47OrbExpert_Text_0
-# 197 "data/maps/Route47/scripts.pory"
+# 198 "data/maps/Route47/scripts.pory"
 	release
 	end
 
 Route47OrbExpert_5:
-# 213 "data/maps/Route47/scripts.pory"
-	playse SE_PIN
 # 214 "data/maps/Route47/scripts.pory"
-	applymovement LOCALID_R47_EXPERT, Common_Movement_ExclamationMark
+	setflag FLAG_ROUTE47_EXPERT_QUALIFIED
 # 215 "data/maps/Route47/scripts.pory"
-	waitse
+	playse SE_PIN
 # 216 "data/maps/Route47/scripts.pory"
+	applymovement LOCALID_R47_EXPERT, Common_Movement_ExclamationMark
+# 217 "data/maps/Route47/scripts.pory"
+	waitse
+# 218 "data/maps/Route47/scripts.pory"
 	msgbox Route47OrbExpert_Text_2
-# 219 "data/maps/Route47/scripts.pory"
+# 221 "data/maps/Route47/scripts.pory"
 	trainerbattle_no_intro TRAINER_ORB_EXPERT, Route47OrbExpert_Text_3
-# 220 "data/maps/Route47/scripts.pory"
-	msgbox Route47OrbExpert_Text_4
 # 222 "data/maps/Route47/scripts.pory"
-	giveitem ITEM_FLAME_ORB
-# 223 "data/maps/Route47/scripts.pory"
-	giveitem ITEM_TOXIC_ORB
+	msgbox Route47OrbExpert_Text_4
 # 224 "data/maps/Route47/scripts.pory"
-	setflag FLAG_ROUTE47_EXPERT
+	giveitem ITEM_FLAME_ORB
 # 225 "data/maps/Route47/scripts.pory"
-	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+	giveitem ITEM_TOXIC_ORB
 # 226 "data/maps/Route47/scripts.pory"
-	special Achievement_CheckAll
+	setflag FLAG_ROUTE47_EXPERT
 # 227 "data/maps/Route47/scripts.pory"
+	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+# 228 "data/maps/Route47/scripts.pory"
+	special Achievement_CheckAll
+# 229 "data/maps/Route47/scripts.pory"
 	msgbox Route47OrbExpert_Text_0
 	goto Route47OrbExpert_4
 
-Route47OrbExpert_6:
-# 211 "data/maps/Route47/scripts.pory"
-	checktrainerflag TRAINER_THOM_AND_KAE
-	goto_if 1, Route47OrbExpert_10
-	goto Route47OrbExpert_4
-
-Route47OrbExpert_7:
-# 210 "data/maps/Route47/scripts.pory"
-	checktrainerflag TRAINER_GRANT
-	goto_if 1, Route47OrbExpert_6
-	goto Route47OrbExpert_4
-
-Route47OrbExpert_10:
+Route47OrbExpert_8:
 # 212 "data/maps/Route47/scripts.pory"
+	checktrainerflag TRAINER_THOM_AND_KAE
+	goto_if 1, Route47OrbExpert_12
+	goto Route47OrbExpert_4
+
+Route47OrbExpert_9:
+# 211 "data/maps/Route47/scripts.pory"
+	checktrainerflag TRAINER_GRANT
+	goto_if 1, Route47OrbExpert_8
+	goto Route47OrbExpert_4
+
+Route47OrbExpert_12:
+# 213 "data/maps/Route47/scripts.pory"
 	checktrainerflag TRAINER_DUFF_AND_EDA
 	goto_if 1, Route47OrbExpert_5
 	goto Route47OrbExpert_4
@@ -451,13 +457,13 @@ Route47_ChuckRematch_Text_4:
 	.string "it's finished! See you there!$"
 
 Route47OrbExpert_Text_0:
-# 194 "data/maps/Route47/scripts.pory"
+# 195 "data/maps/Route47/scripts.pory"
 	.string "There are many ways to pull potential\n"
 	.string "out of these orbs, I hope you can\l"
 	.string "find them all.$"
 
 Route47OrbExpert_Text_1:
-# 201 "data/maps/Route47/scripts.pory"
+# 202 "data/maps/Route47/scripts.pory"
 	.string "Orbs! They hold power beyond measure!\p"
 	.string "But do you know how to utilize them\n"
 	.string "correctly?\p"
@@ -466,16 +472,16 @@ Route47OrbExpert_Text_1:
 	.string "on this route and then we'll talk.$"
 
 Route47OrbExpert_Text_2:
-# 216 "data/maps/Route47/scripts.pory"
+# 218 "data/maps/Route47/scripts.pory"
 	.string "You are indeed worthy of this orb\n"
 	.string "knowledge! Allow me to demonstrate it\l"
 	.string "to you!$"
 
 Route47OrbExpert_Text_3:
-# 219 "data/maps/Route47/scripts.pory"
+# 221 "data/maps/Route47/scripts.pory"
 	.string "Splendid moves.$"
 
 Route47OrbExpert_Text_4:
-# 220 "data/maps/Route47/scripts.pory"
+# 222 "data/maps/Route47/scripts.pory"
 	.string "You are more worthy of these orbs\n"
 	.string "now. I will pass them to you.$"

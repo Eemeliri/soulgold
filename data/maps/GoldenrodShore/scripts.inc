@@ -9,195 +9,201 @@ GoldenrodShore_Expert::
 	faceplayer
 # 6 "data/maps/GoldenrodShore/scripts.pory"
 	goto_if_set FLAG_GOLDENRODSHORE_EXPERT, GoldenrodShore_Expert_2
-# 13 "data/maps/GoldenrodShore/scripts.pory"
+# 14 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Expert_Text_1
-# 18 "data/maps/GoldenrodShore/scripts.pory"
+# 19 "data/maps/GoldenrodShore/scripts.pory"
+	goto_if_set FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED, GoldenrodShore_Expert_5
+# 19 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_SAMUEL
-	goto_if 1, GoldenrodShore_Expert_7
+	goto_if 1, GoldenrodShore_Expert_9
 GoldenrodShore_Expert_4:
-# 44 "data/maps/GoldenrodShore/scripts.pory"
+# 46 "data/maps/GoldenrodShore/scripts.pory"
 	release
 	end
 
 GoldenrodShore_Expert_2:
 # 7 "data/maps/GoldenrodShore/scripts.pory"
+	setflag FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED
+# 8 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Expert_Text_0
-# 10 "data/maps/GoldenrodShore/scripts.pory"
+# 11 "data/maps/GoldenrodShore/scripts.pory"
 	release
 	end
 
 GoldenrodShore_Expert_5:
-# 21 "data/maps/GoldenrodShore/scripts.pory"
-	applymovement LOCALID_GOLDENRODSHORE_EXPERT, Common_Movement_ExclamationMark
 # 22 "data/maps/GoldenrodShore/scripts.pory"
-	playse SE_PIN
+	setflag FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED
 # 23 "data/maps/GoldenrodShore/scripts.pory"
-	waitse
+	applymovement LOCALID_GOLDENRODSHORE_EXPERT, Common_Movement_ExclamationMark
 # 24 "data/maps/GoldenrodShore/scripts.pory"
+	playse SE_PIN
+# 25 "data/maps/GoldenrodShore/scripts.pory"
+	waitse
+# 26 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Expert_Text_2
-# 29 "data/maps/GoldenrodShore/scripts.pory"
+# 31 "data/maps/GoldenrodShore/scripts.pory"
 	trainerbattle_no_intro TRAINER_GOLDENROD_SHORE_EXPERT, GoldenrodShore_Expert_Text_3
-# 30 "data/maps/GoldenrodShore/scripts.pory"
+# 32 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Expert_Text_4
-# 36 "data/maps/GoldenrodShore/scripts.pory"
-	giveitem ITEM_LOADED_DICE
-# 37 "data/maps/GoldenrodShore/scripts.pory"
-	setflag FLAG_GOLDENRODSHORE_EXPERT
 # 38 "data/maps/GoldenrodShore/scripts.pory"
-	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+	giveitem ITEM_LOADED_DICE
 # 39 "data/maps/GoldenrodShore/scripts.pory"
-	special Achievement_CheckAll
+	setflag FLAG_GOLDENRODSHORE_EXPERT
 # 40 "data/maps/GoldenrodShore/scripts.pory"
+	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+# 41 "data/maps/GoldenrodShore/scripts.pory"
+	special Achievement_CheckAll
+# 42 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Expert_Text_5
 	goto GoldenrodShore_Expert_4
 
-GoldenrodShore_Expert_6:
-# 18 "data/maps/GoldenrodShore/scripts.pory"
+GoldenrodShore_Expert_8:
+# 19 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_TODD
-	goto_if 1, GoldenrodShore_Expert_11
+	goto_if 1, GoldenrodShore_Expert_13
 	goto GoldenrodShore_Expert_4
 
-GoldenrodShore_Expert_7:
-# 18 "data/maps/GoldenrodShore/scripts.pory"
+GoldenrodShore_Expert_9:
+# 19 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_BRANDON
-	goto_if 1, GoldenrodShore_Expert_6
+	goto_if 1, GoldenrodShore_Expert_8
 	goto GoldenrodShore_Expert_4
 
-GoldenrodShore_Expert_10:
-# 18 "data/maps/GoldenrodShore/scripts.pory"
+GoldenrodShore_Expert_12:
+# 19 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_GINA
-	goto_if 1, GoldenrodShore_Expert_15
+	goto_if 1, GoldenrodShore_Expert_17
 	goto GoldenrodShore_Expert_4
 
-GoldenrodShore_Expert_11:
-# 18 "data/maps/GoldenrodShore/scripts.pory"
+GoldenrodShore_Expert_13:
+# 19 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_IAN
-	goto_if 1, GoldenrodShore_Expert_10
+	goto_if 1, GoldenrodShore_Expert_12
 	goto GoldenrodShore_Expert_4
 
-GoldenrodShore_Expert_14:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_ELLIOT
-	goto_if 1, GoldenrodShore_Expert_19
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_15:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_KIM
-	goto_if 1, GoldenrodShore_Expert_14
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_18:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_IVAN
-	goto_if 1, GoldenrodShore_Expert_23
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_19:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_BROOKE
-	goto_if 1, GoldenrodShore_Expert_18
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_22:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_WALT
-	goto_if 1, GoldenrodShore_Expert_27
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_23:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_IRWIN
-	goto_if 1, GoldenrodShore_Expert_22
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_26:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_BRYAN
-	goto_if 1, GoldenrodShore_Expert_31
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_27:
-# 19 "data/maps/GoldenrodShore/scripts.pory"
-	checktrainerflag TRAINER_ARNIE
-	goto_if 1, GoldenrodShore_Expert_26
-	goto GoldenrodShore_Expert_4
-
-GoldenrodShore_Expert_30:
+GoldenrodShore_Expert_16:
 # 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_ELLIOT
+	goto_if 1, GoldenrodShore_Expert_21
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_17:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_KIM
+	goto_if 1, GoldenrodShore_Expert_16
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_20:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_IVAN
+	goto_if 1, GoldenrodShore_Expert_25
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_21:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_BROOKE
+	goto_if 1, GoldenrodShore_Expert_20
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_24:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_WALT
+	goto_if 1, GoldenrodShore_Expert_29
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_25:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_IRWIN
+	goto_if 1, GoldenrodShore_Expert_24
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_28:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_BRYAN
+	goto_if 1, GoldenrodShore_Expert_33
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_29:
+# 20 "data/maps/GoldenrodShore/scripts.pory"
+	checktrainerflag TRAINER_ARNIE
+	goto_if 1, GoldenrodShore_Expert_28
+	goto GoldenrodShore_Expert_4
+
+GoldenrodShore_Expert_32:
+# 21 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_ALAN
 	goto_if 1, GoldenrodShore_Expert_5
 	goto GoldenrodShore_Expert_4
 
-GoldenrodShore_Expert_31:
-# 20 "data/maps/GoldenrodShore/scripts.pory"
+GoldenrodShore_Expert_33:
+# 21 "data/maps/GoldenrodShore/scripts.pory"
 	checktrainerflag TRAINER_MARK
-	goto_if 1, GoldenrodShore_Expert_30
+	goto_if 1, GoldenrodShore_Expert_32
 	goto GoldenrodShore_Expert_4
 
 
 GoldenrodShore_Sign::
-# 49 "data/maps/GoldenrodShore/scripts.pory"
+# 51 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Sign_Text_0, MSGBOX_SIGN
 	return
 
 
 GoldenrodShore_Engineer::
-# 53 "data/maps/GoldenrodShore/scripts.pory"
+# 55 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox GoldenrodShore_Engineer_Text_0, MSGBOX_NPC
 	return
 
 
 GoldenrodShore_HiddenGrotto::
-# 59 "data/maps/GoldenrodShore/scripts.pory"
-	msgbox GoldenrodShore_HiddenGrotto_Text_0, MSGBOX_YESNO
 # 61 "data/maps/GoldenrodShore/scripts.pory"
+	msgbox GoldenrodShore_HiddenGrotto_Text_0, MSGBOX_YESNO
+# 63 "data/maps/GoldenrodShore/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq GoldenrodShore_HiddenGrotto_2
 GoldenrodShore_HiddenGrotto_1:
-# 65 "data/maps/GoldenrodShore/scripts.pory"
+# 67 "data/maps/GoldenrodShore/scripts.pory"
 	release
 	end
 
 GoldenrodShore_HiddenGrotto_2:
-# 62 "data/maps/GoldenrodShore/scripts.pory"
+# 64 "data/maps/GoldenrodShore/scripts.pory"
 	warp MAP_HIDDEN_GROTTO_GOLDENROD_SHORE, 0
-# 63 "data/maps/GoldenrodShore/scripts.pory"
+# 65 "data/maps/GoldenrodShore/scripts.pory"
 	waitstate
 	goto GoldenrodShore_HiddenGrotto_1
 
 
 MareaniesGoldenrodShore::
-# 70 "data/maps/GoldenrodShore/scripts.pory"
+# 72 "data/maps/GoldenrodShore/scripts.pory"
 	msgbox MareaniesGoldenrodShore_Text_0, MSGBOX_NPC
 	return
 
 
 GoldenrodShore_Expert_Text_0:
-# 7 "data/maps/GoldenrodShore/scripts.pory"
+# 8 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Guess I'm free to go home now\n"
 	.string "that I no longer have to maintain\l"
 	.string "this route expert title.$"
 
 GoldenrodShore_Expert_Text_1:
-# 13 "data/maps/GoldenrodShore/scripts.pory"
+# 14 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Hi! I'm the route expert of local area!\p"
 	.string "If you can beat every trainer on routes\n"
 	.string "34, 35 and 36. Come have a battle with\l"
 	.string "me.$"
 
 GoldenrodShore_Expert_Text_2:
-# 24 "data/maps/GoldenrodShore/scripts.pory"
+# 26 "data/maps/GoldenrodShore/scripts.pory"
 	.string "I've heard the words of your victories!\p"
 	.string "Let's have a battle then, I'll show\n"
 	.string "you a new type of strategy!$"
 
 GoldenrodShore_Expert_Text_3:
-# 29 "data/maps/GoldenrodShore/scripts.pory"
+# 31 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Outsmarted!$"
 
 GoldenrodShore_Expert_Text_4:
-# 30 "data/maps/GoldenrodShore/scripts.pory"
+# 32 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Even against my unrelenting tide\n"
 	.string "of attacks, you prevailed. \p"
 	.string "Please, have this item to boost \n"
@@ -205,28 +211,28 @@ GoldenrodShore_Expert_Text_4:
 	.string "winning streak.$"
 
 GoldenrodShore_Expert_Text_5:
-# 40 "data/maps/GoldenrodShore/scripts.pory"
+# 42 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Loaded Dice boosts the minimum hit \n"
 	.string "count of multi-hit moves, you should \l"
 	.string "try it with moves like Bullet Seed!$"
 
 GoldenrodShore_Sign_Text_0:
-# 49 "data/maps/GoldenrodShore/scripts.pory"
+# 51 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Goldenrod Shore, no littering!$"
 
 GoldenrodShore_Engineer_Text_0:
-# 53 "data/maps/GoldenrodShore/scripts.pory"
+# 55 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Alright, time to start digging a path \n"
 	.string "here. The Pokéathlon construction\l"
 	.string "starts here!$"
 
 GoldenrodShore_HiddenGrotto_Text_0:
-# 59 "data/maps/GoldenrodShore/scripts.pory"
+# 61 "data/maps/GoldenrodShore/scripts.pory"
 	.string "There seems to be a path behind the\n"
 	.string "trees. Enter?$"
 
 MareaniesGoldenrodShore_Text_0:
-# 70 "data/maps/GoldenrodShore/scripts.pory"
+# 72 "data/maps/GoldenrodShore/scripts.pory"
 	.string "Mareanies seem to be blocking the way.\p"
 	.string "Perhaps there is another way to\n"
 	.string "the Olivine City?$"

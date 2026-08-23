@@ -142,6 +142,7 @@ script Route43Expert {
 	lock
 	faceplayer
 	if (flag(FLAG_ROUTE43_EXPERT)) {
+			setflag(FLAG_ROUTE43_EXPERT_QUALIFIED)
 			msgbox("Power Herb and White Herb only
 					work once per battle, but they
 					regrow back after it.")
@@ -158,7 +159,7 @@ script Route43Expert {
             Perhaps if you were to defeat all
             the others here and around the
             Lake of Rage, we could have a bout.")
-	if (defeated(TRAINER_BRENT)
+	if (flag(FLAG_ROUTE43_EXPERT_QUALIFIED) || (defeated(TRAINER_BRENT)
 		&& defeated(TRAINER_RON)
 		&& defeated(TRAINER_MARVIN)
 		&& defeated(TRAINER_SPENCER)
@@ -167,7 +168,8 @@ script Route43Expert {
 		&& defeated(TRAINER_ANDRE)
 		&& defeated(TRAINER_RAYMOND)
 		&& defeated(TRAINER_AARON)
-		&& defeated(TRAINER_LOIS)) {
+		&& defeated(TRAINER_LOIS))) {
+			setflag(FLAG_ROUTE43_EXPERT_QUALIFIED)
 			playse(SE_PIN)
 			applymovement(LOCALID_R43_EXPERT, Common_Movement_ExclamationMark)
 			waitse
