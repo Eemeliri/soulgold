@@ -181,6 +181,7 @@ script Route31_Expert {
     lock
     faceplayer
     if (flag(FLAG_ROUTE31_EXPERT)) {
+        setflag(FLAG_ROUTE31_EXPERT_QUALIFIED)
         msgbox("Air Balloon lets a Pokémon avoid 
 				Ground-type moves until it 
 				takes a hit.
@@ -204,7 +205,8 @@ script Route31_Expert {
 			
 			I'll make it worth your while,
 			if you manage to win.")
-    if (defeated(TRAINER_WADE) && defeated(TRAINER_JOEY) && defeated(TRAINER_MIKEY) && defeated(TRAINER_DON)) {
+    if (flag(FLAG_ROUTE31_EXPERT_QUALIFIED) || (defeated(TRAINER_WADE) && defeated(TRAINER_JOEY) && defeated(TRAINER_MIKEY) && defeated(TRAINER_DON))) {
+        setflag(FLAG_ROUTE31_EXPERT_QUALIFIED)
         msgbox("Oh, you have indeed defeated 
 				all the trainers on this route.
 				

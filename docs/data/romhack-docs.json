@@ -62542,14 +62542,6 @@
           "conditions": [],
           "label": "By Using Specific Item (Peat Block)",
           "itemName": "Peat Block"
-        },
-        {
-          "method": "EVO_NONE",
-          "param": "0",
-          "target": "SPECIES_URSALUNA_BLOODMOON",
-          "conditions": [],
-          "label": "Special",
-          "itemName": ""
         }
       ],
       "locations": [
@@ -185707,23 +185699,7 @@
         "MOVE_UPROAR",
         "MOVE_VACUUM_WAVE"
       ],
-      "eggMoves": [
-        "MOVE_CRUNCH",
-        "MOVE_TAKE_DOWN",
-        "MOVE_SEISMIC_TOSS",
-        "MOVE_COUNTER",
-        "MOVE_METAL_CLAW",
-        "MOVE_FAKE_TEARS",
-        "MOVE_YAWN",
-        "MOVE_SLEEP_TALK",
-        "MOVE_CROSS_CHOP",
-        "MOVE_DOUBLE_EDGE",
-        "MOVE_CLOSE_COMBAT",
-        "MOVE_NIGHT_SLASH",
-        "MOVE_BELLY_DRUM",
-        "MOVE_CHIP_AWAY",
-        "MOVE_PLAY_ROUGH"
-      ],
+      "eggMoves": [],
       "evolutions": [],
       "locations": [
         {

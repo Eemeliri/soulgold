@@ -1116,7 +1116,7 @@ static u8 Debug_GenerateListTrainerMenu(void)
             }
             break;
         case 6:
-            if (FREE_MATCH_CALL || I_VS_SEEKER_CHARGING || !isRealFight || rematchTableId == -1)
+            if (FREE_MATCH_CALL || !isRealFight || rematchTableId == -1)
             {
                 noDraw = TRUE;
                 break;
@@ -1127,7 +1127,7 @@ static u8 Debug_GenerateListTrainerMenu(void)
                 StringCopy(gStringVar1, COMPOUND_STRING("{COLOR RED} FALSE"));
             break;
         case 8:
-            if (FREE_MATCH_CALL || I_VS_SEEKER_CHARGING == 0)
+            if (!I_VS_SEEKER_ENABLED)
                 noDraw = TRUE;
             break;
         }
@@ -2347,9 +2347,7 @@ static void DebugAction_Trainers_TryBattle(u8 taskId)
 
 static void DebugAction_Trainers_RechargeVsSeeker(u8 taskId)
 {
-    SetTrainerRematchStepCounter(VSSEEKER_RECHARGE_STEPS);
-    MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
-    ScriptContext_SetupScript(EventScript_VsSeekerChargingDone);
+    SetVsSeekerChargeSteps(VSSEEKER_RECHARGE_STEPS);
     Debug_DestroyMenu_Full(taskId);
 }
 

@@ -860,6 +860,7 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
 
 void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 {
+    VsSeekerExpireTrainerRematches();
     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, -1, -1);
 
     // Dont transition map music between BF Outside West/East
@@ -877,9 +878,6 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 #if FREE_MATCH_CALL == FALSE
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
 #endif //FREE_MATCH_CALL
-
-    if (I_VS_SEEKER_CHARGING != 0)
-        MapResetTrainerRematches(mapGroup, mapNum);
 
     DoTimeBasedEvents();
     SetSavedWeatherFromCurrMapHeader();
@@ -918,6 +916,7 @@ static void LoadMapFromWarp(bool32 a1)
     bool8 isOutdoors;
     bool8 isIndoors;
 
+    VsSeekerExpireTrainerRematches();
     LoadCurrentMapData();
     if (!(sObjectEventLoadFlag & SKIP_OBJECT_EVENT_LOAD))
     {
@@ -943,9 +942,6 @@ static void LoadMapFromWarp(bool32 a1)
 #if FREE_MATCH_CALL == FALSE
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
 #endif //FREE_MATCH_CALL
-
-    if (I_VS_SEEKER_CHARGING != 0)
-         MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
 
     if (a1 != TRUE)
         DoTimeBasedEvents();

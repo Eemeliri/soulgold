@@ -1,4 +1,22 @@
 Update notes:
+v1.0.5
+- VS Seeker has been added, it allows resetting outside route trainers after walking enough steps. It is awarded in place of the old Radio key item after answering the Quiz in Goldenrod. Old saves can exchange their old Radio for the VS Seeker by talking to the receptionist on the first floor.
+- Ported Radio from HnS 2.0 to Pokégear. Buena's Password show functionality has been moved here.
+- The emulator inaccuracy screen can be bypassed on Delta by pressing Start, but you aknowledge that you are playing on inaccurate emulator by doing so.
+- Increased Trainer battles exp yield to 1.2x.
+- Added Mud Shot and Earth Power to Typhlosion's movepool.
+- Added several biting moves to Ursaluna.
+- Added Bisharp and Snorlax to Nameless Cavern in Kitakami Border.
+- Oricorio Sensu can be found in Lake of Rage Hidden Grotto.
+- Added weather-extending Rocks and exp candy XL to Battle Tower exchange.
+- Title Defense round number is now displayed in Hall Of Fame Screen.
+- Fixed several small bugs such as Genesect Shiny palette, Mirror Herb egg move transfer, Urushifu form breeding, Kurt script during celebi event etc.
+- Fixed typos.
+
+
+
+
+
 - Malamar learns Skill Swap via level up.
 - Fixed shiny Dragonite using the old shiny color in the surf sprite.
 - Fix a sequence skip where player would never unlock the side safari zone areas if they did not visit the safari zone before elite four. Saves with this issue are automatically repaired to correct state with this update.

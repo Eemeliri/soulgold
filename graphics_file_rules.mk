@@ -109,6 +109,10 @@ $(TILESETGFXDIR)/secondary/secret_base/tree/unused_tiles.4bpp: $(TILESETGFXDIR)/
 $(TILESETGFXDIR)/secondary/secret_base/shrub/unused_tiles.4bpp: $(TILESETGFXDIR)/secondary/secret_base/shrub/tiles.png
 	$(GFX) $< $@ -num_tiles 82 -Wnum_tiles
 
+# The Radio tilemap references all 64 source tiles, including blank padding.
+graphics/pokegear/radio/ui_tiles.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -num_tiles 64 -Wnum_tiles
+
 $(TILESETGFXDIR)/secondary/secret_base/blue_cave/unused_tiles.4bpp: $(TILESETGFXDIR)/secondary/secret_base/blue_cave/tiles.png
 	$(GFX) $< $@ -num_tiles 82 -Wnum_tiles
 

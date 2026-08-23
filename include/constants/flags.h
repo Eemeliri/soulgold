@@ -975,7 +975,7 @@
 #define FLAG_GOLDENROD_ALL_SHUTTERS_OPEN                            0x39C
 #define FLAG_COMPLETED_SWITCHES                                     0x39D
 #define FLAG_HIDE_GOLDENROD_BEAUTY                                  0x39E
-#define FLAG_ENABLE_RADIO                                           0x39F
+#define FLAG_ENABLE_RADIO                                           0x39F // Completed the Radio Tower quiz; value retained for old saves.
 #define FLAG_KANTO_RADIO_GOT                                        0x3A0
 #define FLAG_HIDE_RADIOTOWER_GATE                                   0x3A1
 #define FLAG_HIDE_ROCKET_GOLDENROD_RADIOTOWER_1                     0x3A2
@@ -1741,7 +1741,12 @@
 #define FLAG_BATTLE_CAFE_TAPU_LELE_RECEIVED         0x1035
 #define FLAG_BATTLE_CAFE_TAPU_BULU_RECEIVED         0x1036
 #define FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED         0x1037
-#define CUSTOM_FLAGS_END                            FLAG_BATTLE_CAFE_TAPU_FINI_RECEIVED
+#define FLAG_ROUTE31_EXPERT_QUALIFIED               0x1038
+#define FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED        0x1039
+#define FLAG_ROUTE43_EXPERT_QUALIFIED               0x103A
+#define FLAG_ROUTE47_EXPERT_QUALIFIED               0x103B
+#define FLAG_ROUTE27_EXPERT_QUALIFIED               0x103C
+#define CUSTOM_FLAGS_END                            FLAG_ROUTE27_EXPERT_QUALIFIED
 
 
 #define FLAG_0x1500                                 0x1500

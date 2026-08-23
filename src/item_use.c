@@ -7,7 +7,6 @@
 #include "battle_util.h"
 #include "berry.h"
 #include "berry_powder.h"
-#include "buenas_password.h"
 #include "candy_jar.h"
 #include "bike.h"
 #include "coins.h"
@@ -37,6 +36,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "pokeblock.h"
+#include "pokegear.h"
 #include "pokemon.h"
 #include "ruins_of_alph_puzzles.h"
 #include "script.h"
@@ -84,6 +84,8 @@ static void Task_UseLure(u8 taskId);
 static void Task_CloseCantUseKeyItemMessage(u8);
 static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
 static void CB2_OpenPokeblockFromBag(void);
+static void CB2_OpenRadioFromBag(void);
+static void Task_OpenRegisteredRadio(u8 taskId);
 static void ItemUseOnFieldCB_Honey(u8 taskId);
 static bool32 IsValidLocationForVsSeeker(void);
 static void CloseCandyJarMessage(u8 taskId);
@@ -107,11 +109,6 @@ static const u8 sText_PlayedPokeFluteCatchy[] = _("Played the Poké Flute.\pNow,
 static const u8 sText_PlayedPokeFlute[] = _("Played the Poké Flute.");
 static const u8 sText_PokeFluteAwakenedMon[] = _("The Poké Flute awakened sleeping\nPokémon.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_BeckoningBellChimes[] = _("The bell chimes, renewing all\nhidden grottos!{PAUSE_UNTIL_PRESS}");
-static const u8 sText_OaksTalkSchedule[] = _(
-    "Now airing: Prof. Oak's\n"
-    "Pokémon Talk!\p"
-    "Buena's Password airs daily\n"
-    "from 6 PM to midnight.\p");
 static const u8 sText_BeckoningBellCannotBeUsedHere[] =_("The bell cannot be used\ninside a Hidden Grotto!{PAUSE_UNTIL_PRESS}");
 
 #ifndef UINT16_MAX
@@ -1700,50 +1697,7 @@ void ItemUseOutOfBattle_CannotUse(u8 taskId)
 
 static bool32 IsValidLocationForVsSeeker(void)
 {
-    u16 mapGroup = gSaveBlock1Ptr->location.mapGroup;
-    u16 mapNum = gSaveBlock1Ptr->location.mapNum;
-    enum MapType mapType = gMapHeader.mapType;
-
-    typedef struct {
-        u16 mapGroup;
-        u16 mapNum;
-    } Location;
-
-    u32 i;
-    Location validIndoorLocations[] =
-    {
-        { MAP_GROUP(MAP_MT_PYRE_SUMMIT),           MAP_NUM(MAP_MT_PYRE_SUMMIT) },
-        { MAP_GROUP(MAP_SAFARI_ZONE_NORTH),        MAP_NUM(MAP_SAFARI_ZONE_NORTH) },
-        { MAP_GROUP(MAP_SAFARI_ZONE_NORTHEAST),    MAP_NUM(MAP_SAFARI_ZONE_NORTHEAST) },
-        { MAP_GROUP(MAP_SAFARI_ZONE_NORTHWEST),    MAP_NUM(MAP_SAFARI_ZONE_NORTHWEST) },
-        { MAP_GROUP(MAP_SAFARI_ZONE_SOUTH),        MAP_NUM(MAP_SAFARI_ZONE_SOUTH) },
-        { MAP_GROUP(MAP_SAFARI_ZONE_SOUTHEAST),    MAP_NUM(MAP_SAFARI_ZONE_SOUTHEAST) },
-        { MAP_GROUP(MAP_SAFARI_ZONE_SOUTHWEST),    MAP_NUM(MAP_SAFARI_ZONE_SOUTHWEST) },
-        { MAP_GROUP(MAP_SKY_PILLAR_TOP),           MAP_NUM(MAP_SKY_PILLAR_TOP) },
-        { MAP_GROUP(MAP_SOUTHERN_ISLAND_EXTERIOR), MAP_NUM(MAP_SOUTHERN_ISLAND_EXTERIOR) },
-        { MAP_GROUP(MAP_SOUTHERN_ISLAND_INTERIOR), MAP_NUM(MAP_SOUTHERN_ISLAND_INTERIOR) },
-        { MAP_GROUP(MAP_RUSTBORO_CITY_GYM),        MAP_NUM(MAP_RUSTBORO_CITY_GYM) },
-        { MAP_GROUP(MAP_DEWFORD_TOWN_GYM),         MAP_NUM(MAP_DEWFORD_TOWN_GYM) },
-        { MAP_GROUP(MAP_MAUVILLE_CITY_GYM),        MAP_NUM(MAP_MAUVILLE_CITY_GYM) },
-        { MAP_GROUP(MAP_LAVARIDGE_TOWN_GYM_1F),    MAP_NUM(MAP_LAVARIDGE_TOWN_GYM_1F) },
-        { MAP_GROUP(MAP_LAVARIDGE_TOWN_GYM_B1F),   MAP_NUM(MAP_LAVARIDGE_TOWN_GYM_B1F) },
-        { MAP_GROUP(MAP_PETALBURG_CITY_GYM),       MAP_NUM(MAP_PETALBURG_CITY_GYM) },
-        { MAP_GROUP(MAP_FORTREE_CITY_GYM),         MAP_NUM(MAP_FORTREE_CITY_GYM) },
-        { MAP_GROUP(MAP_MOSSDEEP_CITY_GYM),        MAP_NUM(MAP_MOSSDEEP_CITY_GYM) },
-        { MAP_GROUP(MAP_SOOTOPOLIS_CITY_GYM_1F),   MAP_NUM(MAP_SOOTOPOLIS_CITY_GYM_1F) },
-        { MAP_GROUP(MAP_SOOTOPOLIS_CITY_GYM_B1F),  MAP_NUM(MAP_SOOTOPOLIS_CITY_GYM_B1F) },
-    };
-
-    if (IsMapTypeOutdoors(mapType))
-        return TRUE;
-
-    for (i = 0; i < ARRAY_COUNT(validIndoorLocations); i++)
-    {
-        if (mapNum == validIndoorLocations[i].mapNum && mapGroup == validIndoorLocations[i].mapGroup)
-            return TRUE;
-    }
-
-    return FALSE;
+    return IsVsSeekerMapTypeValid(gMapHeader.mapType);
 }
 
 void FieldUseFunc_VsSeeker(u8 taskId)
@@ -1754,7 +1708,7 @@ void FieldUseFunc_VsSeeker(u8 taskId)
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+        DisplayCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem, VSSeeker_Text_OnlyWorksOnRoutes);
 }
 
 void Task_ItemUse_CloseMessageBoxAndReturnToField_VsSeeker(u8 taskId)
@@ -1828,112 +1782,34 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
     }
 }
 
-static bool8 IsKantoOutdoorMapsec(u16 mapsec)
+void ItemUseOutOfBattle_Radio(u8 taskId)
 {
-    switch (mapsec)
+    if (!gTasks[taskId].tUsingRegisteredKeyItem)
     {
-    // Routes
-    case MAPSEC_ROUTE_1: case MAPSEC_ROUTE_2: case MAPSEC_ROUTE_3: case MAPSEC_ROUTE_4:
-    case MAPSEC_ROUTE_5: case MAPSEC_ROUTE_6: case MAPSEC_ROUTE_7: case MAPSEC_ROUTE_8:
-    case MAPSEC_ROUTE_9: case MAPSEC_ROUTE_10: case MAPSEC_ROUTE_11: case MAPSEC_ROUTE_12:
-    case MAPSEC_ROUTE_13: case MAPSEC_ROUTE_14: case MAPSEC_ROUTE_15: case MAPSEC_ROUTE_16:
-    case MAPSEC_ROUTE_17: case MAPSEC_ROUTE_18: case MAPSEC_ROUTE_19: case MAPSEC_ROUTE_20:
-    case MAPSEC_ROUTE_21: case MAPSEC_ROUTE_22: case MAPSEC_ROUTE_23: case MAPSEC_ROUTE_24:
-    case MAPSEC_ROUTE_25:
-    // Forest / Plateau
-    case MAPSEC_VIRIDIAN_FOREST:
-    case MAPSEC_INDIGO_PLATEAU:
-    // Cities / Towns / Island
-    case MAPSEC_PALLET_TOWN:
-    case MAPSEC_VIRIDIAN_CITY:
-    case MAPSEC_PEWTER_CITY:
-    case MAPSEC_CERULEAN_CITY:
-    case MAPSEC_VERMILION_CITY:
-    case MAPSEC_LAVENDER_TOWN:
-    case MAPSEC_CELADON_CITY:
-    case MAPSEC_SAFFRON_CITY:
-    case MAPSEC_FUCHSIA_CITY:
-    case MAPSEC_CINNABAR_ISLAND:
-        return TRUE;
-    }
-    return FALSE;
-}
-
-static void DisplayRadioMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField) // HnS radio logic
-{
-    // RUINS OF ALPH always overrides (indoors or outdoors)
-    if (gMapHeader.regionMapSectionId == MAPSEC_RUINS_OF_ALPH)
-    {
-        DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_UnownMessage);
-        //PlayBGM(MUS_HG_RADIO_UNOWN);
-        return;
-    }
-
-    // Indoors / maps where radio shouldn't work at all
-    if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType))
-    {
-        DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_RadioNoSignal);
-        return;
-    }
-
-    // --- KANTO RADIO GATE ---
-    if (IsKantoOutdoorMapsec(gMapHeader.regionMapSectionId))
-    {
-        if (!FlagGet(FLAG_KANTO_RADIO_GOT))
-        {
-            // No Kanto radio card yet: show "no signal" and play nothing
-            DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_RadioNoSignal);
-        }
-        else
-        {
-            // Has Kanto radio: play Poké Flute program with placeholder text
-            DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_RadioKantoPokeFlute); // <-- add your final text string later
-            //PlayBGM(MUS_HG_RADIO_POKE_FLUTE);
-        }
-        return;
-    }
-
-    // --- JOHTO (original behavior) ---
-    if (FlagGet(FLAG_HIDE_GOLDENROD_ROCKETS) == FALSE)
-    {
-        DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_RocketRadio);
-        //PlayBGM(MUS_HG_RADIO_ROCKET);
+        gBagMenu->newScreenCallback = CB2_OpenRadioFromBag;
+        Task_FadeAndCloseBagMenu(taskId);
     }
     else
     {
-        if (BuenasPassword_IsBroadcastTime())
-        {
-            DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, BuenasPassword_GetRadioText());
-            //PlayBGM(MUS_HG_RADIO_BUENA);
-            return;
-        }
-
-        static const u8 *const sOakRadioMessages[] =
-        {
-            gText_OakTalk_Clefairy,
-            gText_OakTalk_Lapras,
-            gText_OakTalk_Ampharos,
-            gText_OakTalk_Sudowoodo,
-            gText_OakTalk_RedGyarados,
-            gText_OakTalk_Unown,
-            gText_OakTalk_Snubbull,
-            gText_OakTalk_Slowpoke,
-            gText_OakTalk_LavenderTower,
-            gText_OakTalk_TentacruelWhirl,
-        };
-        SeedRng(gMain.vblankCounter1);
-        const u8 *selectedMsg = sOakRadioMessages[Random() % ARRAY_COUNT(sOakRadioMessages)];
-        StringCopy(gStringVar4, sText_OaksTalkSchedule);
-        StringAppend(gStringVar4, selectedMsg);
-        DisplayCannotUseItemMessageFromBuffer(taskId, isUsingRegisteredKeyItemOnField);
-        //PlayBGM(MUS_HG_RADIO_OAK);
+        gFieldCallback = FieldCB_ReturnToFieldNoScript;
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_OpenRegisteredRadio;
     }
 }
 
-void ItemUseOutOfBattle_Radio(u8 taskId)
+static void CB2_OpenRadioFromBag(void)
 {
-    s16 *data = gTasks[taskId].data;
-    DisplayRadioMessage(taskId, tUsingRegisteredKeyItem);
+    OpenPokegearApp(POKEGEAR_APP_RADIO, CB2_ReturnToBagMenuPocket);
+}
+
+static void Task_OpenRegisteredRadio(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        DestroyTask(taskId);
+        OpenPokegearApp(POKEGEAR_APP_RADIO, CB2_ReturnToField);
+    }
 }
 
 void ItemUseOutOfBattle_BeckoningBell(u8 taskId)

@@ -1165,7 +1165,7 @@ GoldenrodCity_RadioTower_2F_Text_BuenaShowPromo:
 # 583 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
 	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
 # 584 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
-	.string "Once you have a Radio, tune in,\n"
+	.string "Tune in with your Pokégear,\n"
 # 585 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"
 	.string "then come see me here!$"
 # 586 "data/maps/GoldenrodCity_RadioTower_2F/scripts.pory"

@@ -37,8 +37,7 @@
 #define I_REPEL_LURE_MENU           TRUE    // If TRUE, the player is able to choose which Repel/Lure to use once the previous one runs out. Cursor position is saved by VAR_LAST_REPEL_LURE_USED if not 0.
 
 // Vs. Seeker
-#define I_VS_SEEKER_CHARGING        0                     // If this flag is assigned, the Vs Seeker functionality will be enabled. When the player has the Vs. Seeker, Match Call rematch functions will stop working. Documentation for the Vs. Seeker can be found in docs/tutorials/vs_seeker.md.
-#define I_SHOW_NO_ID_TRAINER        DISABLED_ON_RELEASE   // If TRUE, object events with a trainer type but no visible trainer id will be shown with a question mark. You may want to add vsseeker_rematchid TRAINER_ID as the top of the script to let the VS seeker know what reaction it's supposed to show.
+#define I_VS_SEEKER_ENABLED         TRUE // Boolean feature switch. Charge is stored in the three repurposed live-outbreak fields in SaveBlock1; Match Call save data is not used. See docs/tutorials/vs_seeker.md.
 
 // ORAS Dowsing Machine
 #define I_ORAS_DOWSING_FLAG         FLAG_DOWNSING_ORAS           // Replace 0 with an unused flag to enable the Dowsing Machine mechanic from ORAS.

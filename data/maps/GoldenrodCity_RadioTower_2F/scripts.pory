@@ -581,7 +581,7 @@ GoldenrodCity_RadioTower_2F_Text_GruntF2After:
 
 GoldenrodCity_RadioTower_2F_Text_BuenaShowPromo:
 	.string "Buena: My password show airs\nevery night, 6 PM to midnight!\p"
-	.string "Once you have a Radio, tune in,\n"
+	.string "Tune in with your Pokégear,\n"
 	.string "then come see me here!$"
 
 GoldenrodCity_RadioTower_2F_Text_SalesSign:

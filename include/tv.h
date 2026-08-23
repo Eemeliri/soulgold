@@ -41,6 +41,8 @@ void TryPutSafariFanClubOnAir(u8 monsCaught, u8 pokeblocksUsed);
 bool8 Put3CheersForPokeblocksOnTheAir(const u8 *partnersName, enum Flavor flavor, u8 color, u8 sheen, u8 language);
 void SetPokemonAnglerSpecies(u16 species);
 void UpdateTVShowsPerDay(u16 days);
+void StartMassOutbreak(void);
+void EndMassOutbreak(void);
 void TryPutPokemonTodayOnAir(void);
 void TryPutSecretBaseVisitOnAir(void);
 void PutBattleUpdateOnTheAir(u8 opponentLinkPlayerId, enum Move move, u16 speciesPlayer, u16 speciesOpponent);

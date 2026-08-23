@@ -580,8 +580,6 @@ gSpecials::
 	def_special GetSprayId
 	def_special GetLastUsedSprayType
 	def_special TrySkyBattle
-	def_special VsSeekerResetObjectMovementAfterChargeComplete
-	def_special VsSeekerFreezeObjectsAfterChargeComplete
 	def_special PlayerHasMulch
 	def_special Bag_ChooseMulch
 	def_special ObjectEventInteractionApplyMulch
@@ -645,3 +643,4 @@ gSpecials::
 	def_special GetRocketArcadeWins
 	def_special EnableAutorun
 	def_special BattleSetup_StartDexNavBattle
+	def_special MigrateLegacyRadioShortcut

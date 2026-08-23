@@ -1569,13 +1569,10 @@ void StartMassOutbreak(void)
     gSaveBlock1Ptr->outbreakLocationMapNum = show->massOutbreak.locationMapNum;
     gSaveBlock1Ptr->outbreakLocationMapGroup = show->massOutbreak.locationMapGroup;
     gSaveBlock1Ptr->outbreakPokemonLevel = show->massOutbreak.level;
-    gSaveBlock1Ptr->outbreakUnused1 = show->massOutbreak.unused1;
-    gSaveBlock1Ptr->outbreakUnused2 = show->massOutbreak.unused2;
     gSaveBlock1Ptr->outbreakPokemonMoves[0] = show->massOutbreak.moves[0];
     gSaveBlock1Ptr->outbreakPokemonMoves[1] = show->massOutbreak.moves[1];
     gSaveBlock1Ptr->outbreakPokemonMoves[2] = show->massOutbreak.moves[2];
     gSaveBlock1Ptr->outbreakPokemonMoves[3] = show->massOutbreak.moves[3];
-    gSaveBlock1Ptr->outbreakUnused3 = show->massOutbreak.unused3;
     gSaveBlock1Ptr->outbreakPokemonProbability = show->massOutbreak.probability;
     gSaveBlock1Ptr->outbreakDaysLeft = 2;
 }
@@ -1690,13 +1687,10 @@ void EndMassOutbreak(void)
     gSaveBlock1Ptr->outbreakLocationMapNum = 0;
     gSaveBlock1Ptr->outbreakLocationMapGroup = 0;
     gSaveBlock1Ptr->outbreakPokemonLevel = 0;
-    gSaveBlock1Ptr->outbreakUnused1 = 0;
-    gSaveBlock1Ptr->outbreakUnused2 = 0;
     gSaveBlock1Ptr->outbreakPokemonMoves[0] = MOVE_NONE;
     gSaveBlock1Ptr->outbreakPokemonMoves[1] = MOVE_NONE;
     gSaveBlock1Ptr->outbreakPokemonMoves[2] = MOVE_NONE;
     gSaveBlock1Ptr->outbreakPokemonMoves[3] = MOVE_NONE;
-    gSaveBlock1Ptr->outbreakUnused3 = 0;
     gSaveBlock1Ptr->outbreakPokemonProbability = 0;
     gSaveBlock1Ptr->outbreakDaysLeft = 0;
 }

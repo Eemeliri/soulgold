@@ -282,107 +282,113 @@ Route43Expert::
 	faceplayer
 # 144 "data/maps/Route43/scripts.pory"
 	goto_if_set FLAG_ROUTE43_EXPERT, Route43Expert_2
-# 152 "data/maps/Route43/scripts.pory"
+# 153 "data/maps/Route43/scripts.pory"
 	msgbox Route43Expert_Text_1
-# 161 "data/maps/Route43/scripts.pory"
+# 162 "data/maps/Route43/scripts.pory"
+	goto_if_set FLAG_ROUTE43_EXPERT_QUALIFIED, Route43Expert_5
+# 162 "data/maps/Route43/scripts.pory"
 	checktrainerflag TRAINER_BRENT
-	goto_if 1, Route43Expert_7
+	goto_if 1, Route43Expert_9
 Route43Expert_4:
-# 191 "data/maps/Route43/scripts.pory"
+# 193 "data/maps/Route43/scripts.pory"
 	release
 	end
 
 Route43Expert_2:
 # 145 "data/maps/Route43/scripts.pory"
+	setflag FLAG_ROUTE43_EXPERT_QUALIFIED
+# 146 "data/maps/Route43/scripts.pory"
 	msgbox Route43Expert_Text_0
-# 148 "data/maps/Route43/scripts.pory"
+# 149 "data/maps/Route43/scripts.pory"
 	release
 	end
 
 Route43Expert_5:
-# 171 "data/maps/Route43/scripts.pory"
-	playse SE_PIN
 # 172 "data/maps/Route43/scripts.pory"
-	applymovement LOCALID_R43_EXPERT, Common_Movement_ExclamationMark
+	setflag FLAG_ROUTE43_EXPERT_QUALIFIED
 # 173 "data/maps/Route43/scripts.pory"
-	waitse
+	playse SE_PIN
 # 174 "data/maps/Route43/scripts.pory"
+	applymovement LOCALID_R43_EXPERT, Common_Movement_ExclamationMark
+# 175 "data/maps/Route43/scripts.pory"
+	waitse
+# 176 "data/maps/Route43/scripts.pory"
 	msgbox Route43Expert_Text_2
-# 178 "data/maps/Route43/scripts.pory"
+# 180 "data/maps/Route43/scripts.pory"
 	trainerbattle_no_intro TRAINER_HERB_EXPERT, Route43Expert_Text_3
-# 179 "data/maps/Route43/scripts.pory"
+# 181 "data/maps/Route43/scripts.pory"
 	msgbox Route43Expert_Text_4
-# 182 "data/maps/Route43/scripts.pory"
-	giveitem ITEM_POWER_HERB
-# 183 "data/maps/Route43/scripts.pory"
-	giveitem ITEM_WHITE_HERB
 # 184 "data/maps/Route43/scripts.pory"
-	setflag FLAG_ROUTE43_EXPERT
+	giveitem ITEM_POWER_HERB
 # 185 "data/maps/Route43/scripts.pory"
-	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+	giveitem ITEM_WHITE_HERB
 # 186 "data/maps/Route43/scripts.pory"
-	special Achievement_CheckAll
+	setflag FLAG_ROUTE43_EXPERT
 # 187 "data/maps/Route43/scripts.pory"
+	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+# 188 "data/maps/Route43/scripts.pory"
+	special Achievement_CheckAll
+# 189 "data/maps/Route43/scripts.pory"
 	msgbox Route43Expert_Text_0
 	goto Route43Expert_4
 
-Route43Expert_6:
-# 163 "data/maps/Route43/scripts.pory"
-	checktrainerflag TRAINER_MARVIN
-	goto_if 1, Route43Expert_11
-	goto Route43Expert_4
-
-Route43Expert_7:
-# 162 "data/maps/Route43/scripts.pory"
-	checktrainerflag TRAINER_RON
-	goto_if 1, Route43Expert_6
-	goto Route43Expert_4
-
-Route43Expert_10:
-# 165 "data/maps/Route43/scripts.pory"
-	checktrainerflag TRAINER_TIFFANY
-	goto_if 1, Route43Expert_15
-	goto Route43Expert_4
-
-Route43Expert_11:
+Route43Expert_8:
 # 164 "data/maps/Route43/scripts.pory"
+	checktrainerflag TRAINER_MARVIN
+	goto_if 1, Route43Expert_13
+	goto Route43Expert_4
+
+Route43Expert_9:
+# 163 "data/maps/Route43/scripts.pory"
+	checktrainerflag TRAINER_RON
+	goto_if 1, Route43Expert_8
+	goto Route43Expert_4
+
+Route43Expert_12:
+# 166 "data/maps/Route43/scripts.pory"
+	checktrainerflag TRAINER_TIFFANY
+	goto_if 1, Route43Expert_17
+	goto Route43Expert_4
+
+Route43Expert_13:
+# 165 "data/maps/Route43/scripts.pory"
 	checktrainerflag TRAINER_SPENCER
-	goto_if 1, Route43Expert_10
+	goto_if 1, Route43Expert_12
 	goto Route43Expert_4
 
-Route43Expert_14:
-# 168 "data/maps/Route43/scripts.pory"
+Route43Expert_16:
+# 169 "data/maps/Route43/scripts.pory"
 	checktrainerflag TRAINER_RAYMOND
-	goto_if 1, Route43Expert_19
+	goto_if 1, Route43Expert_21
 	goto Route43Expert_4
 
-Route43Expert_15:
-# 167 "data/maps/Route43/scripts.pory"
+Route43Expert_17:
+# 168 "data/maps/Route43/scripts.pory"
 	checktrainerflag TRAINER_ANDRE
-	goto_if 1, Route43Expert_14
+	goto_if 1, Route43Expert_16
 	goto Route43Expert_4
 
-Route43Expert_18:
-# 170 "data/maps/Route43/scripts.pory"
+Route43Expert_20:
+# 171 "data/maps/Route43/scripts.pory"
 	checktrainerflag TRAINER_LOIS
 	goto_if 1, Route43Expert_5
 	goto Route43Expert_4
 
-Route43Expert_19:
-# 169 "data/maps/Route43/scripts.pory"
+Route43Expert_21:
+# 170 "data/maps/Route43/scripts.pory"
 	checktrainerflag TRAINER_AARON
-	goto_if 1, Route43Expert_18
+	goto_if 1, Route43Expert_20
 	goto Route43Expert_4
 
 
 Route43Expert_Text_0:
-# 145 "data/maps/Route43/scripts.pory"
+# 146 "data/maps/Route43/scripts.pory"
 	.string "Power Herb and White Herb only\n"
 	.string "work once per battle, but they\l"
 	.string "regrow back after it.$"
 
 Route43Expert_Text_1:
-# 152 "data/maps/Route43/scripts.pory"
+# 153 "data/maps/Route43/scripts.pory"
 	.string "Many trainers gather here to see\n"
 	.string "what the fuss is about.\p"
 	.string "Me? I'm here to find the strongest\n"
@@ -392,17 +398,17 @@ Route43Expert_Text_1:
 	.string "Lake of Rage, we could have a bout.$"
 
 Route43Expert_Text_2:
-# 174 "data/maps/Route43/scripts.pory"
+# 176 "data/maps/Route43/scripts.pory"
 	.string "Impressive battling prowess!\p"
 	.string "But can you turn the tides against\n"
 	.string "my strategy?$"
 
 Route43Expert_Text_3:
-# 178 "data/maps/Route43/scripts.pory"
+# 180 "data/maps/Route43/scripts.pory"
 	.string "I could not turn the situation around.$"
 
 Route43Expert_Text_4:
-# 179 "data/maps/Route43/scripts.pory"
+# 181 "data/maps/Route43/scripts.pory"
 	.string "Your strength is in full bloom.\n"
 	.string "Take these herbs and use them\l"
 	.string "to turn the battle around.$"

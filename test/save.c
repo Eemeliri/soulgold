@@ -47,6 +47,13 @@
 #define T_BX19_TEAMS_OFFSET (T_BX19_ARCHIVE_OFFSET + 4)
 #define T_BX19_USED_SIZE 3892
 #define T_BX19_PAYLOAD_SIZE (T_BX19_USED_SIZE - T_BX19_HEADER_SIZE)
+#define T_VS_SEEKER_SAVE_MAGIC_OFFSET 11109
+#define T_VS_SEEKER_CHARGE_STEPS_OFFSET 11110
+#define T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET 11120
+#define T_OBJECT_EVENT_TEMPLATE_SIZE 24
+#define T_OBJECT_EVENT_TEMPLATE_TRAINER_TYPE_OFFSET 12
+#define T_OBJECT_EVENT_TEMPLATE_SCRIPT_OFFSET 16
+#define T_OBJECT_EVENT_TEMPLATE_FLAG_ID_OFFSET 20
 
 
 #define T_BX16_CURRENT_BOX_OFFSET       0
@@ -514,6 +521,13 @@ TEST("SaveBlock1 is backwards compatible")
     EXPECT_EQ(sizeof(gSaveBlock1Ptr->pokemonStorageExtensionTail), 1944);
     EXPECT_EQ(offsetof(struct SaveBlock1, futureReserved), 0x3C32);
     EXPECT_EQ(sizeof(gSaveBlock1Ptr->futureReserved), 34);
+    EXPECT_EQ(sizeof(struct ObjectEventTemplate), T_OBJECT_EVENT_TEMPLATE_SIZE);
+    EXPECT_EQ(offsetof(struct ObjectEventTemplate, trainerType), T_OBJECT_EVENT_TEMPLATE_TRAINER_TYPE_OFFSET);
+    EXPECT_EQ(offsetof(struct ObjectEventTemplate, script), T_OBJECT_EVENT_TEMPLATE_SCRIPT_OFFSET);
+    EXPECT_EQ(offsetof(struct ObjectEventTemplate, flagId), T_OBJECT_EVENT_TEMPLATE_FLAG_ID_OFFSET);
+    EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerSaveMagic), T_VS_SEEKER_SAVE_MAGIC_OFFSET);
+    EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerChargeSteps), T_VS_SEEKER_CHARGE_STEPS_OFFSET);
+    EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerSaveMagicInv), T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET);
 }
 
 TEST("SaveBlock2 is backwards compatible")
@@ -2352,3 +2366,10 @@ TEST("Pokemon save structs are expected sizes")
 #undef T_FROZEN_BOXMON_FLAGS_OFFSET
 #undef T_FROZEN_BOXMON_SECURE_OFFSET
 #undef T_FROZEN_BOXMON_HAS_SPECIES
+#undef T_VS_SEEKER_SAVE_MAGIC_OFFSET
+#undef T_VS_SEEKER_CHARGE_STEPS_OFFSET
+#undef T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET
+#undef T_OBJECT_EVENT_TEMPLATE_SIZE
+#undef T_OBJECT_EVENT_TEMPLATE_TRAINER_TYPE_OFFSET
+#undef T_OBJECT_EVENT_TEMPLATE_SCRIPT_OFFSET
+#undef T_OBJECT_EVENT_TEMPLATE_FLAG_ID_OFFSET
