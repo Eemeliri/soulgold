@@ -207,7 +207,7 @@ TEST("Vs Seeker charging requires the item and caps with one transition")
 
 TEST("Vs Seeker resets all and only defeated eligible Trainers on a route")
 {
-    const struct ObjectEventTemplate objects[] =
+    struct ObjectEventTemplate objects[] =
     {
         { .trainerType = TRAINER_TYPE_NORMAL, .script = sWadeScript },
         { .trainerType = TRAINER_TYPE_BURIED, .script = sJoeyScript },
@@ -231,7 +231,7 @@ TEST("Vs Seeker resets all and only defeated eligible Trainers on a route")
 
 TEST("Vs Seeker failed uses preserve charge and Trainer flags")
 {
-    const struct ObjectEventTemplate object =
+    struct ObjectEventTemplate object =
     {
         .trainerType = TRAINER_TYPE_NORMAL,
         .script = sWadeScript,
@@ -256,7 +256,7 @@ TEST("Vs Seeker failed uses preserve charge and Trainer flags")
 
 TEST("Vs Seeker eligibility excludes special and unsafe script shapes")
 {
-    const struct ObjectEventTemplate objects[] =
+    struct ObjectEventTemplate objects[] =
     {
         { .trainerType = TRAINER_TYPE_NONE, .script = sWadeScript },
         { .trainerType = TRAINER_TYPE_NORMAL, .script = sNoTrainerIdScript },
@@ -281,10 +281,10 @@ TEST("Vs Seeker eligibility excludes special and unsafe script shapes")
 
 TEST("Vs Seeker deduplicates shared double Trainer IDs")
 {
-    const struct ObjectEventTemplate objects[] =
+    struct ObjectEventTemplate objects[] =
     {
-        { .trainerType = TRAINER_TYPE_NORMAL, .script = sMikeyScript },
-        { .trainerType = TRAINER_TYPE_NORMAL, .script = sMikeyScript },
+        { .localId = 4, .trainerType = TRAINER_TYPE_NORMAL, .script = sMikeyScript },
+        { .localId = 7, .trainerType = TRAINER_TYPE_NORMAL, .script = sMikeyScript },
     };
 
     SetTrainerFlag(TRAINER_MIKEY);
@@ -293,11 +293,49 @@ TEST("Vs Seeker deduplicates shared double Trainer IDs")
     EXPECT_EQ(VsSeekerCountDefeatedTrainers(objects, ARRAY_COUNT(objects), MAP_TYPE_ROUTE), 1);
     EXPECT_EQ(VsSeekerTryActivate(objects, ARRAY_COUNT(objects), MAP_TYPE_ROUTE), 1);
     EXPECT(!HasTrainerBeenFought(TRAINER_MIKEY));
+    EXPECT(objects[0].vsSeekerTalkOnly);
+    EXPECT(objects[1].vsSeekerTalkOnly);
+}
+
+TEST("Vs Seeker talk-only rematches persist on the current map and expire together")
+{
+    struct ObjectEventTemplate *objects = gSaveBlock1Ptr->objectEventTemplates;
+
+    memset(objects, 0, sizeof(gSaveBlock1Ptr->objectEventTemplates));
+    objects[0] = (struct ObjectEventTemplate){ .localId = 4, .trainerType = TRAINER_TYPE_NORMAL, .script = sWadeScript };
+    objects[1] = (struct ObjectEventTemplate){ .localId = 7, .trainerType = TRAINER_TYPE_NORMAL, .script = sDonScript };
+    gSaveBlock1Ptr->location.mapGroup = 3;
+    gSaveBlock1Ptr->location.mapNum = 9;
+    SetTrainerFlag(TRAINER_WADE);
+    ClearTrainerFlag(TRAINER_DON);
+    SetVsSeekerChargeSteps(VSSEEKER_RECHARGE_STEPS);
+
+    EXPECT_EQ(VsSeekerTryActivate(objects, 2, MAP_TYPE_ROUTE), 1);
+    EXPECT(VsSeekerIsTrainerSightSuppressed(4, 9, 3));
+    EXPECT(!VsSeekerIsTrainerSightSuppressed(7, 9, 3));
+    EXPECT(!VsSeekerIsTrainerSightSuppressed(4, 8, 3));
+    EXPECT(!HasTrainerBeenFought(TRAINER_WADE));
+
+    // A later activation on the same map must not discard an earlier,
+    // still-unfought rematch.
+    SetTrainerFlag(TRAINER_DON);
+    SetVsSeekerChargeSteps(VSSEEKER_RECHARGE_STEPS);
+    EXPECT_EQ(VsSeekerTryActivate(objects, 2, MAP_TYPE_ROUTE), 1);
+    EXPECT(objects[0].vsSeekerTalkOnly);
+    EXPECT(objects[1].vsSeekerTalkOnly);
+    EXPECT(!HasTrainerBeenFought(TRAINER_WADE));
+    EXPECT(!HasTrainerBeenFought(TRAINER_DON));
+
+    VsSeekerExpireTrainerRematches();
+    EXPECT(!VsSeekerIsTrainerSightSuppressed(4, 9, 3));
+    EXPECT(!VsSeekerIsTrainerSightSuppressed(7, 9, 3));
+    EXPECT(HasTrainerBeenFought(TRAINER_WADE));
+    EXPECT(HasTrainerBeenFought(TRAINER_DON));
 }
 
 TEST("Vs Seeker clears only the original Trainer ID")
 {
-    const struct ObjectEventTemplate object =
+    struct ObjectEventTemplate object =
     {
         .trainerType = TRAINER_TYPE_NORMAL,
         .script = sShelbyScript,
@@ -354,7 +392,7 @@ TEST("Vs Seeker migrates completed experts and never revokes qualification")
 
 TEST("Vs Seeker captures expert qualification before resetting Trainers")
 {
-    const struct ObjectEventTemplate object =
+    struct ObjectEventTemplate object =
     {
         .trainerType = TRAINER_TYPE_NORMAL,
         .script = sWadeScript,

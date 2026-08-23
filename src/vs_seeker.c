@@ -151,6 +151,7 @@ static bool32 AreExpertPrerequisitesComplete(const struct VsSeekerExpertQualific
 static bool32 IsAllowedFirstBattleMode(u8 mode);
 static bool32 IsExplicitlyExcludedTrainer(u16 trainerId);
 static u32 CollectDefeatedTrainerIds(const struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType, u16 *trainerIds);
+static void SuppressSightForResetTrainers(struct ObjectEventTemplate *objects, u32 objectCount);
 static u32 TryActivateVsSeekerOnCurrentMap(void);
 static enum VsSeekerUseResult CanUseVsSeeker(void);
 static void Task_VsSeekerFrameCountdown(u8 taskId);
@@ -296,6 +297,57 @@ u32 VsSeekerCountDefeatedTrainers(const struct ObjectEventTemplate *objects, u32
     return CollectDefeatedTrainerIds(objects, objectCount, mapType, trainerIds);
 }
 
+bool32 VsSeekerIsTrainerSightSuppressed(u8 localId, u8 mapNum, u8 mapGroup)
+{
+    u32 i;
+
+    if (mapGroup != gSaveBlock1Ptr->location.mapGroup || mapNum != gSaveBlock1Ptr->location.mapNum)
+        return FALSE;
+
+    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        const struct ObjectEventTemplate *object = &gSaveBlock1Ptr->objectEventTemplates[i];
+
+        if (object->localId == localId)
+            return object->vsSeekerTalkOnly;
+    }
+    return FALSE;
+}
+
+void VsSeekerExpireTrainerRematches(void)
+{
+    u32 i;
+
+    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        struct ObjectEventTemplate *object = &gSaveBlock1Ptr->objectEventTemplates[i];
+        u16 trainerId;
+
+        if (!object->vsSeekerTalkOnly)
+            continue;
+
+        if (VsSeekerGetEligibleTrainerId(object, &trainerId))
+            SetTrainerFlag(trainerId);
+        object->vsSeekerTalkOnly = FALSE;
+    }
+}
+
+static void SuppressSightForResetTrainers(struct ObjectEventTemplate *objects, u32 objectCount)
+{
+    u32 i;
+
+    if (objectCount > OBJECT_EVENT_TEMPLATES_COUNT)
+        objectCount = OBJECT_EVENT_TEMPLATES_COUNT;
+
+    for (i = 0; i < objectCount; i++)
+    {
+        u16 trainerId;
+
+        if (VsSeekerGetEligibleTrainerId(&objects[i], &trainerId) && HasTrainerBeenFought(trainerId))
+            objects[i].vsSeekerTalkOnly = TRUE;
+    }
+}
+
 static bool32 AreExpertPrerequisitesComplete(const struct VsSeekerExpertQualification *qualification)
 {
     u32 i;
@@ -323,7 +375,7 @@ void VsSeekerUpdateExpertQualifications(void)
     }
 }
 
-u32 VsSeekerTryActivate(const struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType)
+u32 VsSeekerTryActivate(struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType)
 {
     u16 trainerIds[OBJECT_EVENT_TEMPLATES_COUNT];
     u32 i;
@@ -339,6 +391,7 @@ u32 VsSeekerTryActivate(const struct ObjectEventTemplate *objects, u32 objectCou
     // Preserve every newly completed route-expert requirement before any of
     // its ordinary Trainer flags can be cleared.
     VsSeekerUpdateExpertQualifications();
+    SuppressSightForResetTrainers(objects, objectCount);
     for (i = 0; i < trainerCount; i++)
         ClearTrainerFlag(trainerIds[i]);
 

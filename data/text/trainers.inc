@@ -4787,8 +4787,7 @@ VSSeeker_Text_BatteryNotChargedNeedXSteps::
 
 VSSeeker_Text_NoTrainersWithinRange::
 	.string "There are no defeated regular\n"
-	.string "Trainers to reset on this route.\p"
-	.string "The Vs. Seeker was turned off.{PAUSE_UNTIL_PRESS}$"
+	.string "Trainers to reset on this route.{PAUSE_UNTIL_PRESS}$"
 
 VSSeeker_Text_OnlyWorksOnRoutes::
 	.string "The Vs. Seeker can only be used\n"
@@ -4796,4 +4795,5 @@ VSSeeker_Text_OnlyWorksOnRoutes::
 
 VSSeeker_Text_TrainersReset::
 	.string "Every defeated regular Trainer on\n"
-	.string "this route is ready to battle again!{PAUSE_UNTIL_PRESS}$"
+	.string "this route is ready to battle again!\p"
+	.string "Speak to them to start the battle.{PAUSE_UNTIL_PRESS}$"

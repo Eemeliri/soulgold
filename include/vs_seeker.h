@@ -16,8 +16,10 @@ void SetVsSeekerChargeSteps(u16 steps);
 bool32 IsVsSeekerMapTypeValid(enum MapType mapType);
 bool32 VsSeekerGetEligibleTrainerId(const struct ObjectEventTemplate *object, u16 *trainerId);
 u32 VsSeekerCountDefeatedTrainers(const struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType);
-u32 VsSeekerTryActivate(const struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType);
+u32 VsSeekerTryActivate(struct ObjectEventTemplate *objects, u32 objectCount, enum MapType mapType);
 void VsSeekerUpdateExpertQualifications(void);
+bool32 VsSeekerIsTrainerSightSuppressed(u8 localId, u8 mapNum, u8 mapGroup);
+void VsSeekerExpireTrainerRematches(void);
 
 #define VSSEEKER_RECHARGE_STEPS 200
 #define VSSEEKER_SAVE_MAGIC 0xA7

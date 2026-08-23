@@ -15,6 +15,7 @@
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
+#include "vs_seeker.h"
 #include "battle_pyramid.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_setup.h"
@@ -484,6 +485,13 @@ static u8 CheckTrainer(u8 objectEventId)
 {
     const u8 *trainerBattlePtr;
     u8 numTrainers = 1;
+
+    // A Trainer reset on this loaded map keeps its original battle script,
+    // but must be spoken to instead of approaching the player again.
+    if (VsSeekerIsTrainerSightSuppressed(gObjectEvents[objectEventId].localId,
+                                         gObjectEvents[objectEventId].mapNum,
+                                         gObjectEvents[objectEventId].mapGroup))
+        return 0;
 
     u8 approachDistance = GetTrainerApproachDistance(&gObjectEvents[objectEventId]);
     if (approachDistance == 0)

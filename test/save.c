@@ -20,6 +20,10 @@
 #define T_VS_SEEKER_SAVE_MAGIC_OFFSET 11109
 #define T_VS_SEEKER_CHARGE_STEPS_OFFSET 11110
 #define T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET 11120
+#define T_OBJECT_EVENT_TEMPLATE_SIZE 24
+#define T_OBJECT_EVENT_TEMPLATE_TRAINER_TYPE_OFFSET 12
+#define T_OBJECT_EVENT_TEMPLATE_SCRIPT_OFFSET 16
+#define T_OBJECT_EVENT_TEMPLATE_FLAG_ID_OFFSET 20
 
 static void FillPokemonStoragePattern(u8 seed)
 {
@@ -58,6 +62,10 @@ static void ResetPokemonStorageTestFlash(void)
 TEST("SaveBlock1 is backwards compatible")
 {
     EXPECT_EQ(sizeof(struct SaveBlock1), T_SAVEBLOCK1_SIZE);
+    EXPECT_EQ(sizeof(struct ObjectEventTemplate), T_OBJECT_EVENT_TEMPLATE_SIZE);
+    EXPECT_EQ(offsetof(struct ObjectEventTemplate, trainerType), T_OBJECT_EVENT_TEMPLATE_TRAINER_TYPE_OFFSET);
+    EXPECT_EQ(offsetof(struct ObjectEventTemplate, script), T_OBJECT_EVENT_TEMPLATE_SCRIPT_OFFSET);
+    EXPECT_EQ(offsetof(struct ObjectEventTemplate, flagId), T_OBJECT_EVENT_TEMPLATE_FLAG_ID_OFFSET);
     EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerSaveMagic), T_VS_SEEKER_SAVE_MAGIC_OFFSET);
     EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerChargeSteps), T_VS_SEEKER_CHARGE_STEPS_OFFSET);
     EXPECT_EQ(offsetof(struct SaveBlock1, vsSeekerSaveMagicInv), T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET);
@@ -231,3 +239,7 @@ TEST("Pokemon save structs are expected sizes")
 #undef T_VS_SEEKER_SAVE_MAGIC_OFFSET
 #undef T_VS_SEEKER_CHARGE_STEPS_OFFSET
 #undef T_VS_SEEKER_SAVE_MAGIC_INV_OFFSET
+#undef T_OBJECT_EVENT_TEMPLATE_SIZE
+#undef T_OBJECT_EVENT_TEMPLATE_TRAINER_TYPE_OFFSET
+#undef T_OBJECT_EVENT_TEMPLATE_SCRIPT_OFFSET
+#undef T_OBJECT_EVENT_TEMPLATE_FLAG_ID_OFFSET
