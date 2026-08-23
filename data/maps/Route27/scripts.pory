@@ -174,6 +174,7 @@ script Route27_RouteExpert {
 	lock
 	faceplayer
 	if (flag(FLAG_ROUTE27_EXPERT)) {
+        setflag(FLAG_ROUTE27_EXPERT_QUALIFIED)
         msgbox("Choice items lock you into one move,
                 but they offset that cost with a
                 big boost to your battling power.")
@@ -191,7 +192,7 @@ script Route27_RouteExpert {
                 If you can overcome them all, find
                 me again and I shall test you one
                 last time.")
-	if (defeated(TRAINER_BLAKE)
+	if (flag(FLAG_ROUTE27_EXPERT_QUALIFIED) || (defeated(TRAINER_BLAKE)
 		&& defeated(TRAINER_BRIAN)
 		&& defeated(TRAINER_REENA)
 		&& defeated(TRAINER_MEGAN)
@@ -203,7 +204,8 @@ script Route27_RouteExpert {
 		&& defeated(TRAINER_GAVEN)
 		&& defeated(TRAINER_JOYCE)
 		&& defeated(TRAINER_BETH)
-		&& defeated(TRAINER_RICHARD)) {
+		&& defeated(TRAINER_RICHARD))) {
+			setflag(FLAG_ROUTE27_EXPERT_QUALIFIED)
 			playse(SE_PIN)
 			applymovement(LOCALID_ROUTE27_EXPERT, Common_Movement_ExclamationMark)
 			waitse

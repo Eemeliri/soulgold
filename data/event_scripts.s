@@ -1148,13 +1148,6 @@ Common_EventScript_LegendaryFlewAway::
 	release
 	end
 
-EventScript_VsSeekerChargingDone::
-	special VsSeekerFreezeObjectsAfterChargeComplete
-	waitstate
-	special VsSeekerResetObjectMovementAfterChargeComplete
-	releaseall
-	end
-
 @HnS 
 Common_EventScript_GiftMon::
 	call_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, Common_EventScript_RecieveMonParty

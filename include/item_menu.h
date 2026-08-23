@@ -129,6 +129,7 @@ bool8 UseRegisteredShortcutOnField(void);
 s32 RegisteredPokegearAppIndex(u8 app);
 void RegisterPokegearApp(u8 app, u8 slot);
 void UnregisterPokegearApp(u8 app);
+void MigrateLegacyRadioShortcut(void);
 void CB2_GoToSellMenu(void);
 void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback);
 void DoWallyTutorialBagMenu(void);

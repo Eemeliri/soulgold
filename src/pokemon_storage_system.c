@@ -2098,6 +2098,17 @@ static s8 SwapInPalNextVBlank(void *palette, void *dst) {
   return 0;
 }
 
+static struct PokemonStorageSystemData *AllocPokeStorageData(void)
+{
+    struct PokemonStorageSystemData *storage = Alloc(sizeof(*storage));
+
+    // There's a super rare chance that vBlank treats this as a write, try to avoid it.
+    if (storage != NULL)
+        storage->swapInPalDst = NULL;
+
+    return storage;
+}
+
 static void CB2_PokeStorage(void)
 {
     RunTasks();
@@ -2115,7 +2126,7 @@ static void EnterPokeStorage(u8 boxOption)
 {
     ResetTasks();
     sCurrentBoxOption = boxOption;
-    sStorage = Alloc(sizeof(*sStorage));
+    sStorage = AllocPokeStorageData();
     sPaletteSwapBuffer = AllocZeroed(32*30);
     allocCount++;
     if (sStorage == NULL || sPaletteSwapBuffer == NULL) {
@@ -2141,7 +2152,7 @@ static void EnterPokeStorage(u8 boxOption)
 static void CB2_ReturnToPokeStorage(void)
 {
     ResetTasks();
-    sStorage = Alloc(sizeof(*sStorage));
+    sStorage = AllocPokeStorageData();
     sPaletteSwapBuffer = AllocZeroed(32*30);
     allocCount++;
     if (sStorage == NULL || sPaletteSwapBuffer == NULL) {
@@ -3396,6 +3407,37 @@ static void Task_ItemToBag(u8 taskId)
 }
 
 #if TESTING
+bool32 PokemonStorageSystem_TestClearsStalePaletteSwapDestination(void)
+{
+    struct PokemonStorageSystemData *storage;
+    uintptr_t staleStorageAddress;
+    bool32 rawAllocationRetainedDestination;
+    bool32 initializedAllocationReusedBlock;
+    bool32 destinationCleared;
+
+    if (sStorage != NULL)
+        return FALSE;
+
+    storage = Alloc(sizeof(*storage));
+    staleStorageAddress = (uintptr_t)storage;
+    storage->swapInPalDst = sItemIconGfxBuffer;
+    Free(storage);
+
+    storage = Alloc(sizeof(*storage));
+    rawAllocationRetainedDestination = (uintptr_t)storage == staleStorageAddress
+                                    && storage->swapInPalDst == sItemIconGfxBuffer;
+    Free(storage);
+
+    storage = AllocPokeStorageData();
+    initializedAllocationReusedBlock = (uintptr_t)storage == staleStorageAddress;
+    destinationCleared = storage->swapInPalDst == NULL;
+    Free(storage);
+
+    return rawAllocationRetainedDestination
+        && initializedAllocationReusedBlock
+        && destinationCleared;
+}
+
 bool32 PokemonStorageSystem_TestTakeItemToBag(u8 boxId, u8 boxPosition)
 {
     u32 i;

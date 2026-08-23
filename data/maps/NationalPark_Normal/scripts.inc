@@ -281,7 +281,7 @@ NationalPark_Normal_Text_SchoolboyJack_After:
 # 141 "data/maps/NationalPark_Normal/scripts.pory"
 	.string "For example…\p"
 # 142 "data/maps/NationalPark_Normal/scripts.pory"
-	.string "There are 50 kinds of TMs.\p"
+	.string "There are 100 kinds of TMs.\p"
 # 143 "data/maps/NationalPark_Normal/scripts.pory"
 	.string "Traded Pokémon level up faster.$"
 # 144 "data/maps/NationalPark_Normal/scripts.pory"

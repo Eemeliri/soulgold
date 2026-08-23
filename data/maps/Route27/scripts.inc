@@ -346,123 +346,129 @@ Route27_RouteExpert::
 	faceplayer
 # 176 "data/maps/Route27/scripts.pory"
 	goto_if_set FLAG_ROUTE27_EXPERT, Route27_RouteExpert_2
-# 184 "data/maps/Route27/scripts.pory"
+# 185 "data/maps/Route27/scripts.pory"
 	msgbox Route27_RouteExpert_Text_1
-# 194 "data/maps/Route27/scripts.pory"
+# 195 "data/maps/Route27/scripts.pory"
+	goto_if_set FLAG_ROUTE27_EXPERT_QUALIFIED, Route27_RouteExpert_5
+# 195 "data/maps/Route27/scripts.pory"
 	checktrainerflag TRAINER_BLAKE
-	goto_if 1, Route27_RouteExpert_7
+	goto_if 1, Route27_RouteExpert_9
 Route27_RouteExpert_4:
-# 226 "data/maps/Route27/scripts.pory"
+# 228 "data/maps/Route27/scripts.pory"
 	release
 	end
 
 Route27_RouteExpert_2:
 # 177 "data/maps/Route27/scripts.pory"
+	setflag FLAG_ROUTE27_EXPERT_QUALIFIED
+# 178 "data/maps/Route27/scripts.pory"
 	msgbox Route27_RouteExpert_Text_0
-# 180 "data/maps/Route27/scripts.pory"
+# 181 "data/maps/Route27/scripts.pory"
 	release
 	end
 
 Route27_RouteExpert_5:
-# 207 "data/maps/Route27/scripts.pory"
-	playse SE_PIN
 # 208 "data/maps/Route27/scripts.pory"
-	applymovement LOCALID_ROUTE27_EXPERT, Common_Movement_ExclamationMark
+	setflag FLAG_ROUTE27_EXPERT_QUALIFIED
 # 209 "data/maps/Route27/scripts.pory"
-	waitse
+	playse SE_PIN
 # 210 "data/maps/Route27/scripts.pory"
+	applymovement LOCALID_ROUTE27_EXPERT, Common_Movement_ExclamationMark
+# 211 "data/maps/Route27/scripts.pory"
+	waitse
+# 212 "data/maps/Route27/scripts.pory"
 	msgbox Route27_RouteExpert_Text_2
-# 214 "data/maps/Route27/scripts.pory"
+# 216 "data/maps/Route27/scripts.pory"
 	trainerbattle_no_intro TRAINER_CHOICE_BAND_EXPERT, Route27_RouteExpert_Text_3
-# 215 "data/maps/Route27/scripts.pory"
+# 217 "data/maps/Route27/scripts.pory"
 	msgbox Route27_RouteExpert_Text_4
-# 218 "data/maps/Route27/scripts.pory"
-	giveitem ITEM_CHOICE_BAND
-# 219 "data/maps/Route27/scripts.pory"
-	setflag FLAG_ROUTE27_EXPERT
 # 220 "data/maps/Route27/scripts.pory"
-	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+	giveitem ITEM_CHOICE_BAND
 # 221 "data/maps/Route27/scripts.pory"
-	special Achievement_CheckAll
+	setflag FLAG_ROUTE27_EXPERT
 # 222 "data/maps/Route27/scripts.pory"
+	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
+# 223 "data/maps/Route27/scripts.pory"
+	special Achievement_CheckAll
+# 224 "data/maps/Route27/scripts.pory"
 	msgbox Route27_RouteExpert_Text_0
 	goto Route27_RouteExpert_4
 
-Route27_RouteExpert_6:
-# 196 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_REENA
-	goto_if 1, Route27_RouteExpert_11
-	goto Route27_RouteExpert_4
-
-Route27_RouteExpert_7:
-# 195 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_BRIAN
-	goto_if 1, Route27_RouteExpert_6
-	goto Route27_RouteExpert_4
-
-Route27_RouteExpert_10:
-# 198 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_GILBERT
-	goto_if 1, Route27_RouteExpert_15
-	goto Route27_RouteExpert_4
-
-Route27_RouteExpert_11:
+Route27_RouteExpert_8:
 # 197 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_MEGAN
-	goto_if 1, Route27_RouteExpert_10
+	checktrainerflag TRAINER_REENA
+	goto_if 1, Route27_RouteExpert_13
 	goto Route27_RouteExpert_4
 
-Route27_RouteExpert_14:
-# 200 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_SCOTT
-	goto_if 1, Route27_RouteExpert_19
+Route27_RouteExpert_9:
+# 196 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_BRIAN
+	goto_if 1, Route27_RouteExpert_8
 	goto Route27_RouteExpert_4
 
-Route27_RouteExpert_15:
+Route27_RouteExpert_12:
 # 199 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_GILBERT
+	goto_if 1, Route27_RouteExpert_17
+	goto Route27_RouteExpert_4
+
+Route27_RouteExpert_13:
+# 198 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_MEGAN
+	goto_if 1, Route27_RouteExpert_12
+	goto Route27_RouteExpert_4
+
+Route27_RouteExpert_16:
+# 201 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_SCOTT
+	goto_if 1, Route27_RouteExpert_21
+	goto Route27_RouteExpert_4
+
+Route27_RouteExpert_17:
+# 200 "data/maps/Route27/scripts.pory"
 	checktrainerflag TRAINER_JOSE
-	goto_if 1, Route27_RouteExpert_14
+	goto_if 1, Route27_RouteExpert_16
 	goto Route27_RouteExpert_4
 
-Route27_RouteExpert_18:
-# 203 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_GAVEN
-	goto_if 1, Route27_RouteExpert_23
-	goto Route27_RouteExpert_4
-
-Route27_RouteExpert_19:
-# 202 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_JAKE
-	goto_if 1, Route27_RouteExpert_18
-	goto Route27_RouteExpert_4
-
-Route27_RouteExpert_22:
-# 205 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_BETH
-	goto_if 1, Route27_RouteExpert_26
-	goto Route27_RouteExpert_4
-
-Route27_RouteExpert_23:
+Route27_RouteExpert_20:
 # 204 "data/maps/Route27/scripts.pory"
-	checktrainerflag TRAINER_JOYCE
-	goto_if 1, Route27_RouteExpert_22
+	checktrainerflag TRAINER_GAVEN
+	goto_if 1, Route27_RouteExpert_25
 	goto Route27_RouteExpert_4
 
-Route27_RouteExpert_26:
+Route27_RouteExpert_21:
+# 203 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_JAKE
+	goto_if 1, Route27_RouteExpert_20
+	goto Route27_RouteExpert_4
+
+Route27_RouteExpert_24:
 # 206 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_BETH
+	goto_if 1, Route27_RouteExpert_28
+	goto Route27_RouteExpert_4
+
+Route27_RouteExpert_25:
+# 205 "data/maps/Route27/scripts.pory"
+	checktrainerflag TRAINER_JOYCE
+	goto_if 1, Route27_RouteExpert_24
+	goto Route27_RouteExpert_4
+
+Route27_RouteExpert_28:
+# 207 "data/maps/Route27/scripts.pory"
 	checktrainerflag TRAINER_RICHARD
 	goto_if 1, Route27_RouteExpert_5
 	goto Route27_RouteExpert_4
 
 
 Route27_RouteExpert_Text_0:
-# 177 "data/maps/Route27/scripts.pory"
+# 178 "data/maps/Route27/scripts.pory"
 	.string "Choice items lock you into one move,\n"
 	.string "but they offset that cost with a\l"
 	.string "big boost to your battling power.$"
 
 Route27_RouteExpert_Text_1:
-# 184 "data/maps/Route27/scripts.pory"
+# 185 "data/maps/Route27/scripts.pory"
 	.string "The final stretch before the mighty\n"
 	.string "Elite Four extends before you now.\p"
 	.string "Here you will only find the most\n"
@@ -473,18 +479,18 @@ Route27_RouteExpert_Text_1:
 	.string "last time.$"
 
 Route27_RouteExpert_Text_2:
-# 210 "data/maps/Route27/scripts.pory"
+# 212 "data/maps/Route27/scripts.pory"
 	.string "You cut through every challenge\n"
 	.string "on this long road. Now show me\l"
 	.string "if you really are worthy for the\l"
 	.string "Elite Four!$"
 
 Route27_RouteExpert_Text_3:
-# 214 "data/maps/Route27/scripts.pory"
+# 216 "data/maps/Route27/scripts.pory"
 	.string "Nothing can stand against you now.$"
 
 Route27_RouteExpert_Text_4:
-# 215 "data/maps/Route27/scripts.pory"
+# 217 "data/maps/Route27/scripts.pory"
 	.string "A perfect choice, backed by real\n"
 	.string "conviction. Take this and let it\l"
 	.string "amplify your strongest attacks.$"

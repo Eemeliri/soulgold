@@ -4,6 +4,7 @@ script GoldenrodShore_Expert {
     lock
     faceplayer
     if (flag(FLAG_GOLDENRODSHORE_EXPERT)) {
+        setflag(FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED)
         msgbox("Guess I'm free to go home now
                 that I no longer have to maintain
                 this route expert title.")
@@ -15,9 +16,10 @@ script GoldenrodShore_Expert {
             If you can beat every trainer on routes
             34, 35 and 36. Come have a battle with
             me.")
-    if (defeated(TRAINER_SAMUEL) && defeated(TRAINER_BRANDON) && defeated(TRAINER_TODD) && defeated(TRAINER_IAN) && defeated(TRAINER_GINA) 
+    if (flag(FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED) || (defeated(TRAINER_SAMUEL) && defeated(TRAINER_BRANDON) && defeated(TRAINER_TODD) && defeated(TRAINER_IAN) && defeated(TRAINER_GINA)
         && defeated(TRAINER_KIM) && defeated(TRAINER_ELLIOT) && defeated(TRAINER_BROOKE) && defeated(TRAINER_IVAN) && defeated(TRAINER_IRWIN) && defeated(TRAINER_WALT) && defeated(TRAINER_ARNIE) && defeated(TRAINER_BRYAN)
-        && defeated(TRAINER_MARK) && defeated(TRAINER_ALAN)) {
+        && defeated(TRAINER_MARK) && defeated(TRAINER_ALAN))) {
+        setflag(FLAG_GOLDENRODSHORE_EXPERT_QUALIFIED)
         applymovement(LOCALID_GOLDENRODSHORE_EXPERT, Common_Movement_ExclamationMark)
         playse(SE_PIN)
         waitse

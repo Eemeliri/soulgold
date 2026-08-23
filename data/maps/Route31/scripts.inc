@@ -360,67 +360,73 @@ Route31_Expert::
 	faceplayer
 # 183 "data/maps/Route31/scripts.pory"
 	goto_if_set FLAG_ROUTE31_EXPERT, Route31_Expert_2
-# 199 "data/maps/Route31/scripts.pory"
+# 200 "data/maps/Route31/scripts.pory"
 	msgbox Route31_Expert_Text_1
-# 207 "data/maps/Route31/scripts.pory"
+# 208 "data/maps/Route31/scripts.pory"
+	goto_if_set FLAG_ROUTE31_EXPERT_QUALIFIED, Route31_Expert_5
+# 208 "data/maps/Route31/scripts.pory"
 	checktrainerflag TRAINER_WADE
-	goto_if 1, Route31_Expert_7
+	goto_if 1, Route31_Expert_9
 Route31_Expert_4:
-# 235 "data/maps/Route31/scripts.pory"
+# 237 "data/maps/Route31/scripts.pory"
 	release
 	end
 
 Route31_Expert_2:
 # 184 "data/maps/Route31/scripts.pory"
+	setflag FLAG_ROUTE31_EXPERT_QUALIFIED
+# 185 "data/maps/Route31/scripts.pory"
 	msgbox Route31_Expert_Text_0
-# 196 "data/maps/Route31/scripts.pory"
+# 197 "data/maps/Route31/scripts.pory"
 	release
 	end
 
 Route31_Expert_5:
-# 208 "data/maps/Route31/scripts.pory"
+# 209 "data/maps/Route31/scripts.pory"
+	setflag FLAG_ROUTE31_EXPERT_QUALIFIED
+# 210 "data/maps/Route31/scripts.pory"
 	msgbox Route31_Expert_Text_2
-# 212 "data/maps/Route31/scripts.pory"
-	trainerbattle_no_intro TRAINER_ROUTE_31_EXPERT, Route31_Expert_Text_3
-# 213 "data/maps/Route31/scripts.pory"
-	createfieldmugshot MUGSHOT_COOLTRAINER_M
 # 214 "data/maps/Route31/scripts.pory"
-	msgbox Route31_Expert_Text_4
-# 217 "data/maps/Route31/scripts.pory"
-	giveitem ITEM_AIR_BALLOON
-# 218 "data/maps/Route31/scripts.pory"
-	setflag FLAG_ROUTE31_EXPERT
-# 219 "data/maps/Route31/scripts.pory"
-	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
-# 220 "data/maps/Route31/scripts.pory"
-	special Achievement_CheckAll
-# 221 "data/maps/Route31/scripts.pory"
+	trainerbattle_no_intro TRAINER_ROUTE_31_EXPERT, Route31_Expert_Text_3
+# 215 "data/maps/Route31/scripts.pory"
 	createfieldmugshot MUGSHOT_COOLTRAINER_M
+# 216 "data/maps/Route31/scripts.pory"
+	msgbox Route31_Expert_Text_4
+# 219 "data/maps/Route31/scripts.pory"
+	giveitem ITEM_AIR_BALLOON
+# 220 "data/maps/Route31/scripts.pory"
+	setflag FLAG_ROUTE31_EXPERT
+# 221 "data/maps/Route31/scripts.pory"
+	addvar VAR_ROUTE_EXPERTS_DEFEATED, 1
 # 222 "data/maps/Route31/scripts.pory"
+	special Achievement_CheckAll
+# 223 "data/maps/Route31/scripts.pory"
+	createfieldmugshot MUGSHOT_COOLTRAINER_M
+# 224 "data/maps/Route31/scripts.pory"
 	msgbox Route31_Expert_Text_0
 	goto Route31_Expert_4
 
-Route31_Expert_6:
-# 207 "data/maps/Route31/scripts.pory"
+Route31_Expert_8:
+# 208 "data/maps/Route31/scripts.pory"
 	checktrainerflag TRAINER_MIKEY
-	goto_if 1, Route31_Expert_10
+	goto_if 1, Route31_Expert_12
 	goto Route31_Expert_4
 
-Route31_Expert_7:
-# 207 "data/maps/Route31/scripts.pory"
+Route31_Expert_9:
+# 208 "data/maps/Route31/scripts.pory"
 	checktrainerflag TRAINER_JOEY
-	goto_if 1, Route31_Expert_6
+	goto_if 1, Route31_Expert_8
 	goto Route31_Expert_4
 
-Route31_Expert_10:
-# 207 "data/maps/Route31/scripts.pory"
+Route31_Expert_12:
+# 208 "data/maps/Route31/scripts.pory"
 	checktrainerflag TRAINER_DON
 	goto_if 1, Route31_Expert_5
 	goto Route31_Expert_4
 
 
 Route31_Expert_Text_0:
-# 184 "data/maps/Route31/scripts.pory"
+# 185 "data/maps/Route31/scripts.pory"
 	.string "Air Balloon lets a Pokémon avoid \n"
 	.string "Ground-type moves until it \l"
 	.string "takes a hit.\p"
@@ -432,7 +438,7 @@ Route31_Expert_Text_0:
 	.string "battle is over.$"
 
 Route31_Expert_Text_1:
-# 199 "data/maps/Route31/scripts.pory"
+# 200 "data/maps/Route31/scripts.pory"
 	.string "I'm what they call a route expert. \p"
 	.string "If you manage to beat every trainer on \n"
 	.string "Route 30 and 31, come find me again \l"
@@ -441,16 +447,16 @@ Route31_Expert_Text_1:
 	.string "if you manage to win.$"
 
 Route31_Expert_Text_2:
-# 208 "data/maps/Route31/scripts.pory"
+# 210 "data/maps/Route31/scripts.pory"
 	.string "Oh, you have indeed defeated \n"
 	.string "all the trainers on this route.\p"
 	.string "I will battle you as promised.$"
 
 Route31_Expert_Text_3:
-# 212 "data/maps/Route31/scripts.pory"
+# 214 "data/maps/Route31/scripts.pory"
 	.string "Popped off...$"
 
 Route31_Expert_Text_4:
-# 214 "data/maps/Route31/scripts.pory"
+# 216 "data/maps/Route31/scripts.pory"
 	.string "You are better than I had assumed. \p"
 	.string "Take this for your victory.$"

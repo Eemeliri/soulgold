@@ -592,19 +592,19 @@ static const u8 sKeyItemBoxYPos[MAX_REGISTERED_ITEMS] = {(DISPLAY_HEIGHT / 2) - 
 static const u32 sRegisteredPokegearMapIcon[] = INCBIN_U32("graphics/pokegear/registerable_map_icon.4bpp.smol");
 static const u32 sRegisteredPokegearDexNavIcon[] = INCBIN_U32("graphics/pokegear/registerable_dexnav_icon.4bpp.smol");
 static const u32 sRegisteredPokegearTrophiesIcon[] = INCBIN_U32("graphics/pokegear/registerable_trophies_icon.4bpp.smol");
-static const u32 sRegisteredPokegearJukeboxIcon[] = INCBIN_U32("graphics/pokegear/registerable_radio_icon.4bpp.smol");
+static const u32 sRegisteredPokegearRadioIcon[] = INCBIN_U32("graphics/pokegear/registerable_radio_icon.4bpp.smol");
 
 static const u16 sRegisteredPokegearMapIconPal[] = INCBIN_U16("graphics/pokegear/registerable_map_icon.gbapal");
 static const u16 sRegisteredPokegearDexNavIconPal[] = INCBIN_U16("graphics/pokegear/registerable_dexnav_icon.gbapal");
 static const u16 sRegisteredPokegearTrophiesIconPal[] = INCBIN_U16("graphics/pokegear/registerable_trophies_icon.gbapal");
-static const u16 sRegisteredPokegearJukeboxIconPal[] = INCBIN_U16("graphics/pokegear/registerable_radio_icon.gbapal");
+static const u16 sRegisteredPokegearRadioIconPal[] = INCBIN_U16("graphics/pokegear/registerable_radio_icon.gbapal");
 
 static const u32 *const sRegisteredPokegearIconGfx[POKEGEAR_APP_COUNT] =
 {
     [POKEGEAR_APP_MAP] = sRegisteredPokegearMapIcon,
     [POKEGEAR_APP_DEXNAV] = sRegisteredPokegearDexNavIcon,
     [POKEGEAR_APP_TROPHIES] = sRegisteredPokegearTrophiesIcon,
-    [POKEGEAR_APP_JUKEBOX] = sRegisteredPokegearJukeboxIcon,
+    [POKEGEAR_APP_RADIO] = sRegisteredPokegearRadioIcon,
 };
 
 static const u16 *const sRegisteredPokegearIconPal[POKEGEAR_APP_COUNT] =
@@ -612,7 +612,7 @@ static const u16 *const sRegisteredPokegearIconPal[POKEGEAR_APP_COUNT] =
     [POKEGEAR_APP_MAP] = sRegisteredPokegearMapIconPal,
     [POKEGEAR_APP_DEXNAV] = sRegisteredPokegearDexNavIconPal,
     [POKEGEAR_APP_TROPHIES] = sRegisteredPokegearTrophiesIconPal,
-    [POKEGEAR_APP_JUKEBOX] = sRegisteredPokegearJukeboxIconPal,
+    [POKEGEAR_APP_RADIO] = sRegisteredPokegearRadioIconPal,
 };
 
 enum {
@@ -2366,6 +2366,24 @@ static void RefreshRegisteredItemCompat(void)
             break;
         }
     }
+}
+
+void MigrateLegacyRadioShortcut(void)
+{
+    u32 i;
+    enum Item replacement = CheckBagHasItem(ITEM_VS_SEEKER, 1) ? ITEM_VS_SEEKER : ITEM_NONE;
+
+    EnsureRegisteredShortcutsInitialized();
+    for (i = 0; i < MAX_REGISTERED_ITEMS; i++)
+    {
+        if (gSaveBlock1Ptr->registeredShortcutTypes[i] == REGISTERED_SHORTCUT_ITEM
+         && gSaveBlock1Ptr->registeredItems[i] == ITEM_RADIO)
+            gSaveBlock1Ptr->registeredItems[i] = replacement;
+    }
+
+    if (gSaveBlock1Ptr->registeredItemCompat == ITEM_RADIO)
+        gSaveBlock1Ptr->registeredItemCompat = replacement;
+    RefreshRegisteredItemCompat();
 }
 
 s32 RegisteredPokegearAppIndex(u8 app)

@@ -1400,6 +1400,7 @@ static void SetBattledTrainersFlags(void)
     if (TRAINER_BATTLE_PARAM.opponentB != 0)
         FlagSet(GetTrainerBFlag());
     FlagSet(GetTrainerAFlag());
+    VsSeekerUpdateExpertQualifications();
 }
 
 static void UNUSED SetBattledTrainerFlag(void)
@@ -2005,9 +2006,6 @@ static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u
 {
     s32 i;
 
-    if (CheckBagHasItem(ITEM_VS_SEEKER, 1) && I_VS_SEEKER_CHARGING != 0)
-        return FALSE;
-
     for (i = 0; i < REMATCH_SPECIAL_TRAINER_START; i++)
     {
         if (!DoesCurrentMapMatchRematchTrainerMap(i,table,mapGroup,mapNum) || IsRematchForbidden(i))
@@ -2148,20 +2146,6 @@ static void ClearTrainerWantRematchState(const struct RematchTrainer *table, u16
 #endif //FREE_MATCH_CALL
 }
 
-void ClearCurrentTrainerWantRematchVsSeeker(void)
-{
-#if FREE_MATCH_CALL == FALSE
-    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && FlagGet(I_VS_SEEKER_CHARGING) && (I_VS_SEEKER_CHARGING != 0))
-    {
-        for (u32 i = 0; i < REMATCH_TABLE_ENTRIES; i++)
-        {
-            if (gSaveBlock1Ptr->trainerRematches[i] == TRAINER_BATTLE_PARAM.opponentA)
-                gSaveBlock1Ptr->trainerRematches[i] = 0;
-        }
-    }
-#endif //FREE_MATCH_CALL
-}
-
 static u32 GetTrainerMatchCallFlag(u32 trainerId)
 {
     s32 i;
@@ -2193,13 +2177,6 @@ static bool8 WasSecondRematchWon(const struct RematchTrainer *table, u16 firstBa
         return FALSE;
     if (!HasTrainerBeenFought(table[tableId].trainerIds[1]))
         return FALSE;
-#if FREE_MATCH_CALL == FALSE
-    if (I_VS_SEEKER_CHARGING)
-    {
-        if (gSaveBlock1Ptr->trainerRematches[tableId] == 0)
-            return FALSE;
-    }
-#endif
     return TRUE;
 }
 
@@ -2227,9 +2204,6 @@ void IncrementRematchStepCounter(void)
 {
 #if FREE_MATCH_CALL == FALSE
     if (!HasEnoughBadgesForRematch())
-        return;
-
-    if (IsVsSeekerEnabled())
         return;
 
     if (gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
@@ -2268,10 +2242,7 @@ bool32 IsRematchTrainerIn(u16 mapGroup, u16 mapNum)
 #if FREE_MATCH_CALL == FALSE
 static u16 GetRematchTrainerId(u16 trainerId)
 {
-    if (FlagGet(I_VS_SEEKER_CHARGING) && (I_VS_SEEKER_CHARGING != 0))
-        return GetRematchTrainerIdVSSeeker(trainerId);
-    else
-        return GetRematchTrainerIdFromTable(gRematchTable, trainerId);
+    return GetRematchTrainerIdFromTable(gRematchTable, trainerId);
 }
 #endif //FREE_MATCH_CALL
 
@@ -2300,9 +2271,6 @@ bool8 IsTrainerReadyForRematch(void)
 
 static void HandleRematchVarsOnBattleEnd(void)
 {
-    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && (I_VS_SEEKER_CHARGING != 0))
-        ClearRematchMovementByTrainerId();
-
     ClearTrainerWantRematchState(gRematchTable, TRAINER_BATTLE_PARAM.opponentA);
     SetBattledTrainersFlags();
 }
