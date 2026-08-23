@@ -1240,13 +1240,13 @@ static bool8 CreateVoltTackleBolt(struct Task *task, u8 taskId)
     switch (gAnimMoveIndex)
     {
     case MOVE_FAIRY_LOCK:
-        spriteId = CreateSprite(&gFairyLockChainsSpriteTemplate, task->data[3], task->data[5] + 10, 35);
+        spriteId = CreateSpriteUnchecked(&gFairyLockChainsSpriteTemplate, task->data[3], task->data[5] + 10, 35);
         break;
     case MOVE_COLLISION_COURSE:
-        spriteId = CreateSprite(&gCollisionCourseSpriteTemplate, task->data[3], task->data[5], 35);
+        spriteId = CreateSpriteUnchecked(&gCollisionCourseSpriteTemplate, task->data[3], task->data[5], 35);
         break;
     default:
-        spriteId = CreateSprite(&gVoltTackleBoltSpriteTemplate, task->data[3], task->data[5], 35);
+        spriteId = CreateSpriteUnchecked(&gVoltTackleBoltSpriteTemplate, task->data[3], task->data[5], 35);
         break;
     }
     bool32 doDestroyOamMatrix = (gAnimMoveIndex == MOVE_FAIRY_LOCK) || (gAnimMoveIndex == MOVE_COLLISION_COURSE);
