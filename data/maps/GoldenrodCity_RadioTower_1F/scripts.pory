@@ -49,9 +49,9 @@ RadioTower1F_EventScript_Whitney::
 RadioTower1F_Text_Whitney1::
 	.string "Whitney: Hi!\p"
 	.string "My name is Whitney!\p"
-	.string "I heard about the Quiz to win a\n"
-	.string "Radio, so I came here to get\l"
-	.string "one...\p"
+	.string "I heard about the Radio Quiz and\n"
+	.string "its special prize, so I came here\l"
+	.string "to enter...\p"
 	.string "But this Quiz is so hard!$"
 
 RadioTower1F_Text_Whitney2::
@@ -65,8 +65,42 @@ RadioTower1F_EventScript_Reception::
 	lock
 	faceplayer
 	msgbox RadioTower1F_Text_ReceptionistWelcome, MSGBOX_DEFAULT
+	checkitem ITEM_RADIO
+	goto_if_eq VAR_RESULT, TRUE, RadioTower1F_EventScript_ExchangeLegacyRadio
 	goto_if_unset FLAG_ENABLE_RADIO, RadioTower1F_EventScript_ReceptionOfferQuiz
 	goto RadioTowerReceiptionist
+	closemessage
+	release
+	end
+
+RadioTower1F_EventScript_ExchangeLegacyRadio::
+	checkitem ITEM_VS_SEEKER
+	goto_if_eq VAR_RESULT, TRUE, RadioTower1F_EventScript_ExchangeLegacyRadioForBigNugget
+	msgbox RadioTower1F_Text_ExchangeLegacyRadioForVsSeeker, MSGBOX_DEFAULT
+	removeitem ITEM_RADIO
+	giveitem ITEM_VS_SEEKER
+	special MigrateLegacyRadioShortcut
+	setflag FLAG_ENABLE_RADIO
+	msgbox RadioTower1F_Text_LegacyExchangeComplete, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+RadioTower1F_EventScript_ExchangeLegacyRadioForBigNugget::
+	checkitemspace ITEM_BIG_NUGGET
+	goto_if_eq VAR_RESULT, FALSE, RadioTower1F_EventScript_LegacyExchangeNoRoom
+	msgbox RadioTower1F_Text_ExchangeLegacyRadioForBigNugget, MSGBOX_DEFAULT
+	removeitem ITEM_RADIO
+	giveitem ITEM_BIG_NUGGET
+	special MigrateLegacyRadioShortcut
+	setflag FLAG_ENABLE_RADIO
+	msgbox RadioTower1F_Text_LegacyExchangeComplete, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+RadioTower1F_EventScript_LegacyExchangeNoRoom::
+	msgbox RadioTower1F_Text_LegacyExchangeNoRoom, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -113,18 +147,17 @@ RadioTower1F_EventScript_ReceptionQuiz4::
 
 RadioTower1F_EventScript_ReceptionQuiz5::
 	msgbox RadioTower1F_Text_QuizQuestion5, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, FALSE, RadioTower1F_EventScript_ReceptionGiveRadio
+	goto_if_eq VAR_RESULT, FALSE, RadioTower1F_EventScript_ReceptionGivePrize
 	msgbox RadioTower1F_Text_WrongAnswer, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
 
-RadioTower1F_EventScript_ReceptionGiveRadio::
+RadioTower1F_EventScript_ReceptionGivePrize::
 	msgbox RadioTower1F_Text_QuizWin, MSGBOX_DEFAULT
 	closemessage
-	playfanfare MUS_OBTAIN_ITEM
-	giveitem ITEM_RADIO
-	waitfanfare
+	giveitem ITEM_VS_SEEKER
+	goto_if_eq VAR_RESULT, FALSE, RadioTower1F_EventScript_QuizPrizeNoRoom
 	msgbox RadioTower1F_Text_TuneIn, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
@@ -142,6 +175,12 @@ RadioTower1F_EventScript_ReceptionGiveRadio::
 	setflag FLAG_ENABLE_RADIO
 	setflag FLAG_HIDE_GOLDENROD_BEAUTY
 	setvar VAR_GOLDENROD_CITY_STATE, 2
+	release
+	end
+
+RadioTower1F_EventScript_QuizPrizeNoRoom::
+	msgbox RadioTower1F_Text_QuizPrizeNoRoom, MSGBOX_DEFAULT
+	closemessage
 	release
 	end
 
@@ -170,13 +209,36 @@ RadioTower1F_Text_ReceptionistNoTours:
     .string "I'm sorry, but we're not\n"
     .string "offering any tours today.$"
 
+RadioTower1F_Text_ExchangeLegacyRadioForVsSeeker:
+    .string "Oh! You still have one of our old\n"
+    .string "standalone Radios.\p"
+    .string "Radio reception is now built into\n"
+    .string "every Pokégear, so we'll replace it\l"
+    .string "with a Vs. Seeker.$"
+
+RadioTower1F_Text_ExchangeLegacyRadioForBigNugget:
+    .string "Oh! You still have one of our old\n"
+    .string "standalone Radios.\p"
+    .string "You already own its replacement, so\n"
+    .string "please accept a Big Nugget instead.$"
+
+RadioTower1F_Text_LegacyExchangeComplete:
+    .string "Thank you for returning the old\n"
+    .string "model. Please enjoy our broadcasts!$"
+
+RadioTower1F_Text_LegacyExchangeNoRoom:
+    .string "I'd like to exchange that old Radio,\n"
+    .string "but your Items Pocket is full.\p"
+    .string "Please make room and speak to me\n"
+    .string "again.$"
+
 RadioTower1F_Text_RadioCardWomanOfferQuiz:
     .string "We have a special quiz campaign on\n"
     .string "right now.\p"
     .string "Answer five questions correctly to\n"
-    .string "win a Radio.\p"
-    .string "You and your Pokémon can use it to\n"
-    .string "play music anytime, anywhere.\p"
+    .string "win a Vs. Seeker.\p"
+    .string "It lets you challenge route Trainers\n"
+    .string "to rematches after it recharges.\p"
     .string "Would you like to take the quiz?$"
 
 RadioTower1F_Text_QuizQuestion1:
@@ -211,15 +273,18 @@ RadioTower1F_Text_QuizQuestion5:
 RadioTower1F_Text_QuizWin:
     .string "Bingo! You got it!\n"
     .string "Congratulations!\p"
-    .string "Here's your prize, a Radio!$"
-
-RadioTower1F_Text_PokegearRadio:
-    .string "{PLAYER}'s Pokégear can now double as\n"
-    .string "a radio!$"
+    .string "Here's your prize, a Vs. Seeker!$"
 
 RadioTower1F_Text_TuneIn:
-    .string "Please tune in to our radio shows\n"
-	.string "between 6PM and 12AM!.$"
+    .string "The Radio is already built into your\n"
+    .string "Pokégear.\p"
+    .string "Buena's Password airs every day\n"
+	.string "from 6 PM to midnight!$"
+
+RadioTower1F_Text_QuizPrizeNoRoom:
+    .string "Oh, your Key Items Pocket is full.\p"
+    .string "Please make room, then take the quiz\n"
+    .string "again to receive your prize.$"
 
 RadioTower1F_Text_WrongAnswer:
     .string "Oh, dear.\n"
@@ -460,4 +525,3 @@ script RadioTowerReceiptionist {
     release
 	end
 }
-

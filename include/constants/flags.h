@@ -975,7 +975,7 @@
 #define FLAG_GOLDENROD_ALL_SHUTTERS_OPEN                            0x39C
 #define FLAG_COMPLETED_SWITCHES                                     0x39D
 #define FLAG_HIDE_GOLDENROD_BEAUTY                                  0x39E
-#define FLAG_ENABLE_RADIO                                           0x39F
+#define FLAG_ENABLE_RADIO                                           0x39F // Completed the Radio Tower quiz; value retained for old saves.
 #define FLAG_KANTO_RADIO_GOT                                        0x3A0
 #define FLAG_HIDE_RADIOTOWER_GATE                                   0x3A1
 #define FLAG_HIDE_ROCKET_GOLDENROD_RADIOTOWER_1                     0x3A2
