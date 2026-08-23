@@ -852,30 +852,30 @@ static void AnimTask_ElectricBolt_Step(u8 taskId)
     {
     case 0:
         r12 *= 1;
-        spriteId = CreateSprite(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
+        spriteId = CreateSpriteUnchecked(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
         r7++;
         break;
     case 2:
         r12 *= 2;
         r8 += r2;
-        spriteId = CreateSprite(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
+        spriteId = CreateSpriteUnchecked(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
         r7++;
         break;
     case 4:
         r12 *= 3;
         r8 += r2 * 2;
-        spriteId = CreateSprite(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
+        spriteId = CreateSpriteUnchecked(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
         r7++;
         break;
     case 6:
         r12 *= 4;
         r8 += r2 * 3;
-        spriteId = CreateSprite(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
+        spriteId = CreateSpriteUnchecked(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
         r7++;
         break;
     case 8:
         r12 *= 5;
-        spriteId = CreateSprite(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
+        spriteId = CreateSpriteUnchecked(&gElectricBoltSegmentSpriteTemplate, x, y + r12, 2);
         r7++;
         break;
     case 10:
@@ -883,7 +883,7 @@ static void AnimTask_ElectricBolt_Step(u8 taskId)
         return;
     }
 
-    if (r7)
+    if (r7 && spriteId != MAX_SPRITES)
     {
         gSprites[spriteId].oam.tileNum += r8;
         gSprites[spriteId].data[0] = sp;
@@ -917,13 +917,16 @@ void AnimThunderWave(struct Sprite *sprite)
     sprite->x += gBattleAnimArgs[0];
     sprite->y += gBattleAnimArgs[1];
     if (gAnimMoveIndex != MOVE_ANCHOR_SHOT)
-        spriteId = CreateSprite(&gThunderWaveSpriteTemplate, sprite->x + 32, sprite->y, sprite->subpriority);
+        spriteId = CreateSpriteUnchecked(&gThunderWaveSpriteTemplate, sprite->x + 32, sprite->y, sprite->subpriority);
     else
-        spriteId = CreateSprite(&gAnchorShotChainTemplate, sprite->x + 32, sprite->y, sprite->subpriority);
+        spriteId = CreateSpriteUnchecked(&gAnchorShotChainTemplate, sprite->x + 32, sprite->y, sprite->subpriority);
 
-    gSprites[spriteId].oam.tileNum += 8;
-    gAnimVisualTaskCount++;
-    gSprites[spriteId].callback = AnimThunderWave_Step;
+    if (spriteId != MAX_SPRITES)
+    {
+        gSprites[spriteId].oam.tileNum += 8;
+        gAnimVisualTaskCount++;
+        gSprites[spriteId].callback = AnimThunderWave_Step;
+    }
     sprite->callback = AnimThunderWave_Step;
 }
 
@@ -1391,7 +1394,7 @@ void AnimTask_ShockWaveProgressingBolt(u8 taskId)
 
 static bool8 CreateShockWaveBoltSprite(struct Task *task, u8 taskId)
 {
-    u8 spriteId = CreateSprite(&gShockWaveProgressingBoltSpriteTemplate, task->data[6], task->data[7], 35);
+    u8 spriteId = CreateSpriteUnchecked(&gShockWaveProgressingBoltSpriteTemplate, task->data[6], task->data[7], 35);
     if (spriteId != MAX_SPRITES)
     {
         gSprites[spriteId].oam.tileNum += task->data[4];
@@ -1473,7 +1476,7 @@ void AnimTask_ShockWaveLightning(u8 taskId)
 
 static bool8 CreateShockWaveLightningSprite(struct Task *task, u8 taskId)
 {
-    u8 spriteId = CreateSprite(&gLightningSpriteTemplate, task->data[13], task->data[14], task->data[12]);
+    u8 spriteId = CreateSpriteUnchecked(&gLightningSpriteTemplate, task->data[13], task->data[14], task->data[12]);
 
     if (spriteId != MAX_SPRITES)
     {
@@ -1516,7 +1519,7 @@ void AnimTask_CreateIons(u8 taskId)
     {
         x = Random2() % DISPLAY_WIDTH;
         y = Random2() % (DISPLAY_HEIGHT / 2);
-        CreateSprite(&gIonSpriteTemplate, x, y, 4);
+        CreateSpriteUnchecked(&gIonSpriteTemplate, x, y, 4);
     }
     if (gTasks[taskId].data[0] == gTasks[taskId].data[3])
         DestroyAnimVisualTask(taskId);

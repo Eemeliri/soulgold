@@ -6,6 +6,23 @@ ASSUMPTIONS
     ASSUME(MoveHasAdditionalEffectSelf(MOVE_METEOR_ASSAULT, MOVE_EFFECT_RECHARGE) == TRUE);
 }
 
+DOUBLE_BATTLE_TEST("Meteor Assault's animation does not crash in Double Battles")
+{
+    FORCE_MOVE_ANIM(TRUE);
+    GIVEN {
+        PLAYER(SPECIES_SIRFETCHD);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_METEOR_ASSAULT, target: opponentLeft); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_METEOR_ASSAULT, playerLeft);
+    } THEN {
+        FORCE_MOVE_ANIM(FALSE);
+    }
+}
+
 SINGLE_BATTLE_TEST("Recharge moves make the user unable to attack for exactly one turn")
 {
     GIVEN {

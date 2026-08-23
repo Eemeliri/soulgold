@@ -1469,7 +1469,7 @@ static void MakeCaptureStars(struct Sprite *sprite)
     LoadBallParticleGfx(BALL_MASTER);
     for (i = 0; i < ARRAY_COUNT(sCaptureStars); i++)
     {
-        u8 spriteId = CreateSprite(&sBallParticles[BALL_MASTER].spriteTemplate, sprite->x, sprite->y, subpriority);
+        u8 spriteId = CreateSpriteUnchecked(&sBallParticles[BALL_MASTER].spriteTemplate, sprite->x, sprite->y, subpriority);
         if (spriteId != MAX_SPRITES)
         {
             gSprites[spriteId].sDuration = 24;
@@ -2333,22 +2333,31 @@ static void Task_ShinyStars(u8 taskId)
     starIdx = gTasks[taskId].tStarIdx;
     if (starIdx == 0) // Big star
     {
-        spriteId = CreateSprite(&gWishStarSpriteTemplate, x, y, 5);
+        spriteId = CreateSpriteUnchecked(&gWishStarSpriteTemplate, x, y, 5);
     }
     else if (starIdx >= 0 && gTasks[taskId].tStarIdx < 4) // Medium star
     {
-        spriteId = CreateSprite(&gMiniTwinklingStarSpriteTemplate, x, y, 5);
-        gSprites[spriteId].oam.tileNum += 4;
+        spriteId = CreateSpriteUnchecked(&gMiniTwinklingStarSpriteTemplate, x, y, 5);
+        if (spriteId != MAX_SPRITES)
+            gSprites[spriteId].oam.tileNum += 4;
     }
     else // Small star
     {
-        spriteId = CreateSprite(&gMiniTwinklingStarSpriteTemplate, x, y, 5);
-        gSprites[spriteId].oam.tileNum += 5;
+        spriteId = CreateSpriteUnchecked(&gMiniTwinklingStarSpriteTemplate, x, y, 5);
+        if (spriteId != MAX_SPRITES)
+            gSprites[spriteId].oam.tileNum += 5;
     }
 
-    if (gTasks[taskId].tStarMove == SHINY_STAR_ENCIRCLE)
+    if (spriteId == MAX_SPRITES)
+    {
+        gTasks[taskId].tStarIdx++;
+    }
+    else if (gTasks[taskId].tStarMove == SHINY_STAR_ENCIRCLE)
     {
         gSprites[spriteId].callback = SpriteCB_ShinyStars_Encircle;
+        gSprites[spriteId].sTaskId = taskId;
+        gTasks[taskId].tStarIdx++;
+        gTasks[taskId].tNumStars++;
     }
     else
     {
@@ -2365,12 +2374,10 @@ static void Task_ShinyStars(u8 taskId)
 
             PlaySE12WithPanning(SE_SHINY, pan);
         }
-    }
-
-    gSprites[spriteId].sTaskId = taskId;
-    gTasks[taskId].tStarIdx++;
-    if (spriteId != MAX_SPRITES)
+        gSprites[spriteId].sTaskId = taskId;
+        gTasks[taskId].tStarIdx++;
         gTasks[taskId].tNumStars++;
+    }
 
     if (gTasks[taskId].tStarIdx == 5)
         gTasks[taskId].func = Task_ShinyStars_Wait;

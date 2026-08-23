@@ -1524,7 +1524,7 @@ static bool8 GenerateHailParticle(u8 hailStructId, u8 affineAnimNum, u8 taskId, 
         battlerY = sHailCoordData[hailStructId].y;
     }
     spriteX = battlerX - ((battlerY + 8) / 2);
-    id = CreateSprite(&gHailParticleSpriteTemplate, spriteX, -8, 18);
+    id = CreateSpriteUnchecked(&gHailParticleSpriteTemplate, spriteX, -8, 18);
     if (id == MAX_SPRITES)
     {
         return FALSE;
@@ -1554,8 +1554,8 @@ static void AnimHailBegin(struct Sprite *sprite)
 
     if (sprite->sSpawnImpactEffect == 1 && sprite->sAffineAnimNum == 0)
     {
-        spriteId = CreateSprite(&gIceCrystalHitLargeSpriteTemplate,
-                                sprite->sTargetX, sprite->sTargetY, sprite->subpriority);
+        spriteId = CreateSpriteUnchecked(&gIceCrystalHitLargeSpriteTemplate,
+                                         sprite->sTargetX, sprite->sTargetY, sprite->subpriority);
 
         sprite->data[0] = spriteId;
         if (spriteId != MAX_SPRITES)
@@ -1566,6 +1566,10 @@ static void AnimHailBegin(struct Sprite *sprite)
             gSprites[sprite->data[0]].callback = AnimHailContinue;
             gSprites[sprite->data[0]].sOwnerTaskId = sprite->sOwnerTaskId;
             gSprites[sprite->data[0]].sOwnerTaskSpriteCountField = sprite->sOwnerTaskSpriteCountField;
+        }
+        else
+        {
+            gTasks[sprite->sOwnerTaskId].data[sprite->sOwnerTaskSpriteCountField]--;
         }
 
         FreeOamMatrix(sprite->oam.matrixNum);
@@ -1724,7 +1728,7 @@ void AnimTask_CreateSnowflakes(u8 taskId)
     {
         x = Random2() % DISPLAY_WIDTH;
         y = Random2() % (DISPLAY_HEIGHT / 2);
-        CreateSprite(&gSnowFlakesSpriteTemplate, x, y, 4);
+        CreateSpriteUnchecked(&gSnowFlakesSpriteTemplate, x, y, 4);
     }
     if (gTasks[taskId].data[0] == gTasks[taskId].data[3])
         DestroyAnimVisualTask(taskId);
