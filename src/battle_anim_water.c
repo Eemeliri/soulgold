@@ -635,7 +635,7 @@ void AnimTask_CreateRaindrops(u8 taskId)
     {
         x = Random2() % DISPLAY_WIDTH;
         y = Random2() % (DISPLAY_HEIGHT / 2);
-        CreateSprite(&gRainDropSpriteTemplate, x, y, 4);
+        CreateSpriteUnchecked(&gRainDropSpriteTemplate, x, y, 4);
     }
     if (gTasks[taskId].tRaindropSpawnTimer == gTasks[taskId].tRaindropSpawnDuration)
         DestroyAnimVisualTask(taskId);
@@ -1361,7 +1361,7 @@ static void CreateWaterSpoutLaunchDroplets(struct Task *task, u8 taskId)
         increment = 1;
     for (i = 0; i < 20; i += increment)
     {
-        spriteId = CreateSprite(&gSmallWaterOrbSpriteTemplate, attackerCoordX, attackerCoordY, subpriority);
+        spriteId = CreateSpriteUnchecked(&gSmallWaterOrbSpriteTemplate, attackerCoordX, attackerCoordY, subpriority);
         if (spriteId != MAX_SPRITES)
         {
             gSprites[spriteId].data[1] = i;
@@ -1542,7 +1542,7 @@ static void AnimTask_WaterSpoutRain_Step(u8 taskId)
 static void CreateWaterSpoutRainDroplet(struct Task *task, u8 taskId)
 {
     u16 yPosArg = ((gSineTable[task->tSineTableIndex] + 3) >> 4) + task->tDropEndYPos;
-    u8 spriteId = CreateSprite(&gSmallWaterOrbSpriteTemplate, task->tDropXPos, task->tDropInitialYPos, 0);
+    u8 spriteId = CreateSpriteUnchecked(&gSmallWaterOrbSpriteTemplate, task->tDropXPos, task->tDropInitialYPos, 0);
 
     if (spriteId != MAX_SPRITES)
     {
@@ -1565,13 +1565,17 @@ static void AnimWaterSpoutRain(struct Sprite *sprite)
         if (sprite->y >= sprite->data[5])
         {
             gTasks[sprite->data[6]].tDropHasHit = TRUE;
-            sprite->data[1] = CreateSprite(&gWaterHitSplatSpriteTemplate, sprite->x, sprite->y, 1);
+            sprite->data[1] = CreateSpriteUnchecked(&gWaterHitSplatSpriteTemplate, sprite->x, sprite->y, 1);
             if (sprite->data[1] != MAX_SPRITES)
             {
                 StartSpriteAffineAnim(&gSprites[sprite->data[1]], 3);
                 gSprites[sprite->data[1]].data[6] = sprite->data[6];
                 gSprites[sprite->data[1]].data[7] = sprite->data[7];
                 gSprites[sprite->data[1]].callback = AnimWaterSpoutRainHit;
+            }
+            else
+            {
+                gTasks[sprite->data[6]].data[sprite->data[7]]--;
             }
             DestroySprite(sprite);
         }
@@ -1701,7 +1705,7 @@ static void CreateWaterSportDroplet(struct Task *task)
     if (++task->data[2] > 1)
     {
         task->data[2] = 0;
-        spriteId = CreateSprite(&gSmallWaterOrbSpriteTemplate, task->data[3], task->data[4], 10);
+        spriteId = CreateSpriteUnchecked(&gSmallWaterOrbSpriteTemplate, task->data[3], task->data[4], 10);
         if (spriteId != MAX_SPRITES)
         {
             gSprites[spriteId].data[0] = 16;
@@ -1830,24 +1834,30 @@ static void CreateWaterPulseRingBubbles(struct Sprite *sprite, int xDiff, int yD
 
     for (i = 0; i <= 0; i++)
     {
-        spriteId = CreateSprite(&gWaterPulseRingBubbleSpriteTemplate, combinedX, combinedY + something, 130);
-        gSprites[spriteId].data[0] = 20;
-        gSprites[spriteId].data[1] = randomSomethingY;
-        gSprites[spriteId].subpriority = GetBattlerSpriteSubpriority(gBattleAnimAttacker) - 1;
-        if (randomSomethingX < 0)
-            gSprites[spriteId].data[2] = -randomSomethingX;
-        else
-            gSprites[spriteId].data[2] = randomSomethingX;
+        spriteId = CreateSpriteUnchecked(&gWaterPulseRingBubbleSpriteTemplate, combinedX, combinedY + something, 130);
+        if (spriteId != MAX_SPRITES)
+        {
+            gSprites[spriteId].data[0] = 20;
+            gSprites[spriteId].data[1] = randomSomethingY;
+            gSprites[spriteId].subpriority = GetBattlerSpriteSubpriority(gBattleAnimAttacker) - 1;
+            if (randomSomethingX < 0)
+                gSprites[spriteId].data[2] = -randomSomethingX;
+            else
+                gSprites[spriteId].data[2] = randomSomethingX;
+        }
     }
     for (i = 0; i <= 0; i++)
     {
-        spriteId = CreateSprite(&gWaterPulseRingBubbleSpriteTemplate, combinedX, combinedY - something, 130);
-        gSprites[spriteId].data[0] = 20;
-        gSprites[spriteId].data[1] = randomSomethingY;
-        gSprites[spriteId].subpriority = GetBattlerSpriteSubpriority(gBattleAnimAttacker) - 1;
-        if (randomSomethingX > 0)
-            gSprites[spriteId].data[2] = -randomSomethingX;
-        else
-            gSprites[spriteId].data[2] = randomSomethingX;
+        spriteId = CreateSpriteUnchecked(&gWaterPulseRingBubbleSpriteTemplate, combinedX, combinedY - something, 130);
+        if (spriteId != MAX_SPRITES)
+        {
+            gSprites[spriteId].data[0] = 20;
+            gSprites[spriteId].data[1] = randomSomethingY;
+            gSprites[spriteId].subpriority = GetBattlerSpriteSubpriority(gBattleAnimAttacker) - 1;
+            if (randomSomethingX > 0)
+                gSprites[spriteId].data[2] = -randomSomethingX;
+            else
+                gSprites[spriteId].data[2] = randomSomethingX;
+        }
     }
 }

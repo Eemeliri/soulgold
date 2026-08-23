@@ -1555,7 +1555,9 @@ static void AirCutterProjectileStep1(u8 taskId)
     {
         u8 spriteId;
         struct Sprite *sprite;
-        spriteId = CreateSprite(&gAirWaveProjectileSpriteTemplate, gTasks[taskId].data[9], gTasks[taskId].data[10], gTasks[taskId].data[2] - gTasks[taskId].data[1]);
+        spriteId = CreateSpriteUnchecked(&gAirWaveProjectileSpriteTemplate, gTasks[taskId].data[9], gTasks[taskId].data[10], gTasks[taskId].data[2] - gTasks[taskId].data[1]);
+        if (spriteId == MAX_SPRITES)
+            return;
         sprite = &gSprites[spriteId];
         switch (gTasks[taskId].data[4])
         {
@@ -2925,7 +2927,7 @@ static void AnimTask_SpeedDust_Step(u8 taskId)
         {
             u8 spriteId;
             task->data[1] = 0;
-            spriteId = CreateSprite(&gSpeedDustSpriteTemplate, task->data[14], task->data[15], 0);
+            spriteId = CreateSpriteUnchecked(&gSpeedDustSpriteTemplate, task->data[14], task->data[15], 0);
             if (spriteId != MAX_SPRITES)
             {
                 gSprites[spriteId].data[0] = taskId;

@@ -112,31 +112,43 @@ u8 SmokescreenImpact(s16 x, s16 y, bool8 persist)
     mainSprite->sPersist = persist;
 
     // Top left sprite
-    spriteId1 = CreateSprite(&sSmokescreenImpactSpriteTemplate, x - 16, y - 16, 2);
-    gSprites[spriteId1].sMainSpriteId = mainSpriteId;
-    mainSprite->sActiveSprites++;
-    AnimateSprite(&gSprites[spriteId1]);
+    spriteId1 = CreateSpriteUnchecked(&sSmokescreenImpactSpriteTemplate, x - 16, y - 16, 2);
+    if (spriteId1 != MAX_SPRITES)
+    {
+        gSprites[spriteId1].sMainSpriteId = mainSpriteId;
+        mainSprite->sActiveSprites++;
+        AnimateSprite(&gSprites[spriteId1]);
+    }
 
     // Top right sprite
-    spriteId2 = CreateSprite(&sSmokescreenImpactSpriteTemplate, x, y - 16, 2);
-    gSprites[spriteId2].sMainSpriteId = mainSpriteId;
-    mainSprite->sActiveSprites++;
-    StartSpriteAnim(&gSprites[spriteId2], 1);
-    AnimateSprite(&gSprites[spriteId2]);
+    spriteId2 = CreateSpriteUnchecked(&sSmokescreenImpactSpriteTemplate, x, y - 16, 2);
+    if (spriteId2 != MAX_SPRITES)
+    {
+        gSprites[spriteId2].sMainSpriteId = mainSpriteId;
+        mainSprite->sActiveSprites++;
+        StartSpriteAnim(&gSprites[spriteId2], 1);
+        AnimateSprite(&gSprites[spriteId2]);
+    }
 
     // Bottom left sprite
-    spriteId3 = CreateSprite(&sSmokescreenImpactSpriteTemplate, x - 16, y, 2);
-    gSprites[spriteId3].sMainSpriteId = mainSpriteId;
-    mainSprite->sActiveSprites++;
-    StartSpriteAnim(&gSprites[spriteId3], 2);
-    AnimateSprite(&gSprites[spriteId3]);
+    spriteId3 = CreateSpriteUnchecked(&sSmokescreenImpactSpriteTemplate, x - 16, y, 2);
+    if (spriteId3 != MAX_SPRITES)
+    {
+        gSprites[spriteId3].sMainSpriteId = mainSpriteId;
+        mainSprite->sActiveSprites++;
+        StartSpriteAnim(&gSprites[spriteId3], 2);
+        AnimateSprite(&gSprites[spriteId3]);
+    }
 
     // Bottom right sprite
-    spriteId4 = CreateSprite(&sSmokescreenImpactSpriteTemplate, x, y, 2);
-    gSprites[spriteId4].sMainSpriteId = mainSpriteId;
-    mainSprite->sActiveSprites++;
-    StartSpriteAnim(&gSprites[spriteId4], 3);
-    AnimateSprite(&gSprites[spriteId4]);
+    spriteId4 = CreateSpriteUnchecked(&sSmokescreenImpactSpriteTemplate, x, y, 2);
+    if (spriteId4 != MAX_SPRITES)
+    {
+        gSprites[spriteId4].sMainSpriteId = mainSpriteId;
+        mainSprite->sActiveSprites++;
+        StartSpriteAnim(&gSprites[spriteId4], 3);
+        AnimateSprite(&gSprites[spriteId4]);
+    }
 
     return mainSpriteId;
 }
