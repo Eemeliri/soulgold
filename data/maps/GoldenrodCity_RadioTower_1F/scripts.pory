@@ -158,7 +158,6 @@ RadioTower1F_EventScript_ReceptionGivePrize::
 	closemessage
 	giveitem ITEM_VS_SEEKER
 	goto_if_eq VAR_RESULT, FALSE, RadioTower1F_EventScript_QuizPrizeNoRoom
-	msgbox RadioTower1F_Text_TuneIn, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
 	applymovement LOCALID_GOLDENROD_RADIOTOWER_WHITNEY, Common_Movement_ExclamationMark
@@ -166,6 +165,7 @@ RadioTower1F_EventScript_ReceptionGivePrize::
 	turnobject LOCALID_GOLDENROD_RADIOTOWER_WHITNEY, DIR_EAST
 	delay 20
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	createfieldmugshot MUGSHOT_WHITNEY
 	msgbox RadioTower1F_Text_Whitney2, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_GOLDENROD_RADIOTOWER_WHITNEY, GoldenrodCity_RadioTower_4F_Movement_WhitneyLeave
@@ -238,7 +238,7 @@ RadioTower1F_Text_RadioCardWomanOfferQuiz:
     .string "Answer five questions correctly to\n"
     .string "win a Vs. Seeker.\p"
     .string "It lets you challenge route Trainers\n"
-    .string "to rematches after it recharges.\p"
+    .string "again after recharged by walking.\p"
     .string "Would you like to take the quiz?$"
 
 RadioTower1F_Text_QuizQuestion1:

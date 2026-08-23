@@ -319,21 +319,21 @@ RadioTower1F_EventScript_ReceptionGivePrize::
 # 160 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	goto_if_eq VAR_RESULT, FALSE, RadioTower1F_EventScript_QuizPrizeNoRoom
 # 161 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
-	msgbox RadioTower1F_Text_TuneIn, MSGBOX_DEFAULT
-# 162 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	closemessage
-# 163 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+# 162 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	playse SE_PIN
-# 164 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+# 163 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	applymovement LOCALID_GOLDENROD_RADIOTOWER_WHITNEY, Common_Movement_ExclamationMark
-# 165 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+# 164 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	delay 60
-# 166 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+# 165 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	turnobject LOCALID_GOLDENROD_RADIOTOWER_WHITNEY, DIR_EAST
-# 167 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+# 166 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	delay 20
-# 168 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+# 167 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+# 168 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
+	createfieldmugshot MUGSHOT_WHITNEY
 # 169 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
 	msgbox RadioTower1F_Text_Whitney2, MSGBOX_DEFAULT
 # 170 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
@@ -479,7 +479,7 @@ RadioTower1F_Text_RadioCardWomanOfferQuiz:
 # 240 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
     .string "It lets you challenge route Trainers\n"
 # 241 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
-    .string "to rematches after it recharges.\p"
+    .string "again after recharged by walking.\p"
 # 242 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
     .string "Would you like to take the quiz?$"
 # 243 "data/maps/GoldenrodCity_RadioTower_1F/scripts.pory"
