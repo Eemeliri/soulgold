@@ -223,6 +223,21 @@ def parse_mega_evolutions(item_names: Mapping[str, ItemRecord]) -> list[MegaEvol
                 "itemName": item_name,
                 "label": f"Mega Evolution ({item_name})",
             })
+        for target, move in re.findall(
+            r"\{\s*FORM_CHANGE_BATTLE_MEGA_EVOLUTION_MOVE\s*,\s*(SPECIES_[A-Z0-9_]+)\s*,\s*(MOVE_[A-Z0-9_]+)",
+            body,
+        ):
+            key = (source, target, move)
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append({
+                "source": source,
+                "target": target,
+                "item": "",
+                "itemName": "",
+                "label": f"Knows move {clean_constant_name(move, 'MOVE_')}",
+            })
         for target, item in re.findall(
             r"\{\s*FORM_CHANGE_BEGIN_BATTLE\s*,\s*(SPECIES_[A-Z0-9_]+)\s*,\s*(ITEM_[A-Z0-9_]+)",
             body,

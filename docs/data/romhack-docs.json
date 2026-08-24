@@ -69549,8 +69549,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69558,8 +69558,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -333462,6 +333462,13 @@
       "item": "ITEM_DRAGOTITE",
       "itemName": "Dragotite",
       "label": "Mega Evolution (Dragotite)"
+    },
+    {
+      "source": "SPECIES_RAYQUAZA",
+      "target": "SPECIES_RAYQUAZA_MEGA",
+      "item": "",
+      "itemName": "",
+      "label": "Knows move Dragon Ascent"
     },
     {
       "source": "SPECIES_STARAPTOR",
