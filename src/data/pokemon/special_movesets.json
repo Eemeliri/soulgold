@@ -168,6 +168,10 @@
           "MOVE_THUNDER_FANG",
           "MOVE_ICE_FANG",
           "MOVE_FIRE_FANG"
+        ],
+      "MEGANIUM":
+        [
+          "MOVE_HYPER_VOICE"
         ]
     }
 }
