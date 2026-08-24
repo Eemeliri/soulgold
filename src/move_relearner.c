@@ -31,7 +31,6 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "data/pokemon/egg_moves.h"
 #include "data/tutor_moves.h"
 
 STATIC_ASSERT(NUM_ALL_MACHINES <= MAX_RELEARNER_MOVES, MoveRelearnerMoves_TooSmallForMachines);
@@ -388,7 +387,6 @@ static bool32 TryGetNextRelearnerPage(s8 direction, enum MoveRelearnerStates *ne
 static void RebuildMoveRelearnerMoveList(void);
 static void RestorePrimaryRelearnerPage(void);
 static u32 GetRelearnerLevelUpMoves(struct BoxPokemon *mon, u16 *moves);
-static u32 GetRelearnerEggMoves(struct BoxPokemon *mon, u16 *moves);
 static u32 GetRelearnerTMMoves(struct BoxPokemon *mon, u16 *moves);
 static u32 GetRelearnerTutorMoves(struct BoxPokemon *mon, u16 *moves);
 
@@ -1168,7 +1166,7 @@ static void CreateLearnableMovesList(void)
     switch (gMoveRelearnerState)
     {
     case MOVE_RELEARNER_EGG_MOVES:
-        sMoveRelearnerStruct->numMenuChoices = GetRelearnerEggMoves(boxmon, sMoveRelearnerStruct->movesToLearn);
+        sMoveRelearnerStruct->numMenuChoices = GetBoxMonRelearnableEggMoves(boxmon, sMoveRelearnerStruct->movesToLearn);
         break;
     case MOVE_RELEARNER_TM_MOVES:
         sMoveRelearnerStruct->numMenuChoices = GetRelearnerTMMoves(boxmon, sMoveRelearnerStruct->movesToLearn);
@@ -1332,7 +1330,7 @@ static u32 GetRelearnerLevelUpMoves(struct BoxPokemon *mon, u16 *moves)
     return numMoves;
 }
 
-static u32 GetRelearnerEggMoves(struct BoxPokemon *mon, u16 *moves)
+u32 GetBoxMonRelearnableEggMoves(struct BoxPokemon *mon, u16 *moves)
 {
     if (!AreEggMovesUnlocked())
         return 0;
@@ -1343,19 +1341,31 @@ static u32 GetRelearnerEggMoves(struct BoxPokemon *mon, u16 *moves)
         return 0;
 
     u32 numMoves = 0;
-    while (GetSpeciesPreEvolution(species) != SPECIES_NONE)
-        species = GetSpeciesPreEvolution(species);
-
-    const u16 *eggMoves = GetSpeciesEggMoves(species);
-
-    if (eggMoves == sNoneEggMoveLearnset)
-        return 0;
-
-    for (u32 i = 0; eggMoves[i] != MOVE_UNAVAILABLE; i++)
+    do
     {
-        if (!BoxMonKnowsMove(mon, eggMoves[i]) && numMoves < MAX_RELEARNER_MOVES)
-            moves[numMoves++] = eggMoves[i];
-    }
+        const u16 *eggMoves = GetSpeciesEggMoves(species);
+
+        for (u32 i = 0; eggMoves[i] != MOVE_UNAVAILABLE; i++)
+        {
+            if (BoxMonKnowsMove(mon, eggMoves[i]))
+                continue;
+
+            bool32 alreadyInList = FALSE;
+            for (u32 j = 0; j < numMoves; j++)
+            {
+                if (eggMoves[i] == moves[j])
+                {
+                    alreadyInList = TRUE;
+                    break;
+                }
+            }
+
+            if (!alreadyInList && numMoves < MAX_RELEARNER_MOVES)
+                moves[numMoves++] = eggMoves[i];
+        }
+
+        species = GetSpeciesPreEvolution(species);
+    } while (species != SPECIES_NONE);
 
     if (P_SORT_MOVES)
         SortMovesAlphabetically(moves, numMoves);
@@ -1491,19 +1501,18 @@ static bool32 HasRelearnerEggMoves(struct BoxPokemon *boxMon)
     if (species == SPECIES_EGG)
         return FALSE;
 
-    while (GetSpeciesPreEvolution(species) != SPECIES_NONE)
-        species = GetSpeciesPreEvolution(species);
-
-    const u16 *eggMoves = GetSpeciesEggMoves(species);
-
-    if (eggMoves == sNoneEggMoveLearnset)
-        return FALSE;
-
-    for (u32 i = 0; eggMoves[i] != MOVE_UNAVAILABLE; i++)
+    do
     {
-        if (!BoxMonKnowsMove(boxMon, eggMoves[i]))
-            return TRUE;
-    }
+        const u16 *eggMoves = GetSpeciesEggMoves(species);
+
+        for (u32 i = 0; eggMoves[i] != MOVE_UNAVAILABLE; i++)
+        {
+            if (!BoxMonKnowsMove(boxMon, eggMoves[i]))
+                return TRUE;
+        }
+
+        species = GetSpeciesPreEvolution(species);
+    } while (species != SPECIES_NONE);
 
     return FALSE;
 }
