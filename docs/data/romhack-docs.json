@@ -69280,8 +69280,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69289,8 +69289,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -69519,8 +69519,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69528,8 +69528,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -99403,28 +99403,28 @@
           "move": "MOVE_TACKLE"
         },
         {
-          "level": 1,
-          "move": "MOVE_SONIC_BOOM"
-        },
-        {
           "level": 4,
           "move": "MOVE_GROWL"
         },
         {
-          "level": 7,
-          "move": "MOVE_SOAK"
+          "level": 5,
+          "move": "MOVE_WATER_GUN"
         },
         {
           "level": 7,
           "move": "MOVE_WATER_SPORT"
         },
         {
-          "level": 11,
-          "move": "MOVE_QUICK_ATTACK"
+          "level": 8,
+          "move": "MOVE_SOAK"
         },
         {
-          "level": 15,
-          "move": "MOVE_WATER_GUN"
+          "level": 11,
+          "move": "MOVE_SONIC_BOOM"
+        },
+        {
+          "level": 13,
+          "move": "MOVE_QUICK_ATTACK"
         },
         {
           "level": 18,
