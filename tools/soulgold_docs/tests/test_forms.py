@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 from dataclasses import dataclass
 
+from tools.soulgold_docs.parsers.evolutions import parse_mega_evolutions
 from tools.soulgold_docs.parsers.forms import add_rotom_form_change_locations
 
 
@@ -45,6 +46,28 @@ class RotomFormLocationTests(unittest.TestCase):
                         }
                     ],
                 )
+
+
+class MegaEvolutionFormTests(unittest.TestCase):
+    def test_move_triggered_mega_evolution_is_parsed(self) -> None:
+        rayquaza_edges = [
+            edge
+            for edge in parse_mega_evolutions({})
+            if edge["source"] == "SPECIES_RAYQUAZA"
+        ]
+
+        self.assertEqual(
+            rayquaza_edges,
+            [
+                {
+                    "source": "SPECIES_RAYQUAZA",
+                    "target": "SPECIES_RAYQUAZA_MEGA",
+                    "item": "",
+                    "itemName": "",
+                    "label": "Knows move Dragon Ascent",
+                }
+            ],
+        )
 
 
 if __name__ == "__main__":

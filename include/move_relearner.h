@@ -9,6 +9,7 @@ void MoveRelearnerShowHideCategoryIcon(s32);
 void CB2_InitLearnMove(void);
 bool32 CanBoxMonRelearnAnyMove(struct BoxPokemon *boxMon);
 bool32 CanBoxMonRelearnMoves(struct BoxPokemon *boxMon, enum MoveRelearnerStates state);
+u32 GetBoxMonRelearnableEggMoves(struct BoxPokemon *boxMon, u16 *moves);
 
 extern enum MoveRelearnerStates gMoveRelearnerState;
 extern enum RelearnMode gRelearnMode;
