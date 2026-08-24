@@ -4399,10 +4399,7 @@ static void MoveAndBufferPartySlot(const void *rectSrc, s16 x, s16 y, s16 width,
 
 static void MovePartyMenuBoxSprites(struct PartyMenuBox *menuBox, s16 offset)
 {
-    gSprites[menuBox->pokeballSpriteId].x2 += offset * 8;
-    gSprites[menuBox->itemSpriteId].x2 += offset * 8;
-    gSprites[menuBox->monSpriteId].x2 += offset * 8;
-    gSprites[menuBox->statusSpriteId].x2 += offset * 8;
+    OffsetPartyMenuBoxSprites(menuBox, offset * TILE_WIDTH);
 }
 
 static void SlidePartyMenuBoxSpritesOneStep(u8 taskId)
@@ -4487,23 +4484,31 @@ static void Task_SlideSelectedSlotsOnscreen(u8 taskId)
 
 static void SwitchMenuBoxSprites(u8 *spriteIdPtr1, u8 *spriteIdPtr2)
 {
-    u8 spriteIdBuffer = *spriteIdPtr1;
-    u16 xBuffer1, yBuffer1, xBuffer2, yBuffer2;
+    u8 spriteId1 = *spriteIdPtr1;
+    u8 spriteId2 = *spriteIdPtr2;
+    s16 xBuffer1, yBuffer1, xBuffer2, yBuffer2;
 
-    *spriteIdPtr1 = *spriteIdPtr2;
-    *spriteIdPtr2 = spriteIdBuffer;
-    xBuffer1 = gSprites[*spriteIdPtr1].x;
-    yBuffer1 = gSprites[*spriteIdPtr1].y;
-    xBuffer2 = gSprites[*spriteIdPtr1].x2;
-    yBuffer2 = gSprites[*spriteIdPtr1].y2;
-    gSprites[*spriteIdPtr1].x = gSprites[*spriteIdPtr2].x;
-    gSprites[*spriteIdPtr1].y = gSprites[*spriteIdPtr2].y;
-    gSprites[*spriteIdPtr1].x2 = gSprites[*spriteIdPtr2].x2;
-    gSprites[*spriteIdPtr1].y2 = gSprites[*spriteIdPtr2].y2;
-    gSprites[*spriteIdPtr2].x = xBuffer1;
-    gSprites[*spriteIdPtr2].y = yBuffer1;
-    gSprites[*spriteIdPtr2].x2 = xBuffer2;
-    gSprites[*spriteIdPtr2].y2 = yBuffer2;
+    *spriteIdPtr1 = spriteId2;
+    *spriteIdPtr2 = spriteId1;
+
+    // SwSh does not create the legacy Poké Ball slot sprites, so their IDs
+    // remain SPRITE_NONE. Sprite allocation can also return MAX_SPRITES.
+    if (spriteId1 >= MAX_SPRITES || spriteId2 >= MAX_SPRITES
+        || !gSprites[spriteId1].inUse || !gSprites[spriteId2].inUse)
+        return;
+
+    xBuffer1 = gSprites[spriteId2].x;
+    yBuffer1 = gSprites[spriteId2].y;
+    xBuffer2 = gSprites[spriteId2].x2;
+    yBuffer2 = gSprites[spriteId2].y2;
+    gSprites[spriteId2].x = gSprites[spriteId1].x;
+    gSprites[spriteId2].y = gSprites[spriteId1].y;
+    gSprites[spriteId2].x2 = gSprites[spriteId1].x2;
+    gSprites[spriteId2].y2 = gSprites[spriteId1].y2;
+    gSprites[spriteId1].x = xBuffer1;
+    gSprites[spriteId1].y = yBuffer1;
+    gSprites[spriteId1].x2 = xBuffer2;
+    gSprites[spriteId1].y2 = yBuffer2;
 }
 
 static void SwitchPartyMon(void)
@@ -6430,8 +6435,48 @@ static void SpriteCB_HeldItem(struct Sprite *sprite)
 
 static void PartyMenuStartSpriteAnim(u8 spriteId, u8 animNum)
 {
-    StartSpriteAnim(&gSprites[spriteId], animNum);
+    if (spriteId < MAX_SPRITES && gSprites[spriteId].inUse)
+        StartSpriteAnim(&gSprites[spriteId], animNum);
 }
+
+#if TESTING
+bool32 SwShPartyMenu_TestMissingSlotSpritesAreIgnored(void)
+{
+    struct Sprite dummySprite = gSprites[MAX_SPRITES];
+    struct PartyMenuBox menuBox =
+    {
+        .monSpriteId = MAX_SPRITES,
+        .itemSpriteId = MAX_SPRITES,
+        .pokeballSpriteId = SPRITE_NONE,
+        .statusSpriteId = MAX_SPRITES,
+    };
+    u8 spriteId1 = SPRITE_NONE;
+    u8 spriteId2 = MAX_SPRITES;
+    bool32 result;
+
+    gSprites[MAX_SPRITES].x = 1234;
+    gSprites[MAX_SPRITES].y = -1234;
+    gSprites[MAX_SPRITES].x2 = 2345;
+    gSprites[MAX_SPRITES].y2 = -2345;
+    gSprites[MAX_SPRITES].animNum = 3;
+    gSprites[MAX_SPRITES].inUse = FALSE;
+
+    MovePartyMenuBoxSprites(&menuBox, 1);
+    SwitchMenuBoxSprites(&spriteId1, &spriteId2);
+    PartyMenuStartSpriteAnim(MAX_SPRITES, 1);
+    PartyMenuStartSpriteAnim(SPRITE_NONE, 1);
+
+    result = spriteId1 == MAX_SPRITES
+        && spriteId2 == SPRITE_NONE
+        && gSprites[MAX_SPRITES].x == 1234
+        && gSprites[MAX_SPRITES].y == -1234
+        && gSprites[MAX_SPRITES].x2 == 2345
+        && gSprites[MAX_SPRITES].y2 == -2345
+        && gSprites[MAX_SPRITES].animNum == 3;
+    gSprites[MAX_SPRITES] = dummySprite;
+    return result;
+}
+#endif
 
 // Sprite bg for message window
 static void CreateMessageWindowSprite(void)

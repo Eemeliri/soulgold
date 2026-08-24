@@ -52533,6 +52533,10 @@
           "move": "MOVE_LAST_RESORT"
         },
         {
+          "level": 50,
+          "move": "MOVE_MOONBLAST"
+        },
+        {
           "level": 52,
           "move": "MOVE_WISH"
         }
@@ -69734,8 +69738,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69743,8 +69747,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -99403,28 +99407,28 @@
           "move": "MOVE_TACKLE"
         },
         {
-          "level": 1,
-          "move": "MOVE_SONIC_BOOM"
-        },
-        {
           "level": 4,
           "move": "MOVE_GROWL"
         },
         {
-          "level": 7,
-          "move": "MOVE_SOAK"
+          "level": 5,
+          "move": "MOVE_WATER_GUN"
         },
         {
           "level": 7,
           "move": "MOVE_WATER_SPORT"
         },
         {
-          "level": 11,
-          "move": "MOVE_QUICK_ATTACK"
+          "level": 8,
+          "move": "MOVE_SOAK"
         },
         {
-          "level": 15,
-          "move": "MOVE_WATER_GUN"
+          "level": 11,
+          "move": "MOVE_SONIC_BOOM"
+        },
+        {
+          "level": 13,
+          "move": "MOVE_QUICK_ATTACK"
         },
         {
           "level": 18,
@@ -110926,8 +110930,12 @@
           "move": "MOVE_BATON_PASS"
         },
         {
-          "level": 48,
+          "level": 46,
           "move": "MOVE_AURA_SPHERE"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_MOONBLAST"
         },
         {
           "level": 52,
