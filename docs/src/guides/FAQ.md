@@ -74,6 +74,9 @@ order: 1
 ### Coin case?
 - Goldenrod Underground
 
+### Cameron locations?
+- Ruins of Alph, Route 34, Cianwood City, Kitakami Border and Route 28.
+
 ## Pokémon availability and encounters
 
 ### How do I get the other starters?
