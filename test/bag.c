@@ -114,6 +114,11 @@ TEST("Canceling a held item switch from the party menu does not duplicate the se
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_HELD_ITEM), ITEM_POWER_ANKLET);
 }
 
+TEST("SwSh party slot animations ignore missing sprites")
+{
+    EXPECT(SwShPartyMenu_TestMissingSlotSpritesAreIgnored());
+}
+
 TEST("Infinite held item migration flag does not alias Pokemon received progress")
 {
     FlagClear(FLAG_SYS_POKEMON_GET);

@@ -10661,9 +10661,9 @@ static const struct LevelUpMove sPachirisuLevelUpLearnset[] = {
 static const struct LevelUpMove sBuizelLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 4, MOVE_GROWL),
-    LEVEL_UP_MOVE( 7, MOVE_SOAK),
-    LEVEL_UP_MOVE(11, MOVE_QUICK_ATTACK),
-    LEVEL_UP_MOVE(15, MOVE_WATER_GUN),
+    LEVEL_UP_MOVE(5, MOVE_WATER_GUN),
+    LEVEL_UP_MOVE(8, MOVE_SOAK),
+    LEVEL_UP_MOVE(13, MOVE_QUICK_ATTACK),
     LEVEL_UP_MOVE(18, MOVE_AQUA_JET),
     LEVEL_UP_MOVE(21, MOVE_BITE),
     LEVEL_UP_MOVE(24, MOVE_SWIFT),

@@ -4,5 +4,11 @@
     "minimumSpacing": 3
   },
   "excludedMoves": [],
-  "species": {}
+  "species": {
+    "Buizel": {
+      "levelOverrides": {
+        "MOVE_SONIC_BOOM": 11
+      }
+    }
+  }
 }
