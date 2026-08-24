@@ -46762,6 +46762,10 @@
         },
         {
           "level": 28,
+          "move": "MOVE_DRAINING_KISS"
+        },
+        {
+          "level": 28,
           "move": "MOVE_SWEET_SCENT"
         },
         {
@@ -46967,6 +46971,10 @@
         },
         {
           "level": 32,
+          "move": "MOVE_DRAINING_KISS"
+        },
+        {
+          "level": 32,
           "move": "MOVE_SWEET_SCENT"
         },
         {
@@ -47149,6 +47157,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_GROWTH"
+        },
+        {
+          "level": 1,
           "move": "MOVE_PETAL_BLIZZARD"
         },
         {
@@ -47170,6 +47182,10 @@
         {
           "level": 26,
           "move": "MOVE_NATURAL_GIFT"
+        },
+        {
+          "level": 34,
+          "move": "MOVE_DRAINING_KISS"
         },
         {
           "level": 34,
@@ -47275,7 +47291,8 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_WEATHER_BALL",
-        "MOVE_ZEN_HEADBUTT"
+        "MOVE_ZEN_HEADBUTT",
+        "MOVE_HYPER_VOICE"
       ],
       "eggMoves": [
         "MOVE_VINE_WHIP",
@@ -47370,6 +47387,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_GROWTH"
+        },
+        {
+          "level": 1,
           "move": "MOVE_PETAL_BLIZZARD"
         },
         {
@@ -47391,6 +47412,10 @@
         {
           "level": 26,
           "move": "MOVE_NATURAL_GIFT"
+        },
+        {
+          "level": 34,
+          "move": "MOVE_DRAINING_KISS"
         },
         {
           "level": 34,
@@ -47496,7 +47521,8 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_WEATHER_BALL",
-        "MOVE_ZEN_HEADBUTT"
+        "MOVE_ZEN_HEADBUTT",
+        "MOVE_HYPER_VOICE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -69738,8 +69764,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69747,8 +69773,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
