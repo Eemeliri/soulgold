@@ -28,7 +28,26 @@ ReceptionGate_Text_Janine:
 
 
 ReceptionGate_EventScript_Officer::
-    msgbox VictoryRoadGate_Text_EightBadges, MSGBOX_NPC
+    lock
+    faceplayer
+    goto_if_set FLAG_IS_CHAMPION, ReceptionGate_EventScript_OfficerCleared
+    goto_if_unset FLAG_BADGE08_GET, ReceptionGate_EventScript_OfficerNotEnough
+    goto_if_set FLAG_LEGENDARY_STORY_CAP, ReceptionGate_EventScript_OfficerCleared
+    call ReceptionGate_EventScript_ShowStoryGuidance
+    closemessage
+    release
+    end
+
+ReceptionGate_EventScript_OfficerNotEnough::
+    msgbox VictoryRoadGate_Text_NotEnoughBadges, MSGBOX_DEFAULT
+    closemessage
+    release
+    end
+
+ReceptionGate_EventScript_OfficerCleared::
+    msgbox VictoryRoadGate_Text_EightBadges, MSGBOX_DEFAULT
+    closemessage
+    release
     end
 
 ReceptionGate_Trigger::
@@ -36,17 +55,16 @@ ReceptionGate_Trigger::
     playse SE_PIN
     applymovement LOCALID_INDIGOJUNCTION_POLICEMAN, Common_Movement_ExclamationMark
     delay 20
-    goto_if_unset FLAG_LEGENDARY_STORY_CAP, ReceptionGate_EventScript_Kimono
-    msgbox VictoryRoadGate_Text_Officer, MSGBOX_DEFAULT
     goto_if_unset FLAG_BADGE08_GET, ReceptionGate_EventScript_NotEnough
+    goto_if_unset FLAG_LEGENDARY_STORY_CAP, ReceptionGate_EventScript_StoryBlocked
     msgbox VictoryRoadGate_Text_EightBadges, MSGBOX_DEFAULT
     closemessage
     setvar VAR_ROUTE27_STATE, 1
     release
     end
 
-ReceptionGate_EventScript_Kimono::
-    msgbox VictoryRoadGate_Text_Kimono, MSGBOX_DEFAULT
+ReceptionGate_EventScript_StoryBlocked::
+    call ReceptionGate_EventScript_ShowStoryGuidance
     closemessage
     applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1
     waitmovement 0
@@ -61,6 +79,30 @@ ReceptionGate_EventScript_NotEnough::
     release
     end
 
+ReceptionGate_EventScript_ShowStoryGuidance::
+    goto_if_ge VAR_ECRUTEAK_CITY_THEATER, 7, ReceptionGate_EventScript_ShowLegendaryGuidance
+    goto_if_ge VAR_NEWBARKTOWN_LABSTATE, 9, ReceptionGate_EventScript_ShowLegendaryGuidance
+    goto_if_ge VAR_ECRUTEAK_CITY_THEATER, 4, ReceptionGate_EventScript_ShowKimonoGuidance
+    goto_if_ge VAR_NEWBARKTOWN_LABSTATE, 8, ReceptionGate_EventScript_ShowKimonoGuidance
+    msgbox VictoryRoadGate_Text_VisitElm, MSGBOX_DEFAULT
+    return
+
+ReceptionGate_EventScript_ShowKimonoGuidance::
+    msgbox VictoryRoadGate_Text_VisitKimonoGirls, MSGBOX_DEFAULT
+    return
+
+ReceptionGate_EventScript_ShowLegendaryGuidance::
+    goto_if_eq VAR_LUGIA_OR_HOOH, 1, ReceptionGate_EventScript_ShowWhirlIslandsGuidance
+    goto ReceptionGate_EventScript_ShowTinTowerGuidance
+
+ReceptionGate_EventScript_ShowWhirlIslandsGuidance::
+    msgbox VictoryRoadGate_Text_VisitWhirlIslands, MSGBOX_DEFAULT
+    return
+
+ReceptionGate_EventScript_ShowTinTowerGuidance::
+    msgbox VictoryRoadGate_Text_VisitTinTower, MSGBOX_DEFAULT
+    return
+
 ReceptionGate_EventScript_SilverGuard::
     msgbox VictoryRoadGate_Text_LeftBlackBelt, MSGBOX_NPC
     end
@@ -68,14 +110,32 @@ ReceptionGate_EventScript_KantoGuard::
     msgbox VictoryRoadGate_Text_RightBlackBelt, MSGBOX_NPC
     end
 
-VictoryRoadGate_Text_Officer:
-    .string "Only trainers who have proven\n"
-    .string "themselves may pass.$"
+VictoryRoadGate_Text_VisitElm:
+    .string "You're {PLAYER}, right?\p"
+    .string "Prof. Elm has been trying to\n"
+    .string "reach you.\p"
+    .string "Go see him at his Lab in\n"
+    .string "New Bark Town!$"
 
-VictoryRoadGate_Text_Kimono:
-    .string "Sorry kid, this way is closed until\n"
-    .string "someone deals with that Legendary\l"
-    .string "Pokémon...$"
+VictoryRoadGate_Text_VisitKimonoGirls:
+    .string "One of the Kimono Girls asked me\n"
+    .string "to relay a message.\p"
+    .string "They're waiting for you at the\n"
+    .string "Ecruteak Dance Theater.$"
+
+VictoryRoadGate_Text_VisitWhirlIslands:
+    .string "The Kimono Girls traced the\n"
+    .string "Legendary Pokémon to the\l"
+    .string "Whirl Islands.\p"
+    .string "Head there before challenging the\n"
+    .string "Pokémon League.$"
+
+VictoryRoadGate_Text_VisitTinTower:
+    .string "The Kimono Girls traced the\n"
+    .string "Legendary Pokémon to the\l"
+    .string "Tin Tower.\p"
+    .string "Head there before challenging the\n"
+    .string "Pokémon League.$"
 
 VictoryRoadGate_Text_NotEnoughBadges:
     .string "You don't have all the Gym Badges\n"
