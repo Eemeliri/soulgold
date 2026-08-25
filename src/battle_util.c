@@ -2893,6 +2893,7 @@ static bool32 IsPowderMoveBlocked(struct BattleContext *ctx)
 
 bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
 {
+    bool32 hasLiveAttacker = ctx->battlerAtk < MAX_BATTLERS_COUNT;
     enum Ability abilityDef = ABILITY_NONE;
     enum Ability battlerTraits[MAX_MON_TRAITS];
     enum Ability AIBattlerTraits[MAX_MON_TRAITS];
@@ -2903,10 +2904,11 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
 
     if (!IsBattleMoveStatus(ctx->move)
      && GetMovePower(ctx->move) != 0
-     && (BattlerHasTrait(ctx->battlerAtk, ABILITY_OMEGA) || BattlerHasTrait(ctx->battlerDef, ABILITY_OMEGA)))
+     && ((hasLiveAttacker && BattlerHasTrait(ctx->battlerAtk, ABILITY_OMEGA)) || BattlerHasTrait(ctx->battlerDef, ABILITY_OMEGA)))
         return FALSE;
 
-    if (BattlerHasTrait(ctx->battlerAtk, ABILITY_MONSOON)
+    if (hasLiveAttacker
+     && BattlerHasTrait(ctx->battlerAtk, ABILITY_MONSOON)
      && ctx->moveType == TYPE_WATER
      && IsBattlerWeatherAffected(ctx->battlerAtk, B_WEATHER_RAIN))
         return FALSE;
@@ -2973,7 +2975,7 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
         abilityDef = ABILITY_SAP_SIPPER;
         battleScript = AbsorbedByStatIncreaseAbility(ctx->battlerDef, STAT_ATK, 1);
     }
-    else if (!BattlerHasTrait(ctx->battlerAtk, ABILITY_BRIMSTONE)
+    else if ((!hasLiveAttacker || !BattlerHasTrait(ctx->battlerAtk, ABILITY_BRIMSTONE))
      && (gAiLogicData->aiCalcInProgress ? SearchTraits(AIBattlerTraits, ABILITY_WELL_BAKED_BODY) : SearchTraits(battlerTraits, ABILITY_WELL_BAKED_BODY))
      && ctx->moveType == TYPE_FIRE)
     {
@@ -2992,7 +2994,7 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
         abilityDef = ABILITY_WIND_CHIME;
         battleScript = AbsorbedByStatIncreaseAbility(ctx->battlerDef, STAT_SPATK, 1);
     }
-    else if (!BattlerHasTrait(ctx->battlerAtk, ABILITY_BRIMSTONE)
+    else if ((!hasLiveAttacker || !BattlerHasTrait(ctx->battlerAtk, ABILITY_BRIMSTONE))
      && (gAiLogicData->aiCalcInProgress ? SearchTraits(AIBattlerTraits, ABILITY_FLASH_FIRE) : SearchTraits(battlerTraits, ABILITY_FLASH_FIRE))
      && ctx->moveType == TYPE_FIRE && (B_FLASH_FIRE_FROZEN >= GEN_5 || !(gBattleMons[ctx->battlerDef].status1 & STATUS1_FREEZE)))
     {
@@ -3022,7 +3024,7 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
     else if ((gAiLogicData->aiCalcInProgress ? SearchTraits(AIBattlerTraits, ABILITY_GOOD_AS_GOLD) : SearchTraits(battlerTraits, ABILITY_GOOD_AS_GOLD))
      && IsBattleMoveStatus(ctx->move))
     {
-        enum MoveTarget target = GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move);
+        enum MoveTarget target = hasLiveAttacker ? GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move) : GetMoveTarget(ctx->move);
         if (target != TARGET_OPPONENTS_FIELD && target != TARGET_ALL_BATTLERS)
         {
             abilityDef = ABILITY_GOOD_AS_GOLD;
@@ -3033,7 +3035,7 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
     else if ((gAiLogicData->aiCalcInProgress ? SearchTraits(AIBattlerTraits, ABILITY_SOLAR_ARMOR) : SearchTraits(battlerTraits, ABILITY_SOLAR_ARMOR))
      && IsBattleMoveStatus(ctx->move))
     {
-        enum MoveTarget target = GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move);
+        enum MoveTarget target = hasLiveAttacker ? GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move) : GetMoveTarget(ctx->move);
         if (target != TARGET_OPPONENTS_FIELD && target != TARGET_ALL_BATTLERS)
         {
             abilityDef = ABILITY_SOLAR_ARMOR;
@@ -3045,7 +3047,7 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
      && IsBattleMoveStatus(ctx->move)
      && gBattleMons[ctx->battlerDef].hp > (gBattleMons[ctx->battlerDef].maxHP * 3) / 4)
     {
-        enum MoveTarget target = GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move);
+        enum MoveTarget target = hasLiveAttacker ? GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move) : GetMoveTarget(ctx->move);
         if (target != TARGET_OPPONENTS_FIELD && target != TARGET_ALL_BATTLERS)
         {
             abilityDef = ABILITY_ABYSSAL_VEIL;
@@ -10526,10 +10528,23 @@ static void TryTransmuteMoveType(struct BattleContext *ctx)
 static inline void MulByTypeEffectiveness(struct BattleContext *ctx, uq4_12_t *modifier, enum Type defType)
 {
     uq4_12_t mod = GetTypeModifier(ctx->moveType, defType);
-    enum Ability battlerTraits[MAX_MON_TRAITS];
-    STORE_BATTLER_TRAITS(ctx->battlerAtk);
+    enum Ability battlerTraits[MAX_MON_TRAITS] = {ABILITY_NONE};
 
-    if (mod == UQ_4_12(0.0) && BattlerHasHeldItemEffect(ctx->battlerDef, HOLD_EFFECT_RING_TARGET, TRUE))
+    if (ctx->battlerAtk < MAX_BATTLERS_COUNT)
+        STORE_BATTLER_TRAITS(ctx->battlerAtk);
+
+    if (ctx->moveType == TYPE_POISON
+     && defType == TYPE_STEEL
+     && mod == UQ_4_12(0.0)
+     && SearchTraits(battlerTraits, ABILITY_ACIDIC)
+     && IsCustomAbilityDirectDamagingMove(ctx->move)
+     && !ctx->isAnticipation)
+    {
+        mod = UQ_4_12(2.0);
+        if (ctx->updateFlags)
+            RecordAbilityBattle(ctx->battlerAtk, ABILITY_ACIDIC);
+    }
+    else if (mod == UQ_4_12(0.0) && BattlerHasHeldItemEffect(ctx->battlerDef, HOLD_EFFECT_RING_TARGET, TRUE))
     {
         mod = UQ_4_12(1.0);
         if (ctx->updateFlags)
@@ -10869,7 +10884,7 @@ uq4_12_t CalcVisualTypeEffectivenessMultiplier(struct BattleContext *ctx)
     return modifier;
 }
 
-uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef, struct Pokemon *mon)
+uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef, struct Pokemon *mon, enum BattlerId battlerAtk)
 {
     uq4_12_t modifier = UQ_4_12(1.0);
     enum Type moveType = GetBattleMoveType(move);
@@ -10879,6 +10894,7 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef,
         struct BattleContext ctx = {0};
         ctx.move = ctx.chosenMove = move;
         ctx.moveType = moveType;
+        ctx.battlerAtk = battlerAtk;
         ctx.updateFlags = FALSE;
 
         MulByTypeEffectiveness(&ctx, &modifier, GetSpeciesType(speciesDef, 0));
@@ -10934,6 +10950,7 @@ uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType)
     struct BattleContext ctx = {0};
     ctx.move = ctx.chosenMove = MOVE_POUND;
     ctx.moveType = moveType;
+    ctx.battlerAtk = MAX_BATTLERS_COUNT;
     ctx.updateFlags = FALSE;
 
     u32 speciesDef = GetMonData(mon, MON_DATA_SPECIES);

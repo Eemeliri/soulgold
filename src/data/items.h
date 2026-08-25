@@ -73,14 +73,6 @@ static const u8 sSwiftMochiDesc[]     = _("An item that raises\n"
                                           "the base Speed of\n"
                                           "a Pokémon.");
 
-static const u8 sRustyCharmDesc[]     = _("An item that zeroes\n"
-                                          "the Innate Attack\n"
-                                          "value of Pokémon.");
-
-static const u8 sLaggingCharmDesc[]   = _("An item that zeroes\n"
-                                          "the Innate Speed\n"
-                                          "value of Pokémon.");
-
 static const u8 sBigMushroomDesc[]    = _("A rare mushroom\n"
                                           "that would sell at a\n"
                                           "high price.");
@@ -1768,34 +1760,124 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_Carbos,
     },
 
-    [ITEM_RUSTY_CHARM] =
+    [ITEM_WITHERED_HERB] =
     {
-        .name = ITEM_NAME("Grimy Herb"),
-        .price = 20000,
-        .description = sRustyCharmDesc,
+        .name = ITEM_NAME("Withered Herb"),
+        .pluralName = ITEM_PLURAL_NAME("Withered Herbs"),
+        .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .description = COMPOUND_STRING(
+            "An herb that lowers\n"
+            "one Pokémon's HP IV\n"
+            "by one."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_STAT_BOOST_FEATHER,
+        .heldSlot = 0,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_ZeroAtkIV,
+        .effect = gItemEffect_ReduceHpIV,
+        .flingPower = 20,
+        .iconPic = gItemIcon_Mint,
+        .iconPalette = gItemIconPalette_BlueMint,
+    },
+
+    [ITEM_GRIMY_HERB] =
+    {
+        .name = ITEM_NAME("Grimy Herb"),
+        .pluralName = ITEM_PLURAL_NAME("Grimy Herbs"),
+        .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .description = COMPOUND_STRING(
+            "An herb that lowers\n"
+            "one Pokémon's\n"
+            "Attack IV by one."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_STAT_BOOST_FEATHER,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ReduceAtkIV,
         .flingPower = 20,
         .iconPic = gItemIcon_Mint,
         .iconPalette = gItemIconPalette_RedMint,
     },
 
-    [ITEM_LAGGING_CHARM] =
+    [ITEM_BRITTLE_HERB] =
     {
-        .name = ITEM_NAME("Goopy Herb"),
-        .price = 20000,
-        .description = sLaggingCharmDesc,
+        .name = ITEM_NAME("Brittle Herb"),
+        .pluralName = ITEM_PLURAL_NAME("Brittle Herbs"),
+        .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .description = COMPOUND_STRING(
+            "An herb that lowers\n"
+            "one Pokémon's\n"
+            "Defense IV by one."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_STAT_BOOST_FEATHER,
+        .heldSlot = 0,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .effect = gItemEffect_ZeroSpeedIV,
+        .effect = gItemEffect_ReduceDefIV,
+        .flingPower = 20,
+        .iconPic = gItemIcon_Mint,
+        .iconPalette = gItemIconPalette_LightBlueMint,
+    },
+
+    [ITEM_GOOPY_HERB] =
+    {
+        .name = ITEM_NAME("Goopy Herb"),
+        .pluralName = ITEM_PLURAL_NAME("Goopy Herbs"),
+        .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .description = COMPOUND_STRING(
+            "An herb that lowers\n"
+            "one Pokémon's Speed\n"
+            "IV by one."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_STAT_BOOST_FEATHER,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ReduceSpeedIV,
         .flingPower = 20,
         .iconPic = gItemIcon_Mint,
         .iconPalette = gItemIconPalette_GreenMint,
+    },
+
+    [ITEM_DULL_HERB] =
+    {
+        .name = ITEM_NAME("Dull Herb"),
+        .pluralName = ITEM_PLURAL_NAME("Dull Herbs"),
+        .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .description = COMPOUND_STRING(
+            "An herb that lowers\n"
+            "one Pokémon's\n"
+            "Sp. Atk IV by one."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_STAT_BOOST_FEATHER,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ReduceSpAtkIV,
+        .flingPower = 20,
+        .iconPic = gItemIcon_Mint,
+        .iconPalette = gItemIconPalette_PinkMint,
+    },
+
+    [ITEM_SOGGY_HERB] =
+    {
+        .name = ITEM_NAME("Soggy Herb"),
+        .pluralName = ITEM_PLURAL_NAME("Soggy Herbs"),
+        .price = (I_BERRY_PRICE >= GEN_8) ? 80 : 20,
+        .description = COMPOUND_STRING(
+            "An herb that lowers\n"
+            "one Pokémon's\n"
+            "Sp. Def IV by one."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_STAT_BOOST_FEATHER,
+        .heldSlot = 0,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_ReduceSpDefIV,
+        .flingPower = 20,
+        .iconPic = gItemIcon_Mint,
+        .iconPalette = gItemIconPalette_YellowMint,
     },
 
     [ITEM_PP_UP] =

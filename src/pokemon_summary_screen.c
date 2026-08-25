@@ -102,7 +102,7 @@
 
 // Dynamic fields for the Pokémon Skills page
 #define PSS_DATA_WINDOW_SKILLS_HELD_ITEM 0
-#define PSS_DATA_WINDOW_SKILLS_RIBBON_ITEM_2 1
+#define PSS_DATA_WINDOW_SKILLS_SECOND_FIELD 1
 #define PSS_DATA_WINDOW_SKILLS_STATS_LEFT 2 // HP, Attack, Defense
 #define PSS_DATA_WINDOW_SKILLS_STATS_RIGHT 3 // Sp. Attack, Sp. Defense, Speed
 #define PSS_DATA_WINDOW_EXP 4 // Exp, next level
@@ -148,7 +148,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u8 isShiny:1;
         u8 padding:6;
         u8 level; // 0x5
-        u8 ribbonCount; // 0x6
+        u8 padding2; // 0x6
         u8 ailment; // 0x7
         u8 abilityNum; // 0x8
         metloc_u16_t metLocation; // 0x9
@@ -296,7 +296,7 @@ static void PrintEggState(void);
 static void PrintEggMemo(void);
 static void Task_PrintSkillsPage(u8);
 static void PrintHeldItemName(void);
-static void PrintHeldRibbonItem2(void);
+static void PrintSecondSkillsField(void);
 static void PrintSkillsPageText(void);
 static void BufferLeftColumnStats(void);
 static void PrintLeftColumnStats(void);
@@ -345,7 +345,6 @@ static void CB2_ReturnToSummaryScreenFromNamingScreen(void);
 static void CB2_PssChangePokemonNickname(void);
 static void ShowUtilityPrompt(s16 mode);
 static void ShowMonSkillsInfo(u8 taskId, s16 mode);
-static void WriteToStatsTilemapBuffer(u32 length, u32 block, u32 statsCoordX, u32 statsCoordY);
 void ExtractMonSkillStatsData(struct Pokemon *mon, struct PokeSummary *sum);
 void ExtractMonSkillIvData(struct Pokemon *mon, struct PokeSummary *sum);
 void ExtractMonSkillEvData(struct Pokemon *mon, struct PokeSummary *sum);
@@ -354,7 +353,6 @@ static void PrintTextOnWindowWithFont(u8 windowId, const u8 *string, u8 x, u8 y,
 static const u8 *GetLetterGrade(u32 stat);
 static u8 AddWindowFromTemplateList(const struct WindowTemplate *template, u8 templateId);
 static u8 IncrementSkillsStatsMode(u8 mode);
-static void ClearStatLabel(u32 length, u32 statsCoordX, u32 statsCoordY);
 u32 GetAdjustedIvData(struct Pokemon *mon, u32 stat);
 static void UpdateRelearnAvailability(void);
 static bool32 HasCachedRelearnableMoves(enum MoveRelearnerStates state);
@@ -763,7 +761,7 @@ static const struct WindowTemplate sPageSkillsTemplate[] =
         .paletteNum = 6,
         .baseBlock = 467 + offset,
     },
-    [PSS_DATA_WINDOW_SKILLS_RIBBON_ITEM_2] = {
+    [PSS_DATA_WINDOW_SKILLS_SECOND_FIELD] = {
         .bg = 0,
         .tilemapLeft = 20,
         .tilemapTop = 4,
@@ -1711,7 +1709,6 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         #endif
         break;
     default:
-        sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);
         sum->teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
         sum->isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
         return TRUE;
@@ -1819,53 +1816,41 @@ static void CloseSummaryScreen(u8 taskId)
 // Update skills page tilemap
 static void ChangeStatLabel(s16 mode)
 {
-    if (!P_SUMMARY_SCREEN_IV_EV_TILESET)
+    enum
+    {
+        STAT_LABEL_X = 12,
+        STAT_LABEL_Y = 6,
+        STAT_LABEL_WIDTH = 4,
+        STAT_LABEL_PALETTE = 2 << 12,
+    };
+#if P_SUMMARY_SCREEN_IV_EV_TILESET
+    static const u16 sStatLabelTiles[][STAT_LABEL_WIDTH] =
+    {
+        [SUMMARY_SKILLS_MODE_STATS] = {0xA9, 0xAA, 0xAB, 0xAC},
+        [SUMMARY_SKILLS_MODE_IVS]   = {0xDD, 0xDE, 0xDF, 0xAD},
+        [SUMMARY_SKILLS_MODE_EVS]   = {0xDA, 0xDB, 0xDC, 0xAD},
+    };
+#else
+    static const u16 sStatLabelTiles[][STAT_LABEL_WIDTH] =
+    {
+        [SUMMARY_SKILLS_MODE_STATS] = {0xA9, 0xAA, 0xAB, 0xAC},
+        [SUMMARY_SKILLS_MODE_IVS]   = {0xCF, 0xC7, 0xCF, 0xCF},
+        [SUMMARY_SKILLS_MODE_EVS]   = {0xCF, 0xC6, 0xCF, 0xCF},
+    };
+#endif
+    u16 *tilemap = sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_SKILLS][1];
+    u32 i;
+
+    if (mode < SUMMARY_SKILLS_MODE_STATS || mode > SUMMARY_SKILLS_MODE_EVS)
         return;
 
-    u32 statsBlock = 169;
-    u32 ivsBlock = 221;
-    u32 evsBlock = 218;
+    for (i = 0; i < STAT_LABEL_WIDTH; i++)
+        tilemap[STAT_LABEL_Y * 32 + STAT_LABEL_X + i] = STAT_LABEL_PALETTE | sStatLabelTiles[mode][i];
 
-    u32 statsCoordX = 44;
-    u32 statsCoordY = 102;
-
-    u32 statsLength = 3;
-    u32 ivEvLength = 2;
-
-    ClearStatLabel(statsLength, statsCoordX, statsCoordY);
-
-    switch (mode)
-    {
-    case SUMMARY_SKILLS_MODE_STATS:
-        WriteToStatsTilemapBuffer(statsLength, statsBlock, statsCoordX, statsCoordY);
-        break;
-    case SUMMARY_SKILLS_MODE_IVS:
-        WriteToStatsTilemapBuffer(ivEvLength, ivsBlock, statsCoordX, statsCoordY);
-        break;
-    case SUMMARY_SKILLS_MODE_EVS:
-        WriteToStatsTilemapBuffer(ivEvLength, evsBlock, statsCoordX, statsCoordY);
-        break;
-    }
-    CopyBgTilemapBufferToVram(1);
-}
-
-static void WriteToStatsTilemapBuffer(u32 length, u32 block, u32 statsCoordX, u32 statsCoordY)
-{
-    u32 i;
-
-    for (i = 0; i <= length; i++)
-        FillBgTilemapBufferRect(1, block + i, statsCoordX + i, statsCoordY, 1, 1, 2);
-}
-
-static void ClearStatLabel(u32 length, u32 statsCoordX, u32 statsCoordY)
-{
-    u32 blankStatsBlock = 1241;
-
-    u32 i;
-    u32 blankOffset = 3;
-
-    for (i = 0; i <= length; i++)
-        FillBgTilemapBufferRect(1, blankStatsBlock, statsCoordX + blankOffset + i, statsCoordY, 1, 1, 2);
+    if (GetBgTilemapBuffer(1) == sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_SKILLS][0])
+        ScheduleBgCopyTilemapToVram(1);
+    else if (GetBgTilemapBuffer(2) == sMonSummaryScreen->bgTilemapBuffers[PSS_PAGE_SKILLS][0])
+        ScheduleBgCopyTilemapToVram(2);
 }
 
 static void Task_HandleInput(u8 taskId)
@@ -4345,7 +4330,7 @@ static void PrintEggMemo(void)
 static void PrintSkillsPageText(void)
 {
     PrintHeldItemName();
-    PrintHeldRibbonItem2();
+    PrintSecondSkillsField();
     if (ShouldShowIvEvPrompt())
         ShowUtilityPrompt(SUMMARY_SKILLS_MODE_STATS);
     BufferLeftColumnStats();
@@ -4365,7 +4350,7 @@ static void Task_PrintSkillsPage(u8 taskId)
         PrintHeldItemName();
         break;
     case 2:
-        PrintHeldRibbonItem2();
+        PrintSecondSkillsField();
         break;
     case 3:
         ChangeStatLabel(SUMMARY_SKILLS_MODE_STATS);
@@ -4419,37 +4404,16 @@ static void PrintHeldItemName(void)
     PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_HELD_ITEM), text, x, 1, 0, 0, fontId);
 }
 
-static inline void TruncateToFirstWordOnly(u8 *str)
-{
-    for (;*str != EOS; str++)
-    {
-        if (*str == CHAR_SPACE)
-        {
-            *str = EOS;
-            break;
-        }
-    }
-}
-
-static void PrintHeldRibbonItem2(void)
+static void PrintSecondSkillsField(void)
 {
     const u8 *text;
     int x;
 
     #if MAX_MON_ITEMS <= 1
-        if (sMonSummaryScreen->summary.ribbonCount == 0)
-        {
-            text = gText_None;
-        }
-        else
-        {
-            ConvertIntToDecimalStringN(gStringVar1, sMonSummaryScreen->summary.ribbonCount, STR_CONV_MODE_RIGHT_ALIGN, 2);
-            StringExpandPlaceholders(gStringVar4, gText_RibbonsVar1);
-            text = gStringVar4;
-        }
-
+        ConvertIntToDecimalStringN(gStringVar1, sMonSummaryScreen->summary.friendship, STR_CONV_MODE_LEFT_ALIGN, 3);
+        text = gStringVar1;
         x = GetStringCenterAlignXOffset(FONT_NORMAL, text, 70) + 6;
-        PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_ITEM_2), text, x, 1, 0, 0);
+        PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_SECOND_FIELD), text, x, 1, 0, 0);
     #else
         u32 fontId;
         if (sMonSummaryScreen->summary.item[1] == ITEM_ENIGMA_BERRY_E_READER
@@ -4465,14 +4429,12 @@ static void PrintHeldRibbonItem2(void)
         else
         {
             CopyItemName(sMonSummaryScreen->summary.item[1], gStringVar1);
-            //TruncateToFirstWordOnly(gStringVar1);  // Truncate to first word, can be used for a Berry exclusive item slot since they all end with "Berry"
             text = gStringVar1;
-            
         }
 
-        fontId = GetFontIdToFit(text, FONT_NORMAL, 0, WindowTemplateWidthPx(&sPageSkillsTemplate[PSS_DATA_WINDOW_SKILLS_RIBBON_ITEM_2]) - 8);
+        fontId = GetFontIdToFit(text, FONT_NORMAL, 0, WindowTemplateWidthPx(&sPageSkillsTemplate[PSS_DATA_WINDOW_SKILLS_SECOND_FIELD]) - 8);
         x = GetStringCenterAlignXOffset(fontId, text, 72) + 6;
-        PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_ITEM_2), text, x, 1, 0, 0, fontId);
+        PrintTextOnWindowWithFont(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_SECOND_FIELD), text, x, 1, 0, 0, fontId);
     #endif
 }
 
@@ -5434,9 +5396,9 @@ static inline bool32 ShouldShowIvEvPrompt(void)
 static inline void ShowUtilityPrompt(s16 mode)
 {
     const u8* promptText = NULL;
-    const u8* gText_SkillPageIvs = COMPOUND_STRING("IVs");
-    const u8* gText_SkillPageEvs = COMPOUND_STRING("EVs");
-    const u8* gText_SkillPageStats = COMPOUND_STRING("Stats");
+    const u8* gText_SkillPageIvs = COMPOUND_STRING("Show IVs");
+    const u8* gText_SkillPageEvs = COMPOUND_STRING("Show EVs");
+    const u8* gText_SkillPageStats = COMPOUND_STRING("Show Stats");
     const u8* gText_Rename = COMPOUND_STRING("Rename");
     const u8* gText_Close = COMPOUND_STRING("Close");
 
@@ -5502,13 +5464,16 @@ static inline void ShowUtilityPrompt(s16 mode)
     FillWindowPixelBuffer(PSS_LABEL_WINDOW_PROMPT_UTILITY, PIXEL_FILL(0));
     PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_UTILITY);
 
-    int stringXPos = GetStringRightAlignXOffset(FONT_NORMAL, promptText, 62);
-    int iconXPos = stringXPos - 16;
+    const int promptWidth = WindowWidthPx(PSS_LABEL_WINDOW_PROMPT_UTILITY) - 2;
+    const int buttonWidth = 16;
+    const u32 fontId = GetFontIdToFit(promptText, FONT_NORMAL, 0, promptWidth - buttonWidth);
+    int stringXPos = GetStringRightAlignXOffset(fontId, promptText, promptWidth);
+    int iconXPos = stringXPos - buttonWidth;
     if (iconXPos < 0)
         iconXPos = 0;
 
     PrintAOrBButtonIcon(PSS_LABEL_WINDOW_PROMPT_UTILITY, FALSE, iconXPos);
-    PrintTextOnWindow(PSS_LABEL_WINDOW_PROMPT_UTILITY, promptText, stringXPos, 1, 0, 2);
+    PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_UTILITY, promptText, stringXPos, 1, 0, 2, fontId);
     CopyWindowToVram(PSS_LABEL_WINDOW_PROMPT_UTILITY, COPYWIN_FULL);
 }
 

@@ -104,6 +104,7 @@ PokemonLeague_HallOfFame_EventScript_SetGameClearFlags::
 	clearflag FLAG_CAUGHT_ZERAORA
 	clearflag FLAG_CAUGHT_COBALION
 	clearflag FLAG_CAUGHT_TERRAKION
+	clearflag FLAG_CAUGHT_GENESECT
 	clearflag FLAG_HIDE_DIANCIE 
 	clearflag FLAG_HIDE_OGERPON 
 	clearflag FLAG_HIDE_MAGEARNA 

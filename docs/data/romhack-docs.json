@@ -5901,7 +5901,7 @@
       ],
       "innates": [
         "ABILITY_HUNTER",
-        "ABILITY_LIMBER",
+        "ABILITY_ACIDIC",
         "ABILITY_MERCILESS"
       ],
       "sprite": "sprites/pokemon/arbok.png",
@@ -26724,7 +26724,7 @@
       ],
       "innates": [
         "ABILITY_LIQUID_OOZE",
-        "ABILITY_LIMBER",
+        "ABILITY_ACIDIC",
         "ABILITY_SOLIDIFY"
       ],
       "sprite": "sprites/pokemon/muk.png",
@@ -69549,8 +69549,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69558,8 +69558,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -171968,7 +171968,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_POISON_POINT",
+        "ABILITY_ACIDIC",
         "ABILITY_POISON_TOUCH",
         "ABILITY_LIQUID_OOZE"
       ],
@@ -203943,8 +203943,8 @@
       ],
       "innates": [
         "ABILITY_CORROSION",
-        "ABILITY_POISON_TOUCH",
-        "ABILITY_LIQUID_OOZE"
+        "ABILITY_WIND_FORCE",
+        "ABILITY_ACIDIC"
       ],
       "sprite": "sprites/pokemon/fezandipiti.png",
       "shinySprite": "sprites/pokemon/fezandipiti_shiny.png",
@@ -220004,12 +220004,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_ARBOK",
-            "name": "Arbok",
-            "dex": 22,
-            "sprite": "sprites/pokemon/arbok.png"
-          },
-          {
             "species": "SPECIES_WIGGLYTUFF",
             "name": "Wigglytuff",
             "dex": 38,
@@ -220020,12 +220014,6 @@
             "name": "Grimer",
             "dex": 78,
             "sprite": "sprites/pokemon/grimer.png"
-          },
-          {
-            "species": "SPECIES_MUK",
-            "name": "Muk",
-            "dex": 79,
-            "sprite": "sprites/pokemon/muk.png"
           },
           {
             "species": "SPECIES_MIENSHAO",
@@ -224266,12 +224254,6 @@
             "sprite": "sprites/pokemon/poipole.png"
           },
           {
-            "species": "SPECIES_NAGANADEL",
-            "name": "Naganadel",
-            "dex": 563,
-            "sprite": "sprites/pokemon/naganadel.png"
-          },
-          {
             "species": "SPECIES_ETERNATUS",
             "name": "Eternatus",
             "dex": 607,
@@ -228123,12 +228105,6 @@
             "name": "Eternatus",
             "dex": 607,
             "sprite": "sprites/pokemon/eternatus_eternamax.png"
-          },
-          {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
           },
           {
             "species": "SPECIES_PECHARUNT",
@@ -237457,12 +237433,6 @@
             "name": "Clodsire",
             "dex": 661,
             "sprite": "sprites/pokemon/clodsire.png"
-          },
-          {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
           },
           {
             "species": "SPECIES_PECHARUNT",
@@ -247949,6 +247919,12 @@
             "name": "Lugia",
             "dex": 213,
             "sprite": "sprites/pokemon/lugia_shadow.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
           }
         ]
       }
@@ -253887,6 +253863,47 @@
           }
         ],
         "innate": []
+      }
+    },
+    "ABILITY_ACIDIC": {
+      "constant": "ABILITY_ACIDIC",
+      "name": "Acidic",
+      "description": "Poison-type attacks are super effective against Steel-type Pokemon.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "acidic",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_ARBOK",
+            "name": "Arbok",
+            "dex": 22,
+            "sprite": "sprites/pokemon/arbok.png"
+          },
+          {
+            "species": "SPECIES_MUK",
+            "name": "Muk",
+            "dex": 79,
+            "sprite": "sprites/pokemon/muk.png"
+          },
+          {
+            "species": "SPECIES_NAGANADEL",
+            "name": "Naganadel",
+            "dex": 563,
+            "sprite": "sprites/pokemon/naganadel.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
+          }
+        ]
       }
     }
   },
@@ -260057,6 +260074,108 @@
       "slug": "gracidea"
     },
     {
+      "id": 711,
+      "constant": "ITEM_OLD_ROD",
+      "name": "Old Rod",
+      "description": "Use by any body of water to fish for wild Pokemon.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/old_rod.png",
+      "locations": [
+        {
+          "map": "Route 32 Pokemon Center",
+          "source": "Gift"
+        }
+      ],
+      "location": "Route 32 Pokemon Center (Gift)",
+      "slug": "old-rod"
+    },
+    {
+      "id": 712,
+      "constant": "ITEM_GOOD_ROD",
+      "name": "Good Rod",
+      "description": "A decent fishing rod for catching wild Pokemon.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/good_rod.png",
+      "locations": [
+        {
+          "map": "Olivine City House 3",
+          "source": "Gift"
+        }
+      ],
+      "location": "Olivine City House 3 (Gift)",
+      "slug": "good-rod"
+    },
+    {
+      "id": 713,
+      "constant": "ITEM_SUPER_ROD",
+      "name": "Super Rod",
+      "description": "The best fishing rod for catching wild Pokemon.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/super_rod.png",
+      "locations": [
+        {
+          "map": "Blackthorn City",
+          "source": "Gift"
+        }
+      ],
+      "location": "Blackthorn City (Gift)",
+      "slug": "super-rod"
+    },
+    {
+      "id": 714,
+      "constant": "ITEM_DOWSING_MACHINE",
+      "name": "Dowsing Machine",
+      "description": "A device that signals an invisible item by sound.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/dowsing_machine.png",
+      "locations": [
+        {
+          "map": "Ecruteak City House 4",
+          "source": "Gift"
+        }
+      ],
+      "location": "Ecruteak City House 4 (Gift)",
+      "slug": "dowsing-machine"
+    },
+    {
+      "id": 716,
+      "constant": "ITEM_VS_SEEKER",
+      "name": "Vs. Seeker",
+      "description": "A rechargeable unit that resets the route Trainers.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/vs_seeker.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Radio Tower 1F",
+          "source": "Gift"
+        }
+      ],
+      "location": "Goldenrod City Radio Tower 1F (Gift)",
+      "slug": "vs-seeker"
+    },
+    {
+      "id": 720,
+      "constant": "ITEM_COIN_CASE",
+      "name": "Coin Case",
+      "description": "A case that holds up to 9,999 Coins.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/coin_case.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Item ball"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Item ball)",
+      "slug": "coin-case"
+    },
+    {
       "id": 760,
       "constant": "ITEM_ABILITY_SHIELD",
       "name": "Ability Shield",
@@ -260762,6 +260881,40 @@
       "slug": "carbos-ex"
     },
     {
+      "id": 897,
+      "constant": "ITEM_GRIMY_HERB",
+      "name": "Grimy Herb",
+      "description": "An herb that lowers one Pokemon's Attack IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "grimy-herb"
+    },
+    {
+      "id": 898,
+      "constant": "ITEM_GOOPY_HERB",
+      "name": "Goopy Herb",
+      "description": "An herb that lowers one Pokemon's Speed IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "goopy-herb"
+    },
+    {
       "id": 901,
       "constant": "ITEM_NORMALITE",
       "name": "Normalite",
@@ -261083,6 +261236,74 @@
       ],
       "location": "Given by Elm during the story after 8th badge.",
       "slug": "bondstone"
+    },
+    {
+      "id": 926,
+      "constant": "ITEM_WITHERED_HERB",
+      "name": "Withered Herb",
+      "description": "An herb that lowers one Pokemon's HP IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "withered-herb"
+    },
+    {
+      "id": 927,
+      "constant": "ITEM_BRITTLE_HERB",
+      "name": "Brittle Herb",
+      "description": "An herb that lowers one Pokemon's Defense IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "brittle-herb"
+    },
+    {
+      "id": 928,
+      "constant": "ITEM_DULL_HERB",
+      "name": "Dull Herb",
+      "description": "An herb that lowers one Pokemon's Sp. Atk IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "dull-herb"
+    },
+    {
+      "id": 929,
+      "constant": "ITEM_SOGGY_HERB",
+      "name": "Soggy Herb",
+      "description": "An herb that lowers one Pokemon's Sp. Def IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "soggy-herb"
     }
   ],
   "encounters": [
@@ -292623,7 +292844,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -294802,7 +295023,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -296034,7 +296255,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -297093,7 +297314,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -297862,7 +298083,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -298006,7 +298227,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -298179,7 +298400,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -300576,7 +300797,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -302520,7 +302741,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -303127,7 +303348,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "ITEM_LIFE_ORB",

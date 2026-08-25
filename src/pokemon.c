@@ -834,6 +834,16 @@ static const u8 sGetMonDataIVConstants[] =
     MON_DATA_SPATK_IV
 };
 
+static const u8 sGetMonDataIVConstantsByStat[NUM_STATS] =
+{
+    [STAT_HP] = MON_DATA_HP_IV,
+    [STAT_ATK] = MON_DATA_ATK_IV,
+    [STAT_DEF] = MON_DATA_DEF_IV,
+    [STAT_SPEED] = MON_DATA_SPEED_IV,
+    [STAT_SPATK] = MON_DATA_SPATK_IV,
+    [STAT_SPDEF] = MON_DATA_SPDEF_IV,
+};
+
 // For stat-raising items
 static const enum Stat sStatsToRaise[] =
 {
@@ -3510,31 +3520,19 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
         }
     }
 
-    if ((itemEffect[10] & ITEM10_ZERO_IV) && (itemEffect[9] & ITEM9_ZERO_IV_ATK))
+    if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] != 0 && itemEffect[9] <= NUM_STATS)
     {
-        dataUnsigned = GetMonData(mon, MON_DATA_ATK_IV);
+        enum Stat stat = itemEffect[9] - 1;
+        enum MonData monData = sGetMonDataIVConstantsByStat[stat];
+
+        dataUnsigned = GetMonData(mon, monData);
         if (dataUnsigned == 0)
             return TRUE;
 
         if (modifyStats)
         {
-            dataUnsigned = 0;
-            SetMonData(mon, MON_DATA_ATK_IV, &dataUnsigned);
-            CalculateMonStats(mon);
-        }
-        retVal = FALSE;
-    }
-
-    if ((itemEffect[10] & ITEM10_ZERO_IV) && (itemEffect[9] & ITEM9_ZERO_IV_SPEED))
-    {
-        dataUnsigned = GetMonData(mon, MON_DATA_SPEED_IV);
-        if (dataUnsigned == 0)
-            return TRUE;
-
-        if (modifyStats)
-        {
-            dataUnsigned = 0;
-            SetMonData(mon, MON_DATA_SPEED_IV, &dataUnsigned);
+            dataUnsigned -= min(dataUnsigned, itemCount);
+            SetMonData(mon, monData, &dataUnsigned);
             CalculateMonStats(mon);
         }
         retVal = FALSE;

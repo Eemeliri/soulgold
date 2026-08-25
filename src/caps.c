@@ -18,7 +18,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_RECEIVED_BADGE_7, 48},
         {FLAG_ROCKET_TAKEOVER_CAP, 55},
         {FLAG_BADGE08_GET, 58},
-        {FLAG_LEGENDARY_STORY_CAP, 61},
+        {FLAG_LEGENDARY_STORY_CAP, 62},
         {FLAG_IS_CHAMPION, 70},
     };
 

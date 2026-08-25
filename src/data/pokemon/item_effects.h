@@ -255,14 +255,34 @@ const u8 gItemEffect_ZincEX[ITEM_EFFECT_COUNT] = {
     [6] = ITEM6_MAX_EV,
 };
 
-const u8 gItemEffect_ZeroAtkIV[ITEM_EFFECT_COUNT] = {
-    [9] = ITEM9_ZERO_IV_ATK,
-    [10] = ITEM10_ZERO_IV,
+const u8 gItemEffect_ReduceHpIV[ITEM_EFFECT_COUNT] = {
+    [9] = ITEM9_REDUCE_IV_HP,
+    [10] = ITEM10_REDUCE_IV,
 };
 
-const u8 gItemEffect_ZeroSpeedIV[ITEM_EFFECT_COUNT] = {
-    [9] = ITEM9_ZERO_IV_SPEED,
-    [10] = ITEM10_ZERO_IV,
+const u8 gItemEffect_ReduceAtkIV[ITEM_EFFECT_COUNT] = {
+    [9] = ITEM9_REDUCE_IV_ATK,
+    [10] = ITEM10_REDUCE_IV,
+};
+
+const u8 gItemEffect_ReduceDefIV[ITEM_EFFECT_COUNT] = {
+    [9] = ITEM9_REDUCE_IV_DEF,
+    [10] = ITEM10_REDUCE_IV,
+};
+
+const u8 gItemEffect_ReduceSpeedIV[ITEM_EFFECT_COUNT] = {
+    [9] = ITEM9_REDUCE_IV_SPEED,
+    [10] = ITEM10_REDUCE_IV,
+};
+
+const u8 gItemEffect_ReduceSpAtkIV[ITEM_EFFECT_COUNT] = {
+    [9] = ITEM9_REDUCE_IV_SPATK,
+    [10] = ITEM10_REDUCE_IV,
+};
+
+const u8 gItemEffect_ReduceSpDefIV[ITEM_EFFECT_COUNT] = {
+    [9] = ITEM9_REDUCE_IV_SPDEF,
+    [10] = ITEM10_REDUCE_IV,
 };
 
 #define FEATHER_FRIENDSHIP_CHANGE(i)             \
