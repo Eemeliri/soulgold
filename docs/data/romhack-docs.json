@@ -5901,7 +5901,7 @@
       ],
       "innates": [
         "ABILITY_HUNTER",
-        "ABILITY_LIMBER",
+        "ABILITY_ACIDIC",
         "ABILITY_MERCILESS"
       ],
       "sprite": "sprites/pokemon/arbok.png",
@@ -26724,7 +26724,7 @@
       ],
       "innates": [
         "ABILITY_LIQUID_OOZE",
-        "ABILITY_LIMBER",
+        "ABILITY_ACIDIC",
         "ABILITY_SOLIDIFY"
       ],
       "sprite": "sprites/pokemon/muk.png",
@@ -171968,7 +171968,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_POISON_POINT",
+        "ABILITY_ACIDIC",
         "ABILITY_POISON_TOUCH",
         "ABILITY_LIQUID_OOZE"
       ],
@@ -203943,8 +203943,8 @@
       ],
       "innates": [
         "ABILITY_CORROSION",
-        "ABILITY_POISON_TOUCH",
-        "ABILITY_LIQUID_OOZE"
+        "ABILITY_WIND_FORCE",
+        "ABILITY_ACIDIC"
       ],
       "sprite": "sprites/pokemon/fezandipiti.png",
       "shinySprite": "sprites/pokemon/fezandipiti_shiny.png",
@@ -220004,12 +220004,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_ARBOK",
-            "name": "Arbok",
-            "dex": 22,
-            "sprite": "sprites/pokemon/arbok.png"
-          },
-          {
             "species": "SPECIES_WIGGLYTUFF",
             "name": "Wigglytuff",
             "dex": 38,
@@ -220020,12 +220014,6 @@
             "name": "Grimer",
             "dex": 78,
             "sprite": "sprites/pokemon/grimer.png"
-          },
-          {
-            "species": "SPECIES_MUK",
-            "name": "Muk",
-            "dex": 79,
-            "sprite": "sprites/pokemon/muk.png"
           },
           {
             "species": "SPECIES_MIENSHAO",
@@ -224266,12 +224254,6 @@
             "sprite": "sprites/pokemon/poipole.png"
           },
           {
-            "species": "SPECIES_NAGANADEL",
-            "name": "Naganadel",
-            "dex": 563,
-            "sprite": "sprites/pokemon/naganadel.png"
-          },
-          {
             "species": "SPECIES_ETERNATUS",
             "name": "Eternatus",
             "dex": 607,
@@ -228123,12 +228105,6 @@
             "name": "Eternatus",
             "dex": 607,
             "sprite": "sprites/pokemon/eternatus_eternamax.png"
-          },
-          {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
           },
           {
             "species": "SPECIES_PECHARUNT",
@@ -237457,12 +237433,6 @@
             "name": "Clodsire",
             "dex": 661,
             "sprite": "sprites/pokemon/clodsire.png"
-          },
-          {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
           },
           {
             "species": "SPECIES_PECHARUNT",
@@ -247949,6 +247919,12 @@
             "name": "Lugia",
             "dex": 213,
             "sprite": "sprites/pokemon/lugia_shadow.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
           }
         ]
       }
@@ -253887,6 +253863,47 @@
           }
         ],
         "innate": []
+      }
+    },
+    "ABILITY_ACIDIC": {
+      "constant": "ABILITY_ACIDIC",
+      "name": "Acidic",
+      "description": "Poison-type attacks are super effective against Steel-type Pokemon.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "acidic",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_ARBOK",
+            "name": "Arbok",
+            "dex": 22,
+            "sprite": "sprites/pokemon/arbok.png"
+          },
+          {
+            "species": "SPECIES_MUK",
+            "name": "Muk",
+            "dex": 79,
+            "sprite": "sprites/pokemon/muk.png"
+          },
+          {
+            "species": "SPECIES_NAGANADEL",
+            "name": "Naganadel",
+            "dex": 563,
+            "sprite": "sprites/pokemon/naganadel.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
+          }
+        ]
       }
     }
   },
@@ -292827,7 +292844,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -295006,7 +295023,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -296238,7 +296255,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -297297,7 +297314,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -298066,7 +298083,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -298210,7 +298227,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -298383,7 +298400,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -300780,7 +300797,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -302724,7 +302741,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -303331,7 +303348,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
