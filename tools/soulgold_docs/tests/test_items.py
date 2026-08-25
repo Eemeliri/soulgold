@@ -16,6 +16,18 @@ class ImportantItemExceptionTests(unittest.TestCase):
                 "ITEM_ABILITY_CAPSULE",
                 "ITEM_ABILITY_PATCH",
                 "ITEM_GRACIDEA",
+                "ITEM_WITHERED_HERB",
+                "ITEM_GRIMY_HERB",
+                "ITEM_BRITTLE_HERB",
+                "ITEM_GOOPY_HERB",
+                "ITEM_DULL_HERB",
+                "ITEM_SOGGY_HERB",
+                "ITEM_OLD_ROD",
+                "ITEM_GOOD_ROD",
+                "ITEM_SUPER_ROD",
+                "ITEM_DOWSING_MACHINE",
+                "ITEM_VS_SEEKER",
+                "ITEM_COIN_CASE",
             }.issubset(ADDITIONAL_IMPORTANT_ITEMS)
         )
 

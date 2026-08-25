@@ -173,8 +173,9 @@ IMPORTANT_ITEM_POCKETS = {
     "POCKET_BATTLE_ITEMS",
 }
 
-# Useful training consumables live outside the pockets and sort types used by
-# the evolution-item index, so opt them into the Items page explicitly.
+# Useful training consumables and player-facing key items live outside the
+# pockets and sort types used by the evolution-item index, so opt them into the
+# Items page explicitly.
 ADDITIONAL_IMPORTANT_ITEMS = {
     "ITEM_ABILITY_CAPSULE",
     "ITEM_ABILITY_PATCH",
@@ -192,6 +193,18 @@ ADDITIONAL_IMPORTANT_ITEMS = {
     "ITEM_CALCIUM_EX",
     "ITEM_ZINC_EX",
     "ITEM_CARBOS_EX",
+    "ITEM_WITHERED_HERB",
+    "ITEM_GRIMY_HERB",
+    "ITEM_BRITTLE_HERB",
+    "ITEM_GOOPY_HERB",
+    "ITEM_DULL_HERB",
+    "ITEM_SOGGY_HERB",
+    "ITEM_OLD_ROD",
+    "ITEM_GOOD_ROD",
+    "ITEM_SUPER_ROD",
+    "ITEM_DOWSING_MACHINE",
+    "ITEM_VS_SEEKER",
+    "ITEM_COIN_CASE",
     "ITEM_GRACIDEA",
 }
 

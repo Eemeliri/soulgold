@@ -374,7 +374,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route12_House_EventScript_SuperRod",
+      "script": "Blackthorn_EventScript_SuperRod",
       "flag": "0"
     }
   ],

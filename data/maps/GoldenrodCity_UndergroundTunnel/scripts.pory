@@ -305,6 +305,30 @@ GoldenrodCity_UndergroundTunnel_EventScript_DoorAlreadyOpened::
 	release
 	end
 
+GoldenrodUnderground_HerbShop_EventScript_Clerk::
+	lock
+	faceplayer
+	message LavaridgeTown_HerbShop_Text_WelcomeToHerbShop
+	waitmessage
+	pokemart GoldenrodUnderground_HerbShop_Pokemart
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+GoldenrodUnderground_HerbShop_Pokemart:
+	.2byte ITEM_ENERGY_POWDER
+	.2byte ITEM_ENERGY_ROOT
+	.2byte ITEM_HEAL_POWDER
+	.2byte ITEM_REVIVAL_HERB
+	.2byte ITEM_WITHERED_HERB
+	.2byte ITEM_GRIMY_HERB
+	.2byte ITEM_BRITTLE_HERB
+	.2byte ITEM_GOOPY_HERB
+	.2byte ITEM_DULL_HERB
+	.2byte ITEM_SOGGY_HERB
+	pokemartlistend
+
 
 GoldenrodUnderground_Text_YoungerBrotherOffer:
     .string "Welcome to the Pokémon Salon!\p"

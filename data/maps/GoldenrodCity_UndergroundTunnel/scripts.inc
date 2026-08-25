@@ -613,363 +613,411 @@ GoldenrodCity_UndergroundTunnel_EventScript_DoorAlreadyOpened::
 # 307 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 308 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+GoldenrodUnderground_HerbShop_EventScript_Clerk::
 # 309 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherOffer:
+	lock
 # 310 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Welcome to the Pokémon Salon!\p"
+	faceplayer
 # 311 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I'm the younger and less expensive\n"
+	message LavaridgeTown_HerbShop_Text_WelcomeToHerbShop
 # 312 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "of the two Haircut Brothers.\p"
+	waitmessage
 # 313 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I'll spiff up your Pokémon for just\n"
+	pokemart GoldenrodUnderground_HerbShop_Pokemart
 # 314 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "¥300.\p"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 # 315 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "So? How about it?$"
+	release
 # 316 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+	end
 # 317 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherAskWhich:
+
 # 318 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Ok, which Pokémon should I do?$"
+	.align 2
 # 319 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+GoldenrodUnderground_HerbShop_Pokemart:
 # 320 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherLookCool:
+	.2byte ITEM_ENERGY_POWDER
 # 321 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Ok! I'll make it look cool!$"
+	.2byte ITEM_ENERGY_ROOT
 # 322 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+	.2byte ITEM_HEAL_POWDER
 # 323 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherAllDone:
+	.2byte ITEM_REVIVAL_HERB
 # 324 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "There we go! All done!$"
+	.2byte ITEM_WITHERED_HERB
 # 325 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+	.2byte ITEM_GRIMY_HERB
 # 326 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherDisappointed:
+	.2byte ITEM_BRITTLE_HERB
 # 327 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "No? How disappointing!$"
+	.2byte ITEM_GOOPY_HERB
 # 328 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+	.2byte ITEM_DULL_HERB
 # 329 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherShortOnFunds:
+	.2byte ITEM_SOGGY_HERB
 # 330 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "You're a little short on funds.$"
+	pokemartlistend
 # 331 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 332 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_YoungerBrotherOnePerDay:
+
 # 333 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I can do only one haircut a day.\p"
+GoldenrodUnderground_Text_YoungerBrotherOffer:
 # 334 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Sorry, but I'm all done for today.$"
+    .string "Welcome to the Pokémon Salon!\p"
 # 335 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "I'm the younger and less expensive\n"
 # 336 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "of the two Haircut Brothers.\p"
 # 337 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "I'll spiff up your Pokémon for just\n"
 # 338 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherOffer:
+    .string "¥300.\p"
 # 339 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Welcome!\p"
+    .string "So? How about it?$"
 # 340 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I run the Pokémon Salon!\p"
+
 # 341 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I'm the older and better of the two\n"
+GoldenrodUnderground_Text_YoungerBrotherAskWhich:
 # 342 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Haircut Brothers.\p"
+    .string "Ok, which Pokémon should I do?$"
 # 343 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I can make your Pokémon beautiful\n"
+
 # 344 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "for just ¥500.\p"
+GoldenrodUnderground_Text_YoungerBrotherLookCool:
 # 345 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Would you like me to do that?$"
+    .string "Ok! I'll make it look cool!$"
 # 346 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 347 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherAskWhich:
+GoldenrodUnderground_Text_YoungerBrotherAllDone:
 # 348 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Which Pokémon should I work on?$"
+    .string "There we go! All done!$"
 # 349 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 350 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherWatchItBeautiful:
+GoldenrodUnderground_Text_YoungerBrotherDisappointed:
 # 351 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Ok! Watch it become beautiful!$"
+    .string "No? How disappointing!$"
 # 352 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 353 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherAllDone:
+GoldenrodUnderground_Text_YoungerBrotherShortOnFunds:
 # 354 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "There! All done!$"
+    .string "You're a little short on funds.$"
 # 355 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 356 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherThatsAShame:
+GoldenrodUnderground_Text_YoungerBrotherOnePerDay:
 # 357 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Is that right? That's a shame!$"
+    .string "I can do only one haircut a day.\p"
 # 358 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "Sorry, but I'm all done for today.$"
 # 359 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherNeedMoreMoney:
+
 # 360 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "You'll need more money than that.$"
+
 # 361 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 362 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_OlderBrotherOnePerDay:
+GoldenrodUnderground_Text_OlderBrotherOffer:
 # 363 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I do only one haircut a day.\n"
+    .string "Welcome!\p"
 # 364 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I'm done for today.$"
+    .string "I run the Pokémon Salon!\p"
 # 365 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "I'm the older and better of the two\n"
 # 366 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_SupernerdEricSeen:
+    .string "Haircut Brothers.\p"
 # 367 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I got booted out of the Game Corner.\p"
+    .string "I can make your Pokémon beautiful\n"
 # 368 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I was trying to cheat using my\n"
+    .string "for just ¥500.\p"
 # 369 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Pokémon…$"
+    .string "Would you like me to do that?$"
 # 370 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 371 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_SupernerdEricBeaten:
+GoldenrodUnderground_Text_OlderBrotherAskWhich:
 # 372 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "…Grumble…$"
+    .string "Which Pokémon should I work on?$"
 # 373 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 374 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_SupernerdEricAfterBattle:
+GoldenrodUnderground_Text_OlderBrotherWatchItBeautiful:
 # 375 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I guess I have to do things fair and\n"
+    .string "Ok! Watch it become beautiful!$"
 # 376 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "square…$"
+
 # 377 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+GoldenrodUnderground_Text_OlderBrotherAllDone:
 # 378 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_SupernerdTeruSeen:
+    .string "There! All done!$"
 # 379 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Do you consider type alignments in\n"
+
 # 380 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "battle?\p"
+GoldenrodUnderground_Text_OlderBrotherThatsAShame:
 # 381 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "If you know your type advantages,\n"
+    .string "Is that right? That's a shame!$"
 # 382 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "you'll do better in battle.$"
+
 # 383 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+GoldenrodUnderground_Text_OlderBrotherNeedMoreMoney:
 # 384 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_SupernerdTeruBeaten:
+    .string "You'll need more money than that.$"
 # 385 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Ow, ow, ow!$"
+
 # 386 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+GoldenrodUnderground_Text_OlderBrotherOnePerDay:
 # 387 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_SupernerdTeruAfterBattle:
+    .string "I do only one haircut a day.\n"
 # 388 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I know my Pokémon type alignments.\p"
+    .string "I'm done for today.$"
 # 389 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "But I only use one type of Pokémon.$"
-# 390 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
+# 390 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_SupernerdEricSeen:
 # 391 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacIssacSeen:
+    .string "I got booted out of the Game Corner.\p"
 # 392 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "My Pokémon just got a haircut!\p"
+    .string "I was trying to cheat using my\n"
 # 393 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I'll show you how strong it is!$"
+    .string "Pokémon…$"
 # 394 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 395 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacIssacBeaten:
+GoldenrodUnderground_Text_SupernerdEricBeaten:
 # 396 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Aiyeeee!$"
+    .string "…Grumble…$"
 # 397 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 398 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacIssacAfterBattle:
+GoldenrodUnderground_Text_SupernerdEricAfterBattle:
 # 399 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Your Pokémon will like you more if\n"
+    .string "I guess I have to do things fair and\n"
 # 400 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "you give them haircuts.$"
+    .string "square…$"
 # 401 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 402 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacDonaldSeen:
+GoldenrodUnderground_Text_SupernerdTeruSeen:
 # 403 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "I think you have some rare Pokémon\n"
+    .string "Do you consider type alignments in\n"
 # 404 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "with you.\p"
+    .string "battle?\p"
 # 405 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Let me see them!$"
+    .string "If you know your type advantages,\n"
 # 406 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "you'll do better in battle.$"
 # 407 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacDonaldBeaten:
-# 408 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Gaah! I lost! That makes me mad!$"
-# 409 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
+# 408 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_SupernerdTeruBeaten:
+# 409 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "Ow, ow, ow!$"
 # 410 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacDonaldAfterBattle:
+
 # 411 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-	.string "When I was walking near the Bike\n"
+GoldenrodUnderground_Text_SupernerdTeruAfterBattle:
 # 412 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-	.string "Shop last night, I felt like I was\l"
+    .string "I know my Pokémon type alignments.\p"
 # 413 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-	.string "being watched from the rooftops...$"
+    .string "But I only use one type of Pokémon.$"
 # 414 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 415 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_PokemaniacDonaldAfterBattleOld:
+GoldenrodUnderground_Text_PokemaniacIssacSeen:
 # 416 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Are you making a Pokédex? Here's a\n"
+    .string "My Pokémon just got a haircut!\p"
 # 417 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "hot tip.\p"
+    .string "I'll show you how strong it is!$"
 # 418 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "The Hiker on Route 33, Anthony, is a\n"
-# 419 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "good guy.\p"
-# 420 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "He'll phone you if he sees any rare\n"
-# 421 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "Pokémon.$"
-# 422 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
+# 419 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_PokemaniacIssacBeaten:
+# 420 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "Aiyeeee!$"
+# 421 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 422 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_PokemaniacIssacAfterBattle:
 # 423 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_DoorsLocked:
+    .string "Your Pokémon will like you more if\n"
 # 424 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "The door's locked…$"
+    .string "you give them haircuts.$"
 # 425 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
 # 426 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_DoorIsOpen:
+GoldenrodUnderground_Text_PokemaniacDonaldSeen:
 # 427 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "The door is open.$"
+    .string "I think you have some rare Pokémon\n"
 # 428 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-
+    .string "with you.\p"
 # 429 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_KeyOpenedDoor:
+    .string "Let me see them!$"
 # 430 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-    .string "The Basement Key opened the door.$"
-# 431 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 
+# 431 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_PokemaniacDonaldBeaten:
 # 432 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
-GoldenrodUnderground_Text_NoEntry:
+    .string "Gaah! I lost! That makes me mad!$"
 # 433 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 434 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_PokemaniacDonaldAfterBattle:
+# 435 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+	.string "When I was walking near the Bike\n"
+# 436 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+	.string "Shop last night, I felt like I was\l"
+# 437 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+	.string "being watched from the rooftops...$"
+# 438 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 439 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_PokemaniacDonaldAfterBattleOld:
+# 440 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "Are you making a Pokédex? Here's a\n"
+# 441 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "hot tip.\p"
+# 442 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "The Hiker on Route 33, Anthony, is a\n"
+# 443 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "good guy.\p"
+# 444 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "He'll phone you if he sees any rare\n"
+# 445 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "Pokémon.$"
+# 446 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 447 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_DoorsLocked:
+# 448 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "The door's locked…$"
+# 449 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 450 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_DoorIsOpen:
+# 451 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "The door is open.$"
+# 452 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 453 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_KeyOpenedDoor:
+# 454 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+    .string "The Basement Key opened the door.$"
+# 455 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+
+# 456 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+GoldenrodUnderground_Text_NoEntry:
+# 457 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
     .string "No Entry Beyond This Point$"
 
 goldenrod_utility_shop_girl::
-# 438 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 462 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	lock
-# 439 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 463 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	msgbox goldenrod_utility_shop_girl_Text_0
-# 440 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 464 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	waitmessage
-# 441 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 465 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	pokemart goldenrod_utility_shop
-# 442 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 466 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	msgbox goldenrod_utility_shop_girl_Text_1
-# 443 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 467 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	release
 	return
 
 
 	.align 2
-# 446 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 470 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 goldenrod_utility_shop:
-# 447 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 471 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.2byte ITEM_UTILITY_UMBRELLA
-# 448 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 472 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.2byte ITEM_COVERT_CLOAK
-# 449 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 473 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.2byte ITEM_ABILITY_SHIELD
-# 450 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 474 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.2byte ITEM_CLEAR_AMULET
-# 451 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 475 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.2byte ITEM_AIR_BALLOON
 	.2byte ITEM_NONE
 
 suspiciousdoor_goldenrod_underground::
-# 455 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 479 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	lock
-# 456 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 480 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	compare VAR_NEWBARK_TOWN_STATE, 12
 	goto_if_lt suspiciousdoor_goldenrod_underground_2
-# 463 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 487 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	msgbox suspiciousdoor_goldenrod_underground_Text_1
 suspiciousdoor_goldenrod_underground_1:
-# 468 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 492 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	release
 	end
 
 suspiciousdoor_goldenrod_underground_2:
-# 457 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 481 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	msgbox suspiciousdoor_goldenrod_underground_Text_0
-# 460 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 484 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	waitmessage
 	goto suspiciousdoor_goldenrod_underground_1
 
 
 rocket_bouncer::
-# 473 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 497 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	lock
-# 474 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 498 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	faceplayer
-# 475 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 499 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	compare VAR_NEWBARK_TOWN_STATE, 12
 	goto_if_ge rocket_bouncer_2
-# 479 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 503 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	msgbox rocket_bouncer_Text_1
 rocket_bouncer_1:
-# 481 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 505 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	release
 	end
 
 rocket_bouncer_2:
-# 476 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 500 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	msgbox rocket_bouncer_Text_0
 	goto rocket_bouncer_1
 
 
 Goldenrod_TryOpenRocketArcadeDoor::
-# 486 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 510 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	setmetatile 12, 28, 0x45D, FALSE
 	return
 
 
 goldenrod_utility_shop_girl_Text_0:
-# 439 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 463 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.string "Hi, take a look at my exclusive wares!$"
 
 goldenrod_utility_shop_girl_Text_1:
-# 442 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 466 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.string "Come on, buy some more!$"
 
 suspiciousdoor_goldenrod_underground_Text_0:
-# 457 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 481 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.string "Door seems to be locked, but you can \n"
 	.string "faintly discern noise coming from \l"
 	.string "somewhere far behind the door.$"
 
 suspiciousdoor_goldenrod_underground_Text_1:
-# 463 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 487 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.string "The door is now open. \p"
 	.string "A cacophony of noises is echoing from \n"
 	.string "the tunnel.$"
 
 rocket_bouncer_Text_0:
-# 476 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 500 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.string "Welcome,\n"
 	.string "Boss told to me to let you pass.$"
 
 rocket_bouncer_Text_1:
-# 479 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
+# 503 "data/maps/GoldenrodCity_UndergroundTunnel/scripts.pory"
 	.string "Sorry kid, only those with special\n"
 	.string "permission are allowed past here.$"
