@@ -35,6 +35,7 @@ const state = {
   filteredSpecies: [],
   selectedTypes: new Set(),
   selectedCategories: new Set(),
+  excludedCategories: new Set(),
   dexSortKey: "dex",
   dexSortDirection: "asc",
   modalScrollY: 0,
@@ -73,6 +74,7 @@ const dexCategoryOptions = [
   { key: "paradox", label: "Paradox" },
   { key: "mythical", label: "Mythical" },
   { key: "mega", label: "Mega" },
+  { key: "fossil", label: "Fossil" },
 ];
 const dexCategoryKeys = new Set(dexCategoryOptions.map((option) => option.key));
 const excludedDexSpecies = new Set([
@@ -521,6 +523,7 @@ function viewFromLocation() {
     query: (params.get("q") || "").trim().toLowerCase(),
     types: (params.get("type") || "").split(",").filter(Boolean).map((type) => `TYPE_${type.toUpperCase().replace(/^TYPE_/, "")}`),
     categories: (params.get("category") || "").split(",").filter((category) => dexCategoryKeys.has(category)),
+    excludedCategories: (params.get("exclude") || "").split(",").filter((category) => dexCategoryKeys.has(category)),
     sortKey: normalizeDexSortKey(params.get("sort")),
     sortDirection: params.get("dir") === "desc" ? "desc" : "asc",
     scrollY: 0,
@@ -538,7 +541,7 @@ function routeUrl(tab, detail = null, view = null) {
   const route = tabRoutes[tab];
   const path = detail ? `${route}/${detail.slug}/` : `${route}/`;
   const url = new URL(path, siteRootUrl);
-  const nextView = view || { query: "", types: [], categories: [], sortKey: "dex", sortDirection: "asc" };
+  const nextView = view || { query: "", types: [], categories: [], excludedCategories: [], sortKey: "dex", sortDirection: "asc" };
   const nextSortKey = normalizeDexSortKey(nextView.sortKey);
   const nextSortDirection = nextView.sortDirection === "desc" ? "desc" : "asc";
   if (!detail && nextView.query) url.searchParams.set("q", nextView.query);
@@ -547,6 +550,9 @@ function routeUrl(tab, detail = null, view = null) {
   }
   if (!detail && nextView.categories?.length && tab === "pokedex") {
     url.searchParams.set("category", nextView.categories.join(","));
+  }
+  if (!detail && nextView.excludedCategories?.length && tab === "pokedex") {
+    url.searchParams.set("exclude", nextView.excludedCategories.join(","));
   }
   if (!detail && tab === "pokedex" && (nextSortKey !== "dex" || nextSortDirection !== "asc")) {
     url.searchParams.set("sort", nextSortKey);
@@ -607,6 +613,7 @@ function currentViewState(scrollY = window.scrollY) {
     query: state.query,
     types: [...state.selectedTypes],
     categories: [...state.selectedCategories],
+    excludedCategories: [...state.excludedCategories],
     sortKey: state.dexSortKey,
     sortDirection: state.dexSortDirection,
     scrollY,
@@ -616,7 +623,10 @@ function currentViewState(scrollY = window.scrollY) {
 function applyViewState(view = {}) {
   state.query = String(view.query || "").toLowerCase();
   state.selectedTypes = new Set(view.types || []);
-  state.selectedCategories = new Set((view.categories || []).filter((category) => dexCategoryKeys.has(category)));
+  state.excludedCategories = new Set((view.excludedCategories || []).filter((category) => dexCategoryKeys.has(category)));
+  state.selectedCategories = new Set(
+    (view.categories || []).filter((category) => dexCategoryKeys.has(category) && !state.excludedCategories.has(category)),
+  );
   state.dexSortKey = normalizeDexSortKey(view.sortKey);
   state.dexSortDirection = view.sortDirection === "desc" ? "desc" : "asc";
   const search = document.getElementById("globalSearch");
@@ -659,6 +669,7 @@ async function applyLocationRoute(historyState = null) {
   const previousQuery = state.query;
   const previousTypes = [...state.selectedTypes].join(",");
   const previousCategories = [...state.selectedCategories].join(",");
+  const previousExcludedCategories = [...state.excludedCategories].join(",");
   const previousSort = `${state.dexSortKey}:${state.dexSortDirection}`;
   state.activeTab = route.tab;
   state.detail = route.detail;
@@ -669,6 +680,7 @@ async function applyLocationRoute(historyState = null) {
   const viewChanged = previousQuery !== state.query
     || previousTypes !== [...state.selectedTypes].join(",")
     || previousCategories !== [...state.selectedCategories].join(",")
+    || previousExcludedCategories !== [...state.excludedCategories].join(",")
     || previousSort !== `${state.dexSortKey}:${state.dexSortDirection}`;
   const sectionNeedsData = (sectionDataFiles[state.activeTab] || [])
     .some(([key]) => !loadedData.has(key));
@@ -704,6 +716,7 @@ async function navigateDetail(kind, slug) {
     state.query = "";
     state.selectedTypes.clear();
     state.selectedCategories.clear();
+    state.excludedCategories.clear();
     resetDexSort();
     syncTypeFilter();
     document.getElementById("globalSearch").value = "";
@@ -868,6 +881,7 @@ async function setTab(tab, { updateHistory = true } = {}) {
   state.query = "";
   state.selectedTypes.clear();
   state.selectedCategories.clear();
+  state.excludedCategories.clear();
   resetDexSort();
   syncTypeFilter();
   const search = document.getElementById("globalSearch");
@@ -920,7 +934,7 @@ function renderDex() {
     "pokedex",
     state.filteredSpecies.length
       ? ""
-      : state.query || state.selectedTypes.size || state.selectedCategories.size ? "No Pokémon match the current search and filters." : "No Pokémon are available.",
+      : state.query || state.selectedTypes.size || state.selectedCategories.size || state.excludedCategories.size ? "No Pokémon match the current search and filters." : "No Pokémon are available.",
   );
 }
 
@@ -953,7 +967,7 @@ function renderTypeFilter() {
       </div>
       <div class="dex-category-grid">
         ${dexCategoryOptions.map((option) => `
-          <button class="dex-category-chip" type="button" data-category="${option.key}" aria-pressed="false">${option.label}</button>
+          <button class="dex-category-chip" type="button" data-category="${option.key}" aria-pressed="false" title="Click to include, click again to exclude, and click a third time to clear">${option.label}</button>
         `).join("")}
       </div>
     </div>
@@ -978,18 +992,26 @@ function syncTypeFilter() {
   const toggle = document.getElementById("typeFilterToggle");
   const typeCount = state.selectedTypes.size;
   const categoryCount = state.selectedCategories.size;
+  const excludedCategoryCount = state.excludedCategories.size;
   const sortOption = dexSortOptions.find((option) => option.key === state.dexSortKey) || dexSortOptions[0];
   const hasSort = state.dexSortKey !== "dex" || state.dexSortDirection !== "asc";
   const summary = [];
-  if (categoryCount) summary.push(`${categoryCount} categor${categoryCount === 1 ? "y" : "ies"}`);
+  if (categoryCount) summary.push(`${categoryCount} categor${categoryCount === 1 ? "y" : "ies"} included`);
+  if (excludedCategoryCount) summary.push(`${excludedCategoryCount} categor${excludedCategoryCount === 1 ? "y" : "ies"} excluded`);
   if (typeCount) summary.push(`${typeCount} type${typeCount === 1 ? "" : "s"}`);
   if (hasSort) summary.push(`${sortOption.label} ${state.dexSortDirection === "asc" ? "↑" : "↓"}`);
   toggle.textContent = summary.length ? `Filter · ${summary.join(" · ")}` : "Filter";
-  toggle.classList.toggle("has-filter", categoryCount > 0 || typeCount > 0 || hasSort);
+  toggle.classList.toggle("has-filter", categoryCount > 0 || excludedCategoryCount > 0 || typeCount > 0 || hasSort);
   document.querySelectorAll(".dex-category-chip").forEach((button) => {
     const active = state.selectedCategories.has(button.dataset.category);
+    const excluded = state.excludedCategories.has(button.dataset.category);
+    const option = dexCategoryOptions.find((entry) => entry.key === button.dataset.category);
+    const label = option?.label || button.dataset.category;
     button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", active ? "true" : "false");
+    button.classList.toggle("excluded", excluded);
+    button.textContent = active ? `Only ${label}` : excluded ? `No ${label}` : label;
+    button.setAttribute("aria-pressed", active ? "true" : excluded ? "mixed" : "false");
+    button.setAttribute("aria-label", `${label}: ${active ? "included" : excluded ? "excluded" : "off"}`);
   });
   document.querySelectorAll(".type-filter-chip").forEach((button) => {
     const active = state.selectedTypes.has(button.dataset.type);
@@ -1038,8 +1060,10 @@ function matchesSelectedTypes(mon) {
 }
 
 function matchesSelectedCategories(mon) {
+  const categories = mon.categories || [];
+  if (categories.some((category) => state.excludedCategories.has(category))) return false;
   if (!state.selectedCategories.size) return true;
-  return (mon.categories || []).some((category) => state.selectedCategories.has(category));
+  return categories.some((category) => state.selectedCategories.has(category));
 }
 
 function toggleTypeFilter(event) {
@@ -1075,12 +1099,16 @@ function handleTypeFilterClick(event) {
     state.selectedTypes.clear();
   } else if (clearCategories) {
     state.selectedCategories.clear();
+    state.excludedCategories.clear();
   } else if (typeButton && state.selectedTypes.has(typeButton.dataset.type)) {
     state.selectedTypes.delete(typeButton.dataset.type);
   } else if (typeButton) {
     state.selectedTypes.add(typeButton.dataset.type);
   } else if (categoryButton && state.selectedCategories.has(categoryButton.dataset.category)) {
     state.selectedCategories.delete(categoryButton.dataset.category);
+    state.excludedCategories.add(categoryButton.dataset.category);
+  } else if (categoryButton && state.excludedCategories.has(categoryButton.dataset.category)) {
+    state.excludedCategories.delete(categoryButton.dataset.category);
   } else if (categoryButton) {
     state.selectedCategories.add(categoryButton.dataset.category);
   } else if (sortButton) {
@@ -1542,6 +1570,7 @@ function speciesFormLabel(mon) {
   if (mon.constant.endsWith("_MEGA_Y")) return `${mon.name} Y`;
   if (mon.constant.endsWith("_MEGA_Z")) return `${mon.name} Z`;
   if (mon.constant.endsWith("_MEGA")) return `${mon.name} Mega`;
+  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return `${mon.name} Mega`;
   return mon.name;
 }
 

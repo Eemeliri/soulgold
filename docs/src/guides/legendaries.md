@@ -165,6 +165,10 @@ After obtaining Cresselia, show it to your rival in their house. Go to Cherrygro
 
 Found in the Dream Garden, accessible from Tohjo Falls after obtaining Rock Climb.
 
+#### Arceus
+
+Reward from Oak in Radio Tower 2F for completing the Pokédex. Requires having caught all 615 non-legendary/non-mythical Pokémon.
+
 #### Victini
 
 After becoming Champion, speak with the old woman in the Kitakami Border house and defeat every Gym Leader rematch.

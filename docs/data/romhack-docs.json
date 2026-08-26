@@ -42003,7 +42003,9 @@
         "EGG_GROUP_WATER_1",
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 355,
       "abilities": [
         "ABILITY_SWIFT_SWIM",
@@ -42231,7 +42233,9 @@
         "EGG_GROUP_WATER_1",
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 495,
       "abilities": [
         "ABILITY_SWIFT_SWIM",
@@ -42464,7 +42468,9 @@
       "eggGroups": [
         "EGG_GROUP_FLYING"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 515,
       "abilities": [
         "ABILITY_ROCK_HEAD",
@@ -42695,7 +42701,8 @@
         "EGG_GROUP_FLYING"
       ],
       "categories": [
-        "mega"
+        "mega",
+        "fossil"
       ],
       "bst": 615,
       "abilities": [
@@ -69326,8 +69333,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69335,8 +69342,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -69565,8 +69572,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69574,8 +69581,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -69780,8 +69787,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69789,8 +69796,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -85568,7 +85575,9 @@
       "eggGroups": [
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 355,
       "abilities": [
         "ABILITY_SUCTION_CUPS",
@@ -85773,7 +85782,9 @@
       "eggGroups": [
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 495,
       "abilities": [
         "ABILITY_SUCTION_CUPS",
@@ -119148,7 +119159,7 @@
       "locations": [
         {
           "map": "MAP_GOLDENROD_CITY_RADIO_TOWER_2F",
-          "name": "Goldenrod City Radio Tower 2F",
+          "name": "Gift from Oak (Pok\u00e9dex completion reward)",
           "time": "",
           "method": "Gift Egg",
           "minLevel": null,
@@ -129515,7 +129526,9 @@
         "EGG_GROUP_FLYING",
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 401,
       "abilities": [
         "ABILITY_DEFEATIST"
@@ -129722,7 +129735,9 @@
         "EGG_GROUP_FLYING",
         "EGG_GROUP_WATER_3"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 567,
       "abilities": [
         "ABILITY_DEFEATIST"
@@ -153364,7 +153379,9 @@
         "EGG_GROUP_MONSTER",
         "EGG_GROUP_DRAGON"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 362,
       "abilities": [
         "ABILITY_STRONG_JAW",
@@ -153567,7 +153584,9 @@
         "EGG_GROUP_MONSTER",
         "EGG_GROUP_DRAGON"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 521,
       "abilities": [
         "ABILITY_STRONG_JAW",
@@ -153777,7 +153796,9 @@
       "eggGroups": [
         "EGG_GROUP_MONSTER"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 362,
       "abilities": [
         "ABILITY_REFRIGERATE",
@@ -153992,7 +154013,9 @@
       "eggGroups": [
         "EGG_GROUP_MONSTER"
       ],
-      "categories": [],
+      "categories": [
+        "fossil"
+      ],
       "bst": 521,
       "abilities": [
         "ABILITY_REFRIGERATE",
@@ -334155,7 +334178,7 @@
       "category": "Guide",
       "order": 3,
       "source": "guides/legendaries.md",
-      "content": "## Legendary Pok\u00e9mon\n\n#### Articuno\n\nFound in Snowtop Mountain. Rock Climb is required.\n\n#### Zapdos\n\nFound at the top of Olivine Lighthouse after obtaining the eighth badge.\n\n#### Moltres\n\nFound in Victory Road.\n\n#### Galarian Articuno, Zapdos, and Moltres\n\nEach bird can be purchased from the Route 50 Battle Caf\u00e9 for 5 points.\n\n#### Mewtwo\n\nFound in Nameless Dungeon at Kitakami Border after defeating the Elite Four. Rock Climb is required.\n\n#### Mew\n\nAfter obtaining eight badges, visit Olivine City's port and find Blaine. Defeat him to unlock Faraway Island, where Mew can be found.\n\n#### Raikou, Entei, and Suicune\n\nAll three begin roaming after the Burned Tower event.\n\n#### Lugia\n\nChoose the Silver Wing after the Rocket takeover. If you chose the Rainbow Wing instead, speak with the Director after defeating the Elite Four and prepare for a fight.\n\n#### Shadow Lugia\n\nExplore south of Johto to find the Abandoned Rocket Warehouse. Solve its puzzles to obtain a Dark Crystal, then bring it to the regular Lugia encounter.\n\nIf you have already caught Lugia, complete one round of Title Defense to reset the spawn. If you chose Ho-Oh during the main story, defeat the Director in the postgame to obtain the Silver Wing.\n\n#### Ho-Oh\n\nChoose the Rainbow Wing after the Rocket takeover. If you chose the Silver Wing instead, speak with the Director after defeating the Elite Four and prepare for a fight.\n\n#### Celebi\n\nSolve all eight Ruins of Alph puzzles: four slider puzzles and four wall puzzles. Enter a passage in B1F to find the GS Ball, take it to Kurt in Azalea Town, then visit the Ilex Forest shrine.\n\n[spoiler=Ruins of Alph wall puzzle solutions]\n- ESCAPE: Use an Escape Rope from the Bag.\n- WATER: Use a Water Stone from the Bag.\n- LIGHT: Use Flash from the party menu.\n- HOOH: Bring Ho-Oh with you.\n[/spoiler]\n\n#### Regirock\n\nSolve the braille puzzle in Vajra Desert West.\n\n[spoiler=Regirock puzzle solution]\nBring Tyranitar to the wall.\n[/spoiler]\n\n#### Regice\n\nSolve the braille puzzle in Snowtop Mountain.\n\n[spoiler=Regice puzzle solution]\nBring Baxcalibur to the wall.\n[/spoiler]\n\n#### Registeel\n\nSolve the braille puzzle in Railway Cave.\n\n[spoiler=Registeel puzzle solution]\nBring Kommo-o to the wall.\n[/spoiler]\n\n#### Latias and Latios\n\nBoth are found in the Vajra Desert East temple during the postgame.\n\n#### Kyogre\n\nAfter completing the Darkrai event, your rival gives you the Dive HM. Surf south from Route 33 and take the first left to find a dive spot containing Kyogre.\n\n#### Groudon\n\nAfter completing the Darkrai event, your rival gives you the Dive HM. A dive spot on Route 50 leads to a small cave containing Groudon.\n\n#### Rayquaza\n\nDefeat Steven in the Kitakami house after becoming Champion, then visit Embedded Tower.\n\n#### Jirachi\n\nComplete the rival story at Mt. Silver.\n\n#### Uxie\n\nFound at the Rock Climb spot on Route 30 near the Berry Man's house.\n\n#### Mesprit\n\nFound at the Rock Climb spot on Route 47 near the final bridge before Route 48.\n\n#### Azelf\n\nFound at the Rock Climb spot in Mahogany Town.\n\n#### Dialga, Palkia, and Giratina\n\nObtain Hoopa and solve all eight Ruins of Alph puzzles. Return to the secret room that held Celebi with Hoopa in your party, then interact with the back wall to find portals leading to Dialga, Palkia, and Giratina.\n\n#### Primal Dialga\nHave Grovyle, Dusknoir and Celebi in your party and interact with the Time Gear on Spear Pillar Summit.\n\n#### Heatran\n\nExplore the depths of Mt. Mortar after obtaining Waterfall and Rock Climb.\n\n[spoiler=Heatran puzzle solution]\nSelect the lower line and the middle top.\n[/spoiler]\n\n#### Regigigas\n\nBring Regirock, Regice, and Registeel to the Mt. Silver back room.\n\n#### Cresselia\n\nAfter completing the rival story at Mt. Silver, speak with your rival in their house to begin the quest. Go to the Lake of Rage, speak with the Hidden Power Dude, then explore the north-east corner of the lake.\n\n#### Phione\n\nFish with a Good Rod or Super Rod in the South Johto Sea area where only Shellos and Gastrodon can be encountered.\n\n#### Manaphy\n\nEvolve Phione at level 58.\n\n#### Darkrai\n\nAfter obtaining Cresselia, show it to your rival in their house. Go to Cherrygrove City and enter the inn with Cresselia in your party.\n\n[spoiler=Darkrai inn puzzle solution]\n1. Accept the Moon Key.\n2. Go to your room at the top of the stairs, examine the bed, and choose not to sleep or resist sleeping.\n3. Go outside, return to the lobby, and inspect the papers on the wall.\n4. Inspect the Luxray trophy in the long hallway.\n5. Inspect the old telephone on the front desk and call the number formed by the stack of papers.\n6. Examine the piano to find a small key, then use it on the nearby safe.\n7. Walk upstairs to find Darkrai.\n[/spoiler]\n\n#### Shaymin\n\nFound in the Dream Garden, accessible from Tohjo Falls after obtaining Rock Climb.\n\n#### Victini\n\nAfter becoming Champion, speak with the old woman in the Kitakami Border house and defeat every Gym Leader rematch.\n\n#### Cobalion\n\nFound through the Route 33-side exit of Railway Cave after becoming Champion.\n\n#### Terrakion\n\nFound in Dark Cave North after becoming Champion.\n\n#### Virizion\n\nFound on Route 50.\n\n#### Tornadus, Thundurus, Landorus, and Enamorus\n\nEach force can be purchased from the Battle Caf\u00e9 for 5 points. Your first force purchase also grants the Reveal Glass.\n\n#### Meloetta\n\nAfter becoming Champion, Meloetta can be found in the Ecruteak Dance Theater.\n\n#### Genesect\n\nCan be found in the Abandoned Rocket Warehouse after becoming Champion.\n\n#### Eternal Floette\n\nObtain 60 trophies.\n\n#### Diancie\n\nDefeat every regular Battle Caf\u00e9 opponent once, then claim Diancie from the caf\u00e9 owner.\n\n#### Hoopa\n\nComplete the Rinto Village trade that gives Tinkaton to the scientist in the bottom house. After becoming Champion, explore the depths of Vajra Pyramid and prepare for several battles.\n\n#### Magearna\n\nAfter becoming Champion, enter the Rocket Arcade and speak with the burglar. Win 25 Arcade rounds and speak with him again to receive a key to the top floor of Goldenrod Apartment. Prepare for a fight.\n\n#### Original Color Magearna\n\nObtain 100 trophies.\n\n#### Marshadow\n\nAfter obtaining the eighth badge, return to Elder Li in Sprout Tower and prepare for a battle. Afterwards, explore the Sprout Tower basement.\n\n#### Tapus\n\nEach tapu can be purchased from the Route 50 Battle Caf\u00e9 for 5 points.\n\n#### Poipole\n\nObtain 45 trophies.\n\n#### Zeraora\n\nReach a 30-win streak in the Battle Tower to make Zeraora appear outside the tower.\n\n#### Meltan\n\nTrade for Tinkaton in Rinto Village.\n\n#### Kubfu\n\nFound in the Rock Climb cave in Blackthorn City. The evolution scrolls can be purchased from the Rocket Arcade for a very high price.\n\n[spoiler=Kubfu cave solution]\nGo down, up, left, up, left, down, right, right.\n[/spoiler]\n\n#### Zarude\n\nObtain 75 trophies.\n\n#### Bloodmoon Ursaluna\n\nExplore Kitakami Mountain to find the Black Mirror, then go to the Lost Woods.\n\n[spoiler=Bloodmoon Ursaluna route solution]\nFollow the Murkrow.\n[/spoiler]\n\n#### Paradox Pok\u00e9mon\n\nExplore South Johto's Meteor Island.\n\n#### Chien-Pao\n\nAfter obtaining Waterfall and Rock Climb, explore deeper into Ice Path.\n\n#### Chi-Yu\n\nFish from the water fountain in Battle Cafe.\n\n#### Walking Wake, Gouging Fire, and Raging Bolt\n\nRegister every past Paradox Pok\u00e9mon in the Pok\u00e9dex, then interact with the Unown wall at the back.\n\n[spoiler=Past Paradox wall puzzle solution]\nIn the next room, bring Entei, Raikou, and Suicune to their respective walls to open them.\n[/spoiler]\n\n#### Iron Leaves, Iron Boulder, and Iron Crown\n\nRegister every future Paradox Pok\u00e9mon in the Pok\u00e9dex, then interact with the wall at the back.\n\n[spoiler=Future Paradox wall puzzle solution]\nBring Virizion, Terrakion, and Cobalion to their respective walls to unlock them.\n[/spoiler]\n\n#### Koraidon/Miraidon\n\nBoth can be purchased from the Route 50 Battle Caf\u00e9 for 25 points after obtaining all other Paradox Pok\u00e9mon.\n\n#### Fezandipiti\n\nAfter obtaining Rock Climb, explore Kitakami.\n\n#### Ogerpon\n\nExplore Kitakami Mountain."
+      "content": "## Legendary Pok\u00e9mon\n\n#### Articuno\n\nFound in Snowtop Mountain. Rock Climb is required.\n\n#### Zapdos\n\nFound at the top of Olivine Lighthouse after obtaining the eighth badge.\n\n#### Moltres\n\nFound in Victory Road.\n\n#### Galarian Articuno, Zapdos, and Moltres\n\nEach bird can be purchased from the Route 50 Battle Caf\u00e9 for 5 points.\n\n#### Mewtwo\n\nFound in Nameless Dungeon at Kitakami Border after defeating the Elite Four. Rock Climb is required.\n\n#### Mew\n\nAfter obtaining eight badges, visit Olivine City's port and find Blaine. Defeat him to unlock Faraway Island, where Mew can be found.\n\n#### Raikou, Entei, and Suicune\n\nAll three begin roaming after the Burned Tower event.\n\n#### Lugia\n\nChoose the Silver Wing after the Rocket takeover. If you chose the Rainbow Wing instead, speak with the Director after defeating the Elite Four and prepare for a fight.\n\n#### Shadow Lugia\n\nExplore south of Johto to find the Abandoned Rocket Warehouse. Solve its puzzles to obtain a Dark Crystal, then bring it to the regular Lugia encounter.\n\nIf you have already caught Lugia, complete one round of Title Defense to reset the spawn. If you chose Ho-Oh during the main story, defeat the Director in the postgame to obtain the Silver Wing.\n\n#### Ho-Oh\n\nChoose the Rainbow Wing after the Rocket takeover. If you chose the Silver Wing instead, speak with the Director after defeating the Elite Four and prepare for a fight.\n\n#### Celebi\n\nSolve all eight Ruins of Alph puzzles: four slider puzzles and four wall puzzles. Enter a passage in B1F to find the GS Ball, take it to Kurt in Azalea Town, then visit the Ilex Forest shrine.\n\n[spoiler=Ruins of Alph wall puzzle solutions]\n- ESCAPE: Use an Escape Rope from the Bag.\n- WATER: Use a Water Stone from the Bag.\n- LIGHT: Use Flash from the party menu.\n- HOOH: Bring Ho-Oh with you.\n[/spoiler]\n\n#### Regirock\n\nSolve the braille puzzle in Vajra Desert West.\n\n[spoiler=Regirock puzzle solution]\nBring Tyranitar to the wall.\n[/spoiler]\n\n#### Regice\n\nSolve the braille puzzle in Snowtop Mountain.\n\n[spoiler=Regice puzzle solution]\nBring Baxcalibur to the wall.\n[/spoiler]\n\n#### Registeel\n\nSolve the braille puzzle in Railway Cave.\n\n[spoiler=Registeel puzzle solution]\nBring Kommo-o to the wall.\n[/spoiler]\n\n#### Latias and Latios\n\nBoth are found in the Vajra Desert East temple during the postgame.\n\n#### Kyogre\n\nAfter completing the Darkrai event, your rival gives you the Dive HM. Surf south from Route 33 and take the first left to find a dive spot containing Kyogre.\n\n#### Groudon\n\nAfter completing the Darkrai event, your rival gives you the Dive HM. A dive spot on Route 50 leads to a small cave containing Groudon.\n\n#### Rayquaza\n\nDefeat Steven in the Kitakami house after becoming Champion, then visit Embedded Tower.\n\n#### Jirachi\n\nComplete the rival story at Mt. Silver.\n\n#### Uxie\n\nFound at the Rock Climb spot on Route 30 near the Berry Man's house.\n\n#### Mesprit\n\nFound at the Rock Climb spot on Route 47 near the final bridge before Route 48.\n\n#### Azelf\n\nFound at the Rock Climb spot in Mahogany Town.\n\n#### Dialga, Palkia, and Giratina\n\nObtain Hoopa and solve all eight Ruins of Alph puzzles. Return to the secret room that held Celebi with Hoopa in your party, then interact with the back wall to find portals leading to Dialga, Palkia, and Giratina.\n\n#### Primal Dialga\nHave Grovyle, Dusknoir and Celebi in your party and interact with the Time Gear on Spear Pillar Summit.\n\n#### Heatran\n\nExplore the depths of Mt. Mortar after obtaining Waterfall and Rock Climb.\n\n[spoiler=Heatran puzzle solution]\nSelect the lower line and the middle top.\n[/spoiler]\n\n#### Regigigas\n\nBring Regirock, Regice, and Registeel to the Mt. Silver back room.\n\n#### Cresselia\n\nAfter completing the rival story at Mt. Silver, speak with your rival in their house to begin the quest. Go to the Lake of Rage, speak with the Hidden Power Dude, then explore the north-east corner of the lake.\n\n#### Phione\n\nFish with a Good Rod or Super Rod in the South Johto Sea area where only Shellos and Gastrodon can be encountered.\n\n#### Manaphy\n\nEvolve Phione at level 58.\n\n#### Darkrai\n\nAfter obtaining Cresselia, show it to your rival in their house. Go to Cherrygrove City and enter the inn with Cresselia in your party.\n\n[spoiler=Darkrai inn puzzle solution]\n1. Accept the Moon Key.\n2. Go to your room at the top of the stairs, examine the bed, and choose not to sleep or resist sleeping.\n3. Go outside, return to the lobby, and inspect the papers on the wall.\n4. Inspect the Luxray trophy in the long hallway.\n5. Inspect the old telephone on the front desk and call the number formed by the stack of papers.\n6. Examine the piano to find a small key, then use it on the nearby safe.\n7. Walk upstairs to find Darkrai.\n[/spoiler]\n\n#### Shaymin\n\nFound in the Dream Garden, accessible from Tohjo Falls after obtaining Rock Climb.\n\n#### Arceus\n\nReward from Oak in Radio Tower 2F for completing the Pok\u00e9dex. Requires having caught all 615 non-legendary/non-mythical Pok\u00e9mon.\n\n#### Victini\n\nAfter becoming Champion, speak with the old woman in the Kitakami Border house and defeat every Gym Leader rematch.\n\n#### Cobalion\n\nFound through the Route 33-side exit of Railway Cave after becoming Champion.\n\n#### Terrakion\n\nFound in Dark Cave North after becoming Champion.\n\n#### Virizion\n\nFound on Route 50.\n\n#### Tornadus, Thundurus, Landorus, and Enamorus\n\nEach force can be purchased from the Battle Caf\u00e9 for 5 points. Your first force purchase also grants the Reveal Glass.\n\n#### Meloetta\n\nAfter becoming Champion, Meloetta can be found in the Ecruteak Dance Theater.\n\n#### Genesect\n\nCan be found in the Abandoned Rocket Warehouse after becoming Champion.\n\n#### Eternal Floette\n\nObtain 60 trophies.\n\n#### Diancie\n\nDefeat every regular Battle Caf\u00e9 opponent once, then claim Diancie from the caf\u00e9 owner.\n\n#### Hoopa\n\nComplete the Rinto Village trade that gives Tinkaton to the scientist in the bottom house. After becoming Champion, explore the depths of Vajra Pyramid and prepare for several battles.\n\n#### Magearna\n\nAfter becoming Champion, enter the Rocket Arcade and speak with the burglar. Win 25 Arcade rounds and speak with him again to receive a key to the top floor of Goldenrod Apartment. Prepare for a fight.\n\n#### Original Color Magearna\n\nObtain 100 trophies.\n\n#### Marshadow\n\nAfter obtaining the eighth badge, return to Elder Li in Sprout Tower and prepare for a battle. Afterwards, explore the Sprout Tower basement.\n\n#### Tapus\n\nEach tapu can be purchased from the Route 50 Battle Caf\u00e9 for 5 points.\n\n#### Poipole\n\nObtain 45 trophies.\n\n#### Zeraora\n\nReach a 30-win streak in the Battle Tower to make Zeraora appear outside the tower.\n\n#### Meltan\n\nTrade for Tinkaton in Rinto Village.\n\n#### Kubfu\n\nFound in the Rock Climb cave in Blackthorn City. The evolution scrolls can be purchased from the Rocket Arcade for a very high price.\n\n[spoiler=Kubfu cave solution]\nGo down, up, left, up, left, down, right, right.\n[/spoiler]\n\n#### Zarude\n\nObtain 75 trophies.\n\n#### Bloodmoon Ursaluna\n\nExplore Kitakami Mountain to find the Black Mirror, then go to the Lost Woods.\n\n[spoiler=Bloodmoon Ursaluna route solution]\nFollow the Murkrow.\n[/spoiler]\n\n#### Paradox Pok\u00e9mon\n\nExplore South Johto's Meteor Island.\n\n#### Chien-Pao\n\nAfter obtaining Waterfall and Rock Climb, explore deeper into Ice Path.\n\n#### Chi-Yu\n\nFish from the water fountain in Battle Cafe.\n\n#### Walking Wake, Gouging Fire, and Raging Bolt\n\nRegister every past Paradox Pok\u00e9mon in the Pok\u00e9dex, then interact with the Unown wall at the back.\n\n[spoiler=Past Paradox wall puzzle solution]\nIn the next room, bring Entei, Raikou, and Suicune to their respective walls to open them.\n[/spoiler]\n\n#### Iron Leaves, Iron Boulder, and Iron Crown\n\nRegister every future Paradox Pok\u00e9mon in the Pok\u00e9dex, then interact with the wall at the back.\n\n[spoiler=Future Paradox wall puzzle solution]\nBring Virizion, Terrakion, and Cobalion to their respective walls to unlock them.\n[/spoiler]\n\n#### Koraidon/Miraidon\n\nBoth can be purchased from the Route 50 Battle Caf\u00e9 for 25 points after obtaining all other Paradox Pok\u00e9mon.\n\n#### Fezandipiti\n\nAfter obtaining Rock Climb, explore Kitakami.\n\n#### Ogerpon\n\nExplore Kitakami Mountain."
     },
     {
       "slug": "hidden-grottos",

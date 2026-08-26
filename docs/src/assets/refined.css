@@ -4492,6 +4492,12 @@ dialog::backdrop {
   color: #774322;
 }
 
+.dex-category-chip.excluded {
+  border-color: #a85e58;
+  background: #f0d9d5;
+  color: #813d38;
+}
+
 :root[data-theme="dark"] .type-filter-clear {
   border-color: var(--line);
   background: transparent;
@@ -4522,6 +4528,12 @@ dialog::backdrop {
   border-color: #9e7343;
   background: #3c3223;
   color: #e4b983;
+}
+
+:root[data-theme="dark"] .dex-category-chip.excluded {
+  border-color: #a85e58;
+  background: #482b29;
+  color: #efaaa4;
 }
 
 @media (max-width: 380px) {
