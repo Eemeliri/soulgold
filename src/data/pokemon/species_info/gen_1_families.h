@@ -4287,6 +4287,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Raichu)
         SHADOW(-7, 9, SHADOW_SIZE_M)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_RaichuMegaX,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_RaichuMegaX,
+            gShinyOverworldPalette_RaichuMegaX
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sRaichuLevelUpLearnset,
         .teachableLearnset = sRaichuTeachableLearnset,
@@ -4348,6 +4359,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Raichu)
         SHADOW(-3, 10, SHADOW_SIZE_S)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_RaichuMegaY,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_RaichuMegaY,
+            gShinyOverworldPalette_RaichuMegaY
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sRaichuLevelUpLearnset,
         .teachableLearnset = sRaichuTeachableLearnset,
@@ -5440,6 +5462,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Clefable)
         SHADOW(5, 20, SHADOW_SIZE_S)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_ClefableMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_ClefableMega,
+            gShinyOverworldPalette_ClefableMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sClefableLevelUpLearnset,
         .teachableLearnset = sClefableTeachableLearnset,
@@ -16546,6 +16579,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Starmie)
         SHADOW(0, 15, SHADOW_SIZE_M)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_StarmieMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_StarmieMega,
+            gShinyOverworldPalette_StarmieMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sStarmieLevelUpLearnset,
         .teachableLearnset = sStarmieTeachableLearnset,
@@ -21261,6 +21305,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Dragonite)
         SHADOW(4, 20, SHADOW_SIZE_M)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_DragoniteMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            sAnimTable_Following,
+            gOverworldPalette_DragoniteMega,
+            gShinyOverworldPalette_DragoniteMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sDragoniteLevelUpLearnset,
         .teachableLearnset = sDragoniteTeachableLearnset,

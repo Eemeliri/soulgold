@@ -81,6 +81,10 @@ u32 CalculateDexNavShinyRolls(void);
 void IncrementDexNavChain(void);
 bool32 OnStep_DexNavSearch(void);
 
+#if TESTING
+void DexNav_TestSetSpecialMove(u16 *moves, u16 move);
+#endif
+
 extern u16 gDexNavSpecies;
 
 #endif // GUARD_DEXNAV_H

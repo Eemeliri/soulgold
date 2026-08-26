@@ -1275,6 +1275,28 @@ static u8 DexNavTryGenerateMonLevel(u16 species, enum EncounterType environment)
         return levelBase + levelBonus;
 }
 
+static void SetDexNavSpecialMove(u16 *moves, u16 specialMove)
+{
+    u32 i;
+    for (i = 1; i < MAX_MON_MOVES; i++)
+    {
+        if (moves[i] == specialMove)
+        {
+            moves[i] = moves[0];
+            break;
+        }
+    }
+
+    moves[0] = specialMove;
+}
+
+#if TESTING
+void DexNav_TestSetSpecialMove(u16 *moves, u16 move)
+{
+    SetDexNavSpecialMove(moves, move);
+}
+#endif
+
 static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel, u16 *moveDst)
 {
     bool8 genMove = FALSE;
@@ -1326,7 +1348,7 @@ static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel
     {
         u8 numEggMoves = GetEggMoves(&gEnemyParty[0], eggMoveBuffer);
         if (numEggMoves != 0)
-            moveDst[0] = eggMoveBuffer[Random() % numEggMoves];
+            SetDexNavSpecialMove(moveDst, eggMoveBuffer[Random() % numEggMoves]);
     }
 }
 
