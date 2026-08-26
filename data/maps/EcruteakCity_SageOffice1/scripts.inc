@@ -27,6 +27,14 @@ EcruteakCity_SageOffice2_EventScript_SageA::
 	checkitem ITEM_CLEAR_BELL
 	goto_if_eq VAR_RESULT, TRUE, EcruteakCity_SageOffice2_EventScript_SageA2
 	msgbox EcruteakTinTowerEntrance_Text_SageNoBadge, MSGBOX_DEFAULT
+	checkitem ITEM_RAINBOW_WING
+	goto_if_eq VAR_RESULT, TRUE, EcruteakCity_SageOffice2_EventScript_SageARecallDirector
+	closemessage
+	release
+	end
+
+EcruteakCity_SageOffice2_EventScript_SageARecallDirector::
+	msgbox EcruteakTinTowerEntrance_Text_RecallDirector, MSGBOX_DEFAULT
 	closemessage
 	release
 	end
@@ -93,6 +101,16 @@ EcruteakTinTowerEntrance_Text_SageNoBadge:
 	.string "Tin Tower is off limits to the\n"
 	.string "unworthy. Sorry but you'll have\l"
 	.string "to leave.$"
+
+EcruteakTinTowerEntrance_Text_RecallDirector:
+	.string "You recall the Radio Tower\n"
+	.string "Director's words...\p"
+	.string "“The legendary Pokémon will not\n"
+	.string "appear if you just go to the place\l"
+	.string "I mentioned.\p"
+	.string "Apparently there is something else\n"
+	.string "you need...”\p"
+	.string "Perhaps you should return here later.$"
 
 EcruteakTinTowerEntrance_Text_SageWithBadge:
 	.string "Tin Tower is off limits to anyone\n"

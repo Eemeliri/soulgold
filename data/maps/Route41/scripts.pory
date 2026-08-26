@@ -302,6 +302,21 @@ script GuardingDewgong {
     playmoncry(SPECIES_DEWGONG, CRY_MODE_NORMAL)
     msgbox("Dewgong: Gong gong!")
     waitmoncry
+    if (checkitem(ITEM_SILVER_WING) == TRUE) {
+        if (checkitem(ITEM_TIDAL_BELL) == FALSE) {
+            msgbox("You recall the Radio Tower
+                    Director's words...
+
+                    “The legendary Pokémon will not
+                    appear if you just go to the place
+                    I mentioned.
+
+                    Apparently there is something else
+                    you need...”
+					
+					Perhaps you should return here later.")
+        }
+    }
     release
     end
 }

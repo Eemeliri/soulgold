@@ -1,4 +1,20 @@
 Update notes:
+- Goldenrod Underground herb shop sells IV reducing herbs.
+- Added new ability: Acidic (Poison is supereffective against Steel) and distributed it to several Pokémon.
+- Added follower sprites for following ZA Megas: Clefable, Dragonite, Hawlucha, Raichu X, Y and Starmie. Others will still default to base form follower sprites until there are publicly available sprites for them.
+- Summary screen now displays friendship instead of the unused ribbon field. The button prompts for EV and IV pages are now clearer that they do not refer to current page.
+- Adjusted innates for Gen 8 starter mega forms.
+- Raichu and A-Raichu learn Zap Cannon at level 60.
+- Victory Road gate guard now guides player to correct place if they button mashed past the dialogue after gym 8.
+- Added Floria npc from HGSS to give hints on how to proceed past Sudowoodo.
+- Added some flashback dialogue to Whirl Islands/Tin Tower if the player attempts to go there too early.
+- Added Ability patch item ball to Snowtop B1F and one hidden Ability Patch to Union Cave B2F.
+- Dexnav no longer generates duplicates of same move in rare cases.
+- Small bugfixes.
+
+
+
+
 - VS Seeker has been added, it allows resetting outside route trainers after walking enough steps. It is awarded in place of the old Radio key item after answering the Quiz in Goldenrod. Old saves can exchange their old Radio for the VS Seeker by talking to the receptionist on the first floor.
 - Ported the Radio visuals from HnS 2.0 to Pokégear to replace Jukebox. Buena's Password show functionality has been moved here.
 - The emulator inaccuracy screen can be bypassed on Delta by pressing Start, but you aknowledge that you are playing on inaccurate emulator by doing so.

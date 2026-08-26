@@ -602,11 +602,39 @@ GuardingDewgong::
 	msgbox GuardingDewgong_Text_0
 # 304 "data/maps/Route41/scripts.pory"
 	waitmoncry
-# 305 "data/maps/Route41/scripts.pory"
+	checkitem ITEM_SILVER_WING
+# 0 "data/maps/Route41/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq GuardingDewgong_2
+GuardingDewgong_1:
+# 320 "data/maps/Route41/scripts.pory"
 	release
 	end
+
+GuardingDewgong_2:
+	checkitem ITEM_TIDAL_BELL
+# 0 "data/maps/Route41/scripts.pory"
+	compare VAR_RESULT, FALSE
+	goto_if_eq GuardingDewgong_4
+	goto GuardingDewgong_1
+
+GuardingDewgong_4:
+# 307 "data/maps/Route41/scripts.pory"
+	msgbox GuardingDewgong_Text_1
+	goto GuardingDewgong_1
 
 
 GuardingDewgong_Text_0:
 # 303 "data/maps/Route41/scripts.pory"
 	.string "Dewgong: Gong gong!$"
+
+GuardingDewgong_Text_1:
+# 307 "data/maps/Route41/scripts.pory"
+	.string "You recall the Radio Tower\n"
+	.string "Director's words...\p"
+	.string "“The legendary Pokémon will not\n"
+	.string "appear if you just go to the place\l"
+	.string "I mentioned.\p"
+	.string "Apparently there is something else\n"
+	.string "you need...”\p"
+	.string "Perhaps you should return here later.$"

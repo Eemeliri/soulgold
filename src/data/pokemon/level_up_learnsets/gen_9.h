@@ -611,6 +611,7 @@ static const struct LevelUpMove sRaichuAlolaLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 44, MOVE_THUNDER),
     LEVEL_UP_MOVE( 50, MOVE_VOLT_TACKLE),
     LEVEL_UP_MOVE( 60, MOVE_ZAP_CANNON),
+    LEVEL_UP_END
 };
 #endif //P_ALOLAN_FORMS
 #endif //P_FAMILY_PIKACHU
