@@ -64,6 +64,7 @@ The hack is currently in Beta.
 - Poffin Case various overworld sprites
 - HashtagMarky for overworld speedup
 - Pokeabbie battle speed up
+- DarkusShadow for several ZA overworld sprites
 - MrDollStreak for 64x64 trainer sprites
 - PKMNTrainerRick for ethan back sprite frames
 - Whackahack for graphical resources
