@@ -2,12 +2,13 @@ Update notes:
 - Goldenrod Underground herb shop sells IV reducing herbs.
 - Added new ability: Acidic (Poison is supereffective against Steel) and distributed it to several Pokémon.
 - Added follower sprites for following ZA Megas: Clefable, Dragonite, Hawlucha, Raichu X, Y and Starmie. Others will still default to base form follower sprites until there are publicly available sprites for them.
-- Summary screen now displays friendship instead of the unused ribbon field. The button prompts for EV and IV pages are now clearer.
+- Summary screen now displays friendship instead of the unused ribbon field. The button prompts for EV and IV pages are now clearer that they do not refer to current page.
 - Adjusted innates for Gen 8 starter mega forms.
 - Raichu and A-Raichu learn Zap Cannon at level 60.
 - Victory Road gate guard now guides player to correct place if they button mashed past the dialogue after gym 8.
 - Added Floria npc from HGSS to give hints on how to proceed past Sudowoodo.
 - Added some flashback dialogue to Whirl Islands/Tin Tower if the player attempts to go there too early.
+- Added Ability patch item ball to Snowtop B1F and one hidden Ability Patch to Union Cave B2F.
 - Dexnav no longer generates duplicates of same move in rare cases.
 - Small bugfixes.
 

@@ -256677,8 +256677,16 @@
           "source": "Item ball"
         },
         {
+          "map": "Snowtop Mountain B1F",
+          "source": "Item ball"
+        },
+        {
           "map": "Tin Tower 4F",
           "source": "Item ball"
+        },
+        {
+          "map": "Union Cave B2F",
+          "source": "Hidden item"
         },
         {
           "map": "Whirl Islands Descent",
@@ -256693,7 +256701,7 @@
           "source": "Buena's Password prize"
         }
       ],
-      "location": "Route 27 (Item ball); Tin Tower 4F (Item ball); Whirl Islands Descent (Item ball); Battle Frontier Battle Factory Lobby (Mart); Goldenrod City Radio Tower 2F (Buena's Password prize)",
+      "location": "Route 27 (Item ball); Snowtop Mountain B1F (Item ball); Tin Tower 4F (Item ball); Union Cave B2F (Hidden item); Whirl Islands Descent (Item ball); Battle Frontier Battle Factory Lobby (Mart); Goldenrod City Radio Tower 2F (Buena's Password prize)",
       "slug": "ability-patch"
     },
     {
@@ -259796,13 +259804,8 @@
       "pocket": "POCKET_BATTLE_ITEMS",
       "sortType": "ITEM_TYPE_HELD_ITEM",
       "itemIcon": "sprites/items/red_card.png",
-      "locations": [
-        {
-          "map": "Union Cave B2F",
-          "source": "Hidden item"
-        }
-      ],
-      "location": "Union Cave B2F (Hidden item)",
+      "locations": [],
+      "location": "",
       "slug": "red-card"
     },
     {
