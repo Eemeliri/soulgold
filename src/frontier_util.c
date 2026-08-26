@@ -2267,7 +2267,7 @@ static void GiveTowerBattlePoints(void)
     }
     else if (streakLength == TOWER_BP_MILESTONE_50)
     {
-        toGive = 6;
+        toGive = 8;
         if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_FRONTIER_BRAIN)
             toGive = TOWER_BP_MILESTONE_50;
     }
