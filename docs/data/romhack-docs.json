@@ -15577,7 +15577,7 @@
       ],
       "innates": [
         "ABILITY_GUTS",
-        "ABILITY_RECKLESS"
+        "ABILITY_ADRENALINE"
       ],
       "sprite": "sprites/pokemon/primeape.png",
       "shinySprite": "sprites/pokemon/primeape_shiny.png",
@@ -199983,7 +199983,7 @@
       ],
       "innates": [
         "ABILITY_GUTS",
-        "ABILITY_RECKLESS",
+        "ABILITY_ADRENALINE",
         "ABILITY_ANGER_POINT"
       ],
       "sprite": "sprites/pokemon/annihilape.png",
@@ -236211,12 +236211,6 @@
             "sprite": "sprites/pokemon/charizard_mega_x.png"
           },
           {
-            "species": "SPECIES_PRIMEAPE",
-            "name": "Primeape",
-            "dex": 49,
-            "sprite": "sprites/pokemon/primeape.png"
-          },
-          {
             "species": "SPECIES_MAROWAK",
             "name": "Marowak",
             "dex": 91,
@@ -236323,12 +236317,6 @@
             "name": "Cinderace",
             "dex": 572,
             "sprite": "sprites/pokemon/cinderace_gmax.png"
-          },
-          {
-            "species": "SPECIES_ANNIHILAPE",
-            "name": "Annihilape",
-            "dex": 660,
-            "sprite": "sprites/pokemon/annihilape.png"
           }
         ]
       }
@@ -249141,6 +249129,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_PRIMEAPE",
+            "name": "Primeape",
+            "dex": 49,
+            "sprite": "sprites/pokemon/primeape.png"
+          },
+          {
             "species": "SPECIES_LOPUNNY_MEGA",
             "name": "Lopunny",
             "dex": 326,
@@ -249181,6 +249175,12 @@
             "name": "Dragapult",
             "dex": 604,
             "sprite": "sprites/pokemon/dragapult.png"
+          },
+          {
+            "species": "SPECIES_ANNIHILAPE",
+            "name": "Annihilape",
+            "dex": 660,
+            "sprite": "sprites/pokemon/annihilape.png"
           }
         ]
       }
@@ -292915,7 +292915,7 @@
           "displayName": "Primeape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS"
+            "ABILITY_ADRENALINE"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -294688,7 +294688,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -295042,7 +295042,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -297526,7 +297526,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -300849,7 +300849,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -313065,7 +313065,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -314161,7 +314161,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -319476,7 +319476,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -320809,7 +320809,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -322206,7 +322206,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_ASSAULT_VEST",
@@ -322399,7 +322399,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_ASSAULT_VEST",
@@ -323825,7 +323825,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -324061,7 +324061,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -324688,7 +324688,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -324897,7 +324897,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -332604,7 +332604,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -334200,7 +334200,7 @@
           "displayName": "Annihilape",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_RECKLESS",
+            "ABILITY_ADRENALINE",
             "ABILITY_ANGER_POINT"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
