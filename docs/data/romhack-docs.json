@@ -6762,6 +6762,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -7002,6 +7006,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -7236,6 +7244,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -7456,6 +7468,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -69310,8 +69326,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69319,8 +69335,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -173326,11 +173342,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_OVERGROW",
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE",
         "ABILITY_GRASSY_SURGE"
       ],
       "regularAbilities": [
-        "ABILITY_OVERGROW"
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE"
       ],
       "hiddenAbilities": [
         "ABILITY_GRASSY_SURGE"
@@ -173895,8 +173913,16 @@
           "move": "MOVE_DOUBLE_EDGE"
         },
         {
+          "level": 58,
+          "move": "MOVE_HIGH_JUMP_KICK"
+        },
+        {
           "level": 62,
           "move": "MOVE_COURT_CHANGE"
+        },
+        {
+          "level": 70,
+          "move": "MOVE_FLARE_BLITZ"
         }
       ],
       "tmhm": [
@@ -174001,11 +174027,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_BLAZE",
+        "ABILITY_LIBERO",
+        "ABILITY_LIBERO",
         "ABILITY_LIBERO"
       ],
       "regularAbilities": [
-        "ABILITY_BLAZE"
+        "ABILITY_LIBERO",
+        "ABILITY_LIBERO"
       ],
       "hiddenAbilities": [
         "ABILITY_LIBERO"
@@ -174071,8 +174099,16 @@
           "move": "MOVE_DOUBLE_EDGE"
         },
         {
+          "level": 58,
+          "move": "MOVE_HIGH_JUMP_KICK"
+        },
+        {
           "level": 62,
           "move": "MOVE_COURT_CHANGE"
+        },
+        {
+          "level": 70,
+          "move": "MOVE_FLARE_BLITZ"
         }
       ],
       "tmhm": [
@@ -174542,8 +174578,12 @@
           "move": "MOVE_SOAK"
         },
         {
-          "level": 54,
+          "level": 50,
           "move": "MOVE_RAIN_DANCE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_AURA_SPHERE"
         },
         {
           "level": 62,
@@ -174650,11 +174690,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_TORRENT",
+        "ABILITY_SNIPER",
+        "ABILITY_SNIPER",
         "ABILITY_SNIPER"
       ],
       "regularAbilities": [
-        "ABILITY_TORRENT"
+        "ABILITY_SNIPER",
+        "ABILITY_SNIPER"
       ],
       "hiddenAbilities": [
         "ABILITY_SNIPER"
@@ -174662,7 +174704,7 @@
       "innates": [
         "ABILITY_MEGA_LAUNCHER",
         "ABILITY_KEEN_EYE",
-        "ABILITY_WATER_VEIL"
+        "ABILITY_SUPER_LUCK"
       ],
       "sprite": "sprites/pokemon/inteleon_gmax.png",
       "shinySprite": "sprites/pokemon/inteleon_gmax_shiny.png",
@@ -174716,8 +174758,12 @@
           "move": "MOVE_SOAK"
         },
         {
-          "level": 54,
+          "level": 50,
           "move": "MOVE_RAIN_DANCE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_AURA_SPHERE"
         },
         {
           "level": 62,
@@ -224992,12 +225038,6 @@
             "sprite": "sprites/pokemon/inteleon.png"
           },
           {
-            "species": "SPECIES_INTELEON_GMAX",
-            "name": "Inteleon",
-            "dex": 575,
-            "sprite": "sprites/pokemon/inteleon_gmax.png"
-          },
-          {
             "species": "SPECIES_OGERPON_WELLSPRING",
             "name": "Ogerpon",
             "dex": 694,
@@ -228285,12 +228325,6 @@
             "sprite": "sprites/pokemon/rillaboom.png"
           },
           {
-            "species": "SPECIES_RILLABOOM_GMAX",
-            "name": "Rillaboom",
-            "dex": 569,
-            "sprite": "sprites/pokemon/rillaboom_gmax.png"
-          },
-          {
             "species": "SPECIES_SPRIGATITO",
             "name": "Sprigatito",
             "dex": 623,
@@ -228483,12 +228517,6 @@
             "sprite": "sprites/pokemon/cinderace.png"
           },
           {
-            "species": "SPECIES_CINDERACE_GMAX",
-            "name": "Cinderace",
-            "dex": 572,
-            "sprite": "sprites/pokemon/cinderace_gmax.png"
-          },
-          {
             "species": "SPECIES_FUECOCO",
             "name": "Fuecoco",
             "dex": 626,
@@ -228679,12 +228707,6 @@
             "name": "Inteleon",
             "dex": 575,
             "sprite": "sprites/pokemon/inteleon.png"
-          },
-          {
-            "species": "SPECIES_INTELEON_GMAX",
-            "name": "Inteleon",
-            "dex": 575,
-            "sprite": "sprites/pokemon/inteleon_gmax.png"
           },
           {
             "species": "SPECIES_QUAXLY",
@@ -232892,6 +232914,12 @@
             "name": "Meloetta",
             "dex": 465,
             "sprite": "sprites/pokemon/meloetta_pirouette.png"
+          },
+          {
+            "species": "SPECIES_INTELEON_GMAX",
+            "name": "Inteleon",
+            "dex": 575,
+            "sprite": "sprites/pokemon/inteleon_gmax.png"
           },
           {
             "species": "SPECIES_SIRFETCHD",
