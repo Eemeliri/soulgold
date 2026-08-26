@@ -6,6 +6,8 @@ Update notes:
 - Adjusted innates for Gen 8 starter mega forms.
 - Raichu and A-Raichu learn Zap Cannon at level 60.
 - Victory Road gate guard now guides player to correct place if they button mashed past the dialogue after gym 8.
+- Added Floria npc from HGSS to give hints on how to proceed past Sudowoodo.
+- Added some flashback dialogue to Whirl Islands/Tin Tower if the player attempts to go there too early.
 - Dexnav no longer generates duplicates of same move in rare cases.
 - Small bugfixes.
 

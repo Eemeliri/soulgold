@@ -201,7 +201,7 @@
       "x": 21,
       "y": 17,
       "elevation": 0,
-      "item": "ITEM_RED_CARD",
+      "item": "ITEM_ABILITY_PATCH",
       "flag": "FLAG_HIDDEN_ITEM_UNIONCAVE3_REDCARD",
       "quantity": 1
     }
