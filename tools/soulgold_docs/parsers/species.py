@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from ..constants import DEX_HIDDEN_COLOR_FORMS, DEX_HIDDEN_PREFIXES, DEX_HIDDEN_SPECIES, EV_YIELD_FIELDS, GMAX_DMAX_FORM_RE, SPECIES_NAME_OVERRIDES, STAT_FIELDS
+from ..constants import DEX_HIDDEN_COLOR_FORMS, DEX_HIDDEN_PREFIXES, DEX_HIDDEN_SPECIES, EV_YIELD_FIELDS, FOSSIL_POKEMON_SPECIES, GMAX_DMAX_FORM_RE, SPECIES_NAME_OVERRIDES, STAT_FIELDS
 from ..c_parser import clean_constant_name, collect_strings, extract_braced_constants, extract_constant, extract_field, extract_number, normalize_token, parse_define_aliases, parse_define_constants, parse_enum_constants, preprocess, preprocess_source, read, split_designated_entries
 from ..image_utils import process_sprite, shiny_palette_symbol
 from ..models import EvolutionRow, ItemRecord, LevelUpMove, MegaEvolutionRow, SpeciesLocation, SpeciesParseResult, SpeciesRow, Teachables
@@ -81,6 +81,7 @@ def parse_species() -> SpeciesParseResult:
         )
         nat_expr = extract_field(entry, "natDexNum") or "NATIONAL_DEX_NONE"
         nat_const = re.search(r"\bNATIONAL_DEX_[A-Z0-9_]+\b", nat_expr)
+        species_nat_const = ""
         if nat_const:
             species_nat_const = nat_const.group(0).replace("NATIONAL_DEX_", "SPECIES_")
             nat_dex = species_to_id.get(species_nat_const, nat_to_id.get(nat_const.group(0), 0))
@@ -112,6 +113,8 @@ def parse_species() -> SpeciesParseResult:
             categories.append("mythical")
         if extract_number(entry, "isMegaEvolution"):
             categories.append("mega")
+        if species_nat_const in FOSSIL_POKEMON_SPECIES:
+            categories.append("fossil")
         types = extract_braced_constants(entry, "types", "TYPE_") or ["TYPE_NORMAL"]
         if len(types) == 1:
             types.append(types[0])

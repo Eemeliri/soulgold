@@ -37,6 +37,9 @@ class SpeciesExtraDataTests(unittest.TestCase):
         self.assertIn("paradox", self.species["SPECIES_GREAT_TUSK"].categories)
         self.assertIn("mega", self.species["SPECIES_VENUSAUR_MEGA"].categories)
         self.assertIn("regional", self.species["SPECIES_RAICHU_ALOLA"].categories)
+        self.assertIn("fossil", self.species["SPECIES_LILEEP"].categories)
+        self.assertIn("fossil", self.species["SPECIES_CRADILY"].categories)
+        self.assertIn("fossil", self.species["SPECIES_AERODACTYL_MEGA"].categories)
         self.assertEqual(self.species["SPECIES_RATTATA"].categories, [])
 
     def test_display_numbers_follow_the_active_johto_dex_order(self) -> None:

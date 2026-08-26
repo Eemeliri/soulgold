@@ -8134,7 +8134,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #else
         .abilities = { ABILITY_VITAL_SPIRIT, ABILITY_NONE, ABILITY_DEFIANT },
     #endif
-        .innates = { ABILITY_GUTS, ABILITY_RECKLESS },
+        .innates = { ABILITY_GUTS, ABILITY_ADRENALINE },
 		.bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
         .speciesName = _("Primeape"),
@@ -8213,7 +8213,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
         .abilities = { ABILITY_VITAL_SPIRIT, ABILITY_INNER_FOCUS, ABILITY_DEFIANT },
-        .innates = { ABILITY_GUTS, ABILITY_RECKLESS, ABILITY_ANGER_POINT },
+        .innates = { ABILITY_GUTS, ABILITY_ADRENALINE, ABILITY_ANGER_POINT },
 		.bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Annihilape"),

@@ -32,6 +32,7 @@ ODD_EGG_ARRAY_RE = re.compile(
     re.DOTALL,
 )
 GIFT_LOCATION_NAME_OVERRIDES = {
+    ("SPECIES_ARCEUS_NORMAL", "MAP_GOLDENROD_CITY_RADIO_TOWER_2F"): "Gift from Oak (Pokédex completion reward)",
     ("SPECIES_BELDUM", "MAP_KITAKAMI_HOUSES"): "Gift from Steven in Kitakami",
     ("SPECIES_GRENINJA_BOND", "MAP_ROUTE40_HOUSE4"): "Route 40 Achievement reward (30 trophies)",
     ("SPECIES_POIPOLE", "MAP_ROUTE40_HOUSE4"): "Route 40 Achievement reward (45 trophies)",

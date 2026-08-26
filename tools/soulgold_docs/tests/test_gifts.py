@@ -6,6 +6,23 @@ from tools.soulgold_docs.parsers.gifts import FOSSIL_REVIVAL_ITEMS, add_gift_spe
 
 
 class GiftLocationTests(unittest.TestCase):
+    def test_arceus_is_identified_as_oaks_pokedex_completion_reward(self) -> None:
+        locations = {}
+
+        add_gift_species_locations(  # type: ignore[arg-type]
+            locations,
+            {"SPECIES_ARCEUS_NORMAL": object()},
+        )
+
+        self.assertEqual(len(locations["SPECIES_ARCEUS_NORMAL"]), 1)
+        location = locations["SPECIES_ARCEUS_NORMAL"][0]
+        self.assertEqual(location["map"], "MAP_GOLDENROD_CITY_RADIO_TOWER_2F")
+        self.assertEqual(
+            location["name"],
+            "Gift from Oak (Pokédex completion reward)",
+        )
+        self.assertEqual(location["method"], "Gift Egg")
+
     def test_achievement_rewards_include_their_trophy_milestones(self) -> None:
         expected = {
             "SPECIES_GRENINJA_BOND": 30,
