@@ -5901,7 +5901,7 @@
       ],
       "innates": [
         "ABILITY_HUNTER",
-        "ABILITY_LIMBER",
+        "ABILITY_ACIDIC",
         "ABILITY_MERCILESS"
       ],
       "sprite": "sprites/pokemon/arbok.png",
@@ -6762,6 +6762,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -7002,6 +7006,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -7236,6 +7244,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -7456,6 +7468,10 @@
         {
           "level": 50,
           "move": "MOVE_VOLT_TACKLE"
+        },
+        {
+          "level": 60,
+          "move": "MOVE_ZAP_CANNON"
         }
       ],
       "tmhm": [
@@ -26724,7 +26740,7 @@
       ],
       "innates": [
         "ABILITY_LIQUID_OOZE",
-        "ABILITY_LIMBER",
+        "ABILITY_ACIDIC",
         "ABILITY_SOLIDIFY"
       ],
       "sprite": "sprites/pokemon/muk.png",
@@ -69310,8 +69326,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69319,8 +69335,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -69549,8 +69565,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69558,8 +69574,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -171968,7 +171984,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_POISON_POINT",
+        "ABILITY_ACIDIC",
         "ABILITY_POISON_TOUCH",
         "ABILITY_LIQUID_OOZE"
       ],
@@ -173326,11 +173342,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_OVERGROW",
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE",
         "ABILITY_GRASSY_SURGE"
       ],
       "regularAbilities": [
-        "ABILITY_OVERGROW"
+        "ABILITY_GRASSY_SURGE",
+        "ABILITY_GRASSY_SURGE"
       ],
       "hiddenAbilities": [
         "ABILITY_GRASSY_SURGE"
@@ -173895,8 +173913,16 @@
           "move": "MOVE_DOUBLE_EDGE"
         },
         {
+          "level": 58,
+          "move": "MOVE_HIGH_JUMP_KICK"
+        },
+        {
           "level": 62,
           "move": "MOVE_COURT_CHANGE"
+        },
+        {
+          "level": 70,
+          "move": "MOVE_FLARE_BLITZ"
         }
       ],
       "tmhm": [
@@ -174001,11 +174027,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_BLAZE",
+        "ABILITY_LIBERO",
+        "ABILITY_LIBERO",
         "ABILITY_LIBERO"
       ],
       "regularAbilities": [
-        "ABILITY_BLAZE"
+        "ABILITY_LIBERO",
+        "ABILITY_LIBERO"
       ],
       "hiddenAbilities": [
         "ABILITY_LIBERO"
@@ -174071,8 +174099,16 @@
           "move": "MOVE_DOUBLE_EDGE"
         },
         {
+          "level": 58,
+          "move": "MOVE_HIGH_JUMP_KICK"
+        },
+        {
           "level": 62,
           "move": "MOVE_COURT_CHANGE"
+        },
+        {
+          "level": 70,
+          "move": "MOVE_FLARE_BLITZ"
         }
       ],
       "tmhm": [
@@ -174542,8 +174578,12 @@
           "move": "MOVE_SOAK"
         },
         {
-          "level": 54,
+          "level": 50,
           "move": "MOVE_RAIN_DANCE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_AURA_SPHERE"
         },
         {
           "level": 62,
@@ -174650,11 +174690,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_TORRENT",
+        "ABILITY_SNIPER",
+        "ABILITY_SNIPER",
         "ABILITY_SNIPER"
       ],
       "regularAbilities": [
-        "ABILITY_TORRENT"
+        "ABILITY_SNIPER",
+        "ABILITY_SNIPER"
       ],
       "hiddenAbilities": [
         "ABILITY_SNIPER"
@@ -174662,7 +174704,7 @@
       "innates": [
         "ABILITY_MEGA_LAUNCHER",
         "ABILITY_KEEN_EYE",
-        "ABILITY_WATER_VEIL"
+        "ABILITY_SUPER_LUCK"
       ],
       "sprite": "sprites/pokemon/inteleon_gmax.png",
       "shinySprite": "sprites/pokemon/inteleon_gmax_shiny.png",
@@ -174716,8 +174758,12 @@
           "move": "MOVE_SOAK"
         },
         {
-          "level": 54,
+          "level": 50,
           "move": "MOVE_RAIN_DANCE"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_AURA_SPHERE"
         },
         {
           "level": 62,
@@ -203943,8 +203989,8 @@
       ],
       "innates": [
         "ABILITY_CORROSION",
-        "ABILITY_POISON_TOUCH",
-        "ABILITY_LIQUID_OOZE"
+        "ABILITY_WIND_FORCE",
+        "ABILITY_ACIDIC"
       ],
       "sprite": "sprites/pokemon/fezandipiti.png",
       "shinySprite": "sprites/pokemon/fezandipiti_shiny.png",
@@ -220004,12 +220050,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_ARBOK",
-            "name": "Arbok",
-            "dex": 22,
-            "sprite": "sprites/pokemon/arbok.png"
-          },
-          {
             "species": "SPECIES_WIGGLYTUFF",
             "name": "Wigglytuff",
             "dex": 38,
@@ -220020,12 +220060,6 @@
             "name": "Grimer",
             "dex": 78,
             "sprite": "sprites/pokemon/grimer.png"
-          },
-          {
-            "species": "SPECIES_MUK",
-            "name": "Muk",
-            "dex": 79,
-            "sprite": "sprites/pokemon/muk.png"
           },
           {
             "species": "SPECIES_MIENSHAO",
@@ -224266,12 +224300,6 @@
             "sprite": "sprites/pokemon/poipole.png"
           },
           {
-            "species": "SPECIES_NAGANADEL",
-            "name": "Naganadel",
-            "dex": 563,
-            "sprite": "sprites/pokemon/naganadel.png"
-          },
-          {
             "species": "SPECIES_ETERNATUS",
             "name": "Eternatus",
             "dex": 607,
@@ -225008,12 +225036,6 @@
             "name": "Inteleon",
             "dex": 575,
             "sprite": "sprites/pokemon/inteleon.png"
-          },
-          {
-            "species": "SPECIES_INTELEON_GMAX",
-            "name": "Inteleon",
-            "dex": 575,
-            "sprite": "sprites/pokemon/inteleon_gmax.png"
           },
           {
             "species": "SPECIES_OGERPON_WELLSPRING",
@@ -228125,12 +228147,6 @@
             "sprite": "sprites/pokemon/eternatus_eternamax.png"
           },
           {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
-          },
-          {
             "species": "SPECIES_PECHARUNT",
             "name": "Pecharunt",
             "dex": 702,
@@ -228307,12 +228323,6 @@
             "name": "Rillaboom",
             "dex": 569,
             "sprite": "sprites/pokemon/rillaboom.png"
-          },
-          {
-            "species": "SPECIES_RILLABOOM_GMAX",
-            "name": "Rillaboom",
-            "dex": 569,
-            "sprite": "sprites/pokemon/rillaboom_gmax.png"
           },
           {
             "species": "SPECIES_SPRIGATITO",
@@ -228507,12 +228517,6 @@
             "sprite": "sprites/pokemon/cinderace.png"
           },
           {
-            "species": "SPECIES_CINDERACE_GMAX",
-            "name": "Cinderace",
-            "dex": 572,
-            "sprite": "sprites/pokemon/cinderace_gmax.png"
-          },
-          {
             "species": "SPECIES_FUECOCO",
             "name": "Fuecoco",
             "dex": 626,
@@ -228703,12 +228707,6 @@
             "name": "Inteleon",
             "dex": 575,
             "sprite": "sprites/pokemon/inteleon.png"
-          },
-          {
-            "species": "SPECIES_INTELEON_GMAX",
-            "name": "Inteleon",
-            "dex": 575,
-            "sprite": "sprites/pokemon/inteleon_gmax.png"
           },
           {
             "species": "SPECIES_QUAXLY",
@@ -232916,6 +232914,12 @@
             "name": "Meloetta",
             "dex": 465,
             "sprite": "sprites/pokemon/meloetta_pirouette.png"
+          },
+          {
+            "species": "SPECIES_INTELEON_GMAX",
+            "name": "Inteleon",
+            "dex": 575,
+            "sprite": "sprites/pokemon/inteleon_gmax.png"
           },
           {
             "species": "SPECIES_SIRFETCHD",
@@ -237457,12 +237461,6 @@
             "name": "Clodsire",
             "dex": 661,
             "sprite": "sprites/pokemon/clodsire.png"
-          },
-          {
-            "species": "SPECIES_FEZANDIPITI",
-            "name": "Fezandipiti",
-            "dex": 693,
-            "sprite": "sprites/pokemon/fezandipiti.png"
           },
           {
             "species": "SPECIES_PECHARUNT",
@@ -247949,6 +247947,12 @@
             "name": "Lugia",
             "dex": 213,
             "sprite": "sprites/pokemon/lugia_shadow.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
           }
         ]
       }
@@ -253888,6 +253892,47 @@
         ],
         "innate": []
       }
+    },
+    "ABILITY_ACIDIC": {
+      "constant": "ABILITY_ACIDIC",
+      "name": "Acidic",
+      "description": "Poison-type attacks are super effective against Steel-type Pokemon.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "acidic",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_ARBOK",
+            "name": "Arbok",
+            "dex": 22,
+            "sprite": "sprites/pokemon/arbok.png"
+          },
+          {
+            "species": "SPECIES_MUK",
+            "name": "Muk",
+            "dex": 79,
+            "sprite": "sprites/pokemon/muk.png"
+          },
+          {
+            "species": "SPECIES_NAGANADEL",
+            "name": "Naganadel",
+            "dex": 563,
+            "sprite": "sprites/pokemon/naganadel.png"
+          },
+          {
+            "species": "SPECIES_FEZANDIPITI",
+            "name": "Fezandipiti",
+            "dex": 693,
+            "sprite": "sprites/pokemon/fezandipiti.png"
+          }
+        ]
+      }
     }
   },
   "tms": [
@@ -256632,8 +256677,16 @@
           "source": "Item ball"
         },
         {
+          "map": "Snowtop Mountain B1F",
+          "source": "Item ball"
+        },
+        {
           "map": "Tin Tower 4F",
           "source": "Item ball"
+        },
+        {
+          "map": "Union Cave B2F",
+          "source": "Hidden item"
         },
         {
           "map": "Whirl Islands Descent",
@@ -256648,7 +256701,7 @@
           "source": "Buena's Password prize"
         }
       ],
-      "location": "Route 27 (Item ball); Tin Tower 4F (Item ball); Whirl Islands Descent (Item ball); Battle Frontier Battle Factory Lobby (Mart); Goldenrod City Radio Tower 2F (Buena's Password prize)",
+      "location": "Route 27 (Item ball); Snowtop Mountain B1F (Item ball); Tin Tower 4F (Item ball); Union Cave B2F (Hidden item); Whirl Islands Descent (Item ball); Battle Frontier Battle Factory Lobby (Mart); Goldenrod City Radio Tower 2F (Buena's Password prize)",
       "slug": "ability-patch"
     },
     {
@@ -259751,13 +259804,8 @@
       "pocket": "POCKET_BATTLE_ITEMS",
       "sortType": "ITEM_TYPE_HELD_ITEM",
       "itemIcon": "sprites/items/red_card.png",
-      "locations": [
-        {
-          "map": "Union Cave B2F",
-          "source": "Hidden item"
-        }
-      ],
-      "location": "Union Cave B2F (Hidden item)",
+      "locations": [],
+      "location": "",
       "slug": "red-card"
     },
     {
@@ -260055,6 +260103,108 @@
       ],
       "location": "Goldenrod Flower Shop by showing Shaymin",
       "slug": "gracidea"
+    },
+    {
+      "id": 711,
+      "constant": "ITEM_OLD_ROD",
+      "name": "Old Rod",
+      "description": "Use by any body of water to fish for wild Pokemon.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/old_rod.png",
+      "locations": [
+        {
+          "map": "Route 32 Pokemon Center",
+          "source": "Gift"
+        }
+      ],
+      "location": "Route 32 Pokemon Center (Gift)",
+      "slug": "old-rod"
+    },
+    {
+      "id": 712,
+      "constant": "ITEM_GOOD_ROD",
+      "name": "Good Rod",
+      "description": "A decent fishing rod for catching wild Pokemon.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/good_rod.png",
+      "locations": [
+        {
+          "map": "Olivine City House 3",
+          "source": "Gift"
+        }
+      ],
+      "location": "Olivine City House 3 (Gift)",
+      "slug": "good-rod"
+    },
+    {
+      "id": 713,
+      "constant": "ITEM_SUPER_ROD",
+      "name": "Super Rod",
+      "description": "The best fishing rod for catching wild Pokemon.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/super_rod.png",
+      "locations": [
+        {
+          "map": "Blackthorn City",
+          "source": "Gift"
+        }
+      ],
+      "location": "Blackthorn City (Gift)",
+      "slug": "super-rod"
+    },
+    {
+      "id": 714,
+      "constant": "ITEM_DOWSING_MACHINE",
+      "name": "Dowsing Machine",
+      "description": "A device that signals an invisible item by sound.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/dowsing_machine.png",
+      "locations": [
+        {
+          "map": "Ecruteak City House 4",
+          "source": "Gift"
+        }
+      ],
+      "location": "Ecruteak City House 4 (Gift)",
+      "slug": "dowsing-machine"
+    },
+    {
+      "id": 716,
+      "constant": "ITEM_VS_SEEKER",
+      "name": "Vs. Seeker",
+      "description": "A rechargeable unit that resets the route Trainers.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/vs_seeker.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Radio Tower 1F",
+          "source": "Gift"
+        }
+      ],
+      "location": "Goldenrod City Radio Tower 1F (Gift)",
+      "slug": "vs-seeker"
+    },
+    {
+      "id": 720,
+      "constant": "ITEM_COIN_CASE",
+      "name": "Coin Case",
+      "description": "A case that holds up to 9,999 Coins.",
+      "pocket": "POCKET_KEY_ITEMS",
+      "sortType": "",
+      "itemIcon": "sprites/items/coin_case.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Item ball"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Item ball)",
+      "slug": "coin-case"
     },
     {
       "id": 760,
@@ -260762,6 +260912,40 @@
       "slug": "carbos-ex"
     },
     {
+      "id": 897,
+      "constant": "ITEM_GRIMY_HERB",
+      "name": "Grimy Herb",
+      "description": "An herb that lowers one Pokemon's Attack IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "grimy-herb"
+    },
+    {
+      "id": 898,
+      "constant": "ITEM_GOOPY_HERB",
+      "name": "Goopy Herb",
+      "description": "An herb that lowers one Pokemon's Speed IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "goopy-herb"
+    },
+    {
       "id": 901,
       "constant": "ITEM_NORMALITE",
       "name": "Normalite",
@@ -261083,6 +261267,74 @@
       ],
       "location": "Given by Elm during the story after 8th badge.",
       "slug": "bondstone"
+    },
+    {
+      "id": 926,
+      "constant": "ITEM_WITHERED_HERB",
+      "name": "Withered Herb",
+      "description": "An herb that lowers one Pokemon's HP IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "withered-herb"
+    },
+    {
+      "id": 927,
+      "constant": "ITEM_BRITTLE_HERB",
+      "name": "Brittle Herb",
+      "description": "An herb that lowers one Pokemon's Defense IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "brittle-herb"
+    },
+    {
+      "id": 928,
+      "constant": "ITEM_DULL_HERB",
+      "name": "Dull Herb",
+      "description": "An herb that lowers one Pokemon's Sp. Atk IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "dull-herb"
+    },
+    {
+      "id": 929,
+      "constant": "ITEM_SOGGY_HERB",
+      "name": "Soggy Herb",
+      "description": "An herb that lowers one Pokemon's Sp. Def IV by one.",
+      "pocket": "POCKET_ITEMS",
+      "sortType": "ITEM_TYPE_STAT_BOOST_FEATHER",
+      "itemIcon": "sprites/items/mint.png",
+      "locations": [
+        {
+          "map": "Goldenrod City Underground Tunnel",
+          "source": "Mart"
+        }
+      ],
+      "location": "Goldenrod City Underground Tunnel (Mart)",
+      "slug": "soggy-herb"
     }
   ],
   "encounters": [
@@ -292623,7 +292875,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -294802,7 +295054,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -296034,7 +296286,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -297093,7 +297345,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -297862,7 +298114,7 @@
           "displayName": "Muk",
           "innates": [
             "ABILITY_LIQUID_OOZE",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_SOLIDIFY"
           ],
           "itemConstant": "",
@@ -298006,7 +298258,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -298179,7 +298431,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -300576,7 +300828,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -302520,7 +302772,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "",
@@ -303127,7 +303379,7 @@
           "displayName": "Arbok",
           "innates": [
             "ABILITY_HUNTER",
-            "ABILITY_LIMBER",
+            "ABILITY_ACIDIC",
             "ABILITY_MERCILESS"
           ],
           "itemConstant": "ITEM_LIFE_ORB",

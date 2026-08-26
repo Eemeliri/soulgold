@@ -53,7 +53,7 @@
 #define FLAG_SYS_NO_BATTLE_DMG                  0x27 // Unused Flag //DEBUG
 #define FLAG_ONETIME_GROUDON                    0x28 
 #define FLAG_ONETIME_KYOGRE                     0x29
-#define FLAG_PHOEBE_REMATCH                     0x2A //Elite Four Rematch 2
+#define FLAG_SNOWTOP_ABILITY_PATCH              0x2A
 #define FLAG_SYS_SET_BATTLE_BGM                 0x2B // Changes BGM
 #define FLAG_WONDERTRADE_FIRSTIME               0x2C 
 #define FLAG_NO_WT_BECAUSE_CHALLENGE            0x2D 

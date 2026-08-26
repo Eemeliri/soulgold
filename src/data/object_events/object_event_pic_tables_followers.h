@@ -275,6 +275,14 @@ static const struct SpriteFrameImage sPicTable_RaichuAlola[] = {
     overworld_ascending_frames(gObjectEventPic_RaichuAlola, 4, 4),
 };
 #endif //P_ALOLAN_FORMS
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_RaichuMegaX[] = {
+    overworld_ascending_frames(gObjectEventPic_RaichuMegaX, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_RaichuMegaY[] = {
+    overworld_ascending_frames(gObjectEventPic_RaichuMegaY, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_PIKACHU
 
 #if P_FAMILY_SANDSHREW
@@ -327,6 +335,11 @@ static const struct SpriteFrameImage sPicTable_Clefairy[] = {
 static const struct SpriteFrameImage sPicTable_Clefable[] = {
     overworld_ascending_frames(gObjectEventPic_Clefable, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_ClefableMega[] = {
+    overworld_ascending_frames(gObjectEventPic_ClefableMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_CLEFAIRY
 
 #if P_FAMILY_VULPIX
@@ -1043,6 +1056,11 @@ static const struct SpriteFrameImage sPicTable_Staryu[] = {
 static const struct SpriteFrameImage sPicTable_Starmie[] = {
     overworld_ascending_frames(gObjectEventPic_Starmie, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_StarmieMega[] = {
+    overworld_ascending_frames(gObjectEventPic_StarmieMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_STARYU
 
 #if P_FAMILY_MR_MIME
@@ -1369,6 +1387,11 @@ static const struct SpriteFrameImage sPicTable_Dragonair[] = {
 static const struct SpriteFrameImage sPicTable_Dragonite[] = {
     overworld_ascending_frames(gObjectEventPic_Dragonite, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_DragoniteMega[] = {
+    overworld_ascending_frames(gObjectEventPic_DragoniteMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_DRATINI
 
 #if P_FAMILY_MEWTWO
@@ -4923,6 +4946,11 @@ static const struct SpriteFrameImage sPicTable_Aurorus[] = {
 static const struct SpriteFrameImage sPicTable_Hawlucha[] = {
     overworld_ascending_frames(gObjectEventPic_Hawlucha, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_HawluchaMega[] = {
+    overworld_ascending_frames(gObjectEventPic_HawluchaMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_HAWLUCHA
 
 #if P_FAMILY_DEDENNE

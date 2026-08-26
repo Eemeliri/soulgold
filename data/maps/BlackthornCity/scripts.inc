@@ -132,6 +132,21 @@ BlackthornCity_EventScript_DragonsDenSign::
 	msgbox BlackthornCity_Text_DragonDenSign, MSGBOX_SIGN
 	end
 
+Blackthorn_EventScript_SuperRod::
+	lock
+	faceplayer
+	goto_if_set FLAG_GOT_SUPER_ROD, Route12_House_EventScript_SuperRodGot
+	msgbox Route12_House_Text_OfferSuperRod, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, FALSE, Route12_House_EventScript_SuperRodRefused
+	msgbox Route12_House_Text_GiveSuperRod, MSGBOX_DEFAULT
+	giveitem ITEM_SUPER_ROD
+	msgbox Route12_House_Text_GaveSuperRod, MSGBOX_DEFAULT
+	setflag FLAG_GOT_SUPER_ROD
+	closemessage
+	release
+	end
+
+
 BlackthornCity_EventScript_Santos::
 	lock
 	faceplayer

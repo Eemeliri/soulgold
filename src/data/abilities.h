@@ -5633,4 +5633,14 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 8,
         .breakable = TRUE,
     },
+
+    [ABILITY_ACIDIC] =
+    {
+        .name = _("Acidic"),
+        .description = COMPOUND_STRING("Poison melts Steel."),
+        .longDescription = COMPOUND_STRING("Poison-type attacks are\n"
+                                           "super effective against\n"
+                                           "Steel-type Pokemon."),
+        .aiRating = 6,
+    },
 };

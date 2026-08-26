@@ -413,6 +413,7 @@ static void Task_SetSacredAshCB(u8);
 static void CB2_ReturnToBagMenu(void);
 static void Task_DisplayHPRestoredMessage(u8);
 static u16 ItemEffectToMonEv(struct Pokemon *, u8);
+static u16 ItemEffectToMonIV(struct Pokemon *, u8);
 static void ItemEffectToStatString(u8, u8 *);
 static void ReturnToUseOnWhichMon(u8);
 static void SetSelectedMoveForItem(u8);
@@ -532,6 +533,7 @@ static void Task_HideFollowerNPCForTeleport(u8);
 static void FieldCallback_RockClimb(void);
 static void DisplayGiveHowManyMessage(void);
 static bool8 DoesItemIncreaseEV(u8 itemType);
+static bool8 DoesItemReduceIV(u8 itemType);
 static bool8 ShouldLevelUpItemUseLevelCap(void);
 static u16 GetMaxLevelUpItemQuantity(struct Pokemon *mon, u8 holdEffectParam, u16 quantityInBag);
 static void ClearHowManyItemsWindow(u8 taskId);
@@ -541,6 +543,7 @@ static void Task_GiveHowManyItemsHandleInput(u8 taskId);
 static void Task_ReturnToUseOnWhichMonAfterText(u8 taskId);
 static void ItemUse_ApplyEvReduceBerry(u8 taskId);
 static void ItemUse_ApplyEvIncreaseItem(u8 taskId);
+static void ItemUse_ApplyIVReduceHerb(u8 taskId);
 static void ItemUse_ApplyExpCandy(u8 taskId);
 static void ItemUse_ApplyReverseCandy(u8 taskId);
 
@@ -4994,13 +4997,14 @@ static void GetMedicineItemEffectMessage(enum Item item, u32 statusCured)
         StringCopy(gStringVar2, gText_SpDef3);
         StringExpandPlaceholders(gStringVar4, gText_PkmnBaseVar2StatIncreased);
         break;
-    case ITEM_EFFECT_ATK_IV_ZERO:
-        StringCopy(gStringVar2, gText_Attack3);
-        StringExpandPlaceholders(gStringVar4, gText_PkmnVar2IVWasMinimized);
-        break;
-    case ITEM_EFFECT_SPEED_IV_ZERO:
-        StringCopy(gStringVar2, gText_Speed2);
-        StringExpandPlaceholders(gStringVar4, gText_PkmnVar2IVWasMinimized);
+    case ITEM_EFFECT_HP_IV_REDUCE:
+    case ITEM_EFFECT_ATK_IV_REDUCE:
+    case ITEM_EFFECT_DEF_IV_REDUCE:
+    case ITEM_EFFECT_SPEED_IV_REDUCE:
+    case ITEM_EFFECT_SPATK_IV_REDUCE:
+    case ITEM_EFFECT_SPDEF_IV_REDUCE:
+        ItemEffectToStatString(GetItemEffectType(item), gStringVar2);
+        StringExpandPlaceholders(gStringVar4, gText_PkmnVar2IVWasLowered);
         break;
     case ITEM_EFFECT_PP_UP:
     case ITEM_EFFECT_PP_MAX:
@@ -5110,6 +5114,22 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
     }
     else
     {
+        if (DoesItemReduceIV(tItemEffect))
+        {
+            tMaxItemQuantity = min(ItemEffectToMonIV(mon, tItemEffect), tQuantityInBag);
+            if (tMaxItemQuantity > 1)
+            {
+                PlaySE(SE_SELECT);
+                DisplayGiveHowManyMessage();
+                gTasks[taskId].func = Task_GiveHowManyItems;
+            }
+            else
+            {
+                ItemUse_ApplyIVReduceHerb(taskId);
+            }
+            return;
+        }
+
         if (DoesItemIncreaseEV(tItemEffect) && tQuantityInBag > 1 && (s8)GetItemEffect(item)[6] > 0 && GetItemEffect(item)[6] != ITEM6_MAX_EV)
         {
             u32 evIncrease = GetItemEffect(item)[6];
@@ -5145,8 +5165,6 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
         case ITEM_EFFECT_SPEED_IV:
         case ITEM_EFFECT_SPATK_IV:
         case ITEM_EFFECT_SPDEF_IV:
-        case ITEM_EFFECT_ATK_IV_ZERO:
-        case ITEM_EFFECT_SPEED_IV_ZERO:
             ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0, 1, 1);
             break;
         default:
@@ -5178,8 +5196,6 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
         case ITEM_EFFECT_SPEED_IV:
         case ITEM_EFFECT_SPATK_IV:
         case ITEM_EFFECT_SPDEF_IV:
-        case ITEM_EFFECT_ATK_IV_ZERO:
-        case ITEM_EFFECT_SPEED_IV_ZERO:
             break;
         default:
             SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
@@ -5797,26 +5813,52 @@ static u16 ItemEffectToMonEv(struct Pokemon *mon, u8 effectType)
     return 0;
 }
 
+static u16 ItemEffectToMonIV(struct Pokemon *mon, u8 effectType)
+{
+    switch (effectType)
+    {
+    case ITEM_EFFECT_HP_IV_REDUCE:
+        return GetMonData(mon, MON_DATA_HP_IV);
+    case ITEM_EFFECT_ATK_IV_REDUCE:
+        return GetMonData(mon, MON_DATA_ATK_IV);
+    case ITEM_EFFECT_DEF_IV_REDUCE:
+        return GetMonData(mon, MON_DATA_DEF_IV);
+    case ITEM_EFFECT_SPEED_IV_REDUCE:
+        return GetMonData(mon, MON_DATA_SPEED_IV);
+    case ITEM_EFFECT_SPATK_IV_REDUCE:
+        return GetMonData(mon, MON_DATA_SPATK_IV);
+    case ITEM_EFFECT_SPDEF_IV_REDUCE:
+        return GetMonData(mon, MON_DATA_SPDEF_IV);
+    }
+    return 0;
+}
+
 static void ItemEffectToStatString(u8 effectType, u8 *dest)
 {
     switch (effectType)
     {
     case ITEM_EFFECT_HP_EV:
+    case ITEM_EFFECT_HP_IV_REDUCE:
         StringCopy(dest, gText_HP3);
         break;
     case ITEM_EFFECT_ATK_EV:
+    case ITEM_EFFECT_ATK_IV_REDUCE:
         StringCopy(dest, gText_Attack3);
         break;
     case ITEM_EFFECT_DEF_EV:
+    case ITEM_EFFECT_DEF_IV_REDUCE:
         StringCopy(dest, gText_Defense3);
         break;
     case ITEM_EFFECT_SPEED_EV:
+    case ITEM_EFFECT_SPEED_IV_REDUCE:
         StringCopy(dest, gText_Speed2);
         break;
     case ITEM_EFFECT_SPATK_EV:
+    case ITEM_EFFECT_SPATK_IV_REDUCE:
         StringCopy(dest, gText_SpAtk3);
         break;
     case ITEM_EFFECT_SPDEF_EV:
+    case ITEM_EFFECT_SPDEF_IV_REDUCE:
         StringCopy(dest, gText_SpDef3);
         break;
     }
@@ -6700,6 +6742,22 @@ static bool8 DoesItemIncreaseEV(u8 itemType)
     }
 }
 
+static bool8 DoesItemReduceIV(u8 itemType)
+{
+    switch (itemType)
+    {
+    case ITEM_EFFECT_HP_IV_REDUCE:
+    case ITEM_EFFECT_ATK_IV_REDUCE:
+    case ITEM_EFFECT_DEF_IV_REDUCE:
+    case ITEM_EFFECT_SPEED_IV_REDUCE:
+    case ITEM_EFFECT_SPATK_IV_REDUCE:
+    case ITEM_EFFECT_SPDEF_IV_REDUCE:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
 static bool8 ShouldLevelUpItemUseLevelCap(void)
 {
     u32 expCapType = GetCurrentExpCapType();
@@ -6848,6 +6906,14 @@ static void Task_GiveHowManyItemsHandleInput(u8 taskId)
                     else
                         ItemUse_ApplyEvIncreaseItem(taskId);
                     break;
+                case ITEM_EFFECT_HP_IV_REDUCE:
+                case ITEM_EFFECT_ATK_IV_REDUCE:
+                case ITEM_EFFECT_DEF_IV_REDUCE:
+                case ITEM_EFFECT_SPEED_IV_REDUCE:
+                case ITEM_EFFECT_SPATK_IV_REDUCE:
+                case ITEM_EFFECT_SPDEF_IV_REDUCE:
+                    ItemUse_ApplyIVReduceHerb(taskId);
+                    break;
                 case ITEM_EFFECT_RAISE_LEVEL:
                     ItemUse_ApplyExpCandy(taskId);
                     break;
@@ -6929,6 +6995,29 @@ static void ItemUse_ApplyEvIncreaseItem(u8 taskId)
     DisplayPartyMenuMessage(gStringVar4, FALSE);
     ScheduleBgCopyTilemapToVram(2);
     if (CountTotalItemQuantityInBag(gSpecialVar_ItemId) == 0)
+        gTasks[taskId].func = Task_ClosePartyMenuAfterText;
+    else
+        gTasks[taskId].func = Task_ReturnToUseOnWhichMonAfterText;
+}
+
+static void ItemUse_ApplyIVReduceHerb(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    enum Item item = gSpecialVar_ItemId;
+
+    ExecuteTableBasedItemEffect(mon, item, gPartyMenu.slotId, 0, 1, tItemCount);
+    gPartyMenuUseExitCallback = TRUE;
+    PlaySE(SE_USE_ITEM);
+    if (tItemEffect == ITEM_EFFECT_HP_IV_REDUCE)
+        UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
+    RemoveBagItem(item, tItemCount);
+    GetMonNickname(mon, gStringVar1);
+    ItemEffectToStatString(tItemEffect, gStringVar2);
+    StringExpandPlaceholders(gStringVar4, gText_PkmnVar2IVWasLowered);
+    DisplayPartyMenuMessage(gStringVar4, FALSE);
+    ScheduleBgCopyTilemapToVram(2);
+    if (CountTotalItemQuantityInBag(item) == 0)
         gTasks[taskId].func = Task_ClosePartyMenuAfterText;
     else
         gTasks[taskId].func = Task_ReturnToUseOnWhichMonAfterText;
@@ -8039,10 +8128,18 @@ enum ItemEffectType GetItemEffectType(enum Item item)
         return ITEM_EFFECT_SPATK_IV;
     else if (itemEffect[10] & ITEM10_IV_SPDEF)
         return ITEM_EFFECT_SPDEF_IV;
-    else if ((itemEffect[10] & ITEM10_ZERO_IV) && (itemEffect[9] & ITEM9_ZERO_IV_ATK))
-        return ITEM_EFFECT_ATK_IV_ZERO;
-    else if ((itemEffect[10] & ITEM10_ZERO_IV) && (itemEffect[9] & ITEM9_ZERO_IV_SPEED))
-        return ITEM_EFFECT_SPEED_IV_ZERO;
+    else if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] == ITEM9_REDUCE_IV_HP)
+        return ITEM_EFFECT_HP_IV_REDUCE;
+    else if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] == ITEM9_REDUCE_IV_ATK)
+        return ITEM_EFFECT_ATK_IV_REDUCE;
+    else if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] == ITEM9_REDUCE_IV_DEF)
+        return ITEM_EFFECT_DEF_IV_REDUCE;
+    else if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] == ITEM9_REDUCE_IV_SPEED)
+        return ITEM_EFFECT_SPEED_IV_REDUCE;
+    else if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] == ITEM9_REDUCE_IV_SPATK)
+        return ITEM_EFFECT_SPATK_IV_REDUCE;
+    else if ((itemEffect[10] & ITEM10_REDUCE_IV) && itemEffect[9] == ITEM9_REDUCE_IV_SPDEF)
+        return ITEM_EFFECT_SPDEF_IV_REDUCE;
     else if (itemEffect[4] & ITEM4_EVO_STONE)
         return ITEM_EFFECT_EVO_STONE;
     else if (itemEffect[4] & ITEM4_PP_UP)

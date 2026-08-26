@@ -5026,6 +5026,17 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Hawlucha)
         SHADOW(-2, 13, SHADOW_SIZE_M)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_HawluchaMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_HawluchaMega,
+            gShinyOverworldPalette_HawluchaMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sHawluchaLevelUpLearnset,
         .teachableLearnset = sHawluchaTeachableLearnset,
