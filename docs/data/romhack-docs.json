@@ -118887,9 +118887,9 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_STEAM_ENGINE",
+        "ABILITY_LIQUID_VOICE",
         "ABILITY_WATER_ABSORB",
-        "ABILITY_LIQUID_VOICE"
+        "ABILITY_SOUL_HEART"
       ],
       "sprite": "sprites/pokemon/manaphy.png",
       "shinySprite": "sprites/pokemon/manaphy_shiny.png",
@@ -244543,6 +244543,12 @@
             "sprite": "sprites/pokemon/latias_mega.png"
           },
           {
+            "species": "SPECIES_MANAPHY",
+            "name": "Manaphy",
+            "dex": 378,
+            "sprite": "sprites/pokemon/manaphy.png"
+          },
+          {
             "species": "SPECIES_CURSOLA",
             "name": "Cursola",
             "dex": 595,
@@ -245436,12 +245442,6 @@
             "name": "Rotom",
             "dex": 367,
             "sprite": "sprites/pokemon/rotom_heat.png"
-          },
-          {
-            "species": "SPECIES_MANAPHY",
-            "name": "Manaphy",
-            "dex": 378,
-            "sprite": "sprites/pokemon/manaphy.png"
           }
         ]
       }
