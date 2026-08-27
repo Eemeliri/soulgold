@@ -464,7 +464,7 @@ DragonsDen_Shrine_EventScript_ElderGiveBasicDratini::
 
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_DRATINI
 	bufferspeciesname STR_VAR_1, SPECIES_DRATINI
-	givemon SPECIES_DRATINI, 15, move1=MOVE_EXTREME_SPEED, move2=MOVE_SPACIAL_REND, shinyMode=SHINY_MODE_ALWAYS
+	givemon SPECIES_DRATINI, 15, move1=MOVE_EXTREME_SPEED
 	call Common_EventScript_GiftMon
 
 	msgbox DragonsDen_Shrine_Text_SymbolicDragon, MSGBOX_DEFAULT
