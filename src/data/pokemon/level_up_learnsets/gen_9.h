@@ -22522,6 +22522,7 @@ static const struct LevelUpMove sRagingBoltLevelUpLearnset[] = {
 #if P_FAMILY_IRON_BOULDER
 static const struct LevelUpMove sIronBoulderLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_HORN_ATTACK),
+    LEVEL_UP_MOVE( 1, MOVE_HEAD_CHARGE),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
     LEVEL_UP_MOVE( 1, MOVE_ROCK_THROW),
     LEVEL_UP_MOVE( 1, MOVE_ELECTRIC_TERRAIN),
@@ -22535,6 +22536,7 @@ static const struct LevelUpMove sIronBoulderLevelUpLearnset[] = {
     LEVEL_UP_MOVE(56, MOVE_MIGHTY_CLEAVE),
     LEVEL_UP_MOVE(63, MOVE_SWORDS_DANCE),
     LEVEL_UP_MOVE(70, MOVE_MEGAHORN),
+    LEVEL_UP_MOVE(74, MOVE_HEAD_SMASH),
     LEVEL_UP_MOVE(77, MOVE_QUICK_GUARD),
     LEVEL_UP_MOVE(84, MOVE_STONE_EDGE),
     LEVEL_UP_MOVE(91, MOVE_GIGA_IMPACT),
