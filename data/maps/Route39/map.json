@@ -354,8 +354,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 25,
-      "y": 31,
+      "x": 14,
+      "y": 32,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route39_EventScript_Sign3"
