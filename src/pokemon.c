@@ -3524,8 +3524,9 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
     {
         enum Stat stat = itemEffect[9] - 1;
         enum MonData monData = sGetMonDataIVConstantsByStat[stat];
+        bool32 wasHyperTrained = GetMonData(mon, MON_DATA_HYPER_TRAINED_HP + stat);
 
-        dataUnsigned = GetMonData(mon, monData);
+        dataUnsigned = wasHyperTrained ? MAX_PER_STAT_IVS : GetMonData(mon, monData);
         if (dataUnsigned == 0)
             return TRUE;
 
@@ -3533,6 +3534,11 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
         {
             dataUnsigned -= min(dataUnsigned, itemCount);
             SetMonData(mon, monData, &dataUnsigned);
+            if (wasHyperTrained)
+            {
+                bool32 hyperTrained = FALSE;
+                SetMonData(mon, MON_DATA_HYPER_TRAINED_HP + stat, &hyperTrained);
+            }
             CalculateMonStats(mon);
         }
         retVal = FALSE;
