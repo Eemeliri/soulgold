@@ -7813,22 +7813,35 @@ static u16 ItemEffectToMonEv(struct Pokemon *mon, u8 effectType)
 
 static u16 ItemEffectToMonIV(struct Pokemon *mon, u8 effectType)
 {
+    enum Stat stat;
+
     switch (effectType)
     {
     case ITEM_EFFECT_HP_IV_REDUCE:
-        return GetMonData(mon, MON_DATA_HP_IV);
+        stat = STAT_HP;
+        break;
     case ITEM_EFFECT_ATK_IV_REDUCE:
-        return GetMonData(mon, MON_DATA_ATK_IV);
+        stat = STAT_ATK;
+        break;
     case ITEM_EFFECT_DEF_IV_REDUCE:
-        return GetMonData(mon, MON_DATA_DEF_IV);
+        stat = STAT_DEF;
+        break;
     case ITEM_EFFECT_SPEED_IV_REDUCE:
-        return GetMonData(mon, MON_DATA_SPEED_IV);
+        stat = STAT_SPEED;
+        break;
     case ITEM_EFFECT_SPATK_IV_REDUCE:
-        return GetMonData(mon, MON_DATA_SPATK_IV);
+        stat = STAT_SPATK;
+        break;
     case ITEM_EFFECT_SPDEF_IV_REDUCE:
-        return GetMonData(mon, MON_DATA_SPDEF_IV);
+        stat = STAT_SPDEF;
+        break;
+    default:
+        return 0;
     }
-    return 0;
+
+    if (GetMonData(mon, MON_DATA_HYPER_TRAINED_HP + stat))
+        return MAX_PER_STAT_IVS;
+    return GetMonData(mon, MON_DATA_HP_IV + stat);
 }
 
 static void ItemEffectToStatString(u8 effectType, u8 *dest)
