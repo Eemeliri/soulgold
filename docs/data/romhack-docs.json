@@ -25798,7 +25798,7 @@
         "ABILITY_SCRAPPY"
       ],
       "innates": [
-        "ABILITY_NO_GUARD",
+        "ABILITY_SUPER_LUCK",
         "ABILITY_MOLD_BREAKER"
       ],
       "sprite": "sprites/pokemon/farfetchd_galar.png",
@@ -70052,8 +70052,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70061,8 +70061,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -92575,7 +92575,7 @@
       "innates": [
         "ABILITY_SOLID_ROCK",
         "ABILITY_STAMINA",
-        "ABILITY_ROCK_HEAD"
+        "ABILITY_IRON_FIST"
       ],
       "sprite": "sprites/pokemon/regirock.png",
       "shinySprite": "sprites/pokemon/regirock_shiny.png",
@@ -117541,7 +117541,7 @@
       "innates": [
         "ABILITY_FILTER",
         "ABILITY_MAGMA_ARMOR",
-        "ABILITY_ROCK_HEAD"
+        "ABILITY_ASH_ASSETS"
       ],
       "sprite": "sprites/pokemon/heatran.png",
       "shinySprite": "sprites/pokemon/heatran_shiny.png",
@@ -140449,7 +140449,7 @@
       "innates": [
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_INNER_FOCUS",
-        "ABILITY_ROCK_HEAD"
+        "ABILITY_SHARPNESS"
       ],
       "sprite": "sprites/pokemon/terrakion.png",
       "shinySprite": "sprites/pokemon/terrakion_shiny.png",
@@ -145573,7 +145573,7 @@
         "ABILITY_MAGICIAN"
       ],
       "innates": [
-        "ABILITY_MENTAL_SURGE"
+        "ABILITY_DAZZLING"
       ],
       "sprite": "sprites/pokemon/fennekin.png",
       "shinySprite": "sprites/pokemon/fennekin_shiny.png",
@@ -145769,7 +145769,7 @@
         "ABILITY_MAGICIAN"
       ],
       "innates": [
-        "ABILITY_MENTAL_SURGE",
+        "ABILITY_DAZZLING",
         "ABILITY_SOOTHING"
       ],
       "sprite": "sprites/pokemon/braixen.png",
@@ -145957,7 +145957,7 @@
         "ABILITY_MAGICIAN"
       ],
       "innates": [
-        "ABILITY_MENTAL_SURGE",
+        "ABILITY_DAZZLING",
         "ABILITY_UNCANNY",
         "ABILITY_MYSTIC_FORCE"
       ],
@@ -166340,7 +166340,7 @@
       ],
       "innates": [
         "ABILITY_STURDY",
-        "ABILITY_ROCK_HEAD",
+        "ABILITY_GUARD_DOG",
         "ABILITY_BATTLE_ARMOR"
       ],
       "sprite": "sprites/pokemon/lycanroc_midday.png",
@@ -166583,7 +166583,7 @@
       ],
       "innates": [
         "ABILITY_STURDY",
-        "ABILITY_ROCK_HEAD",
+        "ABILITY_MOODY",
         "ABILITY_BATTLE_ARMOR"
       ],
       "sprite": "sprites/pokemon/lycanroc_midnight.png",
@@ -166800,7 +166800,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_STURDY",
-        "ABILITY_ROCK_HEAD",
+        "ABILITY_OWN_TEMPO",
         "ABILITY_BATTLE_ARMOR"
       ],
       "sprite": "sprites/pokemon/lycanroc_dusk.png",
@@ -206347,6 +206347,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_HEAD_CHARGE"
+        },
+        {
+          "level": 1,
           "move": "MOVE_LEER"
         },
         {
@@ -206396,6 +206400,10 @@
         {
           "level": 70,
           "move": "MOVE_MEGAHORN"
+        },
+        {
+          "level": 74,
+          "move": "MOVE_HEAD_SMASH"
         },
         {
           "level": 77,
@@ -223185,6 +223193,12 @@
             "sprite": "sprites/pokemon/archeops.png"
           },
           {
+            "species": "SPECIES_LYCANROC_DUSK",
+            "name": "Lycanroc",
+            "dex": 539,
+            "sprite": "sprites/pokemon/lycanroc_dusk.png"
+          },
+          {
             "species": "SPECIES_DRAMPA",
             "name": "Drampa",
             "dex": 546,
@@ -230538,18 +230552,6 @@
             "sprite": "sprites/pokemon/entei.png"
           },
           {
-            "species": "SPECIES_REGIROCK",
-            "name": "Regirock",
-            "dex": 290,
-            "sprite": "sprites/pokemon/regirock.png"
-          },
-          {
-            "species": "SPECIES_HEATRAN",
-            "name": "Heatran",
-            "dex": 373,
-            "sprite": "sprites/pokemon/heatran.png"
-          },
-          {
             "species": "SPECIES_EMBOAR_MEGA",
             "name": "Emboar",
             "dex": 388,
@@ -230566,30 +230568,6 @@
             "name": "Archeops",
             "dex": 417,
             "sprite": "sprites/pokemon/archeops.png"
-          },
-          {
-            "species": "SPECIES_TERRAKION",
-            "name": "Terrakion",
-            "dex": 456,
-            "sprite": "sprites/pokemon/terrakion.png"
-          },
-          {
-            "species": "SPECIES_LYCANROC_MIDDAY",
-            "name": "Lycanroc",
-            "dex": 539,
-            "sprite": "sprites/pokemon/lycanroc_midday.png"
-          },
-          {
-            "species": "SPECIES_LYCANROC_MIDNIGHT",
-            "name": "Lycanroc",
-            "dex": 539,
-            "sprite": "sprites/pokemon/lycanroc_midnight.png"
-          },
-          {
-            "species": "SPECIES_LYCANROC_DUSK",
-            "name": "Lycanroc",
-            "dex": 539,
-            "sprite": "sprites/pokemon/lycanroc_dusk.png"
           },
           {
             "species": "SPECIES_SOLGALEO",
@@ -232467,6 +232445,12 @@
             "sprite": "sprites/pokemon/medicham_mega.png"
           },
           {
+            "species": "SPECIES_REGIROCK",
+            "name": "Regirock",
+            "dex": 290,
+            "sprite": "sprites/pokemon/regirock.png"
+          },
+          {
             "species": "SPECIES_DUSKNOIR",
             "name": "Dusknoir",
             "dex": 365,
@@ -233533,12 +233517,6 @@
             "sprite": "sprites/pokemon/pidgeot.png"
           },
           {
-            "species": "SPECIES_FARFETCHD_GALAR",
-            "name": "Farfetch'd",
-            "dex": 75,
-            "sprite": "sprites/pokemon/farfetchd_galar.png"
-          },
-          {
             "species": "SPECIES_PINSIR_MEGA",
             "name": "Pinsir",
             "dex": 110,
@@ -234358,6 +234336,12 @@
             "name": "Farfetch'd",
             "dex": 75,
             "sprite": "sprites/pokemon/farfetchd.png"
+          },
+          {
+            "species": "SPECIES_FARFETCHD_GALAR",
+            "name": "Farfetch'd",
+            "dex": 75,
+            "sprite": "sprites/pokemon/farfetchd_galar.png"
           },
           {
             "species": "SPECIES_MELOETTA_PIROUETTE",
@@ -238581,6 +238565,12 @@
             "name": "Deoxys",
             "dex": 299,
             "sprite": "sprites/pokemon/deoxys_normal.png"
+          },
+          {
+            "species": "SPECIES_LYCANROC_MIDNIGHT",
+            "name": "Lycanroc",
+            "dex": 539,
+            "sprite": "sprites/pokemon/lycanroc_midnight.png"
           }
         ]
       }
@@ -244433,6 +244423,24 @@
             "sprite": "sprites/pokemon/glaceon.png"
           },
           {
+            "species": "SPECIES_FENNEKIN",
+            "name": "Fennekin",
+            "dex": 470,
+            "sprite": "sprites/pokemon/fennekin.png"
+          },
+          {
+            "species": "SPECIES_BRAIXEN",
+            "name": "Braixen",
+            "dex": 471,
+            "sprite": "sprites/pokemon/braixen.png"
+          },
+          {
+            "species": "SPECIES_DELPHOX",
+            "name": "Delphox",
+            "dex": 472,
+            "sprite": "sprites/pokemon/delphox.png"
+          },
+          {
             "species": "SPECIES_DELPHOX_MEGA",
             "name": "Delphox",
             "dex": 472,
@@ -246748,6 +246756,12 @@
             "sprite": "sprites/pokemon/manectric_mega.png"
           },
           {
+            "species": "SPECIES_LYCANROC_MIDDAY",
+            "name": "Lycanroc",
+            "dex": 539,
+            "sprite": "sprites/pokemon/lycanroc_midday.png"
+          },
+          {
             "species": "SPECIES_OBSTAGOON",
             "name": "Obstagoon",
             "dex": 593,
@@ -247548,6 +247562,12 @@
             "name": "Leavanny",
             "dex": 397,
             "sprite": "sprites/pokemon/leavanny.png"
+          },
+          {
+            "species": "SPECIES_TERRAKION",
+            "name": "Terrakion",
+            "dex": 456,
+            "sprite": "sprites/pokemon/terrakion.png"
           },
           {
             "species": "SPECIES_GRENINJA_MEGA",
@@ -251377,26 +251397,7 @@
       "slug": "mental-surge",
       "usage": {
         "base": [],
-        "innate": [
-          {
-            "species": "SPECIES_FENNEKIN",
-            "name": "Fennekin",
-            "dex": 470,
-            "sprite": "sprites/pokemon/fennekin.png"
-          },
-          {
-            "species": "SPECIES_BRAIXEN",
-            "name": "Braixen",
-            "dex": 471,
-            "sprite": "sprites/pokemon/braixen.png"
-          },
-          {
-            "species": "SPECIES_DELPHOX",
-            "name": "Delphox",
-            "dex": 472,
-            "sprite": "sprites/pokemon/delphox.png"
-          }
-        ]
+        "innate": []
       }
     },
     "ABILITY_RESOLUTE_GUARD": {
@@ -253321,6 +253322,12 @@
             "name": "Infernape",
             "dex": 305,
             "sprite": "sprites/pokemon/infernape.png"
+          },
+          {
+            "species": "SPECIES_HEATRAN",
+            "name": "Heatran",
+            "dex": 373,
+            "sprite": "sprites/pokemon/heatran.png"
           }
         ]
       }
@@ -287076,7 +287083,7 @@
           "displayName": "Lycanroc",
           "innates": [
             "ABILITY_STURDY",
-            "ABILITY_ROCK_HEAD",
+            "ABILITY_GUARD_DOG",
             "ABILITY_BATTLE_ARMOR"
           ],
           "itemConstant": "ITEM_LOADED_DICE",
@@ -293696,7 +293703,7 @@
           "displayName": "Lycanroc",
           "innates": [
             "ABILITY_STURDY",
-            "ABILITY_ROCK_HEAD",
+            "ABILITY_GUARD_DOG",
             "ABILITY_BATTLE_ARMOR"
           ],
           "itemConstant": "",
@@ -307403,7 +307410,7 @@
           "displayName": "Lycanroc Dusk",
           "innates": [
             "ABILITY_STURDY",
-            "ABILITY_ROCK_HEAD",
+            "ABILITY_OWN_TEMPO",
             "ABILITY_BATTLE_ARMOR"
           ],
           "itemConstant": "",
@@ -308425,7 +308432,7 @@
           "displayName": "Lycanroc Midday",
           "innates": [
             "ABILITY_STURDY",
-            "ABILITY_ROCK_HEAD",
+            "ABILITY_GUARD_DOG",
             "ABILITY_BATTLE_ARMOR"
           ],
           "itemConstant": "",
