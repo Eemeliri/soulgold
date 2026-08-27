@@ -155,7 +155,7 @@ Route27_Text_BirdKeeperJoseAfter:
 
 TohjoFalls_Text_Sign:
     .string "Tohjo Falls\p"
-    .string "The Link Between Kanto And Johto$"
+    .string "The road to the Indigo Plateau!$"
 
 Route27_Text_FisherScottSeen:
     .string "I'm feeling great today!\p"

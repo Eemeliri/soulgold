@@ -313,7 +313,7 @@ TohjoFalls_Text_Sign:
 # 157 "data/maps/Route27/scripts.pory"
     .string "Tohjo Falls\p"
 # 158 "data/maps/Route27/scripts.pory"
-    .string "The Link Between Kanto And Johto$"
+    .string "The road to the Indigo Plateau!$"
 # 159 "data/maps/Route27/scripts.pory"
 
 # 160 "data/maps/Route27/scripts.pory"
