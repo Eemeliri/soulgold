@@ -47,6 +47,7 @@ extern const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS];
 void DoFacilityTrainerBattle(struct ScriptContext *ctx);
 void FillFrontierTrainerParty(u8 monsCount);
 void FillFrontierTrainersParties(u8 monsCount);
+bool32 IsFrontierSpeciesAllowed(u16 species);
 bool32 IsFrontierMonEnabled(enum FrontierMon monId);
 bool32 BuildFacilityTrainerMonSelection(const u16 *monSet, const struct TrainerMon *facilityMons,
                                         u16 facilityMonsCount, u8 monCount, bool32 doubles,

@@ -94,6 +94,9 @@ script BattleArcade_Registration_EventScript_TryEnterChallenge
 	multichoice(17, 4, MULTI_LEVEL_MODE, FALSE)
 	switch(var(VAR_RESULT))
 	{
+		case FRONTIER_LEVEL_CHOICE_INNATES:
+			call(BattleFrontier_EventScript_ChooseInnates)
+			goto(BattleArcade_Registration_EventScript_TryEnterChallenge)
 		case FRONTIER_LEVEL_CHOICE_INFO:
 			call(BattleFrontier_EventScript_ShowLevelModeInfo)
 			goto(BattleArcade_Registration_EventScript_TryEnterChallenge)

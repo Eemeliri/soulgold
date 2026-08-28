@@ -188,8 +188,9 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterSinglesChallenge::
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES
 	message BattleFrontier_BattleTowerLobby_Text_WhichLevelMode
 	waitmessage
-	multichoice 17, 4, MULTI_LEVEL_MODE, FALSE
+	multichoice 17, 2, MULTI_LEVEL_MODE, FALSE
 	switch VAR_RESULT
+	case FRONTIER_LEVEL_CHOICE_INNATES, BattleFrontier_BattleTowerLobby_EventScript_SinglesInnates
 	case FRONTIER_LEVEL_CHOICE_INFO, BattleFrontier_BattleTowerLobby_EventScript_SinglesLevelInfo
 	case FRONTIER_LEVEL_CHOICE_BGM, BattleFrontier_BattleTowerLobby_EventScript_SinglesBgm
 	case MULTI_B_PRESSED, BattleFrontier_BattleTowerLobby_EventScript_CancelChallenge
@@ -213,6 +214,10 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterSinglesChallenge::
 
 BattleFrontier_BattleTowerLobby_EventScript_SinglesLevelInfo::
 	call BattleFrontier_EventScript_ShowLevelModeInfo
+	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterSinglesChallenge
+
+BattleFrontier_BattleTowerLobby_EventScript_SinglesInnates::
+	call BattleFrontier_EventScript_ChooseInnates
 	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterSinglesChallenge
 
 BattleFrontier_BattleTowerLobby_EventScript_SinglesBgm::
@@ -261,8 +266,9 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterDoublesChallenge::
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_DOUBLES
 	message BattleFrontier_BattleTowerLobby_Text_WhichLevelMode
 	waitmessage
-	multichoice 17, 4, MULTI_LEVEL_MODE, FALSE
+	multichoice 17, 2, MULTI_LEVEL_MODE, FALSE
 	switch VAR_RESULT
+	case FRONTIER_LEVEL_CHOICE_INNATES, BattleFrontier_BattleTowerLobby_EventScript_DoublesInnates
 	case FRONTIER_LEVEL_CHOICE_INFO, BattleFrontier_BattleTowerLobby_EventScript_DoublesLevelInfo
 	case FRONTIER_LEVEL_CHOICE_BGM, BattleFrontier_BattleTowerLobby_EventScript_DoublesBgm
 	case MULTI_B_PRESSED, BattleFrontier_BattleTowerLobby_EventScript_CancelChallenge
@@ -286,6 +292,10 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterDoublesChallenge::
 
 BattleFrontier_BattleTowerLobby_EventScript_DoublesLevelInfo::
 	call BattleFrontier_EventScript_ShowLevelModeInfo
+	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterDoublesChallenge
+
+BattleFrontier_BattleTowerLobby_EventScript_DoublesInnates::
+	call BattleFrontier_EventScript_ChooseInnates
 	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterDoublesChallenge
 
 BattleFrontier_BattleTowerLobby_EventScript_DoublesBgm::
@@ -335,8 +345,9 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterMultisChallenge::
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_MULTIS
 	message BattleFrontier_BattleTowerLobby_Text_WhichLevelMode
 	waitmessage
-	multichoice 17, 4, MULTI_LEVEL_MODE, FALSE
+	multichoice 17, 2, MULTI_LEVEL_MODE, FALSE
 	switch VAR_RESULT
+	case FRONTIER_LEVEL_CHOICE_INNATES, BattleFrontier_BattleTowerLobby_EventScript_MultisInnates
 	case FRONTIER_LEVEL_CHOICE_INFO, BattleFrontier_BattleTowerLobby_EventScript_MultisLevelInfo
 	case FRONTIER_LEVEL_CHOICE_BGM, BattleFrontier_BattleTowerLobby_EventScript_MultisBgm
 	case MULTI_B_PRESSED, BattleFrontier_BattleTowerLobby_EventScript_CancelChallenge
@@ -360,6 +371,10 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterMultisChallenge::
 
 BattleFrontier_BattleTowerLobby_EventScript_MultisLevelInfo::
 	call BattleFrontier_EventScript_ShowLevelModeInfo
+	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterMultisChallenge
+
+BattleFrontier_BattleTowerLobby_EventScript_MultisInnates::
+	call BattleFrontier_EventScript_ChooseInnates
 	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterMultisChallenge
 
 BattleFrontier_BattleTowerLobby_EventScript_MultisBgm::
@@ -408,8 +423,9 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterLinkMultisChallenge::
 	setvar VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_LINK_MULTIS
 	message BattleFrontier_BattleTowerLobby_Text_WhichLevelMode
 	waitmessage
-	multichoice 17, 4, MULTI_LEVEL_MODE, FALSE
+	multichoice 17, 2, MULTI_LEVEL_MODE, FALSE
 	switch VAR_RESULT
+	case FRONTIER_LEVEL_CHOICE_INNATES, BattleFrontier_BattleTowerLobby_EventScript_LinkMultisInnates
 	case FRONTIER_LEVEL_CHOICE_INFO, BattleFrontier_BattleTowerLobby_EventScript_LinkMultisLevelInfo
 	case FRONTIER_LEVEL_CHOICE_BGM, BattleFrontier_BattleTowerLobby_EventScript_LinkMultisBgm
 	case MULTI_B_PRESSED, BattleFrontier_BattleTowerLobby_EventScript_CancelChallenge
@@ -433,6 +449,10 @@ BattleFrontier_BattleTowerLobby_EventScript_TryEnterLinkMultisChallenge::
 
 BattleFrontier_BattleTowerLobby_EventScript_LinkMultisLevelInfo::
 	call BattleFrontier_EventScript_ShowLevelModeInfo
+	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterLinkMultisChallenge
+
+BattleFrontier_BattleTowerLobby_EventScript_LinkMultisInnates::
+	call BattleFrontier_EventScript_ChooseInnates
 	goto BattleFrontier_BattleTowerLobby_EventScript_TryEnterLinkMultisChallenge
 
 BattleFrontier_BattleTowerLobby_EventScript_LinkMultisBgm::

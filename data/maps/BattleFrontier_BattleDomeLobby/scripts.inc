@@ -149,8 +149,9 @@ BattleFrontier_BattleDomeLobby_EventScript_AskTakeChallenge::
 BattleFrontier_BattleDomeLobby_EventScript_TryEnterChallenge::
 	message BattleFrontier_BattleDomeLobby_Text_WhichLevelMode
 	waitmessage
-	multichoice 17, 4, MULTI_LEVEL_MODE, FALSE
+	multichoice 17, 2, MULTI_LEVEL_MODE, FALSE
 	switch VAR_RESULT
+	case FRONTIER_LEVEL_CHOICE_INNATES, BattleFrontier_BattleDomeLobby_EventScript_Innates
 	case FRONTIER_LEVEL_CHOICE_INFO, BattleFrontier_BattleDomeLobby_EventScript_LevelInfo
 	case FRONTIER_LEVEL_CHOICE_BGM, BattleFrontier_BattleDomeLobby_EventScript_Bgm
 	case MULTI_B_PRESSED, BattleFrontier_BattleDomeLobby_EventScript_CancelChallenge
@@ -174,6 +175,10 @@ BattleFrontier_BattleDomeLobby_EventScript_TryEnterChallenge::
 
 BattleFrontier_BattleDomeLobby_EventScript_LevelInfo::
 	call BattleFrontier_EventScript_ShowLevelModeInfo
+	goto BattleFrontier_BattleDomeLobby_EventScript_TryEnterChallenge
+
+BattleFrontier_BattleDomeLobby_EventScript_Innates::
+	call BattleFrontier_EventScript_ChooseInnates
 	goto BattleFrontier_BattleDomeLobby_EventScript_TryEnterChallenge
 
 BattleFrontier_BattleDomeLobby_EventScript_Bgm::

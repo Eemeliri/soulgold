@@ -100,6 +100,7 @@ static const struct MenuAction MultichoiceList_LevelMode[] =
 {
     {gText_Lv50},
     {gText_OpenLevel},
+    {COMPOUND_STRING("Innates")},
     {gText_Info2},
     {COMPOUND_STRING("BGM")},
 };
