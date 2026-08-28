@@ -46,7 +46,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "OlivineCity_EventScript_Youngster",
-      "flag": "FLAG_ITEM_OLIVINE_TM_SHOCKWAVE"
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
@@ -258,7 +258,7 @@
       "flag": "FLAG_NIGHT_POKEMON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_TMBALL",
       "x": 43,
       "y": 50,
       "elevation": 0,

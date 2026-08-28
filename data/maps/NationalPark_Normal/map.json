@@ -158,7 +158,7 @@
       "flag": "FLAG_TEMP_1"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_TMBALL",
       "x": 3,
       "y": 44,
       "elevation": 0,

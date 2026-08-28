@@ -89,32 +89,30 @@ GalaricaVendor:
 # 55 "data/maps/AzaleaTown_Mart/scripts.pory"
 GalaricaNoneVendor:
 # 56 "data/maps/AzaleaTown_Mart/scripts.pory"
-	.2byte ITEM_TM_INFESTATION
-# 57 "data/maps/AzaleaTown_Mart/scripts.pory"
 	.2byte ITEM_TM_GIGA_DRAIN
-# 58 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 57 "data/maps/AzaleaTown_Mart/scripts.pory"
 	.2byte ITEM_NEST_BALL
-# 59 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 58 "data/maps/AzaleaTown_Mart/scripts.pory"
 	.2byte ITEM_MECH_MAIL
 	.2byte ITEM_NONE
 
 AzaleaTownMartNpc::
-# 63 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 62 "data/maps/AzaleaTown_Mart/scripts.pory"
 	lock
-# 64 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 63 "data/maps/AzaleaTown_Mart/scripts.pory"
 	faceplayer
-# 65 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 64 "data/maps/AzaleaTown_Mart/scripts.pory"
 	goto_if_set FLAG_BADGE04_GET, AzaleaTownMartNpc_2
-# 71 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 70 "data/maps/AzaleaTown_Mart/scripts.pory"
 	msgbox AzaleaTownMartNpc_Text_1
-# 74 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 73 "data/maps/AzaleaTown_Mart/scripts.pory"
 	release
 	end
 
 AzaleaTownMartNpc_2:
-# 66 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 65 "data/maps/AzaleaTown_Mart/scripts.pory"
 	msgbox AzaleaTownMartNpc_Text_0
-# 68 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 67 "data/maps/AzaleaTown_Mart/scripts.pory"
 	release
 	end
 
@@ -136,12 +134,12 @@ AzaleaTownMart2_Text_2:
 	.string "in stock!$"
 
 AzaleaTownMartNpc_Text_0:
-# 66 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 65 "data/maps/AzaleaTown_Mart/scripts.pory"
 	.string "Galarian evolution items are back in\n"
 	.string "stock!$"
 
 AzaleaTownMartNpc_Text_1:
-# 71 "data/maps/AzaleaTown_Mart/scripts.pory"
+# 70 "data/maps/AzaleaTown_Mart/scripts.pory"
 	.string "Apparently the Team Rocket had taken \n"
 	.string "all evolution items specifically for\l"
 	.string "Galarian Slowpokes.$"

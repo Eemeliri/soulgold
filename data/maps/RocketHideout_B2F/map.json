@@ -171,7 +171,7 @@
       "flag": "FLAG_HIDE_ROCKETHIDEOUT2_ARIANA_AND_GRUNT"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_TMBALL",
       "x": 3,
       "y": 17,
       "elevation": 0,

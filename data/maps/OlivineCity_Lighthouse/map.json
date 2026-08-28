@@ -210,7 +210,7 @@
       "flag": "FLAG_ITEM_LIGHTHOUSE_HYPER_POTION"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_TMBALL",
       "x": 125,
       "y": 15,
       "elevation": 0,
@@ -220,7 +220,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_TM_INFESTATION",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_OLIVINE_TM_SHOCKWAVE"
+      "flag": "FLAG_TM_INFESTATION"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",

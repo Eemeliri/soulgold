@@ -184,6 +184,29 @@ void MigrateInfiniteHeldItems(void)
         FlagSet(FLAG_INFINITE_HELD_ITEMS_MIGRATION_COMPLETE);
 }
 
+void MigrateInfestationSludgeWaveFlags(void)
+{
+    bool32 hasInfestation;
+    bool32 hasSludgeWave;
+
+    if (FlagGet(FLAG_TM_PICKUP_MIGRATION_COMPLETE))
+        return;
+
+    if (FlagGet(FLAG_ITEM_OLIVINE_TM_SHOCKWAVE))
+    {
+        hasInfestation = CheckBagHasItem(ITEM_TM_INFESTATION, 1);
+        hasSludgeWave = CheckBagHasItem(ITEM_TM_SLUDGE_WAVE, 1);
+
+        if (hasInfestation)
+            FlagSet(FLAG_TM_INFESTATION);
+
+        if (!hasSludgeWave)
+            FlagClear(FLAG_ITEM_OLIVINE_TM_SHOCKWAVE);
+    }
+
+    FlagSet(FLAG_TM_PICKUP_MIGRATION_COMPLETE);
+}
+
 void DisableMysteryEvent(void)
 {
     FlagClear(FLAG_SYS_MYSTERY_EVENT_ENABLE);
