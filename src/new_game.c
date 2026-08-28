@@ -248,6 +248,7 @@ void NewGameInitData(void)
     InitEventData();
     FlagSet(FLAG_NATIONAL_DEX_MIGRATION_COMPLETE);
     FlagSet(FLAG_INFINITE_HELD_ITEMS_MIGRATION_COMPLETE);
+    FlagSet(FLAG_TM_PICKUP_MIGRATION_COMPLETE);
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();

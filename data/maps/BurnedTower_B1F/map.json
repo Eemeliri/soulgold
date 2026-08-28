@@ -67,7 +67,7 @@
       "flag": "FLAG_ITEM_BURNED_TOWER_B1F_ULTRA_BALL"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_TMBALL",
       "x": 5,
       "y": 9,
       "elevation": 0,

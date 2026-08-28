@@ -144,6 +144,7 @@ bool32 SwShPartyMenu_TestGiveHeldItemToMon(u8 partyId, enum Item item);
 bool32 SwShPartyMenu_TestCancelHeldItemSwitch(enum Item item);
 bool32 SwShPartyMenu_TestTossHeldItem(u8 partyId);
 bool32 SwShPartyMenu_TestMissingSlotSpritesAreIgnored(void);
+bool32 SwShPartyMenu_TestEmptyHeldItemSlotIsIgnored(bool8 inItemMode);
 #endif
 
 #endif // GUARD_PARTY_MENU_H

@@ -150,7 +150,7 @@
 #define FLAG_ENABLE_ROXANNE_FIRST_CALL       0x80 // Set after defeating Brawly. This will activate a call with Roxanne in order to register her.
 #define FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN  0x81
 #define FLAG_DEFEATED_RIVAL_ROUTE103         0x82
-#define FLAG_RECEIVED_DOLL_Bill           0x83
+#define FLAG_TM_INFESTATION                  0x83
 #define FLAG_RECEIVED_POTION_OLDALE          0x84
 #define FLAG_RECEIVED_AMULET_COIN            0x85
 #define FLAG_PENDING_DAYCARE_EGG             0x86
@@ -1746,7 +1746,8 @@
 #define FLAG_ROUTE43_EXPERT_QUALIFIED               0x103A
 #define FLAG_ROUTE47_EXPERT_QUALIFIED               0x103B
 #define FLAG_ROUTE27_EXPERT_QUALIFIED               0x103C
-#define CUSTOM_FLAGS_END                            FLAG_ROUTE27_EXPERT_QUALIFIED
+#define FLAG_TM_PICKUP_MIGRATION_COMPLETE           0x103D
+#define CUSTOM_FLAGS_END                            FLAG_TM_PICKUP_MIGRATION_COMPLETE
 
 
 #define FLAG_0x1500                                 0x1500

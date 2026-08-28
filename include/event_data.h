@@ -9,6 +9,7 @@ void EnableNationalPokedex(void);
 bool32 IsNationalPokedexEnabled(void);
 void MigrateNationalPokedex(void);
 void MigrateInfiniteHeldItems(void);
+void MigrateInfestationSludgeWaveFlags(void);
 void DisableMysteryEvent(void);
 void EnableMysteryEvent(void);
 bool32 IsMysteryEventEnabled(void);
