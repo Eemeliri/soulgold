@@ -906,9 +906,9 @@ u8 BattleCafe_GetChallengeMode(void)
     return sBattleCafeChallengeMode;
 }
 
-bool32 BattleCafe_AreInnatesDisabled(void)
+bool32 BattleCafe_IsChallengeActive(void)
 {
-    return sBattleCafeChallengeActive && FlagGet(FLAG_BATTLE_CAFE_NO_INNATES);
+    return sBattleCafeChallengeActive;
 }
 
 void BattleCafe_UnlockClearAchievement(void)

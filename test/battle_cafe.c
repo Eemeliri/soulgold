@@ -1,5 +1,6 @@
 #include "global.h"
 #include "achievements.h"
+#include "battle.h"
 #include "battle_tower.h"
 #include "event_data.h"
 #include "item.h"
@@ -8,6 +9,7 @@
 #include "replay_options.h"
 #include "test/test.h"
 #include "constants/battle_frontier.h"
+#include "constants/battle.h"
 #include "constants/flags.h"
 #include "constants/items.h"
 #include "constants/pokedex.h"
@@ -254,13 +256,14 @@ TEST("Battle Cafe vitamin sets do not charge or give items without enough points
 TEST("Battle Cafe no-innates preference applies only while a challenge is active")
 {
     FlagClear(FLAG_REPLAY_NO_INNATES);
-    FlagSet(FLAG_BATTLE_CAFE_NO_INNATES);
+    FlagSet(FLAG_BATTLE_FACILITY_NO_INNATES);
 
     EXPECT(!AreReplayInnatesDisabled());
 
     VarSet(VAR_TEMP_8, BATTLE_CAFE_MODE_DAILY);
     BattleCafe_InitChallenge();
     EXPECT(AreReplayInnatesDisabled());
+    EXPECT(!IsInnateUnlockedByLevel(1, 100));
 
     BattleCafe_EndChallenge();
     EXPECT(!AreReplayInnatesDisabled());
@@ -269,13 +272,38 @@ TEST("Battle Cafe no-innates preference applies only while a challenge is active
 TEST("Battle Cafe challenges keep innates when the preference is enabled")
 {
     FlagClear(FLAG_REPLAY_NO_INNATES);
-    FlagClear(FLAG_BATTLE_CAFE_NO_INNATES);
+    FlagClear(FLAG_BATTLE_FACILITY_NO_INNATES);
 
     VarSet(VAR_TEMP_8, BATTLE_CAFE_MODE_ENDLESS_CHALLENGE);
     BattleCafe_InitChallenge();
     EXPECT(!AreReplayInnatesDisabled());
+    EXPECT(IsInnateUnlockedByLevel(1, 50));
 
     BattleCafe_EndChallenge();
+}
+
+TEST("Battle Facility innates preference is independent of Classic and Chaos levels")
+{
+    u32 savedBattleTypeFlags = gBattleTypeFlags;
+    enum FrontierLevelMode savedLevelMode = gSaveBlock2Ptr->frontier.lvlMode;
+
+    FlagClear(FLAG_REPLAY_NO_INNATES);
+    FlagClear(FLAG_ALL_INNATES_UNLOCKED);
+    gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_50;
+    gBattleTypeFlags = BATTLE_TYPE_BATTLE_TOWER;
+
+    FlagClear(FLAG_BATTLE_FACILITY_NO_INNATES);
+    EXPECT(IsInnateUnlockedByLevel(1, FRONTIER_MAX_LEVEL_50));
+
+    FlagSet(FLAG_BATTLE_FACILITY_NO_INNATES);
+    EXPECT(!IsInnateUnlockedByLevel(1, FRONTIER_MAX_LEVEL_OPEN));
+
+    gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_TENT;
+    FlagClear(FLAG_BATTLE_FACILITY_NO_INNATES);
+    EXPECT(!IsInnateUnlockedByLevel(1, FRONTIER_MAX_LEVEL_50));
+
+    gBattleTypeFlags = savedBattleTypeFlags;
+    gSaveBlock2Ptr->frontier.lvlMode = savedLevelMode;
 }
 
 TEST("Battle Cafe restores held items changed by battle effects after every round")

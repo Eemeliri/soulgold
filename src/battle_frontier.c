@@ -51,6 +51,60 @@ COMMON_DATA u16 gFrontierTempParty[MAX_FRONTIER_PARTY_SIZE] = {0};
 
 STATIC_ASSERT(sizeof(enum FrontierMon) == sizeof(u16), FrontierMonSize_MustBeTwoBytes);
 
+static const u16 sRejectedFrontierSpecies[] =
+{
+    SPECIES_KELDEO_ORDINARY,
+    SPECIES_KELDEO_RESOLUTE,
+    SPECIES_ETERNATUS,
+    SPECIES_ETERNATUS_ETERNAMAX,
+    SPECIES_RESHIRAM,
+    SPECIES_ZEKROM,
+    SPECIES_KYUREM,
+    SPECIES_KYUREM_WHITE,
+    SPECIES_KYUREM_BLACK,
+    SPECIES_GENESECT_DOUSE,
+    SPECIES_GENESECT_SHOCK,
+    SPECIES_GENESECT_BURN,
+    SPECIES_GENESECT_CHILL,
+    SPECIES_ZYGARDE_50,
+    SPECIES_ZYGARDE_10_AURA_BREAK,
+    SPECIES_ZYGARDE_10_POWER_CONSTRUCT,
+    SPECIES_ZYGARDE_50_POWER_CONSTRUCT,
+    SPECIES_ZYGARDE_COMPLETE,
+    SPECIES_ZYGARDE_MEGA,
+    SPECIES_DEOXYS_NORMAL,
+    SPECIES_DEOXYS_ATTACK,
+    SPECIES_DEOXYS_DEFENSE,
+    SPECIES_DEOXYS_SPEED,
+    SPECIES_XERNEAS_NEUTRAL,
+    SPECIES_XERNEAS_ACTIVE,
+    SPECIES_YVELTAL,
+    SPECIES_VOLCANION,
+    SPECIES_COSMOG,
+    SPECIES_COSMOEM,
+    SPECIES_SOLGALEO,
+    SPECIES_LUNALA,
+    SPECIES_NECROZMA,
+    SPECIES_NECROZMA_DUSK_MANE,
+    SPECIES_NECROZMA_DAWN_WINGS,
+    SPECIES_NECROZMA_ULTRA,
+    SPECIES_ZACIAN_HERO,
+    SPECIES_ZACIAN_CROWNED,
+    SPECIES_ZAMAZENTA_HERO,
+    SPECIES_ZAMAZENTA_CROWNED,
+    SPECIES_REGIELEKI,
+    SPECIES_REGIDRAGO,
+    SPECIES_GLASTRIER,
+    SPECIES_SPECTRIER,
+    SPECIES_CALYREX,
+    SPECIES_CALYREX_ICE,
+    SPECIES_CALYREX_SHADOW,
+    SPECIES_PECHARUNT,
+    SPECIES_TERAPAGOS_NORMAL,
+    SPECIES_TERAPAGOS_TERASTAL,
+    SPECIES_TERAPAGOS_STELLAR,
+};
+
 static void HandleFacilityTrainerBattleEnd(void)
 {
     u8 facility = gBattleScripting.specialTrainerBattleType;
@@ -240,10 +294,26 @@ void FillFrontierTrainersParties(u8 monsCount)
     FillTrainerParty(TRAINER_BATTLE_PARAM.opponentB, 3, monsCount);
 }
 
+bool32 IsFrontierSpeciesAllowed(u16 species)
+{
+    u32 i;
+
+    if (!IsSpeciesEnabled(species))
+        return FALSE;
+
+    for (i = 0; i < ARRAY_COUNT(sRejectedFrontierSpecies); i++)
+    {
+        if (species == sRejectedFrontierSpecies[i])
+            return FALSE;
+    }
+
+    return TRUE;
+}
+
 bool32 IsFrontierMonEnabled(enum FrontierMon monId)
 {
     return monId < NUM_FRONTIER_MONS
-        && IsSpeciesEnabled(gBattleFrontierMons[monId].species);
+        && IsFrontierSpeciesAllowed(gBattleFrontierMons[monId].species);
 }
 
 static bool32 FacilityMonHasMove(const struct TrainerMon *mon, enum Move move)
@@ -464,7 +534,7 @@ static bool32 IsFacilityMonSelectionCandidate(const struct TrainerMon *facilityM
     if (monId >= facilityMonsCount || monId > maxMonId)
         return FALSE;
     mon = &facilityMons[monId];
-    if (!IsSpeciesEnabled(mon->species))
+    if (!IsFrontierSpeciesAllowed(mon->species))
         return FALSE;
     if ((doubles && (mon->tags & FACILITY_MON_TAG_SINGLES_ONLY))
      || (!doubles && ((mon->tags & FACILITY_MON_TAG_DOUBLES_ONLY) || IsClearlyDoublesOnlyFacilityMon(mon))))

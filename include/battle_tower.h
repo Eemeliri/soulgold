@@ -41,7 +41,7 @@ void BattleCafe_InitChallenge(void);
 void BattleCafe_RestoreHeldItems(void);
 void BattleCafe_EndChallenge(void);
 u8 BattleCafe_GetChallengeMode(void);
-bool32 BattleCafe_AreInnatesDisabled(void);
+bool32 BattleCafe_IsChallengeActive(void);
 void BattleCafe_UnlockClearAchievement(void);
 void BattleCafe_AdvanceWinCount(void);
 void BattleCafe_AwardPoints(void);

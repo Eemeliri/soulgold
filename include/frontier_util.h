@@ -49,5 +49,7 @@ s32 GetHighestLevelInPlayerParty(void);
 u16 FacilityClassToGraphicsId(u8 facilityClass);
 void ShowBattleFrontierCaughtBannedSpecies(void);
 void BattleCafe_ShowRecordsWindow(void);
+bool32 AreBattleFacilityInnatesDisabled(void);
+bool32 AreBattleFacilityInnatesForced(void);
 
 #endif // GUARD_FRONTIER_UTIL_H

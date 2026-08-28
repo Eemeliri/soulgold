@@ -174,3 +174,9 @@ TEST("Every Frontier trainer supports a genuine six-Pokemon singles team")
         }
     }
 }
+
+TEST("Unavailable legendaries are banned from Frontier parties")
+{
+    EXPECT(!IsFrontierSpeciesAllowed(SPECIES_CALYREX_SHADOW));
+    EXPECT(!IsFrontierMonEnabled(FRONTIER_MON_CALYREX_SHADOW_1));
+}

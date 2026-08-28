@@ -2,6 +2,7 @@
 #include "battle_tower.h"
 #include "data.h"
 #include "event_data.h"
+#include "frontier_util.h"
 #include "pokemon.h"
 #include "replay_options.h"
 #include "constants/flags.h"
@@ -116,7 +117,7 @@ bool32 AreReplayEasyIVsEnabled(void)
 
 bool32 AreReplayInnatesDisabled(void)
 {
-    return FlagGet(FLAG_REPLAY_NO_INNATES) || BattleCafe_AreInnatesDisabled();
+    return FlagGet(FLAG_REPLAY_NO_INNATES) || AreBattleFacilityInnatesDisabled();
 }
 
 void ApplyReplayEasyIVs(struct Pokemon *mon)

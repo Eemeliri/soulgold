@@ -183,31 +183,7 @@ script BattleCafe_ViewHighScores {
 }
 
 script BattleCafe_ChooseInnates {
-    if (flag(FLAG_BATTLE_CAFE_NO_INNATES)) {
-        msgbox("Innates are disabled for both sides
-                in every Café challenge.
-
-                Enable innates?", MSGBOX_YESNO)
-        if (var(VAR_RESULT) == YES) {
-            clearflag(FLAG_BATTLE_CAFE_NO_INNATES)
-            playse(SE_SWITCH)
-            waitse
-            msgbox("Innates are now enabled for
-                    all Café challenges.")
-        }
-    } else {
-        msgbox("Innates are enabled for both sides
-                in every Café challenge.
-
-                Disable innates?", MSGBOX_YESNO)
-        if (var(VAR_RESULT) == YES) {
-            setflag(FLAG_BATTLE_CAFE_NO_INNATES)
-            playse(SE_SWITCH)
-            waitse
-            msgbox("Innates are now disabled for
-                    all Café challenges.")
-        }
-    }
+    call(BattleFrontier_EventScript_ChooseInnates)
     goto(BattleCafe_OptionsMenu)
 }
 

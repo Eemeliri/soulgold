@@ -30,8 +30,9 @@
 #define FRONTIER_MODE_COUNT        4
 
 // Extra actions in the facility attendants' level-selection menu.
-#define FRONTIER_LEVEL_CHOICE_INFO 2
-#define FRONTIER_LEVEL_CHOICE_BGM  3
+#define FRONTIER_LEVEL_CHOICE_INNATES 2
+#define FRONTIER_LEVEL_CHOICE_INFO    3
+#define FRONTIER_LEVEL_CHOICE_BGM     4
 
 // Challenge Statuses
 #define CHALLENGE_STATUS_SAVING   1

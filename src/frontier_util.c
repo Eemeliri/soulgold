@@ -2397,6 +2397,28 @@ static bool32 IsFrontierSpeciesBanEnforced(enum FrontierLevelMode lvlMode)
     return lvlMode != FRONTIER_LVL_OPEN;
 }
 
+static bool32 AreBattleFacilityInnateRulesActive(void)
+{
+    if (BattleCafe_IsChallengeActive())
+        return TRUE;
+
+    // Battle Tents reuse Frontier battle flags, but do not offer this setting.
+    return gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT
+        && (gBattleTypeFlags & BATTLE_TYPE_FRONTIER);
+}
+
+bool32 AreBattleFacilityInnatesDisabled(void)
+{
+    return AreBattleFacilityInnateRulesActive()
+        && FlagGet(FLAG_BATTLE_FACILITY_NO_INNATES);
+}
+
+bool32 AreBattleFacilityInnatesForced(void)
+{
+    return AreBattleFacilityInnateRulesActive()
+        && !FlagGet(FLAG_BATTLE_FACILITY_NO_INNATES);
+}
+
 static void AppendCaughtBannedMonSpeciesName(u16 species, u8 count, s32 numBannedMonsCaught)
 {
     if (count == 1)
