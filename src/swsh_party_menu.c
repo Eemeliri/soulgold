@@ -294,6 +294,7 @@ EWRAM_DATA u8 gBattlePartyCurrentOrder[PARTY_SIZE / 2] = {0}; // bits 0-3 are th
 #if TESTING
 static EWRAM_DATA bool8 sSkipGiveHeldItemVisualsForTest = FALSE;
 static EWRAM_DATA bool8 sSkipTossHeldItemVisualsForTest = FALSE;
+static EWRAM_DATA bool8 sInvalidHeldItemSpriteAccessForTest = FALSE;
 #endif
 static EWRAM_DATA u8 sFusionFirstMonSlot = 0; // Fusion item: selected first mon slot
 static EWRAM_DATA u16 sFusionFirstMonSpecies = 0; // Fusion item: selected first mon species
@@ -5987,24 +5988,50 @@ static void CreatePartyMonHeldItemSpriteParameterized(u16 species, enum Item ite
     }
 }
 
+static void DestroyPartyMonHeldItemSprite(struct PartyMenuBox *menuBox, u16 tag)
+{
+    if (menuBox->itemSpriteId >= MAX_SPRITES)
+    {
+#if TESTING
+        sInvalidHeldItemSpriteAccessForTest = TRUE;
+#endif
+        return;
+    }
+
+    FreeSpriteOamMatrix(&gSprites[menuBox->itemSpriteId]);
+    DestroySprite(&gSprites[menuBox->itemSpriteId]);
+    FreeSpriteTilesByTag(tag);
+    FreeSpritePaletteByTag(tag);
+}
+
+static bool8 PartyMonHeldItemSpriteUsesGenericIcon(struct PartyMenuBox *menuBox)
+{
+    if (menuBox->itemSpriteId >= MAX_SPRITES)
+    {
+#if TESTING
+        sInvalidHeldItemSpriteAccessForTest = TRUE;
+#endif
+        return FALSE;
+    }
+
+    return gSprites[menuBox->itemSpriteId].template->tileTag == TAG_HELD_ITEM;
+}
+
 static void UpdatePartyMonHeldItemSprite(struct Pokemon *mon, struct PartyMenuBox *menuBox)
 {
     u8 slot = menuBox - sPartyMenuBoxes;
     u16 tag = TAG_HELD_ITEM_ICON_BASE + slot;
 
+    if (menuBox->itemSpriteId >= MAX_SPRITES)
+        menuBox->itemSpriteId = MAX_SPRITES;
+
     if (gPartyMenu.action == PARTY_ACTION_GIVE_ITEM || gPartyMenu.action == PARTY_ACTION_MOVE_ITEM || sPartyMenuInternal->inItemMode)
     {
         enum Item item = GetMonData(mon, MON_DATA_HELD_ITEM);
 
-
-        if (menuBox->itemSpriteId != MAX_SPRITES)
-        {
-            FreeSpriteOamMatrix(&gSprites[menuBox->itemSpriteId]);
-            DestroySprite(&gSprites[menuBox->itemSpriteId]);
-            FreeSpriteTilesByTag(tag);
-            FreeSpritePaletteByTag(tag);
-            menuBox->itemSpriteId = MAX_SPRITES;
-        }
+        if (menuBox->itemSpriteId < MAX_SPRITES)
+            DestroyPartyMonHeldItemSprite(menuBox, tag);
+        menuBox->itemSpriteId = MAX_SPRITES;
 
         if (item != ITEM_NONE)
         {
@@ -6013,14 +6040,11 @@ static void UpdatePartyMonHeldItemSprite(struct Pokemon *mon, struct PartyMenuBo
     }
     else
     {
-        if (menuBox->itemSpriteId != MAX_SPRITES)
+        if (menuBox->itemSpriteId < MAX_SPRITES)
         {
-            if (gSprites[menuBox->itemSpriteId].template->tileTag != TAG_HELD_ITEM)
+            if (!PartyMonHeldItemSpriteUsesGenericIcon(menuBox))
             {
-                FreeSpriteOamMatrix(&gSprites[menuBox->itemSpriteId]);
-                DestroySprite(&gSprites[menuBox->itemSpriteId]);
-                FreeSpriteTilesByTag(tag);
-                FreeSpritePaletteByTag(tag);
+                DestroyPartyMonHeldItemSprite(menuBox, tag);
                 menuBox->itemSpriteId = MAX_SPRITES;
             }
         }
@@ -6028,17 +6052,51 @@ static void UpdatePartyMonHeldItemSprite(struct Pokemon *mon, struct PartyMenuBo
         if (menuBox->itemSpriteId == MAX_SPRITES && GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE)
         {
             menuBox->itemSpriteId = CreateSprite(&sSpriteTemplate_HeldItem, GetPartyMenuHeldItemSpriteX(menuBox), GetPartyMenuHeldItemSpriteY(menuBox), 1);
-            if (menuBox->itemSpriteId != MAX_SPRITES)
+            if (menuBox->itemSpriteId < MAX_SPRITES)
             {
                 gSprites[menuBox->itemSpriteId].subpriority = 2;
                 ApplyPartySlotOffsetToSprite(menuBox, menuBox->itemSpriteId);
             }
         }
 
-        if (menuBox->itemSpriteId != MAX_SPRITES)
+        if (menuBox->itemSpriteId < MAX_SPRITES)
             ShowOrHideHeldItemSprite(GetMonData(mon, MON_DATA_HELD_ITEM), menuBox);
     }
 }
+
+#if TESTING
+bool32 SwShPartyMenu_TestEmptyHeldItemSlotIsIgnored(bool8 inItemMode)
+{
+    struct PartyMenuInternal *previousInternal = sPartyMenuInternal;
+    struct PartyMenuBox *previousBoxes = sPartyMenuBoxes;
+    struct PartyMenuInternal *internal = AllocZeroed(sizeof(*internal));
+    struct PartyMenuBox menuBox = {.itemSpriteId = SPRITE_NONE};
+    struct Pokemon mon = {0};
+    u8 previousAction = gPartyMenu.action;
+    bool8 previousInvalidAccess = sInvalidHeldItemSpriteAccessForTest;
+    bool32 result;
+
+    if (internal == NULL)
+        return FALSE;
+
+    internal->inItemMode = inItemMode;
+    sPartyMenuInternal = internal;
+    sPartyMenuBoxes = &menuBox;
+    gPartyMenu.action = PARTY_ACTION_CHOOSE_MON;
+    sInvalidHeldItemSpriteAccessForTest = FALSE;
+
+    UpdatePartyMonHeldItemSprite(&mon, &menuBox);
+    result = !sInvalidHeldItemSpriteAccessForTest
+          && menuBox.itemSpriteId == MAX_SPRITES;
+
+    sPartyMenuInternal = previousInternal;
+    sPartyMenuBoxes = previousBoxes;
+    gPartyMenu.action = previousAction;
+    sInvalidHeldItemSpriteAccessForTest = previousInvalidAccess;
+    Free(internal);
+    return result;
+}
+#endif
 
 static void ShowOrHideHeldItemSprite(enum Item item, struct PartyMenuBox *menuBox)
 {

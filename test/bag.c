@@ -119,6 +119,16 @@ TEST("SwSh party slot animations ignore missing sprites")
     EXPECT(SwShPartyMenu_TestMissingSlotSpritesAreIgnored());
 }
 
+TEST("Custom party menu submenus ignore empty 6th party slot 255 item")
+{
+    EXPECT(SwShPartyMenu_TestEmptyHeldItemSlotIsIgnored(TRUE));
+}
+
+TEST("Item restoration ignores Custom party menu slots")
+{
+    EXPECT(SwShPartyMenu_TestEmptyHeldItemSlotIsIgnored(FALSE));
+}
+
 TEST("Infinite held item migration flag does not alias Pokemon received progress")
 {
     FlagClear(FLAG_SYS_POKEMON_GET);
