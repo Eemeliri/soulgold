@@ -2323,8 +2323,7 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
         movementDir = 0;
         break;
     }
-
-    if (JOY_NEW(L_BUTTON))
+    if (gSaveBlock2Ptr->optionsButtonMode != OPTIONS_BUTTON_MODE_L_EQUALS_A && JOY_NEW(L_BUTTON))
         return L_BUTTON;
 
     if (JOY_NEW(R_BUTTON))
@@ -3266,7 +3265,11 @@ static void ShowButtonPrompt(u8 type)
     bool8 canShowSwitch = FALSE;
     bool8 canShowBoxes = FALSE;
     u8 actionsType = GetPartyMenuActionsType(mon);
-    if (actionsType == ACTIONS_SWITCH)
+    if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
+    {
+        canShowSwitch = FALSE;
+    }
+    else if (actionsType == ACTIONS_SWITCH)
     {
         canShowSwitch = TRUE;
     }
