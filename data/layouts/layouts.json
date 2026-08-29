@@ -4586,7 +4586,7 @@
       "name": "WorldHub_Layout",
       "width": 20,
       "height": 50,
-      "primary_tileset": "gTileset_Johto_General",
+      "primary_tileset": "gTileset_Johto_South",
       "secondary_tileset": "gTileset_Cave_Ice",
       "border_filepath": "data/layouts/WorldHub/border.bin",
       "blockdata_filepath": "data/layouts/WorldHub/map.bin"
@@ -8266,7 +8266,7 @@
       "name": "WorldHub2_Layout",
       "width": 80,
       "height": 40,
-      "primary_tileset": "gTileset_Johto_General",
+      "primary_tileset": "gTileset_Johto_South",
       "secondary_tileset": "gTileset_WhirlIslands",
       "border_filepath": "data/layouts/WorldHub2/border.bin",
       "blockdata_filepath": "data/layouts/WorldHub2/map.bin"
