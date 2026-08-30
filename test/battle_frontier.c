@@ -153,6 +153,30 @@ TEST("This test checks for rain team creation")
     gFacilityTrainers = savedFacilityTrainers;
 }
 
+TEST("Balanced Frontier teams does not take conflicting speed setters")
+{
+    static const struct TrainerMon sMons[] =
+    {
+        {
+            .species = SPECIES_PIDGEOT,
+            .moves = { MOVE_HURRICANE },
+            .heldItem = { ITEM_FLYINGITE },
+            .ability = ABILITY_KEEN_EYE,
+        },
+        {
+            .species = SPECIES_REUNICLUS,
+            .moves = { MOVE_PSYCHIC },
+            .heldItem = { ITEM_LIFE_ORB },
+            .ability = ABILITY_MAGIC_GUARD,
+        },
+    };
+    static const u16 sMonSet[] = { 0, 1, FRONTIER_MON_END };
+    u16 chosen[2];
+    EXPECT(!BuildFacilityTrainerMonSelection(sMonSet, sMons, ARRAY_COUNT(sMons), ARRAY_COUNT(chosen),
+                                             FALSE, FACILITY_TEAM_BALANCED, FALSE,
+                                             ARRAY_COUNT(sMons) - 1, chosen));
+}
+
 TEST("Every Frontier trainer supports a genuine six-Pokemon singles team")
 {
     u16 chosen[PARTY_SIZE];

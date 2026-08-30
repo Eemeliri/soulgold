@@ -1558,6 +1558,13 @@ const struct RideablePokemon gSurfablePokemon[] =
     },
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
+    {
+        .species = SPECIES_RAYQUAZA_MEGA,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonPic_RayquazaMega,
+    },
+#endif // P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
     {
         .species = SPECIES_KYOGRE_PRIMAL,

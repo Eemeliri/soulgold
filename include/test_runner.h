@@ -34,6 +34,7 @@ void TestRunner_Battle_CheckBattleRecordActionType(enum BattlerId battlerId, u32
 
 u32 TestRunner_Battle_GetForcedAbility(enum BattleTrainer trainer, u32 partyIndex);
 u32 TestRunner_Battle_GetForcedInnates(u32 array, u32 partyIndex, s32 i);
+bool32 TestRunner_Battle_RefreshDefaultInnates(u32 array, u32 partyIndex, u32 species, u32 level);
 u32 TestRunner_Battle_GetChosenGimmick(enum BattleTrainer trainer, u32 partyIndex);
 u32 TestRunner_Battle_GetForcedEnvironment(void);
 void TestRunner_Battle_SetInitialWeather(void);
@@ -63,6 +64,8 @@ bool32 TestRunner_Battle_ShouldCancelVictoryCatchBag(void);
 #define TestRunner_Battle_GetForcedAbility(...) (u32)0
 
 #define TestRunner_Battle_GetForcedInnates(...) (u32)0
+
+#define TestRunner_Battle_RefreshDefaultInnates(...) FALSE
 
 #define TestRunner_Battle_GetChosenGimmick(...) (u32)0
 

@@ -328,6 +328,11 @@ static bool32 FacilityMonHasMove(const struct TrainerMon *mon, enum Move move)
     return FALSE;
 }
 
+static bool32 FacilityMonHasTrait(const struct TrainerMon *mon, enum Ability ability)
+{
+    return mon->ability == ability || SpeciesHasInnate(mon->species, ability);
+}
+
 static bool32 IsClearlyDoublesOnlyFacilityMon(const struct TrainerMon *mon)
 {
     static const enum Move sDoublesOnlyMoves[] =
@@ -354,19 +359,19 @@ static bool32 IsFacilityArchetypeSetter(const struct TrainerMon *mon, enum Facil
     switch (archetype)
     {
     case FACILITY_TEAM_RAIN:
-        return mon->ability == ABILITY_DRIZZLE || FacilityMonHasMove(mon, MOVE_RAIN_DANCE);
+        return FacilityMonHasTrait(mon, ABILITY_DRIZZLE) || FacilityMonHasMove(mon, MOVE_RAIN_DANCE);
     case FACILITY_TEAM_SUN:
-        return mon->ability == ABILITY_DROUGHT || FacilityMonHasMove(mon, MOVE_SUNNY_DAY);
+        return FacilityMonHasTrait(mon, ABILITY_DROUGHT) || FacilityMonHasMove(mon, MOVE_SUNNY_DAY);
     case FACILITY_TEAM_SAND:
-        return mon->ability == ABILITY_SAND_STREAM || FacilityMonHasMove(mon, MOVE_SANDSTORM);
+        return FacilityMonHasTrait(mon, ABILITY_SAND_STREAM) || FacilityMonHasMove(mon, MOVE_SANDSTORM);
     case FACILITY_TEAM_SNOW:
-        return mon->ability == ABILITY_SNOW_WARNING
+        return FacilityMonHasTrait(mon, ABILITY_SNOW_WARNING)
             || FacilityMonHasMove(mon, MOVE_HAIL)
             || FacilityMonHasMove(mon, MOVE_SNOWSCAPE);
     case FACILITY_TEAM_TRICK_ROOM:
-        return FacilityMonHasMove(mon, MOVE_TRICK_ROOM);
+        return FacilityMonHasTrait(mon, ABILITY_SHOWTIME) || FacilityMonHasMove(mon, MOVE_TRICK_ROOM);
     case FACILITY_TEAM_TAILWIND:
-        return FacilityMonHasMove(mon, MOVE_TAILWIND);
+        return FacilityMonHasTrait(mon, ABILITY_WINDBURST) || FacilityMonHasMove(mon, MOVE_TAILWIND);
     case FACILITY_TEAM_BALANCED:
     case FACILITY_TEAM_ARCHETYPE_COUNT:
     case FACILITY_TEAM_AUTO:
@@ -442,14 +447,15 @@ static bool32 FacilitySelectionHasWeatherSetter(const struct TrainerMon *facilit
     return FALSE;
 }
 
-static bool32 FacilitySelectionHasMove(const struct TrainerMon *facilityMons,
-                                       const u16 *chosenMonIds, u8 chosenCount, enum Move move)
+static bool32 FacilitySelectionHasArchetypeSetter(const struct TrainerMon *facilityMons,
+                                                  const u16 *chosenMonIds, u8 chosenCount,
+                                                  enum FacilityTeamArchetype archetype)
 {
     u32 i;
 
     for (i = 0; i < chosenCount; i++)
     {
-        if (FacilityMonHasMove(&facilityMons[chosenMonIds[i]], move))
+        if (IsFacilityArchetypeSetter(&facilityMons[chosenMonIds[i]], archetype))
             return TRUE;
     }
     return FALSE;
@@ -558,10 +564,12 @@ static bool32 IsFacilityMonSelectionCandidate(const struct TrainerMon *facilityM
     if (setterArchetype != FACILITY_TEAM_BALANCED
      && FacilitySelectionHasWeatherSetter(facilityMons, chosenMonIds, chosenCount))
         return FALSE;
-    if ((FacilityMonHasMove(mon, MOVE_TRICK_ROOM)
-      && FacilitySelectionHasMove(facilityMons, chosenMonIds, chosenCount, MOVE_TAILWIND))
-     || (FacilityMonHasMove(mon, MOVE_TAILWIND)
-      && FacilitySelectionHasMove(facilityMons, chosenMonIds, chosenCount, MOVE_TRICK_ROOM)))
+    if ((IsFacilityArchetypeSetter(mon, FACILITY_TEAM_TRICK_ROOM)
+      && FacilitySelectionHasArchetypeSetter(facilityMons, chosenMonIds, chosenCount,
+                                             FACILITY_TEAM_TAILWIND))
+     || (IsFacilityArchetypeSetter(mon, FACILITY_TEAM_TAILWIND)
+      && FacilitySelectionHasArchetypeSetter(facilityMons, chosenMonIds, chosenCount,
+                                             FACILITY_TEAM_TRICK_ROOM)))
         return FALSE;
 
     if (FacilitySelectionHasSpecies(facilityMons, chosenMonIds, chosenCount,
