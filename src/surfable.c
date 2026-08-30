@@ -5,6 +5,7 @@
 #include "field_effect_helpers.h"
 #include "field_player_avatar.h"
 #include "field_weather.h"
+#include "item.h"
 #include "main.h"
 #include "party_menu.h"
 #include "sprite.h"
@@ -66,6 +67,26 @@ static u16 GetSurfablePokemonIndex(u16 species)
     return 0xFFFF;
 }
 
+static u16 GetSurfablePokemonIndexForMon(struct Pokemon *mon)
+{
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+
+#if P_MEGA_EVOLUTIONS
+    if (CheckBagHasItem(ITEM_MEGA_RING, 1))
+    {
+        u32 megaSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM);
+
+        if (megaSpecies == species)
+            megaSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_MOVE);
+
+        if (megaSpecies < NUM_SPECIES && GetSurfablePokemonIndex(megaSpecies) != 0xFFFF)
+            species = megaSpecies;
+    }
+#endif
+
+    return GetSurfablePokemonIndex(species);
+}
+
 u8 GetSurfablePokemonPartySlot(void)
 {
     for (u32 partySlot = 0; partySlot < PARTY_SIZE; partySlot++)
@@ -73,9 +94,7 @@ u8 GetSurfablePokemonPartySlot(void)
         if (GetMonData(&gPlayerParty[partySlot], MON_DATA_IS_EGG))
             continue;
 
-        u16 species = GetMonData(&gPlayerParty[partySlot], MON_DATA_SPECIES);
-
-        if (GetSurfablePokemonIndex(species) != 0xFFFF)
+        if (GetSurfablePokemonIndexForMon(&gPlayerParty[partySlot]) != 0xFFFF)
             return partySlot;
     }
 
@@ -88,7 +107,7 @@ static u16 GetSurfablePokemonSprite(void)
     if (sCurrentSurfMonPartySlot == PARTY_SIZE)
         return 0xFFFF;
 
-    return GetSurfablePokemonIndex(GetMonData(&gPlayerParty[sCurrentSurfMonPartySlot], MON_DATA_SPECIES));
+    return GetSurfablePokemonIndexForMon(&gPlayerParty[sCurrentSurfMonPartySlot]);
 }
 
 static void LoadSurfOverworldPalette(void)

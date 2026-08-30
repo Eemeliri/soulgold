@@ -2082,6 +2082,26 @@ const struct SpriteFrameImage gSurfingOverlayPicTable_Rayquaza[] = {
     overworld_frame(gSurfablePokemonPic_Rayquaza, 8, 8, 10),
     overworld_frame(gSurfablePokemonPic_Rayquaza, 8, 8, 11),
 };
+
+#if P_MEGA_EVOLUTIONS
+const struct SpriteFrameImage gSurfingOverworldPicTable_RayquazaMega[] = {
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 0),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 1),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 2),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 3),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 4),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_RayquazaMega[] = {
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 6),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 7),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 8),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 9),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 10),
+    overworld_frame(gSurfablePokemonPic_RayquazaMega, 8, 8, 11),
+};
+#endif // P_MEGA_EVOLUTIONS
 #endif // P_FAMILY_RAYQUAZA
 
 // Gen IV Pokemon

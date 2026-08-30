@@ -5512,6 +5512,9 @@ $(OBJEVENTGFXDIR)/pokemon/surfable/0382_kyogre.4bpp $(OBJEVENTGFXDIR)/pokemon/su
 $(OBJEVENTGFXDIR)/pokemon/surfable/0384_rayquaza.4bpp $(OBJEVENTGFXDIR)/pokemon/surfable/0384_rayquaza_shiny.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
 
+$(OBJEVENTGFXDIR)/pokemon/surfable/0384_rayquaza_mega.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
 # Surfable Pokemon Gen 4
 
 $(OBJEVENTGFXDIR)/pokemon/surfable/piplup.4bpp: %.4bpp: %.png

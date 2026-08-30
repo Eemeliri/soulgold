@@ -535,6 +535,9 @@ PAL_TAG_BASCULEGION_SURF,
 #if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
 PAL_TAG_OVERQWIL_SURF,
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
+PAL_TAG_RAYQUAZA_MEGA_SURF,
+#endif // P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
 PAL_TAG_KYOGRE_PRIMAL_SURF,
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
@@ -1226,6 +1229,9 @@ const struct SpritePalette sSurfablePokemonPalettes[] = {
 {gSurfablePokemonPalette_Overqwil,  PAL_TAG_OVERQWIL_SURF},
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
+{gSurfablePokemonPalette_RayquazaMega, PAL_TAG_RAYQUAZA_MEGA_SURF},
+#endif // P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
 {gSurfablePokemonPalette_KyogrePrimal, PAL_TAG_KYOGRE_PRIMAL_SURF},
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
@@ -1917,6 +1923,9 @@ const struct SpritePalette sSurfablePokemonShinyPalettes[] = {
 {gSurfablePokemonShinyPalette_Overqwil,  PAL_TAG_OVERQWIL_SURF},
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
+{gSurfablePokemonShinyPalette_RayquazaMega, PAL_TAG_RAYQUAZA_MEGA_SURF},
+#endif // P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
 {gSurfablePokemonShinyPalette_KyogrePrimal, PAL_TAG_KYOGRE_PRIMAL_SURF},
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
@@ -2660,6 +2669,9 @@ const struct SpriteTemplate gSurfablePokemonOverworldSprites[] =
     {0xFFFF, PAL_TAG_OVERQWIL_SURF,  &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_Overqwil,  gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
+    {0xFFFF, PAL_TAG_RAYQUAZA_MEGA_SURF, &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_RayquazaMega, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
     {0xFFFF, PAL_TAG_KYOGRE_PRIMAL_SURF, &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_KyogrePrimal, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
@@ -3353,6 +3365,10 @@ const struct SpriteTemplate gSurfablePokemonOverlaySprites[] =
 {0xFFFF, PAL_TAG_OVERQWIL_SURF,  &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_Overqwil,  gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+
+#if P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
+    {0xFFFF, PAL_TAG_RAYQUAZA_MEGA_SURF, &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_RayquazaMega, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_RAYQUAZA && P_MEGA_EVOLUTIONS
 
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
     NO_OVERLAY, // Primal Kyogre

@@ -795,6 +795,12 @@ const u32 gSurfablePokemonShinyPic_Rayquaza[] = INCBIN_U32("graphics/object_even
 STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_Rayquaza) == sizeof(gSurfablePokemonPic_Rayquaza), RayquazaSurfNormalAndShinySheetSizeMismatch);
 const u16 gSurfablePokemonPalette_Rayquaza[] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/0384_rayquaza.gbapal");
 const u16 gSurfablePokemonShinyPalette_Rayquaza[] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/0384_rayquaza_shiny.gbapal");
+
+#if P_MEGA_EVOLUTIONS
+const u32 gSurfablePokemonPic_RayquazaMega[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/0384_rayquaza_mega.4bpp");
+const u16 gSurfablePokemonPalette_RayquazaMega[] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/0384_rayquaza_mega.gbapal");
+const u16 gSurfablePokemonShinyPalette_RayquazaMega[] = INCBIN_U16("graphics/pokemon/rayquaza/mega/overworld_shiny.gbapal");
+#endif // P_MEGA_EVOLUTIONS
 #endif // P_FAMILY_RAYQUAZA
 
 // Gen IV Pokemon
