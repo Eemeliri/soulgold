@@ -1034,6 +1034,7 @@ struct moveWithPP {
 #define EXPECT_BOSS_CLEANUP ExpectBossCleanup_(__LINE__)
 #define STARTING_WEATHER(weather) SetInitialWeather(__LINE__, weather, 0)
 #define STARTING_WEATHER_WITH_DURATION(weather, duration) SetInitialWeather(__LINE__, weather, duration)
+#define USE_DEFAULT_INNATES UseDefaultInnates_(__LINE__)
 
 #define PLAYER(species) for (OpenPokemon(__LINE__, B_TRAINER_0, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
 #define OPPONENT(species) for (OpenPokemon(__LINE__, B_TRAINER_1, species); gBattleTestRunnerState->data.currentMon; ClosePokemon(__LINE__))
@@ -1078,6 +1079,7 @@ void SetFlagForTest(u32 sourceLine, u16 flagId);
 void SetVarForTest(u32 sourceLine, u16 varId, u16 value);
 void TestSetConfig(u32 sourceLine, enum ConfigTag configTag, u32 value);
 void SetInitialWeather(u32 sourceLine, u16 weather, u8 duration);
+void UseDefaultInnates_(u32 sourceLine);
 void TieBreakScore(u32 sourceLine, enum RandomTag rngTag, enum ScoreTieResolution scoreTieRes, u32 value);
 void TieBreakTarget(u32 sourceLine, enum TargetTieResolution targetTieRes, u32 value);
 void ClearFlagAfterTest(void);

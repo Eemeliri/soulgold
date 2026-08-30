@@ -64,6 +64,7 @@ static enum BattlerId GetOppositeSideShiftTarget(enum BattlerId battler);
 static void ResetParadoxWeatherStat(enum BattlerId battler);
 static void ResetParadoxTerrainStat(enum BattlerId battler);
 static bool32 CanBattlerFormChange(enum BattlerId battler, enum FormChanges method);
+static void RefreshBattlerInnatesAfterFormChange(enum BattlerId battler, u32 species);
 static bool32 IsPowderMoveBlocked(struct BattleContext *ctx);
 const u8 *AbsorbedByDrainHpAbility(enum BattlerId battlerDef);
 const u8 *AbsorbedByStatIncreaseAbility(enum BattlerId battlerDef, enum Stat statId, u32 statAmount);
@@ -11317,10 +11318,26 @@ bool32 TryBattleFormChange(enum BattlerId battler, enum FormChanges method)
         SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
         gBattleMons[battler].species = targetSpecies;
         RecalcBattlerStats(battler, mon, method == FORM_CHANGE_BATTLE_GIGANTAMAX);
+        RefreshBattlerInnatesAfterFormChange(battler, targetSpecies);
         return TRUE;
     }
 
     return FALSE;
+}
+
+static void RefreshBattlerInnatesAfterFormChange(enum BattlerId battler, u32 species)
+{
+#if TESTING
+    if (gTestRunnerEnabled && !T_SHOULD_TEST_DEFAULT_INNATES)
+    {
+        u32 array = (!IsPartnerMonFromSameTrainer(battler)) ? battler : GetBattlerSide(battler);
+        if (!TestRunner_Battle_RefreshDefaultInnates(array, gBattlerPartyIndexes[battler], species, gBattleMons[battler].level))
+            return;
+    }
+#endif
+
+    for (u32 innate = 0; innate < MAX_MON_INNATES; innate++)
+        gBattleMons[battler].innates[innate] = GetSpeciesInnate(species, innate + 1);
 }
 
 bool32 DoBattlersShareType(enum BattlerId battler1, enum BattlerId battler2)

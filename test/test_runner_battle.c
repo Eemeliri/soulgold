@@ -34,6 +34,7 @@
 #undef TestRunner_Battle_CheckBattleRecordActionType
 #undef TestRunner_Battle_GetForcedAbility
 #undef TestRunner_Battle_GetForcedInnates
+#undef TestRunner_Battle_RefreshDefaultInnates
 #endif
 
 #define INVALID(fmt, ...) Test_ExitWithResult(TEST_RESULT_INVALID, sourceLine, ":L%s:%d: " fmt, gTestRunnerState.test->filename, sourceLine, ##__VA_ARGS__)
@@ -70,6 +71,7 @@ const struct Trainer gBattlePartners[DIFFICULTY_COUNT][PARTNER_COUNT] =
 // Alias sBackupMapData to avoid using heap.
 struct BattleTestRunnerState *const gBattleTestRunnerState = (void *)sBackupMapData;
 STATIC_ASSERT(sizeof(struct BattleTestRunnerState) <= sizeof(sBackupMapData), sBackupMapDataSpace);
+static u8 sDefaultInnateMons[MAX_BATTLE_TRAINERS];
 
 static void CB2_BattleTest_NextParameter(void);
 static void CB2_BattleTest_NextTrial(void);
@@ -376,6 +378,7 @@ static void BattleTest_Run(void *data)
     const struct BattleTest *test = data;
 
     memset(&DATA, 0, sizeof(DATA));
+    memset(sDefaultInnateMons, 0, sizeof(sDefaultInnateMons));
 
     DATA.recordedBattle.rngSeed = defaultSeed;
     DATA.recordedBattle.textSpeed = OPTIONS_TEXT_SPEED_FAST;
@@ -2097,6 +2100,25 @@ void SetInitialWeather(u32 sourceLine, u16 weather, u8 duration)
     DATA.initialWeatherDuration = duration;
 }
 
+void UseDefaultInnates_(u32 sourceLine)
+{
+    u32 species;
+    u32 level;
+
+    INVALID_IF(!DATA.currentMon, "USE_DEFAULT_INNATES outside of PLAYER/OPPONENT");
+    species = GetMonData(DATA.currentMon, MON_DATA_SPECIES);
+    level = GetMonData(DATA.currentMon, MON_DATA_LEVEL);
+    sDefaultInnateMons[DATA.battleTrainer] |= 1u << DATA.currentPartyIndex;
+
+    for (u32 innate = 0; innate < MAX_MON_INNATES; innate++)
+    {
+        enum Ability ability = GetSpeciesInnate(species, innate + 1);
+        if (!IsInnateUnlockedByLevel(innate + 1, level))
+            ability = ABILITY_NONE;
+        DATA.forcedInnates[DATA.battleTrainer][DATA.currentPartyIndex][innate] = ability;
+    }
+}
+
 void TieBreakScore(u32 sourceLine, enum RandomTag rngTag, enum ScoreTieResolution scoreTieRes, u32 value)
 {
     INVALID_IF((rngTag != RNG_AI_SCORE_TIE_DOUBLES_MOVE && rngTag != RNG_AI_SCORE_TIE_SINGLES), "TIE_BREAK_SCORE requires RNG_AI_SCORE_TIE_SINGLES or RNG_AI_SCORE_TIE_DOUBLES_MOVE");
@@ -3707,6 +3729,22 @@ u32 TestRunner_Battle_GetForcedAbility(enum BattleTrainer trainer, u32 partyInde
 u32 TestRunner_Battle_GetForcedInnates(u32 array, u32 partyIndex, s32 i)
 {
     return DATA.forcedInnates[array][partyIndex][i];
+}
+
+bool32 TestRunner_Battle_RefreshDefaultInnates(u32 array, u32 partyIndex, u32 species, u32 level)
+{
+    if (!(sDefaultInnateMons[array] & (1u << partyIndex)))
+        return FALSE;
+
+    for (u32 innate = 0; innate < MAX_MON_INNATES; innate++)
+    {
+        enum Ability ability = GetSpeciesInnate(species, innate + 1);
+        if (!IsInnateUnlockedByLevel(innate + 1, level))
+            ability = ABILITY_NONE;
+        DATA.forcedInnates[array][partyIndex][innate] = ability;
+    }
+
+    return TRUE;
 }
 
 u32 TestRunner_Battle_GetForcedEnvironment(void)

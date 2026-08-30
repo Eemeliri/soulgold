@@ -27,6 +27,29 @@ WILD_BATTLE_TEST("Intimidate popup state does not leak out of a short battle")
     }
 }
 
+SINGLE_BATTLE_TEST("Intimidate only lowers Mega Heracross's Attack once after it loses Defiant")
+{
+    GIVEN {
+        ASSUME(GetSpeciesInnate(SPECIES_HERACROSS, 3) == ABILITY_DEFIANT);
+        ASSUME(!SpeciesHasInnate(SPECIES_HERACROSS_MEGA, ABILITY_DEFIANT));
+        PLAYER(SPECIES_HERACROSS) { Level(100); Item(ITEM_BUGTITE); USE_DEFAULT_INNATES; }
+        OPPONENT(SPECIES_WOBBUFFET) { Level(85); }
+        OPPONENT(SPECIES_OVERQWIL) { Level(85); Ability(ABILITY_INTIMIDATE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_MEGA_EVOLUTION, player);
+        ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+        MESSAGE("The opposing Overqwil's Intimidate cuts Heracross's Attack!");
+    } THEN {
+        EXPECT_EQ(player->species, SPECIES_HERACROSS_MEGA);
+        EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(BattlerHasInnate(B_BATTLER_0, ABILITY_DEFIANT), 0);
+    }
+}
+
 SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch out", s16 damage)
 {
     enum Ability ability;
