@@ -152,7 +152,7 @@ order: 1
 - They are meant to act as a form of postgame progression. Most Pokémon stop learning moves around 60~ usually, so this gives something to look forward to after that. If you really want to play with innates during the main game, you can activate them from the bookcase behind the starter case table in Elm's lab. However this will be a very unbalanced experience and not the intended way to play.
 
 ### Raising IVs?
-- Fishing and Battle Factory (after gym 3) can net you feather items which permanently raise your IVs by 4 with each use. Additionally Hyper Training is available in Rinto Village with Bottle Caps (which can also be obtained by fishing with Super Rod).
+- Fishing and Battle Factory (after gym 3) can net you feather items which permanently raise your IVs by 5 with each use. Additionally Hyper Training is available in Rinto Village with Bottle Caps (which can also be obtained by fishing with Super Rod).
 
 ### Raising EVs?
 - EV items such as Power Weight have been greatly buffed, and they are buyable in Goldenrod. Additionally vitamins like Protein are not capped at 100 EVs anymore, and there are EX versions of the items that raise the stats instantly to max.
