@@ -56,7 +56,7 @@ static bool32 IsFieldMoveUnlocked_Whirlpool(void)
 #if OW_ROCK_CLIMB_FIELD_MOVE == TRUE
 static bool32 IsFieldMoveUnlocked_RockClimb(void)
 {
-    return TRUE;
+    return FlagGet(FLAG_BADGE08_GET);
 }
 #endif
 

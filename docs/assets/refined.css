@@ -1824,7 +1824,9 @@ dialog::backdrop {
   display: none;
 }
 
-body[data-active-tab="pokedex"] .type-filter {
+body[data-active-tab="pokedex"] .type-filter,
+body[data-active-tab="moves"] .type-filter,
+body[data-active-tab="machines"] .type-filter {
   display: block;
 }
 
@@ -4435,6 +4437,12 @@ dialog::backdrop {
 .dex-category-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.move-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 5px;
 }
 

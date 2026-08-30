@@ -1183,7 +1183,9 @@ dialog::backdrop { background: rgb(2 9 18 / 72%); }
   display: none;
 }
 
-body[data-active-tab="pokedex"] .type-filter {
+body[data-active-tab="pokedex"] .type-filter,
+body[data-active-tab="moves"] .type-filter,
+body[data-active-tab="machines"] .type-filter {
   display: block;
 }
 

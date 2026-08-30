@@ -36,8 +36,11 @@ const state = {
   selectedTypes: new Set(),
   selectedCategories: new Set(),
   excludedCategories: new Set(),
+  selectedMoveCategories: new Set(),
   dexSortKey: "dex",
   dexSortDirection: "asc",
+  moveSortKey: "number",
+  moveSortDirection: "asc",
   modalScrollY: 0,
   detail: null,
   renderToken: 0,
@@ -77,6 +80,19 @@ const dexCategoryOptions = [
   { key: "fossil", label: "Fossil" },
 ];
 const dexCategoryKeys = new Set(dexCategoryOptions.map((option) => option.key));
+const moveCategoryOptions = [
+  { key: "physical", constant: "DAMAGE_CATEGORY_PHYSICAL", label: "Physical" },
+  { key: "special", constant: "DAMAGE_CATEGORY_SPECIAL", label: "Special" },
+  { key: "status", constant: "DAMAGE_CATEGORY_STATUS", label: "Status" },
+];
+const moveCategoryKeys = new Set(moveCategoryOptions.map((option) => option.key));
+const moveSortOptions = [
+  { key: "number", label: "Number" },
+  { key: "power", label: "Base power" },
+  { key: "accuracy", label: "Accuracy" },
+  { key: "pp", label: "PP" },
+];
+const moveFilterTabs = new Set(["moves", "machines"]);
 const excludedDexSpecies = new Set([
   "SPECIES_KELDEO",
   "SPECIES_KELDEO_ORDINARY",
@@ -517,15 +533,19 @@ function relativeRoutePath() {
   return route;
 }
 
-function viewFromLocation() {
+function viewFromLocation(tab) {
   const params = new URLSearchParams(window.location.search);
+  const usesMoveFilters = moveFilterTabs.has(tab);
   return {
     query: (params.get("q") || "").trim().toLowerCase(),
     types: (params.get("type") || "").split(",").filter(Boolean).map((type) => `TYPE_${type.toUpperCase().replace(/^TYPE_/, "")}`),
     categories: (params.get("category") || "").split(",").filter((category) => dexCategoryKeys.has(category)),
     excludedCategories: (params.get("exclude") || "").split(",").filter((category) => dexCategoryKeys.has(category)),
-    sortKey: normalizeDexSortKey(params.get("sort")),
-    sortDirection: params.get("dir") === "desc" ? "desc" : "asc",
+    moveCategories: (params.get("damage") || "").split(",").filter((category) => moveCategoryKeys.has(category)),
+    sortKey: normalizeDexSortKey(tab === "pokedex" ? params.get("sort") : null),
+    sortDirection: tab === "pokedex" && params.get("dir") === "desc" ? "desc" : "asc",
+    moveSortKey: normalizeMoveSortKey(usesMoveFilters ? params.get("sort") : null),
+    moveSortDirection: usesMoveFilters && params.get("dir") === "desc" ? "desc" : "asc",
     scrollY: 0,
   };
 }
@@ -534,18 +554,30 @@ function routeFromLocation() {
   const parts = relativeRoutePath().split("/").filter(Boolean);
   const tab = Object.keys(tabRoutes).find((key) => tabRoutes[key] === parts[0]) || "pokedex";
   const detail = parts[1] && detailKinds[tab] ? { kind: detailKinds[tab], slug: parts[1] } : null;
-  return { tab, detail, view: viewFromLocation() };
+  return { tab, detail, view: viewFromLocation(tab) };
 }
 
 function routeUrl(tab, detail = null, view = null) {
   const route = tabRoutes[tab];
   const path = detail ? `${route}/${detail.slug}/` : `${route}/`;
   const url = new URL(path, siteRootUrl);
-  const nextView = view || { query: "", types: [], categories: [], excludedCategories: [], sortKey: "dex", sortDirection: "asc" };
+  const nextView = view || {
+    query: "",
+    types: [],
+    categories: [],
+    excludedCategories: [],
+    moveCategories: [],
+    sortKey: "dex",
+    sortDirection: "asc",
+    moveSortKey: "number",
+    moveSortDirection: "asc",
+  };
   const nextSortKey = normalizeDexSortKey(nextView.sortKey);
   const nextSortDirection = nextView.sortDirection === "desc" ? "desc" : "asc";
+  const nextMoveSortKey = normalizeMoveSortKey(nextView.moveSortKey);
+  const nextMoveSortDirection = nextView.moveSortDirection === "desc" ? "desc" : "asc";
   if (!detail && nextView.query) url.searchParams.set("q", nextView.query);
-  if (!detail && nextView.types?.length && tab === "pokedex") {
+  if (!detail && nextView.types?.length && (tab === "pokedex" || moveFilterTabs.has(tab))) {
     url.searchParams.set("type", nextView.types.map((type) => type.replace(/^TYPE_/, "").toLowerCase()).join(","));
   }
   if (!detail && nextView.categories?.length && tab === "pokedex") {
@@ -554,9 +586,16 @@ function routeUrl(tab, detail = null, view = null) {
   if (!detail && nextView.excludedCategories?.length && tab === "pokedex") {
     url.searchParams.set("exclude", nextView.excludedCategories.join(","));
   }
+  if (!detail && nextView.moveCategories?.length && moveFilterTabs.has(tab)) {
+    url.searchParams.set("damage", nextView.moveCategories.join(","));
+  }
   if (!detail && tab === "pokedex" && (nextSortKey !== "dex" || nextSortDirection !== "asc")) {
     url.searchParams.set("sort", nextSortKey);
     url.searchParams.set("dir", nextSortDirection);
+  }
+  if (!detail && moveFilterTabs.has(tab) && (nextMoveSortKey !== "number" || nextMoveSortDirection !== "asc")) {
+    url.searchParams.set("sort", nextMoveSortKey);
+    url.searchParams.set("dir", nextMoveSortDirection);
   }
   return url;
 }
@@ -614,8 +653,11 @@ function currentViewState(scrollY = window.scrollY) {
     types: [...state.selectedTypes],
     categories: [...state.selectedCategories],
     excludedCategories: [...state.excludedCategories],
+    moveCategories: [...state.selectedMoveCategories],
     sortKey: state.dexSortKey,
     sortDirection: state.dexSortDirection,
+    moveSortKey: state.moveSortKey,
+    moveSortDirection: state.moveSortDirection,
     scrollY,
   };
 }
@@ -627,8 +669,13 @@ function applyViewState(view = {}) {
   state.selectedCategories = new Set(
     (view.categories || []).filter((category) => dexCategoryKeys.has(category) && !state.excludedCategories.has(category)),
   );
+  state.selectedMoveCategories = new Set(
+    (view.moveCategories || []).filter((category) => moveCategoryKeys.has(category)),
+  );
   state.dexSortKey = normalizeDexSortKey(view.sortKey);
   state.dexSortDirection = view.sortDirection === "desc" ? "desc" : "asc";
+  state.moveSortKey = normalizeMoveSortKey(view.moveSortKey);
+  state.moveSortDirection = view.moveSortDirection === "desc" ? "desc" : "asc";
   const search = document.getElementById("globalSearch");
   if (search) search.value = state.query;
 }
@@ -670,7 +717,9 @@ async function applyLocationRoute(historyState = null) {
   const previousTypes = [...state.selectedTypes].join(",");
   const previousCategories = [...state.selectedCategories].join(",");
   const previousExcludedCategories = [...state.excludedCategories].join(",");
+  const previousMoveCategories = [...state.selectedMoveCategories].join(",");
   const previousSort = `${state.dexSortKey}:${state.dexSortDirection}`;
+  const previousMoveSort = `${state.moveSortKey}:${state.moveSortDirection}`;
   state.activeTab = route.tab;
   state.detail = route.detail;
   applyViewState(historyState?.view || route.view);
@@ -681,7 +730,9 @@ async function applyLocationRoute(historyState = null) {
     || previousTypes !== [...state.selectedTypes].join(",")
     || previousCategories !== [...state.selectedCategories].join(",")
     || previousExcludedCategories !== [...state.excludedCategories].join(",")
-    || previousSort !== `${state.dexSortKey}:${state.dexSortDirection}`;
+    || previousMoveCategories !== [...state.selectedMoveCategories].join(",")
+    || previousSort !== `${state.dexSortKey}:${state.dexSortDirection}`
+    || previousMoveSort !== `${state.moveSortKey}:${state.moveSortDirection}`;
   const sectionNeedsData = (sectionDataFiles[state.activeTab] || [])
     .some(([key]) => !loadedData.has(key));
   if (previousTab !== state.activeTab || viewChanged || sectionNeedsData) {
@@ -717,7 +768,9 @@ async function navigateDetail(kind, slug) {
     state.selectedTypes.clear();
     state.selectedCategories.clear();
     state.excludedCategories.clear();
+    state.selectedMoveCategories.clear();
     resetDexSort();
+    resetMoveSort();
     syncTypeFilter();
     document.getElementById("globalSearch").value = "";
   }
@@ -882,7 +935,9 @@ async function setTab(tab, { updateHistory = true } = {}) {
   state.selectedTypes.clear();
   state.selectedCategories.clear();
   state.excludedCategories.clear();
+  state.selectedMoveCategories.clear();
   resetDexSort();
+  resetMoveSort();
   syncTypeFilter();
   const search = document.getElementById("globalSearch");
   search.value = "";
@@ -988,43 +1043,121 @@ function renderTypeFilter() {
   syncTypeFilter();
 }
 
+function moveFilterTypes(rows) {
+  const present = new Set(rows.map((row) => row.type).filter(Boolean));
+  return Object.keys(state.data.typeIcons || {})
+    .filter((type) => present.has(type))
+    .filter((type) => !["TYPE_NONE", "TYPE_MYSTERY", "TYPE_STELLAR"].includes(type));
+}
+
+function renderMoveFilter(rows) {
+  const panel = document.getElementById("typeFilterPanel");
+  if (!panel) return;
+  panel.innerHTML = `
+    <div class="type-filter-section">
+      <div class="type-filter-section-head">
+        <div class="type-filter-title">Types</div>
+        <button class="type-filter-clear" type="button" data-clear-types>All types</button>
+      </div>
+      <div class="type-filter-grid">
+        ${moveFilterTypes(rows).map((type) => `
+          <button class="type-filter-chip type ${type}" type="button" data-type="${type}" aria-pressed="false">${typeName(type)}</button>
+        `).join("")}
+      </div>
+    </div>
+    <div class="type-filter-section">
+      <div class="type-filter-section-head">
+        <div class="type-filter-title">Category</div>
+        <button class="type-filter-clear" type="button" data-clear-move-categories>All categories</button>
+      </div>
+      <div class="move-category-grid">
+        ${moveCategoryOptions.map((option) => `
+          <button class="dex-category-chip" type="button" data-move-category="${option.key}" aria-pressed="false">${option.label}</button>
+        `).join("")}
+      </div>
+    </div>
+    <div class="type-filter-section">
+      <div class="type-filter-title">Sort by</div>
+      <div class="dex-sort-grid move-sort-grid">
+        ${moveSortOptions.map((option) => `
+          <button class="dex-sort-chip" type="button" data-move-sort-key="${option.key}" aria-pressed="false">${option.label}</button>
+        `).join("")}
+      </div>
+      <div class="type-filter-subtitle">Direction</div>
+      <div class="dex-sort-direction">
+        <button class="dex-sort-direction-chip" type="button" data-move-sort-direction="asc" aria-pressed="false">Low → High</button>
+        <button class="dex-sort-direction-chip" type="button" data-move-sort-direction="desc" aria-pressed="false">High → Low</button>
+      </div>
+    </div>
+  `;
+  syncTypeFilter();
+}
+
 function syncTypeFilter() {
   const toggle = document.getElementById("typeFilterToggle");
   const typeCount = state.selectedTypes.size;
-  const categoryCount = state.selectedCategories.size;
-  const excludedCategoryCount = state.excludedCategories.size;
-  const sortOption = dexSortOptions.find((option) => option.key === state.dexSortKey) || dexSortOptions[0];
-  const hasSort = state.dexSortKey !== "dex" || state.dexSortDirection !== "asc";
-  const summary = [];
-  if (categoryCount) summary.push(`${categoryCount} categor${categoryCount === 1 ? "y" : "ies"} included`);
-  if (excludedCategoryCount) summary.push(`${excludedCategoryCount} categor${excludedCategoryCount === 1 ? "y" : "ies"} excluded`);
-  if (typeCount) summary.push(`${typeCount} type${typeCount === 1 ? "" : "s"}`);
-  if (hasSort) summary.push(`${sortOption.label} ${state.dexSortDirection === "asc" ? "↑" : "↓"}`);
-  toggle.textContent = summary.length ? `Filter · ${summary.join(" · ")}` : "Filter";
-  toggle.classList.toggle("has-filter", categoryCount > 0 || excludedCategoryCount > 0 || typeCount > 0 || hasSort);
-  document.querySelectorAll(".dex-category-chip").forEach((button) => {
-    const active = state.selectedCategories.has(button.dataset.category);
-    const excluded = state.excludedCategories.has(button.dataset.category);
-    const option = dexCategoryOptions.find((entry) => entry.key === button.dataset.category);
-    const label = option?.label || button.dataset.category;
-    button.classList.toggle("active", active);
-    button.classList.toggle("excluded", excluded);
-    button.textContent = active ? `Only ${label}` : excluded ? `No ${label}` : label;
-    button.setAttribute("aria-pressed", active ? "true" : excluded ? "mixed" : "false");
-    button.setAttribute("aria-label", `${label}: ${active ? "included" : excluded ? "excluded" : "off"}`);
-  });
+  const usesMoveFilters = moveFilterTabs.has(state.activeTab);
+  if (usesMoveFilters) {
+    const categoryCount = state.selectedMoveCategories.size;
+    const sortOption = moveSortOptions.find((option) => option.key === state.moveSortKey) || moveSortOptions[0];
+    const hasSort = state.moveSortKey !== "number" || state.moveSortDirection !== "asc";
+    const summary = [];
+    if (categoryCount) summary.push(`${categoryCount} categor${categoryCount === 1 ? "y" : "ies"}`);
+    if (typeCount) summary.push(`${typeCount} type${typeCount === 1 ? "" : "s"}`);
+    if (hasSort) summary.push(`${sortOption.label} ${state.moveSortDirection === "asc" ? "↑" : "↓"}`);
+    toggle.textContent = summary.length ? `Filter · ${summary.join(" · ")}` : "Filter";
+    toggle.classList.toggle("has-filter", categoryCount > 0 || typeCount > 0 || hasSort);
+    document.querySelectorAll("[data-move-category]").forEach((button) => {
+      const active = state.selectedMoveCategories.has(button.dataset.moveCategory);
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    document.querySelectorAll("[data-move-sort-key]").forEach((button) => {
+      const active = state.moveSortKey === button.dataset.moveSortKey;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    document.querySelectorAll("[data-move-sort-direction]").forEach((button) => {
+      const active = state.moveSortDirection === button.dataset.moveSortDirection;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  } else {
+    const categoryCount = state.selectedCategories.size;
+    const excludedCategoryCount = state.excludedCategories.size;
+    const sortOption = dexSortOptions.find((option) => option.key === state.dexSortKey) || dexSortOptions[0];
+    const hasSort = state.dexSortKey !== "dex" || state.dexSortDirection !== "asc";
+    const summary = [];
+    if (categoryCount) summary.push(`${categoryCount} categor${categoryCount === 1 ? "y" : "ies"} included`);
+    if (excludedCategoryCount) summary.push(`${excludedCategoryCount} categor${excludedCategoryCount === 1 ? "y" : "ies"} excluded`);
+    if (typeCount) summary.push(`${typeCount} type${typeCount === 1 ? "" : "s"}`);
+    if (hasSort) summary.push(`${sortOption.label} ${state.dexSortDirection === "asc" ? "↑" : "↓"}`);
+    toggle.textContent = summary.length ? `Filter · ${summary.join(" · ")}` : "Filter";
+    toggle.classList.toggle("has-filter", categoryCount > 0 || excludedCategoryCount > 0 || typeCount > 0 || hasSort);
+    document.querySelectorAll("[data-category]").forEach((button) => {
+      const active = state.selectedCategories.has(button.dataset.category);
+      const excluded = state.excludedCategories.has(button.dataset.category);
+      const option = dexCategoryOptions.find((entry) => entry.key === button.dataset.category);
+      const label = option?.label || button.dataset.category;
+      button.classList.toggle("active", active);
+      button.classList.toggle("excluded", excluded);
+      button.textContent = active ? `Only ${label}` : excluded ? `No ${label}` : label;
+      button.setAttribute("aria-pressed", active ? "true" : excluded ? "mixed" : "false");
+      button.setAttribute("aria-label", `${label}: ${active ? "included" : excluded ? "excluded" : "off"}`);
+    });
+    document.querySelectorAll("[data-sort-key]").forEach((button) => {
+      const active = state.dexSortKey === button.dataset.sortKey;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    document.querySelectorAll("[data-sort-direction]").forEach((button) => {
+      const active = state.dexSortDirection === button.dataset.sortDirection;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
   document.querySelectorAll(".type-filter-chip").forEach((button) => {
     const active = state.selectedTypes.has(button.dataset.type);
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", active ? "true" : "false");
-  });
-  document.querySelectorAll(".dex-sort-chip").forEach((button) => {
-    const active = state.dexSortKey === button.dataset.sortKey;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", active ? "true" : "false");
-  });
-  document.querySelectorAll(".dex-sort-direction-chip").forEach((button) => {
-    const active = state.dexSortDirection === button.dataset.sortDirection;
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", active ? "true" : "false");
   });
@@ -1037,6 +1170,15 @@ function normalizeDexSortKey(key) {
 function resetDexSort() {
   state.dexSortKey = "dex";
   state.dexSortDirection = "asc";
+}
+
+function normalizeMoveSortKey(key) {
+  return moveSortOptions.some((option) => option.key === key) ? key : "number";
+}
+
+function resetMoveSort() {
+  state.moveSortKey = "number";
+  state.moveSortDirection = "asc";
 }
 
 function dexSortValue(mon) {
@@ -1090,16 +1232,22 @@ function handleTypeFilterClick(event) {
   event.stopPropagation();
   const clearTypes = event.target.closest("[data-clear-types]");
   const clearCategories = event.target.closest("[data-clear-categories]");
+  const clearMoveCategories = event.target.closest("[data-clear-move-categories]");
   const typeButton = event.target.closest("[data-type]");
   const categoryButton = event.target.closest("[data-category]");
+  const moveCategoryButton = event.target.closest("[data-move-category]");
   const sortButton = event.target.closest("[data-sort-key]");
+  const moveSortButton = event.target.closest("[data-move-sort-key]");
   const directionButton = event.target.closest("[data-sort-direction]");
-  if (!clearTypes && !clearCategories && !typeButton && !categoryButton && !sortButton && !directionButton) return;
+  const moveDirectionButton = event.target.closest("[data-move-sort-direction]");
+  if (!clearTypes && !clearCategories && !clearMoveCategories && !typeButton && !categoryButton && !moveCategoryButton && !sortButton && !moveSortButton && !directionButton && !moveDirectionButton) return;
   if (clearTypes) {
     state.selectedTypes.clear();
   } else if (clearCategories) {
     state.selectedCategories.clear();
     state.excludedCategories.clear();
+  } else if (clearMoveCategories) {
+    state.selectedMoveCategories.clear();
   } else if (typeButton && state.selectedTypes.has(typeButton.dataset.type)) {
     state.selectedTypes.delete(typeButton.dataset.type);
   } else if (typeButton) {
@@ -1111,17 +1259,27 @@ function handleTypeFilterClick(event) {
     state.excludedCategories.delete(categoryButton.dataset.category);
   } else if (categoryButton) {
     state.selectedCategories.add(categoryButton.dataset.category);
+  } else if (moveCategoryButton && state.selectedMoveCategories.has(moveCategoryButton.dataset.moveCategory)) {
+    state.selectedMoveCategories.delete(moveCategoryButton.dataset.moveCategory);
+  } else if (moveCategoryButton) {
+    state.selectedMoveCategories.add(moveCategoryButton.dataset.moveCategory);
   } else if (sortButton) {
     state.dexSortKey = normalizeDexSortKey(sortButton.dataset.sortKey);
+  } else if (moveSortButton) {
+    state.moveSortKey = normalizeMoveSortKey(moveSortButton.dataset.moveSortKey);
   } else if (directionButton) {
     state.dexSortDirection = directionButton.dataset.sortDirection === "desc" ? "desc" : "asc";
+  } else if (moveDirectionButton) {
+    state.moveSortDirection = moveDirectionButton.dataset.moveSortDirection === "desc" ? "desc" : "asc";
   } else {
     return;
   }
   syncTypeFilter();
   window.scrollTo(0, 0);
   syncFilterHistory();
-  renderDex();
+  if (state.activeTab === "pokedex") renderDex();
+  if (state.activeTab === "moves") renderMovedex();
+  if (state.activeTab === "machines") renderTms();
 }
 
 function renderDexRows() {
@@ -1806,12 +1964,41 @@ function moveDescriptionHtml(move) {
   `;
 }
 
+function moveDamageCategoryKey(row) {
+  return moveCategoryOptions.find((option) => option.constant === row.category)?.key || "";
+}
+
+function matchesMoveFilters(row) {
+  if (state.selectedTypes.size && !state.selectedTypes.has(row.type)) return false;
+  if (state.selectedMoveCategories.size && !state.selectedMoveCategories.has(moveDamageCategoryKey(row))) return false;
+  return true;
+}
+
+function sortMoveRows(rows, numberValue) {
+  const key = state.moveSortKey;
+  const direction = state.moveSortDirection === "desc" ? -1 : 1;
+  rows.sort((a, b) => {
+    const aNumber = numberValue(a);
+    const bNumber = numberValue(b);
+    if (key === "number") return (aNumber - bNumber) * direction;
+
+    const aValue = Number(a[key]) || 0;
+    const bValue = Number(b[key]) || 0;
+    const aMissing = aValue <= 0;
+    const bMissing = bValue <= 0;
+    if (aMissing !== bMissing) return aMissing ? 1 : -1;
+    return (aValue - bValue) * direction || aNumber - bNumber;
+  });
+}
+
 function renderMovedex() {
   const tbody = document.getElementById("moveRows");
-  const rows = Object.values(state.data.moves || {})
-    .filter((move) => move.constant !== "MOVE_NONE")
+  const moves = Object.values(state.data.moves || {}).filter((move) => move.constant !== "MOVE_NONE");
+  renderMoveFilter(moves);
+  const rows = moves
     .filter((move) => matches(`${move.id} ${move.constant} ${move.name} ${move.type} ${fmtCategory(move.category || "")} ${move.description || ""} ${moveAbilityBoostNotes(move).join(" ")}`))
-    .sort((a, b) => (a.id ?? Number.MAX_SAFE_INTEGER) - (b.id ?? Number.MAX_SAFE_INTEGER));
+    .filter(matchesMoveFilters);
+  sortMoveRows(rows, (move) => move.id ?? Number.MAX_SAFE_INTEGER);
 
   tbody.innerHTML = "";
   rows.forEach((move) => {
@@ -1836,7 +2023,7 @@ function renderMovedex() {
     row.innerHTML = `<td colspan="9" class="muted">No moves found.</td>`;
     tbody.appendChild(row);
   }
-  setPanelStatus("moves", rows.length ? "" : "No moves match this search.");
+  setPanelStatus("moves", rows.length ? "" : "No moves match the current search and filters.");
 }
 
 function moveLearners(moveConstant) {
@@ -1888,7 +2075,13 @@ function renderMoveDetail(move) {
 
 function renderTms() {
   const tbody = document.getElementById("tmRows");
-  const rows = state.data.tms.filter((tm) => matches(`${tm.label} ${tm.moveName} ${tm.type} ${fmtCategory(tm.category || "")} ${tm.description} ${machineLocation(tm)}`));
+  const machines = state.data.tms || [];
+  renderMoveFilter(machines);
+  const machineOrder = new Map(machines.map((tm, index) => [tm, index]));
+  const rows = machines
+    .filter((tm) => matches(`${tm.label} ${tm.moveName} ${tm.type} ${fmtCategory(tm.category || "")} ${tm.description} ${machineLocation(tm)}`))
+    .filter(matchesMoveFilters);
+  sortMoveRows(rows, (tm) => machineOrder.get(tm) ?? Number.MAX_SAFE_INTEGER);
   tbody.innerHTML = "";
   rows.forEach((tm) => {
     const row = el("tr", "tm-row");
@@ -1911,7 +2104,7 @@ function renderTms() {
     row.innerHTML = `<td colspan="9" class="muted">No TMs or HMs match this search.</td>`;
     tbody.appendChild(row);
   }
-  setPanelStatus("machines", rows.length ? "" : "No TMs or HMs match this search.");
+  setPanelStatus("machines", rows.length ? "" : "No TMs or HMs match the current search and filters.");
 }
 
 function machineLocation(tm) {
