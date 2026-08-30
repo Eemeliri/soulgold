@@ -69809,8 +69809,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69818,8 +69818,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -179422,6 +179422,14 @@
           "conditions": [],
           "label": "By Using Specific Item (Cracked Pot)",
           "itemName": "Cracked Pot"
+        },
+        {
+          "method": "EVO_ITEM",
+          "param": "ITEM_CHIPPED_POT",
+          "target": "SPECIES_POLTEAGEIST_ANTIQUE",
+          "conditions": [],
+          "label": "By Using Specific Item (Chipped Pot)",
+          "itemName": "Chipped Pot"
         }
       ],
       "locations": [
@@ -190898,6 +190906,14 @@
           "conditions": [],
           "label": "By Using Specific Item (Unremarkable Teacup)",
           "itemName": "Unremarkable Teacup"
+        },
+        {
+          "method": "EVO_ITEM",
+          "param": "ITEM_MASTERPIECE_TEACUP",
+          "target": "SPECIES_SINISTCHA_MASTERPIECE",
+          "conditions": [],
+          "label": "By Using Specific Item (Masterpiece Teacup)",
+          "itemName": "Masterpiece Teacup"
         }
       ],
       "locations": [
