@@ -2697,24 +2697,14 @@ static void BufferFrontierTrainerName(void)
 
 static void ResetSketchedMoves(void)
 {
-    u8 i, j, k;
+    u8 i;
 
     for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
     {
         u16 monId = gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1;
         if (monId < PARTY_SIZE)
         {
-            for (j = 0; j < MAX_MON_MOVES; j++)
-            {
-                for (k = 0; k < MAX_MON_MOVES; k++)
-                {
-                    if (GetMonData(GetSavedPlayerPartyMon(gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1), MON_DATA_MOVE1 + k)
-                        == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j))
-                        break;
-                }
-                if (k == MAX_MON_MOVES)
-                    SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, j);
-            }
+            RestoreFacilitySketchedMoves(GetSavedPlayerPartyMon(monId), &gPlayerParty[i]);
             RestoreFrontierPlayerPartyMonLevel(i, monId);
             SavePlayerPartyMon(gSaveBlock2Ptr->frontier.selectedPartyMons[i] - 1, &gPlayerParty[i]);
             ScaleFrontierMonToCurrentLevelMode(&gPlayerParty[i]);

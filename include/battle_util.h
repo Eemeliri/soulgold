@@ -300,6 +300,7 @@ s32 ApplyModifiersAfterDmgRoll(struct BattleContext *ctx, s32 dmg);
 uq4_12_t CalcTypeEffectivenessMultiplier(struct BattleContext *ctx);
 uq4_12_t CalcVisualTypeEffectivenessMultiplier(struct BattleContext *ctx);
 uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef, struct Pokemon *mon, enum BattlerId battlerAtk);
+bool32 BattlerHasStabForType(enum BattlerId battler, enum Type type);
 uq4_12_t GetTypeModifier(enum Type atkType, enum Type defType);
 uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType);
 void UpdateMoveResultFlags(uq4_12_t modifier, u16 *resultFlags);

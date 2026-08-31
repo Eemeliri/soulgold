@@ -3096,7 +3096,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggGroups = RALTS_FAMILY_EGG_GROUPS,
     #if P_UPDATED_ABILITIES >= GEN_9
         .abilities = { ABILITY_STEADFAST, ABILITY_SHARPNESS, ABILITY_JUSTIFIED },
-        .innates = { ABILITY_INNER_FOCUS, ABILITY_TOUGH_CLAWS, ABILITY_MINDS_EYE },
+        .innates = { ABILITY_MOXIE, ABILITY_TOUGH_CLAWS, ABILITY_MINDS_EYE },
     #else
         .abilities = { ABILITY_STEADFAST, ABILITY_NONE, ABILITY_JUSTIFIED },
     #endif
@@ -11000,8 +11000,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_MAGIC_BOUNCE, ABILITY_MAGIC_BOUNCE, ABILITY_MAGIC_BOUNCE },
-        .innates = { ABILITY_PRESSURE, ABILITY_BRAND_OF_TORMENT, ABILITY_TOUGH_CLAWS },
+        .abilities = { ABILITY_SHARPNESS, ABILITY_SHARPNESS, ABILITY_SHARPNESS },
+        .innates = { ABILITY_PRESSURE, ABILITY_BRAND_OF_TORMENT, ABILITY_MAGIC_BOUNCE },
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = TRUE,
         .speciesName = _("Absol"),
@@ -12233,7 +12233,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_DRAGON),
         .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MOXIE },
-        .innates = { ABILITY_EARLY_BIRD, ABILITY_BATTLE_ARMOR, ABILITY_RIVALRY },
+        .innates = { ABILITY_WINDCALLER, ABILITY_BATTLE_ARMOR, ABILITY_RIVALRY },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Salamence"),
         .cryId = CRY_SALAMENCE,
@@ -12310,7 +12310,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_DRAGON),
         .abilities = { ABILITY_AERILATE, ABILITY_AERILATE, ABILITY_AERILATE },
-        .innates = { ABILITY_EARLY_BIRD, ABILITY_BATTLE_ARMOR, ABILITY_RIVALRY },
+        .innates = { ABILITY_WINDCALLER, ABILITY_BATTLE_ARMOR, ABILITY_RIVALRY },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Salamence"),
     #if P_MODIFIED_MEGA_CRIES

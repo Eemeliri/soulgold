@@ -1233,7 +1233,7 @@ static void BattlePyramidStartMenu(void)
 
 static void RestorePyramidPlayerParty(void)
 {
-    int i, j, k, l;
+    int i, j;
 
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
@@ -1242,16 +1242,7 @@ static void RestorePyramidPlayerParty(void)
         {
             if (GetMonData(GetSavedPlayerPartyMon(partyIndex), MON_DATA_SPECIES) == GetMonData(&gPlayerParty[j], MON_DATA_SPECIES))
             {
-                for (k = 0; k < MAX_MON_MOVES; k++)
-                {
-                    for (l = 0; l < MAX_MON_MOVES; l++)
-                    {
-                        if (GetMonData(GetSavedPlayerPartyMon(partyIndex), MON_DATA_MOVE1 + l) == GetMonData(&gPlayerParty[j], MON_DATA_MOVE1 + k))
-                            break;
-                    }
-                    if (l == MAX_MON_MOVES)
-                        SetMonMoveSlot(&gPlayerParty[j], MOVE_SKETCH, k);
-                }
+                RestoreFacilitySketchedMoves(GetSavedPlayerPartyMon(partyIndex), &gPlayerParty[j]);
                 RestoreFrontierPlayerPartyMonLevel(j, partyIndex);
                 SavePlayerPartyMon(partyIndex, &gPlayerParty[j]);
                 ScaleFrontierMonToCurrentLevelMode(&gPlayerParty[j]);

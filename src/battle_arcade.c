@@ -860,7 +860,7 @@ static void ResetLevelsToOriginal(void)
 
 static void ResetSketchedMoves(void)
 {
-    u8 i, j;
+    u8 i;
     struct Pokemon *frontierMon;
     struct Pokemon *playerMon;
 
@@ -873,15 +873,7 @@ static void ResetSketchedMoves(void)
 
         frontierMon = &gSaveBlock1Ptr->playerParty[monId];
         playerMon = &gPlayerParty[i];
-
-        for (j = 0; j < MAX_MON_MOVES; j++)
-        {
-            if (MonKnowsMove(frontierMon, GetMonData(playerMon, MON_DATA_MOVE1+j, NULL)))
-                continue;
-
-            SetMonMoveSlot(playerMon, MOVE_SKETCH, j);
-            break;
-        }
+        RestoreFacilitySketchedMoves(frontierMon, playerMon);
     }
 }
 
