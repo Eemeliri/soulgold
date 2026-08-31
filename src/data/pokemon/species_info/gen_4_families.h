@@ -4667,8 +4667,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_SAND_VEIL, ABILITY_NONE, ABILITY_ROUGH_SKIN },
-        .innates = { ABILITY_NEUROFORCE, ABILITY_LEVITATE, ABILITY_MUDSLIDE },
+        .abilities = { ABILITY_LEVITATE, ABILITY_LEVITATE, ABILITY_LEVITATE },
+        .innates = { ABILITY_NEUROFORCE, ABILITY_SAND_VEIL, ABILITY_MUDSLIDE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Garchomp"),
     #if P_MODIFIED_MEGA_CRIES
@@ -4950,8 +4950,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD, EGG_GROUP_HUMAN_LIKE),
-        .abilities = { ABILITY_STEADFAST, ABILITY_INNER_FOCUS, ABILITY_JUSTIFIED },
-        .innates = { ABILITY_MINDS_EYE, ABILITY_QUICK_FEET, ABILITY_AURA_SHIELD },
+        .abilities = { ABILITY_AURA_GUARD, ABILITY_AURA_GUARD, ABILITY_AURA_GUARD },
+        .innates = { ABILITY_ELEMENTAL_FIST, ABILITY_QUICK_FEET, ABILITY_MINDS_EYE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Lucario"),
     #if P_MODIFIED_MEGA_CRIES
@@ -6422,7 +6422,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gShinyOverworldPalette_RotomFan
         )
         .levelUpLearnset = sRotomLevelUpLearnset,
-        .teachableLearnset = sRotomTeachableLearnset,
+        .teachableLearnset = sRotomFanTeachableLearnset,
         .formSpeciesIdTable = sRotomFormSpeciesIdTable,
         .formChangeTable = sRotomFormChangeTable,
     },

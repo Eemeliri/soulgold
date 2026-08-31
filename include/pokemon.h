@@ -884,6 +884,7 @@ bool8 ShouldSkipFriendshipChange(void);
 struct Pokemon *GetSavedPlayerPartyMon(u32 index);
 u8 *GetSavedPlayerPartyCount(void);
 void SavePlayerPartyMon(u32 index, struct Pokemon *mon);
+void RestoreFacilitySketchedMoves(struct Pokemon *savedMon, struct Pokemon *facilityMon);
 bool32 IsSpeciesOfType(u32 species, enum Type type);
 u16 GetSpeciesRandomSeeded(u16 species, u8 type, u16 additionalOffset);
 struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void);

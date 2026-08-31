@@ -5643,4 +5643,26 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
                                            "Steel-type Pokemon."),
         .aiRating = 6,
     },
+
+    [ABILITY_AURA_GUARD] =
+    {
+        .name = _("Aura Guard"),
+        .description = COMPOUND_STRING("Halves contact damage."),
+        .longDescription = COMPOUND_STRING("Halves damage taken from\n"
+                                           "moves that make contact."),
+        .aiRating = 7,
+        .breakable = TRUE,
+    },
+
+    [ABILITY_LIKE_A_DRAGON] =
+    {
+        .name = _("Like a Dragon"),
+        .description = COMPOUND_STRING("Gain Dragon benefits."),
+        .longDescription = COMPOUND_STRING("Gains Dragon-type STAB\n"
+                                           "and resistances without\n"
+                                           "gaining Dragon-type\n"
+                                           "weaknesses."),
+        .aiRating = 8,
+        .breakable = TRUE,
+    },
 };

@@ -257,13 +257,14 @@ static enum Type GetAutomaticTrainerMoveType(enum Move move, u16 species)
     }
 }
 
-static bool32 IsTrainerMoveStab(enum Move move, u16 species)
+bool32 IsTrainerMoveStab(enum Move move, u16 species, u8 level)
 {
     enum Type type = GetAutomaticTrainerMoveType(move, species);
 
     return type != TYPE_NONE
         && (type == GetSpeciesType(species, 0)
-         || type == GetSpeciesType(species, 1));
+         || type == GetSpeciesType(species, 1)
+         || (type == TYPE_DRAGON && SpeciesHasInnateAtLevel(species, ABILITY_LIKE_A_DRAGON, level)));
 }
 
 static u32 GetTrainerMoveNominalPower(const struct TrainerMoveContext *ctx, enum Move move)
@@ -597,7 +598,7 @@ static s32 GetTrainerDamagingMoveScore(const struct TrainerMoveContext *ctx, enu
     if (accuracy == 0)
         accuracy = 100;
     score = power * accuracy / 100;
-    if (IsTrainerMoveStab(move, ctx->species))
+    if (IsTrainerMoveStab(move, ctx->species, ctx->level))
         score += 20;
     score += GetTrainerMoveOffenseAdjustment(ctx, move);
     if (GetMovePriority(move) > 0)
@@ -665,7 +666,7 @@ static s32 ApplyTrainerMoveComposition(const struct TrainerMoveContext *ctx,
                 if (GetMoveCategory(selectedMove) == GetMoveCategory(move))
                     score -= 8;
             }
-            if (IsTrainerMoveStab(selectedMove, ctx->species))
+            if (IsTrainerMoveStab(selectedMove, ctx->species, ctx->level))
                 hasStab = TRUE;
         }
 
@@ -693,7 +694,7 @@ static s32 ApplyTrainerMoveComposition(const struct TrainerMoveContext *ctx,
 
     if (IsDamagingTrainerMove(move) && hasDamagingMove && type != TYPE_NONE)
         score += typeSeen ? -12 : 10;
-    if (IsDamagingTrainerMove(move) && !hasStab && IsTrainerMoveStab(move, ctx->species))
+    if (IsDamagingTrainerMove(move) && !hasStab && IsTrainerMoveStab(move, ctx->species, ctx->level))
         score += 8;
 
     return score;

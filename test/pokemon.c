@@ -88,6 +88,83 @@ TEST("BoxPokemon secure data is plaintext and fixed-order")
     EXPECT_EQ(heldItem, ITEM_LEFTOVERS);
 }
 
+TEST("Facility Sketch cleanup preserves taught moves on other species")
+{
+    struct Pokemon savedMon;
+    struct Pokemon facilityMon;
+
+    CreateMon(&savedMon, SPECIES_RAYQUAZA, 50, 0, OTID_STRUCT_PLAYER_ID);
+    SetMonMoveSlot(&savedMon, MOVE_EARTHQUAKE, 0);
+    facilityMon = savedMon;
+    SetMonMoveSlot(&facilityMon, MOVE_EARTH_POWER, 0);
+
+    RestoreFacilitySketchedMoves(&savedMon, &facilityMon);
+
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE1), MOVE_EARTH_POWER);
+}
+
+#if P_FAMILY_SMEARGLE
+TEST("Facility Sketch cleanup restores copied moves without changing other moves")
+{
+    struct Pokemon savedMon;
+    struct Pokemon facilityMon;
+
+    CreateMon(&savedMon, SPECIES_SMEARGLE, 50, 0, OTID_STRUCT_PLAYER_ID);
+    SetMonMoveSlot(&savedMon, MOVE_SKETCH, 0);
+    SetMonMoveSlot(&savedMon, MOVE_TACKLE, 1);
+    facilityMon = savedMon;
+    SetMonMoveSlot(&facilityMon, MOVE_EARTH_POWER, 0);
+
+    RestoreFacilitySketchedMoves(&savedMon, &facilityMon);
+
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE1), MOVE_SKETCH);
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE2), MOVE_TACKLE);
+}
+
+TEST("Facility Sketch cleanup handles reordered Sketch slots")
+{
+    enum Move reorderedSketchMove;
+    struct Pokemon savedMon;
+    struct Pokemon facilityMon;
+
+    PARAMETRIZE { reorderedSketchMove = MOVE_SKETCH; }
+    PARAMETRIZE { reorderedSketchMove = MOVE_EARTHQUAKE; }
+
+    CreateMon(&savedMon, SPECIES_SMEARGLE, 50, 0, OTID_STRUCT_PLAYER_ID);
+    SetMonMoveSlot(&savedMon, MOVE_SKETCH, 0);
+    SetMonMoveSlot(&savedMon, MOVE_TACKLE, 1);
+    facilityMon = savedMon;
+    SetMonMoveSlot(&facilityMon, MOVE_TACKLE, 0);
+    SetMonMoveSlot(&facilityMon, reorderedSketchMove, 1);
+
+    RestoreFacilitySketchedMoves(&savedMon, &facilityMon);
+
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE1), MOVE_TACKLE);
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE2), MOVE_SKETCH);
+}
+
+TEST("Facility Sketch cleanup preserves PP of reordered Sketch")
+{
+    struct Pokemon savedMon;
+    struct Pokemon facilityMon;
+    u32 pp = 0;
+
+    CreateMon(&savedMon, SPECIES_SMEARGLE, 50, 0, OTID_STRUCT_PLAYER_ID);
+    SetMonMoveSlot(&savedMon, MOVE_SKETCH, 0);
+    SetMonMoveSlot(&savedMon, MOVE_TACKLE, 1);
+    facilityMon = savedMon;
+    SetMonMoveSlot(&facilityMon, MOVE_TACKLE, 0);
+    SetMonMoveSlot(&facilityMon, MOVE_SKETCH, 1);
+    SetMonData(&facilityMon, MON_DATA_PP2, &pp);
+
+    RestoreFacilitySketchedMoves(&savedMon, &facilityMon);
+
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE1), MOVE_TACKLE);
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_MOVE2), MOVE_SKETCH);
+    EXPECT_EQ(GetMonData(&facilityMon, MON_DATA_PP2), 0);
+}
+#endif
+
 TEST("Updating personality does not move BoxPokemon secure data")
 {
     struct Pokemon mon;

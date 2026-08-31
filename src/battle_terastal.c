@@ -134,6 +134,8 @@ uq4_12_t GetTeraMultiplier(struct BattleContext *ctx)
 {
     enum Type teraType = GetBattlerTeraType(ctx->battlerAtk);
     bool32 hasAdaptability = (BattlerHasTrait(ctx->battlerAtk, ABILITY_ADAPTABILITY));
+    bool32 hasBaseStab = IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType)
+                      || (ctx->moveType == TYPE_DRAGON && BattlerHasTrait(ctx->battlerAtk, ABILITY_LIKE_A_DRAGON));
 
     // Safety check.
     if (GetActiveGimmick(ctx->battlerAtk) != GIMMICK_TERA)
@@ -143,7 +145,7 @@ uq4_12_t GetTeraMultiplier(struct BattleContext *ctx)
     if (teraType == TYPE_STELLAR)
     {
         bool32 shouldBoost = IsTypeStellarBoosted(ctx->battlerAtk, ctx->moveType);
-        if (IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
+        if (hasBaseStab)
         {
             if (shouldBoost)
                 return UQ_4_12(2.0);
@@ -156,7 +158,7 @@ uq4_12_t GetTeraMultiplier(struct BattleContext *ctx)
             return UQ_4_12(1.0);
     }
     // Base and Tera type.
-    if (ctx->moveType == teraType && IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
+    if (ctx->moveType == teraType && hasBaseStab)
     {
         if (hasAdaptability)
             return UQ_4_12(2.25);
@@ -164,7 +166,7 @@ uq4_12_t GetTeraMultiplier(struct BattleContext *ctx)
             return UQ_4_12(2.0);
     }
     // Tera type only (Adaptability applies).
-    else if (ctx->moveType == teraType && !IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
+    else if (ctx->moveType == teraType && !hasBaseStab)
     {
         if (hasAdaptability)
             return UQ_4_12(2.0);
@@ -172,7 +174,7 @@ uq4_12_t GetTeraMultiplier(struct BattleContext *ctx)
             return UQ_4_12(1.5);
     }
     // Base type only (Adaptability does not apply while Terastallized).
-    else if (ctx->moveType != teraType && IS_BATTLER_OF_BASE_TYPE(ctx->battlerAtk, ctx->moveType))
+    else if (ctx->moveType != teraType && hasBaseStab)
     {
         return UQ_4_12(1.5);
     }

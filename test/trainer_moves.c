@@ -50,6 +50,17 @@ static bool32 MoveSetContains(const enum Move moves[MAX_MON_MOVES], enum Move mo
     return FALSE;
 }
 
+TEST("Hard trainer move scoring recognizes unlocked Like a Dragon STAB")
+{
+    u8 unlockLevel = GetInnateUnlockLevel(3);
+
+    ASSUME(GetMoveType(MOVE_DRAGON_PULSE) == TYPE_DRAGON);
+    ASSUME(!IsSpeciesOfType(SPECIES_SERPERIOR, TYPE_DRAGON));
+    ASSUME(SpeciesHasInnate(SPECIES_SERPERIOR, ABILITY_LIKE_A_DRAGON) != 0);
+    EXPECT(!IsTrainerMoveStab(MOVE_DRAGON_PULSE, SPECIES_SERPERIOR, unlockLevel - 1));
+    EXPECT(IsTrainerMoveStab(MOVE_DRAGON_PULSE, SPECIES_SERPERIOR, unlockLevel));
+}
+
 TEST("Trainer default moveset preserves a trainerproc-authored all-None set")
 {
     const struct TrainerMon *partyEntry = GetTrainerStructFromId(15)->party;

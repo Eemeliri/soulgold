@@ -6,6 +6,7 @@
 #include "battle_message.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
+#include "battle_util.h"
 #include "battle_z_move.h"
 #include "data.h"
 #include "event_data.h"
@@ -399,7 +400,7 @@ void TryInitializeFirstSTABMoveTrainerSlide(enum BattlerId battlerDef, enum Batt
     if ((IsOnPlayerSide(battlerDef)))
         return;
 
-    if (IS_BATTLER_OF_TYPE(battlerAtk, moveType) == FALSE)
+    if (!BattlerHasStabForType(battlerAtk, moveType))
         return;
 
     InitalizeTrainerSlide(battlerDef, slideId);
