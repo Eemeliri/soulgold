@@ -53511,10 +53511,12 @@
       "bst": 280,
       "abilities": [
         "ABILITY_STATIC",
+        "ABILITY_MINUS",
         "ABILITY_PLUS"
       ],
       "regularAbilities": [
-        "ABILITY_STATIC"
+        "ABILITY_STATIC",
+        "ABILITY_MINUS"
       ],
       "hiddenAbilities": [
         "ABILITY_PLUS"
@@ -53716,10 +53718,12 @@
       "bst": 365,
       "abilities": [
         "ABILITY_STATIC",
+        "ABILITY_MINUS",
         "ABILITY_PLUS"
       ],
       "regularAbilities": [
-        "ABILITY_STATIC"
+        "ABILITY_STATIC",
+        "ABILITY_MINUS"
       ],
       "hiddenAbilities": [
         "ABILITY_PLUS"
@@ -53927,18 +53931,20 @@
       "bst": 510,
       "abilities": [
         "ABILITY_STATIC",
+        "ABILITY_MINUS",
         "ABILITY_PLUS"
       ],
       "regularAbilities": [
-        "ABILITY_STATIC"
+        "ABILITY_STATIC",
+        "ABILITY_MINUS"
       ],
       "hiddenAbilities": [
         "ABILITY_PLUS"
       ],
       "innates": [
         "ABILITY_KEEN_EYE",
-        "ABILITY_MINUS",
-        "ABILITY_POLARITY_SHIFT"
+        "ABILITY_BATTERY",
+        "ABILITY_LIGHTNING_ROD"
       ],
       "sprite": "sprites/pokemon/ampharos.png",
       "shinySprite": "sprites/pokemon/ampharos_shiny.png",
@@ -54176,9 +54182,9 @@
         "ABILITY_MOLD_BREAKER"
       ],
       "innates": [
-        "ABILITY_FLUFFY",
         "ABILITY_POLARITY_SHIFT",
-        "ABILITY_MINUS"
+        "ABILITY_FLUFFY",
+        "ABILITY_BATTERY"
       ],
       "sprite": "sprites/pokemon/ampharos_mega.png",
       "shinySprite": "sprites/pokemon/ampharos_mega_shiny.png",
@@ -69809,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69818,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -70052,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70061,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -89244,21 +89250,21 @@
       ],
       "bst": 565,
       "abilities": [
-        "ABILITY_MAGIC_BOUNCE",
-        "ABILITY_MAGIC_BOUNCE",
-        "ABILITY_MAGIC_BOUNCE"
+        "ABILITY_SHARPNESS",
+        "ABILITY_SHARPNESS",
+        "ABILITY_SHARPNESS"
       ],
       "regularAbilities": [
-        "ABILITY_MAGIC_BOUNCE",
-        "ABILITY_MAGIC_BOUNCE"
+        "ABILITY_SHARPNESS",
+        "ABILITY_SHARPNESS"
       ],
       "hiddenAbilities": [
-        "ABILITY_MAGIC_BOUNCE"
+        "ABILITY_SHARPNESS"
       ],
       "innates": [
         "ABILITY_PRESSURE",
         "ABILITY_BRAND_OF_TORMENT",
-        "ABILITY_TOUGH_CLAWS"
+        "ABILITY_MAGIC_BOUNCE"
       ],
       "sprite": "sprites/pokemon/absol_mega_z.png",
       "shinySprite": "sprites/pokemon/absol_mega_z_shiny.png",
@@ -91408,7 +91414,7 @@
         "ABILITY_MOXIE"
       ],
       "innates": [
-        "ABILITY_EARLY_BIRD",
+        "ABILITY_WINDCALLER",
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_RIVALRY"
       ],
@@ -91635,7 +91641,7 @@
         "ABILITY_AERILATE"
       ],
       "innates": [
-        "ABILITY_EARLY_BIRD",
+        "ABILITY_WINDCALLER",
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_RIVALRY"
       ],
@@ -105523,18 +105529,20 @@
       ],
       "bst": 700,
       "abilities": [
-        "ABILITY_SAND_VEIL",
-        "ABILITY_ROUGH_SKIN"
+        "ABILITY_LEVITATE",
+        "ABILITY_LEVITATE",
+        "ABILITY_LEVITATE"
       ],
       "regularAbilities": [
-        "ABILITY_SAND_VEIL"
+        "ABILITY_LEVITATE",
+        "ABILITY_LEVITATE"
       ],
       "hiddenAbilities": [
-        "ABILITY_ROUGH_SKIN"
+        "ABILITY_LEVITATE"
       ],
       "innates": [
         "ABILITY_NEUROFORCE",
-        "ABILITY_LEVITATE",
+        "ABILITY_SAND_VEIL",
         "ABILITY_MUDSLIDE"
       ],
       "sprite": "sprites/pokemon/garchomp_mega_z.png",
@@ -106767,21 +106775,21 @@
       ],
       "bst": 625,
       "abilities": [
-        "ABILITY_STEADFAST",
-        "ABILITY_INNER_FOCUS",
-        "ABILITY_JUSTIFIED"
+        "ABILITY_AURA_GUARD",
+        "ABILITY_AURA_GUARD",
+        "ABILITY_AURA_GUARD"
       ],
       "regularAbilities": [
-        "ABILITY_STEADFAST",
-        "ABILITY_INNER_FOCUS"
+        "ABILITY_AURA_GUARD",
+        "ABILITY_AURA_GUARD"
       ],
       "hiddenAbilities": [
-        "ABILITY_JUSTIFIED"
+        "ABILITY_AURA_GUARD"
       ],
       "innates": [
-        "ABILITY_MINDS_EYE",
+        "ABILITY_ELEMENTAL_FIST",
         "ABILITY_QUICK_FEET",
-        "ABILITY_AURA_SHIELD"
+        "ABILITY_MINDS_EYE"
       ],
       "sprite": "sprites/pokemon/lucario_mega_z.png",
       "shinySprite": "sprites/pokemon/lucario_mega_z_shiny.png",
@@ -113228,7 +113236,7 @@
         "ABILITY_JUSTIFIED"
       ],
       "innates": [
-        "ABILITY_INNER_FOCUS",
+        "ABILITY_MOXIE",
         "ABILITY_TOUGH_CLAWS",
         "ABILITY_MINDS_EYE"
       ],
@@ -115626,6 +115634,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_TAILWIND",
         "MOVE_TRICK",
         "MOVE_UPROAR"
       ],
@@ -120429,7 +120438,7 @@
       ],
       "innates": [
         "ABILITY_PLANTATION",
-        "ABILITY_UNCANNY"
+        "ABILITY_HOBBLE"
       ],
       "sprite": "sprites/pokemon/servine.png",
       "shinySprite": "sprites/pokemon/servine_shiny.png",
@@ -120617,8 +120626,8 @@
       ],
       "innates": [
         "ABILITY_PLANTATION",
-        "ABILITY_UNCANNY",
-        "ABILITY_VERDANT_GALE"
+        "ABILITY_HOBBLE",
+        "ABILITY_LIKE_A_DRAGON"
       ],
       "sprite": "sprites/pokemon/serperior.png",
       "shinySprite": "sprites/pokemon/serperior_shiny.png",
@@ -120750,7 +120759,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_DRACO_METEOR"
       ],
       "eggMoves": [
         "MOVE_CAPTIVATE",
@@ -221696,12 +221706,6 @@
             "sprite": "sprites/pokemon/garchomp.png"
           },
           {
-            "species": "SPECIES_GARCHOMP_MEGA_Z",
-            "name": "Garchomp",
-            "dex": 336,
-            "sprite": "sprites/pokemon/garchomp_mega_z.png"
-          },
-          {
             "species": "SPECIES_GLISCOR",
             "name": "Gliscor",
             "dex": 360,
@@ -221738,6 +221742,12 @@
             "name": "Nincada",
             "dex": 234,
             "sprite": "sprites/pokemon/nincada.png"
+          },
+          {
+            "species": "SPECIES_GARCHOMP_MEGA_Z",
+            "name": "Garchomp",
+            "dex": 336,
+            "sprite": "sprites/pokemon/garchomp_mega_z.png"
           },
           {
             "species": "SPECIES_LANDORUS_INCARNATE",
@@ -223708,12 +223718,6 @@
             "name": "Garchomp",
             "dex": 336,
             "sprite": "sprites/pokemon/garchomp.png"
-          },
-          {
-            "species": "SPECIES_GARCHOMP_MEGA_Z",
-            "name": "Garchomp",
-            "dex": 336,
-            "sprite": "sprites/pokemon/garchomp_mega_z.png"
           }
         ],
         "innate": [
@@ -223973,6 +223977,12 @@
             "sprite": "sprites/pokemon/chingling.png"
           },
           {
+            "species": "SPECIES_GARCHOMP_MEGA_Z",
+            "name": "Garchomp",
+            "dex": 336,
+            "sprite": "sprites/pokemon/garchomp_mega_z.png"
+          },
+          {
             "species": "SPECIES_ROTOM",
             "name": "Rotom",
             "dex": 367,
@@ -224105,12 +224115,6 @@
             "name": "Mewtwo",
             "dex": 131,
             "sprite": "sprites/pokemon/mewtwo_mega_y.png"
-          },
-          {
-            "species": "SPECIES_GARCHOMP_MEGA_Z",
-            "name": "Garchomp",
-            "dex": 336,
-            "sprite": "sprites/pokemon/garchomp_mega_z.png"
           },
           {
             "species": "SPECIES_MAGNEZONE",
@@ -224921,6 +224925,12 @@
             "name": "Electabuzz",
             "dex": 108,
             "sprite": "sprites/pokemon/electabuzz.png"
+          },
+          {
+            "species": "SPECIES_AMPHAROS",
+            "name": "Ampharos",
+            "dex": 158,
+            "sprite": "sprites/pokemon/ampharos.png"
           },
           {
             "species": "SPECIES_ORICORIO_POM_POM",
@@ -225940,12 +225950,6 @@
             "sprite": "sprites/pokemon/lucario.png"
           },
           {
-            "species": "SPECIES_LUCARIO_MEGA_Z",
-            "name": "Lucario",
-            "dex": 339,
-            "sprite": "sprites/pokemon/lucario_mega_z.png"
-          },
-          {
             "species": "SPECIES_GALLADE_MEGA",
             "name": "Gallade",
             "dex": 363,
@@ -226048,12 +226052,6 @@
             "name": "Medicham",
             "dex": 247,
             "sprite": "sprites/pokemon/medicham_mega.png"
-          },
-          {
-            "species": "SPECIES_GALLADE",
-            "name": "Gallade",
-            "dex": 363,
-            "sprite": "sprites/pokemon/gallade.png"
           },
           {
             "species": "SPECIES_COBALION",
@@ -227459,18 +227457,6 @@
             "sprite": "sprites/pokemon/shelgon.png"
           },
           {
-            "species": "SPECIES_SALAMENCE",
-            "name": "Salamence",
-            "dex": 286,
-            "sprite": "sprites/pokemon/salamence.png"
-          },
-          {
-            "species": "SPECIES_SALAMENCE_MEGA",
-            "name": "Salamence",
-            "dex": 286,
-            "sprite": "sprites/pokemon/salamence_mega.png"
-          },
-          {
             "species": "SPECIES_FLETCHLING",
             "name": "Fletchling",
             "dex": 476,
@@ -228871,6 +228857,24 @@
       "usage": {
         "base": [
           {
+            "species": "SPECIES_MAREEP",
+            "name": "Mareep",
+            "dex": 156,
+            "sprite": "sprites/pokemon/mareep.png"
+          },
+          {
+            "species": "SPECIES_FLAAFFY",
+            "name": "Flaaffy",
+            "dex": 157,
+            "sprite": "sprites/pokemon/flaaffy.png"
+          },
+          {
+            "species": "SPECIES_AMPHAROS",
+            "name": "Ampharos",
+            "dex": 158,
+            "sprite": "sprites/pokemon/ampharos.png"
+          },
+          {
             "species": "SPECIES_ELECTRIKE",
             "name": "Electrike",
             "dex": 248,
@@ -228919,18 +228923,6 @@
             "name": "Zapdos",
             "dex": 126,
             "sprite": "sprites/pokemon/zapdos.png"
-          },
-          {
-            "species": "SPECIES_AMPHAROS",
-            "name": "Ampharos",
-            "dex": 158,
-            "sprite": "sprites/pokemon/ampharos.png"
-          },
-          {
-            "species": "SPECIES_AMPHAROS_MEGA",
-            "name": "Ampharos",
-            "dex": 158,
-            "sprite": "sprites/pokemon/ampharos_mega.png"
           }
         ]
       }
@@ -231517,12 +231509,6 @@
             "name": "Lucario",
             "dex": 339,
             "sprite": "sprites/pokemon/lucario.png"
-          },
-          {
-            "species": "SPECIES_LUCARIO_MEGA_Z",
-            "name": "Lucario",
-            "dex": 339,
-            "sprite": "sprites/pokemon/lucario_mega_z.png"
           },
           {
             "species": "SPECIES_GALLADE",
@@ -239953,6 +239939,12 @@
             "sprite": "sprites/pokemon/glalie_mega.png"
           },
           {
+            "species": "SPECIES_GALLADE",
+            "name": "Gallade",
+            "dex": 363,
+            "sprite": "sprites/pokemon/gallade.png"
+          },
+          {
             "species": "SPECIES_SCRAFTY_MEGA",
             "name": "Scrafty",
             "dex": 413,
@@ -240015,12 +240007,6 @@
             "name": "Lucario",
             "dex": 339,
             "sprite": "sprites/pokemon/lucario.png"
-          },
-          {
-            "species": "SPECIES_LUCARIO_MEGA_Z",
-            "name": "Lucario",
-            "dex": 339,
-            "sprite": "sprites/pokemon/lucario_mega_z.png"
           },
           {
             "species": "SPECIES_GALLADE",
@@ -240245,12 +240231,6 @@
             "sprite": "sprites/pokemon/absol_mega.png"
           },
           {
-            "species": "SPECIES_ABSOL_MEGA_Z",
-            "name": "Absol",
-            "dex": 277,
-            "sprite": "sprites/pokemon/absol_mega_z.png"
-          },
-          {
             "species": "SPECIES_DIANCIE_MEGA",
             "name": "Diancie",
             "dex": 518,
@@ -240281,6 +240261,12 @@
             "name": "Slowking",
             "dex": 174,
             "sprite": "sprites/pokemon/slowking.png"
+          },
+          {
+            "species": "SPECIES_ABSOL_MEGA_Z",
+            "name": "Absol",
+            "dex": 277,
+            "sprite": "sprites/pokemon/absol_mega_z.png"
           },
           {
             "species": "SPECIES_LATIOS",
@@ -242347,12 +242333,6 @@
             "sprite": "sprites/pokemon/banette_mega.png"
           },
           {
-            "species": "SPECIES_ABSOL_MEGA_Z",
-            "name": "Absol",
-            "dex": 277,
-            "sprite": "sprites/pokemon/absol_mega_z.png"
-          },
-          {
             "species": "SPECIES_DRAPION",
             "name": "Drapion",
             "dex": 343,
@@ -244343,6 +244323,18 @@
             "name": "Lanturn",
             "dex": 148,
             "sprite": "sprites/pokemon/lanturn.png"
+          },
+          {
+            "species": "SPECIES_AMPHAROS",
+            "name": "Ampharos",
+            "dex": 158,
+            "sprite": "sprites/pokemon/ampharos.png"
+          },
+          {
+            "species": "SPECIES_AMPHAROS_MEGA",
+            "name": "Ampharos",
+            "dex": 158,
+            "sprite": "sprites/pokemon/ampharos_mega.png"
           },
           {
             "species": "SPECIES_VIKAVOLT",
@@ -247458,6 +247450,12 @@
       "usage": {
         "base": [
           {
+            "species": "SPECIES_ABSOL_MEGA_Z",
+            "name": "Absol",
+            "dex": 277,
+            "sprite": "sprites/pokemon/absol_mega_z.png"
+          },
+          {
             "species": "SPECIES_GALLADE",
             "name": "Gallade",
             "dex": 363,
@@ -248952,18 +248950,6 @@
         "base": [],
         "innate": [
           {
-            "species": "SPECIES_SERVINE",
-            "name": "Servine",
-            "dex": 384,
-            "sprite": "sprites/pokemon/servine.png"
-          },
-          {
-            "species": "SPECIES_SERPERIOR",
-            "name": "Serperior",
-            "dex": 385,
-            "sprite": "sprites/pokemon/serperior.png"
-          },
-          {
             "species": "SPECIES_REUNICLUS",
             "name": "Reuniclus",
             "dex": 424,
@@ -249939,12 +249925,6 @@
             "sprite": "sprites/pokemon/lucario_mega.png"
           },
           {
-            "species": "SPECIES_LUCARIO_MEGA_Z",
-            "name": "Lucario",
-            "dex": 339,
-            "sprite": "sprites/pokemon/lucario_mega_z.png"
-          },
-          {
             "species": "SPECIES_ARCEUS_NORMAL",
             "name": "Arceus",
             "dex": 381,
@@ -250786,12 +250766,6 @@
             "sprite": "sprites/pokemon/leafeon.png"
           },
           {
-            "species": "SPECIES_SERPERIOR",
-            "name": "Serperior",
-            "dex": 385,
-            "sprite": "sprites/pokemon/serperior.png"
-          },
-          {
             "species": "SPECIES_LEAVANNY",
             "name": "Leavanny",
             "dex": 397,
@@ -250978,6 +250952,12 @@
             "name": "Alakazam",
             "dex": 57,
             "sprite": "sprites/pokemon/alakazam_mega.png"
+          },
+          {
+            "species": "SPECIES_LUCARIO_MEGA_Z",
+            "name": "Lucario",
+            "dex": 339,
+            "sprite": "sprites/pokemon/lucario_mega_z.png"
           }
         ]
       }
@@ -251595,6 +251575,18 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_SERVINE",
+            "name": "Servine",
+            "dex": 384,
+            "sprite": "sprites/pokemon/servine.png"
+          },
+          {
+            "species": "SPECIES_SERPERIOR",
+            "name": "Serperior",
+            "dex": 385,
+            "sprite": "sprites/pokemon/serperior.png"
+          },
+          {
             "species": "SPECIES_ZEKROM",
             "name": "Zekrom",
             "dex": 461,
@@ -251947,6 +251939,18 @@
             "name": "Flygon",
             "dex": 258,
             "sprite": "sprites/pokemon/flygon.png"
+          },
+          {
+            "species": "SPECIES_SALAMENCE",
+            "name": "Salamence",
+            "dex": 286,
+            "sprite": "sprites/pokemon/salamence.png"
+          },
+          {
+            "species": "SPECIES_SALAMENCE_MEGA",
+            "name": "Salamence",
+            "dex": 286,
+            "sprite": "sprites/pokemon/salamence_mega.png"
           },
           {
             "species": "SPECIES_TALONFLAME",
@@ -254904,12 +254908,6 @@
         "base": [],
         "innate": [
           {
-            "species": "SPECIES_AMPHAROS",
-            "name": "Ampharos",
-            "dex": 158,
-            "sprite": "sprites/pokemon/ampharos.png"
-          },
-          {
             "species": "SPECIES_AMPHAROS_MEGA",
             "name": "Ampharos",
             "dex": 158,
@@ -255403,6 +255401,52 @@
             "name": "Fezandipiti",
             "dex": 693,
             "sprite": "sprites/pokemon/fezandipiti.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_AURA_GUARD": {
+      "constant": "ABILITY_AURA_GUARD",
+      "name": "Aura Guard",
+      "description": "Halves damage taken from moves that make contact.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "aura-guard",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_LUCARIO_MEGA_Z",
+            "name": "Lucario",
+            "dex": 339,
+            "sprite": "sprites/pokemon/lucario_mega_z.png"
+          }
+        ],
+        "innate": []
+      }
+    },
+    "ABILITY_LIKE_A_DRAGON": {
+      "constant": "ABILITY_LIKE_A_DRAGON",
+      "name": "Like a Dragon",
+      "description": "Gains Dragon-type STAB and resistances without gaining Dragon-type weaknesses.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "like-a-dragon",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_SERPERIOR",
+            "name": "Serperior",
+            "dex": 385,
+            "sprite": "sprites/pokemon/serperior.png"
           }
         ]
       }
@@ -305134,7 +305178,7 @@
           "constant": "SPECIES_SALAMENCE",
           "displayName": "Salamence",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_WINDCALLER",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_RIVALRY"
           ],
@@ -305319,8 +305363,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -305503,8 +305547,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -306686,8 +306730,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -306923,8 +306967,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -313633,7 +313677,7 @@
           "constant": "SPECIES_SALAMENCE",
           "displayName": "Salamence",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_WINDCALLER",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_RIVALRY"
           ],
@@ -314146,7 +314190,7 @@
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
           "innates": [
-            "ABILITY_INNER_FOCUS",
+            "ABILITY_MOXIE",
             "ABILITY_TOUGH_CLAWS",
             "ABILITY_MINDS_EYE"
           ],
@@ -316525,8 +316569,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -316731,8 +316775,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -318310,7 +318354,7 @@
           "constant": "SPECIES_SALAMENCE",
           "displayName": "Salamence",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_WINDCALLER",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_RIVALRY"
           ],
@@ -318671,8 +318715,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -318877,8 +318921,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_ELECTRITE",
           "itemName": "Electrite",
@@ -321013,7 +321057,7 @@
           "constant": "SPECIES_SALAMENCE",
           "displayName": "Salamence",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_WINDCALLER",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_RIVALRY"
           ],
@@ -323810,7 +323854,7 @@
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
           "innates": [
-            "ABILITY_INNER_FOCUS",
+            "ABILITY_MOXIE",
             "ABILITY_TOUGH_CLAWS",
             "ABILITY_MINDS_EYE"
           ],
@@ -324046,7 +324090,7 @@
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
           "innates": [
-            "ABILITY_INNER_FOCUS",
+            "ABILITY_MOXIE",
             "ABILITY_TOUGH_CLAWS",
             "ABILITY_MINDS_EYE"
           ],
@@ -326261,7 +326305,7 @@
           "constant": "SPECIES_SALAMENCE",
           "displayName": "Salamence",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_WINDCALLER",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_RIVALRY"
           ],
@@ -326497,7 +326541,7 @@
           "constant": "SPECIES_SALAMENCE",
           "displayName": "Salamence",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_WINDCALLER",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_RIVALRY"
           ],
@@ -332266,8 +332310,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_LIGHT_CLAY",
           "itemName": "Light Clay",
@@ -332319,7 +332363,7 @@
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
           "innates": [
-            "ABILITY_INNER_FOCUS",
+            "ABILITY_MOXIE",
             "ABILITY_TOUGH_CLAWS",
             "ABILITY_MINDS_EYE"
           ],
@@ -333813,8 +333857,8 @@
           "displayName": "Ampharos",
           "innates": [
             "ABILITY_KEEN_EYE",
-            "ABILITY_MINUS",
-            "ABILITY_POLARITY_SHIFT"
+            "ABILITY_BATTERY",
+            "ABILITY_LIGHTNING_ROD"
           ],
           "itemConstant": "ITEM_LIGHT_CLAY",
           "itemName": "Light Clay",
@@ -333874,7 +333918,7 @@
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
           "innates": [
-            "ABILITY_INNER_FOCUS",
+            "ABILITY_MOXIE",
             "ABILITY_TOUGH_CLAWS",
             "ABILITY_MINDS_EYE"
           ],
