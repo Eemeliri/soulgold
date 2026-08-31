@@ -7217,7 +7217,7 @@ struct
     {MAP_GROUP(MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F), MAP_NUM(MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F), MOVE_ROCK_SMASH},
 };
 
-static void GetRestrictedReleaseMoves(u16 *moves)
+static void UNUSED GetRestrictedReleaseMoves(u16 *moves)
 {
     s32 i;
 
@@ -7238,50 +7238,14 @@ static void InitCanReleaseMonVars(void)
 {
     if (!AtLeastThreeUsableMons())
     {
-        // The player only has 1 or 2 usable
-        // Pokémon, this one can't be released
         sStorage->releaseStatusResolved = TRUE;
         sStorage->canReleaseMon = FALSE;
         return;
     }
 
-    if (sIsMonBeingMoved)
-    {
-        sStorage->tempMon = sStorage->movingMon;
-        sStorage->releaseBoxId = -1;
-        sStorage->releaseBoxPos = -1;
-    }
-    else
-    {
-        if (sCursorArea == CURSOR_AREA_IN_PARTY)
-        {
-            sStorage->tempMon = gPlayerParty[sCursorPosition];
-            sStorage->releaseBoxId = TOTAL_BOXES_COUNT;
-        }
-        else
-        {
-            BoxMonAtToMon(StorageGetCurrentBox(), sCursorPosition, &sStorage->tempMon);
-            sStorage->releaseBoxId = StorageGetCurrentBox();
-        }
-        sStorage->releaseBoxPos = sCursorPosition;
-    }
-
-    GetRestrictedReleaseMoves(sStorage->restrictedMoveList);
-    sStorage->restrictedReleaseMonMoves = GetMonData(&sStorage->tempMon, MON_DATA_KNOWN_MOVES, (u8 *)sStorage->restrictedMoveList);
-    if (sStorage->restrictedReleaseMonMoves != 0)
-    {
-        // Pokémon knows at least one restricted release move
-        // Need to check if another Pokémon has this move first
-        sStorage->releaseStatusResolved = FALSE;
-    }
-    else
-    {
-        // Pokémon knows no restricted moves, can be released
-        sStorage->releaseStatusResolved = TRUE;
-        sStorage->canReleaseMon = TRUE;
-    }
-
-    sStorage->releaseCheckState = 0;
+    // Field moves no longer depend on a Pokémon knowing the move.
+    sStorage->releaseStatusResolved = TRUE;
+    sStorage->canReleaseMon = TRUE;
 }
 
 static bool32 AtLeastThreeUsableMons(void)
