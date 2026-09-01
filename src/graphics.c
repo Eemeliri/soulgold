@@ -1004,6 +1004,8 @@ const u32 gHealthboxSinglesOpponentGfx[] = INCBIN_U32("graphics/battle_interface
 const u32 gHealthboxDoublesPlayerGfx[] = INCBIN_U32( "graphics/battle_interface/healthbox_doubles_player.4bpp.smol");
 const u32 gHealthboxDoublesOpponentGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_doubles_opponent.4bpp.smol");
 const u32 gHealthboxSafariGfx[] = INCBIN_U32("graphics/battle_interface/healthbox_safari.4bpp.smol");
+const u16 gBattleInterface_DarkHealthboxPal[] = INCBIN_U16("graphics/battle_interface/dark_healthbox.gbapal");
+const u16 gBattleInterface_HealthbarPal[] = INCBIN_U16("graphics/battle_interface/healthbar.gbapal");
 const u16 gBattleInterface_ShinyHealthboxPal[] = INCBIN_U16("graphics/battle_interface/shiny_healthbox.gbapal");
 
 const u32 gUnusedGfx_Shadow[] = INCBIN_U32("graphics/unused/shadow.4bpp.smol");

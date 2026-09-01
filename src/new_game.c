@@ -136,6 +136,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsFastMegas = B_FAST_MEGAS;
     gSaveBlock2Ptr->optionsFastWeather = B_FAST_WEATHER;
     gSaveBlock2Ptr->optionsSurfMusic = OW_SURF_MUSIC;
+    gSaveBlock2Ptr->optionsDarkBattleUi = FALSE;
     gSaveBlock2Ptr->optionsBattleSpeed = OPTIONS_BATTLE_SCENE_2X;
     VarSet(VAR_BATTLE_SPEED, OPTIONS_BATTLE_SCENE_2X);
     SetDefaultPartyMenuStyle();

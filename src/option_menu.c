@@ -75,6 +75,7 @@ enum
 {
     MENUITEM_INTRO_SLIDE,
     MENUITEM_UI_ANIMATIONS,
+    MENUITEM_DARK_BATTLE_UI,
     MENUITEM_FAST_MEGAS,
     MENUITEM_FAST_WEATHER,
     MENUITEM_SURF_MUSIC,
@@ -114,6 +115,7 @@ enum
 #define YPOS_DIFFICULTY            sOptionDrawY
 #define YPOS_INTRO_SLIDE           sOptionDrawY
 #define YPOS_UI_ANIMATIONS         sOptionDrawY
+#define YPOS_DARK_BATTLE_UI        sOptionDrawY
 #define YPOS_FAST_MEGAS            sOptionDrawY
 #define YPOS_FAST_WEATHER          sOptionDrawY
 #define YPOS_SURF_MUSIC            sOptionDrawY
@@ -171,6 +173,8 @@ static u8 IntroSlide_ProcessInput(u8 selection);
 static void IntroSlide_DrawChoices(u8 selection);
 static u8 UiAnimations_ProcessInput(u8 selection);
 static void UiAnimations_DrawChoices(u8 selection);
+static u8 DarkBattleUi_ProcessInput(u8 selection);
+static void DarkBattleUi_DrawChoices(u8 selection);
 static u8 FastMegas_ProcessInput(u8 selection);
 static void FastMegas_DrawChoices(u8 selection);
 static u8 FastWeather_ProcessInput(u8 selection);
@@ -189,6 +193,7 @@ static void DrawBgWindowFrames(void);
 
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 EWRAM_DATA static bool8 sUiAnimationsOff = FALSE;
+EWRAM_DATA static bool8 sDarkBattleUi = FALSE;
 EWRAM_DATA static bool8 sFastMegas = FALSE;
 EWRAM_DATA static bool8 sFastWeather = FALSE;
 EWRAM_DATA static bool8 sSurfMusic = FALSE;
@@ -232,6 +237,8 @@ static const u8 gText_BattleSpeed2x[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_BattleSpeed3x[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x");
 static const u8 gText_IntroSlideOn[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
 static const u8 gText_IntroSlideOff[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
+static const u8 gText_BattleUiLight[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Light");
+static const u8 gText_BattleUiDark[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Dark");
 static const u8 gText_FastMegasOn[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
 static const u8 gText_FastMegasOff[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_FastWeatherOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
@@ -295,6 +302,7 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
 {
     [MENUITEM_INTRO_SLIDE] = COMPOUND_STRING("Battle intro"),
     [MENUITEM_UI_ANIMATIONS] = COMPOUND_STRING("UI animations"),
+    [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING("Battle UI"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING("Fast weather"),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING("Surf music"),
@@ -372,7 +380,7 @@ static const u8 *const sOptionMenuHelpTexts_Pg2[MENUITEM_COUNT_PG2] =
         "Normal uses standard trainer teams.\n"
         "Hard uses tougher teams for Gym\n"
         "battles, the Elite Four and\n"
-        "makes some battles Doubles.\n"),
+        "makes them Doubles.\n"),
 };
 
 static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
@@ -385,6 +393,11 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
         "On animates dialogue boxes and\n"
         "the pause menu. Off makes these\n"
         "interfaces appear immediately."),
+    [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING(
+        "Light uses the standard HGSS\n"
+        "healthbox frames. Dark uses a\n"
+        "darker version. Shiny healthboxes\n"
+        "keep their own colors."),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING(
         "On uses a near-instant Mega\n"
         "Evolution animation. Off plays\n"
@@ -494,6 +507,7 @@ static void ReadAllCurrentSettings(u8 taskId)
             gTasks[taskId].tBattleSpeed = OPTIONS_BATTLE_SCENE_1X;
         gTasks[taskId].tFastIntroNoSlide = gSaveBlock2Ptr->optionsFastIntroNoSlide;
         sUiAnimationsOff = gSaveBlock2Ptr->optionsUiAnimationsOff;
+        sDarkBattleUi = gSaveBlock2Ptr->optionsDarkBattleUi;
         sFastMegas = gSaveBlock2Ptr->optionsFastMegas;
         sFastWeather = gSaveBlock2Ptr->optionsFastWeather;
         sSurfMusic = gSaveBlock2Ptr->optionsSurfMusic;
@@ -680,6 +694,9 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG3_START + MENUITEM_UI_ANIMATIONS:
         UiAnimations_DrawChoices(sUiAnimationsOff);
         break;
+    case OPTION_MENU_PG3_START + MENUITEM_DARK_BATTLE_UI:
+        DarkBattleUi_DrawChoices(sDarkBattleUi);
+        break;
     case OPTION_MENU_PG3_START + MENUITEM_FAST_MEGAS:
         FastMegas_DrawChoices(sFastMegas);
         break;
@@ -801,6 +818,12 @@ static void ProcessOptionInput(u8 taskId)
         sUiAnimationsOff = UiAnimations_ProcessInput(sUiAnimationsOff);
         if (previousOption != sUiAnimationsOff)
             UiAnimations_DrawChoices(sUiAnimationsOff);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_DARK_BATTLE_UI:
+        previousOption = sDarkBattleUi;
+        sDarkBattleUi = DarkBattleUi_ProcessInput(sDarkBattleUi);
+        if (previousOption != sDarkBattleUi)
+            DarkBattleUi_DrawChoices(sDarkBattleUi);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_FAST_MEGAS:
         previousOption = sFastMegas;
@@ -968,6 +991,7 @@ static void SaveCurrentSettings(u8 taskId)
     VarSet(VAR_BATTLE_SPEED, gTasks[taskId].tBattleSpeed);
     gSaveBlock2Ptr->optionsFastIntroNoSlide = gTasks[taskId].tFastIntroNoSlide;
     gSaveBlock2Ptr->optionsUiAnimationsOff = sUiAnimationsOff;
+    gSaveBlock2Ptr->optionsDarkBattleUi = sDarkBattleUi;
     gSaveBlock2Ptr->optionsFastMegas = sFastMegas;
     gSaveBlock2Ptr->optionsFastWeather = sFastWeather;
     gSaveBlock2Ptr->optionsSurfMusic = sSurfMusic;
@@ -1511,6 +1535,35 @@ static void UiAnimations_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_IntroSlideOn, 104, YPOS_UI_ANIMATIONS, styles[FALSE]);
     DrawOptionMenuChoice(gText_IntroSlideOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_IntroSlideOff, 198), YPOS_UI_ANIMATIONS, styles[TRUE]);
+}
+
+static u8 DarkBattleUi_ProcessInput(u8 selection)
+{
+    if (selection > TRUE)
+        selection = FALSE;
+
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void DarkBattleUi_DrawChoices(u8 selection)
+{
+    u8 styles[2];
+
+    if (selection > TRUE)
+        selection = FALSE;
+
+    styles[0] = 0;
+    styles[1] = 0;
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_BattleUiLight, 104, YPOS_DARK_BATTLE_UI, styles[FALSE]);
+    DrawOptionMenuChoice(gText_BattleUiDark, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleUiDark, 198), YPOS_DARK_BATTLE_UI, styles[TRUE]);
 }
 
 static u8 FastMegas_ProcessInput(u8 selection)
