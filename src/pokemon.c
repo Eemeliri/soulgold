@@ -7116,6 +7116,41 @@ void SavePlayerPartyMon(u32 index, struct Pokemon *mon)
     gSaveBlock1Ptr->playerParty[index] = *mon;
 }
 
+void RestoreFacilitySketchedMoves(struct Pokemon *savedMon, struct Pokemon *facilityMon)
+{
+#if P_FAMILY_SMEARGLE
+    bool8 savedMoveMatched[MAX_MON_MOVES] = {FALSE};
+
+    if (GetMonData(savedMon, MON_DATA_SPECIES) != SPECIES_SMEARGLE)
+        return;
+
+    for (u32 facilitySlot = 0; facilitySlot < MAX_MON_MOVES; facilitySlot++)
+    {
+        enum Move facilityMove = GetMonData(facilityMon, MON_DATA_MOVE1 + facilitySlot);
+        u32 savedSlot;
+
+        for (savedSlot = 0; savedSlot < MAX_MON_MOVES; savedSlot++)
+        {
+            enum Move savedMove = GetMonData(savedMon, MON_DATA_MOVE1 + savedSlot);
+
+            if (!savedMoveMatched[savedSlot]
+             && savedMove != MOVE_SKETCH
+             && savedMove == facilityMove)
+            {
+                savedMoveMatched[savedSlot] = TRUE;
+                break;
+            }
+        }
+
+        if (savedSlot == MAX_MON_MOVES && facilityMove != MOVE_SKETCH)
+            SetMonMoveSlot(facilityMon, MOVE_SKETCH, facilitySlot);
+    }
+#else
+    (void)savedMon;
+    (void)facilityMon;
+#endif
+}
+
 bool32 IsSpeciesOfType(u32 species, enum Type type)
 {
     if (gSpeciesInfo[species].types[0] == type

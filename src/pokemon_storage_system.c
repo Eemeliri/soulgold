@@ -89,6 +89,14 @@ enum {
     MSG_WAS_DEPOSITED,
     MSG_BOX_IS_FULL,
     MSG_RELEASE_POKE,
+    MSG_RELEASE_WHICH,
+    MSG_RELEASE_BOX_ALL,
+    MSG_RELEASE_BOX_EGGS,
+    MSG_RELEASE_BOX_FINAL,
+    MSG_NO_MONS_TO_RELEASE,
+    MSG_NO_EGGS_TO_RELEASE,
+    MSG_BOX_MONS_RELEASED,
+    MSG_BOX_EGGS_RELEASED,
     MSG_WAS_RELEASED,
     MSG_BYE_BYE,
     MSG_MARK_POKE,
@@ -139,6 +147,9 @@ enum {
     MENU_JUMP,
     MENU_WALLPAPER,
     MENU_NAME,
+    MENU_RELEASE_BOX_MENU,
+    MENU_RELEASE_BOX_ALL,
+    MENU_RELEASE_BOX_EGGS,
     MENU_TAKE,
     MENU_GIVE,
     MENU_GIVE_2,
@@ -197,6 +208,19 @@ enum {
 #define MENU_WALLPAPER_SETS_START MENU_SCENERY_1
 #define MENU_WALLPAPERS_START MENU_HEART
 #define SPECIES_MASK 0x3FFF
+
+enum {
+    RELEASE_BOX_ALL,
+    RELEASE_BOX_EGGS,
+};
+
+#define MAX_BOX_RELEASE_ITEM_TYPES (IN_BOX_COUNT * MAX_MON_ITEMS)
+
+struct BoxReleaseItem
+{
+    enum Item item;
+    u16 count;
+};
 
 // Return IDs for input handlers
 enum {
@@ -563,6 +587,7 @@ struct PokemonStorageSystemData
     u16 releaseCheckState;
     u16 restrictedReleaseMonMoves;
     u16 restrictedMoveList[8];
+    u8 releaseBoxMode;
     u8 summaryMaxPos;
     u8 summaryStartPos;
     u8 summaryScreenMode;
@@ -643,6 +668,7 @@ static void Task_TakeItemForMoving(u8);
 static void Task_ShowMarkMenu(u8);
 static void Task_ShowMonSummary(u8);
 static void Task_ReleaseMon(u8);
+static void Task_ReleaseBox(u8);
 static void Task_ReshowPokeStorage(u8);
 static void Task_PokeStorageMain(u8);
 static void Task_JumpBox(u8);
@@ -656,7 +682,9 @@ static u8 InBoxInput_Normal(void);
 static u8 InBoxInput_MovingMultiple(void);
 static u8 InBoxInput_SelectingMultiple(void);
 static u8 HandleInput(void);
+static bool8 CanUseBoxReleaseMenu(void);
 static void AddBoxOptionsMenu(void);
+static void AddBoxReleaseMenu(void);
 static u8 SetSelectionMenuTexts(void);
 static bool8 SetMenuTexts_Mon(void);
 static bool8 SetMenuTexts_Item(void);
@@ -699,6 +727,7 @@ static u8 LoadMovingMonIconPalette(void);
 static void LoadPartyMonIconPalette(u8 partyId, u8 paletteNum);
 static struct Sprite *CreateMonIconSprite(u16 species, u32 personality, s16 x, s16 y, u8 oamPriority, u8 subpriority, bool32 isEgg);
 static void DestroyBoxMonIcon(struct Sprite *);
+static void DestroyBoxMonIconAtPosition(u8);
 
 // Pokémon data
 static void MoveMon(void);
@@ -715,6 +744,14 @@ static void InitReleaseMon(void);
 static bool8 TryHideReleaseMon(void);
 static void InitCanReleaseMonVars(void);
 static void ReleaseMon(void);
+static bool8 ShouldReleaseBoxMon(u8, u8, u8);
+static u8 CountBoxMonsToRelease(u8, u8);
+static bool8 BoxMonsToReleaseHaveMail(u8, u8);
+static bool8 AtLeastTwoUsableMonsRemainAfterBoxRelease(u8, u8);
+static u8 GetBoxReleaseItems(u8, u8, struct BoxReleaseItem *);
+static bool8 BoxReleaseItemsFitInBag(const struct BoxReleaseItem *, u8);
+static bool8 TryReturnBoxReleaseItemsToBag(u8, u8, bool8);
+static u8 ReleaseBoxMons(u8, u8, bool8);
 static bool32 AtLeastThreeUsableMons(void);
 static s8 RunCanReleaseMon(void);
 static void SaveMovingMon(void);
@@ -1121,6 +1158,14 @@ static const struct StorageMessage sMessages[] =
     [MSG_WAS_DEPOSITED]        = {COMPOUND_STRING("{DYNAMIC 0} was deposited."), MSG_VAR_MON_NAME_1},
     [MSG_BOX_IS_FULL]          = {COMPOUND_STRING("The Box is full."),           MSG_VAR_NONE},
     [MSG_RELEASE_POKE]         = {COMPOUND_STRING("Release this Pokémon?"),      MSG_VAR_NONE},
+    [MSG_RELEASE_WHICH]        = {COMPOUND_STRING("Release which group?"),       MSG_VAR_NONE},
+    [MSG_RELEASE_BOX_ALL]      = {COMPOUND_STRING("Release whole Box?"),         MSG_VAR_NONE},
+    [MSG_RELEASE_BOX_EGGS]     = {COMPOUND_STRING("Release all Eggs?"),          MSG_VAR_NONE},
+    [MSG_RELEASE_BOX_FINAL]    = {COMPOUND_STRING("This can't be undone. Sure?"),MSG_VAR_NONE},
+    [MSG_NO_MONS_TO_RELEASE]   = {COMPOUND_STRING("No Pokémon to release."),     MSG_VAR_NONE},
+    [MSG_NO_EGGS_TO_RELEASE]   = {COMPOUND_STRING("No Eggs to release."),        MSG_VAR_NONE},
+    [MSG_BOX_MONS_RELEASED]    = {COMPOUND_STRING("All Pokémon released."),      MSG_VAR_NONE},
+    [MSG_BOX_EGGS_RELEASED]    = {COMPOUND_STRING("Eggs released."),             MSG_VAR_NONE},
     [MSG_WAS_RELEASED]         = {COMPOUND_STRING("{DYNAMIC 0} was released."),  MSG_VAR_RELEASE_MON_1},
     [MSG_BYE_BYE]              = {COMPOUND_STRING("Bye-bye, {DYNAMIC 0}!"),      MSG_VAR_RELEASE_MON_3},
     [MSG_MARK_POKE]            = {COMPOUND_STRING("Mark your Pokémon."),         MSG_VAR_NONE},
@@ -1133,7 +1178,7 @@ static const struct StorageMessage sMessages[] =
     [MSG_CAME_BACK]            = {COMPOUND_STRING("{DYNAMIC 0} came back!"),     MSG_VAR_MON_NAME_1},
     [MSG_WORRIED]              = {COMPOUND_STRING("Was it worried about you?"),  MSG_VAR_NONE},
     [MSG_SURPRISE]             = {COMPOUND_STRING("… … … … !"),                  MSG_VAR_NONE},
-    [MSG_PLEASE_REMOVE_MAIL]   = {COMPOUND_STRING("Please remove the MAIL."),    MSG_VAR_NONE},
+    [MSG_PLEASE_REMOVE_MAIL]   = {COMPOUND_STRING("Please remove the Mail."),    MSG_VAR_NONE},
     [MSG_IS_SELECTED2]         = {gText_PkmnIsSelected,                          MSG_VAR_ITEM_NAME},
     [MSG_GIVE_TO_MON]          = {COMPOUND_STRING("Give to a Pokémon?"),         MSG_VAR_NONE},
     [MSG_PLACED_IN_BAG]        = {COMPOUND_STRING("Placed item in the Bag."),    MSG_VAR_ITEM_NAME},
@@ -3478,6 +3523,72 @@ bool32 PokemonStorageSystem_TestTakeItemToBag(u8 boxId, u8 boxPosition)
 
     return succeeded;
 }
+
+u8 PokemonStorageSystem_TestReleaseBox(u8 boxId, bool8 eggsOnly, bool8 hasHeldMon)
+{
+    bool8 previousIsMonBeingMoved = sIsMonBeingMoved;
+    u8 mode = eggsOnly ? RELEASE_BOX_EGGS : RELEASE_BOX_ALL;
+    u8 count = 0;
+
+    sIsMonBeingMoved = hasHeldMon;
+    if (!BoxMonsToReleaseHaveMail(boxId, mode))
+        count = ReleaseBoxMons(boxId, mode, FALSE);
+    sIsMonBeingMoved = previousIsMonBeingMoved;
+
+    return count;
+}
+
+bool32 PokemonStorageSystem_TestBulkReleaseMessagesFit(void)
+{
+    static const u8 messageIds[] =
+    {
+        MSG_RELEASE_WHICH,
+        MSG_RELEASE_BOX_ALL,
+        MSG_RELEASE_BOX_EGGS,
+        MSG_RELEASE_BOX_FINAL,
+        MSG_NO_MONS_TO_RELEASE,
+        MSG_NO_EGGS_TO_RELEASE,
+        MSG_BOX_MONS_RELEASED,
+        MSG_BOX_EGGS_RELEASED,
+    };
+    u32 i;
+
+    for (i = 0; i < ARRAY_COUNT(messageIds); i++)
+    {
+        if (GetStringWidth(FONT_NORMAL, sMessages[messageIds[i]].text, 0) > sWindowTemplates[WIN_MESSAGE].width * TILE_WIDTH)
+            return FALSE;
+    }
+
+    return TRUE;
+}
+
+bool32 PokemonStorageSystem_TestGuardsBoxReleaseMenu(void)
+{
+    bool32 availableWithoutMovingItem;
+    bool32 hiddenWithMovingItem;
+    bool32 hiddenInSelectMonMode;
+
+    if (sStorage != NULL)
+        return FALSE;
+
+    sStorage = AllocZeroed(sizeof(*sStorage));
+    if (sStorage == NULL)
+        return FALSE;
+
+    sStorage->boxOption = OPTION_MOVE_ITEMS;
+    availableWithoutMovingItem = CanUseBoxReleaseMenu();
+    sStorage->itemIcons[0].active = TRUE;
+    sStorage->itemIcons[0].area = CURSOR_AREA_IN_HAND;
+    hiddenWithMovingItem = !CanUseBoxReleaseMenu();
+    sStorage->itemIcons[0].active = FALSE;
+    sStorage->boxOption = OPTION_SELECT_MON;
+    hiddenInSelectMonMode = !CanUseBoxReleaseMenu();
+    FREE_AND_SET_NULL(sStorage);
+
+    return availableWithoutMovingItem
+        && hiddenWithMovingItem
+        && hiddenInSelectMonMode;
+}
 #endif
 
 static void Task_SwitchSelectedItem(u8 taskId)
@@ -3706,6 +3817,136 @@ static void Task_HandleBoxOptions(u8 taskId)
             ClearBottomWindow();
             SetPokeStorageTask(Task_JumpBox);
             break;
+        case MENU_RELEASE_BOX_MENU:
+            if (CanUseBoxReleaseMenu())
+            {
+                PlaySE(SE_SELECT);
+                ClearBottomWindow();
+                SetPokeStorageTask(Task_ReleaseBox);
+            }
+            else
+            {
+                PlaySE(SE_FAILURE);
+                ClearBottomWindow();
+                AnimateBoxScrollArrows(TRUE);
+                SetPokeStorageTask(Task_PokeStorageMain);
+            }
+            break;
+        }
+        break;
+    }
+}
+
+static void Task_ReleaseBox(u8 taskId)
+{
+    s16 input;
+    u8 boxId = StorageGetCurrentBox();
+
+    switch (sStorage->state)
+    {
+    case 0:
+        PrintMessage(MSG_RELEASE_WHICH);
+        AddBoxReleaseMenu();
+        sStorage->state++;
+        break;
+    case 1:
+        input = HandleMenuInput();
+        switch (input)
+        {
+        case MENU_NOTHING_CHOSEN:
+            break;
+        case MENU_B_PRESSED:
+            ClearBottomWindow();
+            AnimateBoxScrollArrows(TRUE);
+            SetPokeStorageTask(Task_PokeStorageMain);
+            break;
+        case MENU_RELEASE_BOX_ALL:
+        case MENU_RELEASE_BOX_EGGS:
+            PlaySE(SE_SELECT);
+            sStorage->releaseBoxMode = (input == MENU_RELEASE_BOX_EGGS) ? RELEASE_BOX_EGGS : RELEASE_BOX_ALL;
+            if (CountBoxMonsToRelease(boxId, sStorage->releaseBoxMode) == 0)
+            {
+                PlaySE(SE_FAILURE);
+                PrintMessage(sStorage->releaseBoxMode == RELEASE_BOX_EGGS ? MSG_NO_EGGS_TO_RELEASE : MSG_NO_MONS_TO_RELEASE);
+                sStorage->state = 5;
+            }
+            else if (BoxMonsToReleaseHaveMail(boxId, sStorage->releaseBoxMode))
+            {
+                PlaySE(SE_FAILURE);
+                PrintMessage(MSG_PLEASE_REMOVE_MAIL);
+                sStorage->state = 5;
+            }
+            else if (!AtLeastTwoUsableMonsRemainAfterBoxRelease(boxId, sStorage->releaseBoxMode))
+            {
+                PlaySE(SE_FAILURE);
+                PrintMessage(MSG_LAST_POKE);
+                sStorage->state = 5;
+            }
+            else if (!TryReturnBoxReleaseItemsToBag(boxId, sStorage->releaseBoxMode, FALSE))
+            {
+                PlaySE(SE_FAILURE);
+                PrintMessage(MSG_BAG_FULL);
+                sStorage->state = 5;
+            }
+            else
+            {
+                PrintMessage(sStorage->releaseBoxMode == RELEASE_BOX_EGGS ? MSG_RELEASE_BOX_EGGS : MSG_RELEASE_BOX_ALL);
+                ShowYesNoWindow(1);
+                sStorage->state++;
+            }
+            break;
+        }
+        break;
+    case 2:
+        switch (Menu_ProcessInputNoWrapClearOnChoose())
+        {
+        case MENU_B_PRESSED:
+        case 1: // No
+            ClearBottomWindow();
+            AnimateBoxScrollArrows(TRUE);
+            SetPokeStorageTask(Task_PokeStorageMain);
+            break;
+        case 0: // Yes
+            PrintMessage(MSG_RELEASE_BOX_FINAL);
+            ShowYesNoWindow(1);
+            sStorage->state++;
+            break;
+        }
+        break;
+    case 3:
+        switch (Menu_ProcessInputNoWrapClearOnChoose())
+        {
+        case MENU_B_PRESSED:
+        case 1: // No
+            ClearBottomWindow();
+            AnimateBoxScrollArrows(TRUE);
+            SetPokeStorageTask(Task_PokeStorageMain);
+            break;
+        case 0: // Yes
+            PlaySE(SE_SELECT);
+            if (ReleaseBoxMons(boxId, sStorage->releaseBoxMode, TRUE) == 0)
+            {
+                PlaySE(SE_FAILURE);
+                PrintMessage(MSG_BAG_FULL);
+                sStorage->state = 5;
+            }
+            else
+            {
+                TryRefreshDisplayMon();
+                RefreshDisplayMonData();
+                PrintMessage(sStorage->releaseBoxMode == RELEASE_BOX_EGGS ? MSG_BOX_EGGS_RELEASED : MSG_BOX_MONS_RELEASED);
+                sStorage->state++;
+            }
+            break;
+        }
+        break;
+    case 4:
+    case 5:
+        if (JOY_NEW(A_BUTTON | B_BUTTON | DPAD_ANY))
+        {
+            ClearBottomWindow();
+            AnimateBoxScrollArrows(TRUE);
+            SetPokeStorageTask(Task_PokeStorageMain);
         }
         break;
     }
@@ -7156,6 +7397,247 @@ static void ReleaseMon(void)
     TryRefreshDisplayMon();
 }
 
+static bool8 ShouldReleaseBoxMon(u8 boxId, u8 boxPosition, u8 mode)
+{
+    if (boxId >= TOTAL_BOXES_COUNT || boxPosition >= IN_BOX_COUNT)
+        return FALSE;
+    if (GetBoxMonDataAt(boxId, boxPosition, MON_DATA_SPECIES) == SPECIES_NONE)
+        return FALSE;
+
+    return mode == RELEASE_BOX_ALL
+        || (mode == RELEASE_BOX_EGGS && GetBoxMonDataAt(boxId, boxPosition, MON_DATA_IS_EGG));
+}
+
+static u8 CountBoxMonsToRelease(u8 boxId, u8 mode)
+{
+    u8 boxPosition;
+    u8 count = 0;
+
+    for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
+    {
+        if (ShouldReleaseBoxMon(boxId, boxPosition, mode))
+            count++;
+    }
+
+    return count;
+}
+
+static bool8 BoxMonsToReleaseHaveMail(u8 boxId, u8 mode)
+{
+    u8 boxPosition;
+    u8 itemSlot;
+
+    for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
+    {
+        if (!ShouldReleaseBoxMon(boxId, boxPosition, mode))
+            continue;
+
+        for (itemSlot = 0; itemSlot < MAX_MON_ITEMS; itemSlot++)
+        {
+            enum Item item = GetBoxMonDataAt(boxId, boxPosition, MON_DATA_HELD_ITEM + itemSlot);
+
+            if (item != ITEM_NONE && ItemIsMail(item))
+                return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+static bool8 AtLeastTwoUsableMonsRemainAfterBoxRelease(u8 boxId, u8 mode)
+{
+    u32 otherMons = (sIsMonBeingMoved != FALSE);
+    u32 currentBox;
+    u32 boxPosition;
+
+    for (boxPosition = 0; boxPosition < PARTY_SIZE; boxPosition++)
+    {
+        if (GetMonData(&gPlayerParty[boxPosition], MON_DATA_SANITY_HAS_SPECIES) && ++otherMons >= 2)
+            return TRUE;
+    }
+
+    for (currentBox = 0; currentBox < TOTAL_BOXES_COUNT; currentBox++)
+    {
+        for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
+        {
+            if (currentBox == boxId && ShouldReleaseBoxMon(boxId, boxPosition, mode))
+                continue;
+            if (CheckBoxMonSanityAt(currentBox, boxPosition) && ++otherMons >= 2)
+                return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+static u8 GetBoxReleaseItems(u8 boxId, u8 mode, struct BoxReleaseItem *items)
+{
+    u8 boxPosition;
+    u8 itemSlot;
+    u8 itemCount = 0;
+
+    for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
+    {
+        if (!ShouldReleaseBoxMon(boxId, boxPosition, mode))
+            continue;
+
+        for (itemSlot = 0; itemSlot < MAX_MON_ITEMS; itemSlot++)
+        {
+            enum Item item = GetBoxMonDataAt(boxId, boxPosition, MON_DATA_HELD_ITEM + itemSlot);
+            u8 i;
+
+            if (item == ITEM_NONE || (IsItemInfiniteHold(item) && CheckBagHasItem(item, 1)))
+                continue;
+
+            for (i = 0; i < itemCount; i++)
+            {
+                if (items[i].item == item)
+                    break;
+            }
+
+            if (i == itemCount)
+            {
+                items[itemCount].item = item;
+                items[itemCount].count = 1;
+                itemCount++;
+            }
+            else if (!IsItemInfiniteHold(item))
+            {
+                items[i].count++;
+            }
+        }
+    }
+
+    return itemCount;
+}
+
+static bool8 BoxReleaseItemsFitInBag(const struct BoxReleaseItem *items, u8 itemCount)
+{
+    u16 emptySlots[POCKETS_COUNT] = {0};
+    u8 pocketId;
+    u8 itemIndex;
+
+    for (pocketId = 0; pocketId < POCKETS_COUNT; pocketId++)
+    {
+        u16 pocketPosition;
+
+        for (pocketPosition = 0; pocketPosition < gBagPockets[pocketId].capacity; pocketPosition++)
+        {
+            if (BagPocket_GetSlotData(&gBagPockets[pocketId], pocketPosition).itemId == ITEM_NONE)
+                emptySlots[pocketId]++;
+        }
+    }
+
+    for (itemIndex = 0; itemIndex < itemCount; itemIndex++)
+    {
+        u32 remaining = items[itemIndex].count;
+        bool8 hasExistingStack = FALSE;
+        u16 pocketPosition;
+        u16 newSlots;
+
+        pocketId = GetItemPocket(items[itemIndex].item);
+        if (pocketId >= POCKETS_COUNT)
+            return FALSE;
+
+        for (pocketPosition = 0; pocketPosition < gBagPockets[pocketId].capacity; pocketPosition++)
+        {
+            struct ItemSlot slot = BagPocket_GetSlotData(&gBagPockets[pocketId], pocketPosition);
+
+            if (slot.itemId == items[itemIndex].item)
+            {
+                u32 space = MAX_BAG_ITEM_CAPACITY - slot.quantity;
+
+                hasExistingStack = TRUE;
+                remaining -= min(remaining, space);
+            }
+        }
+
+        if (remaining == 0)
+            continue;
+
+        if (pocketId == POCKET_TM_HM || pocketId == POCKET_BERRIES)
+        {
+            if (hasExistingStack || remaining > MAX_BAG_ITEM_CAPACITY)
+                return FALSE;
+            newSlots = 1;
+        }
+        else
+        {
+            newSlots = (remaining + MAX_BAG_ITEM_CAPACITY - 1) / MAX_BAG_ITEM_CAPACITY;
+        }
+
+        if (newSlots > emptySlots[pocketId])
+            return FALSE;
+        emptySlots[pocketId] -= newSlots;
+    }
+
+    return TRUE;
+}
+
+static bool8 TryReturnBoxReleaseItemsToBag(u8 boxId, u8 mode, bool8 addItems)
+{
+    struct BoxReleaseItem items[MAX_BOX_RELEASE_ITEM_TYPES];
+    u8 itemCount;
+    u8 i;
+
+    if (OW_PC_RELEASE_ITEM < GEN_8)
+        return TRUE;
+
+    itemCount = GetBoxReleaseItems(boxId, mode, items);
+    if (!BoxReleaseItemsFitInBag(items, itemCount))
+        return FALSE;
+    if (!addItems)
+        return TRUE;
+
+    for (i = 0; i < itemCount; i++)
+    {
+        if (!AddBagItem(items[i].item, items[i].count))
+        {
+            while (i != 0)
+            {
+                i--;
+                RemoveBagItem(items[i].item, items[i].count);
+            }
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
+
+static u8 ReleaseBoxMons(u8 boxId, u8 mode, bool8 updateVisuals)
+{
+    u8 boxPosition;
+    u8 count = 0;
+
+    if (!AtLeastTwoUsableMonsRemainAfterBoxRelease(boxId, mode)
+     || !TryReturnBoxReleaseItemsToBag(boxId, mode, TRUE))
+        return 0;
+
+    for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
+    {
+        if (!ShouldReleaseBoxMon(boxId, boxPosition, mode))
+            continue;
+
+        if (updateVisuals)
+        {
+            u8 itemIconId = GetItemIconIdxByPosition(CURSOR_AREA_IN_BOX, boxPosition);
+
+            if (itemIconId < MAX_ITEM_ICONS)
+            {
+                sStorage->itemIcons[itemIconId].sprite->callback = SpriteCallbackDummy;
+                SetItemIconActive(itemIconId, FALSE);
+            }
+            DestroyBoxMonIconAtPosition(boxPosition);
+        }
+
+        ZeroBoxMonAt(boxId, boxPosition);
+        count++;
+    }
+
+    return count;
+}
+
 static void TrySetCursorFistAnim(void)
 {
     if (sIsMonBeingMoved)
@@ -7181,7 +7663,7 @@ struct
     {MAP_GROUP(MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F), MAP_NUM(MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F), MOVE_ROCK_SMASH},
 };
 
-static void GetRestrictedReleaseMoves(u16 *moves)
+static void UNUSED GetRestrictedReleaseMoves(u16 *moves)
 {
     s32 i;
 
@@ -7202,50 +7684,14 @@ static void InitCanReleaseMonVars(void)
 {
     if (!AtLeastThreeUsableMons())
     {
-        // The player only has 1 or 2 usable
-        // Pokémon, this one can't be released
         sStorage->releaseStatusResolved = TRUE;
         sStorage->canReleaseMon = FALSE;
         return;
     }
 
-    if (sIsMonBeingMoved)
-    {
-        sStorage->tempMon = sStorage->movingMon;
-        sStorage->releaseBoxId = -1;
-        sStorage->releaseBoxPos = -1;
-    }
-    else
-    {
-        if (sCursorArea == CURSOR_AREA_IN_PARTY)
-        {
-            sStorage->tempMon = gPlayerParty[sCursorPosition];
-            sStorage->releaseBoxId = TOTAL_BOXES_COUNT;
-        }
-        else
-        {
-            BoxMonAtToMon(StorageGetCurrentBox(), sCursorPosition, &sStorage->tempMon);
-            sStorage->releaseBoxId = StorageGetCurrentBox();
-        }
-        sStorage->releaseBoxPos = sCursorPosition;
-    }
-
-    GetRestrictedReleaseMoves(sStorage->restrictedMoveList);
-    sStorage->restrictedReleaseMonMoves = GetMonData(&sStorage->tempMon, MON_DATA_KNOWN_MOVES, (u8 *)sStorage->restrictedMoveList);
-    if (sStorage->restrictedReleaseMonMoves != 0)
-    {
-        // Pokémon knows at least one restricted release move
-        // Need to check if another Pokémon has this move first
-        sStorage->releaseStatusResolved = FALSE;
-    }
-    else
-    {
-        // Pokémon knows no restricted moves, can be released
-        sStorage->releaseStatusResolved = TRUE;
-        sStorage->canReleaseMon = TRUE;
-    }
-
-    sStorage->releaseCheckState = 0;
+    // Field moves no longer depend on a Pokémon knowing the move.
+    sStorage->releaseStatusResolved = TRUE;
+    sStorage->canReleaseMon = TRUE;
 }
 
 static bool32 AtLeastThreeUsableMons(void)
@@ -8325,13 +8771,29 @@ static u8 HandleInput(void)
     return INPUT_NONE;
 }
 
+static bool8 CanUseBoxReleaseMenu(void)
+{
+    return sStorage->boxOption != OPTION_SELECT_MON
+        && !IsMovingItem();
+}
+
 static void AddBoxOptionsMenu(void)
 {
     InitMenu();
     SetMenuText(MENU_JUMP);
     SetMenuText(MENU_WALLPAPER);
     SetMenuText(MENU_NAME);
+    if (CanUseBoxReleaseMenu())
+        SetMenuText(MENU_RELEASE_BOX_MENU);
     SetMenuText(MENU_CANCEL);
+}
+
+static void AddBoxReleaseMenu(void)
+{
+    InitMenu();
+    SetMenuText(MENU_RELEASE_BOX_EGGS);
+    SetMenuText(MENU_RELEASE_BOX_ALL);
+    AddMenu();
 }
 
 static u8 SetSelectionMenuTexts(void)
@@ -8702,6 +9164,9 @@ static const u8 *const sMenuTexts[] =
     [MENU_JUMP]       = COMPOUND_STRING("Jump"),
     [MENU_WALLPAPER]  = COMPOUND_STRING("Wallpaper"),
     [MENU_NAME]       = COMPOUND_STRING("Name"),
+    [MENU_RELEASE_BOX_MENU] = COMPOUND_STRING("Release..."),
+    [MENU_RELEASE_BOX_ALL] = COMPOUND_STRING("Current box"),
+    [MENU_RELEASE_BOX_EGGS] = COMPOUND_STRING("Current box eggs"),
     [MENU_TAKE]       = COMPOUND_STRING("Take"),
     [MENU_GIVE]       = gPCText_Give,
     [MENU_GIVE_2]     = gPCText_Give,

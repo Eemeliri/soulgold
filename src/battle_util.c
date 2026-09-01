@@ -9421,13 +9421,21 @@ static inline uq4_12_t GetParentalBondModifier(enum BattlerId battlerAtk)
     return B_PARENTAL_BOND_DMG >= GEN_7 ? UQ_4_12(0.25) : UQ_4_12(0.5);
 }
 
+bool32 BattlerHasStabForType(enum BattlerId battler, enum Type type)
+{
+    return IS_BATTLER_OF_TYPE(battler, type)
+        || (type == TYPE_DRAGON && BattlerHasTrait(battler, ABILITY_LIKE_A_DRAGON));
+}
+
 static inline uq4_12_t GetSameTypeAttackBonusModifier(struct BattleContext *ctx)
 {
     if (ctx->moveType == TYPE_MYSTERY)
         return UQ_4_12(1.0);
     else if (gBattleStruct->pledgeMove && IS_BATTLER_OF_TYPE(BATTLE_PARTNER(ctx->battlerAtk), ctx->moveType))
         return (BattlerHasTrait(ctx->battlerAtk, ABILITY_ADAPTABILITY)) ? UQ_4_12(2.0) : UQ_4_12(1.5);
-    else if (!IS_BATTLER_OF_TYPE(ctx->battlerAtk, ctx->moveType) || ctx->move == MOVE_STRUGGLE || ctx->move == MOVE_NONE)
+    else if (!BattlerHasStabForType(ctx->battlerAtk, ctx->moveType)
+          || ctx->move == MOVE_STRUGGLE
+          || ctx->move == MOVE_NONE)
         return UQ_4_12(1.0);
     return (BattlerHasTrait(ctx->battlerAtk, ABILITY_ADAPTABILITY)) ? UQ_4_12(2.0) : UQ_4_12(1.5);
 }
@@ -9658,6 +9666,13 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(struct BattleContext *ctx)
                 RecordAbilityBattle(ctx->battlerDef, ABILITY_FLUFFY);
             modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));  
         }
+    }
+    if (SearchTraits(battlerTraits, ABILITY_AURA_GUARD)
+     && IsMoveMakingContact(ctx->battlerAtk, ctx->battlerDef, ctx->move))
+    {
+        if (ctx->updateFlags)
+            RecordAbilityBattle(ctx->battlerDef, ABILITY_AURA_GUARD);
+        modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
     }
     if (SearchTraits(battlerTraits, ABILITY_PUNK_ROCK) 
      && IsSoundMove(ctx->move))
@@ -10479,19 +10494,84 @@ static uq4_12_t GetValkyrieTypeModifier(enum Type moveType)
     }
 }
 
+static uq4_12_t GetInverseTypeMultiplier(uq4_12_t multiplier)
+{
+    switch (multiplier)
+    {
+    case UQ_4_12(0.0):
+    case UQ_4_12(0.5):
+        return UQ_4_12(2.0);
+    case UQ_4_12(2.0):
+        return UQ_4_12(0.5);
+    case UQ_4_12(1.0):
+    default:
+        return UQ_4_12(1.0);
+    }
+}
+
+static uq4_12_t GetInversionAbilityTypeMultiplier(uq4_12_t multiplier)
+{
+    if (multiplier == UQ_4_12(0.5))
+        return UQ_4_12(2.0);
+    if (multiplier == UQ_4_12(2.0))
+        return UQ_4_12(0.5);
+    return multiplier;
+}
+
+static uq4_12_t GetLikeADragonTypeModifier(enum Type moveType, bool32 invertDefenderTypeMatchups)
+{
+    uq4_12_t modifier;
+
+    switch (moveType)
+    {
+    case TYPE_FIRE:
+    case TYPE_WATER:
+    case TYPE_GRASS:
+    case TYPE_ELECTRIC:
+        modifier = UQ_4_12(0.5);
+        break;
+    default:
+        return UQ_4_12(1.0);
+    }
+
+    if (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE))
+        modifier = GetInverseTypeMultiplier(modifier);
+    if (invertDefenderTypeMatchups)
+        modifier = GetInversionAbilityTypeMultiplier(modifier);
+
+    return modifier;
+}
+
 static uq4_12_t GetRawTypeModifierAgainstBattler(enum Type moveType, enum BattlerId battlerDef)
 {
     uq4_12_t modifier = UQ_4_12(1.0);
     enum Type types[3];
+    bool32 invertDefenderTypeMatchups = BattlerHasTrait(battlerDef, ABILITY_INVERSION);
+    uq4_12_t typeModifier;
 
     GetBattlerTypes(battlerDef, FALSE, types);
-    modifier = uq4_12_multiply(modifier, GetTypeModifier(moveType, types[0]));
+    typeModifier = GetTypeModifier(moveType, types[0]);
+    if (invertDefenderTypeMatchups)
+        typeModifier = GetInversionAbilityTypeMultiplier(typeModifier);
+    modifier = uq4_12_multiply(modifier, typeModifier);
     if (types[1] != types[0])
-        modifier = uq4_12_multiply(modifier, GetTypeModifier(moveType, types[1]));
+    {
+        typeModifier = GetTypeModifier(moveType, types[1]);
+        if (invertDefenderTypeMatchups)
+            typeModifier = GetInversionAbilityTypeMultiplier(typeModifier);
+        modifier = uq4_12_multiply(modifier, typeModifier);
+    }
     if (types[2] != TYPE_MYSTERY && types[2] != types[1] && types[2] != types[0])
-        modifier = uq4_12_multiply(modifier, GetTypeModifier(moveType, types[2]));
+    {
+        typeModifier = GetTypeModifier(moveType, types[2]);
+        if (invertDefenderTypeMatchups)
+            typeModifier = GetInversionAbilityTypeMultiplier(typeModifier);
+        modifier = uq4_12_multiply(modifier, typeModifier);
+    }
     if (BattlerHasTrait(battlerDef, ABILITY_VALKYRIE))
         modifier = uq4_12_multiply(modifier, GetValkyrieTypeModifier(moveType));
+    if (BattlerHasTrait(battlerDef, ABILITY_LIKE_A_DRAGON))
+        modifier = uq4_12_multiply(modifier, GetLikeADragonTypeModifier(moveType, invertDefenderTypeMatchups));
 
     return modifier;
 }
@@ -10586,18 +10666,13 @@ static inline void MulByTypeEffectiveness(struct BattleContext *ctx, uq4_12_t *m
 
     if (ctx->invertDefenderTypeMatchups)
     {
-        switch (mod)
+        uq4_12_t invertedMod = GetInversionAbilityTypeMultiplier(mod);
+
+        if (invertedMod != mod)
         {
-        case UQ_4_12(0.5):
-            mod = UQ_4_12(2.0);
+            mod = invertedMod;
             if (ctx->updateFlags)
                 RecordAbilityBattle(ctx->battlerDef, ABILITY_INVERSION);
-            break;
-        case UQ_4_12(2.0):
-            mod = UQ_4_12(0.5);
-            if (ctx->updateFlags)
-                RecordAbilityBattle(ctx->battlerDef, ABILITY_INVERSION);
-            break;
         }
     }
 
@@ -10709,6 +10784,18 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
             RecordAbilityBattle(ctx->battlerDef, ABILITY_VALKYRIE);
         }
         modifier = uq4_12_multiply(modifier, valkyrieModifier);
+    }
+    if (SearchTraits(battlerTraits, ABILITY_LIKE_A_DRAGON)
+     && IsCustomAbilityDirectDamagingMove(ctx->move)
+     && !ctx->isAnticipation)
+    {
+        uq4_12_t likeADragonModifier = GetLikeADragonTypeModifier(ctx->moveType, ctx->invertDefenderTypeMatchups);
+        if (likeADragonModifier != UQ_4_12(1.0))
+        {
+            if (ctx->updateFlags)
+                RecordAbilityBattle(ctx->battlerDef, ABILITY_LIKE_A_DRAGON);
+            modifier = uq4_12_multiply(modifier, likeADragonModifier);
+        }
     }
     if (ctx->moveType == TYPE_FIRE && gBattleMons[ctx->battlerDef].volatiles.tarShot)
         modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
@@ -10889,6 +10976,21 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef,
 {
     uq4_12_t modifier = UQ_4_12(1.0);
     enum Type moveType = GetBattleMoveType(move);
+    bool32 hasAbilityShield = mon != NULL
+                           && !(gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
+                           && MonHasItemHoldEffect(mon, HOLD_EFFECT_ABILITY_SHIELD);
+    bool32 hasInversion = mon != NULL
+                        ? MonHasTrait(mon, ABILITY_INVERSION)
+                        : SpeciesHasInnate(speciesDef, ABILITY_INVERSION) != 0;
+    bool32 hasLikeADragon = mon != NULL
+                          ? MonHasTrait(mon, ABILITY_LIKE_A_DRAGON)
+                          : SpeciesHasInnate(speciesDef, ABILITY_LIKE_A_DRAGON) != 0;
+
+    if (hasLikeADragon
+     && !hasAbilityShield
+     && (MoveIgnoresTargetAbility(move)
+      || (battlerAtk < MAX_BATTLERS_COUNT && HasMoldBreakerTypeAbility(battlerAtk))))
+        hasLikeADragon = FALSE;
 
     if (move != MOVE_STRUGGLE && moveType != TYPE_MYSTERY)
     {
@@ -10897,21 +10999,18 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef,
         ctx.moveType = moveType;
         ctx.battlerAtk = battlerAtk;
         ctx.updateFlags = FALSE;
+        ctx.invertDefenderTypeMatchups = hasInversion;
 
         MulByTypeEffectiveness(&ctx, &modifier, GetSpeciesType(speciesDef, 0));
         if (GetSpeciesType(speciesDef, 1) != GetSpeciesType(speciesDef, 0))
             MulByTypeEffectiveness(&ctx, &modifier, GetSpeciesType(speciesDef, 1));
 
-        if (mon == 0) //catch for non Pokemon struct entries, only checks Ability
-        {
-            if (ctx.moveType == TYPE_GROUND
-             && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
-             && (!(gFieldStatuses & STATUS_FIELD_GRAVITY) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL)))
-                modifier = UQ_4_12(0.0);
-            if (MonHasTrait(mon, ABILITY_WONDER_GUARD) && modifier <= UQ_4_12(1.0) && GetMovePower(move) != 0)
-                modifier = UQ_4_12(0.0);
-        }
-        else
+        if (hasLikeADragon && IsCustomAbilityDirectDamagingMove(move))
+            modifier = uq4_12_multiply(modifier, GetLikeADragonTypeModifier(moveType, hasInversion));
+
+        // Species-only callers represent Battle Dome simulations. They have no
+        // concrete ability, item, or status data beyond the species' innates.
+        if (mon != NULL)
         {
             if (ctx.moveType == TYPE_GROUND
              && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
@@ -10923,21 +11022,6 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef,
     }
 
     return modifier;
-}
-
-static uq4_12_t GetInverseTypeMultiplier(uq4_12_t multiplier)
-{
-    switch (multiplier)
-    {
-    case UQ_4_12(0.0):
-    case UQ_4_12(0.5):
-        return UQ_4_12(2.0);
-    case UQ_4_12(2.0):
-        return UQ_4_12(0.5);
-    case UQ_4_12(1.0):
-    default:
-        return UQ_4_12(1.0);
-    }
 }
 
 uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType)
@@ -10953,6 +11037,7 @@ uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType)
     ctx.moveType = moveType;
     ctx.battlerAtk = MAX_BATTLERS_COUNT;
     ctx.updateFlags = FALSE;
+    ctx.invertDefenderTypeMatchups = MonHasTrait(mon, ABILITY_INVERSION);
 
     u32 speciesDef = GetMonData(mon, MON_DATA_SPECIES);
     enum Type type1 = GetSpeciesType(speciesDef, 0);
@@ -10961,6 +11046,9 @@ uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType)
     MulByTypeEffectiveness(&ctx, &modifier, type1);
     if (type2 != type1)
         MulByTypeEffectiveness(&ctx, &modifier, type2);
+
+    if (MonHasTrait(mon, ABILITY_LIKE_A_DRAGON))
+        modifier = uq4_12_multiply(modifier, GetLikeADragonTypeModifier(moveType, ctx.invertDefenderTypeMatchups));
 
     if ((modifier <= UQ_4_12(1.0) && MonHasTrait(mon, ABILITY_WONDER_GUARD))
      || CanAbilityAbsorbMove(&ctx))
@@ -12072,7 +12160,7 @@ bool32 CantPickupItem(u32 _battler)
     bool8 hasUsedHeldItem = FALSE;
     for (u32 i = 0; i < MAX_MON_ITEMS; i++)
     {
-        if (GetBattlerPartyState(battler)->usedHeldItems[i]);
+        if (GetBattlerPartyState(battler)->usedHeldItems[i])
         {
             hasUsedHeldItem = TRUE;
             break;

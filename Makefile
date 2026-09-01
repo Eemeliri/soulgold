@@ -26,7 +26,7 @@ REVISION    := 0
 KEEP_TEMPS  ?= 0
 
 # `File name`.gba
-FILE_NAME := Soulgold_Beta_1
+FILE_NAME := Soulgold
 BUILD_DIR := build
 
 # Compares the ROM to a checksum of the original - only makes sense using when non-modern
@@ -98,7 +98,7 @@ endif
 
 ROM_NAME := $(FILE_NAME).gba
 BPS_BASE ?= clean.gba
-BPS_PATCH ?= soulgold.bps
+BPS_PATCH ?= soulgold_16boxes_legacy.bps
 BPS_TOOL ?= tools/flips/flips$(EXE)
 OBJ_DIR_NAME := $(BUILD_DIR)/$(BUILD_NAME)
 OBJ_DIR_NAME_TEST := $(BUILD_DIR)/$(BUILD_NAME)-test

@@ -6197,26 +6197,13 @@ static void SetFacilityTrainerAndMonPtrs(void)
 
 static void ResetSketchedMoves(void)
 {
-    int i, moveSlot;
+    int i;
 
     for (i = 0; i < DOME_BATTLE_PARTY_SIZE; i++)
     {
         int playerMonId = gSaveBlock2Ptr->frontier.selectedPartyMons[gSelectedOrderFromParty[i] - 1] - 1;
-        int count;
 
-        for (moveSlot = 0; moveSlot < MAX_MON_MOVES; moveSlot++)
-        {
-            count = 0;
-            while (count < MAX_MON_MOVES)
-            {
-                if (GetMonData(GetSavedPlayerPartyMon(playerMonId), MON_DATA_MOVE1 + count) == GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + moveSlot))
-                    break;
-                count++;
-            }
-            if (count == MAX_MON_MOVES)
-                SetMonMoveSlot(&gPlayerParty[i], MOVE_SKETCH, moveSlot);
-        }
-
+        RestoreFacilitySketchedMoves(GetSavedPlayerPartyMon(playerMonId), &gPlayerParty[i]);
         RestoreFrontierPlayerPartyMonLevel(i, playerMonId);
         SavePlayerPartyMon(playerMonId, &gPlayerParty[i]);
         ScaleFrontierMonToCurrentLevelMode(&gPlayerParty[i]);

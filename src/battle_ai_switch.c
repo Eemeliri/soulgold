@@ -1088,7 +1088,7 @@ static bool32 FindMonWithFlagsAndSuperEffective(enum BattlerId battler, u16 flag
             continue;
 
         species = GetMonData(&party[monIndex], MON_DATA_SPECIES_OR_EGG);
-        mon = &gPlayerParty[monIndex];
+        mon = &party[monIndex];
         typeMultiplier = CalcPartyMonTypeEffectivenessMultiplier(gLastLandedMoves[battler], species, mon, gLastHitBy[battler]);
         UpdateMoveResultFlags(typeMultiplier, &moveFlags);
         if (moveFlags & flags)

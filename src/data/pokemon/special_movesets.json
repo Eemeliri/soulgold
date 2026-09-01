@@ -165,6 +165,10 @@
           "MOVE_AQUA_CUTTER",
           "MOVE_CROSS_POISON"
         ],
+      "SERPERIOR":
+        [
+          "MOVE_DRACO_METEOR"
+        ],
       "SNORLAX":
         [
           "MOVE_POWER_WHIP"

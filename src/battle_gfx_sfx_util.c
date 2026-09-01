@@ -38,6 +38,7 @@ static bool8 ShouldAnimBeDoneRegardlessOfSubstitute(u8 animId);
 static void Task_ClearBitWhenBattleTableAnimDone(u8 taskId);
 static void Task_ClearBitWhenSpecialAnimDone(u8 taskId);
 static void ClearSpritesBattlerHealthboxAnimData(void);
+static void LoadBattleInterfacePalettes(void);
 
 // const rom data
 static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =
@@ -78,9 +79,25 @@ static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_C
 const struct SpritePalette sSpritePalettes_HealthBoxHealthBar[] =
 {
     {gBattleInterface_BallStatusBarPal, TAG_HEALTHBOX_PAL},
-    {gBattleInterface_BallDisplayPal, TAG_HEALTHBAR_PAL},
+    {gBattleInterface_HealthbarPal, TAG_HEALTHBAR_PAL},
     {gBattleInterface_ShinyHealthboxPal, TAG_HEALTHBOX_SHINY_PAL}
 };
+
+static void LoadBattleInterfacePalettes(void)
+{
+    u32 i;
+    struct SpritePalette healthboxPalette =
+    {
+        .data = gSaveBlock2Ptr->optionsDarkBattleUi
+              ? gBattleInterface_DarkHealthboxPal
+              : gBattleInterface_BallStatusBarPal,
+        .tag = TAG_HEALTHBOX_PAL,
+    };
+
+    LoadSpritePalette(&healthboxPalette);
+    for (i = 1; i < ARRAY_COUNT(sSpritePalettes_HealthBoxHealthBar); i++)
+        LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[i]);
+}
 
 const struct CompressedSpriteSheet gSpriteSheet_EnemyShadow =
 {
@@ -740,8 +757,7 @@ void BattleLoadAllHealthBoxesGfxAtOnce(void)
     u8 numberOfBattlers = 0;
     u8 i;
 
-    for (i = 0; i < ARRAY_COUNT(sSpritePalettes_HealthBoxHealthBar); i++)
-        LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[i]);
+    LoadBattleInterfacePalettes();
     TimeMixBattleBgPalette(TRUE);
     if (!IsDoubleBattle())
     {
@@ -769,10 +785,7 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
     {
         if (state == 1)
         {
-            u32 i;
-
-            for (i = 0; i < ARRAY_COUNT(sSpritePalettes_HealthBoxHealthBar); i++)
-                LoadSpritePalette(&sSpritePalettes_HealthBoxHealthBar[i]);
+            LoadBattleInterfacePalettes();
             TimeMixBattleBgPalette(TRUE);
             CategoryIcons_LoadSpritesGfx();
         }

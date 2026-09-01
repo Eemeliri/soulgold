@@ -69,6 +69,24 @@ AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Player Lands First STAB Hit")
     }
 }
 
+AI_SINGLE_BATTLE_TEST("Trainer Slide: Like a Dragon counts Dragon moves as STAB")
+{
+    GIVEN {
+        FLAG_SET(TESTING_FLAG_TRAINER_SLIDES);
+        VAR_SET(TESTING_VAR_TRAINER_SLIDES, TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE);
+        ASSUME(GetMoveType(MOVE_DRAGON_PULSE) == TYPE_DRAGON);
+        ASSUME(!IsSpeciesOfType(SPECIES_SERPERIOR, TYPE_DRAGON));
+        PLAYER(SPECIES_SERPERIOR) { Ability(ABILITY_OVERGROW); Innates(ABILITY_LIKE_A_DRAGON); }
+        OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_CELEBRATE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_DRAGON_PULSE); }
+    } SCENE {
+        MESSAGE("Serperior used Dragon Pulse!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_PULSE, player);
+        MESSAGE("Trainer A: Player lands their first STAB move.{PAUSE_UNTIL_PRESS}");
+    }
+}
+
 AI_SINGLE_BATTLE_TEST("Trainer Slide: Singles: Player Lands First Super Effective Hit")
 {
     GIVEN {
