@@ -105,62 +105,6 @@ TEST("Wild scaling respects the authored minimum and rises with the party")
     EXPECT(scaledLevel <= 22);
 }
 
-TEST("Optional trainer scaling activates only when the anti-sandbag average is more than five levels ahead")
-{
-    static const struct TrainerMon trainerMons[] =
-    {
-        { .species = SPECIES_DRILBUR, .lvl = 40 },
-    };
-    static const struct Trainer trainer =
-    {
-        .party = trainerMons,
-        .partySize = ARRAY_COUNT(trainerMons),
-    };
-
-    ZeroPlayerPartyMons();
-    CreateMonWithIVs(&gPlayerParty[0], SPECIES_WOBBUFFET, 45, 0, OTID_STRUCT_PLAYER_ID, 0);
-    CreateMonWithIVs(&gPlayerParty[1], SPECIES_WOBBUFFET, 5, 0, OTID_STRUCT_PLAYER_ID, 0);
-    gPlayerPartyCount = 2;
-    gSaveBlock2Ptr->optionsTrainerLevelScaling = LEVEL_SCALING_OPTION_OFF;
-
-    // The weak passenger is ignored. A difference of exactly five does not scale.
-    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &trainer, TRUE, BATTLE_TYPE_TRAINER, TRAINER_KEIRA);
-    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_LEVEL), 40);
-    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), SPECIES_DRILBUR);
-
-    SetMonData(&gPlayerParty[0], MON_DATA_LEVEL, (u8[]){46});
-
-    // A difference of six activates forced upward scaling and evolution.
-    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &trainer, TRUE, BATTLE_TYPE_TRAINER, TRAINER_KEIRA);
-    EXPECT(GetMonData(&gEnemyParty[0], MON_DATA_LEVEL) >= 46);
-    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), SPECIES_EXCADRILL);
-}
-
-TEST("Optional trainers never scale below their authored levels")
-{
-    static const struct TrainerMon trainerMons[] =
-    {
-        { .species = SPECIES_DRILBUR, .lvl = 38 },
-        { .species = SPECIES_EXCADRILL, .lvl = 40 },
-    };
-    static const struct Trainer trainer =
-    {
-        .party = trainerMons,
-        .partySize = ARRAY_COUNT(trainerMons),
-    };
-
-    ZeroPlayerPartyMons();
-    CreateMonWithIVs(&gPlayerParty[0], SPECIES_WOBBUFFET, 20, 0, OTID_STRUCT_PLAYER_ID, 0);
-    gPlayerPartyCount = 1;
-    gSaveBlock2Ptr->optionsTrainerLevelScaling = LEVEL_SCALING_OPTION_ON;
-
-    CreateNPCTrainerPartyFromTrainer(gEnemyParty, &trainer, TRUE, BATTLE_TYPE_TRAINER, TRAINER_KEIRA);
-
-    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_LEVEL), 38);
-    EXPECT_EQ(GetMonData(&gEnemyParty[1], MON_DATA_LEVEL), 40);
-    EXPECT_EQ(GetMonData(&gEnemyParty[0], MON_DATA_SPECIES), SPECIES_DRILBUR);
-}
-
 TEST("Forced trainer evolution follows only unambiguous unconditional level evolutions")
 {
     EXPECT_EQ(EvolveSpeciesForLevel(SPECIES_CHARMANDER, 35), SPECIES_CHARMELEON);

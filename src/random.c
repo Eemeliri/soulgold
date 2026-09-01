@@ -180,16 +180,19 @@ u32 RandomUniformDefault(enum RandomTag tag, u32 lo, u32 hi)
 
 u32 RandomUniformExceptDefault(enum RandomTag tag, u32 lo, u32 hi, bool32 (*reject)(u32))
 {
+    u32 n;
+
     assertf(lo <= hi);
     LOOP_RANDOM_START;
     while (TRUE)
     {
         // TODO: assertf to abort after too many iterations.
-        u32 n = lo + (((hi - lo + 1) * LOOP_RANDOM) >> 16);
+        n = lo + (((hi - lo + 1) * LOOP_RANDOM) >> 16);
         if (!reject(n))
-            return n;
+            break;
     }
     LOOP_RANDOM_END;
+    return n;
 }
 
 u32 RandomWeightedArrayDefault(enum RandomTag tag, u32 sum, u32 n, const u16 *weights)

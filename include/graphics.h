@@ -2113,6 +2113,8 @@ extern const u32 gHealthboxSinglesOpponentGfx[];
 extern const u32 gHealthboxDoublesPlayerGfx[];
 extern const u32 gHealthboxDoublesOpponentGfx[];
 extern const u32 gHealthboxSafariGfx[];
+extern const u16 gBattleInterface_DarkHealthboxPal[];
+extern const u16 gBattleInterface_HealthbarPal[];
 extern const u16 gBattleInterface_ShinyHealthboxPal[];
 extern const u32 gBlankGfxCompressed[];
 extern const u16 gBattleInterface_BallStatusBarPal[];

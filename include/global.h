@@ -630,7 +630,7 @@ struct SaveBlock2
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
              u16 optionsUiAnimationsOff:1; //0 = show UI animations, 1 = disable them
-             u16 unused0:1;
+             u16 optionsDarkBattleUi:1; //0 = light normal healthboxes, 1 = dark normal healthboxes
              u16 optionsFollowers:1;
              u16 optionsAutorun:1;
              u16 unused1:1; // Legacy one-bit party-menu style; read only for migration.

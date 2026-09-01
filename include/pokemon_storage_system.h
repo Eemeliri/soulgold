@@ -131,6 +131,9 @@ bool32 PokemonStorageSystem_TestTakeItemToBag(u8 boxId, u8 boxPosition);
 s8 PokemonStorageSystem_TestDetermineBoxScrollDirection(u8 boxId);
 u8 PokemonStorageSystem_TestGetBoxWallpaper(u8 boxId);
 void PokemonStorageSystem_TestSetBoxWallpaper(u8 boxId, u8 wallpaperId);
+u8 PokemonStorageSystem_TestReleaseBox(u8 boxId, bool8 eggsOnly, bool8 hasHeldMon);
+bool32 PokemonStorageSystem_TestBulkReleaseMessagesFit(void);
+bool32 PokemonStorageSystem_TestGuardsBoxReleaseMenu(void);
 #endif
 
 void ResetWaldaWallpaper(void);

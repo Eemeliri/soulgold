@@ -39,27 +39,7 @@
 // player's anti-sandbag party average is sufficiently above the authored team.
 static const u16 sOptionalScalingTrainerIds[] =
 {
-    // Railway Cave
-    TRAINER_KEIRA,
-    TRAINER_TAMMY,
-    TRAINER_RAILWAYBOB,
-    TRAINER_RAILWAYMASON,
-    TRAINER_RAILWAYYODA,
-    TRAINER_RAILWAYSANADA,
-
-    // Vajra Desert west
-    TRAINER_JILL,
-    TRAINER_RODAROS,
-    TRAINER_BELMARE,
-    TRAINER_KENNEDY,
-
-    // Foggy Shore 2 and Foggy Forest
-    TRAINER_NIJO,
-    TRAINER_SAE,
-    TRAINER_MINA,
-
-    // Snowtop
-    TRAINER_BEARNESE,
+    TRAINER_LOLA_4,
 
     TRAINERS_COUNT,
 };
