@@ -12160,7 +12160,7 @@ bool32 CantPickupItem(u32 _battler)
     bool8 hasUsedHeldItem = FALSE;
     for (u32 i = 0; i < MAX_MON_ITEMS; i++)
     {
-        if (GetBattlerPartyState(battler)->usedHeldItems[i]);
+        if (GetBattlerPartyState(battler)->usedHeldItems[i])
         {
             hasUsedHeldItem = TRUE;
             break;

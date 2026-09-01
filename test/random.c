@@ -79,6 +79,17 @@ TEST("RandomUniformExcept generates lo..hi")
     }
 }
 
+TEST("RandomUniformExcept allows passive RNG advancement afterwards")
+{
+    u32 ctr;
+
+    RandomUniformExceptDefault(RNG_NONE, 0, 3, InvalidEven);
+    ctr = gRngValue.ctr;
+    AdvanceRandom();
+
+    EXPECT_EQ(gRngValue.ctr, ctr + 1);
+}
+
 TEST("RandomWeighted generates 0..n-1")
 {
     u32 n, sum, i;
