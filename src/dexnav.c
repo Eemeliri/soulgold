@@ -183,6 +183,8 @@ static const u32 sCapturedAllMonsTiles[] = INCBIN_U32("graphics/dexnav/captured_
 static const u32 sNoDataGfx[] = INCBIN_U32("graphics/dexnav/no_data.4bpp.smol");
 
 // searching image data
+static const u32 sDexNavHeldItemGfx[] = INCBIN_U32("graphics/party_menu/hold_icons.4bpp");
+static const u16 sSearchIconPalette[] = INCBIN_U16("graphics/dexnav/star.gbapal");
 static const u32 sPotentialStarGfx[] = INCBIN_U32("graphics/dexnav/star.4bpp.smol");
 static const u32 sHiddenSearchIconGfx[] = INCBIN_U32("graphics/dexnav/hidden_search.4bpp.smol");
 static const u32 sOwnedIconGfx[] = INCBIN_U32("graphics/dexnav/owned_icon.4bpp.smol");
@@ -405,6 +407,7 @@ static const struct SpriteTemplate sHiddenMonIconTemplate =
 static const struct CompressedSpriteSheet sNoDataIconSpriteSheet = {sNoDataGfx, (32 * 32) / 2, ICON_GFX_TAG};
 static const struct CompressedSpriteSheet sCapturedAllPokemonSpriteSheet = {sCapturedAllMonsTiles, (8 * 8) / 2, CAPTURED_ALL_TAG};
 // search sprite sheets
+static const struct SpriteSheet sDexNavHeldItemSpriteSheet = {sDexNavHeldItemGfx, sizeof(sDexNavHeldItemGfx), HELD_ITEM_TAG};
 static const struct CompressedSpriteSheet sPotentialStarSpriteSheet = {sPotentialStarGfx, (8 * 8) / 2, LIT_STAR_TILE_TAG};
 static const struct CompressedSpriteSheet sOwnedIconSpriteSheet = {sOwnedIconGfx, (8 * 8) / 2, OWNED_ICON_TAG};
 static const struct CompressedSpriteSheet sHiddenMonIconSpriteSheet = {sHiddenMonIconGfx, (8 * 8) / 2, HIDDEN_MON_ICON_TAG};
@@ -826,8 +829,8 @@ static void DrawDexNavSearchHeldItem(u8 *dst)
 static void LoadSearchIconData(void)
 {
     // palettes clash with mon icon, so must load manually
-    LoadSpriteSheet(&gSpriteSheet_HeldItem);
-    LoadPalette(gHeldItemPalette, OBJ_PLTT_ID(sHeldItemOam.paletteNum), PLTT_SIZE_4BPP);
+    LoadSpriteSheet(&sDexNavHeldItemSpriteSheet);
+    LoadPalette(sSearchIconPalette, OBJ_PLTT_ID(sHeldItemOam.paletteNum), PLTT_SIZE_4BPP);
     LoadCompressedSpriteSheetUsingHeap(&sPotentialStarSpriteSheet);
     //LoadCompressedSpriteSheetUsingHeap(&sSightSpriteSheet);   //eye replaced with arrow
     LoadCompressedSpriteSheetUsingHeap(&sOwnedIconSpriteSheet);
