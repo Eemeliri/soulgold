@@ -1,4 +1,31 @@
 Update notes:
+1.1
+- PC Box count increased to 19. Existing saves are compatible assuming you have not done some truly heinous things to it that would corrupt the storage data. (This has been tested on MGBA, Hardware and Pizza Boy, non-compatible emulator status unknown.) **Once you save on this version, you cannot go back to old 16 box versions! Forward compatible only!**
+- Added option to mass release Pokémon or Eggs from PC box by clicking on the box number.
+- Added Dark Mode battle UI settings option.
+- Innates are now independent from Classic and Chaos modes and can be toggled in the facility settings. Chaos mode is specifically for legendaries now.
+- Added Mega Lucario Z's new Champions ability: Aura Guard, and Sharpness for Absol Z and Levitate for Garchomp Z.
+- New level 95 innate for Serperior: Like a Dragon. Serperior can also learn Draco Meteor now.
+- Revised Ampharos innates.
+- Added follower and surf sprites for Mega Rayquaza.
+- Fixed dexnav star and item graphic colors.
+- Sinistea and Poltchageist evolve into either form depending on the item used.
+- Adjusted Battle frontier sets and trainer generation logic to include auto trick room and tailwind setters.
+- Optional areas no longer enforce trainer scaling.
+- Rock Climb requires 8th badge to use.
+- Removed vanilla Emerald protection against releasing your only Surf mon.
+- L=A Mode disables quick swap in custom party menu.
+- Removed deprecated Arceus plates, if they return in future, it will be as a all-in-one key item plate.
+- Removed Emerald Sketch protection in Battle Pyramid.
+- Fixed defiant bug after form change bug.
+
+
+
+
+
+
+
+
 - Goldenrod Underground herb shop sells IV reducing herbs.
 - Added new ability: Acidic (Poison is supereffective against Steel) and distributed it to several Pokémon.
 - Added follower sprites for following ZA Megas: Clefable, Dragonite, Hawlucha, Raichu X, Y and Starmie. Others will still default to base form follower sprites until there are publicly available sprites for them.
