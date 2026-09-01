@@ -92,6 +92,9 @@ bool32 AnyStorageMonWithMove(enum Move move);
 #if TESTING
 bool32 PokemonStorageSystem_TestClearsStalePaletteSwapDestination(void);
 bool32 PokemonStorageSystem_TestTakeItemToBag(u8 boxId, u8 boxPosition);
+u8 PokemonStorageSystem_TestReleaseBox(u8 boxId, bool8 eggsOnly, bool8 hasHeldMon);
+bool32 PokemonStorageSystem_TestBulkReleaseMessagesFit(void);
+bool32 PokemonStorageSystem_TestGuardsBoxReleaseMenu(void);
 #endif
 
 void ResetWaldaWallpaper(void);
