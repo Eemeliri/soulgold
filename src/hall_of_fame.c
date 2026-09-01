@@ -410,8 +410,6 @@ static bool8 InitHallOfFameScreen(void)
 
 static void AllocateHoFTeams(void)
 {
-    // The save-failed screen may return here with the retry archive still
-    // alive. Its transaction is complete by then, so replace it normally.
     TRY_FREE_AND_SET_NULL(sHofMonPtr);
     TRY_FREE_AND_SET_NULL(gHoFSaveBuffer);
     sHofMonPtr = AllocZeroed(sizeof(*sHofMonPtr));
@@ -608,9 +606,6 @@ static void Task_Hof_TrySaveData(u8 taskId)
             UnsetBgTilemapBuffer(3);
             FreeAllWindowBuffers();
 
-            // HandleSavingData will retry after the failure screen repairs
-            // the damaged sectors. Keep the appended archive alive until
-            // that retry has either committed or the ceremony is rebuilt.
             FreeHoFDisplayMemAfterSaveFailure();
 
             DestroyTask(taskId);

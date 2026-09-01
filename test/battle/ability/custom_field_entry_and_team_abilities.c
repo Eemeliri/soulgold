@@ -59,6 +59,20 @@ SINGLE_BATTLE_TEST("Time Spiral inverts move priority", u16 hp)
     }
 }
 
+SINGLE_BATTLE_TEST("Time Spiral does not invert Dragon Tail's forced-switch priority")
+{
+    GIVEN {
+        ASSUME(GetMovePriority(MOVE_DRAGON_TAIL) < GetMovePriority(MOVE_SCRATCH));
+        PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_TIME_SPIRAL); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_DRAGON_TAIL, hit: TRUE); MOVE(opponent, MOVE_SCRATCH); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_TAIL, player);
+    }
+}
+
 SINGLE_BATTLE_TEST("Time Spiral accelerates finite weather timers once per turn", u8 duration)
 {
     enum Ability ability;

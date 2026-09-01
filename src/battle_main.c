@@ -5219,7 +5219,9 @@ s32 GetBattleMovePriority(enum BattlerId battler, enum Move move)
      && gBattleMons[battler].hp <= gBattleMons[battler].maxHP / 3)
         priority += 2;
 
-    if (IsTimeSpiralActiveOnField())
+    if (IsTimeSpiralActiveOnField()
+     && GetMoveEffect(move) != EFFECT_HIT_SWITCH_TARGET
+     && GetMoveEffect(move) != EFFECT_ROAR)
         priority = -priority;
 
     return priority;

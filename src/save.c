@@ -394,8 +394,6 @@ static u8 WritePokemonStorageOverflow(void)
         gReadWriteSector->data[i] = src[i];
 
     gReadWriteSector->id = sectorId;
-    // Keep this footer checksum limited to the historical BX16 prefix. An
-    // older BX16 ROM can therefore still validate and load Boxes 1-16.
     gReadWriteSector->checksum = CalculateChecksum(src, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
     gReadWriteSector->signature = SECTOR_SIGNATURE;
     gReadWriteSector->counter = gSaveCounter;
@@ -536,8 +534,6 @@ static enum PokemonStorageOverflowStatus GetPokemonStorageOverflowStatus(
      || gReadWriteSector->counter != counter)
         return PKMN_STORAGE_OVERFLOW_INVALID;
 
-    // Released BX16 ROMs zeroed the whole sector before writing their
-    // 1,324-byte overflow. Any nonzero tail must be a complete BX18 record.
     if (IsZeroed(&data[PKMN_STORAGE_BX18_OVERFLOW_OFFSET],
                  SECTOR_DATA_SIZE - PKMN_STORAGE_BX18_OVERFLOW_OFFSET))
         return PKMN_STORAGE_OVERFLOW_BX16;
@@ -564,9 +560,6 @@ static enum PokemonStorageOverflowStatus GetPokemonStorageOverflowStatus(
     if (*(u16 *)&data[PKMN_STORAGE_BX18_OVERFLOW_OFFSET + sizeof(u32) + sizeof(u16)] != (u16)~checksum)
         return PKMN_STORAGE_OVERFLOW_INVALID;
 
-    // BX18's frozen format used a payload-only checksum. BX19 seeds the same
-    // rolling checksum with its format marker so a corrupted "BX19" marker
-    // cannot be reinterpreted as the otherwise-compatible BX18 layout.
     rollingChecksum = AddChecksumWords(
         &data[PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET],
         PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_SIZE,
@@ -645,8 +638,6 @@ static void LoadPokemonStorageOverflow(void)
     else if (status == PKMN_STORAGE_OVERFLOW_BX17)
     {
         memcpy(dst, gReadWriteSector->data, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
-        // Initialize Boxes 18 and 19, then restore the accepted BX17 payload
-        // directly from the sector which was already validated and read.
         InitPokemonStorageBox18Extension();
         memcpy(gPokemonStoragePtr->extensionBoxes[0],
                &gReadWriteSector->data[PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET],
@@ -711,9 +702,6 @@ static bool8 PreparePokemonStorageExtensions(bool8 saveHallOfFame)
         if (sLegacyHallOfFameRetryArchive == NULL)
             return FALSE;
 
-        // Cache the committed legacy archive, not gHoFSaveBuffer. During a
-        // Hall of Fame save that buffer already contains the newly appended
-        // team, which must not survive a failed transaction.
         legacyStatus = LoadLegacyHallOfFameArchive(sLegacyHallOfFameRetryArchive);
 
         if (legacyStatus != LEGACY_HOF_ARCHIVE_VALID
@@ -941,10 +929,6 @@ static u8 HandleReplaceSector(u16 sectorId, const struct SaveSectorLocation *loc
 
     CopyFromSaveBlock3(sectorId, gReadWriteSector);
 
-    // LinkFullSave writes its final regular sector through this replacement
-    // path. That sector contains the SaveBlock1 copy of the Box 18 tail, so it
-    // must receive the same prepared override as an ordinary full save.
-    // Partial SAVE_LINK writes do not prepare storage and remain unchanged.
     if (CopyPokemonStorageExtensionTailToSaveSector(sectorId))
         gReadWriteSector->checksum = CalculateChecksum(gReadWriteSector->data, size);
     else
@@ -1344,8 +1328,6 @@ u8 HandleSavingData(u8 saveType)
         if (GetGameStat(GAME_STAT_ENTERED_HOF) < 999)
             IncrementGameStat(GAME_STAT_ENTERED_HOF);
 
-        // The newly appended team is already in gHoFSaveBuffer. It is staged
-        // into the final commit sector before any flash writes begin.
         CopyPartyAndObjectsToSave();
         status = WriteSaveSectorOrSlot(FULL_SAVE_SLOT, gRamSaveSectorLocations, TRUE);
         if (status != SAVE_STATUS_OK)
@@ -1370,9 +1352,6 @@ u8 HandleSavingData(u8 saveType)
             status = SAVE_STATUS_ERROR;
         break;
     case SAVE_OVERWRITE_DIFFERENT_FILE:
-        // A different file must not inherit detailed teams from the previous
-        // player. The alternate auxiliary sector remains intact as backup
-        // until the new transaction commits.
         ResetHallOfFameArchive();
         CopyPartyAndObjectsToSave();
         status = WriteSaveSectorOrSlot(FULL_SAVE_SLOT, gRamSaveSectorLocations, FALSE);

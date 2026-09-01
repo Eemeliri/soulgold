@@ -70058,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -70067,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -70275,8 +70275,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -70284,8 +70284,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -254752,7 +254752,7 @@
     "ABILITY_TIME_SPIRAL": {
       "constant": "ABILITY_TIME_SPIRAL",
       "name": "Time Spiral",
-      "description": "Inverts move priority. Finite weather and terrain lose an extra turn at each turn's end.",
+      "description": "Inverts move priority except forced-switch moves. Finite weather and terrain lose an extra turn at each turn's end.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -261005,11 +261005,15 @@
       "itemIcon": "sprites/items/iron_ball.png",
       "locations": [
         {
+          "map": "Kitakami Houses",
+          "source": "Gift Pokemon held item"
+        },
+        {
           "map": "Mawile",
           "source": "Wild held item (rare)"
         }
       ],
-      "location": "Mawile (Wild held item (rare))",
+      "location": "Kitakami Houses (Gift Pokemon held item); Mawile (Wild held item (rare))",
       "slug": "iron-ball"
     },
     {

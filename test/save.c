@@ -742,8 +742,6 @@ TEST("A failed full save preserves the committed partial-save storage snapshot")
                      sizeof(gSaveBlock1Ptr->pokemonStorageExtensionTail)),
               0);
 
-    // A partial save after the failed full save must retain the old storage
-    // record as one valid combined BX18 snapshot.
     EXPECT_EQ(TrySavingData(SAVE_LINK), SAVE_STATUS_OK);
     memset(gPokemonStoragePtr, 0, sizeof(*gPokemonStoragePtr));
     EXPECT_EQ(LoadGameSave(SAVE_NORMAL), SAVE_STATUS_OK);
@@ -919,7 +917,6 @@ TEST("PokemonStorage migrates a genuine BX16 overflow without changing its bytes
     EXPECT_EQ(GetBoxMonDataAt(17, 0, MON_DATA_SANITY_HAS_SPECIES), FALSE);
     EXPECT_EQ(GetBoxMonDataAt(18, 0, MON_DATA_SANITY_HAS_SPECIES), FALSE);
 
-    // The in-RAM migration is committed by the next full save.
     EXPECT_EQ(TrySavingData(SAVE_NORMAL), SAVE_STATUS_OK);
     memcpy(bx16Data, gPokemonStoragePtr, T_POKEMONSTORAGE_BX16_SIZE);
     memset(gPokemonStoragePtr, 0, sizeof(*gPokemonStoragePtr));
@@ -1120,7 +1117,6 @@ TEST("PokemonStorage falls back when the newest overflow sector is lost")
     struct PokemonStorage *previousSave;
     u8 newestOverflowSector;
 
-    // This test performs a chip erase, two full saves, and a sector erase.
     gTestRunnerState.timeoutSeconds = 180;
     ResetPokemonStorageTestFlash();
 
@@ -1202,8 +1198,6 @@ TEST("BX19 cannot be reinterpreted as BX18 after its distinguishing magic bit is
     previousSave = Alloc(sizeof(*previousSave));
     memcpy(previousSave, gPokemonStoragePtr, sizeof(*previousSave));
 
-    // Keep currentBox below 18 so the frozen BX18 bounds check cannot detect
-    // the corruption on its own.
     FillPokemonStoragePattern(0x20);
     EXPECT(gPokemonStoragePtr->currentBox < 18);
     EXPECT_EQ(TrySavingData(SAVE_NORMAL), SAVE_STATUS_OK);
@@ -1249,8 +1243,6 @@ TEST("PokemonStorage falls back when the BX18 SaveBlock1 suffix is corrupt")
     {
         memcpy(corruptSector, originalSector, sizeof(*corruptSector));
         corruptSector->data[T_SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET + sCorruptOffsets[i]] ^= 1;
-        // Keep the normal SaveBlock1 sector checksum valid so this specifically
-        // exercises the combined BX18 checksum.
         corruptSector->checksum = CalculateTestSaveChecksum(corruptSector->data, T_SAVEBLOCK1_LAST_SECTOR_SIZE);
         EXPECT_EQ(ProgramFlashSectorAndVerify(newestSaveBlock1Sector, (u8 *)corruptSector), 0);
 
@@ -1445,7 +1437,6 @@ TEST("Legacy Hall of Fame archives retain the newest eleven teams in chronologic
         if (retained < HALL_OF_FAME_RETAINED_TEAMS)
             EXPECT_EQ((u16)gHoFSaveBuffer[retained].mon[0].species, SPECIES_NONE);
 
-        // Migration remains in RAM/flash-neutral until this successful full save.
         EXPECT_EQ(TrySavingData(SAVE_NORMAL), SAVE_STATUS_OK);
         memset(gHoFSaveBuffer, 0, sizeof(struct HallofFameTeam) * HALL_OF_FAME_RETAINED_TEAMS);
         memset(gPokemonStoragePtr, 0, sizeof(*gPokemonStoragePtr));
@@ -1492,7 +1483,6 @@ TEST("A failed first BX19 commit retains legacy Hall of Fame data for fallback a
 
     EXPECT(gDamagedSaveSectors != 0);
     EXPECT_EQ(gSaveCounter, committedCounter);
-    // Model a failed flash program that destroyed this half of the old archive.
     EXPECT_EQ(EraseFlashSector(failedAuxiliary), 0);
 
     memset(gPokemonStoragePtr, 0, sizeof(*gPokemonStoragePtr));
@@ -1596,8 +1586,6 @@ TEST("Pre-write Hall of Fame migration OOM cannot wipe legacy sectors during rec
                   &legacySectorsBefore[i * SECTOR_SIZE],
                   SECTOR_SIZE);
     }
-    // Leave less than the one-time 1,588-byte migration retry archive. The
-    // normal save path no longer needs the old 3,892 + 7,936-byte snapshots.
     heapHog = AllocUnchecked(HEAP_SIZE - 9500);
     EXPECT(heapHog != NULL);
     previousCallback = gMain.callback2;
@@ -1607,8 +1595,6 @@ TEST("Pre-write Hall of Fame migration OOM cannot wipe legacy sectors during rec
     EXPECT_EQ(gSaveCounter, committedCounter);
     EXPECT_EQ(gMain.callback2, previousCallback);
 
-    // Exercise the same wipe step used by the failure-screen recovery. With
-    // no flash failures recorded it must touch neither legacy sector.
     EXPECT(!SaveFailedScreen_TestWipeDamagedSectors());
     for (i = 0; i < NUM_HOF_SECTORS; i++)
     {
@@ -1769,21 +1755,21 @@ TEST("Battle Tower link-save waiter reports preparation OOM after both handshake
     taskId = FindTaskIdByFunc(Task_LinkFullSave);
     EXPECT_NE(taskId, TASK_NONE);
 
-    Task_LinkFullSave(taskId); // Enable soft-reset protection.
-    Task_LinkFullSave(taskId); // Request the initial standby handshake.
+    Task_LinkFullSave(taskId);
+    Task_LinkFullSave(taskId);
     EXPECT(gLinkCallback != NULL);
     gLinkCallback = NULL;
-    Task_LinkFullSave(taskId); // Initial handshake completed.
-    Task_LinkFullSave(taskId); // Injected OOM is observed before any write.
+    Task_LinkFullSave(taskId);
+    Task_LinkFullSave(taskId);
     EXPECT_EQ(gTasks[taskId].data[0], 7);
     EXPECT_EQ(GetLinkFullSaveResult(), LINK_FULL_SAVE_RESULT_FAILED);
     EXPECT_EQ(gSaveAttemptStatus, SAVE_STATUS_PREPARE_ERROR);
 
-    Task_LinkFullSave(taskId); // Request the commit-safe handshake.
+    Task_LinkFullSave(taskId);
     EXPECT(gLinkCallback != NULL);
     gLinkCallback = NULL;
     Task_LinkFullSave(taskId);
-    Task_LinkFullSave(taskId); // Request the final handshake.
+    Task_LinkFullSave(taskId);
     EXPECT(gLinkCallback != NULL);
     gLinkCallback = NULL;
     Task_LinkFullSave(taskId);
@@ -1815,8 +1801,6 @@ TEST("Battle Tower link-save waiter reports preparation OOM after both handshake
     ReadFlash(overflowSector, SECTOR_COUNTER_OFFSET, (u8 *)&value, sizeof(value));
     EXPECT_EQ(value, overflowCounter);
 
-    // The allocation remains exhausted through task completion, proving the
-    // caller-visible failure path does not retry preparation forever.
     EXPECT_EQ(GetLinkFullSaveResult(), LINK_FULL_SAVE_RESULT_FAILED);
     Free(heapHog);
 }
@@ -2272,7 +2256,6 @@ TEST("Boxes 17 through 19 participate in fullness and search paths")
     EXPECT(CheckFreePokemonStorageSpace());
     EXPECT_EQ(GetFirstFreeBoxSpot(18), 0);
 
-    // Put the searched move only in Box 19 so skipping a new box is caught.
     SetMonMoveSlot(&mon, MOVE_TACKLE, 0);
     SetBoxMonAt(18, IN_BOX_COUNT - 1, &mon.box);
     EXPECT_EQ(CountAllStorageMons(), (TOTAL_BOXES_COUNT - 1) * IN_BOX_COUNT + 1);

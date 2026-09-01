@@ -36,10 +36,6 @@ EWRAM_DATA rng_value_t gRecordedBattleRngSeed = RNG_VALUE_EMPTY;
 EWRAM_DATA rng_value_t gBattlePalaceMoveSelectionRngValue = RNG_VALUE_EMPTY;
 EWRAM_DATA u8 gRecordedBattleMultiplayerId = 0;
 
-// Recorded-battle flash storage was repurposed for the Pokemon Storage
-// extension. Keep the implementation for the battle test runner, which uses
-// recorded battles to provide scripted inputs, but do not permanently reserve
-// its working memory in normal builds.
 #if TESTING
 
 EWRAM_DATA static u8 sBattleRecords[MAX_BATTLERS_COUNT][BATTLER_RECORD_SIZE] = {0};
@@ -845,7 +841,6 @@ void RecordedBattle_Init(u8 mode)
 
 void RecordedBattle_SetTrainerInfo(void)
 {
-    // Live link battles still exchange this seed to stay synchronized.
     gRecordedBattleRngSeed = gRngValue;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         gRecordedBattleMultiplayerId = GetMultiplayerId();
@@ -893,8 +888,6 @@ void SetVariablesForRecordedBattle(struct RecordedBattleSave *src)
 
 void PlayRecordedBattle(void (*CB2_After)(void))
 {
-    // This path is no longer exposed by the Frontier Pass, but returning to
-    // the caller makes an accidental invocation fail safely.
     if (CB2_After != NULL)
         SetMainCallback2(CB2_After);
 }

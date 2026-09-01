@@ -11,7 +11,6 @@
 #define BOX_NAME_LENGTH         8
 #define MAX_FUSION_STORAGE      4
 
-// Magic numbers, don't worry about them...
 #define POKEMON_STORAGE_EXTENSION_MAGIC 0x36315842 // "BX16"
 #define POKEMON_STORAGE_BOX17_MAGIC     0x37315842 // "BX17"
 #define POKEMON_STORAGE_BOX18_MAGIC     0x38315842 // "BX18"
@@ -29,8 +28,6 @@ ROWS        0   1   2   3   4   5
 struct PokemonStorage
 {
     /*0x0000*/ u8 currentBox;
-    // Access these legacy arrays through the storage accessors below so the
-    // extension boxes cannot accidentally be omitted.
     /*0x0004*/ struct BoxPokemon legacyBoxes[LEGACY_BOXES_COUNT][IN_BOX_COUNT];
     /*0x859C*/ u8 legacyBoxNames[LEGACY_BOXES_COUNT][BOX_NAME_LENGTH + 1];
     /*0x8623*/ u8 legacyBoxWallpapers[LEGACY_BOXES_COUNT];
