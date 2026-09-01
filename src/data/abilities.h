@@ -5428,8 +5428,9 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Time Spiral"),
         .description = COMPOUND_STRING("Warps priority and fields."),
-        .longDescription = COMPOUND_STRING("Inverts move priority.\n"
-                                           "Finite weather and terrain\n"
+        .longDescription = COMPOUND_STRING("Inverts move priority except\n"
+                                           "forced-switch moves. Finite\n"
+                                           "weather and terrain\n"
                                            "lose an extra turn at each\n"
                                            "turn's end."),
         .aiRating = 6,
