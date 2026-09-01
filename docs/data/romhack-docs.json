@@ -69815,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69824,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -70058,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -70067,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -254752,7 +254752,7 @@
     "ABILITY_TIME_SPIRAL": {
       "constant": "ABILITY_TIME_SPIRAL",
       "name": "Time Spiral",
-      "description": "Inverts move priority. Finite weather and terrain lose an extra turn at each turn's end.",
+      "description": "Inverts move priority except forced-switch moves. Finite weather and terrain lose an extra turn at each turn's end.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
