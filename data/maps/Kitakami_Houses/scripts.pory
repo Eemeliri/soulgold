@@ -152,7 +152,7 @@ script KitakamiHouses_2_Steven {
             in return.")
     setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_BELDUM)
     bufferspeciesname(STR_VAR_1, SPECIES_BELDUM)
-    givemon(SPECIES_BELDUM, 15, ITEM_IRON_PLATE, ITEM_LUXURY_BALL)
+    givemon(SPECIES_BELDUM, 15, ITEM_IRON_BALL, ITEM_LUXURY_BALL)
     showgivemonpic(10, 3)
     call(Common_EventScript_GiftMon)
     hidemonpic

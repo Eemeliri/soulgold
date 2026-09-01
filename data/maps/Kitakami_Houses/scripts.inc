@@ -89,7 +89,7 @@ KitakamiHouses_2_Steven::
 # 154 "data/maps/Kitakami_Houses/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_BELDUM
 # 155 "data/maps/Kitakami_Houses/scripts.pory"
-	givemon SPECIES_BELDUM, 15, ITEM_IRON_PLATE, ITEM_LUXURY_BALL
+	givemon SPECIES_BELDUM, 15, ITEM_IRON_BALL, ITEM_LUXURY_BALL
 # 156 "data/maps/Kitakami_Houses/scripts.pory"
 	showgivemonpic 10, 3
 # 157 "data/maps/Kitakami_Houses/scripts.pory"
