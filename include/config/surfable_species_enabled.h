@@ -66,7 +66,7 @@
 #define OW_SURF_PANGORO                              0
 #define OW_SURF_PINCURCHIN                           0
 #define OW_SURF_POPPLIO                              0
-#define OW_SURF_PRIMARINA                            0
+#define OW_SURF_PRIMARINA                            1
 #define OW_SURF_SILVALLY                             0
 #define OW_SURF_SKIDDO                               0
 #define OW_SURF_SKRELP                               0
