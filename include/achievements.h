@@ -19,6 +19,8 @@ struct Achievement
 bool32 Achievement_Unlock(enum AchievementId id);
 void Achievement_IncrementCounter(enum AchievementCounter counter, u32 amount);
 void Achievement_SetCounterMax(enum AchievementCounter counter, u32 value);
+void Achievement_MigrateBattlePyramidFloorClears(void);
+void Achievement_RecordBattlePyramidFloorClear(void);
 void Achievement_AddBattlePointsEarned(u32 amount);
 void Achievement_CheckAll(void);
 void Achievement_CheckCounter(enum AchievementCounter counter);

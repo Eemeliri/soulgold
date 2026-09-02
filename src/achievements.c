@@ -86,7 +86,7 @@ static bool32 Achievement_PredicateCaughtAllParadoxPokemon(void);
 static bool32 Achievement_PredicateHasLevel100Pokemon(void);
 static bool32 Achievement_IsInScaledChaosFacility(void);
 static u32 Achievement_CountCollectedTMs(void);
-static u32 Achievement_GetBestBattlePyramidRounds(void);
+static u32 Achievement_GetBestBattlePyramidFloorStreak(void);
 static void Achievement_QueuePopup(enum AchievementId id);
 
 static const u8 sText_AchReceiveStarterName[] = _("I Choose You!");
@@ -1087,7 +1087,7 @@ static u32 Achievement_CountCollectedTMs(void)
     return count;
 }
 
-static u32 Achievement_GetBestBattlePyramidRounds(void)
+static u32 Achievement_GetBestBattlePyramidFloorStreak(void)
 {
     u8 lvlMode;
     u32 best = 0;
@@ -1099,7 +1099,7 @@ static u32 Achievement_GetBestBattlePyramidRounds(void)
         if (best < gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode])
             best = gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode];
     }
-    return best / FRONTIER_STAGES_PER_CHALLENGE;
+    return best;
 }
 
 u16 Achievement_GetCount(void)
@@ -1193,7 +1193,7 @@ u32 Achievement_GetCounter(enum AchievementCounter counter)
     case ACH_COUNTER_BATTLE_FACTORY_WINS:
         return gSaveBlock2Ptr->frontier.factoryTotalWins;
     case ACH_COUNTER_BATTLE_PYRAMID_ROUNDS:
-        return Achievement_GetBestBattlePyramidRounds();
+        return GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS) / FRONTIER_STAGES_PER_CHALLENGE;
     case ACH_COUNTER_ROCKET_ARCADE_WINS:
         return gSaveBlock2Ptr->frontier.arcadeTotalWins;
     case ACH_COUNTER_TITLE_DEFENSE_WINS:
@@ -1426,6 +1426,22 @@ void Achievement_SetCounterMax(enum AchievementCounter counter, u32 value)
         gSaveBlock1Ptr->achievements.counters[counter] = value;
         Achievement_CheckCounter(counter);
     }
+}
+
+void Achievement_MigrateBattlePyramidFloorClears(void)
+{
+    if (FlagGet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE))
+        return;
+
+    SetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS, Achievement_GetBestBattlePyramidFloorStreak());
+    FlagSet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE);
+    Achievement_CheckCounter(ACH_COUNTER_BATTLE_PYRAMID_ROUNDS);
+}
+
+void Achievement_RecordBattlePyramidFloorClear(void)
+{
+    IncrementGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS);
+    Achievement_CheckCounter(ACH_COUNTER_BATTLE_PYRAMID_ROUNDS);
 }
 
 void Achievement_OnTrainerDefeated(u16 trainerId)

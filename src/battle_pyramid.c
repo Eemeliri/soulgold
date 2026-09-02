@@ -1139,10 +1139,12 @@ static void UpdatePyramidWinStreak(void)
     enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
 
     if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode] < 999)
+    {
         gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode]++;
+        Achievement_RecordBattlePyramidFloorClear();
+    }
     if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode] > gSaveBlock2Ptr->frontier.pyramidRecordStreaks[lvlMode])
         gSaveBlock2Ptr->frontier.pyramidRecordStreaks[lvlMode] = gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode];
-    Achievement_CheckAll();
 }
 
 static void GetCurrentBattlePyramidLocation(void)

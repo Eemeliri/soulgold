@@ -1,13 +1,17 @@
 #include "global.h"
+#include "achievements.h"
 #include "battle_tower.h"
 #include "event_data.h"
 #include "field_specials.h"
 #include "frontier_util.h"
+#include "overworld.h"
 #include "string_util.h"
 #include "test/test.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_tower.h"
 #include "constants/frontier_util.h"
+#include "constants/flags.h"
+#include "constants/game_stat.h"
 #include "constants/trainers.h"
 #include "constants/vars.h"
 
@@ -97,6 +101,33 @@ TEST("A Battle Tower win advances the streak once and cycles the local set index
 
     EXPECT_EQ(gSaveBlock2Ptr->frontier.towerWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50], 12);
     EXPECT_EQ(gSaveBlock2Ptr->frontier.curChallengeBattleNum, 5);
+}
+
+TEST("Battle Pyramid achievement progress accumulates after a lost streak")
+{
+    const struct Achievement *achievement = Achievement_GetById(ACH_BATTLE_PYRAMID_3);
+    u8 floor;
+
+    // Simulate an existing save whose best streak was 14 floors, followed by
+    // a loss and the start of a new challenge.
+    gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_50;
+    gSaveBlock2Ptr->frontier.pyramidRecordStreaks[FRONTIER_LVL_50] = 14;
+    gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_50] = 0;
+    gSaveBlock1Ptr->achievements.magic = ACHIEVEMENT_SAVE_MAGIC;
+    FlagClear(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE);
+    SetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS, 0);
+    Achievement_MigrateBattlePyramidFloorClears();
+    VarSet(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_PYRAMID);
+    VarSet(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES);
+    gSpecialVar_0x8004 = FRONTIER_UTIL_FUNC_INCREMENT_STREAK;
+
+    for (floor = 0; floor < FRONTIER_STAGES_PER_CHALLENGE; floor++)
+        CallFrontierUtilFunc();
+
+    EXPECT_EQ(gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_50], 7);
+    EXPECT_EQ(GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS), 21);
+    EXPECT_EQ(Achievement_GetProgress(achievement), 3);
+    EXPECT(Achievement_IsUnlocked(ACH_BATTLE_PYRAMID_3));
 }
 
 TEST("The Battle Tower Frontier Brain presents as Salon Maiden Anabel")
