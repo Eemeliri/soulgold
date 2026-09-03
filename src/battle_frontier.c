@@ -187,6 +187,8 @@ static void DoFacilityTrainerBattleInternal(u8 facility)
         break;
     case FACILITY_BATTLE_CAFE:
         gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
+        if (BattleCafe_ShouldUseDoubles())
+            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
         if (BattleCafe_GetChallengeMode() == BATTLE_CAFE_MODE_SUPER_CHALLENGE
          || BattleCafe_GetChallengeMode() == BATTLE_CAFE_MODE_SUPER_RUSH
          || BattleCafe_GetChallengeMode() == BATTLE_CAFE_MODE_ENDLESS_CHALLENGE

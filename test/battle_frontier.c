@@ -199,6 +199,28 @@ TEST("Every Frontier trainer supports a genuine six-Pokemon singles team")
     }
 }
 
+TEST("Every Frontier trainer supports six-Pokemon doubles team")
+{
+    u16 chosen[PARTY_SIZE];
+    u16 trainerId;
+    u32 i;
+
+    for (trainerId = FRONTIER_TRAINER_BRADY; trainerId <= FRONTIER_TRAINER_GRETEL; trainerId++)
+    {
+        EXPECT(BuildFacilityTrainerMonSelection(gBattleFrontierTrainers[trainerId].monSet,
+                                                gBattleFrontierMons, NUM_FRONTIER_MONS,
+                                                ARRAY_COUNT(chosen), TRUE,
+                                                FACILITY_TEAM_BALANCED, FALSE,
+                                                NUM_FRONTIER_MONS - 1, chosen));
+
+        for (i = 0; i < ARRAY_COUNT(chosen); i++)
+        {
+            EXPECT_LT(chosen[i], NUM_FRONTIER_MONS);
+            EXPECT(IsFrontierMonEnabled(chosen[i]));
+        }
+    }
+}
+
 TEST("Unavailable legendaries are banned from Frontier parties")
 {
     EXPECT(!IsFrontierSpeciesAllowed(SPECIES_CALYREX_SHADOW));

@@ -51,6 +51,55 @@ static void CatchBattleCafeTestSpecies(const u16 *dexNums, u32 count)
         GetSetPokedexFlag(dexNums[i], FLAG_SET_CAUGHT);
 }
 
+TEST("Battle Cafe Endless modes capture the Doubles trainer format")
+{
+    static const u8 sEndlessModes[] =
+    {
+        BATTLE_CAFE_MODE_ENDLESS_CHALLENGE,
+        BATTLE_CAFE_MODE_ENDLESS_RUSH,
+    };
+    u32 i;
+
+    SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DOUBLES);
+    for (i = 0; i < ARRAY_COUNT(sEndlessModes); i++)
+    {
+        VarSet(VAR_TEMP_8, sEndlessModes[i]);
+        BattleCafe_InitChallenge();
+
+        EXPECT(BattleCafe_ShouldUseDoubles());
+
+        SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DESIGNED);
+        EXPECT(BattleCafe_ShouldUseDoubles());
+
+        BattleCafe_EndChallenge();
+        EXPECT(!BattleCafe_ShouldUseDoubles());
+        SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DOUBLES);
+    }
+    SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DESIGNED);
+}
+
+TEST("Battle Cafe non-Endless modes ignore the Doubles trainer format")
+{
+    static const u8 sFixedModes[] =
+    {
+        BATTLE_CAFE_MODE_DAILY,
+        BATTLE_CAFE_MODE_RUSH,
+        BATTLE_CAFE_MODE_SUPER_CHALLENGE,
+        BATTLE_CAFE_MODE_SUPER_RUSH,
+    };
+    u32 i;
+
+    SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DOUBLES);
+    for (i = 0; i < ARRAY_COUNT(sFixedModes); i++)
+    {
+        VarSet(VAR_TEMP_8, sFixedModes[i]);
+        BattleCafe_InitChallenge();
+        EXPECT(!BattleCafe_ShouldUseDoubles());
+        BattleCafe_EndChallenge();
+    }
+    SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DESIGNED);
+}
+
 TEST("Battle Cafe Endless Challenge records its own streak")
 {
     VarSet(VAR_TEMP_8, BATTLE_CAFE_MODE_ENDLESS_CHALLENGE);
