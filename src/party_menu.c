@@ -247,6 +247,7 @@ EWRAM_DATA u8 gBattlePartyCurrentOrder[PARTY_SIZE / 2] = {0}; // bits 0-3 are th
 #endif
 static EWRAM_DATA u8 sInitialLevel = 0;
 static EWRAM_DATA u8 sFinalLevel = 0;
+static EWRAM_DATA bool8 sLevelUpMoveLearningInProgress = FALSE;
 static EWRAM_DATA u8 sLevelUpInnateLevel = 0;
 static EWRAM_DATA u8 sLevelUpInnateIndex = 0;
 static EWRAM_DATA TaskFunc sLevelUpInnateNextTask = NULL;
@@ -6221,15 +6222,45 @@ static void CB2_ShowSummaryScreenToForgetMove(void)
     ShowSelectMovePokemonSummaryScreen(gPlayerParty, gPartyMenu.slotId, CB2_ReturnToPartyMenuWhileLearningMove, gPartyMenu.data1);
 }
 
+static void RestoreLevelAfterMoveSummary(struct Pokemon *mon)
+{
+    if (sLevelUpMoveLearningInProgress)
+        SetMonData(mon, MON_DATA_LEVEL, &sFinalLevel);
+}
+
+static void ResetLevelUpMoveLearningState(void)
+{
+    sInitialLevel = 0;
+    sFinalLevel = 0;
+    sLevelUpMoveLearningInProgress = FALSE;
+}
+
 static void CB2_ReturnToPartyMenuWhileLearningMove(void)
 {
-    if (sFinalLevel != 0)
-        SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL, &sFinalLevel); // to avoid displaying incorrect level
+    RestoreLevelAfterMoveSummary(&gPlayerParty[gPartyMenu.slotId]);
     if (GetItemFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_RareCandy && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
         InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
     else
         InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
 }
+
+#if TESTING
+#if PARTY_MENU_STYLE_OPTION
+u8 PARTY_MENU_VARIANT_NAME(TestRestoreLevelAfterMoveSummary)(struct Pokemon *mon, u8 finalLevel, bool8 levelUpInProgress)
+#else
+u8 PartyMenu_TestRestoreLevelAfterMoveSummary(struct Pokemon *mon, u8 finalLevel, bool8 levelUpInProgress)
+#endif
+{
+    u8 level;
+
+    sFinalLevel = finalLevel;
+    sLevelUpMoveLearningInProgress = levelUpInProgress;
+    RestoreLevelAfterMoveSummary(mon);
+    level = GetMonData(mon, MON_DATA_LEVEL);
+    ResetLevelUpMoveLearningState();
+    return level;
+}
+#endif
 
 static void Task_ReturnToPartyMenuWhileLearningMove(u8 taskId)
 {
@@ -6360,6 +6391,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     bool8 cannotUseEffect;
 
+    ResetLevelUpMoveLearningState();
     if (gSpecialVar_ItemId == ITEM_REVERSE_CANDY)
     {
         ItemUseCB_ReverseCandy(taskId, task);
@@ -6384,9 +6416,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         u32 targetSpecies = SPECIES_NONE;
         bool32 canStopEvo = TRUE;
 
-        // Resets values to 0 so other means of teaching moves doesn't overwrite levels
-        sInitialLevel = 0;
-        sFinalLevel = 0;
+        ResetLevelUpMoveLearningState();
 
         if (tHoldEffectParam == 0) // Rare Candy
         {
@@ -6631,9 +6661,7 @@ static void PartyMenuTryEvolution(u8 taskId)
     u32 targetSpecies = SPECIES_NONE;
     bool32 canStopEvo = TRUE;
 
-    // Resets values to 0 so other means of teaching moves doesn't overwrite levels
-    sInitialLevel = 0;
-    sFinalLevel = 0;
+    ResetLevelUpMoveLearningState();
 
     targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, &canStopEvo, CHECK_EVO);
 
@@ -7055,6 +7083,7 @@ static void ItemUse_ApplyExpCandy(u8 taskId)
     GetMonNickname(mon, gStringVar1);
     if (sFinalLevel > sInitialLevel)
     {
+        sLevelUpMoveLearningInProgress = TRUE;
         PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
         if (tHoldEffectParam == 0) // Rare Candy
         {
@@ -7074,6 +7103,7 @@ static void ItemUse_ApplyExpCandy(u8 taskId)
     }
     else
     {
+        ResetLevelUpMoveLearningState();
         PlaySE(SE_USE_ITEM);
         gPartyMenuUseExitCallback = FALSE;
         if (tHoldEffectParam != 0)

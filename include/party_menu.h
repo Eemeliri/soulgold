@@ -145,6 +145,15 @@ bool32 SwShPartyMenu_TestCancelHeldItemSwitch(enum Item item);
 bool32 SwShPartyMenu_TestTossHeldItem(u8 partyId);
 bool32 SwShPartyMenu_TestMissingSlotSpritesAreIgnored(void);
 bool32 SwShPartyMenu_TestEmptyHeldItemSlotIsIgnored(bool8 inItemMode);
+#if PARTY_MENU_STYLE_OPTION
+u8 BwPartyMenu_TestRestoreLevelAfterMoveSummary(struct Pokemon *mon, u8 finalLevel, bool8 levelUpInProgress);
+u8 HgssPartyMenu_TestRestoreLevelAfterMoveSummary(struct Pokemon *mon, u8 finalLevel, bool8 levelUpInProgress);
+#elif !SWSH_PARTY_MENU
+u8 PartyMenu_TestRestoreLevelAfterMoveSummary(struct Pokemon *mon, u8 finalLevel, bool8 levelUpInProgress);
+#endif
+#if SWSH_PARTY_MENU || PARTY_MENU_STYLE_OPTION
+u8 SwShPartyMenu_TestRestoreLevelAfterMoveSummary(struct Pokemon *mon, u8 finalLevel, bool8 levelUpInProgress);
+#endif
 #endif
 
 #endif // GUARD_PARTY_MENU_H

@@ -217,6 +217,7 @@ static void SpriteCB_StatusSummaryBalls_OnSwitchout(struct Sprite *);
 static u8 GetStatusIconForBattlerId(u8, enum BattlerId);
 static s32 CalcNewBarValue(s32, s32, s32, s32 *, u8, u16);
 static u8 GetScaledExpFraction(s32, s32, s32, u8);
+static u16 GetExpBarValueIncrement(s32, s32, s32);
 static void MoveBattleBarGraphically(enum BattlerId, u8);
 static u8 CalcBarFilledPixels(s32, s32, s32, s32 *, u8 *, u8);
 
@@ -2204,12 +2205,9 @@ s32 MoveBattleBar(enum BattlerId battler, u8 healthboxSpriteId, u8 whichBar, u8 
     }
     else // exp bar
     {
-        u16 expFraction = GetScaledExpFraction(gBattleSpritesDataPtr->battleBars[battler].oldValue,
+        u16 expFraction = GetExpBarValueIncrement(gBattleSpritesDataPtr->battleBars[battler].oldValue,
                     gBattleSpritesDataPtr->battleBars[battler].receivedValue,
-                    gBattleSpritesDataPtr->battleBars[battler].maxValue, 8);
-        if (expFraction == 0)
-            expFraction = 1;
-        expFraction = abs(gBattleSpritesDataPtr->battleBars[battler].receivedValue / expFraction);
+                    gBattleSpritesDataPtr->battleBars[battler].maxValue);
 
         currentBarValue = CalcNewBarValue(gBattleSpritesDataPtr->battleBars[battler].maxValue,
                     gBattleSpritesDataPtr->battleBars[battler].oldValue,
@@ -2455,6 +2453,15 @@ static u8 GetScaledExpFraction(s32 oldValue, s32 receivedValue, s32 maxValue, u8
     result = oldToMax - newToMax;
 
     return abs(result);
+}
+
+static u16 GetExpBarValueIncrement(s32 oldValue, s32 receivedValue, s32 maxValue)
+{
+    u16 expFraction = GetScaledExpFraction(oldValue, receivedValue, maxValue, 8);
+
+    if (expFraction == 0)
+        expFraction = 1;
+    return max(abs(receivedValue / expFraction), 1);
 }
 
 u8 GetScaledHPFraction(s16 hp, s16 maxhp, u8 scale)
@@ -2914,6 +2921,22 @@ static bool32 TryUpdateAbilityPopup(enum BattlerId battler)
 }
 
 #if TESTING
+bool32 BattleInterface_TestMalformedExpBarCompletes(void)
+{
+    s32 currentValue = -32768;
+    s32 maxValue = 100;
+    s32 oldValue = 101;
+    s32 receivedValue = 0;
+    u16 increment = GetExpBarValueIncrement(oldValue, receivedValue, maxValue);
+
+    for (u32 i = 0; i < 3; i++)
+    {
+        if (CalcNewBarValue(maxValue, oldValue, receivedValue, &currentValue, B_EXPBAR_PIXELS / 8, increment) == -1)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 bool32 BattleInterface_TestCreateAbilityPopUp(enum BattlerId battler, enum Ability ability, bool32 isDoubleBattle)
 {
     return TryCreateAbilityPopUp(battler, ability, isDoubleBattle);

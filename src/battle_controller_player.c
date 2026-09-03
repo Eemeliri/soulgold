@@ -1564,8 +1564,13 @@ static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
     u32 currLvlExp = gExperienceTables[gSpeciesInfo[species].growthRate][level];
     u32 expToNextLvl;
 
-    exp -= currLvlExp;
     expToNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - currLvlExp;
+    if (exp > currLvlExp)
+        exp -= currLvlExp;
+    else
+        exp = 0;
+    if (exp > expToNextLvl)
+        exp = expToNextLvl;
     SetBattleBarStruct(battler, gHealthboxSpriteIds[battler], expToNextLvl, exp, -gainedExp);
     TestRunner_Battle_RecordExp(battler, exp, -gainedExp);
     PlaySE(SE_EXP);
@@ -2348,16 +2353,16 @@ static void PlayerHandleCmd23(enum BattlerId battler)
 void PlayerHandleExpUpdate(enum BattlerId battler)
 {
     u8 monId = gBattleResources->bufferA[battler][1];
-    s32 taskId, expPointsToGive;
+    s32 taskId;
+    s32 expPointsToGive = T1_READ_32(&gBattleResources->bufferA[battler][2]);
 
-    if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL)
+    if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL || expPointsToGive <= 0)
     {
         BtlController_Complete(battler);
     }
     else
     {
         LoadBattleBarGfx(1);
-        expPointsToGive = T1_READ_32(&gBattleResources->bufferA[battler][2]);
         taskId = CreateTask(Task_GiveExpToMon, 10);
         gTasks[taskId].tExpTask_monId = monId;
         gTasks[taskId].tExpTask_gainedExp_1 = expPointsToGive;

@@ -4722,8 +4722,13 @@ static void Cmd_getexp(void)
     case 2: // set exp value to the poke in expgetter_id and print message
         if (gBattleControllerExecFlags == 0)
         {
+            struct Pokemon *mon = &gPlayerParty[*expMonId];
             bool32 wasSentOut = (gBattleStruct->expSentInMons & (1u << *expMonId)) != 0;
-            
+            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
+             && GetMonData(mon, MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+             && GetMonData(mon, MON_DATA_LEVEL) != GetLevelFromMonExp(mon))
+                CalculateMonStats(mon);
+
             if ((!MonHasItemHoldEffect(&gPlayerParty[*expMonId], HOLD_EFFECT_EXP_SHARE) && !wasSentOut && !IsGen6ExpShareEnabled())
              || GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
             {
@@ -4772,11 +4777,12 @@ static void Cmd_getexp(void)
                         enum GrowthRate growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
                         u32 levelCap = GetCurrentLevelCap();
+                        u32 expAtLevelCap = gExperienceTables[growthRate][levelCap];
 
-                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= levelCap)
+                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= levelCap || currentExp >= expAtLevelCap)
                             gBattleStruct->battlerExpReward = 0;
-                        else if (gExperienceTables[growthRate][levelCap] < currentExp + gBattleStruct->battlerExpReward)
-                            gBattleStruct->battlerExpReward = gExperienceTables[growthRate][levelCap] - currentExp;
+                        else if (gBattleStruct->battlerExpReward > expAtLevelCap - currentExp)
+                            gBattleStruct->battlerExpReward = expAtLevelCap - currentExp;
                     }
 
                     if (IsTradedMon(&gPlayerParty[*expMonId]))
