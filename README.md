@@ -25,10 +25,6 @@
 All the hacks documentation, including the Pokédex, wild encounters, TMs/HMs, items, trainers, and ability data, can be found here.
 https://eemeliri.github.io/soulgold/
 
-## Current Progress
-
-The hack is currently in Beta.
-
 ## CREDITS
 - [HnS Dev Team](https://github.com/PokemonHnS-Development/pokemonHnS) for their amazing work!
 - [smithk200](https://github.com/smithk200/Gold-And-Silver-Gen-3-Decomp) for porting most of HnS to expansion!

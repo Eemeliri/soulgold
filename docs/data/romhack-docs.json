@@ -45385,7 +45385,7 @@
       ],
       "innates": [
         "ABILITY_MARVEL_SCALE",
-        "ABILITY_VITAL_SPIRIT",
+        "ABILITY_AERILATE",
         "ABILITY_HOSPITALITY"
       ],
       "sprite": "sprites/pokemon/dragonite.png",
@@ -68444,7 +68444,7 @@
       ],
       "innates": [
         "ABILITY_HEATPROOF",
-        "ABILITY_PASTEL_VEIL",
+        "ABILITY_HYDRATION",
         "ABILITY_STORMRIDER"
       ],
       "sprite": "sprites/pokemon/suicune.png",
@@ -69815,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69824,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -70058,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70067,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -70275,8 +70275,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70284,8 +70284,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -111891,7 +111891,7 @@
         "ABILITY_FRISK"
       ],
       "innates": [
-        "ABILITY_WIND_POWER",
+        "ABILITY_TECHNICIAN",
         "ABILITY_COMPOUND_EYES",
         "ABILITY_AERILATE"
       ],
@@ -204918,7 +204918,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_WATER_VEIL",
+        "ABILITY_STEAM_ENGINE",
         "ABILITY_RAIN_DISH",
         "ABILITY_STORM_DRAIN"
       ],
@@ -226526,12 +226526,6 @@
             "name": "Ogerpon",
             "dex": 694,
             "sprite": "sprites/pokemon/ogerpon_wellspring_tera.png"
-          },
-          {
-            "species": "SPECIES_WALKING_WAKE",
-            "name": "Walking Wake",
-            "dex": 688,
-            "sprite": "sprites/pokemon/walking_wake.png"
           }
         ]
       }
@@ -230872,12 +230866,6 @@
             "sprite": "sprites/pokemon/dratini.png"
           },
           {
-            "species": "SPECIES_DRAGONITE",
-            "name": "Dragonite",
-            "dex": 130,
-            "sprite": "sprites/pokemon/dragonite.png"
-          },
-          {
             "species": "SPECIES_FLOATZEL",
             "name": "Floatzel",
             "dex": 319,
@@ -232885,6 +232873,12 @@
             "sprite": "sprites/pokemon/mantine.png"
           },
           {
+            "species": "SPECIES_SUICUNE",
+            "name": "Suicune",
+            "dex": 209,
+            "sprite": "sprites/pokemon/suicune.png"
+          },
+          {
             "species": "SPECIES_MANTYKE",
             "name": "Mantyke",
             "dex": 346,
@@ -233775,6 +233769,12 @@
             "name": "Weavile",
             "dex": 349,
             "sprite": "sprites/pokemon/weavile.png"
+          },
+          {
+            "species": "SPECIES_YANMEGA",
+            "name": "Yanmega",
+            "dex": 357,
+            "sprite": "sprites/pokemon/yanmega.png"
           },
           {
             "species": "SPECIES_WHIMSICOTT",
@@ -242549,6 +242549,12 @@
         ],
         "innate": [
           {
+            "species": "SPECIES_DRAGONITE",
+            "name": "Dragonite",
+            "dex": 130,
+            "sprite": "sprites/pokemon/dragonite.png"
+          },
+          {
             "species": "SPECIES_YANMEGA",
             "name": "Yanmega",
             "dex": 357,
@@ -245450,6 +245456,12 @@
             "name": "Rotom",
             "dex": 367,
             "sprite": "sprites/pokemon/rotom_heat.png"
+          },
+          {
+            "species": "SPECIES_WALKING_WAKE",
+            "name": "Walking Wake",
+            "dex": 688,
+            "sprite": "sprites/pokemon/walking_wake.png"
           }
         ]
       }
@@ -246007,12 +246019,6 @@
             "name": "Corsola",
             "dex": 190,
             "sprite": "sprites/pokemon/corsola.png"
-          },
-          {
-            "species": "SPECIES_SUICUNE",
-            "name": "Suicune",
-            "dex": 209,
-            "sprite": "sprites/pokemon/suicune.png"
           }
         ]
       }
@@ -246845,12 +246851,6 @@
             "name": "Yanma",
             "dex": 168,
             "sprite": "sprites/pokemon/yanma.png"
-          },
-          {
-            "species": "SPECIES_YANMEGA",
-            "name": "Yanmega",
-            "dex": 357,
-            "sprite": "sprites/pokemon/yanmega.png"
           },
           {
             "species": "SPECIES_ROTOM_FAN",
@@ -307691,7 +307691,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -308284,7 +308284,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_CHESTO_BERRY",
@@ -313716,7 +313716,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_SITRUS_BERRY",
@@ -314374,7 +314374,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_DRAGOTITE",
@@ -315117,7 +315117,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_DRAGOTITE",
@@ -315712,7 +315712,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_HEAVY_DUTY_BOOTS",
@@ -315878,7 +315878,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_HEAVY_DUTY_BOOTS",
@@ -328169,7 +328169,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_DRAGOTITE",
@@ -328443,7 +328443,7 @@
           "constant": "SPECIES_YANMEGA",
           "displayName": "Yanmega",
           "innates": [
-            "ABILITY_WIND_POWER",
+            "ABILITY_TECHNICIAN",
             "ABILITY_COMPOUND_EYES",
             "ABILITY_AERILATE"
           ],
@@ -331129,7 +331129,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_DRAGOTITE",
@@ -332260,7 +332260,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_YACHE_BERRY",
@@ -333799,7 +333799,7 @@
           "displayName": "Dragonite",
           "innates": [
             "ABILITY_MARVEL_SCALE",
-            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
           "itemConstant": "ITEM_YACHE_BERRY",
