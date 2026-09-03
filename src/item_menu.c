@@ -626,11 +626,40 @@ enum {
 static const u8 sFontColorTable[][3] = {
                             // bgColor, textColor, shadowColor
     [COLORID_NORMAL]      = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
-    [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_RED},
+    [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
     [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_GREEN},
     [COLORID_UNUSED]      = {TEXT_COLOR_DARK_GRAY,   TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
     [COLORID_TMHM_INFO]   = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_5,  TEXT_DYNAMIC_COLOR_1}
 };
+
+#define DARK_BAG_BG_COLOR RGB(5, 5, 5)
+
+static const u16 sDarkBagStandardMenuPalette[16] =
+{
+    [0] = RGB_WHITE,
+    [1] = DARK_BAG_BG_COLOR,
+    [2] = RGB_WHITE,
+    [3] = RGB(1, 1, 1),
+    [4] = RGB(28, 1, 1),
+    [5] = RGB(31, 23, 14),
+    [6] = RGB(4, 19, 1),
+    [7] = RGB(18, 30, 18),
+    [8] = RGB(6, 10, 25),
+    [9] = RGB(20, 24, 30),
+};
+
+static const u16 sDarkBagMessageBoxColors[] =
+{
+    RGB(8, 9, 11),
+    RGB(7, 8, 10),
+    RGB(6, 7, 9),
+    DARK_BAG_BG_COLOR,
+    RGB(4, 4, 5),
+};
+
+static const u16 sDarkBagTmHmTextColor = RGB_WHITE;
+static const u16 sDarkBagTmHmTextShadowColor = RGB(1, 1, 1);
+static const u16 sDarkBagTmHmIconShadowColor = RGB(8, 10, 14);
 
 static const struct WindowTemplate sDefaultBagWindows[] =
 {
@@ -1091,9 +1120,11 @@ static bool8 LoadBagMenu_Graphics(void)
         break;
     case 3:
         if (!IsWallysBag() && gSaveBlock2Ptr->playerGender != MALE)
-            LoadPalette(gBagScreenFemale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+            LoadPalette(gSaveBlock2Ptr->optionsDarkBattleUi ? gBagScreenDarkFemale_Pal : gBagScreenFemale_Pal,
+                        BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
         else
-            LoadPalette(gBagScreenMale_Pal, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+            LoadPalette(gSaveBlock2Ptr->optionsDarkBattleUi ? gBagScreenDarkMale_Pal : gBagScreenMale_Pal,
+                        BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
         gBagMenu->graphicsLoadState++;
         break;
     case 4:
@@ -3562,6 +3593,15 @@ static void LoadBagMenuTextWindows(void)
     LoadMessageBoxGfx(0, 10, BG_PLTT_ID(13));
     ListMenuLoadStdPalAt(BG_PLTT_ID(12), 1);
     LoadPalette(&gStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        LoadPalette(sDarkBagStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+        LoadPalette(sDarkBagMessageBoxColors, BG_PLTT_ID(13) + 11, sizeof(sDarkBagMessageBoxColors));
+        LoadPalette(&sDarkBagStandardMenuPalette[1], BG_PLTT_ID(14) + 14, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBagTmHmTextShadowColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_1, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBagTmHmTextColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_5, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBagTmHmIconShadowColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_6, PLTT_SIZEOF(1));
+    }
     for (i = 0; i <= WIN_POCKET_NAME; i++)
     {
         FillWindowPixelBuffer(i, PIXEL_FILL(0));

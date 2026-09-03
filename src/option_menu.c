@@ -302,7 +302,7 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
 {
     [MENUITEM_INTRO_SLIDE] = COMPOUND_STRING("Battle intro"),
     [MENUITEM_UI_ANIMATIONS] = COMPOUND_STRING("UI animations"),
-    [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING("Battle UI"),
+    [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING("Battle/Bag UI"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING("Fast weather"),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING("Surf music"),
@@ -394,10 +394,10 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
         "the pause menu. Off makes these\n"
         "interfaces appear immediately."),
     [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING(
-        "Light uses the standard HGSS\n"
-        "healthbox frames. Dark uses a\n"
-        "darker version. Shiny healthboxes\n"
-        "keep their own colors."),
+        "Light uses the standard UI. Dark\n"
+        "uses dark healthboxes and\n"
+        "and Bag screen with lighter text.\n"
+        "Shiny healthboxes are unchanged."),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING(
         "On uses a near-instant Mega\n"
         "Evolution animation. Off plays\n"

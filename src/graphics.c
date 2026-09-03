@@ -1738,6 +1738,8 @@ const u16 gBagFemalePalette[] = INCBIN_U16("graphics/bag/bag_female.gbapal");
 
 const u16 gBagScreenMale_Pal[] = INCBIN_U16("graphics/bag/menu_male.gbapal");
 const u16 gBagScreenFemale_Pal[] = INCBIN_U16("graphics/bag/menu_female.gbapal");
+const u16 gBagScreenDarkMale_Pal[] = INCBIN_U16("graphics/bag/menu_male_dark.gbapal");
+const u16 gBagScreenDarkFemale_Pal[] = INCBIN_U16("graphics/bag/menu_female_dark.gbapal");
 
 const u32 gBagScreen_Gfx[] = INCBIN_U32("graphics/bag/menu.4bpp.smol");
 const u32 gBagScreen_GfxTileMap[] = INCBIN_U32("graphics/bag/menu.bin.smolTM");

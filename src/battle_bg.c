@@ -33,6 +33,7 @@
 // .rodata
 
 #define BATTLE_MESSAGE_TEXT_PAL_NUM 12
+#define DARK_BATTLE_UI_BG_COLOR RGB(5, 5, 5)
 
 static const u16 sBattleMessageTextPalette[] =
 {
@@ -53,6 +54,20 @@ static const u16 sBattleMessageTextPalette[] =
     [14] = RGB(20, 14, 31),  // Evasiveness
     [15] = RGB(31, 31, 31),  // Textbox background
 };
+
+static const u16 sDarkBattleCommandPalette[] =
+{
+    [1]  = RGB_WHITE,
+    [6]  = RGB(1, 1, 1),
+    [8]  = RGB(18, 18, 18),
+    [10] = RGB_WHITE,
+    [14] = DARK_BATTLE_UI_BG_COLOR,
+    [15] = DARK_BATTLE_UI_BG_COLOR,
+};
+
+static const u16 sDarkBattleUiBgColor = DARK_BATTLE_UI_BG_COLOR;
+static const u16 sDarkBattleTextColor = RGB_WHITE;
+static const u16 sDarkBattleTextShadowColor = RGB(1, 1, 1);
 
 static const struct OamData sVsLetter_V_OamData =
 {
@@ -190,7 +205,7 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] =
         .tilemapTop = 35,
         .width = 14,
         .height = 4,
-        .paletteNum = 0,
+        .paletteNum = BATTLE_COMMAND_PAL_NUM,
         .baseBlock = 0x01c0,
     },
     [B_WIN_ACTION_MENU] = {
@@ -438,7 +453,7 @@ static const struct WindowTemplate sBattleArenaWindowTemplates[] =
         .tilemapTop = 35,
         .width = 14,
         .height = 4,
-        .paletteNum = 0,
+        .paletteNum = BATTLE_COMMAND_PAL_NUM,
         .baseBlock = 0x01c0,
     },
     [B_WIN_ACTION_MENU] = {
@@ -792,6 +807,20 @@ void LoadBattleMenuWindowGfx(void)
     LoadUserWindowBorderGfx(2, 0x22, BG_PLTT_ID(1));
     LoadPalette(gBattleWindowTextPalette, BG_PLTT_ID(5), PLTT_SIZE_4BPP);
     LoadPalette(sBattleMessageTextPalette, BG_PLTT_ID(BATTLE_MESSAGE_TEXT_PAL_NUM), PLTT_SIZE_4BPP);
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        LoadPalette(sDarkBattleCommandPalette, BG_PLTT_ID(BATTLE_COMMAND_PAL_NUM), PLTT_SIZE_4BPP);
+        LoadPalette(&sDarkBattleUiBgColor, BG_PLTT_ID(0) + 15, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBattleUiBgColor, BG_PLTT_ID(1) + 14, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBattleUiBgColor, BG_PLTT_ID(5) + BATTLE_WINDOW_DARK_BG_PAL_INDEX, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBattleTextColor, BG_PLTT_ID(BATTLE_MESSAGE_TEXT_PAL_NUM) + 1, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBattleTextShadowColor, BG_PLTT_ID(BATTLE_MESSAGE_TEXT_PAL_NUM) + 6, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBattleUiBgColor, BG_PLTT_ID(BATTLE_MESSAGE_TEXT_PAL_NUM) + 15, PLTT_SIZEOF(1));
+    }
+    else
+    {
+        LoadPalette(gBattleTextboxPalette, BG_PLTT_ID(BATTLE_COMMAND_PAL_NUM), PLTT_SIZE_4BPP);
+    }
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
     {
@@ -801,6 +830,14 @@ void LoadBattleMenuWindowGfx(void)
         gPlttBufferUnfaded[BG_PLTT_ID(7) + 6] = 0;
         CpuCopy16(&gPlttBufferUnfaded[BG_PLTT_ID(7) + 6], &gPlttBufferFaded[BG_PLTT_ID(7) + 6], PLTT_SIZEOF(1));
     }
+}
+
+void LoadBattleMoveDescriptionWindowGfx(void)
+{
+    LoadMessageBoxAndBorderGfx();
+
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+        LoadPalette(&sDarkBattleUiBgColor, BG_PLTT_ID(STD_WINDOW_PALETTE_NUM) + 14, PLTT_SIZEOF(1));
 }
 
 void DrawMainBattleBackground(void)
