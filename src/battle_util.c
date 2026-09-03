@@ -3981,6 +3981,10 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
          && shouldAbilityTrigger)
             effect += CommonSwitchInAbilities(battler, ABILITY_FAIRY_AURA, traitCheck, BattleScript_FairyAuraActivates);
 
+        if ((traitCheck = SearchTraits(battlerTraits, ABILITY_MALICE_AURA)) && !gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1]
+         && shouldAbilityTrigger)
+            effect += CommonSwitchInAbilities(battler, ABILITY_MALICE_AURA, traitCheck, BattleScript_MaliceAuraActivates);
+
         if ((traitCheck = SearchTraits(battlerTraits, ABILITY_AURA_BREAK)) && !gSpecialStatuses[battler].switchInTraitDone[traitCheck - 1]
          && shouldAbilityTrigger)
             effect += CommonSwitchInAbilities(battler, ABILITY_AURA_BREAK, traitCheck, BattleScript_AuraBreakActivates);
@@ -8680,7 +8684,8 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx, u32
 
     // field abilities
     if ((IsAbilityOnField(ABILITY_DARK_AURA) && moveType == TYPE_DARK)
-     || (IsAbilityOnField(ABILITY_FAIRY_AURA) && moveType == TYPE_FAIRY))
+     || (IsAbilityOnField(ABILITY_FAIRY_AURA) && moveType == TYPE_FAIRY)
+     || (IsAbilityOnField(ABILITY_MALICE_AURA) && moveType == TYPE_GHOST))
     {
         if (IsAbilityOnField(ABILITY_AURA_BREAK))
             modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));

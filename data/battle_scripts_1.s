@@ -7682,6 +7682,12 @@ BattleScript_FairyAuraActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_MaliceAuraActivates::
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_MALICEAURAENTERS
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_AuraBreakActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_AURABREAKENTERS
