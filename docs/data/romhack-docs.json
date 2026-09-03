@@ -6949,7 +6949,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_PLUS",
-        "ABILITY_LEVITATE",
+        "ABILITY_ELECTROLEVITATE",
         "ABILITY_ELECTRIC_SURGE"
       ],
       "sprite": "sprites/pokemon/raichu_alola.png",
@@ -70058,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -70067,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -70275,8 +70275,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -70284,8 +70284,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -224081,12 +224081,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_RAICHU_ALOLA",
-            "name": "Raichu",
-            "dex": 24,
-            "sprite": "sprites/pokemon/raichu_alola.png"
-          },
-          {
             "species": "SPECIES_ALAKAZAM_MEGA",
             "name": "Alakazam",
             "dex": 57,
@@ -255447,6 +255441,29 @@
             "name": "Serperior",
             "dex": 385,
             "sprite": "sprites/pokemon/serperior.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_ELECTROLEVITATE": {
+      "constant": "ABILITY_ELECTROLEVITATE",
+      "name": "Electromagnetism",
+      "description": "The Pokemon is immune to Ground-type moves and grounded entry hazards, but benefits from effects of Electric Terrain.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "electrolevitate",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_RAICHU_ALOLA",
+            "name": "Raichu",
+            "dex": 24,
+            "sprite": "sprites/pokemon/raichu_alola.png"
           }
         ]
       }
@@ -287065,7 +287082,7 @@
           "displayName": "Raichu Alola",
           "innates": [
             "ABILITY_PLUS",
-            "ABILITY_LEVITATE",
+            "ABILITY_ELECTROLEVITATE",
             "ABILITY_ELECTRIC_SURGE"
           ],
           "itemConstant": "ITEM_SITRUS_BERRY",
@@ -296805,7 +296822,7 @@
           "displayName": "Raichu Alola",
           "innates": [
             "ABILITY_PLUS",
-            "ABILITY_LEVITATE",
+            "ABILITY_ELECTROLEVITATE",
             "ABILITY_ELECTRIC_SURGE"
           ],
           "itemConstant": "",
