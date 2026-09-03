@@ -69815,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69824,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -118135,8 +118135,8 @@
       ],
       "innates": [
         "ABILITY_CURSED_BODY",
-        "ABILITY_DARK_AURA",
-        "ABILITY_GRIM_NEIGH"
+        "ABILITY_SPECTRAL_DRAIN",
+        "ABILITY_SPECTRAL"
       ],
       "sprite": "sprites/pokemon/giratina_altered.png",
       "shinySprite": "sprites/pokemon/giratina_altered_shiny.png",
@@ -118332,8 +118332,8 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_CURSED_BODY",
-        "ABILITY_DARK_AURA",
-        "ABILITY_GRIM_NEIGH"
+        "ABILITY_MALICE_AURA",
+        "ABILITY_RITUAL"
       ],
       "sprite": "sprites/pokemon/giratina_origin.png",
       "shinySprite": "sprites/pokemon/giratina_origin_shiny.png",
@@ -242638,18 +242638,6 @@
             "sprite": "sprites/pokemon/honchkrow.png"
           },
           {
-            "species": "SPECIES_GIRATINA_ALTERED",
-            "name": "Giratina",
-            "dex": 375,
-            "sprite": "sprites/pokemon/giratina_altered.png"
-          },
-          {
-            "species": "SPECIES_GIRATINA_ORIGIN",
-            "name": "Giratina",
-            "dex": 375,
-            "sprite": "sprites/pokemon/giratina_origin.png"
-          },
-          {
             "species": "SPECIES_OBSTAGOON",
             "name": "Obstagoon",
             "dex": 593,
@@ -242715,7 +242703,7 @@
     "ABILITY_AURA_BREAK": {
       "constant": "ABILITY_AURA_BREAK",
       "name": "Aura Break",
-      "description": "Reverses the effects of Dark Aura and Fairy Aura, weakening those moves instead.",
+      "description": "Reverses the effects of Dark, Fairy, and Malice Auras, weakening those moves instead.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -246315,20 +246303,7 @@
             "sprite": "sprites/pokemon/spectrier.png"
           }
         ],
-        "innate": [
-          {
-            "species": "SPECIES_GIRATINA_ALTERED",
-            "name": "Giratina",
-            "dex": 375,
-            "sprite": "sprites/pokemon/giratina_altered.png"
-          },
-          {
-            "species": "SPECIES_GIRATINA_ORIGIN",
-            "name": "Giratina",
-            "dex": 375,
-            "sprite": "sprites/pokemon/giratina_origin.png"
-          }
-        ]
+        "innate": []
       }
     },
     "ABILITY_AS_ONE_ICE_RIDER": {
@@ -252516,6 +252491,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_GIRATINA_ORIGIN",
+            "name": "Giratina",
+            "dex": 375,
+            "sprite": "sprites/pokemon/giratina_origin.png"
+          },
+          {
             "species": "SPECIES_LITWICK",
             "name": "Litwick",
             "dex": 433,
@@ -252597,6 +252578,12 @@
           }
         ],
         "innate": [
+          {
+            "species": "SPECIES_GIRATINA_ALTERED",
+            "name": "Giratina",
+            "dex": 375,
+            "sprite": "sprites/pokemon/giratina_altered.png"
+          },
           {
             "species": "SPECIES_GOLURK",
             "name": "Golurk",
@@ -253187,6 +253174,12 @@
             "name": "Froslass",
             "dex": 366,
             "sprite": "sprites/pokemon/froslass_mega.png"
+          },
+          {
+            "species": "SPECIES_GIRATINA_ALTERED",
+            "name": "Giratina",
+            "dex": 375,
+            "sprite": "sprites/pokemon/giratina_altered.png"
           },
           {
             "species": "SPECIES_YAMASK_GALAR",
@@ -255464,6 +255457,29 @@
             "name": "Raichu",
             "dex": 24,
             "sprite": "sprites/pokemon/raichu_alola.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_MALICE_AURA": {
+      "constant": "ABILITY_MALICE_AURA",
+      "name": "Malice Aura",
+      "description": "Boosts the power of all Ghost-type moves in battle by 33%.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "malice-aura",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_GIRATINA_ORIGIN",
+            "name": "Giratina",
+            "dex": 375,
+            "sprite": "sprites/pokemon/giratina_origin.png"
           }
         ]
       }
@@ -328727,8 +328743,8 @@
           "displayName": "Giratina",
           "innates": [
             "ABILITY_CURSED_BODY",
-            "ABILITY_DARK_AURA",
-            "ABILITY_GRIM_NEIGH"
+            "ABILITY_SPECTRAL_DRAIN",
+            "ABILITY_SPECTRAL"
           ],
           "itemConstant": "ITEM_GRISEOUS_ORB",
           "itemName": "Griseous Orb",
@@ -328964,8 +328980,8 @@
           "displayName": "Giratina",
           "innates": [
             "ABILITY_CURSED_BODY",
-            "ABILITY_DARK_AURA",
-            "ABILITY_GRIM_NEIGH"
+            "ABILITY_SPECTRAL_DRAIN",
+            "ABILITY_SPECTRAL"
           ],
           "itemConstant": "ITEM_GRISEOUS_ORB",
           "itemName": "Griseous Orb",
