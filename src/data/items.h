@@ -14225,7 +14225,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Steals the foe's HP\n"
             "with a kiss, healing\n"
-            "over half the damage."),
+            "half the damage."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .heldSlot = 0,

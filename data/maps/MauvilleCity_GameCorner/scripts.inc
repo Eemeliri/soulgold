@@ -1903,6 +1903,10 @@ MauvilleCity_GameCorner_EventScript_TMIceBeam::
 # 952 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 MauvilleCity_GameCorner_EventScript_ConfirmTMPrize::
 # 953 "data/maps/MauvilleCity_GameCorner/scripts.pory"
+	checkitem VAR_0x8004
+	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_GameCorner_EventScript_AlreadyHasTM
+	checkpcitem VAR_0x8004
+	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_GameCorner_EventScript_AlreadyHasTM
 	special BufferTMHMMoveName
 # 954 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 	msgbox MauvilleCity_GameCorner_Text_SoYourChoiceIsTheTMX, MSGBOX_YESNO
@@ -2059,6 +2063,11 @@ MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForTM::
 # 1030 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 	end
 # 1031 "data/maps/MauvilleCity_GameCorner/scripts.pory"
+
+MauvilleCity_GameCorner_EventScript_AlreadyHasTM::
+	msgbox MauvilleCity_GameCorner_Text_AlreadyHasTM, MSGBOX_DEFAULT
+	goto MauvilleCity_GameCorner_EventScript_ReturnToChooseTMPrize
+	end
 
 # 1032 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 MauvilleCity_GameCorner_EventScript_NotEnoughCoinsForNew::
@@ -3203,6 +3212,9 @@ MauvilleCity_GameCorner_Text_NotEnoughCoins:
 # 1602 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 	.string "You don't have enough Coins.$"
 # 1603 "data/maps/MauvilleCity_GameCorner/scripts.pory"
+
+MauvilleCity_GameCorner_Text_AlreadyHasTM:
+	.string "You already have that TM.$"
 
 # 1604 "data/maps/MauvilleCity_GameCorner/scripts.pory"
 PB_YOU_WON_TEXT:
