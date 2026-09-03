@@ -3538,7 +3538,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
         .abilities = { ABILITY_SPEED_BOOST, ABILITY_TINTED_LENS, ABILITY_FRISK },
-        .innates = { ABILITY_WIND_POWER, ABILITY_COMPOUND_EYES, ABILITY_AERILATE },
+        .innates = { ABILITY_TECHNICIAN, ABILITY_COMPOUND_EYES, ABILITY_AERILATE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Yanmega"),
         .cryId = CRY_YANMEGA,
@@ -8525,7 +8525,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
     #if P_UPDATED_ABILITIES >= GEN_7
         .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_INNER_FOCUS },
-        .innates = { ABILITY_HEATPROOF, ABILITY_PASTEL_VEIL, ABILITY_STORMRIDER },
+        .innates = { ABILITY_HEATPROOF, ABILITY_HYDRATION, ABILITY_STORMRIDER },
     #else
         .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_WATER_ABSORB },
     #endif
