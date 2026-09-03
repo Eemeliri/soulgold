@@ -2103,10 +2103,10 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_AURA_BREAK] =
     {
         .name = _("Aura Break"),
-        .description = COMPOUND_STRING("Reverse aura abilities."),
+        .description = COMPOUND_STRING("Reverses aura abilities."),
         .longDescription = COMPOUND_STRING("Reverses the effects of\n"
-                                           "Dark Aura and Fairy\n"
-                                           "Aura, weakening those\n"
+                                           "Dark, Fairy, and Malice\n"
+                                           "Auras, weakening those\n"
                                            "moves instead."),
         .aiRating = 3,
         .breakable = TRUE,
@@ -5678,5 +5678,16 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
                                            "of Electric Terrain."),
         .aiRating = 7,
         .breakable = TRUE,
+    },
+
+    [ABILITY_MALICE_AURA] =
+    {
+        .name = _("Malice Aura"),
+        .description = COMPOUND_STRING("Boosts Ghost moves."),
+        .longDescription = COMPOUND_STRING("Boosts the power of all\n"
+                                           "Ghost-type moves in\n"
+                                           "battle by 33%."),
+        .aiRating = 6,
+        .breakable = B_UPDATED_ABILITY_DATA < GEN_8,
     },
 };

@@ -313,6 +313,7 @@ extern const u8 BattleScript_ForewarnActivates[];
 extern const u8 BattleScript_PressureActivates[];
 extern const u8 BattleScript_DarkAuraActivates[];
 extern const u8 BattleScript_FairyAuraActivates[];
+extern const u8 BattleScript_MaliceAuraActivates[];
 extern const u8 BattleScript_AuraBreakActivates[];
 extern const u8 BattleScript_ComatoseActivates[];
 extern const u8 BattleScript_ScreenCleanerActivates[];

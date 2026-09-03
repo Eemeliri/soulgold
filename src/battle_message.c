@@ -1003,6 +1003,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_BOSSTRANSFORMED]                      = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed!"),
     [STRINGID_BOSSPHASESURGINGWITHPOWER]            = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is surging with power!"),
     [STRINGID_BOSSPHASETRANSFORMED]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} transformed!"),
+    [STRINGID_MALICEAURAENTERS]                     = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} is radiating a malicious aura!"),
 };
 
 const u16 gBossHealthBarBreakStringIds[] =
