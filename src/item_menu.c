@@ -620,7 +620,8 @@ enum {
     COLORID_POCKET_NAME,
     COLORID_GRAY_CURSOR,
     COLORID_UNUSED,
-    COLORID_TMHM_INFO,
+    COLORID_TMHM_INFO_LIGHT,
+    COLORID_TMHM_INFO_DARK,
     COLORID_NONE = 0xFF
 };
 static const u8 sFontColorTable[][3] = {
@@ -629,7 +630,8 @@ static const u8 sFontColorTable[][3] = {
     [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
     [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_GREEN},
     [COLORID_UNUSED]      = {TEXT_COLOR_DARK_GRAY,   TEXT_COLOR_WHITE,      TEXT_COLOR_LIGHT_GRAY},
-    [COLORID_TMHM_INFO]   = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_5,  TEXT_DYNAMIC_COLOR_1}
+    [COLORID_TMHM_INFO_LIGHT] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_5, TEXT_DYNAMIC_COLOR_1},
+    [COLORID_TMHM_INFO_DARK]  = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_6, TEXT_DYNAMIC_COLOR_5},
 };
 
 #define DARK_BAG_BG_COLOR RGB(5, 5, 5)
@@ -657,9 +659,8 @@ static const u16 sDarkBagMessageBoxColors[] =
     RGB(4, 4, 5),
 };
 
-static const u16 sDarkBagTmHmTextColor = RGB_WHITE;
-static const u16 sDarkBagTmHmTextShadowColor = RGB(1, 1, 1);
-static const u16 sDarkBagTmHmIconShadowColor = RGB(8, 10, 14);
+static const u16 sDarkBagTmHmTextAndIconColor = RGB_WHITE;
+static const u16 sDarkBagTmHmTextAndIconShadowColor = RGB(1, 1, 1);
 
 static const struct WindowTemplate sDefaultBagWindows[] =
 {
@@ -3598,9 +3599,8 @@ static void LoadBagMenuTextWindows(void)
         LoadPalette(sDarkBagStandardMenuPalette, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
         LoadPalette(sDarkBagMessageBoxColors, BG_PLTT_ID(13) + 11, sizeof(sDarkBagMessageBoxColors));
         LoadPalette(&sDarkBagStandardMenuPalette[1], BG_PLTT_ID(14) + 14, PLTT_SIZEOF(1));
-        LoadPalette(&sDarkBagTmHmTextShadowColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_1, PLTT_SIZEOF(1));
-        LoadPalette(&sDarkBagTmHmTextColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_5, PLTT_SIZEOF(1));
-        LoadPalette(&sDarkBagTmHmIconShadowColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_6, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBagTmHmTextAndIconShadowColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_5, PLTT_SIZEOF(1));
+        LoadPalette(&sDarkBagTmHmTextAndIconColor, BG_PLTT_ID(12) + TEXT_DYNAMIC_COLOR_6, PLTT_SIZEOF(1));
     }
     for (i = 0; i <= WIN_POCKET_NAME; i++)
     {
@@ -3699,6 +3699,7 @@ static void PrepareTMHMMoveWindow(void)
 static void PrintTMHMMoveData(enum Item itemId)
 {
     u8 i;
+    u8 colorId = gSaveBlock2Ptr->optionsDarkBattleUi ? COLORID_TMHM_INFO_DARK : COLORID_TMHM_INFO_LIGHT;
     enum Move move;
     const u8 *text;
 
@@ -3706,7 +3707,7 @@ static void PrintTMHMMoveData(enum Item itemId)
     if (itemId == ITEM_NONE)
     {
         for (i = 0; i < 4; i++)
-            BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, gText_ThreeDashes, 7, i * 12, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+            BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, gText_ThreeDashes, 7, i * 12, 0, 0, TEXT_SKIP_DRAW, colorId);
         CopyWindowToVram(WIN_TMHM_INFO, COPYWIN_GFX);
     }
     else
@@ -3725,7 +3726,7 @@ static void PrintTMHMMoveData(enum Item itemId)
             ConvertIntToDecimalStringN(gStringVar1, power, STR_CONV_MODE_RIGHT_ALIGN, 3);
             text = gStringVar1;
         }
-        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, text, 7, 12, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, text, 7, 12, 0, 0, TEXT_SKIP_DRAW, colorId);
 
         u32 accuracy = GetMoveAccuracy(move);
         // Print TMHM accuracy
@@ -3738,11 +3739,11 @@ static void PrintTMHMMoveData(enum Item itemId)
             ConvertIntToDecimalStringN(gStringVar1, accuracy, STR_CONV_MODE_RIGHT_ALIGN, 3);
             text = gStringVar1;
         }
-        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, text, 7, 24, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, text, 7, 24, 0, 0, TEXT_SKIP_DRAW, colorId);
 
         // Print TMHM pp
         ConvertIntToDecimalStringN(gStringVar1, GetMovePP(move), STR_CONV_MODE_RIGHT_ALIGN, 3);
-        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, gStringVar1, 7, 36, 0, 0, TEXT_SKIP_DRAW, COLORID_TMHM_INFO);
+        BagMenu_Print(WIN_TMHM_INFO, FONT_NORMAL, gStringVar1, 7, 36, 0, 0, TEXT_SKIP_DRAW, colorId);
 
         CopyWindowToVram(WIN_TMHM_INFO, COPYWIN_GFX);
     }

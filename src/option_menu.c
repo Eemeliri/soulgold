@@ -395,8 +395,8 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
         "interfaces appear immediately."),
     [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING(
         "Light uses the standard UI. Dark\n"
-        "uses dark healthboxes and\n"
-        "and Bag screen with lighter text.\n"
+        "uses dark healthboxes, battle\n"
+        "menus, and Bag screens.\n"
         "Shiny healthboxes are unchanged."),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING(
         "On uses a near-instant Mega\n"
