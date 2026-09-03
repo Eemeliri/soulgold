@@ -255,7 +255,8 @@ static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)
     reflectionSprite->y2 = -mainSprite->y2;
     reflectionSprite->coordOffsetEnabled = mainSprite->coordOffsetEnabled;
 
-    if (objectEvent->hideReflection == TRUE)
+    if (objectEvent->hideReflection == TRUE
+     || !MetatileBehavior_IsReflective(MapGridGetMetatileBehaviorAt(objectEvent->currentCoords.x, objectEvent->currentCoords.y + 1)))
         reflectionSprite->invisible = TRUE;
 
     // Support "virtual" sprites which can't be rotated via affines
