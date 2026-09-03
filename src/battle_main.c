@@ -6207,7 +6207,7 @@ static bool32 IsPartyMonGrounded(struct Pokemon *mon)
         return TRUE;
     if (PartyMonHasHeldItemEffect(mon, HOLD_EFFECT_AIR_BALLOON))
         return FALSE;
-    if (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
+    if (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ELECTROLEVITATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
         return FALSE;
     if (GetSpeciesType(species, 0) == TYPE_FLYING || GetSpeciesType(species, 1) == TYPE_FLYING)
         return FALSE;
@@ -6490,7 +6490,8 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
         {
             bool32 terrainAffected = state == MON_IN_BATTLE
                                    ? IsAnyTerrainAffected(battler, gFieldStatuses)
-                                   : (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY) && IsPartyMonGrounded(mon);
+                                   : (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY) && (IsPartyMonGrounded(mon)
+                                      || (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && MonHasTrait(mon, ABILITY_ELECTROLEVITATE)));
 
             if (terrainAffected)
             {

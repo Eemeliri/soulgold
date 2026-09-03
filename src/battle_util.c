@@ -6910,12 +6910,19 @@ bool32 IsAnyTerrainAffected(enum BattlerId battler, u32 fieldStatuses)
 
 bool32 IsBattlerTerrainAffected(enum BattlerId battler, u32 fieldStatus, u32 terrainFlag)
 {
+    bool32 hasElectrolevitate;
+
     if (!(fieldStatus & terrainFlag))
         return FALSE;
     if (IsSemiInvulnerable(battler, CHECK_ALL))
         return FALSE;
 
-    return IsBattlerGrounded(battler);
+    hasElectrolevitate = fieldStatus & terrainFlag & STATUS_FIELD_ELECTRIC_TERRAIN
+                      && (gAiLogicData->aiCalcInProgress
+                        ? AI_BATTLER_HAS_TRAIT(battler, ABILITY_ELECTROLEVITATE)
+                        : BattlerHasTrait(battler, ABILITY_ELECTROLEVITATE));
+
+    return IsBattlerGrounded(battler) || hasElectrolevitate;
 }
 
 enum Stat GetHighestStatId(enum BattlerId battler)
@@ -7873,8 +7880,8 @@ bool32 IsBattlerGrounded(enum BattlerId battler)
 
     // Regular ability check split out here as the AI switching logic uses battle context to figure out the Ability instead. (Multi)
     hasLevitate = gAiLogicData->aiCalcInProgress
-                ? (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
-                : (BattlerHasTrait(battler, ABILITY_LEVITATE) || BattlerHasTrait(battler, ABILITY_EELEVATE) || BattlerHasTrait(battler, ABILITY_ALLSEEING_IDOL));
+                ? (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ELECTROLEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
+                : (BattlerHasTrait(battler, ABILITY_LEVITATE) || BattlerHasTrait(battler, ABILITY_EELEVATE) || BattlerHasTrait(battler, ABILITY_ELECTROLEVITATE) || BattlerHasTrait(battler, ABILITY_ALLSEEING_IDOL));
     ignoresGravity = gAiLogicData->aiCalcInProgress
                    ? AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL)
                    : BattlerHasTrait(battler, ABILITY_ALLSEEING_IDOL);
@@ -10764,6 +10771,8 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
         levitatingAbility = ABILITY_LEVITATE;
     else if (SearchTraits(battlerTraits, ABILITY_EELEVATE))
         levitatingAbility = ABILITY_EELEVATE;
+    else if (SearchTraits(battlerTraits, ABILITY_ELECTROLEVITATE))
+        levitatingAbility = ABILITY_ELECTROLEVITATE;
     else if (SearchTraits(battlerTraits, ABILITY_ALLSEEING_IDOL))
         levitatingAbility = ABILITY_ALLSEEING_IDOL;
 
@@ -10870,7 +10879,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
         && ctx->moveType == TYPE_GROUND
         && BattlerHasHeldItemEffect(ctx->battlerDef, HOLD_EFFECT_IRON_BALL, TRUE)
         && IS_BATTLER_OF_TYPE(ctx->battlerDef, TYPE_FLYING)
-        && !IsBattlerGroundedInverseCheck(ctx->battlerDef, NOT_INVERSE_BATTLE, FALSE, BattlerHasTrait(ctx->battlerDef, ABILITY_LEVITATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_EELEVATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_ALLSEEING_IDOL), BattlerHasTrait(ctx->battlerDef, ABILITY_ALLSEEING_IDOL), TRUE) // We want to ignore Iron Ball so skip item check // We want to ignore Iron Ball so skip item check
+        && !IsBattlerGroundedInverseCheck(ctx->battlerDef, NOT_INVERSE_BATTLE, FALSE, BattlerHasTrait(ctx->battlerDef, ABILITY_LEVITATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_EELEVATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_ELECTROLEVITATE) || BattlerHasTrait(ctx->battlerDef, ABILITY_ALLSEEING_IDOL), BattlerHasTrait(ctx->battlerDef, ABILITY_ALLSEEING_IDOL), TRUE) // We want to ignore Iron Ball so skip item check // We want to ignore Iron Ball so skip item check
         && !FlagGet(B_FLAG_INVERSE_BATTLE))
     {
         modifier = UQ_4_12(1.0);
@@ -11019,7 +11028,7 @@ uq4_12_t CalcPartyMonTypeEffectivenessMultiplier(enum Move move, u16 speciesDef,
         if (mon != NULL)
         {
             if (ctx.moveType == TYPE_GROUND
-             && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
+             && (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ELECTROLEVITATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
              && (!(gFieldStatuses & STATUS_FIELD_GRAVITY) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL)))
                 modifier = UQ_4_12(0.0);
             if (MonHasTrait(mon, ABILITY_WONDER_GUARD) && modifier <= UQ_4_12(1.0) && GetMovePower(move) != 0)
@@ -12454,7 +12463,7 @@ bool32 CanMonParticipateInSkyBattle(struct Pokemon *mon)
 {
     u32 species = GetMonData(mon, MON_DATA_SPECIES);
 
-    bool32 hasLevitateAbility = (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL));
+    bool32 hasLevitateAbility = (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ELECTROLEVITATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL));
     bool32 isFlyingType = GetSpeciesType(species, 0) == TYPE_FLYING || GetSpeciesType(species, 1) == TYPE_FLYING;
     bool32 monIsValidAndNotEgg = GetMonData(mon, MON_DATA_SANITY_HAS_SPECIES) && !GetMonData(mon, MON_DATA_IS_EGG);
 
