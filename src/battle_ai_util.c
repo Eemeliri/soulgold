@@ -81,7 +81,7 @@ bool32 AI_IsBattlerGrounded(enum BattlerId battler)
         return FALSE;
     if (Ai_BattlerHasHoldEffect(battler, HOLD_EFFECT_AIR_BALLOON, gAiLogicData))
         return FALSE;
-    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
+    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ELECTROLEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
         return FALSE;
     if (IS_BATTLER_OF_TYPE(battler, TYPE_FLYING) && !FlagGet(B_FLAG_INVERSE_BATTLE))
         return FALSE;

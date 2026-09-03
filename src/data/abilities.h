@@ -5666,4 +5666,17 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 8,
         .breakable = TRUE,
     },
+
+    [ABILITY_ELECTROLEVITATE] =
+    {
+        .name = _("Electromagnetism"),
+        .description = COMPOUND_STRING("Avoids Ground-moves."),
+        .longDescription = COMPOUND_STRING("The Pokemon is immune\n"
+                                           "to Ground-type moves and\n"
+                                           "grounded entry hazards,\n"
+                                           "but benefits from effects\n"
+                                           "of Electric Terrain."),
+        .aiRating = 7,
+        .breakable = TRUE,
+    },
 };
