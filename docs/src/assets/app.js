@@ -481,7 +481,15 @@ function bindEvents() {
     link.addEventListener("click", (event) => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
-      setTab(link.dataset.tab);
+      const pressedAt = Number(link.dataset.touchPressedAt);
+      const remainingPressTime = Number.isFinite(pressedAt)
+        ? Math.max(0, 90 - (performance.now() - pressedAt))
+        : 0;
+      if (remainingPressTime > 0) {
+        window.setTimeout(() => setTab(link.dataset.tab), remainingPressTime);
+      } else {
+        setTab(link.dataset.tab);
+      }
     });
   });
   if (!mobileNavController) {

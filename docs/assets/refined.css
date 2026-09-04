@@ -3969,10 +3969,20 @@ dialog::backdrop {
     border-bottom: 1px solid #43534f;
     background: transparent;
     color: #e0e4df;
+    touch-action: manipulation;
   }
 
   .tab:hover {
     background: #33443f;
+  }
+
+  #sectionNav .tab.touch-pressed,
+  #sectionNav .tab:active {
+    background: #465a54;
+    box-shadow: inset 4px 0 var(--gold);
+    color: #fffaf0;
+    transform: translateX(2px);
+    transition: none;
   }
 
   .tab.active {

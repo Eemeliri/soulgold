@@ -6,8 +6,8 @@
     <base href="../">
     <title>Soulgold Documentation</title>
     <meta name="theme-color" content="#263532">
-    <link rel="stylesheet" href="assets/styles.css?v=20260904-5">
-    <link rel="stylesheet" href="assets/refined.css?v=20260904-5">
+    <link rel="stylesheet" href="assets/styles.css?v=20260904-6">
+    <link rel="stylesheet" href="assets/refined.css?v=20260904-6">
   </head>
   <body>
     <div class="top-chrome">
@@ -54,6 +54,23 @@
           if (!nav || !toggle || !closeButton || !backdrop) return;
           let ignoreClickUntil = 0;
           let protectToggleUntil = Number.POSITIVE_INFINITY;
+          const minimumTabPressMs = 90;
+
+          function pressTab(link) {
+            link.classList.add("touch-pressed");
+            link.dataset.touchPressedAt = String(performance.now());
+          }
+
+          function releasePressedTabs() {
+            nav.querySelectorAll(".tab.touch-pressed").forEach((link) => {
+              const pressedAt = Number(link.dataset.touchPressedAt) || performance.now();
+              const delay = Math.max(0, minimumTabPressMs - (performance.now() - pressedAt));
+              window.setTimeout(() => {
+                link.classList.remove("touch-pressed");
+                delete link.dataset.touchPressedAt;
+              }, delay);
+            });
+          }
 
           function open() {
             if (!media.matches) return;
@@ -98,6 +115,13 @@
             open();
           });
           closeButton.addEventListener("click", () => close({ restoreFocus: true }));
+          nav.addEventListener("pointerdown", (event) => {
+            if (event.pointerType === "mouse") return;
+            const link = event.target.closest(".tab");
+            if (link) pressTab(link);
+          });
+          nav.addEventListener("pointerup", releasePressedTabs);
+          nav.addEventListener("pointercancel", releasePressedTabs);
           backdrop.addEventListener("click", (event) => {
             const bounds = toggle.getBoundingClientRect();
             const repeatedToggleTap = performance.now() < protectToggleUntil
@@ -208,6 +232,6 @@
     </div>
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script src="assets/app.js?v=20260904-5"></script>
+    <script src="assets/app.js?v=20260904-6"></script>
   </body>
 </html>
