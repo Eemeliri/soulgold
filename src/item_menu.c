@@ -59,6 +59,9 @@
 
 #define TAG_POCKET_SCROLL_ARROW 110
 #define TAG_BAG_SCROLL_ARROW    111
+#define DARK_BAG_POCKET_INDICATOR_INACTIVE_PAL 10
+#define DARK_BAG_POCKET_INDICATOR_ACTIVE_PAL   11
+#define BAG_HM_ICON_GFX_SIZE                    (16 * 16 / 2)
 // Immune to blending; doesn't conflict with tags in event_object_movement
 #define PAL_TAG_KEY_ITEM_WHEEL  0x9000
 
@@ -146,6 +149,7 @@ static void PrintPocketNames(const u8 *, const u8 *);
 static void CopyPocketNameToWindow(u32);
 static void DrawPocketIndicatorSquare(u8, bool8);
 static void DrawPocketIndicatorSquares(u8);
+static void PrepareDarkBagHmIconGfx(void);
 static void CreatePocketScrollArrowPair(void);
 static void CreatePocketSwitchArrowPair(void);
 static void DestroyPocketSwitchArrowPair(void);
@@ -662,6 +666,25 @@ static const u16 sDarkBagMessageBoxColors[] =
 static const u16 sDarkBagTmHmTextAndIconColor = RGB_WHITE;
 static const u16 sDarkBagTmHmTextAndIconShadowColor = RGB(1, 1, 1);
 
+static const u16 sDarkBagPocketArrowPalette[16] =
+{
+    [1] = RGB(31, 31, 25),
+    [2] = RGB(29, 25, 16),
+};
+
+static const u16 sDarkBagPocketIndicatorInactivePalette[16] =
+{
+    [0] = DARK_BAG_BG_COLOR,
+    [9] = RGB(14, 14, 14),
+};
+
+static const u16 sDarkBagPocketIndicatorActivePalette[16] =
+{
+    [0] = DARK_BAG_BG_COLOR,
+    [1] = RGB_WHITE,
+    [9] = RGB(31, 25, 10),
+};
+
 static const struct WindowTemplate sDefaultBagWindows[] =
 {
     [WIN_ITEM_LIST] = {
@@ -821,6 +844,7 @@ static EWRAM_DATA struct ListBuffer1 *sListBuffer1 = 0;
 static EWRAM_DATA struct ListBuffer2 *sListBuffer2 = 0;
 EWRAM_DATA u16 gSpecialVar_ItemId = 0;
 static EWRAM_DATA struct TempWallyBag *sTempWallyBag = 0;
+static EWRAM_DATA u8 sDarkBagHmIconGfx[BAG_HM_ICON_GFX_SIZE] = {0};
 #if TESTING
 static EWRAM_DATA bool8 sSkipTossItemVisualsForTest = FALSE;
 #endif
@@ -1126,6 +1150,12 @@ static bool8 LoadBagMenu_Graphics(void)
         else
             LoadPalette(gSaveBlock2Ptr->optionsDarkBattleUi ? gBagScreenDarkMale_Pal : gBagScreenMale_Pal,
                         BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
+        if (gSaveBlock2Ptr->optionsDarkBattleUi)
+        {
+            LoadPalette(sDarkBagPocketIndicatorInactivePalette, BG_PLTT_ID(DARK_BAG_POCKET_INDICATOR_INACTIVE_PAL), PLTT_SIZE_4BPP);
+            LoadPalette(sDarkBagPocketIndicatorActivePalette, BG_PLTT_ID(DARK_BAG_POCKET_INDICATOR_ACTIVE_PAL), PLTT_SIZE_4BPP);
+            PrepareDarkBagHmIconGfx();
+        }
         gBagMenu->graphicsLoadState++;
         break;
     case 4:
@@ -1276,7 +1306,11 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 
         // Draw HM icon
         if (gBagPosition.pocket == POCKET_TM_HM && GetItemTMHMIndex(itemSlot.itemId) > NUM_TECHNICAL_MACHINES)
-            BlitBitmapToWindow(windowId, gBagMenuHMIcon_Gfx, 8, y - 1, 16, 16);
+        {
+            const u8 *iconGfx = gSaveBlock2Ptr->optionsDarkBattleUi ? sDarkBagHmIconGfx : gBagMenuHMIcon_Gfx;
+
+            BlitBitmapToWindow(windowId, iconGfx, 8, y - 1, 16, 16);
+        }
 
         if (gBagPosition.pocket != POCKET_KEY_ITEMS
          && GetItemImportance(itemSlot.itemId) == FALSE
@@ -1355,7 +1389,16 @@ void BagDestroyPocketScrollArrowPair(void)
 static void CreatePocketSwitchArrowPair(void)
 {
     if (gBagMenu->pocketSwitchDisabled != TRUE && gBagMenu->pocketSwitchArrowsTask == TASK_NONE)
+    {
         gBagMenu->pocketSwitchArrowsTask = AddScrollIndicatorArrowPair(&sBagScrollArrowsTemplate, &gBagPosition.pocketSwitchArrowPos);
+        if (gSaveBlock2Ptr->optionsDarkBattleUi)
+        {
+            u32 paletteNum = IndexOfSpritePaletteTag(TAG_BAG_SCROLL_ARROW);
+
+            if (paletteNum != SPRITE_NONE)
+                LoadPalette(sDarkBagPocketArrowPalette, OBJ_PLTT_ID(paletteNum), PLTT_SIZE_4BPP);
+        }
+    }
 }
 
 static void DestroyPocketSwitchArrowPair(void)
@@ -1792,14 +1835,34 @@ static void DrawItemListBgRow(u8 y)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+static void PrepareDarkBagHmIconGfx(void)
+{
+    u32 i;
+
+    for (i = 0; i < BAG_HM_ICON_GFX_SIZE; i++)
+    {
+        u8 pixels = gBagMenuHMIcon_Gfx[i];
+
+        if ((pixels & 0xF) == TEXT_COLOR_WHITE)
+            pixels = (pixels & 0xF0) | TEXT_COLOR_DARK_GRAY;
+        if ((pixels >> 4) == TEXT_COLOR_WHITE)
+            pixels = (pixels & 0xF) | (TEXT_COLOR_DARK_GRAY << 4);
+        sDarkBagHmIconGfx[i] = pixels;
+    }
+}
+
 static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket)
 {
     static const u8 sPocketIndicatorXOffset = 4;
+    u8 palette = 0;
+
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+        palette = isCurrentPocket ? DARK_BAG_POCKET_INDICATOR_ACTIVE_PAL : DARK_BAG_POCKET_INDICATOR_INACTIVE_PAL;
 
     if (!isCurrentPocket)
-        FillBgTilemapBufferRect(2, 0x100C, x + sPocketIndicatorXOffset, 3, 1, 1, 0);
+        FillBgTilemapBufferRect(2, 0xC, x + sPocketIndicatorXOffset, 3, 1, 1, palette);
     else
-        FillBgTilemapBufferRect(2, 0x1034, x + sPocketIndicatorXOffset, 3, 1, 1, 0);
+        FillBgTilemapBufferRect(2, 0x34, x + sPocketIndicatorXOffset, 3, 1, 1, palette);
     ScheduleBgCopyTilemapToVram(2);
 }
 
