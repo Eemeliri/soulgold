@@ -69815,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69824,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -70058,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70067,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -173279,7 +173279,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_ACIDIC",
-        "ABILITY_POISON_TOUCH",
+        "ABILITY_CORROSION",
         "ABILITY_LIQUID_OOZE"
       ],
       "sprite": "sprites/pokemon/naganadel.png",
@@ -238839,12 +238839,6 @@
             "sprite": "sprites/pokemon/toxapex.png"
           },
           {
-            "species": "SPECIES_NAGANADEL",
-            "name": "Naganadel",
-            "dex": 563,
-            "sprite": "sprites/pokemon/naganadel.png"
-          },
-          {
             "species": "SPECIES_TOXTRICITY_AMPED",
             "name": "Toxtricity",
             "dex": 585,
@@ -244124,6 +244118,12 @@
             "name": "Slowking",
             "dex": 174,
             "sprite": "sprites/pokemon/slowking_galar.png"
+          },
+          {
+            "species": "SPECIES_NAGANADEL",
+            "name": "Naganadel",
+            "dex": 563,
+            "sprite": "sprites/pokemon/naganadel.png"
           },
           {
             "species": "SPECIES_GLIMMORA_MEGA",
