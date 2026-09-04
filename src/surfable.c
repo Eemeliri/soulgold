@@ -226,12 +226,10 @@ static void CreateOverlaySprite(void)
 static void UpdateSurfMonOverlay(struct Sprite *sprite)
 {
     struct ObjectEvent *playerObj;
-    struct Sprite *playerSprite;
     struct Sprite *surfSprite;
     u8 subpriority;
 
     playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
-    playerSprite = &gSprites[playerObj->spriteId];
     surfSprite = &gSprites[playerObj->fieldEffectSpriteId];
 
     SynchronizeSurfAnim(playerObj, sprite);
@@ -242,10 +240,11 @@ static void UpdateSurfMonOverlay(struct Sprite *sprite)
     subpriority = gSprites[gPlayerAvatar.spriteId].subpriority - 1;
     sprite->subpriority = subpriority;
 
-    sprite->x = playerSprite->x;
-    sprite->y = playerSprite->y + 8;
+    sprite->x = surfSprite->x;
+    sprite->y = surfSprite->y;
     sprite->x2 = surfSprite->x2;
     sprite->y2 = surfSprite->y2;
+    sprite->oam.priority = surfSprite->oam.priority;
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING))
         DestroySprite(sprite);
