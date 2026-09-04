@@ -70058,8 +70058,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70067,8 +70067,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -191402,7 +191402,7 @@
       "innates": [
         "ABILITY_SUPER_LUCK",
         "ABILITY_LEAF_GUARD",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_teal.png",
       "shinySprite": "sprites/pokemon/ogerpon_teal_shiny.png",
@@ -191587,7 +191587,7 @@
       "innates": [
         "ABILITY_WATER_VEIL",
         "ABILITY_MENDING",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_wellspring.png",
       "shinySprite": "sprites/pokemon/ogerpon_wellspring_shiny.png",
@@ -191762,7 +191762,7 @@
       "innates": [
         "ABILITY_FLASH_FIRE",
         "ABILITY_BLAZING_SUN",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_hearthflame.png",
       "shinySprite": "sprites/pokemon/ogerpon_hearthflame_shiny.png",
@@ -191937,7 +191937,7 @@
       "innates": [
         "ABILITY_ROCK_HEAD",
         "ABILITY_STONE_FACE",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_cornerstone.png",
       "shinySprite": "sprites/pokemon/ogerpon_cornerstone_shiny.png",
@@ -192113,7 +192113,7 @@
       "innates": [
         "ABILITY_DEFIANT",
         "ABILITY_LEAF_GUARD",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_teal_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_teal_tera_shiny.png",
@@ -192289,7 +192289,7 @@
       "innates": [
         "ABILITY_WATER_VEIL",
         "ABILITY_MENDING",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_wellspring_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_wellspring_tera_shiny.png",
@@ -192465,7 +192465,7 @@
       "innates": [
         "ABILITY_FLASH_FIRE",
         "ABILITY_BRIMSTONE",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_hearthflame_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_hearthflame_tera_shiny.png",
@@ -192641,7 +192641,7 @@
       "innates": [
         "ABILITY_ROCK_HEAD",
         "ABILITY_STONE_FACE",
-        "ABILITY_SHEER_FORCE"
+        "ABILITY_OGRE_FORCE"
       ],
       "sprite": "sprites/pokemon/ogerpon_cornerstone_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_cornerstone_tera_shiny.png",
@@ -236719,54 +236719,6 @@
             "name": "Haxorus",
             "dex": 438,
             "sprite": "sprites/pokemon/haxorus.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_TEAL",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_teal.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_WELLSPRING",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_wellspring.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_HEARTHFLAME",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_hearthflame.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_CORNERSTONE",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_cornerstone.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_TEAL_TERA",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_teal_tera.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_WELLSPRING_TERA",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_wellspring_tera.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_HEARTHFLAME_TERA",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_hearthflame_tera.png"
-          },
-          {
-            "species": "SPECIES_OGERPON_CORNERSTONE_TERA",
-            "name": "Ogerpon",
-            "dex": 694,
-            "sprite": "sprites/pokemon/ogerpon_cornerstone_tera.png"
           }
         ]
       }
@@ -255480,6 +255432,71 @@
             "name": "Giratina",
             "dex": 375,
             "sprite": "sprites/pokemon/giratina_origin.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_OGRE_FORCE": {
+      "constant": "ABILITY_OGRE_FORCE",
+      "name": "Ogre Force",
+      "description": "Moves with added effects deal 15% more damage.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "ogre-force",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_OGERPON_TEAL",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_teal.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_WELLSPRING",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_wellspring.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_HEARTHFLAME",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_hearthflame.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_CORNERSTONE",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_cornerstone.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_TEAL_TERA",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_teal_tera.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_WELLSPRING_TERA",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_wellspring_tera.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_HEARTHFLAME_TERA",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_hearthflame_tera.png"
+          },
+          {
+            "species": "SPECIES_OGERPON_CORNERSTONE_TERA",
+            "name": "Ogerpon",
+            "dex": 694,
+            "sprite": "sprites/pokemon/ogerpon_cornerstone_tera.png"
           }
         ]
       }
