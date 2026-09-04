@@ -5690,4 +5690,13 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .aiRating = 6,
         .breakable = B_UPDATED_ABILITY_DATA < GEN_8,
     },
+
+    [ABILITY_OGRE_FORCE] =
+    {
+        .name = _("Ogre Force"),
+        .description = COMPOUND_STRING("Boosts moves with effects."),
+        .longDescription = COMPOUND_STRING("Moves with added effects\n"
+                                           "deal 15% more damage."),
+        .aiRating = 7,
+    },
 };

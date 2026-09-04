@@ -8594,6 +8594,8 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx, u32
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
     if (SearchTraits(battlerTraits, ABILITY_SHEER_FORCE) && MoveIsAffectedBySheerForce(move))
         {modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));}
+    if (SearchTraits(battlerTraits, ABILITY_OGRE_FORCE) && MoveIsAffectedBySheerForce(move))
+        modifier = uq4_12_multiply(modifier, UQ_4_12(1.15));
     if (SearchTraits(battlerTraits, ABILITY_SAND_FORCE) && (moveType == TYPE_STEEL || moveType == TYPE_ROCK || moveType == TYPE_GROUND)
         && ctx->weather & B_WEATHER_SANDSTORM)
         modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
