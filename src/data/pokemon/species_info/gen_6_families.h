@@ -554,6 +554,17 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Delphox)
         SHADOW(-1, 18, SHADOW_SIZE_L)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_DelphoxMega,
+            SIZE_32x32,
+            SHADOW_SIZE_L,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_DelphoxMega,
+            gShinyOverworldPalette_DelphoxMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sDelphoxLevelUpLearnset,
         .teachableLearnset = sDelphoxTeachableLearnset,

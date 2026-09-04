@@ -849,6 +849,7 @@ static void FadeToBlockStackerScreen(u8 taskId)
     case 1:
         if (!gPaletteFade.active)
         {
+            CleanupOverworldWindowsAndTilemaps();
             SetMainCallback2(InitBlockStackerScreen);
             DestroyTask(taskId);
         }
@@ -2036,6 +2037,8 @@ static void ExitBlockStacker(void)
 {
     if (!gPaletteFade.active)
     {
+        Free(GetBgTilemapBuffer(BLOCKSTACKER_BG));
+        UnsetBgTilemapBuffer(BLOCKSTACKER_BG);
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         FREE_AND_SET_NULL(sBlockStacker);
     }
@@ -2291,6 +2294,8 @@ static void BlockStackerMain(u8 taskId)
 static void InitBlockStackerScreen(void)
 {    
     SetVBlankCallback(NULL);
+    DeactivateAllTextPrinters();
+    ResetTasks();
     ResetAllBgsCoordinates();
     ResetVramOamAndBgCntRegs();
     ResetBgsAndClearDma3BusyFlags(0);

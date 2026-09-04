@@ -3282,6 +3282,9 @@ $(POKEMONGFXDIR)/braixen/overworld.4bpp: %.4bpp: %.png
 $(POKEMONGFXDIR)/delphox/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(POKEMONGFXDIR)/delphox/mega/overworld.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(POKEMONGFXDIR)/froakie/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 

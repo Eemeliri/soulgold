@@ -73,6 +73,7 @@ The hack is currently in Beta.
 - jcferggy for colored Johto Badges
 - Gridiron for Bag sprites
 - Young-Dante for some trainer sprites
+- [camiloveso](https://www.deviantart.com/camiloveso/art/1276413751?action=published) for mega delphox ow sprites
 - LibertyTwins, princess-phoenix, carchagui, aveontrainer, WesleyFG, kWharever, worldslayer608, knizz for battle backgrounds
 - [Pret and everyone involved](https://github.com/pret/pokeemerald) for the original emerald decompilation
 - [agsmgmaster64](https://github.com/agsmgmaster64/worldlinkdeluxe-ame) Game corner expansion port

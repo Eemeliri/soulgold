@@ -751,6 +751,7 @@ static void FadeToFlappyBirdScreen(u8 taskId)
     case 1:
         if (!gPaletteFade.active)
         {
+            CleanupOverworldWindowsAndTilemaps();
             SetMainCallback2(InitFlappyBirdScreen);
             DestroyTask(taskId);
         }
@@ -778,6 +779,12 @@ static void ExitFlappyBird(void)
 {
     if (!gPaletteFade.active)
     {
+        Free(GetBgTilemapBuffer(FlappyBird_BG));
+        UnsetBgTilemapBuffer(FlappyBird_BG);
+        Free(GetBgTilemapBuffer(FlappyBird_FG));
+        UnsetBgTilemapBuffer(FlappyBird_FG);
+        Free(GetBgTilemapBuffer(Arcade_BG));
+        UnsetBgTilemapBuffer(Arcade_BG);
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         FREE_AND_SET_NULL(sFlappy);
     }
@@ -1743,6 +1750,8 @@ static void FlappyBirdMain(u8 taskId)
 static void InitFlappyBirdScreen(void)
 {
     SetVBlankCallback(NULL);
+    DeactivateAllTextPrinters();
+    ResetTasks();
     ResetAllBgsCoordinates();
     ResetVramOamAndBgCntRegs();
     ResetBgsAndClearDma3BusyFlags(0);
