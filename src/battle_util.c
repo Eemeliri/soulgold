@@ -8685,7 +8685,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx, u32
     // field abilities
     if ((IsAbilityOnField(ABILITY_DARK_AURA) && moveType == TYPE_DARK)
      || (IsAbilityOnField(ABILITY_FAIRY_AURA) && moveType == TYPE_FAIRY)
-     || (IsAbilityOnField(ABILITY_MALICE_AURA) && moveType == TYPE_GHOST))
+     || (moveType == TYPE_GHOST && IsAbilityOnField(ABILITY_MALICE_AURA)))
     {
         if (IsAbilityOnField(ABILITY_AURA_BREAK))
             modifier = uq4_12_multiply(modifier, UQ_4_12(0.75));

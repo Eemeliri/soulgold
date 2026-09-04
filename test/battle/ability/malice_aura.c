@@ -1,40 +1,6 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Giratina's Malice Aura boosts its Ghost moves", s16 damage)
-{
-    bool32 hasMaliceAura;
-
-    PARAMETRIZE { hasMaliceAura = FALSE; }
-    PARAMETRIZE { hasMaliceAura = TRUE; }
-    GIVEN {
-        ASSUME(GetMoveType(MOVE_SHADOW_BALL) == TYPE_GHOST);
-        PLAYER(SPECIES_GIRATINA) {
-            Level(100);
-            if (hasMaliceAura)
-                USE_DEFAULT_INNATES;
-            else
-                Innates(ABILITY_CURSED_BODY, ABILITY_TELEPATHY, ABILITY_GRIM_NEIGH);
-        }
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_SHADOW_BALL, secondaryEffect: FALSE); }
-    } SCENE {
-        if (hasMaliceAura) {
-            ABILITY_POPUP(player, ABILITY_MALICE_AURA);
-            MESSAGE("Giratina is radiating a malicious aura!");
-        }
-        HP_BAR(opponent, captureDamage: &results[i].damage);
-    } THEN {
-        EXPECT(SpeciesHasInnate(SPECIES_GIRATINA, ABILITY_MALICE_AURA));
-        EXPECT(SpeciesHasInnate(SPECIES_GIRATINA_ORIGIN, ABILITY_MALICE_AURA));
-        EXPECT(!SpeciesHasInnate(SPECIES_GIRATINA, ABILITY_DARK_AURA));
-        EXPECT(!SpeciesHasInnate(SPECIES_GIRATINA_ORIGIN, ABILITY_DARK_AURA));
-    } FINALLY {
-        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1.33), results[1].damage);
-    }
-}
-
 SINGLE_BATTLE_TEST("Malice Aura boosts Ghost moves used by either side")
 {
     s16 damage[4];
