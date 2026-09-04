@@ -4395,7 +4395,7 @@ dialog::backdrop {
 /* Combined Pokédex type filter and stat sorting */
 .type-filter-panel {
   width: min(360px, calc(100vw - 24px));
-  max-height: min(620px, calc(100dvh - 72px));
+  max-height: min(620px, calc(100dvh - var(--top-chrome-height) - 68px));
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -4446,6 +4446,19 @@ dialog::backdrop {
   gap: 5px;
 }
 
+.type-match-mode {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.type-filter-note {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
 .type-filter-subtitle {
   margin: 9px 0 5px;
   color: var(--muted);
@@ -4469,6 +4482,7 @@ dialog::backdrop {
 }
 
 .dex-category-chip,
+.dex-preset-chip,
 .dex-sort-chip,
 .dex-sort-direction-chip {
   min-width: 0;
@@ -4483,7 +4497,12 @@ dialog::backdrop {
   font-weight: 700;
 }
 
+.dex-preset-chip {
+  width: 100%;
+}
+
 .dex-category-chip:hover,
+.dex-preset-chip:hover,
 .dex-sort-chip:hover,
 .dex-sort-direction-chip:hover,
 .type-filter-clear:hover {
@@ -4493,6 +4512,7 @@ dialog::backdrop {
 }
 
 .dex-category-chip.active,
+.dex-preset-chip.active,
 .dex-sort-chip.active,
 .dex-sort-direction-chip.active {
   border-color: #9e7343;
@@ -4514,6 +4534,7 @@ dialog::backdrop {
 }
 
 :root[data-theme="dark"] .dex-category-chip,
+:root[data-theme="dark"] .dex-preset-chip,
 :root[data-theme="dark"] .dex-sort-chip,
 :root[data-theme="dark"] .dex-sort-direction-chip {
   border-color: #59625c;
@@ -4522,6 +4543,7 @@ dialog::backdrop {
 }
 
 :root[data-theme="dark"] .dex-category-chip:hover,
+:root[data-theme="dark"] .dex-preset-chip:hover,
 :root[data-theme="dark"] .dex-sort-chip:hover,
 :root[data-theme="dark"] .dex-sort-direction-chip:hover,
 :root[data-theme="dark"] .type-filter-clear:hover {
@@ -4531,6 +4553,7 @@ dialog::backdrop {
 }
 
 :root[data-theme="dark"] .dex-category-chip.active,
+:root[data-theme="dark"] .dex-preset-chip.active,
 :root[data-theme="dark"] .dex-sort-chip.active,
 :root[data-theme="dark"] .dex-sort-direction-chip.active {
   border-color: #9e7343;
@@ -4542,6 +4565,11 @@ dialog::backdrop {
   border-color: #a85e58;
   background: #482b29;
   color: #efaaa4;
+}
+
+.dex-sort-direction-chip:disabled {
+  cursor: default;
+  opacity: .42;
 }
 
 @media (max-width: 380px) {

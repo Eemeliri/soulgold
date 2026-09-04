@@ -34,8 +34,10 @@ const state = {
   query: "",
   filteredSpecies: [],
   selectedTypes: new Set(),
+  typeMatchMode: "any",
   selectedCategories: new Set(),
   excludedCategories: new Set(),
+  oakCompletionOnly: false,
   selectedMoveCategories: new Set(),
   dexSortKey: "dex",
   dexSortDirection: "asc",
@@ -539,8 +541,10 @@ function viewFromLocation(tab) {
   return {
     query: (params.get("q") || "").trim().toLowerCase(),
     types: (params.get("type") || "").split(",").filter(Boolean).map((type) => `TYPE_${type.toUpperCase().replace(/^TYPE_/, "")}`),
+    typeMatchMode: tab === "pokedex" && params.get("match") === "all" ? "all" : "any",
     categories: (params.get("category") || "").split(",").filter((category) => dexCategoryKeys.has(category)),
     excludedCategories: (params.get("exclude") || "").split(",").filter((category) => dexCategoryKeys.has(category)),
+    oakCompletionOnly: tab === "pokedex" && params.get("preset") === "oak",
     moveCategories: (params.get("damage") || "").split(",").filter((category) => moveCategoryKeys.has(category)),
     sortKey: normalizeDexSortKey(tab === "pokedex" ? params.get("sort") : null),
     sortDirection: tab === "pokedex" && params.get("dir") === "desc" ? "desc" : "asc",
@@ -564,8 +568,10 @@ function routeUrl(tab, detail = null, view = null) {
   const nextView = view || {
     query: "",
     types: [],
+    typeMatchMode: "any",
     categories: [],
     excludedCategories: [],
+    oakCompletionOnly: false,
     moveCategories: [],
     sortKey: "dex",
     sortDirection: "asc",
@@ -580,11 +586,17 @@ function routeUrl(tab, detail = null, view = null) {
   if (!detail && nextView.types?.length && (tab === "pokedex" || moveFilterTabs.has(tab))) {
     url.searchParams.set("type", nextView.types.map((type) => type.replace(/^TYPE_/, "").toLowerCase()).join(","));
   }
+  if (!detail && tab === "pokedex" && nextView.types?.length > 1 && nextView.typeMatchMode === "all") {
+    url.searchParams.set("match", "all");
+  }
   if (!detail && nextView.categories?.length && tab === "pokedex") {
     url.searchParams.set("category", nextView.categories.join(","));
   }
   if (!detail && nextView.excludedCategories?.length && tab === "pokedex") {
     url.searchParams.set("exclude", nextView.excludedCategories.join(","));
+  }
+  if (!detail && tab === "pokedex" && nextView.oakCompletionOnly) {
+    url.searchParams.set("preset", "oak");
   }
   if (!detail && nextView.moveCategories?.length && moveFilterTabs.has(tab)) {
     url.searchParams.set("damage", nextView.moveCategories.join(","));
@@ -651,8 +663,10 @@ function currentViewState(scrollY = window.scrollY) {
   return {
     query: state.query,
     types: [...state.selectedTypes],
+    typeMatchMode: state.typeMatchMode,
     categories: [...state.selectedCategories],
     excludedCategories: [...state.excludedCategories],
+    oakCompletionOnly: state.oakCompletionOnly,
     moveCategories: [...state.selectedMoveCategories],
     sortKey: state.dexSortKey,
     sortDirection: state.dexSortDirection,
@@ -665,10 +679,12 @@ function currentViewState(scrollY = window.scrollY) {
 function applyViewState(view = {}) {
   state.query = String(view.query || "").toLowerCase();
   state.selectedTypes = new Set(view.types || []);
+  state.typeMatchMode = state.selectedTypes.size > 1 && view.typeMatchMode === "all" ? "all" : "any";
   state.excludedCategories = new Set((view.excludedCategories || []).filter((category) => dexCategoryKeys.has(category)));
   state.selectedCategories = new Set(
     (view.categories || []).filter((category) => dexCategoryKeys.has(category) && !state.excludedCategories.has(category)),
   );
+  state.oakCompletionOnly = Boolean(view.oakCompletionOnly);
   state.selectedMoveCategories = new Set(
     (view.moveCategories || []).filter((category) => moveCategoryKeys.has(category)),
   );
@@ -715,8 +731,10 @@ async function applyLocationRoute(historyState = null) {
   const previousTab = state.activeTab;
   const previousQuery = state.query;
   const previousTypes = [...state.selectedTypes].join(",");
+  const previousTypeMatchMode = state.typeMatchMode;
   const previousCategories = [...state.selectedCategories].join(",");
   const previousExcludedCategories = [...state.excludedCategories].join(",");
+  const previousOakCompletionOnly = state.oakCompletionOnly;
   const previousMoveCategories = [...state.selectedMoveCategories].join(",");
   const previousSort = `${state.dexSortKey}:${state.dexSortDirection}`;
   const previousMoveSort = `${state.moveSortKey}:${state.moveSortDirection}`;
@@ -728,8 +746,10 @@ async function applyLocationRoute(historyState = null) {
 
   const viewChanged = previousQuery !== state.query
     || previousTypes !== [...state.selectedTypes].join(",")
+    || previousTypeMatchMode !== state.typeMatchMode
     || previousCategories !== [...state.selectedCategories].join(",")
     || previousExcludedCategories !== [...state.excludedCategories].join(",")
+    || previousOakCompletionOnly !== state.oakCompletionOnly
     || previousMoveCategories !== [...state.selectedMoveCategories].join(",")
     || previousSort !== `${state.dexSortKey}:${state.dexSortDirection}`
     || previousMoveSort !== `${state.moveSortKey}:${state.moveSortDirection}`;
@@ -766,8 +786,10 @@ async function navigateDetail(kind, slug) {
   if (tabChanged) {
     state.query = "";
     state.selectedTypes.clear();
+    state.typeMatchMode = "any";
     state.selectedCategories.clear();
     state.excludedCategories.clear();
+    state.oakCompletionOnly = false;
     state.selectedMoveCategories.clear();
     resetDexSort();
     resetMoveSort();
@@ -933,8 +955,10 @@ async function setTab(tab, { updateHistory = true } = {}) {
   state.detail = null;
   state.query = "";
   state.selectedTypes.clear();
+  state.typeMatchMode = "any";
   state.selectedCategories.clear();
   state.excludedCategories.clear();
+  state.oakCompletionOnly = false;
   state.selectedMoveCategories.clear();
   resetDexSort();
   resetMoveSort();
@@ -977,9 +1001,10 @@ async function renderActive() {
 
 function renderDex() {
   renderTypeFilter();
-  state.filteredSpecies = state.data.species.filter((mon) =>
-    !excludedDexSpecies.has(mon.constant)
-    && matches(`${mon.dex} ${mon.name} ${speciesFormLabel(mon)} ${mon.types.map(typeName).join(" ")}`)
+  const visibleSpecies = state.data.species.filter((mon) => !excludedDexSpecies.has(mon.constant));
+  const candidates = state.oakCompletionOnly ? oakCompletionSpecies(visibleSpecies) : visibleSpecies;
+  state.filteredSpecies = candidates.filter((mon) =>
+    matches(`${mon.dex} ${mon.name} ${speciesFormLabel(mon)} ${mon.types.map(typeName).join(" ")}`)
     && matchesSelectedTypes(mon)
     && matchesSelectedCategories(mon)
   );
@@ -989,8 +1014,18 @@ function renderDex() {
     "pokedex",
     state.filteredSpecies.length
       ? ""
-      : state.query || state.selectedTypes.size || state.selectedCategories.size || state.excludedCategories.size ? "No Pokémon match the current search and filters." : "No Pokémon are available.",
+      : state.query || state.selectedTypes.size || state.selectedCategories.size || state.excludedCategories.size || state.oakCompletionOnly ? "No Pokémon match the current search and filters." : "No Pokémon are available.",
   );
+}
+
+function oakCompletionSpecies(species = state.data.species.filter((mon) => !excludedDexSpecies.has(mon.constant))) {
+  const representatives = new Map();
+  species.forEach((mon) => {
+    const categories = new Set(mon.categories || []);
+    if (!mon.dex || categories.has("legendary") || categories.has("mythical")) return;
+    if (!representatives.has(mon.dex)) representatives.set(mon.dex, mon);
+  });
+  return [...representatives.values()];
 }
 
 function dexFilterTypes() {
@@ -1014,6 +1049,12 @@ function renderTypeFilter() {
           <button class="type-filter-chip type ${type}" type="button" data-type="${type}" aria-pressed="false">${typeName(type)}</button>
         `).join("")}
       </div>
+      <div class="type-filter-subtitle">Combine selected types</div>
+      <div class="type-match-mode" role="group" aria-label="How multiple selected types are matched">
+        <button class="dex-sort-direction-chip" type="button" data-type-match-mode="any" aria-pressed="true">OR</button>
+        <button class="dex-sort-direction-chip" type="button" data-type-match-mode="all" aria-pressed="false">AND</button>
+      </div>
+      <div class="type-filter-note">OR: either type · AND: both types</div>
     </div>
     <div class="type-filter-section">
       <div class="type-filter-section-head">
@@ -1038,6 +1079,11 @@ function renderTypeFilter() {
         <button class="dex-sort-direction-chip" type="button" data-sort-direction="asc" aria-pressed="false">Low → High</button>
         <button class="dex-sort-direction-chip" type="button" data-sort-direction="desc" aria-pressed="false">High → Low</button>
       </div>
+    </div>
+    <div class="type-filter-section completion-preset-section">
+      <div class="type-filter-title">Completion preset</div>
+      <button class="dex-preset-chip" type="button" data-oak-completion aria-pressed="false">Oak completion checklist</button>
+      <div class="type-filter-note">Displays the ${oakCompletionSpecies().length} Pokémon required to complete Oak's Dex.</div>
     </div>
   `;
   syncTypeFilter();
@@ -1128,12 +1174,17 @@ function syncTypeFilter() {
     const sortOption = dexSortOptions.find((option) => option.key === state.dexSortKey) || dexSortOptions[0];
     const hasSort = state.dexSortKey !== "dex" || state.dexSortDirection !== "asc";
     const summary = [];
+    if (state.oakCompletionOnly) summary.push("Oak checklist");
     if (categoryCount) summary.push(`${categoryCount} categor${categoryCount === 1 ? "y" : "ies"} included`);
     if (excludedCategoryCount) summary.push(`${excludedCategoryCount} categor${excludedCategoryCount === 1 ? "y" : "ies"} excluded`);
-    if (typeCount) summary.push(`${typeCount} type${typeCount === 1 ? "" : "s"}`);
+    if (typeCount) summary.push(`${typeCount} type${typeCount === 1 ? "" : "s"}${typeCount > 1 ? ` (${state.typeMatchMode === "all" ? "AND" : "OR"})` : ""}`);
     if (hasSort) summary.push(`${sortOption.label} ${state.dexSortDirection === "asc" ? "↑" : "↓"}`);
     toggle.textContent = summary.length ? `Filter · ${summary.join(" · ")}` : "Filter";
-    toggle.classList.toggle("has-filter", categoryCount > 0 || excludedCategoryCount > 0 || typeCount > 0 || hasSort);
+    toggle.classList.toggle("has-filter", state.oakCompletionOnly || categoryCount > 0 || excludedCategoryCount > 0 || typeCount > 0 || hasSort);
+    document.querySelectorAll("[data-oak-completion]").forEach((button) => {
+      button.classList.toggle("active", state.oakCompletionOnly);
+      button.setAttribute("aria-pressed", state.oakCompletionOnly ? "true" : "false");
+    });
     document.querySelectorAll("[data-category]").forEach((button) => {
       const active = state.selectedCategories.has(button.dataset.category);
       const excluded = state.excludedCategories.has(button.dataset.category);
@@ -1160,6 +1211,12 @@ function syncTypeFilter() {
     const active = state.selectedTypes.has(button.dataset.type);
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+  document.querySelectorAll("[data-type-match-mode]").forEach((button) => {
+    const active = state.typeMatchMode === button.dataset.typeMatchMode;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", active ? "true" : "false");
+    button.disabled = typeCount < 2;
   });
 }
 
@@ -1198,6 +1255,9 @@ function sortDexSpecies(species) {
 
 function matchesSelectedTypes(mon) {
   if (!state.selectedTypes.size) return true;
+  if (state.typeMatchMode === "all") {
+    return [...state.selectedTypes].every((type) => mon.types.includes(type));
+  }
   return mon.types.some((type) => state.selectedTypes.has(type));
 }
 
@@ -1233,25 +1293,36 @@ function handleTypeFilterClick(event) {
   const clearTypes = event.target.closest("[data-clear-types]");
   const clearCategories = event.target.closest("[data-clear-categories]");
   const clearMoveCategories = event.target.closest("[data-clear-move-categories]");
+  const oakCompletionButton = event.target.closest("[data-oak-completion]");
   const typeButton = event.target.closest("[data-type]");
+  const typeMatchButton = event.target.closest("[data-type-match-mode]");
   const categoryButton = event.target.closest("[data-category]");
   const moveCategoryButton = event.target.closest("[data-move-category]");
   const sortButton = event.target.closest("[data-sort-key]");
   const moveSortButton = event.target.closest("[data-move-sort-key]");
   const directionButton = event.target.closest("[data-sort-direction]");
   const moveDirectionButton = event.target.closest("[data-move-sort-direction]");
-  if (!clearTypes && !clearCategories && !clearMoveCategories && !typeButton && !categoryButton && !moveCategoryButton && !sortButton && !moveSortButton && !directionButton && !moveDirectionButton) return;
+  if (!clearTypes && !clearCategories && !clearMoveCategories && !oakCompletionButton && !typeButton && !typeMatchButton && !categoryButton && !moveCategoryButton && !sortButton && !moveSortButton && !directionButton && !moveDirectionButton) return;
   if (clearTypes) {
     state.selectedTypes.clear();
+    state.typeMatchMode = "any";
   } else if (clearCategories) {
     state.selectedCategories.clear();
     state.excludedCategories.clear();
   } else if (clearMoveCategories) {
     state.selectedMoveCategories.clear();
+  } else if (oakCompletionButton) {
+    state.oakCompletionOnly = !state.oakCompletionOnly;
+    if (state.oakCompletionOnly) {
+      state.selectedCategories.clear();
+      state.excludedCategories.clear();
+    }
   } else if (typeButton && state.selectedTypes.has(typeButton.dataset.type)) {
     state.selectedTypes.delete(typeButton.dataset.type);
   } else if (typeButton) {
     state.selectedTypes.add(typeButton.dataset.type);
+  } else if (typeMatchButton && state.selectedTypes.size > 1) {
+    state.typeMatchMode = typeMatchButton.dataset.typeMatchMode === "all" ? "all" : "any";
   } else if (categoryButton && state.selectedCategories.has(categoryButton.dataset.category)) {
     state.selectedCategories.delete(categoryButton.dataset.category);
     state.excludedCategories.add(categoryButton.dataset.category);
@@ -1274,6 +1345,7 @@ function handleTypeFilterClick(event) {
   } else {
     return;
   }
+  if (state.selectedTypes.size < 2) state.typeMatchMode = "any";
   syncTypeFilter();
   window.scrollTo(0, 0);
   syncFilterHistory();
