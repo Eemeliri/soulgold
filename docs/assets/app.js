@@ -429,6 +429,8 @@ async function init() {
     await renderDetailFromRoute();
   } catch (error) {
     showLoadFailure(error);
+  } finally {
+    mobileNavController?.markReady?.();
   }
 }
 

@@ -6,8 +6,8 @@
     <base href="../">
     <title>Soulgold Documentation</title>
     <meta name="theme-color" content="#263532">
-    <link rel="stylesheet" href="assets/styles.css?v=20260904-4">
-    <link rel="stylesheet" href="assets/refined.css?v=20260904-4">
+    <link rel="stylesheet" href="assets/styles.css?v=20260904-5">
+    <link rel="stylesheet" href="assets/refined.css?v=20260904-5">
   </head>
   <body>
     <div class="top-chrome">
@@ -52,9 +52,14 @@
           const closeButton = document.getElementById("mobileMenuClose");
           const backdrop = document.getElementById("navBackdrop");
           if (!nav || !toggle || !closeButton || !backdrop) return;
+          let ignoreClickUntil = 0;
+          let protectToggleUntil = Number.POSITIVE_INFINITY;
 
           function open() {
             if (!media.matches) return;
+            if (!document.body.classList.contains("nav-open") && Number.isFinite(protectToggleUntil)) {
+              protectToggleUntil = performance.now() + 350;
+            }
             nav.inert = false;
             nav.setAttribute("aria-hidden", "false");
             document.body.classList.add("nav-open");
@@ -78,13 +83,32 @@
             if (restoreFocus && wasOpen) toggle.focus();
           }
 
-          toggle.addEventListener("click", open);
+          function markReady() {
+            protectToggleUntil = performance.now() + 700;
+          }
+
+          toggle.addEventListener("pointerdown", (event) => {
+            if (event.pointerType !== "touch") return;
+            ignoreClickUntil = performance.now() + 700;
+            event.preventDefault();
+            open();
+          });
+          toggle.addEventListener("click", () => {
+            if (performance.now() < ignoreClickUntil) return;
+            open();
+          });
           closeButton.addEventListener("click", () => close({ restoreFocus: true }));
-          backdrop.addEventListener("click", () => close({ restoreFocus: true }));
+          backdrop.addEventListener("click", (event) => {
+            const bounds = toggle.getBoundingClientRect();
+            const repeatedToggleTap = performance.now() < protectToggleUntil
+              && event.clientX >= bounds.left && event.clientX <= bounds.right
+              && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
+            if (!repeatedToggleTap) close({ restoreFocus: true });
+          });
           if (media.addEventListener) media.addEventListener("change", close);
           else media.addListener(close);
           close();
-          window.soulgoldMobileNav = { open, close, sync: close };
+          window.soulgoldMobileNav = { open, close, sync: close, markReady };
         })();
       </script>
     </div>
@@ -184,6 +208,6 @@
     </div>
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script src="assets/app.js?v=20260904-4"></script>
+    <script src="assets/app.js?v=20260904-5"></script>
   </body>
 </html>
