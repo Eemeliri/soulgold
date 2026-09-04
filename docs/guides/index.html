@@ -6,8 +6,8 @@
     <base href="../">
     <title>Soulgold Documentation</title>
     <meta name="theme-color" content="#263532">
-    <link rel="stylesheet" href="assets/styles.css?v=20260904-3">
-    <link rel="stylesheet" href="assets/refined.css?v=20260904-3">
+    <link rel="stylesheet" href="assets/styles.css?v=20260904-4">
+    <link rel="stylesheet" href="assets/refined.css?v=20260904-4">
   </head>
   <body>
     <div class="top-chrome">
@@ -44,6 +44,49 @@
         <a class="tab" data-tab="abilities" href="abilities/">Abilities</a>
         <a class="tab" data-tab="guides" href="guides/">Guides</a>
       </nav>
+      <script>
+        (() => {
+          const media = window.matchMedia("(max-width: 1100px)");
+          const nav = document.getElementById("sectionNav");
+          const toggle = document.getElementById("mobileMenuToggle");
+          const closeButton = document.getElementById("mobileMenuClose");
+          const backdrop = document.getElementById("navBackdrop");
+          if (!nav || !toggle || !closeButton || !backdrop) return;
+
+          function open() {
+            if (!media.matches) return;
+            nav.inert = false;
+            nav.setAttribute("aria-hidden", "false");
+            document.body.classList.add("nav-open");
+            toggle.setAttribute("aria-expanded", "true");
+            toggle.setAttribute("aria-label", "Close documentation sections");
+            requestAnimationFrame(() => (nav.querySelector(".tab.active") || closeButton).focus());
+          }
+
+          function close({ restoreFocus = false } = {}) {
+            const wasOpen = document.body.classList.contains("nav-open");
+            document.body.classList.remove("nav-open");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open documentation sections");
+            if (media.matches) {
+              nav.inert = true;
+              nav.setAttribute("aria-hidden", "true");
+            } else {
+              nav.inert = false;
+              nav.removeAttribute("aria-hidden");
+            }
+            if (restoreFocus && wasOpen) toggle.focus();
+          }
+
+          toggle.addEventListener("click", open);
+          closeButton.addEventListener("click", () => close({ restoreFocus: true }));
+          backdrop.addEventListener("click", () => close({ restoreFocus: true }));
+          if (media.addEventListener) media.addEventListener("change", close);
+          else media.addListener(close);
+          close();
+          window.soulgoldMobileNav = { open, close, sync: close };
+        })();
+      </script>
     </div>
 
     <main>
@@ -141,6 +184,6 @@
     </div>
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script src="assets/app.js?v=20260904-3"></script>
+    <script src="assets/app.js?v=20260904-4"></script>
   </body>
 </html>

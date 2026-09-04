@@ -278,6 +278,7 @@ const tabLabels = {
   guides: "Guides",
 };
 const mobileNavMedia = window.matchMedia("(max-width: 1100px)");
+const mobileNavController = window.soulgoldMobileNav || null;
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
   "&": "&amp;",
   "<": "&lt;",
@@ -420,7 +421,7 @@ async function init() {
   history.scrollRestoration = "manual";
   history.replaceState(historyPayload({ detailOpenedInApp: false }), "");
   bindEvents();
-  syncMobileNav();
+  if (!document.body.classList.contains("nav-open")) syncMobileNav();
   updateStickyOffset();
   try {
     await loadCommonData();
@@ -481,9 +482,11 @@ function bindEvents() {
       setTab(link.dataset.tab);
     });
   });
-  document.getElementById("mobileMenuToggle").addEventListener("click", openMobileNav);
-  document.getElementById("mobileMenuClose").addEventListener("click", () => closeMobileNav({ restoreFocus: true }));
-  document.getElementById("navBackdrop").addEventListener("click", () => closeMobileNav({ restoreFocus: true }));
+  if (!mobileNavController) {
+    document.getElementById("mobileMenuToggle").addEventListener("click", openMobileNav);
+    document.getElementById("mobileMenuClose").addEventListener("click", () => closeMobileNav({ restoreFocus: true }));
+    document.getElementById("navBackdrop").addEventListener("click", () => closeMobileNav({ restoreFocus: true }));
+  }
   document.getElementById("backToTop").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
   document.getElementById("globalSearch").addEventListener("input", (event) => {
     state.query = event.target.value.trim().toLowerCase();
@@ -518,8 +521,10 @@ function bindEvents() {
   window.addEventListener("resize", () => {
     updateStickyOffset();
   });
-  if (mobileNavMedia.addEventListener) mobileNavMedia.addEventListener("change", syncMobileNav);
-  else mobileNavMedia.addListener(syncMobileNav);
+  if (!mobileNavController) {
+    if (mobileNavMedia.addEventListener) mobileNavMedia.addEventListener("change", syncMobileNav);
+    else mobileNavMedia.addListener(syncMobileNav);
+  }
   window.addEventListener("popstate", (event) => applyLocationRoute(event.state));
   document.addEventListener("keydown", handleMobileNavKeydown);
   document.getElementById("guideList").addEventListener("click", handleGuideSummaryClick);
@@ -880,6 +885,10 @@ function syncActiveTabUi() {
 }
 
 function openMobileNav() {
+  if (mobileNavController) {
+    mobileNavController.open();
+    return;
+  }
   if (!mobileNavMedia.matches) return;
   const nav = document.getElementById("sectionNav");
   const toggle = document.getElementById("mobileMenuToggle");
@@ -892,6 +901,10 @@ function openMobileNav() {
 }
 
 function closeMobileNav({ restoreFocus = false } = {}) {
+  if (mobileNavController) {
+    mobileNavController.close({ restoreFocus });
+    return;
+  }
   const wasOpen = document.body.classList.contains("nav-open");
   const nav = document.getElementById("sectionNav");
   const toggle = document.getElementById("mobileMenuToggle");
@@ -909,6 +922,10 @@ function closeMobileNav({ restoreFocus = false } = {}) {
 }
 
 function syncMobileNav() {
+  if (mobileNavController) {
+    mobileNavController.sync();
+    return;
+  }
   closeMobileNav();
 }
 
