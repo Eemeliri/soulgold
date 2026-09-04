@@ -294,13 +294,47 @@ function el(tag, className, html) {
   return node;
 }
 
-function bindRowActivation(node, activate, label) {
+function bindRowActivation(node, activate, label, { touchFeedback = false } = {}) {
+  let touchPressedAt = Number.NaN;
+  let releaseTimer = 0;
+
+  function clearTouchFeedback() {
+    window.clearTimeout(releaseTimer);
+    releaseTimer = 0;
+    touchPressedAt = Number.NaN;
+    node.classList.remove("touch-pressed");
+    node.removeAttribute("aria-busy");
+  }
+
+  function activateWithTouchFeedback() {
+    const remainingPressTime = Math.max(0, 90 - (performance.now() - touchPressedAt));
+    window.clearTimeout(releaseTimer);
+    window.setTimeout(() => {
+      node.setAttribute("aria-busy", "true");
+      Promise.resolve(activate()).finally(clearTouchFeedback);
+    }, remainingPressTime);
+  }
+
   node.tabIndex = 0;
   node.setAttribute("role", "button");
   if (label) node.setAttribute("aria-label", label);
+  if (touchFeedback) {
+    node.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse" || event.target.closest("button, a")) return;
+      window.clearTimeout(releaseTimer);
+      touchPressedAt = performance.now();
+      node.classList.add("touch-pressed");
+    });
+    node.addEventListener("pointerup", () => {
+      if (!Number.isFinite(touchPressedAt)) return;
+      releaseTimer = window.setTimeout(clearTouchFeedback, 700);
+    });
+    node.addEventListener("pointercancel", clearTouchFeedback);
+  }
   node.addEventListener("click", (event) => {
     if (event.target.closest("button, a")) return;
-    activate();
+    if (touchFeedback && Number.isFinite(touchPressedAt)) activateWithTouchFeedback();
+    else activate();
   });
   node.addEventListener("keydown", (event) => {
     if (event.key !== "Enter" && event.key !== " ") return;
@@ -1402,7 +1436,7 @@ function renderDexRows() {
       </span>
       <span class="dex-abilities">${pokemonAbilityPills(mon)}</span>
     `;
-    bindRowActivation(row, () => openSpecies(mon), `Open details for ${speciesFormLabel(mon)}`);
+    bindRowActivation(row, () => openSpecies(mon), `Open details for ${speciesFormLabel(mon)}`, { touchFeedback: true });
     container.appendChild(row);
   });
 }
@@ -1945,7 +1979,7 @@ function speciesExtraData(mon) {
 }
 
 function openSpecies(mon) {
-  navigateDetail("pokemon", mon.slug);
+  return navigateDetail("pokemon", mon.slug);
 }
 
 function renderSpeciesDetail(mon) {

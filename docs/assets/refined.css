@@ -4018,6 +4018,18 @@ dialog::backdrop {
     box-shadow: inset 4px 0 var(--gold);
   }
 
+  #pokedex .dex-entry {
+    touch-action: manipulation;
+  }
+
+  #pokedex .dex-entry.touch-pressed {
+    background: var(--surface-hover);
+    box-shadow: inset 4px 0 var(--gold);
+    filter: brightness(.94);
+    transform: translateX(2px);
+    transition: none;
+  }
+
   .dex-stats {
     border-radius: 2px;
     background: #eeeae0;
