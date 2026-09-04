@@ -435,6 +435,11 @@ const struct RideablePokemon gSurfablePokemon[] =
         .trainerPose = 0,
         .shinyPic = gSurfablePokemonShinyPic_Lugia,
     },
+    {
+        .species = SPECIES_LUGIA_SHADOW,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonPic_LugiaShadow,
+    },
 #endif // P_FAMILY_LUGIA
 // Gen III Pokemon
 #if P_FAMILY_MUDKIP

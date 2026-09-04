@@ -156,6 +156,7 @@ enum
 #endif // P_FAMILY_LARVITAR
 #if P_FAMILY_LUGIA
     PAL_TAG_LUGIA_SURF,
+    PAL_TAG_LUGIA_SHADOW_SURF,
 #endif // P_FAMILY_LUGIA
 // Gen III Pokemon
 #if P_FAMILY_MUDKIP
@@ -700,6 +701,7 @@ const struct SpritePalette sSurfablePokemonPalettes[] = {
 #endif // P_FAMILY_LARVITAR
 #if P_FAMILY_LUGIA
     {gSurfablePokemonPalette_Lugia,      PAL_TAG_LUGIA_SURF},
+    {gSurfablePokemonPalette_LugiaShadow, PAL_TAG_LUGIA_SHADOW_SURF},
 #endif // P_FAMILY_LUGIA
 // Gen III Pokemon
 #if P_FAMILY_MUDKIP
@@ -1394,6 +1396,7 @@ const struct SpritePalette sSurfablePokemonShinyPalettes[] = {
 #endif // P_FAMILY_LARVITAR
 #if P_FAMILY_LUGIA
     {gSurfablePokemonShinyPalette_Lugia,      PAL_TAG_LUGIA_SURF},
+    {gSurfablePokemonShinyPalette_LugiaShadow, PAL_TAG_LUGIA_SHADOW_SURF},
 #endif // P_FAMILY_LUGIA
 // Gen III Pokemon
 #if P_FAMILY_MUDKIP
@@ -2140,6 +2143,7 @@ const struct SpriteTemplate gSurfablePokemonOverworldSprites[] =
 #endif // P_FAMILY_LARVITAR
 #if P_FAMILY_LUGIA
     {0xFFFF, PAL_TAG_LUGIA_SURF,      &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_Lugia,      gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+    {0xFFFF, PAL_TAG_LUGIA_SHADOW_SURF, &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_LugiaShadow, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
 #endif // P_FAMILY_LUGIA
 // Gen III Pokemon
 #if P_FAMILY_MUDKIP
@@ -2836,6 +2840,7 @@ const struct SpriteTemplate gSurfablePokemonOverlaySprites[] =
 #endif // P_FAMILY_LARVITAR
 #if P_FAMILY_LUGIA
     {0xFFFF, PAL_TAG_LUGIA_SURF,      &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_Lugia,      gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+    {0xFFFF, PAL_TAG_LUGIA_SHADOW_SURF, &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_LugiaShadow, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
 #endif // P_FAMILY_LUGIA
 // Gen III Pokemon
 #if P_FAMILY_MUDKIP

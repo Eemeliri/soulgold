@@ -5393,6 +5393,9 @@ $(OBJEVENTGFXDIR)/pokemon/surfable/0248_tyranitar.4bpp $(OBJEVENTGFXDIR)/pokemon
 $(OBJEVENTGFXDIR)/pokemon/surfable/0249_lugia.4bpp $(OBJEVENTGFXDIR)/pokemon/surfable/0249_lugia_shiny.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
 
+$(OBJEVENTGFXDIR)/pokemon/surfable/0249_lugia_shadow.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
 # Surfable Pokemon Gen 3
 
 $(OBJEVENTGFXDIR)/pokemon/surfable/0258_mudkip.4bpp $(OBJEVENTGFXDIR)/pokemon/surfable/0258_mudkip_shiny.4bpp: %.4bpp: %.png
