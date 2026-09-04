@@ -237,7 +237,11 @@ static const struct SpriteTemplate sAreaUnknownSpriteTemplate =
     .oam = &sAreaUnknownOamData,
 };
 
+#if HGSS_DARK_MODE
+static const u8 sFontColor_AreaInfo[3] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_LIGHT_GRAY};
+#else
 static const u8 sFontColor_AreaInfo[3] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, 5};
+#endif
 static const struct WindowTemplate sTimeOfDayWindowLabelTemplates[] =
 {
     [DEX_AREA_LABEL_TIME_OF_DAY] =
