@@ -385,6 +385,14 @@ main {
   cursor: pointer;
 }
 
+.progressive-loader,
+.progressive-loader td {
+  padding: 12px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+}
+
 .detail-loading {
   min-height: 10rem;
   display: grid;
@@ -4670,5 +4678,23 @@ dialog::backdrop {
   #detailDialog[open] {
     animation: none;
     transform: none;
+  }
+
+  tr.progressive-loader,
+  #moves tr.progressive-loader td,
+  #trainers tr.progressive-loader td {
+    display: block;
+    width: 100%;
+  }
+
+  #moves tr.progressive-loader td,
+  #trainers tr.progressive-loader td {
+    padding: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  tr.progressive-loader td::before {
+    display: none;
   }
 }

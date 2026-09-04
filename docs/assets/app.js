@@ -29,6 +29,9 @@ const state = {
     categoryIcons: {},
     uiIcons: {},
     megaEvolutions: [],
+    speciesEvolutions: {},
+    speciesDetails: {},
+    abilityUsage: {},
   },
   activeTab: "pokedex",
   query: "",
@@ -50,6 +53,11 @@ const state = {
 
 const loadedData = new Set();
 const dataPromises = new Map();
+const renderedSections = new Set();
+let progressiveRenderToken = 0;
+let progressiveObserver = null;
+let progressiveLoadMore = null;
+let searchRenderTimer = 0;
 
 const typeName = (value) => value.replace("TYPE_", "").replaceAll("_", " ");
 const moveName = (constant) => state.data.moves[constant]?.name || constant.replace("MOVE_", "").replaceAll("_", " ");
@@ -258,13 +266,28 @@ const detailKinds = {
 };
 const detailTabs = Object.fromEntries(Object.entries(detailKinds).map(([tab, kind]) => [kind, tab]));
 const sectionDataFiles = {
-  pokedex: [["species", "data/species.json"]],
-  moves: [],
+  pokedex: [
+    ["ui", "data/ui.json"],
+    ["abilityIndex", "data/ability-index.json"],
+    ["species", "data/species.json"],
+  ],
+  moves: [
+    ["ui", "data/ui.json"],
+    ["abilityIndex", "data/ability-index.json"],
+    ["moves", "data/moves.json"],
+  ],
   encounters: [["encounters", "data/encounters.json"]],
-  machines: [["tms", "data/machines.json"]],
+  machines: [
+    ["ui", "data/ui.json"],
+    ["tms", "data/machines.json"],
+  ],
   items: [["items", "data/items.json"]],
-  trainers: [["trainers", "data/trainers.json"]],
-  abilities: [["abilityUsage", "data/ability-usage.json"]],
+  trainers: [
+    ["abilityIndex", "data/ability-index.json"],
+    ["moveIndex", "data/move-index.json"],
+    ["trainers", "data/trainers.json"],
+  ],
+  abilities: [["abilities", "data/abilities.json"]],
   guides: [["guides", "data/guides.json"]],
 };
 const tabLabels = {
@@ -292,6 +315,101 @@ function el(tag, className, html) {
   if (className) node.className = className;
   if (html !== undefined) node.innerHTML = html;
   return node;
+}
+
+function cancelProgressiveRendering() {
+  progressiveRenderToken += 1;
+  progressiveObserver?.disconnect();
+  progressiveObserver = null;
+  progressiveLoadMore = null;
+}
+
+function scheduleProgressiveBatch(callback) {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: 160 });
+  } else {
+    window.setTimeout(callback, 0);
+  }
+}
+
+function progressiveLoadingNode({ tagName = "div", colspan = 1 } = {}) {
+  if (tagName === "tr") {
+    const row = el("tr", "progressive-loader");
+    row.setAttribute("aria-hidden", "true");
+    row.innerHTML = `<td colspan="${colspan}">Loading more…</td>`;
+    return row;
+  }
+  const node = el(tagName, "progressive-loader", "Loading more…");
+  node.setAttribute("aria-hidden", "true");
+  return node;
+}
+
+function renderProgressively(container, entries, createNode, options = {}) {
+  cancelProgressiveRendering();
+  const token = progressiveRenderToken;
+  const mobile = mobileNavMedia.matches;
+  const initialSize = mobile ? (options.initialSize || 16) : entries.length;
+  const batchSize = mobile ? (options.batchSize || initialSize) : entries.length;
+  let nextIndex = 0;
+  let loadingNode = null;
+  container.innerHTML = "";
+
+  function appendBatch(size) {
+    if (token !== progressiveRenderToken) return;
+    const end = Math.min(nextIndex + size, entries.length);
+    const fragment = document.createDocumentFragment();
+    for (; nextIndex < end; nextIndex += 1) {
+      fragment.appendChild(createNode(entries[nextIndex]));
+    }
+    if (loadingNode?.isConnected) loadingNode.before(fragment);
+    else container.appendChild(fragment);
+  }
+
+  appendBatch(initialSize);
+  if (nextIndex >= entries.length) return;
+
+  loadingNode = progressiveLoadingNode(options);
+  container.appendChild(loadingNode);
+  const loadNextBatch = () => {
+    if (token !== progressiveRenderToken) return;
+    progressiveObserver?.unobserve(loadingNode);
+    appendBatch(batchSize);
+    if (nextIndex < entries.length) {
+      progressiveObserver?.observe(loadingNode);
+    } else {
+      progressiveObserver?.disconnect();
+      progressiveObserver = null;
+      progressiveLoadMore = null;
+      loadingNode.remove();
+    }
+  };
+  progressiveLoadMore = loadNextBatch;
+  if ("IntersectionObserver" in window) {
+    progressiveObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) loadNextBatch();
+    }, { rootMargin: "1200px 0px" });
+    progressiveObserver.observe(loadingNode);
+  } else {
+    const appendFallbackBatch = () => {
+      loadNextBatch();
+      if (progressiveLoadMore) scheduleProgressiveBatch(appendFallbackBatch);
+    };
+    scheduleProgressiveBatch(appendFallbackBatch);
+  }
+}
+
+function restoreScrollPosition(scrollY) {
+  const target = Math.max(0, Number(scrollY) || 0);
+  const restore = () => {
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    if (target > maxScroll && progressiveLoadMore) {
+      progressiveLoadMore();
+      requestAnimationFrame(restore);
+      return;
+    }
+    window.scrollTo(0, Math.min(target, maxScroll));
+  };
+  requestAnimationFrame(restore);
 }
 
 function bindRowActivation(node, activate, label, { touchFeedback = false } = {}) {
@@ -458,9 +576,12 @@ async function init() {
   if (!document.body.classList.contains("nav-open")) syncMobileNav();
   updateStickyOffset();
   try {
-    await loadCommonData();
-    await renderActive();
-    await renderDetailFromRoute();
+    if (state.detail && state.detail.kind !== "guide") {
+      await renderDetailFromRoute();
+    } else {
+      await renderActive();
+      await renderDetailFromRoute();
+    }
   } catch (error) {
     showLoadFailure(error);
   } finally {
@@ -536,7 +657,9 @@ function bindEvents() {
     state.query = event.target.value.trim().toLowerCase();
     window.scrollTo(0, 0);
     syncFilterHistory();
-    renderActive();
+    cancelProgressiveRendering();
+    window.clearTimeout(searchRenderTimer);
+    searchRenderTimer = window.setTimeout(() => renderActive(), 120);
   });
   document.getElementById("typeFilterToggle").addEventListener("click", toggleTypeFilter);
   document.getElementById("typeFilterPanel").addEventListener("click", handleTypeFilterClick);
@@ -675,14 +798,30 @@ async function loadData(key, path) {
     dataPromises.set(key, loadJson(path).then((payload) => {
       if (key === "common") {
         Object.assign(state.data, payload);
-      } else if (key === "speciesDetails") {
-        state.data.species.forEach((mon) => Object.assign(mon, payload[mon.constant] || {}));
-      } else if (key === "abilityUsage") {
-        Object.entries(payload).forEach(([constant, usage]) => {
-          if (state.data.abilities[constant]) state.data.abilities[constant].usage = usage;
+      } else if (key === "ui" || key === "speciesMeta") {
+        Object.assign(state.data, payload);
+      } else if (key === "moveIndex") {
+        Object.entries(payload).forEach(([constant, move]) => {
+          state.data.moves[constant] = { ...move, ...state.data.moves[constant] };
         });
+      } else if (key === "abilityIndex") {
+        Object.entries(payload).forEach(([constant, ability]) => {
+          state.data.abilities[constant] = { ...ability, ...state.data.abilities[constant] };
+        });
+      } else if (key === "speciesDetails") {
+        state.data.speciesDetails = payload;
+        mergeSpeciesDetails();
+      } else if (key.startsWith("speciesDetail:")) {
+        const slug = key.slice("speciesDetail:".length);
+        const mon = state.data.species.find((entry) => entry.slug === slug);
+        if (mon) Object.assign(mon, payload);
+      } else if (key === "abilityUsage") {
+        state.data.abilityUsage = payload;
+        mergeAbilityUsage();
       } else {
         state.data[key] = payload;
+        if (key === "species") mergeSpeciesDetails();
+        if (key === "abilities") mergeAbilityUsage();
       }
       loadedData.add(key);
       dataPromises.delete(key);
@@ -694,18 +833,44 @@ async function loadData(key, path) {
   await dataPromises.get(key);
 }
 
-async function loadCommonData() {
-  await loadData("common", "data/common.json");
+function mergeSpeciesDetails() {
+  state.data.species.forEach((mon) => {
+    Object.assign(mon, state.data.speciesDetails[mon.constant] || {});
+  });
+}
+
+function mergeAbilityUsage() {
+  Object.entries(state.data.abilityUsage).forEach(([constant, usage]) => {
+    if (state.data.abilities[constant]) state.data.abilities[constant].usage = usage;
+  });
 }
 
 async function ensureSectionData(tab) {
-  await loadCommonData();
   await Promise.all((sectionDataFiles[tab] || []).map(([key, path]) => loadData(key, path)));
 }
 
 async function ensureSpeciesDetails() {
-  await loadData("species", "data/species.json");
-  await loadData("speciesDetails", "data/species-details.json");
+  await Promise.all([
+    loadData("species", "data/species.json"),
+    loadData("speciesDetails", "data/species-details.json"),
+  ]);
+  mergeSpeciesDetails();
+}
+
+async function ensureSpeciesDetail(slug) {
+  await Promise.all([
+    loadData("ui", "data/ui.json"),
+    loadData("abilityIndex", "data/ability-index.json"),
+    loadData("speciesMeta", "data/species-meta.json"),
+    loadData("species", "data/species.json"),
+    loadData("moves", "data/moves.json"),
+  ]);
+  const mon = state.data.species.find((entry) => entry.slug === slug);
+  if (!mon) return null;
+  if (!loadedData.has("speciesDetails")) {
+    await loadData(`speciesDetail:${slug}`, `data/species-details/${slug}.json`);
+  }
+  return mon;
 }
 
 function currentViewState(scrollY = window.scrollY) {
@@ -804,7 +969,9 @@ async function applyLocationRoute(historyState = null) {
     || previousMoveSort !== `${state.moveSortKey}:${state.moveSortDirection}`;
   const sectionNeedsData = (sectionDataFiles[state.activeTab] || [])
     .some(([key]) => !loadedData.has(key));
-  if (previousTab !== state.activeTab || viewChanged || sectionNeedsData) {
+  const sectionNeedsRender = !renderedSections.has(state.activeTab);
+  const deferSectionRender = Boolean(state.detail && state.detail.kind !== "guide");
+  if (!deferSectionRender && (previousTab !== state.activeTab || viewChanged || sectionNeedsData || sectionNeedsRender)) {
     await renderActive();
   }
   if (state.detail) {
@@ -812,7 +979,7 @@ async function applyLocationRoute(historyState = null) {
   } else {
     closeDetailVisual();
     const scrollY = Number(historyState?.view?.scrollY || 0);
-    requestAnimationFrame(() => window.scrollTo(0, scrollY));
+    restoreScrollPosition(scrollY);
   }
 }
 
@@ -854,7 +1021,7 @@ async function navigateDetail(kind, slug) {
   closeMobileNav();
   if (tabChanged) {
     window.scrollTo(0, 0);
-    await renderActive();
+    if (kind === "guide") await renderActive();
   }
   await renderDetailFromRoute();
 }
@@ -873,6 +1040,7 @@ function requestCloseDetail() {
   syncActiveTabUi();
   closeDetailVisual();
   if (state.activeTab === "guides") renderGuides();
+  else if (!renderedSections.has(state.activeTab)) renderActive();
 }
 
 function closeDetailVisual() {
@@ -1008,6 +1176,8 @@ async function setTab(tab, { updateHistory = true } = {}) {
     return;
   }
   snapshotCurrentHistory();
+  window.clearTimeout(searchRenderTimer);
+  cancelProgressiveRendering();
   hideAbilityTooltip();
   hideMoveTooltip();
   hideItemTooltip();
@@ -1042,6 +1212,7 @@ function matches(text) {
 async function renderActive() {
   const tab = state.activeTab;
   const token = ++state.renderToken;
+  cancelProgressiveRendering();
   setPanelStatus(tab, `Loading ${tabLabels[tab]}…`, { loading: true });
   try {
     await ensureSectionData(tab);
@@ -1058,6 +1229,7 @@ async function renderActive() {
   if (tab === "abilities") renderAbilities();
   if (tab === "trainers") renderTrainers();
   if (tab === "guides") renderGuides();
+  renderedSections.add(tab);
 }
 
 function renderDex() {
@@ -1417,8 +1589,7 @@ function handleTypeFilterClick(event) {
 
 function renderDexRows() {
   const container = document.getElementById("dexRows");
-  container.innerHTML = "";
-  state.filteredSpecies.forEach((mon) => {
+  renderProgressively(container, state.filteredSpecies, (mon) => {
     const row = el("div", "dex-row dex-entry");
     row.innerHTML = `
       <span class="dex-id">${mon.dex || mon.id}</span>
@@ -1437,8 +1608,8 @@ function renderDexRows() {
       <span class="dex-abilities">${pokemonAbilityPills(mon)}</span>
     `;
     bindRowActivation(row, () => openSpecies(mon), `Open details for ${speciesFormLabel(mon)}`, { touchFeedback: true });
-    container.appendChild(row);
-  });
+    return row;
+  }, { initialSize: 18, batchSize: 24 });
 }
 
 function handleDetailDialogClose() {
@@ -1551,14 +1722,24 @@ function placeTooltip(tooltip, root, event, fallback) {
   tooltip.style.visibility = "";
 }
 
-function showAbilityTooltip(button, event) {
+async function showAbilityTooltip(button, event) {
   const reference = button.dataset.ability;
-  const ability = state.data.abilities[reference]
+  let ability = state.data.abilities[reference]
     || Object.values(state.data.abilities).find((entry) => entry.name === reference);
+  if (ability && !ability.description) {
+    try {
+      await loadData("abilities", "data/abilities.json");
+      ability = state.data.abilities[reference]
+        || Object.values(state.data.abilities).find((entry) => entry.name === reference);
+    } catch {
+      // A name-only tooltip is still useful if the optional detail request fails.
+    }
+  }
+  if (!button.isConnected) return;
   if (!ability) return;
   const root = button.closest("dialog[open]") || document.body;
   const tooltip = getScopedTooltip(root, "abilityTooltip", "ability-tooltip");
-  tooltip.innerHTML = `<strong>${ability.name}</strong><span>${ability.description}</span>`;
+  tooltip.innerHTML = `<strong>${ability.name}</strong><span>${ability.description || "Open for details."}</span>`;
   placeTooltip(tooltip, root, event, button);
 }
 
@@ -1589,10 +1770,20 @@ function handleAbilityOut(event) {
   if (button && !button.contains(event.relatedTarget)) hideAbilityTooltip();
 }
 
-function showMoveTooltip(button, event) {
+async function showMoveTooltip(button, event) {
   const reference = button.dataset.move;
-  const move = state.data.moves[reference]
+  let move = state.data.moves[reference]
     || Object.values(state.data.moves).find((entry) => entry.name === reference);
+  if (move && !move.description) {
+    try {
+      await loadData("moves", "data/moves.json");
+      move = state.data.moves[reference]
+        || Object.values(state.data.moves).find((entry) => entry.name === reference);
+    } catch {
+      // A name-only tooltip is still useful if the optional detail request fails.
+    }
+  }
+  if (!button.isConnected) return;
   if (!move) return;
   const root = button.closest("dialog[open]") || document.body;
   const tooltip = getScopedTooltip(root, "moveTooltip", "ability-tooltip move-tooltip");
@@ -1798,12 +1989,16 @@ function evolutionMethod(edge) {
   return `By Using Specific Item (${itemDetailLink(edge.param, edge.itemName)})${conditions}`;
 }
 
+function speciesEvolutionsFor(entry) {
+  return entry?.evolutions || state.data.speciesEvolutions[entry?.constant] || [];
+}
+
 function evolutionChain(mon) {
   const bySpecies = new Map(state.data.species.map((entry) => [entry.constant, entry]));
   const chainMon = baseSpeciesForForms(mon);
   const incoming = new Map();
   state.data.species.forEach((entry) => {
-    entry.evolutions.forEach((edge) => {
+    speciesEvolutionsFor(entry).forEach((edge) => {
       if (!incoming.has(edge.target)) incoming.set(edge.target, []);
       incoming.get(edge.target).push({ from: entry.constant, ...edge });
     });
@@ -1821,10 +2016,11 @@ function evolutionChain(mon) {
   const seenEdges = new Set();
   const renderFrom = (constant) => {
     const source = bySpecies.get(constant);
-    if (!source || !source.evolutions.length) {
+    const evolutions = speciesEvolutionsFor(source);
+    if (!source || !evolutions.length) {
       return "";
     }
-    return source.evolutions.map((edge) => {
+    return evolutions.map((edge) => {
       const key = `${constant}-${edge.target}-${edge.label}`;
       if (seenEdges.has(key)) return "";
       seenEdges.add(key);
@@ -1881,7 +2077,7 @@ function megaFormLinks(mon) {
   while (changed) {
     changed = false;
     state.data.species.forEach((entry) => {
-      entry.evolutions.forEach((edge) => {
+      speciesEvolutionsFor(entry).forEach((edge) => {
         if (family.has(entry.constant) && !family.has(edge.target)) {
           family.add(edge.target);
           changed = true;
@@ -2016,14 +2212,17 @@ async function openSpeciesByConstant(constant) {
 function renderEncounters() {
   const container = document.getElementById("encounterList");
   const rows = state.data.encounters.filter((encounter) => matches(`${encounter.name} ${encounter.variants.map((variant) => variant.methods.map((m) => m.mons.map((mon) => mon.name).join(" ")).join(" ")).join(" ")}`));
-  container.innerHTML = rows.map((encounter) => `
-    <details class="card encounter-card" open>
+  renderProgressively(container, rows, (encounter) => {
+    const card = el("details", "card encounter-card");
+    card.open = true;
+    card.innerHTML = `
       <summary><h2>${encounter.name}</h2></summary>
       <div class="encounter-card-body">
       ${encounter.variants.map((variant) => encounterVariant(variant, encounter.hasTimeVariants)).join("")}
       </div>
-    </details>
-  `).join("");
+    `;
+    return card;
+  }, { initialSize: 4, batchSize: 6 });
   setPanelStatus("encounters", rows.length ? "" : "No encounter areas match this search.");
 }
 
@@ -2133,8 +2332,7 @@ function renderMovedex() {
     .filter(matchesMoveFilters);
   sortMoveRows(rows, (move) => move.id ?? Number.MAX_SAFE_INTEGER);
 
-  tbody.innerHTML = "";
-  rows.forEach((move) => {
+  renderProgressively(tbody, rows, (move) => {
     const row = el("tr", "move-dex-row");
     row.innerHTML = `
       <td data-label="#"><strong>${move.id ?? "-"}</strong></td>
@@ -2148,8 +2346,8 @@ function renderMovedex() {
       <td data-label="Description">${moveDescriptionHtml(move)}</td>
     `;
     bindRowActivation(row, () => openMove(move), `Open details for ${move.name}`);
-    tbody.appendChild(row);
-  });
+    return row;
+  }, { initialSize: 18, batchSize: 24, tagName: "tr", colspan: 9 });
 
   if (!rows.length) {
     const row = el("tr");
@@ -2390,14 +2588,17 @@ function renderAbilities() {
     .filter((ability) => ability.constant !== "ABILITY_NONE")
     .filter((ability) => matches(`${ability.name} ${ability.description}`))
     .sort((a, b) => a.name.localeCompare(b.name));
-  container.innerHTML = `<div class="ability-row ability-head"><span>Name</span><span>Description</span><span>Pokemon</span></div>`;
-  abilities.forEach((ability) => {
+  const heading = el("div", "ability-row ability-head", "<span>Name</span><span>Description</span><span>Pokemon</span>");
+  renderProgressively(container, [heading, ...abilities], (entry) => {
+    if (entry instanceof HTMLElement) return entry;
+    const ability = entry;
     const row = el("article", "ability-row");
     const usage = ability.usage || { base: [], innate: [] };
-    row.innerHTML = `<h2>${ability.name}</h2><p>${ability.description}</p><p class="muted">${usage.base.length} base / ${usage.innate.length} innate</p>`;
+    const usageCounts = ability.usageCounts || { base: usage.base.length, innate: usage.innate.length };
+    row.innerHTML = `<h2>${ability.name}</h2><p>${ability.description}</p><p class="muted">${usageCounts.base} base / ${usageCounts.innate} innate</p>`;
     bindRowActivation(row, () => openAbility(ability), `Open details for ${ability.name}`);
-    container.appendChild(row);
-  });
+    return row;
+  }, { initialSize: 19, batchSize: 24 });
   setPanelStatus("abilities", abilities.length ? "" : "No abilities match this search.");
 }
 
@@ -2430,15 +2631,23 @@ function renderAbilityDetail(ability) {
 
 async function recordForDetail(detail) {
   if (detail.kind === "pokemon") {
-    await ensureSpeciesDetails();
-    return state.data.species.find((entry) => entry.slug === detail.slug);
+    return ensureSpeciesDetail(detail.slug);
   }
   if (detail.kind === "move") {
-    await ensureSpeciesDetails();
+    await Promise.all([
+      loadData("ui", "data/ui.json"),
+      loadData("abilityIndex", "data/ability-index.json"),
+      loadData("moves", "data/moves.json"),
+      ensureSpeciesDetails(),
+    ]);
     return Object.values(state.data.moves).find((entry) => entry.slug === detail.slug);
   }
   if (detail.kind === "machine") {
-    await Promise.all([loadData("tms", "data/machines.json"), ensureSpeciesDetails()]);
+    await Promise.all([
+      loadData("ui", "data/ui.json"),
+      loadData("tms", "data/machines.json"),
+      ensureSpeciesDetails(),
+    ]);
     return state.data.tms.find((entry) => entry.slug === detail.slug);
   }
   if (detail.kind === "item") {
@@ -2446,7 +2655,10 @@ async function recordForDetail(detail) {
     return state.data.items.find((entry) => entry.slug === detail.slug);
   }
   if (detail.kind === "ability") {
-    await loadData("abilityUsage", "data/ability-usage.json");
+    await Promise.all([
+      loadData("abilities", "data/abilities.json"),
+      loadData("abilityUsage", "data/ability-usage.json"),
+    ]);
     return Object.values(state.data.abilities).find((entry) => entry.slug === detail.slug);
   }
   if (detail.kind === "guide") {
@@ -2493,6 +2705,7 @@ async function renderDetailFromRoute() {
     }
     document.title = `${document.getElementById("modalTitle").textContent} · ${tabLabels[state.activeTab]} · Soulgold Documentation`;
   } catch (error) {
+    console.error("Could not render detail", error);
     if (detail.kind === "guide") setPanelError("guides", error);
     else {
       document.getElementById("modalTitle").textContent = "Could not load details";
@@ -2875,29 +3088,36 @@ function renderTrainers() {
     });
   });
   const locationGroups = [...groups.entries()].sort(compareTrainerLocationGroups);
-  tbody.innerHTML = "";
+  const renderEntries = [];
   locationGroups.forEach(([location, trainers]) => {
-    const heading = el("tr", "trainer-location-row");
-    heading.innerHTML = `
-      <th colspan="2">
-        <span class="trainer-location-name">${escapeHtml(location)}</span>
-      </th>
-    `;
-    tbody.appendChild(heading);
+    renderEntries.push({ kind: "heading", location });
     sortTrainersForLocation(trainers).forEach((trainer) => {
-      const row = el("tr", "trainer-row");
-      row.innerHTML = `
-        <td data-label="Name">
-          <div class="trainer-name-cell">
-            ${sprite(trainer.sprite, "trainer-sprite")}
-            <strong>${trainer.displayName || trainer.name}</strong>
-          </div>
-        </td>
-        <td data-label="Party"><div class="trainer-party-details">${trainerPartyHtml(trainer.party)}</div></td>
-      `;
-      tbody.appendChild(row);
+      renderEntries.push({ kind: "trainer", trainer });
     });
   });
+  renderProgressively(tbody, renderEntries, (entry) => {
+    if (entry.kind === "heading") {
+      const heading = el("tr", "trainer-location-row");
+      heading.innerHTML = `
+        <th colspan="2">
+          <span class="trainer-location-name">${escapeHtml(entry.location)}</span>
+        </th>
+      `;
+      return heading;
+    }
+    const trainer = entry.trainer;
+    const row = el("tr", "trainer-row");
+    row.innerHTML = `
+      <td data-label="Name">
+        <div class="trainer-name-cell">
+          ${sprite(trainer.sprite, "trainer-sprite")}
+          <strong>${trainer.displayName || trainer.name}</strong>
+        </div>
+      </td>
+      <td data-label="Party"><div class="trainer-party-details">${trainerPartyHtml(trainer.party)}</div></td>
+    `;
+    return row;
+  }, { initialSize: 10, batchSize: 8, tagName: "tr", colspan: 2 });
   if (!locationGroups.length) {
     const row = el("tr");
     row.innerHTML = `<td colspan="2" class="muted">No trainers found.</td>`;

@@ -23,6 +23,26 @@ from .paths import OUT_DIR, SRC_DIR
 
 SECTION_ROUTES = ("pokedex", "moves", "encounters", "machines", "items", "trainers", "abilities", "guides")
 
+SECTION_PRELOADS = {
+    "pokedex": ("ui.json", "ability-index.json", "species.json"),
+    "moves": ("ui.json", "ability-index.json", "moves.json"),
+    "encounters": ("encounters.json",),
+    "machines": ("ui.json", "machines.json"),
+    "items": ("items.json",),
+    "trainers": ("ability-index.json", "move-index.json", "trainers.json"),
+    "abilities": ("abilities.json",),
+    "guides": ("guides.json",),
+}
+
+DETAIL_PRELOADS = {
+    "pokedex": ("ui.json", "ability-index.json", "species-meta.json", "species.json", "moves.json"),
+    "moves": ("ui.json", "ability-index.json", "moves.json", "species.json", "species-details.json"),
+    "machines": ("ui.json", "machines.json", "species.json", "species-details.json"),
+    "items": ("items.json",),
+    "abilities": ("abilities.json", "ability-usage.json"),
+    "guides": ("guides.json",),
+}
+
 
 def route_slug(constant: str, prefix: str = "") -> str:
     """Return a stable, URL-safe slug derived from a unique game constant."""
@@ -59,21 +79,41 @@ def prepare_output_tree() -> OutputPaths:
     )
 
 
+def add_data_preloads(index_html: str, filenames: tuple[str, ...]) -> str:
+    """Start route-specific JSON downloads while the main script is loading."""
+    version_match = re.search(r'assets/app\.js\?v=([^"\']+)', index_html)
+    version = f"?v={version_match.group(1)}" if version_match else ""
+    links = "\n".join(
+        f'    <link rel="preload" href="data/{filename}{version}" as="fetch" crossorigin="anonymous">'
+        for filename in filenames
+    )
+    return index_html.replace("  </head>", f"{links}\n  </head>", 1)
+
+
 def write_section_routes() -> None:
     """Create static entry points so section URLs work without server rewrites."""
     index_html = (OUT_DIR / "index.html").read_text(encoding="utf-8")
     route_html = index_html.replace('<base href="./">', '<base href="../">', 1)
     if route_html == index_html:
         raise ValueError('docs/src/index.html must contain <base href="./">')
+    (OUT_DIR / "index.html").write_text(
+        add_data_preloads(index_html, SECTION_PRELOADS["pokedex"]),
+        encoding="utf-8",
+    )
     for route in SECTION_ROUTES:
         route_dir = OUT_DIR / route
         route_dir.mkdir(parents=True, exist_ok=True)
-        (route_dir / "index.html").write_text(route_html, encoding="utf-8")
+        (route_dir / "index.html").write_text(
+            add_data_preloads(route_html, SECTION_PRELOADS[route]),
+            encoding="utf-8",
+        )
 
 
 def write_detail_routes(payload: DocsPayload) -> None:
     """Create static entry points for every shareable record URL."""
-    index_html = (OUT_DIR / "index.html").read_text(encoding="utf-8")
+    # Read the source template so the Pokédex preloads added to docs/index.html
+    # are not inherited by every detail route.
+    index_html = (SRC_DIR / "index.html").read_text(encoding="utf-8")
     detail_html = index_html.replace('<base href="./">', '<base href="../../">', 1)
     if detail_html == index_html:
         raise ValueError('docs/src/index.html must contain <base href="./">')
@@ -100,7 +140,13 @@ def write_detail_routes(payload: DocsPayload) -> None:
             seen_slugs[slug] = identity
             route_dir = OUT_DIR / route / slug
             route_dir.mkdir(parents=True, exist_ok=True)
-            (route_dir / "index.html").write_text(detail_html, encoding="utf-8")
+            preloads = list(DETAIL_PRELOADS[route])
+            if route == "pokedex":
+                preloads.append(f"species-details/{slug}.json")
+            (route_dir / "index.html").write_text(
+                add_data_preloads(detail_html, tuple(preloads)),
+                encoding="utf-8",
+            )
 
 
 def build_docs_payload(
@@ -191,6 +237,39 @@ def write_docs_payload(payload: DocsPayload) -> None:
     # Keep the full payload for downstream tooling while the website itself
     # loads compact, section-specific files on demand.
     write_json("romhack-docs.json", payload, pretty=True)
+    write_json("ui.json", {
+        "typeIcons": payload["typeIcons"],
+        "categoryIcons": payload["categoryIcons"],
+        "uiIcons": payload["uiIcons"],
+    })
+    write_json("move-index.json", {
+        key: {field: value for field, value in move.items() if field in {"name", "slug"}}
+        for key, move in payload["moves"].items()
+    })
+    write_json("ability-index.json", {
+        key: {field: value for field, value in ability.items() if field in {"name", "slug"}}
+        for key, ability in payload["abilities"].items()
+    })
+    write_json("moves.json", payload["moves"])
+    write_json("abilities.json", {
+        key: {
+            **{field: value for field, value in ability.items() if field != "usage"},
+            "usageCounts": {
+                "base": len(ability["usage"]["base"]),
+                "innate": len(ability["usage"]["innate"]),
+            },
+        }
+        for key, ability in payload["abilities"].items()
+    })
+    write_json("species-meta.json", {
+        "dedicatedTutors": payload["dedicatedTutors"],
+        "megaEvolutions": payload["megaEvolutions"],
+        "speciesEvolutions": {
+            row["constant"]: row["evolutions"]
+            for row in payload["species"]
+            if row["evolutions"]
+        },
+    })
     write_json("common.json", {
         "meta": payload["meta"],
         "dedicatedTutors": payload["dedicatedTutors"],
@@ -218,6 +297,18 @@ def write_docs_payload(payload: DocsPayload) -> None:
         row["constant"]: {key: value for key, value in row.items() if key not in summary_fields}
         for row in payload["species"]
     })
+    species_detail_dir = data_dir / "species-details"
+    if species_detail_dir.exists():
+        shutil.rmtree(species_detail_dir)
+    species_detail_dir.mkdir(parents=True)
+    for row in payload["species"]:
+        (species_detail_dir / f'{row["slug"]}.json').write_text(
+            json.dumps(
+                {key: value for key, value in row.items() if key not in summary_fields},
+                separators=(",", ":"),
+            ),
+            encoding="utf-8",
+        )
     write_json("ability-usage.json", {
         key: ability["usage"]
         for key, ability in payload["abilities"].items()
