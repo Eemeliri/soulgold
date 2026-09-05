@@ -28485,9 +28485,9 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_RATTLED",
         "ABILITY_PRANKSTER",
-        "ABILITY_INFILTRATOR"
+        "ABILITY_INFILTRATOR",
+        "ABILITY_LEVITATE"
       ],
       "sprite": "sprites/pokemon/gengar.png",
       "shinySprite": "sprites/pokemon/gengar_shiny.png",
@@ -28749,8 +28749,8 @@
       ],
       "innates": [
         "ABILITY_RATTLED",
-        "ABILITY_MERCILESS",
-        "ABILITY_CURSED_BODY"
+        "ABILITY_CURSED_BODY",
+        "ABILITY_LEVITATE"
       ],
       "sprite": "sprites/pokemon/gengar_mega.png",
       "shinySprite": "sprites/pokemon/gengar_mega_shiny.png",
@@ -69815,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -69824,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -224099,6 +224099,18 @@
             "sprite": "sprites/pokemon/magneton.png"
           },
           {
+            "species": "SPECIES_GENGAR",
+            "name": "Gengar",
+            "dex": 84,
+            "sprite": "sprites/pokemon/gengar.png"
+          },
+          {
+            "species": "SPECIES_GENGAR_MEGA",
+            "name": "Gengar",
+            "dex": 84,
+            "sprite": "sprites/pokemon/gengar_mega.png"
+          },
+          {
             "species": "SPECIES_GYARADOS_MEGA",
             "name": "Gyarados",
             "dex": 113,
@@ -240065,12 +240077,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_GENGAR",
-            "name": "Gengar",
-            "dex": 84,
-            "sprite": "sprites/pokemon/gengar.png"
-          },
-          {
             "species": "SPECIES_GENGAR_MEGA",
             "name": "Gengar",
             "dex": 84,
@@ -243134,12 +243140,6 @@
             "name": "Arbok",
             "dex": 22,
             "sprite": "sprites/pokemon/arbok.png"
-          },
-          {
-            "species": "SPECIES_GENGAR_MEGA",
-            "name": "Gengar",
-            "dex": 84,
-            "sprite": "sprites/pokemon/gengar_mega.png"
           },
           {
             "species": "SPECIES_ARIADOS",
@@ -290436,9 +290436,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_SITRUS_BERRY",
           "itemName": "Sitrus Berry",
@@ -291580,9 +291580,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_SITRUS_BERRY",
           "itemName": "Sitrus Berry",
@@ -301372,9 +301372,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -302878,9 +302878,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -303950,9 +303950,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_FOCUS_SASH",
           "itemName": "Focus Sash",
@@ -304148,9 +304148,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_FOCUS_SASH",
           "itemName": "Focus Sash",
@@ -311586,9 +311586,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_AIR_BALLOON",
           "itemName": "Air Balloon",
@@ -311804,9 +311804,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_AIR_BALLOON",
           "itemName": "Air Balloon",
@@ -312437,9 +312437,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_AIR_BALLOON",
           "itemName": "Air Balloon",
@@ -312668,9 +312668,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_AIR_BALLOON",
           "itemName": "Air Balloon",
@@ -319367,9 +319367,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_GHOSTITE",
           "itemName": "Ghostite",
@@ -320737,9 +320737,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_GHOSTITE",
           "itemName": "Ghostite",
@@ -322395,9 +322395,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_GHOSTITE",
           "itemName": "Ghostite",
@@ -322594,9 +322594,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_GHOSTITE",
           "itemName": "Ghostite",
@@ -328649,9 +328649,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_GHOSTITE",
           "itemName": "Ghostite",
@@ -328885,9 +328885,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_GHOSTITE",
           "itemName": "Ghostite",
@@ -332628,9 +332628,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
@@ -332783,9 +332783,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_CHOICE_SCARF",
           "itemName": "Choice Scarf",
@@ -334212,9 +334212,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
@@ -334387,9 +334387,9 @@
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
           "innates": [
-            "ABILITY_RATTLED",
             "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
           ],
           "itemConstant": "ITEM_CHOICE_SCARF",
           "itemName": "Choice Scarf",
