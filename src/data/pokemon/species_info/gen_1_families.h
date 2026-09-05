@@ -12756,7 +12756,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
         .abilities = GENGAR_ABILITIES,
-        .innates = { ABILITY_RATTLED, ABILITY_PRANKSTER, ABILITY_INFILTRATOR },
+        .innates = { ABILITY_PRANKSTER, ABILITY_INFILTRATOR, ABILITY_LEVITATE },
 		.bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Gengar"),
         .cryId = CRY_GENGAR,
@@ -12829,7 +12829,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
         .abilities = { ABILITY_SHADOW_TAG, ABILITY_SHADOW_TAG, ABILITY_SHADOW_TAG },
-        .innates = { ABILITY_RATTLED, ABILITY_MERCILESS, ABILITY_CURSED_BODY },
+        .innates = { ABILITY_RATTLED, ABILITY_CURSED_BODY, ABILITY_LEVITATE },
 		.bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Gengar"),
     #if P_MODIFIED_MEGA_CRIES
