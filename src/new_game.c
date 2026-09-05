@@ -41,6 +41,7 @@
 #include "contest.h"
 #include "item_menu.h"
 #include "pokemon_storage_system.h"
+#include "hall_of_fame.h"
 #include "pokemon_jump.h"
 #include "decoration_inventory.h"
 #include "secret_base.h"
@@ -249,6 +250,7 @@ void NewGameInitData(void)
     FlagSet(FLAG_NATIONAL_DEX_MIGRATION_COMPLETE);
     FlagSet(FLAG_INFINITE_HELD_ITEMS_MIGRATION_COMPLETE);
     FlagSet(FLAG_TM_PICKUP_MIGRATION_COMPLETE);
+    FlagSet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE);
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();
@@ -265,6 +267,7 @@ void NewGameInitData(void)
     gPlayerPartyCount = 0;
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
+    ResetHallOfFameArchive();
     DeactivateAllRoamers();
     gSaveBlock1Ptr->registeredItemCompat = ITEM_NONE;
     memset(gSaveBlock1Ptr->registeredItems, 0, sizeof(gSaveBlock1Ptr->registeredItems));

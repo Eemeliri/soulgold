@@ -630,7 +630,7 @@ struct SaveBlock2
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
              u16 optionsUiAnimationsOff:1; //0 = show UI animations, 1 = disable them
-             u16 optionsDarkBattleUi:1; //0 = light normal healthboxes, 1 = dark normal healthboxes
+             u16 optionsDarkBattleUi:1; //0 = light UI, 1 = dark battle and bag UI
              u16 optionsFollowers:1;
              u16 optionsAutorun:1;
              u16 unused1:1; // Legacy one-bit party-menu style; read only for migration.
@@ -1263,8 +1263,9 @@ struct SaveBlock1
                u16 registeredShortcutsMagicInv;
                u8 registeredShortcutTypes[MAX_REGISTERED_ITEMS];
                u8 registeredPokegearApps[MAX_REGISTERED_ITEMS];
-    /*0x3???*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
-    // sizeof: 0x3???
+    /*0x349A*/ u8 pokemonStorageExtensionTail[POKEMON_STORAGE_EXTENSION_TAIL_BYTES];
+    /*0x3C32*/ u8 futureReserved[SAVEBLOCK1_FUTURE_RESERVED_BYTES];
+    // sizeof: 0x3C54
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

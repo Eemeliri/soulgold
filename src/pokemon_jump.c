@@ -238,6 +238,7 @@ struct PokemonJump
     u16 playAgainComm;
     u8 unused3; // Set to 0, never read
     u8 playAgainState;
+    bool8 saveFailed;
     bool8 allowVineUpdates;
     bool8 isLeader;
     bool8 funcActive;
@@ -469,6 +470,7 @@ static void ResetForNewGame(struct PokemonJump *jump)
     jump->initScoreUpdate = FALSE;
     jump->unused2 = 0;
     jump->unused3 = 0;
+    jump->saveFailed = FALSE;
     jump->numPlayersAtPeak = 0;
     jump->allowVineUpdates = FALSE;
     jump->allPlayersReady = FALSE;
@@ -1162,8 +1164,24 @@ static bool32 SavePokeJump(void)
     case 3:
         if (!FuncIsActiveTask(Task_LinkFullSave))
         {
-            ClearMessageWindow();
-            sPokemonJump->mainState++;
+            switch (GetLinkFullSaveResult())
+            {
+            case LINK_FULL_SAVE_RESULT_SUCCESS:
+                ClearMessageWindow();
+                sPokemonJump->mainState++;
+                break;
+            case LINK_FULL_SAVE_RESULT_FLASH_ERROR:
+                break;
+            case LINK_FULL_SAVE_RESULT_FAILED:
+            case LINK_FULL_SAVE_RESULT_PENDING:
+                FillWindowPixelBuffer(sPokemonJumpGfx->msgWindowId, PIXEL_FILL(1));
+                AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, gText_SaveFailed, 0, 1, TEXT_SKIP_DRAW, NULL);
+                CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
+                sPokemonJump->saveFailed = TRUE;
+                sPokemonJump->timer = 0;
+                sPokemonJump->mainState = 5;
+                break;
+            }
         }
         break;
     case 4:
@@ -1171,6 +1189,14 @@ static bool32 SavePokeJump(void)
         {
             sPokemonJump->nextFuncId = FUNC_ASK_PLAY_AGAIN;
             return FALSE;
+        }
+        break;
+    case 5:
+        if (!IsTextPrinterActiveOnWindow(sPokemonJumpGfx->msgWindowId)
+         && (JOY_NEW(A_BUTTON | B_BUTTON) || ++sPokemonJump->timer > 180))
+        {
+            ClearMessageWindow();
+            sPokemonJump->mainState = 4;
         }
         break;
     }
@@ -1395,8 +1421,17 @@ static bool32 DoPlayAgainPrompt(void)
     switch (sPokemonJump->helperState)
     {
     case 0:
-        SetUpPokeJumpGfxFuncById(GFXFUNC_MSG_PLAY_AGAIN);
-        sPokemonJump->helperState++;
+        if (sPokemonJump->saveFailed)
+        {
+            sPokemonJump->playAgainState = PLAY_AGAIN_NO;
+            SetUpPokeJumpGfxFuncById(GFXFUNC_MSG_COMM_STANDBY);
+            sPokemonJump->helperState = 5;
+        }
+        else
+        {
+            SetUpPokeJumpGfxFuncById(GFXFUNC_MSG_PLAY_AGAIN);
+            sPokemonJump->helperState++;
+        }
         break;
     case 1:
         if (!IsPokeJumpGfxFuncFinished())

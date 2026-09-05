@@ -16,6 +16,7 @@
 #include "frontier_util.h"
 #include "strings.h"
 #include "recorded_battle.h"
+#include "replay_options.h"
 #include "easy_chat.h"
 #include "gym_leader_rematch.h"
 #include "battle_transition.h"
@@ -696,6 +697,7 @@ static EWRAM_DATA u8 sBattleCafeSavedLevelMode = FRONTIER_LVL_50;
 static EWRAM_DATA u16 sBattleCafeSavedHeldItems[PARTY_SIZE][MAX_MON_ITEMS] = {0};
 static EWRAM_DATA u8 sBattleCafeChallengeMode = BATTLE_CAFE_MODE_DAILY;
 static EWRAM_DATA bool8 sBattleCafeChallengeActive = FALSE;
+static EWRAM_DATA bool8 sBattleCafeUseDoubles = FALSE;
 
 struct BattleCafeVitaminSet
 {
@@ -828,6 +830,9 @@ void BattleCafe_InitChallenge(void)
     sBattleCafeSavedFacility = VarGet(VAR_FRONTIER_FACILITY);
     sBattleCafeChallengeMode = VarGet(VAR_TEMP_8);
     sBattleCafeChallengeActive = TRUE;
+    sBattleCafeUseDoubles = GetReplayBattleFormat() == REPLAY_BATTLE_FORMAT_DOUBLES
+        && (sBattleCafeChallengeMode == BATTLE_CAFE_MODE_ENDLESS_CHALLENGE
+         || sBattleCafeChallengeMode == BATTLE_CAFE_MODE_ENDLESS_RUSH);
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
@@ -835,9 +840,8 @@ void BattleCafe_InitChallenge(void)
             sBattleCafeSavedHeldItems[i][j] = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM + j);
     }
 
-    // The Cafe uses the standard Frontier trainer data, but always runs as
-    // an open-level singles challenge regardless of the player's last visit
-    // to another facility.
+    // The Cafe uses the standard Frontier trainer data at open level. Keep the
+    // Frontier bookkeeping in Singles; Endless doubles are tracked separately.
     gSaveBlock2Ptr->frontier.lvlMode = FRONTIER_LVL_OPEN;
     VarSet(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES);
     VarSet(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_TOWER);
@@ -909,6 +913,11 @@ u8 BattleCafe_GetChallengeMode(void)
 bool32 BattleCafe_IsChallengeActive(void)
 {
     return sBattleCafeChallengeActive;
+}
+
+bool32 BattleCafe_ShouldUseDoubles(void)
+{
+    return sBattleCafeUseDoubles;
 }
 
 void BattleCafe_UnlockClearAchievement(void)
@@ -1056,6 +1065,7 @@ void BattleCafe_EndChallenge(void)
     SetFacilityPtrsGetLevel();
     sBattleCafeChallengeMode = BATTLE_CAFE_MODE_DAILY;
     sBattleCafeChallengeActive = FALSE;
+    sBattleCafeUseDoubles = FALSE;
 }
 
 static void InitTowerChallenge(void)

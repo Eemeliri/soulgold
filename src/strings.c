@@ -1271,6 +1271,7 @@ const u8 gText_MoveRelearnerWhichMoveToForget[] = _("Which move should be\nforgo
 const u8 gText_MoveRelearnerBattleMoves[] = _("Battle Moves");
 const u8 gText_MoveRelearnerLevelUpMoves[] = _("Level up Moves");
 const u8 gText_MoveRelearnerEggMoves[] = _("Egg Moves");
+const u8 gText_MoveRelearnerTMMoves[] = _("TM Moves");
 const u8 gText_MoveRelearnerTutorMoves[] = _("Tutor Moves");
 const u8 gText_MoveRelearnerContestMovesTitle[] = _("Contest Moves");
 const u8 gText_MoveRelearnerType[] = _("Type/"); // Unused

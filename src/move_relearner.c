@@ -50,7 +50,7 @@ STATIC_ASSERT(ARRAY_COUNT(gTutorMoves) - 1 <= MAX_RELEARNER_MOVES, MoveRelearner
  *   - Whenever the selected move changes (and once on init), the MoveRelearnerCursorCallback
  *     is called (see sMoveRelearnerMovesListTemplate). That callback reloads the battle
  *     and contest display windows for the new move. The relearner menu uses the battle
- *     display while left/right swaps between the primary list and the tutor moves list.
+ *     display while left/right cycles through the available move-source lists.
  * DoMoveRelearnerMain: MENU_STATE_FADE_TO_BLACK
  * DoMoveRelearnerMain: MENU_STATE_WAIT_FOR_FADE
  *   - Go to MENU_STATE_IDLE_BATTLE_MODE
@@ -59,13 +59,12 @@ STATIC_ASSERT(ARRAY_COUNT(gTutorMoves) - 1 <= MAX_RELEARNER_MOVES, MoveRelearner
  * DoMoveRelearnerMain: MENU_STATE_IDLE_BATTLE_MODE
  *   - If the player selected a move (pressed A), go to MENU_STATE_PRINT_TEACH_MOVE_PROMPT.
  *   - If the player cancelled (pressed B), go to MENU_STATE_PRINT_GIVE_UP_PROMPT.
- *   - If the player pressed left or right, swap between the primary relearner list and
- *     the tutor moves list.
+ *   - If the player pressed left or right, cycle through the available move-source lists.
  *
  * DoMoveRelearnerMain: MENU_STATE_SETUP_CONTEST_MODE
  * DoMoveRelearnerMain: MENU_STATE_IDLE_CONTEST_MODE
  *   - Legacy contest-display states. Input is handled like battle mode so left/right
- *     still swaps between the primary list and the tutor moves list.
+ *     still cycles through the available move-source lists.
  *
  * DoMoveRelearnerMain: MENU_STATE_PRINT_TEACH_MOVE_PROMPT
  * DoMoveRelearnerMain: MENU_STATE_TEACH_MOVE_CONFIRM
@@ -402,6 +401,7 @@ static const enum MoveRelearnerStates sExtraRelearnerPages[] =
 {
     MOVE_RELEARNER_TUTOR_MOVES,
     MOVE_RELEARNER_EGG_MOVES,
+    MOVE_RELEARNER_TM_MOVES,
 };
 
 static void VBlankCB_MoveRelearner(void)

@@ -890,6 +890,7 @@ BattleFrontier_BattleTowerLobby_EventScript_CableLinkSuccessful::
 	tower_save CHALLENGE_STATUS_SAVING
 	special SaveForBattleTowerLink
 	waitstate
+	goto_if_eq VAR_RESULT, FALSE, BattleFrontier_BattleTowerLobby_EventScript_LinkFullSaveFailed
 	playse SE_SAVE
 	waitse
 	special TrySetBattleTowerLinkType
@@ -943,9 +944,18 @@ BattleFrontier_BattleTowerLobby_EventScript_WirelessLinkSuccessful::
 	tower_save CHALLENGE_STATUS_SAVING
 	special SaveForBattleTowerLink
 	waitstate
+	goto_if_eq VAR_RESULT, FALSE, BattleFrontier_BattleTowerLobby_EventScript_LinkFullSaveFailed
 	playse SE_SAVE
 	waitse
 	goto BattleFrontier_BattleTowerLobby_EventScript_EnterElevator
+	end
+
+BattleFrontier_BattleTowerLobby_EventScript_LinkFullSaveFailed::
+	setvar VAR_0x8006, 0
+	frontier_set FRONTIER_DATA_CHALLENGE_STATUS
+	special CloseLink
+	msgbox BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved, MSGBOX_DEFAULT
+	release
 	end
 
 BattleFrontier_BattleTowerLobby_EventScript_RulesBoard::

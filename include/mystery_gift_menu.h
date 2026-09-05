@@ -15,4 +15,8 @@ void CB2_InitMysteryGift(void);
 void MG_DrawTextBorder(u8 windowId);
 s8 DoMysteryGiftYesNo(u8 *textState, u16 *windowId, bool8 yesNoBoxPlacement, const u8 *str);
 
+#if TESTING
+u8 MysteryGiftMenu_TestAdvanceSaveState(u8 *state);
+#endif
+
 #endif //GUARD_MYSTERY_GIFT_MENU_H

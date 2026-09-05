@@ -142,6 +142,7 @@ void TryToAddMoveInfoWindow(void);
 void TryToHideMoveInfoWindow(void);
 
 #if TESTING
+bool32 BattleInterface_TestMalformedExpBarCompletes(void);
 bool32 BattleInterface_TestCreateAbilityPopUp(enum BattlerId battlerId, enum Ability ability, bool32 isDoubleBattle);
 bool32 BattleInterface_TestUpdateAbilityPopUp(enum BattlerId battlerId);
 #endif

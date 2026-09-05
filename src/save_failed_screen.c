@@ -255,6 +255,7 @@ static void CB2_SaveFailedScreen(void)
 
 static void CB2_WipeSave(void)
 {
+    u8 saveStatus;
     u8 wipeTries = 0;
 
     sClockInfo[CLOCK_RUNNING] = TRUE;
@@ -271,7 +272,15 @@ static void CB2_WipeSave(void)
 
         FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
         SaveFailedScreenTextPrint(gText_CheckCompleted, 1, 0);
-        HandleSavingData(sSaveFailedType);
+        saveStatus = HandleSavingData(sSaveFailedType);
+
+        if (saveStatus == SAVE_STATUS_PREPARE_ERROR)
+        {
+            FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
+            SaveFailedScreenTextPrint(gText_BackupMemoryDamaged, 1, 0);
+            SetMainCallback2(CB2_GameplayCannotBeContinued);
+            return;
+        }
 
         if (gDamagedSaveSectors != 0)
         {
@@ -411,6 +420,13 @@ static bool8 WipeSectors(u32 sectorBits)
     else
         return TRUE;
 }
+
+#if TESTING
+bool8 SaveFailedScreen_TestWipeDamagedSectors(void)
+{
+    return WipeSectors(gDamagedSaveSectors);
+}
+#endif
 
 void CB2_FlashNotDetectedScreen(void)
 {

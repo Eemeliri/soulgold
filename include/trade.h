@@ -24,4 +24,8 @@ void LoadTradeAnimGfx(void);
 void DrawTextOnTradeWindow(u8 windowId, const u8 *str, u8 speed);
 void CreateInGameTradePokemon(void);
 
+#if TESTING
+bool8 Trade_TestTryInitFullSave(void);
+#endif
+
 #endif //GUARD_TRADE_H

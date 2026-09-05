@@ -98,7 +98,7 @@ endif
 
 ROM_NAME := $(FILE_NAME).gba
 BPS_BASE ?= clean.gba
-BPS_PATCH ?= soulgold_16boxes_legacy.bps
+BPS_PATCH ?= soulgold.bps
 BPS_TOOL ?= tools/flips/flips$(EXE)
 OBJ_DIR_NAME := $(BUILD_DIR)/$(BUILD_NAME)
 OBJ_DIR_NAME_TEST := $(BUILD_DIR)/$(BUILD_NAME)-test

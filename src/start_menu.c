@@ -1605,8 +1605,36 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
         case 6:
             if (!FuncIsActiveTask(Task_LinkFullSave))
             {
-                *state = 3;
+                switch (GetLinkFullSaveResult())
+                {
+                case LINK_FULL_SAVE_RESULT_SUCCESS:
+                    *state = 3;
+                    break;
+                case LINK_FULL_SAVE_RESULT_FLASH_ERROR:
+                    DestroyTask(taskId);
+                    break;
+                case LINK_FULL_SAVE_RESULT_FAILED:
+                case LINK_FULL_SAVE_RESULT_PENDING:
+                    FillWindowPixelBuffer(0, PIXEL_FILL(1));
+                    AddTextPrinterParameterized2(0,
+                                                FONT_NORMAL,
+                                                gText_SaveError,
+                                                0,
+                                                NULL,
+                                                TEXT_COLOR_DARK_GRAY,
+                                                TEXT_COLOR_WHITE,
+                                                TEXT_COLOR_LIGHT_GRAY);
+                    CopyWindowToVram(0, COPYWIN_FULL);
+                    PlaySE(SE_BOO);
+                    SaveStartTimer();
+                    *state = 7;
+                    break;
+                }
             }
+            break;
+        case 7:
+            if (!IsTextPrinterActiveOnWindow(0) && SaveSuccesTimer())
+                *state = 3;
             break;
         }
     }
@@ -1683,10 +1711,30 @@ static void Task_WaitForBattleTowerLinkSave(u8 taskId)
 {
     if (!FuncIsActiveTask(Task_LinkFullSave))
     {
+        if (GetLinkFullSaveResult() == LINK_FULL_SAVE_RESULT_FLASH_ERROR)
+        {
+            DestroyTask(taskId);
+            return;
+        }
+
+        gSpecialVar_Result = GetLinkFullSaveResult() == LINK_FULL_SAVE_RESULT_SUCCESS;
         DestroyTask(taskId);
         ScriptContext_Enable();
     }
 }
+
+#if TESTING
+bool8 StartMenu_TestRunBattleTowerLinkSaveWaiter(void)
+{
+    u8 taskId = FindTaskIdByFunc(Task_WaitForBattleTowerLinkSave);
+
+    if (taskId == TASK_NONE)
+        return FALSE;
+
+    Task_WaitForBattleTowerLinkSave(taskId);
+    return FindTaskIdByFunc(Task_WaitForBattleTowerLinkSave) == TASK_NONE;
+}
+#endif
 
 #define tInBattleTower data[2]
 

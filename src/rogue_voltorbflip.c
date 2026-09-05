@@ -872,7 +872,7 @@ static void Task_VoltorbFlipWaitForKeyPress(u8 taskId)
         }
     }
 
-    if (JOY_NEW(A_BUTTON))
+    if (TEST_BUTTON(gMain.newKeysRaw, A_BUTTON))
     {
         u8 cardIdx = COORDS_TO_CARD(sVoltorbFlipState->cursorX, sVoltorbFlipState->cursorY);
 

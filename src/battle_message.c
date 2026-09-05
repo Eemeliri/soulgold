@@ -275,7 +275,7 @@ const u8 *const gPokeblockWasTooXStringTable[FLAVOR_COUNT] =
 };
 
 static const u8 sText_Someones[] = _("someone's");
-static const u8 sText_Lanettes[] = _("LANETTE's"); //no decapitalize until it is everywhere
+static const u8 sText_Lanettes[] = _("Bill's"); //no decapitalize until it is everywhere
 static const u8 sText_EnigmaBerry[] = _("ENIGMA BERRY"); //no decapitalize until it is everywhere
 static const u8 sText_BerrySuffix[] = _(" BERRY"); //no decapitalize until it is everywhere
 const u8 gText_EmptyString3[] = _("");
@@ -1552,10 +1552,10 @@ const u8 gText_MoveInterfaceType[] = _("TYPE/");
 const u8 gText_MoveInterfacePpType[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}PP\nTYPE/");
 const u8 gText_MoveInterfaceDynamicColors[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}");
 const u8 gText_WhichMoveToForget4[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}Which move should\nbe forgotten?");
-const u8 gText_BattleCatchOrNot[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}Catch\nDon't catch");
-const u8 gText_BattlePostCatchMenu[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}Nickname\nAdd to party\nCheck Summary");
-const u8 gText_BattleYesNoChoice[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}Yes\nNo");
-const u8 gText_BattleSwitchWhich[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}Switch\nwhich?");
+const u8 gText_BattleCatchOrNot[] = _("Catch\nDon't catch");
+const u8 gText_BattlePostCatchMenu[] = _("Nickname\nAdd to party\nCheck Summary");
+const u8 gText_BattleYesNoChoice[] = _("Yes\nNo");
+const u8 gText_BattleSwitchWhich[] = _("Switch\nwhich?");
 const u8 gText_BattleSwitchWhich2[] = _("{PALETTE 5}{BACKGROUND DYNAMIC_COLOR5}{TEXT_COLORS DYNAMIC_COLOR4 DYNAMIC_COLOR6 DYNAMIC_COLOR5}");
 const u8 gText_BattleSwitchWhich3[] = _("{UP_ARROW}");
 const u8 gText_BattleSwitchWhich4[] = _("{ESCAPE 4}");
@@ -2217,6 +2217,40 @@ static const struct BattleWindowText *const sBattleTextOnWindowsInfo[] =
     [B_WIN_TYPE_NORMAL] = sTextOnWindowsInfo_Normal,
     [B_WIN_TYPE_ARENA]  = sTextOnWindowsInfo_Arena,
 };
+
+static const union TextColor sDarkBattleCommandTextColor =
+{
+    .background = BATTLE_WINDOW_DARK_BG_PAL_INDEX,
+    .foreground = BATTLE_WINDOW_DARK_FG_PAL_INDEX,
+    .shadow = BATTLE_WINDOW_DARK_SHADOW_PAL_INDEX,
+    .accent = BATTLE_WINDOW_DARK_BG_PAL_INDEX,
+};
+
+static bool32 IsDarkBattleCommandWindow(u8 windowId)
+{
+    if (!gSaveBlock2Ptr->optionsDarkBattleUi)
+        return FALSE;
+
+    switch (windowId)
+    {
+    case B_WIN_ACTION_MENU:
+    case B_WIN_MOVE_NAME_1:
+    case B_WIN_MOVE_NAME_2:
+    case B_WIN_MOVE_NAME_3:
+    case B_WIN_MOVE_NAME_4:
+    case B_WIN_PP:
+    case B_WIN_PP_REMAINING:
+    case B_WIN_MOVE_TYPE:
+    case B_WIN_SWITCH_PROMPT:
+    case B_WIN_YESNO:
+    case B_WIN_MOVE_DESCRIPTION:
+    case B_CATCH_OR_NOT:
+    case B_WIN_POST_CATCH_MENU:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
 
 static const u8 sRecordedBattleTextSpeeds[] =
 {
@@ -3798,6 +3832,7 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
 {
     const struct BattleWindowText *textInfo = sBattleTextOnWindowsInfo[gBattleScripting.windowsType];
     bool32 copyToVram;
+    bool32 darkCommandWindow;
     struct TextPrinterTemplate printerTemplate;
     u8 speed;
 
@@ -3807,10 +3842,11 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
         copyToVram = FALSE;
     }
     else
-    {
-        FillWindowPixelBuffer(windowId, textInfo[windowId].fillValue);
         copyToVram = TRUE;
-    }
+
+    darkCommandWindow = IsDarkBattleCommandWindow(windowId);
+    if (copyToVram)
+        FillWindowPixelBuffer(windowId, darkCommandWindow ? PIXEL_FILL(BATTLE_WINDOW_DARK_BG_PAL_INDEX) : textInfo[windowId].fillValue);
 
     printerTemplate.currentChar = text;
     printerTemplate.type = WINDOW_TEXT_PRINTER;
@@ -3822,7 +3858,7 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     printerTemplate.currentY = printerTemplate.y;
     printerTemplate.letterSpacing = textInfo[windowId].letterSpacing;
     printerTemplate.lineSpacing = textInfo[windowId].lineSpacing;
-    printerTemplate.color = textInfo[windowId].color;
+    printerTemplate.color = darkCommandWindow ? sDarkBattleCommandTextColor : textInfo[windowId].color;
 
     if (B_WIN_MOVE_NAME_1 <= windowId && windowId <= B_WIN_MOVE_NAME_4)
     {

@@ -1564,8 +1564,13 @@ static void Task_PrepareToGiveExpWithExpBar(u8 taskId)
     u32 currLvlExp = gExperienceTables[gSpeciesInfo[species].growthRate][level];
     u32 expToNextLvl;
 
-    exp -= currLvlExp;
     expToNextLvl = gExperienceTables[gSpeciesInfo[species].growthRate][level + 1] - currLvlExp;
+    if (exp > currLvlExp)
+        exp -= currLvlExp;
+    else
+        exp = 0;
+    if (exp > expToNextLvl)
+        exp = expToNextLvl;
     SetBattleBarStruct(battler, gHealthboxSpriteIds[battler], expToNextLvl, exp, -gainedExp);
     TestRunner_Battle_RecordExp(battler, exp, -gainedExp);
     PlaySE(SE_EXP);
@@ -1895,7 +1900,7 @@ static void MoveSelectionDisplayMoveDescription(enum BattlerId battler)
     u8 cat_start[] = _("{CLEAR_TO 0x03}");
     u8 pwr_start[] = _("{CLEAR_TO 0x38}");
     u8 acc_start[] = _("{CLEAR_TO 0x6C}");
-    LoadMessageBoxAndBorderGfx();
+    LoadBattleMoveDescriptionWindowGfx();
     DrawStdWindowFrame(B_WIN_MOVE_DESCRIPTION, FALSE);
     if (pwr < 2)
         StringCopy(pwr_num, gText_BattleSwitchWhich5);
@@ -1931,6 +1936,12 @@ void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
     src[0] = baseTileNum + 1;
     src[1] = baseTileNum + 2;
 
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] |= BATTLE_COMMAND_PAL_NUM << 12;
+        src[1] |= BATTLE_COMMAND_PAL_NUM << 12;
+    }
+
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
@@ -1938,8 +1949,16 @@ void MoveSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 void MoveSelectionDestroyCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+        src[1] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+    }
+    else
+    {
+        src[0] = 0x1016;
+        src[1] = 0x1016;
+    }
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 9 * (cursorPosition & 1) + 1, 55 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
@@ -1951,6 +1970,12 @@ void ActionSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
     src[0] = 1;
     src[1] = 2;
 
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] |= BATTLE_COMMAND_PAL_NUM << 12;
+        src[1] |= BATTLE_COMMAND_PAL_NUM << 12;
+    }
+
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 7 * (cursorPosition & 1) + 16, 35 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
@@ -1958,8 +1983,16 @@ void ActionSelectionCreateCursorAt(u8 cursorPosition, u8 baseTileNum)
 void ActionSelectionDestroyCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+        src[1] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+    }
+    else
+    {
+        src[0] = 0x1016;
+        src[1] = 0x1016;
+    }
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 7 * (cursorPosition & 1) + 16, 35 + (cursorPosition & 2), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
@@ -2348,16 +2381,16 @@ static void PlayerHandleCmd23(enum BattlerId battler)
 void PlayerHandleExpUpdate(enum BattlerId battler)
 {
     u8 monId = gBattleResources->bufferA[battler][1];
-    s32 taskId, expPointsToGive;
+    s32 taskId;
+    s32 expPointsToGive = T1_READ_32(&gBattleResources->bufferA[battler][2]);
 
-    if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL)
+    if (GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL) >= MAX_LEVEL || expPointsToGive <= 0)
     {
         BtlController_Complete(battler);
     }
     else
     {
         LoadBattleBarGfx(1);
-        expPointsToGive = T1_READ_32(&gBattleResources->bufferA[battler][2]);
         taskId = CreateTask(Task_GiveExpToMon, 10);
         gTasks[taskId].tExpTask_monId = monId;
         gTasks[taskId].tExpTask_gainedExp_1 = expPointsToGive;

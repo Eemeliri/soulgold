@@ -1,4 +1,5 @@
 #include "global.h"
+#include "event_data.h"
 #include "test/battle.h"
 
 WILD_BATTLE_TEST("Pokemon gain experience after catching a Pokemon (Gen6+)")
@@ -88,6 +89,31 @@ WILD_BATTLE_TEST("Trainer exp percentage does not affect wild exp")
     } THEN {
         u32 startingExp = gExperienceTables[gSpeciesInfo[SPECIES_WOBBUFFET].growthRate][20];
         EXPECT_EQ(startingExp + 157, GetMonData(&gPlayerParty[0], MON_DATA_EXP));
+    }
+}
+
+WILD_BATTLE_TEST("A stale cached level at the hard cap is repaired before awarding EXP")
+{
+    u8 staleLevel = 33;
+
+    GIVEN {
+        FlagSet(FLAG_BADGE01_GET);
+        FlagSet(FLAG_BADGE02_GET);
+        FlagSet(FLAG_BADGE03_GET);
+        FlagSet(FLAG_BADGE04_GET);
+        FlagClear(FLAG_RECEIVED_BADGE_5);
+        gSaveBlock2Ptr->optionsLevelCaps = EXP_CAP_HARD;
+        PLAYER(SPECIES_WOBBUFFET) { Level(42); }
+        OPPONENT(SPECIES_CATERPIE) { Level(10); HP(1); }
+    } WHEN {
+        SetMonData(&gPlayerParty[0], MON_DATA_LEVEL, &staleLevel);
+        TURN { MOVE(player, MOVE_SCRATCH); }
+    } SCENE {
+        MESSAGE("The wild Caterpie fainted!");
+        NOT EXPERIENCE_BAR(player);
+    } THEN {
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_LEVEL), 42);
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_EXP), gExperienceTables[gSpeciesInfo[SPECIES_WOBBUFFET].growthRate][42]);
     }
 }
 

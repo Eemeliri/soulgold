@@ -36,10 +36,9 @@
 #include "confetti_util.h"
 #include "constants/rgb.h"
 
-#define HALL_OF_FAME_MAX_TEAMS 30
 #define TAG_CONFETTI 1001
 
-STATIC_ASSERT(sizeof(struct HallofFameTeam) * HALL_OF_FAME_MAX_TEAMS <= SECTOR_DATA_SIZE * NUM_HOF_SECTORS, HallOfFameFreeSpace);
+STATIC_ASSERT(sizeof(struct HallofFameTeam) * HALL_OF_FAME_RETAINED_TEAMS == 1584, HallOfFameRetainedTeamBytes);
 
 struct HofGfx
 {
@@ -63,6 +62,8 @@ static void StartCredits(void);
 static bool8 LoadHofBgs(void);
 static void Task_Hof_InitMonData(u8 taskId);
 static void Task_Hof_InitTeamSaveData(u8 taskId);
+static void LoadHallOfFameArchiveForCeremony(void);
+static void ContinueHallOfFameWithoutSaving(u8 taskId);
 static void Task_Hof_SetMonDisplayTask(u8 taskId);
 static void Task_Hof_TrySaveData(u8 taskId);
 static void Task_Hof_WaitToDisplayMon(u8 taskId);
@@ -409,8 +410,10 @@ static bool8 InitHallOfFameScreen(void)
 
 static void AllocateHoFTeams(void)
 {
+    TRY_FREE_AND_SET_NULL(sHofMonPtr);
+    TRY_FREE_AND_SET_NULL(gHoFSaveBuffer);
     sHofMonPtr = AllocZeroed(sizeof(*sHofMonPtr));
-    gHoFSaveBuffer = Alloc(SECTOR_SIZE * NUM_HOF_SECTORS);
+    gHoFSaveBuffer = AllocZeroed(sizeof(struct HallofFameTeam) * HALL_OF_FAME_RETAINED_TEAMS);
 }
 
 void CB2_DoHallOfFameScreen(void)
@@ -495,36 +498,8 @@ static void Task_Hof_InitMonData(u8 taskId)
 
 static void Task_Hof_InitTeamSaveData(u8 taskId)
 {
-    u16 i;
-    struct HallofFameTeam *lastSavedTeam = gHoFSaveBuffer;
-
-    if (!gHasHallOfFameRecords)
-    {
-        memset(gHoFSaveBuffer, 0, SECTOR_SIZE * NUM_HOF_SECTORS);
-    }
-    else
-    {
-        if (LoadGameSave(SAVE_HALL_OF_FAME) != SAVE_STATUS_OK)
-            memset(gHoFSaveBuffer, 0, SECTOR_SIZE * NUM_HOF_SECTORS);
-    }
-
-    for (i = 0; i < HALL_OF_FAME_MAX_TEAMS; i++, lastSavedTeam++)
-    {
-        if (lastSavedTeam->mon[0].species == SPECIES_NONE)
-            break;
-    }
-    if (i >= HALL_OF_FAME_MAX_TEAMS)
-    {
-        struct HallofFameTeam *afterTeam = gHoFSaveBuffer;
-        struct HallofFameTeam *beforeTeam = gHoFSaveBuffer;
-        afterTeam++;
-        for (i = 0; i < HALL_OF_FAME_MAX_TEAMS - 1; i++, beforeTeam++, afterTeam++)
-        {
-            *beforeTeam = *afterTeam;
-        }
-        lastSavedTeam--;
-    }
-    *lastSavedTeam = *sHofMonPtr;
+    LoadHallOfFameArchiveForCeremony();
+    AppendRetainedHallOfFameTeam(gHoFSaveBuffer, sHofMonPtr);
 
     DrawDialogueFrame(0, FALSE);
     AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SavingDontTurnOffPower, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
@@ -532,32 +507,119 @@ static void Task_Hof_InitTeamSaveData(u8 taskId)
     gTasks[taskId].func = Task_Hof_TrySaveData;
 }
 
-static void FreeAllHoFMem(void)
+static void ContinueHallOfFameWithoutSaving(u8 taskId)
 {
-    TRY_FREE_AND_SET_NULL(sHofGfxPtr);
-    TRY_FREE_AND_SET_NULL(sHofMonPtr);
-    TRY_FREE_AND_SET_NULL(gHoFSaveBuffer);
+    gGameContinueCallback = NULL;
+    DrawDialogueFrame(0, FALSE);
+    AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SaveFailed, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+    CopyWindowToVram(0, COPYWIN_FULL);
+    gTasks[taskId].tFrameCount = 90;
+    gTasks[taskId].func = Task_Hof_WaitToDisplayMon;
 }
 
-static void Task_Hof_TrySaveData(u8 taskId)
+static void LoadHallOfFameArchiveForCeremony(void)
 {
-    gGameContinueCallback = CB2_DoHallOfFameScreenDontSaveData;
-    if (TrySavingData(SAVE_HALL_OF_FAME) == SAVE_STATUS_ERROR && gDamagedSaveSectors != 0)
+    if (!gHasHallOfFameRecords)
     {
-        UnsetBgTilemapBuffer(1);
-        UnsetBgTilemapBuffer(3);
-        FreeAllWindowBuffers();
-
-        FreeAllHoFMem();
-
-        DestroyTask(taskId);
+        memset(gHoFSaveBuffer, 0, sizeof(struct HallofFameTeam) * HALL_OF_FAME_RETAINED_TEAMS);
     }
     else
     {
-        PlaySE(SE_SAVE);
-        gTasks[taskId].func = Task_Hof_WaitToDisplayMon;
-        gTasks[taskId].tFrameCount = 32;
+        u8 status = LoadGameSave(SAVE_HALL_OF_FAME);
+
+        if (status != SAVE_STATUS_OK)
+            memset(gHoFSaveBuffer, 0, sizeof(struct HallofFameTeam) * HALL_OF_FAME_RETAINED_TEAMS);
     }
+}
+
+void AppendRetainedHallOfFameTeam(struct HallofFameTeam *teams, const struct HallofFameTeam *newTeam)
+{
+    u16 count = CountRetainedHallOfFameTeams(teams);
+
+    if (count == HALL_OF_FAME_RETAINED_TEAMS)
+    {
+        memmove(&teams[0],
+                &teams[1],
+                sizeof(struct HallofFameTeam) * (HALL_OF_FAME_RETAINED_TEAMS - 1));
+        count--;
+    }
+    teams[count] = *newTeam;
+}
+
+u16 CountRetainedHallOfFameTeams(const struct HallofFameTeam *teams)
+{
+    u16 count;
+
+    for (count = 0; count < HALL_OF_FAME_RETAINED_TEAMS; count++)
+    {
+        if (teams[count].mon[0].species == SPECIES_NONE)
+            break;
+    }
+
+    return count;
+}
+
+u16 GetRetainedHallOfFameTeamNumber(u16 retainedIndex, u16 retainedCount)
+{
+    u16 lifetimeCount = GetGameStat(GAME_STAT_ENTERED_HOF);
+    u16 newerEntries;
+
+    if (retainedCount == 0 || retainedIndex >= retainedCount)
+        return 0;
+
+    newerEntries = retainedCount - retainedIndex - 1;
+    if (lifetimeCount > newerEntries)
+        return lifetimeCount - newerEntries;
+    return retainedIndex + 1;
+}
+
+static void FreeHoFDisplayMemAfterSaveFailure(void)
+{
+    TRY_FREE_AND_SET_NULL(sHofGfxPtr);
+    TRY_FREE_AND_SET_NULL(sHofMonPtr);
+}
+
+static void FreeAllHoFMem(void)
+{
+    FreeHoFDisplayMemAfterSaveFailure();
+    TRY_FREE_AND_SET_NULL(gHoFSaveBuffer);
+}
+
+#if TESTING
+void HallOfFame_TestCleanupAfterSaveFailure(void)
+{
+    FreeHoFDisplayMemAfterSaveFailure();
+}
+#endif
+
+static void Task_Hof_TrySaveData(u8 taskId)
+{
+    u8 status;
+
+    gGameContinueCallback = CB2_DoHallOfFameScreenDontSaveData;
+    status = TrySavingData(SAVE_HALL_OF_FAME);
+    if (status != SAVE_STATUS_OK)
+    {
+        if (gDamagedSaveSectors != 0)
+        {
+            UnsetBgTilemapBuffer(1);
+            UnsetBgTilemapBuffer(3);
+            FreeAllWindowBuffers();
+
+            FreeHoFDisplayMemAfterSaveFailure();
+
+            DestroyTask(taskId);
+        }
+        else
+        {
+            ContinueHallOfFameWithoutSaving(taskId);
+        }
+        return;
+    }
+
+    PlaySE(SE_SAVE);
+    gTasks[taskId].func = Task_Hof_WaitToDisplayMon;
+    gTasks[taskId].tFrameCount = 32;
 }
 
 static void Task_Hof_WaitToDisplayMon(u8 taskId)
@@ -880,21 +942,19 @@ static void Task_HofPC_CopySaveData(u8 taskId)
     else
     {
         u16 i;
-        struct HallofFameTeam *savedTeams;
 
-        savedTeams = gHoFSaveBuffer;
-        for (i = 0; i < HALL_OF_FAME_MAX_TEAMS; i++, savedTeams++)
+        i = CountRetainedHallOfFameTeams(gHoFSaveBuffer);
+        if (i == 0)
         {
-            if (savedTeams->mon[0].species == SPECIES_NONE)
-                break;
+            gTasks[taskId].func = Task_HofPC_PrintDataIsCorrupted;
+            return;
         }
 
-        if (i < HALL_OF_FAME_MAX_TEAMS)
-            gTasks[taskId].tCurrTeamNo = i - 1;
-        else
-            gTasks[taskId].tCurrTeamNo = HALL_OF_FAME_MAX_TEAMS - 1;
+        gTasks[taskId].tCurrTeamNo = i - 1;
 
-        gTasks[taskId].tCurrPageNo = GetGameStat(GAME_STAT_ENTERED_HOF);
+        gTasks[taskId].tCurrPageNo = GetRetainedHallOfFameTeamNumber(
+            gTasks[taskId].tCurrTeamNo,
+            i);
 
         gTasks[taskId].func = Task_HofPC_DrawSpritesPrintText;
     }

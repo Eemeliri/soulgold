@@ -173,6 +173,7 @@ struct DodrioGame_Gfx
     u16 ALIGNED(4) timer;
     u8 ALIGNED(4) cursorSelection;
     u8 ALIGNED(4) playAgainState;
+    bool8 ALIGNED(4) saveFailed;
     void (*func)(void);
 }; // size = 0x302C
 
@@ -710,6 +711,7 @@ static void InitDodrioGame(struct DodrioGame *game)
     game->numGraySquares = 0;
     game->unused2 = 0;
     game->allReadyToEnd = FALSE;
+    game->gfx.saveFailed = FALSE;
 
     for (i = 0; i < ARRAY_COUNT(game->pickStateQueue); i++)
         game->pickStateQueue[i] = PICK_NONE;
@@ -1208,8 +1210,17 @@ static void AskPlayAgain(void)
     case 1:
         if (!IsGfxFuncActive())
         {
-            SetGfxFuncById(GFXFUNC_MSG_PLAY_AGAIN);
-            sGame->state++;
+            if (sGfx->saveFailed)
+            {
+                sGfx->playAgainState = PLAY_AGAIN_NO;
+                SetGfxFuncById(GFXFUNC_MSG_COMM_STANDBY);
+                sGame->state = 5;
+            }
+            else
+            {
+                SetGfxFuncById(GFXFUNC_MSG_PLAY_AGAIN);
+                sGame->state++;
+            }
         }
         break;
     case 2:
@@ -5036,6 +5047,29 @@ static void Msg_SavingDontTurnOff(void)
         break;
     case 3:
         if (!FuncIsActiveTask(Task_LinkFullSave))
+        {
+            switch (GetLinkFullSaveResult())
+            {
+            case LINK_FULL_SAVE_RESULT_SUCCESS:
+                sGfx->state = 5;
+                break;
+            case LINK_FULL_SAVE_RESULT_FLASH_ERROR:
+                break;
+            case LINK_FULL_SAVE_RESULT_FAILED:
+            case LINK_FULL_SAVE_RESULT_PENDING:
+                FillWindowPixelBuffer(0, PIXEL_FILL(1));
+                AddTextPrinterParameterized2(0, FONT_NORMAL, gText_SaveFailed, 0, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+                CopyWindowToVram(0, COPYWIN_FULL);
+                sGfx->saveFailed = TRUE;
+                sGfx->timer = 0;
+                sGfx->state++;
+                break;
+            }
+        }
+        break;
+    case 4:
+        if (!IsTextPrinterActiveOnWindow(0)
+         && (JOY_NEW(A_BUTTON | B_BUTTON) || ++sGfx->timer > 120))
             sGfx->state++;
         break;
     default:

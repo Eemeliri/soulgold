@@ -506,6 +506,10 @@ const u32 gSurfablePokemonShinyPic_Lugia[] = INCBIN_U32("graphics/object_events/
 STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_Lugia) == sizeof(gSurfablePokemonPic_Lugia), LugiaSurfNormalAndShinySheetSizeMismatch);
 const u16 gSurfablePokemonPalette_Lugia[] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/0249_lugia.gbapal");
 const u16 gSurfablePokemonShinyPalette_Lugia[] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/0249_lugia_shiny.gbapal");
+
+const u32 gSurfablePokemonPic_LugiaShadow[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/0249_lugia_shadow.4bpp");
+const u16 gSurfablePokemonPalette_LugiaShadow[] = INCBIN_U16("graphics/pokemon/lugia_shadow/overworld_normal.gbapal");
+const u16 gSurfablePokemonShinyPalette_LugiaShadow[] = INCBIN_U16("graphics/pokemon/lugia_shadow/overworld_shiny.gbapal");
 #endif // P_FAMILY_LUGIA
 
 // Gen III Pokemon

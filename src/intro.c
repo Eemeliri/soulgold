@@ -115,7 +115,7 @@ extern const struct SpriteTemplate gAncientPowerRockSpriteTemplate;
 enum {
     COPYRIGHT_INITIALIZE,
     COPYRIGHT_EMULATOR_BLEND,
-    COPYRIGHT_START_FADE = 140,
+    COPYRIGHT_START_FADE = 230,
     COPYRIGHT_START_INTRO,
 };
 

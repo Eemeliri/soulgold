@@ -21365,10 +21365,10 @@ const u16 gMonPalette_TyphlosionMega[] = INCBIN_U16("graphics/pokemon/typhlosion
     const u16 gMonShinyPalette_DelphoxMega[] = INCBIN_U16("graphics/pokemon/delphox/mega/shiny.gbapal");
     const u8 gMonIcon_DelphoxMega[] = INCBIN_U8("graphics/pokemon/delphox/mega/icon.4bpp");
 #if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
-//    const u32 gObjectEventPic_DelphoxMega[] = INCBIN_COMP("graphics/pokemon/delphox/mega/overworld.4bpp");
+    const u32 gObjectEventPic_DelphoxMega[] = INCBIN_COMP("graphics/pokemon/delphox/mega/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-//    const u16 gOverworldPalette_DelphoxMega[] = INCBIN_U16("graphics/pokemon/delphox/mega/overworld_normal.gbapal");
-//    const u16 gShinyOverworldPalette_DelphoxMega[] = INCBIN_U16("graphics/pokemon/delphox/mega/overworld_shiny.gbapal");
+    const u16 gOverworldPalette_DelphoxMega[] = INCBIN_U16("graphics/pokemon/delphox/mega/overworld_normal.gbapal");
+    const u16 gShinyOverworldPalette_DelphoxMega[] = INCBIN_U16("graphics/pokemon/delphox/mega/overworld_shiny.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
 #endif //P_GEN_9_MEGA_EVOLUTIONS

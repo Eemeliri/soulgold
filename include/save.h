@@ -21,8 +21,10 @@
 #define SECTOR_ID_PKMN_STORAGE_END   13
 #define NUM_SECTORS_PER_SLOT         14
 // Save Slot 1: 0-13;  Save Slot 2: 14-27
-#define SECTOR_ID_HOF_1              28
-#define SECTOR_ID_HOF_2              29
+#define SECTOR_ID_BX19_AUXILIARY_1   28
+#define SECTOR_ID_BX19_AUXILIARY_2   29
+#define SECTOR_ID_HOF_1              SECTOR_ID_BX19_AUXILIARY_1
+#define SECTOR_ID_HOF_2              SECTOR_ID_BX19_AUXILIARY_2
 #define SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 30
 #define SECTOR_ID_PKMN_STORAGE_OVERFLOW_2 31
 #define SECTORS_COUNT                32
@@ -32,8 +34,17 @@
 #define SAVE_STATUS_EMPTY    0
 #define SAVE_STATUS_OK       1
 #define SAVE_STATUS_CORRUPT  2
+#define SAVE_STATUS_PREPARE_ERROR 3
 #define SAVE_STATUS_NO_FLASH 4
 #define SAVE_STATUS_ERROR    0xFF
+
+enum LinkFullSaveResult
+{
+    LINK_FULL_SAVE_RESULT_PENDING,
+    LINK_FULL_SAVE_RESULT_SUCCESS,
+    LINK_FULL_SAVE_RESULT_FAILED,
+    LINK_FULL_SAVE_RESULT_FLASH_ERROR,
+};
 
 // Special sector id value for certain save functions to
 // indicate that no specific sector should be used.
@@ -54,8 +65,7 @@ enum
     SAVE_LINK, // Link / Battle Frontier
     SAVE_EREADER, // deprecated in Emerald
     SAVE_HALL_OF_FAME,
-    SAVE_OVERWRITE_DIFFERENT_FILE,
-    SAVE_HALL_OF_FAME_ERASE_BEFORE // unused
+    SAVE_OVERWRITE_DIFFERENT_FILE
 };
 
 // A save sector location holds a pointer to the data for a particular sector
@@ -100,13 +110,18 @@ bool8 LinkFullSave_Init(void);
 bool8 LinkFullSave_WriteSector(void);
 bool8 LinkFullSave_ReplaceLastSector(void);
 bool8 LinkFullSave_SetLastSectorSignature(void);
+enum LinkFullSaveResult GetLinkFullSaveResult(void);
 bool8 WriteSaveBlock2(void);
 bool8 WriteSaveBlock1Sector(void);
 u8 LoadGameSave(u8 saveType);
 u16 GetSaveBlocksPointersBaseOffset(void);
 void Task_LinkFullSave(u8 taskId);
+extern u16 gSaveAttemptStatus;
 
 // save_failed_screen.c
 void DoSaveFailedScreen(u8 saveType);
+#if TESTING
+bool8 SaveFailedScreen_TestWipeDamagedSectors(void);
+#endif
 
 #endif // GUARD_SAVE_H

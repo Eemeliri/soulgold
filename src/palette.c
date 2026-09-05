@@ -1383,8 +1383,11 @@ void TimeMixBattleBgPalette(bool8 shadowOnly)
         UpdatePalettesWithTime(PALETTES_BATTLE_BG);
         LoadPalette(&gPlttBufferFaded[BG_PLTT_ID(2)], BG_PLTT_ID(2), 2 * PLTT_SIZE_4BPP);
     }
-    BlendPalette(OBJ_PLTT_ID(4) + 6, 1, gTimeOfDayBlend[gTimeOfDay].coeff, RGB(5, 5, 5));
-    CpuCopy16(&gPlttBufferFaded[OBJ_PLTT_ID(4) + 6], &gPlttBufferUnfaded[OBJ_PLTT_ID(4) + 6], PLTT_SIZEOF(1));
+    if (!gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        BlendPalette(OBJ_PLTT_ID(4) + 6, 1, gTimeOfDayBlend[gTimeOfDay].coeff, RGB(5, 5, 5));
+        CpuCopy16(&gPlttBufferFaded[OBJ_PLTT_ID(4) + 6], &gPlttBufferUnfaded[OBJ_PLTT_ID(4) + 6], PLTT_SIZEOF(1));
+    }
     if (B_BLEND_UI_EDGES)
     {
         BlendPalette(OBJ_PLTT_ID(4) + 5, 1, gTimeOfDayBlend[gTimeOfDay].coeff, RGB(10, 10, 10));

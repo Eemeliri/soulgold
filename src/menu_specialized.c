@@ -823,6 +823,8 @@ static const u8 *GetMoveRelearnerBattleWindowTitle(void)
         return gText_MoveRelearnerLevelUpMoves;
     case MOVE_RELEARNER_EGG_MOVES:
         return gText_MoveRelearnerEggMoves;
+    case MOVE_RELEARNER_TM_MOVES:
+        return gText_MoveRelearnerTMMoves;
     case MOVE_RELEARNER_TUTOR_MOVES:
         return gText_MoveRelearnerTutorMoves;
     default:

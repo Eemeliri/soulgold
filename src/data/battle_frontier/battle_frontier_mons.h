@@ -11611,7 +11611,7 @@ const struct TrainerMon gBattleFrontierMons[NUM_FRONTIER_MONS] = {
     },
     [FRONTIER_MON_INDEEDEE_F_2] = {
         .species = SPECIES_INDEEDEE_F,
-        .moves = {MOVE_EXPANDING_FORCE, MOVE_FOLLOW_ME, MOVE_HELPING_HAND, MOVE_FAKE_OUT},
+        .moves = {MOVE_EXPANDING_FORCE, MOVE_FOLLOW_ME, MOVE_HELPING_HAND, MOVE_HEAL_PULSE},
         .heldItem = ITEM_FOCUS_SASH,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 0, 4),

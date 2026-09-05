@@ -4722,8 +4722,13 @@ static void Cmd_getexp(void)
     case 2: // set exp value to the poke in expgetter_id and print message
         if (gBattleControllerExecFlags == 0)
         {
+            struct Pokemon *mon = &gPlayerParty[*expMonId];
             bool32 wasSentOut = (gBattleStruct->expSentInMons & (1u << *expMonId)) != 0;
-            
+            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
+             && GetMonData(mon, MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+             && GetMonData(mon, MON_DATA_LEVEL) != GetLevelFromMonExp(mon))
+                CalculateMonStats(mon);
+
             if ((!MonHasItemHoldEffect(&gPlayerParty[*expMonId], HOLD_EFFECT_EXP_SHARE) && !wasSentOut && !IsGen6ExpShareEnabled())
              || GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
             {
@@ -4772,11 +4777,12 @@ static void Cmd_getexp(void)
                         enum GrowthRate growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
                         u32 levelCap = GetCurrentLevelCap();
+                        u32 expAtLevelCap = gExperienceTables[growthRate][levelCap];
 
-                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= levelCap)
+                        if (GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) >= levelCap || currentExp >= expAtLevelCap)
                             gBattleStruct->battlerExpReward = 0;
-                        else if (gExperienceTables[growthRate][levelCap] < currentExp + gBattleStruct->battlerExpReward)
-                            gBattleStruct->battlerExpReward = gExperienceTables[growthRate][levelCap] - currentExp;
+                        else if (gBattleStruct->battlerExpReward > expAtLevelCap - currentExp)
+                            gBattleStruct->battlerExpReward = expAtLevelCap - currentExp;
                     }
 
                     if (IsTradedMon(&gPlayerParty[*expMonId]))
@@ -7269,20 +7275,28 @@ static void Cmd_drawlvlupbox(void)
     }
 }
 
+static const u8 sLevelUpWindowTextColors[][3] =
+{
+    [FALSE] = {TEXT_DYNAMIC_COLOR_5, TEXT_DYNAMIC_COLOR_4, TEXT_DYNAMIC_COLOR_6},
+    [TRUE]  = {BATTLE_WINDOW_DARK_BG_PAL_INDEX, BATTLE_WINDOW_DARK_FG_PAL_INDEX, BATTLE_WINDOW_DARK_SHADOW_PAL_INDEX},
+};
+
 static void DrawLevelUpWindow1(void)
 {
     u16 currStats[NUM_STATS];
+    const u8 *colors = sLevelUpWindowTextColors[gSaveBlock2Ptr->optionsDarkBattleUi];
 
     GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], currStats);
-    DrawLevelUpWindowPg1(B_WIN_LEVEL_UP_BOX, gBattleResources->beforeLvlUp->stats, currStats, TEXT_DYNAMIC_COLOR_5, TEXT_DYNAMIC_COLOR_4, TEXT_DYNAMIC_COLOR_6);
+    DrawLevelUpWindowPg1(B_WIN_LEVEL_UP_BOX, gBattleResources->beforeLvlUp->stats, currStats, colors[0], colors[1], colors[2]);
 }
 
 static void DrawLevelUpWindow2(void)
 {
     u16 currStats[NUM_STATS];
+    const u8 *colors = sLevelUpWindowTextColors[gSaveBlock2Ptr->optionsDarkBattleUi];
 
     GetMonLevelUpWindowStats(&gPlayerParty[gBattleStruct->expGetterMonId], currStats);
-    DrawLevelUpWindowPg2(B_WIN_LEVEL_UP_BOX, currStats, TEXT_DYNAMIC_COLOR_5, TEXT_DYNAMIC_COLOR_4, TEXT_DYNAMIC_COLOR_6);
+    DrawLevelUpWindowPg2(B_WIN_LEVEL_UP_BOX, currStats, colors[0], colors[1], colors[2]);
 }
 
 static void InitLevelUpBanner(void)
@@ -12103,6 +12117,12 @@ void BattleCreateYesNoCursorAt(u8 cursorPosition)
     src[0] = 1;
     src[1] = 2;
 
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] |= BATTLE_COMMAND_PAL_NUM << 12;
+        src[1] |= BATTLE_COMMAND_PAL_NUM << 12;
+    }
+
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
@@ -12110,8 +12130,16 @@ void BattleCreateYesNoCursorAt(u8 cursorPosition)
 void BattleDestroyYesNoCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+        src[1] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+    }
+    else
+    {
+        src[0] = 0x1016;
+        src[1] = 0x1016;
+    }
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x19, 9 + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
@@ -12127,6 +12155,12 @@ static void BattleCreatePostCatchMenuCursorAt(u8 cursorPosition)
     src[0] = 1;
     src[1] = 2;
 
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] |= BATTLE_COMMAND_PAL_NUM << 12;
+        src[1] |= BATTLE_COMMAND_PAL_NUM << 12;
+    }
+
     CopyToBgTilemapBufferRect_ChangePalette(0, src, POSTCATCH_MENU_CURSOR_X, POSTCATCH_MENU_CURSOR_Y + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
@@ -12134,8 +12168,16 @@ static void BattleCreatePostCatchMenuCursorAt(u8 cursorPosition)
 static void BattleDestroyPostCatchMenuCursorAt(u8 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+        src[1] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+    }
+    else
+    {
+        src[0] = 0x1016;
+        src[1] = 0x1016;
+    }
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, POSTCATCH_MENU_CURSOR_X, POSTCATCH_MENU_CURSOR_Y + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
@@ -16499,6 +16541,12 @@ static void BattleCreateCatchOrNotCursorAt(u32 cursorPosition)
     src[0] = 1;
     src[1] = 2;
 
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] |= BATTLE_COMMAND_PAL_NUM << 12;
+        src[1] |= BATTLE_COMMAND_PAL_NUM << 12;
+    }
+
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x14, 9 + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);
 }
@@ -16506,8 +16554,16 @@ static void BattleCreateCatchOrNotCursorAt(u32 cursorPosition)
 static void BattleDestroyCatchOrNotCursorAt(u32 cursorPosition)
 {
     u16 src[2];
-    src[0] = 0x1016;
-    src[1] = 0x1016;
+    if (gSaveBlock2Ptr->optionsDarkBattleUi)
+    {
+        src[0] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+        src[1] = (BATTLE_COMMAND_PAL_NUM << 12) | 0x16;
+    }
+    else
+    {
+        src[0] = 0x1016;
+        src[1] = 0x1016;
+    }
 
     CopyToBgTilemapBufferRect_ChangePalette(0, src, 0x14, 9 + (2 * cursorPosition), 1, 2, 0x11);
     CopyBgTilemapBufferToVram(0);

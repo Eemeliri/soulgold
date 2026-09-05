@@ -58,6 +58,7 @@ enum {
     STDMESSAGE_ASK_OVERWRITE,
     STDMESSAGE_SAVING_NO_OFF,
     STDMESSAGE_SAVED_THE_GAME,
+    STDMESSAGE_SAVE_ERROR,
     STDMESSAGE_WARN_LEADER_LEAVE,
 };
 
@@ -93,6 +94,7 @@ enum {
     CHATDISPLAY_FUNC_ASK_OVERWRITE_SAVE,
     CHATDISPLAY_FUNC_PRINT_SAVING,
     CHATDISPLAY_FUNC_PRINT_SAVED_GAME,
+    CHATDISPLAY_FUNC_PRINT_SAVE_ERROR,
     CHATDISPLAY_FUNC_PRINT_EXITING_CHAT,
     CHATDISPLAY_FUNC_PRINT_LEADER_LEFT,
     CHATDISPLAY_FUNC_ASK_CONFIRM_LEADER_LEAVE,
@@ -306,7 +308,9 @@ static bool32 Display_AskSave(u8 *state);
 static bool32 Display_AskOverwriteSave(u8 *state);
 static bool32 Display_PrintSavingDontTurnOff(u8 *state);
 static bool32 Display_PrintSavedTheGame(u8 *state);
+static bool32 Display_PrintSaveError(u8 *state);
 static bool32 Display_AskConfirmLeaderLeave(u8 *state);
+static bool8 TrySaveUnionRoomChat(void);
 static void SpriteCB_TextEntryCursor(struct Sprite *sprite);
 static void SpriteCB_TextEntryArrow(struct Sprite *sprite);
 
@@ -625,6 +629,7 @@ static const struct SubtaskInfo sDisplaySubtasks[] = {
     {CHATDISPLAY_FUNC_ASK_OVERWRITE_SAVE,       Display_AskOverwriteSave},
     {CHATDISPLAY_FUNC_PRINT_SAVING,             Display_PrintSavingDontTurnOff},
     {CHATDISPLAY_FUNC_PRINT_SAVED_GAME,         Display_PrintSavedTheGame},
+    {CHATDISPLAY_FUNC_PRINT_SAVE_ERROR,         Display_PrintSaveError},
     {CHATDISPLAY_FUNC_ASK_CONFIRM_LEADER_LEAVE, Display_AskConfirmLeaderLeave}
 };
 
@@ -727,6 +732,16 @@ static const struct MessageWindowInfo sDisplayStdMessages[] = {
         .letterSpacing = 0,
         .lineSpacing = 0,
         .hasPlaceholders = TRUE,
+        .useWiderBox = TRUE
+    },
+    [STDMESSAGE_SAVE_ERROR] = {
+        .text = gText_SaveFailed,
+        .boxType = 2,
+        .x = 0,
+        .y = 1,
+        .letterSpacing = 0,
+        .lineSpacing = 0,
+        .hasPlaceholders = FALSE,
         .useWiderBox = TRUE
     },
     [STDMESSAGE_WARN_LEADER_LEAVE] = {
@@ -1555,9 +1570,10 @@ static void Chat_SaveAndExit(void)
     case 7:
         if (!IsDisplaySubtaskActive(0))
         {
-            SetContinueGameWarpStatusToDynamicWarp();
-            TrySavingData(SAVE_NORMAL);
-            sChat->funcState = 8;
+            if (TrySaveUnionRoomChat())
+                sChat->funcState = 8;
+            else
+                sChat->funcState = 14;
         }
         break;
     case 8:
@@ -1593,8 +1609,33 @@ static void Chat_SaveAndExit(void)
             SetMainCallback2(CB2_ReturnToField);
         }
         break;
+    case 14:
+        StartDisplaySubtask(CHATDISPLAY_FUNC_PRINT_SAVE_ERROR, 0);
+        sChat->funcState = 15;
+        break;
+    case 15:
+        if (!IsDisplaySubtaskActive(0))
+            sChat->funcState = 10;
+        break;
     }
 }
+
+static bool8 TrySaveUnionRoomChat(void)
+{
+    SetContinueGameWarpStatusToDynamicWarp();
+    if (TrySavingData(SAVE_NORMAL) == SAVE_STATUS_OK)
+        return TRUE;
+
+    ClearContinueGameWarpStatus2();
+    return FALSE;
+}
+
+#if TESTING
+bool8 UnionRoomChat_TestTrySave(void)
+{
+    return TrySaveUnionRoomChat();
+}
+#endif
 
 static void SetChatFunction(u16 funcId)
 {
@@ -2698,6 +2739,22 @@ static bool32 Display_PrintSavedTheGame(u8 *state)
         DynamicPlaceholderTextUtil_Reset();
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gSaveBlock2Ptr->playerName);
         AddStdMessageWindow(STDMESSAGE_SAVED_THE_GAME, 0);
+        CopyWindowToVram(sDisplay->messageWindowId, COPYWIN_FULL);
+        (*state)++;
+        break;
+    case 1:
+        return IsDma3ManagerBusyWithBgCopy();
+    }
+
+    return TRUE;
+}
+
+static bool32 Display_PrintSaveError(u8 *state)
+{
+    switch (*state)
+    {
+    case 0:
+        AddStdMessageWindow(STDMESSAGE_SAVE_ERROR, 0);
         CopyWindowToVram(sDisplay->messageWindowId, COPYWIN_FULL);
         (*state)++;
         break;

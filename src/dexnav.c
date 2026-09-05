@@ -82,6 +82,7 @@ enum WindowIds
 {
     WINDOW_INFO,
     WINDOW_REGISTERED,
+    WINDOW_PROGRESS,
     WINDOW_COUNT,
 };
 
@@ -130,7 +131,6 @@ struct DexNavGUI
     u8 cursorSpriteId;
     u16 landSpecies[LAND_WILD_COUNT];
     u16 waterSpecies[WATER_WILD_COUNT];
-    u16 hiddenSpecies[HIDDEN_WILD_COUNT];
     u8 cursorRow;
     u8 cursorCol;
     u8 environment;
@@ -151,6 +151,7 @@ EWRAM_DATA u16 gDexNavSpecies = SPECIES_NONE;
 static void Task_DexNavWaitFadeIn(u8 taskId);
 static void Task_DexNavMain(u8 taskId);
 static void PrintCurrentSpeciesInfo(void);
+static void PrintAreaProgress(void);
 // SEARCH
 static bool8 TryStartHiddenMonFieldEffect(enum EncounterType environment, u8 xSize, u8 ySize, bool8 smallScan);
 static void DexNavGenerateMoveset(u16 species, u8 searchLevel, u8 encounterLevel, u16 *moveDst);
@@ -204,6 +205,12 @@ static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
 static const u8 sText_StartExit[] = _("{START_BUTTON} EXIT");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
 static const u8 sText_DexNavChainLong[] = _("{NO}{STR_VAR_1}");
+static const u8 sText_AreaProgress[] = _("AREA PROGRESS");
+static const u8 sText_AreaComplete[] = _("AREA COMPLETE!");
+static const u8 sText_AreaLandWater[] = _("Land {STR_VAR_1}/{STR_VAR_2}   Water {STR_VAR_3}/");
+static const u8 sText_AreaLand[] = _("Land {STR_VAR_1}/{STR_VAR_2}");
+static const u8 sText_AreaWater[] = _("Water {STR_VAR_1}/{STR_VAR_2}");
+static const u8 sText_AreaNoData[] = _("No encounters here!");
 
 static const u8 sText_ArrowLeft[] = _("{LEFT_ARROW}");
 static const u8 sText_ArrowRight[] = _("{RIGHT_ARROW}");
@@ -231,6 +238,16 @@ static const struct WindowTemplate sDexNavGuiWindowTemplates[] =
         .height = 2,
         .paletteNum = 15,
         .baseBlock = 200,
+    },
+    [WINDOW_PROGRESS] =
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 14,
+        .width = 19,
+        .height = 6,
+        .paletteNum = 15,
+        .baseBlock = 252,
     },
     DUMMY_WIN_TEMPLATE
 };
@@ -1726,11 +1743,6 @@ static void UpdateCursorPosition(void)
         y = ROW_LAND_BOT_ICON_Y;
         sDexNavUiDataPtr->environment = ENCOUNTER_TYPE_LAND;
         break;
-    case ROW_HIDDEN:
-        x = ROW_HIDDEN_ICON_X + (24 * sDexNavUiDataPtr->cursorCol);
-        y = ROW_HIDDEN_ICON_Y;
-        sDexNavUiDataPtr->environment = ENCOUNTER_TYPE_HIDDEN;
-        break;
     default:
         return;
     }
@@ -1832,39 +1844,6 @@ static bool8 CapturedAllWaterMons(u32 headerId)
     return FALSE;
 }
 
-static bool8 CapturedAllHiddenMons(u32 headerId)
-{
-    u32 i;
-    u16 species;
-    u8 count = 0;
-    enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_HIDDEN);
-
-        const struct WildPokemonInfo *hiddenMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].hiddenMonsInfo;
-
-    if (hiddenMonsInfo != NULL)
-    {
-        for (i = 0; i < HIDDEN_WILD_COUNT; ++i)
-        {
-            species = hiddenMonsInfo->wildPokemon[i].species;
-            if (species != SPECIES_NONE)
-            {
-                count++;
-                if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_CAUGHT))
-                    break;
-            }
-        }
-
-        if (i >= HIDDEN_WILD_COUNT && count > 0)
-            return TRUE;
-    }
-    else
-    {
-        return TRUE;    //technically, no mon data means you caught them all
-    }
-
-    return FALSE;
-}
-
 static void DexNavLoadCapturedAllSymbols(void)
 {
     u32 headerId = GetCurrentMapWildMonHeaderId();
@@ -1879,8 +1858,6 @@ static void DexNavLoadCapturedAllSymbols(void)
     if (CapturedAllWaterMons(headerId))
         CreateSprite(&sCaptureAllMonsSpriteTemplate, 139, 17, 0);
 
-    if (CapturedAllHiddenMons(headerId))
-        CreateSprite(&sCaptureAllMonsSpriteTemplate, 114, 123, 0);
 }
 
 //#define WIN_DETAILS_TILE        0x3a3
@@ -1941,7 +1918,6 @@ static void DexNavFadeAndExit(void)
 static bool8 SpeciesInArray(u16 species, u8 section)
 {
     u32 i;
-    enum NationalDexOrder dexNum = SpeciesToNationalPokedexNum(species);
 
     switch (section)
     {
@@ -1959,13 +1935,6 @@ static bool8 SpeciesInArray(u16 species, u8 section)
                 return TRUE;
         }
         break;
-    case 2: //hidden
-        for (i = 0; i < HIDDEN_WILD_COUNT; i++)
-        {
-            if (SpeciesToNationalPokedexNum(sDexNavUiDataPtr->hiddenSpecies[i]) == dexNum)
-                return TRUE;
-        }
-        break;
     default:
         break;
     }
@@ -1978,7 +1947,6 @@ static void DexNavLoadEncounterData(void)
 {
     u8 grassIndex = 0;
     u8 waterIndex = 0;
-    u8 hiddenIndex = 0;
     u16 species;
     u32 i;
     u32 headerId = GetCurrentMapWildMonHeaderId();
@@ -1991,13 +1959,9 @@ static void DexNavLoadEncounterData(void)
     const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_WATER);
     const struct WildPokemonInfo *waterMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo;
-    timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_HIDDEN);
-    const struct WildPokemonInfo *hiddenMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].hiddenMonsInfo;
-
     // nop struct data
     memset(sDexNavUiDataPtr->landSpecies, 0, sizeof(sDexNavUiDataPtr->landSpecies));
     memset(sDexNavUiDataPtr->waterSpecies, 0, sizeof(sDexNavUiDataPtr->waterSpecies));
-    memset(sDexNavUiDataPtr->hiddenSpecies, 0, sizeof(sDexNavUiDataPtr->hiddenSpecies));
 
     // land mons
     if (landMonsInfo != NULL && landMonsInfo->encounterRate != 0)
@@ -2020,17 +1984,78 @@ static void DexNavLoadEncounterData(void)
                 sDexNavUiDataPtr->waterSpecies[waterIndex++] = waterMonsInfo->wildPokemon[i].species;
         }
     }
+}
 
-    // hidden mons
-    if (hiddenMonsInfo != NULL) // no encounter rate check since 0 means land, 1 means water encounters
+static void CountCaughtSpecies(const u16 *species, u32 count, u8 *caught, u8 *total)
+{
+    u32 i;
+
+    *caught = 0;
+    *total = 0;
+    for (i = 0; i < count; i++)
     {
-        for (i = 0; i < HIDDEN_WILD_COUNT; i++)
-        {
-            species = hiddenMonsInfo->wildPokemon[i].species;
-            if (species != SPECIES_NONE && !SpeciesInArray(species, 2))
-                sDexNavUiDataPtr->hiddenSpecies[hiddenIndex++] = hiddenMonsInfo->wildPokemon[i].species;
-        }
+        if (species[i] == SPECIES_NONE)
+            continue;
+
+        (*total)++;
+        if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species[i]), FLAG_GET_CAUGHT))
+            (*caught)++;
     }
+}
+
+static void PrintAreaProgress(void)
+{
+    const u8 *title;
+    const u8 *counts;
+    u8 landCaught, landTotal;
+    u8 waterCaught, waterTotal;
+    u8 countsText[64];
+    u8 x;
+
+    CountCaughtSpecies(sDexNavUiDataPtr->landSpecies, LAND_WILD_COUNT, &landCaught, &landTotal);
+    CountCaughtSpecies(sDexNavUiDataPtr->waterSpecies, WATER_WILD_COUNT, &waterCaught, &waterTotal);
+
+    if (landTotal + waterTotal > 0 && landCaught == landTotal && waterCaught == waterTotal)
+        title = sText_AreaComplete;
+    else
+        title = sText_AreaProgress;
+
+    FillWindowPixelBuffer(WINDOW_PROGRESS, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WINDOW_PROGRESS);
+
+    x = GetStringCenterAlignXOffset(FONT_SMALL, title, 19 * 8);
+    AddTextPrinterParameterized3(WINDOW_PROGRESS, FONT_SMALL, x, 4, sFontColor_White, 0, title);
+
+    ConvertIntToDecimalStringN(gStringVar1, landCaught, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertIntToDecimalStringN(gStringVar2, landTotal, STR_CONV_MODE_LEFT_ALIGN, 2);
+    if (landTotal > 0 && waterTotal > 0)
+    {
+        ConvertIntToDecimalStringN(gStringVar3, waterCaught, STR_CONV_MODE_LEFT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar4, waterTotal, STR_CONV_MODE_LEFT_ALIGN, 2);
+        StringExpandPlaceholders(countsText, sText_AreaLandWater);
+        StringAppend(countsText, gStringVar4);
+        counts = countsText;
+    }
+    else if (landTotal > 0)
+    {
+        StringExpandPlaceholders(countsText, sText_AreaLand);
+        counts = countsText;
+    }
+    else if (waterTotal > 0)
+    {
+        ConvertIntToDecimalStringN(gStringVar1, waterCaught, STR_CONV_MODE_LEFT_ALIGN, 2);
+        ConvertIntToDecimalStringN(gStringVar2, waterTotal, STR_CONV_MODE_LEFT_ALIGN, 2);
+        StringExpandPlaceholders(countsText, sText_AreaWater);
+        counts = countsText;
+    }
+    else
+    {
+        counts = sText_AreaNoData;
+    }
+
+    x = GetStringCenterAlignXOffset(FONT_SMALL, counts, 19 * 8);
+    AddTextPrinterParameterized3(WINDOW_PROGRESS, FONT_SMALL, x, 24, sFontColor_Black, 0, counts);
+    CopyWindowToVram(WINDOW_PROGRESS, COPYWIN_FULL);
 }
 
 static void TryDrawIconInSlot(u16 species, s16 x, s16 y)
@@ -2071,19 +2096,6 @@ static void DrawSpeciesIcons(void)
         y = ROW_WATER_ICON_Y;
         TryDrawIconInSlot(species, x, y);
     }
-
-    for (i = 0; i < HIDDEN_WILD_COUNT; i++)
-    {
-        species = sDexNavUiDataPtr->hiddenSpecies[i];
-        x = ROW_HIDDEN_ICON_X + 24 * i;
-        y = ROW_HIDDEN_ICON_Y;
-        if (FlagGet(DN_FLAG_DETECTOR_MODE))
-            TryDrawIconInSlot(species, x, y);
-       else if (species == SPECIES_NONE || species > NUM_SPECIES)
-            CreateNoDataIcon(x, y);
-        else
-            CreateMonIcon(SPECIES_NONE, SpriteCB_MonIcon, x, y, 0, 0xFFFFFFFF); //question mark if detector mode inactive
-    }
 }
 
 static u16 DexNavGetSpecies(void)
@@ -2100,12 +2112,6 @@ static u16 DexNavGetSpecies(void)
         break;
     case ROW_LAND_BOT:
         species = sDexNavUiDataPtr->landSpecies[sDexNavUiDataPtr->cursorCol + COL_LAND_COUNT];
-        break;
-    case ROW_HIDDEN:
-        if (!FlagGet(DN_FLAG_DETECTOR_MODE))
-            species = SPECIES_NONE;
-        else
-            species = sDexNavUiDataPtr->hiddenSpecies[sDexNavUiDataPtr->cursorCol];
         break;
     default:
         return SPECIES_NONE;
@@ -2327,6 +2333,7 @@ static bool8 DexNav_DoGfxSetup(void)
     case 7:
         PrintSearchableSpecies(VarGet(DN_VAR_SPECIES) & DEXNAV_MASK_SPECIES);
         DexNavLoadEncounterData();
+        PrintAreaProgress();
         gMain.state++;
         break;
     case 8:
@@ -2441,9 +2448,7 @@ static void Task_DexNavMain(u8 taskId)
     {
         if (sDexNavUiDataPtr->cursorRow == ROW_WATER)
         {
-            sDexNavUiDataPtr->cursorRow = ROW_HIDDEN;
-            if (sDexNavUiDataPtr->cursorCol >= COL_HIDDEN_COUNT)
-                sDexNavUiDataPtr->cursorCol = COL_HIDDEN_MAX;
+            sDexNavUiDataPtr->cursorRow = ROW_LAND_BOT;
         }
         else
         {
@@ -2458,16 +2463,11 @@ static void Task_DexNavMain(u8 taskId)
     }
     else if (JOY_NEW(DPAD_DOWN))
     {
-        if (sDexNavUiDataPtr->cursorRow == ROW_HIDDEN)
+        if (sDexNavUiDataPtr->cursorRow == ROW_LAND_BOT)
         {
             sDexNavUiDataPtr->cursorRow = ROW_WATER;
-        }
-        else if (sDexNavUiDataPtr->cursorRow == ROW_LAND_BOT)
-        {
-            if (sDexNavUiDataPtr->cursorCol >= COL_HIDDEN_COUNT)
-                sDexNavUiDataPtr->cursorCol = COL_HIDDEN_MAX;
-
-            sDexNavUiDataPtr->cursorRow++;
+            if (sDexNavUiDataPtr->cursorCol >= COL_WATER_COUNT)
+                sDexNavUiDataPtr->cursorCol = COL_WATER_MAX;
         }
         else
         {
@@ -2485,9 +2485,6 @@ static void Task_DexNavMain(u8 taskId)
             {
             case ROW_WATER:
                 sDexNavUiDataPtr->cursorCol = COL_WATER_MAX;
-                break;
-            case ROW_HIDDEN:
-                sDexNavUiDataPtr->cursorCol = COL_HIDDEN_MAX;
                 break;
             default:
                 sDexNavUiDataPtr->cursorCol = COL_LAND_MAX;
@@ -2508,12 +2505,6 @@ static void Task_DexNavMain(u8 taskId)
         {
         case ROW_WATER:
             if (sDexNavUiDataPtr->cursorCol == COL_WATER_MAX)
-                sDexNavUiDataPtr->cursorCol = 0;
-            else
-                sDexNavUiDataPtr->cursorCol++;
-            break;
-        case ROW_HIDDEN:
-            if (sDexNavUiDataPtr->cursorCol == COL_HIDDEN_MAX)
                 sDexNavUiDataPtr->cursorCol = 0;
             else
                 sDexNavUiDataPtr->cursorCol++;
@@ -2572,7 +2563,7 @@ static void Task_DexNavMain(u8 taskId)
 #endif
             gSpecialVar_0x8000 = species;
             gSpecialVar_0x8001 = sDexNavUiDataPtr->environment;
-            gSpecialVar_0x8002 = (sDexNavUiDataPtr->cursorRow == ROW_HIDDEN) ? TRUE : FALSE;
+            gSpecialVar_0x8002 = FALSE;
             PlaySE(SE_DEX_SEARCH);
             BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB_BLACK);
             task->func = Task_DexNavExitAndSearch;

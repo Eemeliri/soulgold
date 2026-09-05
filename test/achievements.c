@@ -66,6 +66,22 @@ TEST("Achievements initialize only their reserved save region")
         EXPECT_EQ(gSaveBlock1Ptr->achievements.popupQueue[i], 0);
 }
 
+TEST("Battle Pyramid floor migration runs only once")
+{
+    FlagClear(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE);
+    SetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS, 0);
+    gSaveBlock2Ptr->frontier.pyramidRecordStreaks[FRONTIER_LVL_50] = 14;
+
+    Achievement_MigrateBattlePyramidFloorClears();
+
+    EXPECT(FlagGet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE));
+    EXPECT_EQ(GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS), 14);
+
+    gSaveBlock2Ptr->frontier.pyramidRecordStreaks[FRONTIER_LVL_50] = 70;
+    Achievement_MigrateBattlePyramidFloorClears();
+    EXPECT_EQ(GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS), 14);
+}
+
 TEST("Achievements reject ids outside the save bitmap")
 {
     EXPECT(!Achievement_IsUnlocked((enum AchievementId)-1));

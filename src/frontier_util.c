@@ -2652,7 +2652,7 @@ static void IncrementWinStreak(void)
         if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode] < MAX_STREAK)
         {
             gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvlMode]++;
-            Achievement_CheckAll();
+            Achievement_RecordBattlePyramidFloorClear();
         }
         break;
     }

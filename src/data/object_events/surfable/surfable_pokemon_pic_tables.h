@@ -1330,6 +1330,24 @@ const struct SpriteFrameImage gSurfingOverlayPicTable_Lugia[] = {
     overworld_frame(gSurfablePokemonPic_Lugia, 8, 8, 10),
     overworld_frame(gSurfablePokemonPic_Lugia, 8, 8, 11),
 };
+
+const struct SpriteFrameImage gSurfingOverworldPicTable_LugiaShadow[] = {
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 0),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 1),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 2),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 3),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 4),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_LugiaShadow[] = {
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 6),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 7),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 8),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 9),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 10),
+    overworld_frame(gSurfablePokemonPic_LugiaShadow, 8, 8, 11),
+};
 #endif // P_FAMILY_LUGIA
 
 // Gen III Pokemon

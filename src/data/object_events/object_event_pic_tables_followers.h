@@ -4607,6 +4607,11 @@ static const struct SpriteFrameImage sPicTable_Braixen[] = {
 static const struct SpriteFrameImage sPicTable_Delphox[] = {
     overworld_ascending_frames(gObjectEventPic_Delphox, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_DelphoxMega[] = {
+    overworld_ascending_frames(gObjectEventPic_DelphoxMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_FENNEKIN
 
 #if P_FAMILY_FROAKIE

@@ -10,6 +10,11 @@
 
 #define SWAP_TASK_TARGET_BALL 3
 
+TEST("A malformed zero-EXP bar state still completes")
+{
+    EXPECT(BattleInterface_TestMalformedExpBarCompletes());
+}
+
 TEST("Last-used ball swaps coalesce rapid input to the latest ball")
 {
     gBallToDisplay = ITEM_POKE_BALL;

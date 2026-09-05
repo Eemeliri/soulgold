@@ -257,9 +257,11 @@ static EWRAM_DATA struct {
     u8 wirelessWinTop;
     u8 wirelessWinRight;
     u8 wirelessWinBottom;
+    bool8 saveFailed;
 } *sTradeAnim = NULL;
 
 static bool32 IsWirelessTrade(void);
+static bool8 TryInitTradeFullSave(bool8 showError);
 static void CB2_CreateTradeMenu(void);
 static void VBlankCB_TradeMenu(void);
 static void CB2_TradeMenu(void);
@@ -4705,6 +4707,26 @@ static void CB2_WaitTradeComplete(void)
     UpdatePaletteFade();
 }
 
+static bool8 TryInitTradeFullSave(bool8 showError)
+{
+    if (!LinkFullSave_Init())
+        return TRUE;
+
+    if (showError && GetLinkFullSaveResult() == LINK_FULL_SAVE_RESULT_FAILED)
+    {
+        StringExpandPlaceholders(gStringVar4, gText_SaveFailed);
+        DrawTextOnTradeWindow(0, gStringVar4, 0);
+    }
+    return FALSE;
+}
+
+#if TESTING
+bool8 Trade_TestTryInitFullSave(void)
+{
+    return TryInitTradeFullSave(FALSE);
+}
+#endif
+
 static void CB2_SaveAndEndTrade(void)
 {
     switch (gMain.state)
@@ -4744,7 +4766,7 @@ static void CB2_SaveAndEndTrade(void)
             MysteryGift_TryIncrementStat(CARD_STAT_NUM_TRADES, gLinkPlayers[GetMultiplayerId() ^ 1].trainerId);
 
         SetContinueGameWarpStatusToDynamicWarp();
-        LinkFullSave_Init();
+        sTradeAnim->saveFailed = !TryInitTradeFullSave(TRUE);
         gMain.state++;
         sTradeAnim->timer = 0;
         break;
@@ -4794,7 +4816,8 @@ static void CB2_SaveAndEndTrade(void)
     case 42:
         if (_IsLinkTaskFinished())
         {
-            LinkFullSave_SetLastSectorSignature();
+            if (!sTradeAnim->saveFailed)
+                LinkFullSave_SetLastSectorSignature();
             gMain.state = 5;
         }
         break;
@@ -5041,7 +5064,7 @@ static void CB2_SaveAndEndWirelessTrade(void)
             StringExpandPlaceholders(gStringVar4, gText_SavingDontTurnOffPower);
             DrawTextOnTradeWindow(0, gStringVar4, 0);
             IncrementGameStat(GAME_STAT_POKEMON_TRADES);
-            LinkFullSave_Init();
+            sTradeAnim->saveFailed = !TryInitTradeFullSave(TRUE);
             sTradeAnim->timer = 0;
         }
         break;
@@ -5089,7 +5112,8 @@ static void CB2_SaveAndEndWirelessTrade(void)
     case 8:
         if (_IsLinkTaskFinished())
         {
-            LinkFullSave_SetLastSectorSignature();
+            if (!sTradeAnim->saveFailed)
+                LinkFullSave_SetLastSectorSignature();
             gMain.state = 9;
         }
         break;

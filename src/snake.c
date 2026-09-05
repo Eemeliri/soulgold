@@ -904,6 +904,7 @@ static void FadeToSnakeScreen(u8 taskId)
     case 1:
         if (!gPaletteFade.active)
         {
+            CleanupOverworldWindowsAndTilemaps();
             SetMainCallback2(InitSnakeScreen);
             DestroyTask(taskId);
         }
@@ -931,6 +932,8 @@ static void ExitSnake(void)
 {
     if (!gPaletteFade.active)
     {
+        Free(GetBgTilemapBuffer(SNAKE_BG_BASE));
+        UnsetBgTilemapBuffer(SNAKE_BG_BASE);
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         FREE_AND_SET_NULL(sSnake);
     }
@@ -2031,6 +2034,8 @@ static void SnakeMain(u8 taskId)
 static void InitSnakeScreen(void)
 {    
     SetVBlankCallback(NULL);
+    DeactivateAllTextPrinters();
+    ResetTasks();
     ResetAllBgsCoordinates();
     ResetVramOamAndBgCntRegs();
     ResetBgsAndClearDma3BusyFlags(0);
