@@ -69815,8 +69815,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -69824,8 +69824,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -256968,7 +256968,7 @@
       "move": "MOVE_DRAINING_KISS",
       "label": "TM64",
       "name": "TM64 Draining Kiss",
-      "description": "Steals the foe's HP with a kiss, healing over half the damage.",
+      "description": "Steals the foe's HP with a kiss, healing half the damage.",
       "moveName": "Draining Kiss",
       "type": "TYPE_FAIRY",
       "category": "DAMAGE_CATEGORY_SPECIAL",
