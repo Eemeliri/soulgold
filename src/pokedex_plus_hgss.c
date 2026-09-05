@@ -244,7 +244,6 @@ static const u16 sPokedexPlusHGSS_Default_dark_Pal[] = INCBIN_U16("graphics/poke
 static const u16 sPokedexPlusHGSS_National_dark_Pal[] = INCBIN_U16("graphics/pokedex/hgss/palette_national_dark.gbapal");
 static const u16 sPokedexPlusHGSS_MenuSearch_dark_Pal[] = INCBIN_U16("graphics/pokedex/hgss/palette_search_menu_dark.gbapal");
 static const u16 sPokedexPlusHGSS_SearchResults_dark_Pal[] = INCBIN_U16("graphics/pokedex/hgss/palette_search_results_dark.gbapal");
-static const u16 sPokedexPlusHGSS_Interface_dark_Pal[] = INCBIN_U16("graphics/pokedex/hgss/palette_interface_dark.gbapal");
 static const u32 sPokedexPlusHGSS_MenuList_Gfx[] = INCBIN_U32("graphics/pokedex/hgss/tileset_menu_list.4bpp.smol");
 static const u32 sPokedexPlusHGSS_MenuList_DECA_Gfx[] = INCBIN_U32("graphics/pokedex/hgss/tileset_menu_list_DECA.4bpp.smol");
 static const u32 sPokedexPlusHGSS_Interface_Gfx[] = INCBIN_U32("graphics/pokedex/hgss/tileset_interface.4bpp.smol");
@@ -697,13 +696,8 @@ static const u16 sStatBarPalette[16] = {
     [COLOR_ID_FILL + COLOR_WORST * 2] = RGB(25, 4, 2),
     [COLOR_ID_FILL_SHADOW + COLOR_WORST * 2] = RGB(27, 15, 13),
 
-#if HGSS_DARK_MODE
-    [COLOR_ID_FONT] = RGB_WHITE,
-    [COLOR_ID_FONT_SHADOW] = RGB(10, 10, 12),
-#else
     [COLOR_ID_FONT] = RGB_BLACK,
     [COLOR_ID_FONT_SHADOW] = RGB(22, 22, 22),
-#endif
 };
 static const struct SpritePalette sStatBarSpritePal[] = //{sStatBarPalette, TAG_STAT_BAR};
 {
@@ -1167,7 +1161,7 @@ static const struct CompressedSpriteSheet sInterfaceSpriteSheet[] =
 static const struct SpritePalette sInterfaceSpritePalette[] =
 {
     {sPokedexPlusHGSS_Default_Pal, TAG_DEX_INTERFACE},
-    {sPokedexPlusHGSS_Interface_dark_Pal, TAG_DEX_INTERFACE},
+    {sPokedexPlusHGSS_Default_dark_Pal, TAG_DEX_INTERFACE},
     {0}
 };
 
@@ -2382,20 +2376,20 @@ static void LoadPokedexBgPalette(bool8 isSearchResults)
     if (!HGSS_DARK_MODE)
     {
         if (isSearchResults == TRUE)
-            LoadPalette(sPokedexPlusHGSS_SearchResults_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_SearchResults_Pal) - PLTT_SIZEOF(1));
+            LoadPalette(sPokedexPlusHGSS_SearchResults_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
         else if (!IsNationalPokedexEnabled())
-            LoadPalette(sPokedexPlusHGSS_Default_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_Default_Pal) - PLTT_SIZEOF(1));
+            LoadPalette(sPokedexPlusHGSS_Default_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
         else
-            LoadPalette(sPokedexPlusHGSS_National_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_National_Pal) - PLTT_SIZEOF(1));
+            LoadPalette(sPokedexPlusHGSS_National_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
     }
     else
     {
         if (isSearchResults == TRUE)
-            LoadPalette(sPokedexPlusHGSS_SearchResults_dark_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_SearchResults_dark_Pal) - PLTT_SIZEOF(1));
+            LoadPalette(sPokedexPlusHGSS_SearchResults_dark_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
         else if (!IsNationalPokedexEnabled())
-            LoadPalette(sPokedexPlusHGSS_Default_dark_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_Default_dark_Pal) - PLTT_SIZEOF(1));
+            LoadPalette(sPokedexPlusHGSS_Default_dark_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
         else
-            LoadPalette(sPokedexPlusHGSS_National_dark_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_National_dark_Pal) - PLTT_SIZEOF(1));
+            LoadPalette(sPokedexPlusHGSS_National_dark_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
     }
 
     LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
@@ -4454,12 +4448,6 @@ static void SpriteCB_SlideCaughtMonToCenter(struct Sprite *sprite)
 //*        Print data                *
 //*                                  *
 //************************************
-#if HGSS_DARK_MODE
-static const u8 sPokedexWhiteTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_6, TEXT_COLOR_LIGHT_GRAY};
-#else
-static const u8 sPokedexWhiteTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_DYNAMIC_COLOR_6};
-#endif
-
 static void PrintInfoScreenText(const u8 *str, u8 left, u8 top)
 {
     u8 color[3];
@@ -4471,7 +4459,12 @@ static void PrintInfoScreenText(const u8 *str, u8 left, u8 top)
 }
 static void PrintInfoScreenTextWhite(const u8* str, u8 left, u8 top)
 {
-    AddTextPrinterParameterized4(0, FONT_NORMAL, left, top, 0, 0, sPokedexWhiteTextColor, TEXT_SKIP_DRAW, str);
+    u8 color[3];
+    color[0] = TEXT_COLOR_TRANSPARENT;
+    color[1] = TEXT_COLOR_WHITE;
+    color[2] = TEXT_DYNAMIC_COLOR_6;
+
+    AddTextPrinterParameterized4(0, FONT_NORMAL, left, top, 0, 0, color, TEXT_SKIP_DRAW, str);
 }
 static void PrintInfoScreenTextSmall(const u8* str, u8 fontId, u8 left, u8 top)
 {
@@ -4493,7 +4486,12 @@ static void PrintStatsScreenTextSmallNarrower(u8 windowId, const u8* str, u8 lef
 }
 static void UNUSED PrintInfoScreenTextSmallWhite(const u8* str, u8 left, u8 top)
 {
-    AddTextPrinterParameterized4(0, 0, left, top, 0, 0, sPokedexWhiteTextColor, 0, str);
+    u8 color[3];
+    color[0] = TEXT_COLOR_TRANSPARENT;
+    color[1] = TEXT_COLOR_WHITE;
+    color[2] = TEXT_DYNAMIC_COLOR_6;
+
+    AddTextPrinterParameterized4(0, 0, left, top, 0, 0, color, 0, str);
 }
 //Stats screen
 static void PrintStatsScreenTextSmall(u8 windowId, const u8* str, u8 left, u8 top)
@@ -4507,7 +4505,12 @@ static void PrintStatsScreenTextSmall(u8 windowId, const u8* str, u8 left, u8 to
 }
 static void PrintStatsScreenTextSmallWhite(u8 windowId, const u8* str, u8 left, u8 top)
 {
-    AddTextPrinterParameterized4(windowId, 0, left, top, 0, 0, sPokedexWhiteTextColor, 0, str);
+    u8 color[3];
+    color[0] = TEXT_COLOR_TRANSPARENT;
+    color[1] = TEXT_COLOR_WHITE;
+    color[2] = TEXT_DYNAMIC_COLOR_6;
+
+    AddTextPrinterParameterized4(windowId, 0, left, top, 0, 0, color, 0, str);
 }
 
 //Type Icon
@@ -4914,16 +4917,16 @@ static void DestroyCategoryIcon(void)
 //*        STATS                     *
 //*                                  *
 //************************************
-static const u8 sNavigationTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
+static const u8 sStatsPageNavigationTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
 static void StatsPage_PrintNavigationButtons(void)
 {
     u8 x = 9;
     u8 y = 0;
     if (!HGSS_DECAPPED)
-        AddTextPrinterParameterized3(WIN_STATS_NAVIGATION_BUTTONS, 0, x, y, sNavigationTextColor, 0, sText_Stats_Buttons);
+        AddTextPrinterParameterized3(WIN_STATS_NAVIGATION_BUTTONS, 0, x, y, sStatsPageNavigationTextColor, 0, sText_Stats_Buttons);
     else
-        AddTextPrinterParameterized3(WIN_STATS_NAVIGATION_BUTTONS, 0, x, y, sNavigationTextColor, 0, sText_Stats_Buttons_Decapped);
+        AddTextPrinterParameterized3(WIN_STATS_NAVIGATION_BUTTONS, 0, x, y, sStatsPageNavigationTextColor, 0, sText_Stats_Buttons_Decapped);
 
     PutWindowTilemap(WIN_STATS_NAVIGATION_BUTTONS);
     CopyWindowToVram(WIN_STATS_NAVIGATION_BUTTONS, 3);
@@ -6072,6 +6075,8 @@ static void Task_ExitStatsScreen(u8 taskId)
 //*        EVOS                      *
 //*                                  *
 //************************************
+static const u8 sEvoFormsPageNavigationTextColor[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
+
 static void EvoFormsPage_PrintNavigationButtons(void)
 {
     u8 x = 6;
@@ -6082,25 +6087,25 @@ static void EvoFormsPage_PrintNavigationButtons(void)
         if (sPokedexView->selectedScreen == EVO_SCREEN)
         {
             if (!HGSS_DECAPPED)
-                AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x+9, y, sNavigationTextColor, 0, sText_EVO_Buttons_PE);
+                AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x+9, y, sStatsPageNavigationTextColor, 0, sText_EVO_Buttons_PE);
             else
-                AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x+9, y, sNavigationTextColor, 0, sText_EVO_Buttons_Decapped_PE);
+                AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x+9, y, sStatsPageNavigationTextColor, 0, sText_EVO_Buttons_Decapped_PE);
         }
         else if (sPokedexView->selectedScreen == FORMS_SCREEN)
         {
             if (sPokedexView->sFormScreenData.inSubmenu)
             {
                 if (!HGSS_DECAPPED)
-                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sNavigationTextColor, 0, sText_FORMS_Buttons_Submenu_PE);
+                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sStatsPageNavigationTextColor, 0, sText_FORMS_Buttons_Submenu_PE);
                 else
-                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sNavigationTextColor, 0, sText_FORMS_Buttons_Submenu_Decapped_PE);
+                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sStatsPageNavigationTextColor, 0, sText_FORMS_Buttons_Submenu_Decapped_PE);
             }
             else
             {
                 if (!HGSS_DECAPPED)
-                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sNavigationTextColor, 0, sText_FORMS_Buttons_PE);
+                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sStatsPageNavigationTextColor, 0, sText_FORMS_Buttons_PE);
                 else
-                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sNavigationTextColor, 0, sText_FORMS_Buttons_Decapped_PE);
+                    AddTextPrinterParameterized3(WIN_NAVIGATION_BUTTONS, 0, x, y, sStatsPageNavigationTextColor, 0, sText_FORMS_Buttons_Decapped_PE);
             }
         }
 
@@ -8289,9 +8294,9 @@ static void Task_LoadSearchMenu(u8 taskId)
             else
                 CopyToBgTilemapBuffer(3, sPokedexPlusHGSS_ScreenSearchNational_Tilemap, 0, 0);
             if (!HGSS_DARK_MODE)
-                LoadPalette(sPokedexPlusHGSS_MenuSearch_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_MenuSearch_Pal) - PLTT_SIZEOF(1));
+                LoadPalette(sPokedexPlusHGSS_MenuSearch_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(4 * 16 - 1));
             else
-                LoadPalette(sPokedexPlusHGSS_MenuSearch_dark_Pal + 1, BG_PLTT_ID(0) + 1, sizeof(sPokedexPlusHGSS_MenuSearch_dark_Pal) - PLTT_SIZEOF(1));
+                LoadPalette(sPokedexPlusHGSS_MenuSearch_dark_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(4 * 16 - 1));
             gMain.state = 1;
         }
         break;
