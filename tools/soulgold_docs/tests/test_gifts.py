@@ -49,6 +49,32 @@ class GiftLocationTests(unittest.TestCase):
                 )
                 self.assertEqual(location["method"], "Gift")
 
+    def test_goldenrod_game_corner_prizes_are_exchange_sources(self) -> None:
+        prizes = {
+            "SPECIES_PAWNIARD",
+            "SPECIES_MUNCHLAX",
+            "SPECIES_SNEASEL_HISUI",
+            "SPECIES_DEINO",
+            "SPECIES_PORYGON",
+        }
+        locations = {}
+
+        add_gift_species_locations(  # type: ignore[arg-type]
+            locations,
+            {species: object() for species in prizes},
+        )
+
+        for species in prizes:
+            with self.subTest(species=species):
+                exchange = next(
+                    location for location in locations[species]
+                    if location["map"] == "MAP_GOLDENROD_CITY_GAME_CORNER"
+                )
+                self.assertEqual(exchange["name"], "Goldenrod Game Corner")
+                self.assertEqual(exchange["method"], "Exchange")
+                self.assertEqual(exchange["minLevel"], 15)
+                self.assertEqual(exchange["maxLevel"], 15)
+
     def test_fossil_revivals_are_not_presented_as_ordinary_gifts(self) -> None:
         locations = {}
 

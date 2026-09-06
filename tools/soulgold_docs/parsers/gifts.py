@@ -57,6 +57,9 @@ FOSSIL_REVIVAL_LEVELS = {
     "SPECIES_KABUTO": ((5, "before 4th badge"), (20, "after 4th badge")),
 }
 FOSSIL_LAB_MAP = "MAP_RUINS_OF_ALPH_LAB"
+GAME_CORNER_MAP_NAME = "GoldenrodCity_GameCorner"
+GAME_CORNER_PRIZE_MENU_LABEL = "GoldenrodCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon"
+GAME_CORNER_PRIZE_LEVEL = 15
 
 
 def species_aliases() -> dict[str, str]:
@@ -138,6 +141,42 @@ def add_fossil_revival_locations(
                 locations[species].append(location)
 
 
+def add_game_corner_exchange_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """Add the Pokemon offered by the Goldenrod Game Corner prize menu."""
+    map_dir = REPO_ROOT / "data" / "maps" / GAME_CORNER_MAP_NAME
+    try:
+        map_data = json.loads(read(map_dir / "map.json"))
+        blocks = script_blocks(read(map_dir / "scripts.inc"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+
+    prize_menu = blocks.get(GAME_CORNER_PRIZE_MENU_LABEL, "")
+    prize_labels = re.findall(r"\bcase\s+\d+\s*,\s*([A-Za-z_][A-Za-z0-9_]*)", prize_menu)
+    aliases = species_aliases()
+    for label in prize_labels:
+        match = re.search(r"\bsetvar\s+VAR_TEMP_1\s*,\s*(SPECIES_[A-Z0-9_]+)", blocks.get(label, ""))
+        if not match:
+            continue
+        species = aliases.get(match.group(1), match.group(1))
+        if species not in by_species:
+            continue
+        location: SpeciesLocation = {
+            "map": str(map_data.get("id") or "MAP_GOLDENROD_CITY_GAME_CORNER"),
+            "name": "Goldenrod Game Corner",
+            "time": "",
+            "method": "Exchange",
+            "minLevel": GAME_CORNER_PRIZE_LEVEL,
+            "maxLevel": GAME_CORNER_PRIZE_LEVEL,
+            "rate": None,
+        }
+        locations.setdefault(species, [])
+        if location not in locations[species]:
+            locations[species].append(location)
+
+
 def add_gift_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
@@ -189,6 +228,7 @@ def add_gift_species_locations(
                         gifts[species].append(location)
 
     add_fossil_revival_locations(gifts, by_species)
+    add_game_corner_exchange_locations(gifts, by_species)
 
     for species, gift_locations in gifts.items():
         locations.setdefault(species, [])

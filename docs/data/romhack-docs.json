@@ -42221,7 +42221,17 @@
           "itemName": "Upgrade"
         }
       ],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_GOLDENROD_CITY_GAME_CORNER",
+          "name": "Goldenrod Game Corner",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 15,
+          "maxLevel": 15,
+          "rate": null
+        }
+      ],
       "heldItems": [],
       "slug": "porygon"
     },
@@ -62561,6 +62571,15 @@
           "minLevel": 30,
           "maxLevel": 45,
           "rate": 5
+        },
+        {
+          "map": "MAP_GOLDENROD_CITY_GAME_CORNER",
+          "name": "Goldenrod Game Corner",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 15,
+          "maxLevel": 15,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -70275,8 +70294,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -70284,8 +70303,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -105950,6 +105969,15 @@
           "minLevel": 30,
           "maxLevel": 30,
           "rate": 25
+        },
+        {
+          "map": "MAP_GOLDENROD_CITY_GAME_CORNER",
+          "name": "Goldenrod Game Corner",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 15,
+          "maxLevel": 15,
+          "rate": null
         }
       ],
       "heldItems": [
@@ -137886,6 +137914,15 @@
           "minLevel": 28,
           "maxLevel": 30,
           "rate": 30
+        },
+        {
+          "map": "MAP_GOLDENROD_CITY_GAME_CORNER",
+          "name": "Goldenrod Game Corner",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 15,
+          "maxLevel": 15,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -139391,6 +139428,15 @@
           "minLevel": 50,
           "maxLevel": 55,
           "rate": 5
+        },
+        {
+          "map": "MAP_GOLDENROD_CITY_GAME_CORNER",
+          "name": "Goldenrod Game Corner",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 15,
+          "maxLevel": 15,
+          "rate": null
         }
       ],
       "heldItems": [],
@@ -184901,194 +184947,6 @@
       ],
       "heldItems": [],
       "slug": "zarude"
-    },
-    {
-      "id": 1231,
-      "constant": "SPECIES_ZARUDE_DADA",
-      "dex": 610,
-      "name": "Zarude",
-      "types": [
-        "TYPE_DARK",
-        "TYPE_GRASS"
-      ],
-      "stats": {
-        "hp": 105,
-        "atk": 120,
-        "def": 105,
-        "spa": 70,
-        "spd": 95,
-        "spe": 105
-      },
-      "evYield": {
-        "atk": 3
-      },
-      "eggGroups": [
-        "EGG_GROUP_NO_EGGS_DISCOVERED"
-      ],
-      "categories": [
-        "mythical"
-      ],
-      "bst": 600,
-      "abilities": [
-        "ABILITY_LEAF_GUARD"
-      ],
-      "regularAbilities": [
-        "ABILITY_LEAF_GUARD"
-      ],
-      "hiddenAbilities": [],
-      "innates": [
-        "ABILITY_PICKPOCKET",
-        "ABILITY_UNNERVE",
-        "ABILITY_INFILTRATOR"
-      ],
-      "sprite": "sprites/pokemon/zarude_dada.png",
-      "shinySprite": "sprites/pokemon/zarude_dada_shiny.png",
-      "levelUp": [
-        {
-          "level": 1,
-          "move": "MOVE_SCRATCH"
-        },
-        {
-          "level": 1,
-          "move": "MOVE_BIND"
-        },
-        {
-          "level": 6,
-          "move": "MOVE_LEER"
-        },
-        {
-          "level": 12,
-          "move": "MOVE_VINE_WHIP"
-        },
-        {
-          "level": 18,
-          "move": "MOVE_GROWTH"
-        },
-        {
-          "level": 24,
-          "move": "MOVE_FURY_SWIPES"
-        },
-        {
-          "level": 30,
-          "move": "MOVE_SCARY_FACE"
-        },
-        {
-          "level": 36,
-          "move": "MOVE_GRASS_KNOT"
-        },
-        {
-          "level": 42,
-          "move": "MOVE_BITE"
-        },
-        {
-          "level": 48,
-          "move": "MOVE_U_TURN"
-        },
-        {
-          "level": 54,
-          "move": "MOVE_SWAGGER"
-        },
-        {
-          "level": 60,
-          "move": "MOVE_ENERGY_BALL"
-        },
-        {
-          "level": 66,
-          "move": "MOVE_SYNTHESIS"
-        },
-        {
-          "level": 72,
-          "move": "MOVE_HAMMER_ARM"
-        },
-        {
-          "level": 78,
-          "move": "MOVE_THRASH"
-        },
-        {
-          "level": 84,
-          "move": "MOVE_POWER_WHIP"
-        },
-        {
-          "level": 90,
-          "move": "MOVE_JUNGLE_HEALING"
-        }
-      ],
-      "tmhm": [
-        "MOVE_BULK_UP",
-        "MOVE_HIDDEN_POWER",
-        "MOVE_SUNNY_DAY",
-        "MOVE_TAUNT",
-        "MOVE_HYPER_BEAM",
-        "MOVE_PROTECT",
-        "MOVE_FRUSTRATION",
-        "MOVE_SOLAR_BEAM",
-        "MOVE_RETURN",
-        "MOVE_BRICK_BREAK",
-        "MOVE_ROCK_TOMB",
-        "MOVE_AERIAL_ACE",
-        "MOVE_FACADE",
-        "MOVE_REST",
-        "MOVE_THIEF",
-        "MOVE_LOW_SWEEP",
-        "MOVE_ROUND",
-        "MOVE_ENERGY_BALL",
-        "MOVE_FLING",
-        "MOVE_BRUTAL_SWING",
-        "MOVE_TRAILBLAZE",
-        "MOVE_ACROBATICS",
-        "MOVE_PAYBACK",
-        "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
-        "MOVE_DIG",
-        "MOVE_ROCK_SLIDE",
-        "MOVE_DRAIN_PUNCH",
-        "MOVE_GRASS_KNOT",
-        "MOVE_GIGA_DRAIN",
-        "MOVE_U_TURN",
-        "MOVE_SUBSTITUTE",
-        "MOVE_SNARL",
-        "MOVE_DARK_PULSE"
-      ],
-      "tutors": [
-        "MOVE_BODY_SLAM",
-        "MOVE_BULLET_SEED",
-        "MOVE_CLOSE_COMBAT",
-        "MOVE_CRUNCH",
-        "MOVE_DARKEST_LARIAT",
-        "MOVE_DOUBLE_EDGE",
-        "MOVE_ENCORE",
-        "MOVE_ENDURE",
-        "MOVE_FOCUS_PUNCH",
-        "MOVE_GRASSY_GLIDE",
-        "MOVE_GRASSY_TERRAIN",
-        "MOVE_HELPING_HAND",
-        "MOVE_HYPER_VOICE",
-        "MOVE_IRON_TAIL",
-        "MOVE_KNOCK_OFF",
-        "MOVE_LASH_OUT",
-        "MOVE_LEAF_STORM",
-        "MOVE_LOW_KICK",
-        "MOVE_MEGA_KICK",
-        "MOVE_MEGA_PUNCH",
-        "MOVE_MIMIC",
-        "MOVE_NASTY_PLOT",
-        "MOVE_PETAL_BLIZZARD",
-        "MOVE_POWER_WHIP",
-        "MOVE_SEED_BOMB",
-        "MOVE_SLEEP_TALK",
-        "MOVE_SNORE",
-        "MOVE_SOLAR_BLADE",
-        "MOVE_STOMPING_TANTRUM",
-        "MOVE_SUPERPOWER",
-        "MOVE_SWAGGER",
-        "MOVE_SWIFT",
-        "MOVE_THROAT_CHOP"
-      ],
-      "eggMoves": [],
-      "evolutions": [],
-      "locations": [],
-      "heldItems": [],
-      "slug": "zarude-dada"
     },
     {
       "id": 894,
@@ -233893,12 +233751,6 @@
             "name": "Zarude",
             "dex": 610,
             "sprite": "sprites/pokemon/zarude.png"
-          },
-          {
-            "species": "SPECIES_ZARUDE_DADA",
-            "name": "Zarude",
-            "dex": 610,
-            "sprite": "sprites/pokemon/zarude_dada.png"
           }
         ],
         "innate": [
@@ -236487,12 +236339,6 @@
             "sprite": "sprites/pokemon/zarude.png"
           },
           {
-            "species": "SPECIES_ZARUDE_DADA",
-            "name": "Zarude",
-            "dex": 610,
-            "sprite": "sprites/pokemon/zarude_dada.png"
-          },
-          {
             "species": "SPECIES_MEOWSCARADA",
             "name": "Meowscarada",
             "dex": 625,
@@ -236988,12 +236834,6 @@
             "name": "Zarude",
             "dex": 610,
             "sprite": "sprites/pokemon/zarude.png"
-          },
-          {
-            "species": "SPECIES_ZARUDE_DADA",
-            "name": "Zarude",
-            "dex": 610,
-            "sprite": "sprites/pokemon/zarude_dada.png"
           },
           {
             "species": "SPECIES_IRON_JUGULIS",
@@ -239686,12 +239526,6 @@
             "name": "Zarude",
             "dex": 610,
             "sprite": "sprites/pokemon/zarude.png"
-          },
-          {
-            "species": "SPECIES_ZARUDE_DADA",
-            "name": "Zarude",
-            "dex": 610,
-            "sprite": "sprites/pokemon/zarude_dada.png"
           },
           {
             "species": "SPECIES_FLUTTER_MANE",

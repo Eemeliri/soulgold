@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from tools.soulgold_docs.parsers.species import egg_move_symbol_for_family, johto_dex_species_order, parse_species
+from tools.soulgold_docs.parsers.species import egg_move_symbol_for_family, is_dex_visible_species, johto_dex_species_order, parse_species
 
 
 class SpeciesExtraDataTests(unittest.TestCase):
@@ -41,6 +41,10 @@ class SpeciesExtraDataTests(unittest.TestCase):
         self.assertIn("fossil", self.species["SPECIES_CRADILY"].categories)
         self.assertIn("fossil", self.species["SPECIES_AERODACTYL_MEGA"].categories)
         self.assertEqual(self.species["SPECIES_RATTATA"].categories, [])
+
+    def test_unobtainable_dada_zarude_is_hidden_from_the_dex(self) -> None:
+        self.assertTrue(is_dex_visible_species("SPECIES_ZARUDE"))
+        self.assertFalse(is_dex_visible_species("SPECIES_ZARUDE_DADA"))
 
     def test_display_numbers_follow_the_active_johto_dex_order(self) -> None:
         order = johto_dex_species_order()
