@@ -20,6 +20,14 @@ class WildEncounterAggregationTests(unittest.TestCase):
 
         self.assertNotIn("MAP_BATTLE_CAFE", {encounter["map"] for encounter in encounters})
 
+    def test_kanto_and_legacy_encounters_are_hidden(self) -> None:
+        encounters = parse_wild_encounters({})
+        maps = {encounter["map"] for encounter in encounters}
+
+        self.assertNotIn("MAP_VERMILION_CITY_PORT_OUTSIDE", maps)
+        self.assertNotIn("MAP_SOUTHERN_ISLAND_EXTERIOR", maps)
+        self.assertIn("MAP_ROUTE28", maps)
+
     def test_repeated_rotom_slots_are_combined(self) -> None:
         encounters = parse_wild_encounters(
             {"SPECIES_ROTOM": StubSpecies("Rotom")}  # type: ignore[dict-item]

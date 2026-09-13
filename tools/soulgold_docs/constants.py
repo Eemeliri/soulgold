@@ -338,7 +338,6 @@ EXCLUDED_TRAINER_MAP_NAMES = {
     "Route23",
     "Route24",
     "Route25",
-    "Route28",
     "OneIsland",
     "OneIsland_KindleRoad_Frlg",
     "OneIsland_TreasureBeach_Frlg",

@@ -15,9 +15,9 @@ from ..constants import (
     UNKNOWN_MAP,
 )
 from ..c_parser import clean_constant_name, parse_define_aliases, read
-from ..map_names import map_constant_display_name
+from ..map_names import is_docs_excluded_map, map_constant_display_name, map_data_by_constant
 from ..models import EncounterMon, RawEncounterRow, SpeciesLocation, SpeciesRow, WildEncounterRow
-from ..paths import SPECIES_H, WILD_ENCOUNTERS_JSON
+from ..paths import MAP_GROUPS_JSON, SPECIES_H, WILD_ENCOUNTERS_JSON
 from .hidden_grottos import HiddenGrottoRow
 
 
@@ -54,6 +54,15 @@ def combine_duplicate_species_slots(mons: list[EncounterMon]) -> list[EncounterM
 
 def parse_wild_encounters(by_species: dict[str, SpeciesRow]) -> list[WildEncounterRow]:
     data = json.loads(read(WILD_ENCOUNTERS_JSON))
+    try:
+        map_groups_data = json.loads(read(MAP_GROUPS_JSON))
+    except (FileNotFoundError, json.JSONDecodeError):
+        map_groups_data = {}
+    map_groups = {
+        map_name: group_name
+        for group_name in map_groups_data.get("group_order") or []
+        for map_name in map_groups_data.get(group_name) or []
+    }
     aliases = parse_define_aliases(SPECIES_H, "SPECIES_")
     rows = []
     original_index = 0
@@ -63,6 +72,10 @@ def parse_wild_encounters(by_species: dict[str, SpeciesRow]) -> list[WildEncount
         for encounter in group.get("encounters", []):
             map_const = encounter.get("map", UNKNOWN_MAP)
             if map_const == UNKNOWN_MAP or map_const in DOCS_HIDDEN_WILD_ENCOUNTER_MAPS:
+                continue
+            map_data = map_data_by_constant().get(map_const, {})
+            map_name = str(map_data.get("name") or "")
+            if is_docs_excluded_map(map_name, map_groups.get(map_name, "")):
                 continue
             label = map_constant_display_name(map_const)
             base_label = encounter.get("base_label", "")
