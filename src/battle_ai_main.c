@@ -1296,7 +1296,6 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
     u32 weather = AI_GetWeather();
     enum Move predictedMove = GetIncomingMove(battlerAtk, battlerDef, gAiLogicData);
     enum Move predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
-    s32 atkPriority = GetBattleMovePriority(battlerAtk, move);
     u32 i;
     bool32 ignoreAbility = FALSE;
     enum Ability AIBattlerTraits[MAX_MON_TRAITS];
@@ -1495,11 +1494,6 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         {
             if (IsNonVolatileStatusMove(move) || IsConfusionMoveEffect(moveEffect))
                 RETURN_SCORE_MINUS(20);
-        }
-
-        if (atkPriority > 0 && IsPsychicTerrainAffected(battlerAtk, gFieldStatuses))
-        {
-            RETURN_SCORE_MINUS(20);
         }
     } // end check TARGET_USER
 
@@ -2591,6 +2585,11 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             ADJUST_SCORE(-9);
         break;
     case EFFECT_COURT_CHANGE:
+        if (!((gSideStatuses[GetBattlerSide(battlerAtk)] | gSideStatuses[GetBattlerSide(battlerDef)])
+              & (SIDE_STATUS_GOOD_COURT | SIDE_STATUS_BAD_COURT))
+         && !AreAnyHazardsOnSide(GetBattlerSide(battlerAtk))
+         && !AreAnyHazardsOnSide(GetBattlerSide(battlerDef)))
+            ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS);
         if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_BAD_COURT)
             ADJUST_SCORE(BAD_EFFECT);
         if (gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_GOOD_COURT)
@@ -3672,6 +3671,7 @@ static s32 AI_DoubleBattle(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             if (SearchTraits(AIBattlerTraits, ABILITY_EARTH_EATER)
              || SearchTraits(AIBattlerTraits, ABILITY_LEVITATE)
              || SearchTraits(AIBattlerTraits, ABILITY_EELEVATE)
+             || SearchTraits(AIBattlerTraits, ABILITY_MIND_FLOAT)
              || SearchTraits(AIBattlerTraits, ABILITY_ELECTROLEVITATE)
              || SearchTraits(AIBattlerTraits, ABILITY_ALLSEEING_IDOL))
              {

@@ -62,31 +62,3 @@ Checks:
 node --test tools/soulgold_docs/tests/version-check.test.mjs
 python3 -m unittest tools.soulgold_docs.tests.test_site
 ```
-
-## Species acquisition guidance
-
-Species pages show **How to obtain**. Direct sources retain their location table.
-When a species has no direct source, `parsers/acquisition.py` builds breeding and
-evolution paths and embeds them in its detail data as `acquisitionPaths`.
-Each option includes the evolution conditions, clickable species names, and the
-starting Pokémon's original location table. Shorter paths appear first.
-
-Paths must start at a documented source; isolated evolution/breeding cycles do
-not establish availability. Breeding options use an obtainable Ditto and a
-breedable parent. They produce the family's egg species, not every earlier
-evolution. The builder reads the configured incense and mixed-gender offspring
-rules and the incense table, and handles special egg species and regional
-Everstone requirements from `src/daycare.c`. Update the acquisition rules when
-changing daycare offspring behavior. These paths describe species acquisition;
-they do not establish the earliest story point or check evolution-item access.
-
-Species without a documented path show a neutral unknown-method message. This
-does not certify that the species is unavailable; missing scripted sources or
-other form changes still need their own documentation.
-
-Run a full docs build after changing acquisition logic or source game data:
-
-```sh
-python3 -m unittest tools.soulgold_docs.tests.test_acquisition
-python3 tools/soulgold_docs/build_docs.py
-```

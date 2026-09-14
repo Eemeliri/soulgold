@@ -2118,6 +2118,14 @@ enum CancelerResult DoAttackCanceler(void)
 
 static enum MoveEndResult MoveEndSetValues(void)
 {
+    // Substitute is cleared later, so even a hit that breaks it preserves the shield.
+    if (gBattleStruct->moveDamage[gBattlerTarget] > 0
+     && !IsBattlerUnaffectedByMove(gBattlerTarget)
+     && !DoesSubstituteBlockMove(gBattlerAttacker, gBattlerTarget, gCurrentMove)
+     && !IsBattleMoveStatus(gCurrentMove)
+     && gBattlerAttacker != gBattlerTarget)
+        gBattleStruct->hotTagActive[gBattlerTarget] = FALSE;
+
     gBattleScripting.savedDmg += gBattleStruct->moveDamage[gBattlerTarget];
     gBattleStruct->eventState.moveEndBattler = 0;
     gBattleStruct->eventState.moveEndBlock = 0;
@@ -2234,6 +2242,14 @@ static void SetHealScript(s32 healAmount)
     }
 }
 
+static s32 GetControlledBurnRecoil(s32 recoil)
+{
+    if (GetBattleMoveType(gCurrentMove) == TYPE_FIRE
+     && BattlerHasTrait(gBattlerAttacker, ABILITY_CONTROLLED_BURN))
+        return max(1, (recoil + 1) / 2);
+    return recoil;
+}
+
 static enum MoveEndResult MoveEndAbsorb(void)
 {
     if (gBattleStruct->unableToUseMove)
@@ -2286,7 +2302,7 @@ static enum MoveEndResult MoveEndAbsorb(void)
          && !IsAbilityAndRecord(gBattlerAttacker, ABILITY_MAGIC_GUARD))
         {
             s32 recoil = (GetNonDynamaxMaxHP(gBattlerAttacker) + 1) / 2; // Half of Max HP Rounded UP
-            SetPassiveDamageAmount(gBattlerAttacker, recoil);
+            SetPassiveDamageAmount(gBattlerAttacker, GetControlledBurnRecoil(recoil));
             gSpecialStatuses[gBattlerAttacker].mindBlownRecoil = TRUE;
             TryUpdateEvolutionTracker(IF_RECOIL_DAMAGE_GE, gBattleStruct->passiveHpUpdate[gBattlerAttacker], MOVE_NONE);
             BattleScriptCall(BattleScript_MaxHp50Recoil);
@@ -2361,6 +2377,34 @@ static enum MoveEndResult MoveEndAbilitiesAttacker(void)
 
     if (AbilityBattleEffects(ABILITYEFFECT_MOVE_END_ATTACKER, gBattlerAttacker, 0, TRUE))
         result = MOVEEND_RESULT_RUN_SCRIPT;
+
+    gBattleScripting.moveendState++;
+    return result;
+}
+
+static enum MoveEndResult MoveEndTempo(void)
+{
+    enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
+
+    // Resolve separately from on-hit effects so Echoing can also activate.
+    // This runs before Relic Song changes Meloetta's form and innates.
+    if (BattlerHasTrait(gBattlerAttacker, ABILITY_TEMPO)
+     && !gProtectStructs[gBattlerAttacker].tempoUsed
+     && IsBattlerAlive(gBattlerAttacker)
+     && !gBattleStruct->unableToUseMove
+     && IsSoundMove(gCurrentMove)
+     && !IsBattleMoveStatus(gCurrentMove)
+     && !IsBattlerUnaffectedByMove(gBattlerTarget)
+     && gBattleStruct->moveDamage[gBattlerTarget] > 0
+     && CompareStat(gBattlerAttacker, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN))
+    {
+        gProtectStructs[gBattlerAttacker].tempoUsed = TRUE;
+        gBattleScripting.battler = gBattlerAbility = gBattlerAttacker;
+        SET_STATCHANGER(STAT_SPEED, 1, FALSE);
+        PushTraitStack(gBattlerAttacker, ABILITY_TEMPO);
+        BattleScriptCall(BattleScript_AttackerAbilityStatRaise);
+        result = MOVEEND_RESULT_RUN_SCRIPT;
+    }
 
     gBattleScripting.moveendState++;
     return result;
@@ -3029,6 +3073,21 @@ static enum MoveEndResult MoveEndDefrost(void)
     return MOVEEND_RESULT_CONTINUE;
 }
 
+static enum MoveEndResult MoveEndAttackHistory(void)
+{
+    // Update once per attack, after every hit/target but before a pivot switches out.
+    // Status moves preserve history; a used attack consumes Bull Rush even if blocked.
+    if (!gBattleStruct->unableToUseMove
+     && !gProtectStructs[gBattlerAttacker].chargingTurn
+     && !IsBattleMoveStatus(gCurrentMove))
+    {
+        gBattleStruct->crossfireLastType[gBattlerAttacker] = GetBattleMoveType(gCurrentMove);
+        gBattleStruct->bullRushUsed[gBattlerAttacker] = TRUE;
+    }
+    gBattleScripting.moveendState++;
+    return MOVEEND_RESULT_CONTINUE;
+}
+
 static enum MoveEndResult MoveEndMoveBlockRecoil(void)
 {
     enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
@@ -3065,7 +3124,7 @@ static enum MoveEndResult MoveEndMoveBlockRecoil(void)
             {
                 recoil = 1;
             }
-            SetPassiveDamageAmount(gBattlerAttacker, recoil);
+            SetPassiveDamageAmount(gBattlerAttacker, GetControlledBurnRecoil(recoil));
             BattleScriptCall(BattleScript_RecoilIfMiss);
             result = MOVEEND_RESULT_RUN_SCRIPT;
         }
@@ -3084,11 +3143,12 @@ static enum MoveEndResult MoveEndMoveBlockRecoil(void)
             if (moveEffect == EFFECT_CHLOROBLAST)
             {
                 s32 recoil = (GetNonDynamaxMaxHP(gBattlerAttacker) + 1) / 2; // Half of Max HP Rounded UP
-                SetPassiveDamageAmount(gBattlerAttacker, recoil);
+                SetPassiveDamageAmount(gBattlerAttacker, GetControlledBurnRecoil(recoil));
             }
             else
             {
-                SetPassiveDamageAmount(gBattlerAttacker, gBattleScripting.savedDmg * max(1, GetMoveRecoil(gCurrentMove)) / 100);
+                s32 recoil = gBattleScripting.savedDmg * max(1, GetMoveRecoil(gCurrentMove)) / 100;
+                SetPassiveDamageAmount(gBattlerAttacker, GetControlledBurnRecoil(recoil));
             }
             TryUpdateEvolutionTracker(IF_RECOIL_DAMAGE_GE, gBattleStruct->passiveHpUpdate[gBattlerAttacker], MOVE_NONE);
             BattleScriptCall(BattleScript_MoveEffectRecoil);
@@ -4136,6 +4196,7 @@ static enum MoveEndResult (*const sMoveEndHandlers[])(void) =
     [MOVEEND_ABILITIES] = MoveEndAbilities,
     [MOVEEND_FORM_CHANGE_ON_HIT] = MoveEndFormChangeOnHit,
     [MOVEEND_ABILITIES_ATTACKER] = MoveEndAbilitiesAttacker,
+    [MOVEEND_TEMPO] = MoveEndTempo,
     [MOVEEND_QUEUE_DANCER] = MoveEndQueueDancer,
     [MOVEEND_STATUS_IMMUNITY_ABILITIES] = MoveEndStatusImmunityAbilities,
     [MOVEEND_SYNCHRONIZE_ATTACKER] = MoveEndSynchronizeAttacker,
@@ -4153,6 +4214,7 @@ static enum MoveEndResult (*const sMoveEndHandlers[])(void) =
     [MOVEEND_NEXT_TARGET] = MoveEndNextTarget,
     [MOVEEND_HP_THRESHOLD_ITEMS_TARGET] = MoveEndHpThresholdItemsTarget,
     [MOVEEND_MULTIHIT_MOVE] = MoveEndMultihitMove,
+    [MOVEEND_ATTACK_HISTORY] = MoveEndAttackHistory,
     [MOVEEND_DEFROST] = MoveEndDefrost,
     [MOVEEND_MOVE_BLOCK_RECOIL] = MoveEndMoveBlockRecoil,
     [MOVEEND_SHEER_FORCE] = MoveEndSheerForce,

@@ -70,7 +70,7 @@
 #define FLAG_GOT_LUSTROUS_ORB                   0x38
 #define FLAG_TM_TORMENT                         0x39
 #define FLAG_PENDING_DAYCARE_EGG_SHINY          0x3A
-#define FLAG_DEFEATED_REGIELEKI                 0x3B 
+#define FLAG_ROCKETWARNING_SET                  0x3B 
 #define FLAG_ROUTE42_ROOMSERVICE                0x3C 
 #define FLAG_HIDE_REGIDRAGO                     0x3D
 #define FLAG_SAPPHIRE_KECLEON                   0x3E 
@@ -98,8 +98,8 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_GARBAGEFLAG           0x53 //used to store calls of removed flags
 
-#define FLAG_LIMIT_TO_50                     0x54
-#define FLAG_UNLOCK_DOGS                     0x55
+#define FLAG_OW_LIGHTING                     0x54  // true = disable ow dns effects
+#define FLAG_BATTLE_LIGHTING                 0x55  // true = disable battle dns effects
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57

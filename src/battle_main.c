@@ -3206,6 +3206,10 @@ static void BattleStartClearSetData(void)
         gBattleStruct->pendulumStreak[i] = 0;
         gBattleStruct->aegisUsed[i] = FALSE;
         gBattleStruct->blitzReady[i] = FALSE;
+        gBattleStruct->crossfireLastType[i] = TYPE_NONE;
+        gBattleStruct->bullRushUsed[i] = FALSE;
+        gBattleStruct->hotTagPending[i] = FALSE;
+        gBattleStruct->hotTagActive[i] = FALSE;
         gBattleStruct->nullSpaceProtectedHit[i] = FALSE;
     }
 
@@ -3408,6 +3412,10 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
     gBattleStruct->battlerState[battler].canPickupItem = FALSE;
     gBattleStruct->battlerState[battler].wasAboveHalfHp = gBattleMons[battler].hp > gBattleMons[battler].maxHP / 2;
     gBattleStruct->customTurnStartHp[battler] = gBattleMons[battler].hp;
+    gBattleStruct->crossfireLastType[battler] = TYPE_NONE;
+    gBattleStruct->bullRushUsed[battler] = FALSE;
+    gBattleStruct->hotTagActive[battler] = gBattleStruct->hotTagPending[battler];
+    gBattleStruct->hotTagPending[battler] = FALSE;
     gBattleStruct->pendulumLastMove[battler] = MOVE_NONE;
     gBattleStruct->pendulumStreak[battler] = 0;
     gBattleStruct->aegisUsed[battler] = FALSE;
@@ -3533,6 +3541,10 @@ const u8* FaintClearSetData(enum BattlerId battler)
     gBattleStruct->lastTakenMoveFrom[battler][3] = 0;
     gBattleStruct->palaceFlags &= ~(1u << battler);
     gBattleStruct->customTurnStartHp[battler] = 0;
+    gBattleStruct->crossfireLastType[battler] = TYPE_NONE;
+    gBattleStruct->bullRushUsed[battler] = FALSE;
+    gBattleStruct->hotTagActive[battler] = FALSE;
+    gBattleStruct->hotTagPending[battler] = FALSE;
     gBattleStruct->pendulumLastMove[battler] = MOVE_NONE;
     gBattleStruct->pendulumStreak[battler] = 0;
     gBattleStruct->aegisUsed[battler] = FALSE;
@@ -6207,7 +6219,7 @@ static bool32 IsPartyMonGrounded(struct Pokemon *mon)
         return TRUE;
     if (PartyMonHasHeldItemEffect(mon, HOLD_EFFECT_AIR_BALLOON))
         return FALSE;
-    if (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_ELECTROLEVITATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
+    if (MonHasTrait(mon, ABILITY_LEVITATE) || MonHasTrait(mon, ABILITY_EELEVATE) || MonHasTrait(mon, ABILITY_MIND_FLOAT) || MonHasTrait(mon, ABILITY_ELECTROLEVITATE) || MonHasTrait(mon, ABILITY_ALLSEEING_IDOL))
         return FALSE;
     if (GetSpeciesType(species, 0) == TYPE_FLYING || GetSpeciesType(species, 1) == TYPE_FLYING)
         return FALSE;
@@ -6491,7 +6503,8 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
             bool32 terrainAffected = state == MON_IN_BATTLE
                                    ? IsAnyTerrainAffected(battler, gFieldStatuses)
                                    : (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY) && (IsPartyMonGrounded(mon)
-                                      || (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && MonHasTrait(mon, ABILITY_ELECTROLEVITATE)));
+                                      || (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && MonHasTrait(mon, ABILITY_ELECTROLEVITATE))
+                                      || (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN && MonHasTrait(mon, ABILITY_MIND_FLOAT)));
 
             if (terrainAffected)
             {

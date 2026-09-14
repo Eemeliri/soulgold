@@ -1880,6 +1880,8 @@ static void TearDownBattle(void)
         u32 line = DATA.bossCleanupSourceLine;
         Test_ExitWithResult(TEST_RESULT_FAIL, line, ":L%s:%d: Boss configuration leaked after battle teardown", gTestRunnerState.test->filename, line);
     }
+
+    gBattleTypeFlags = 0;
 }
 
 static void CB2_BattleTest_NextParameter(void)

@@ -7882,6 +7882,7 @@ void BS_CourtChangeSwapSideStatuses(void)
         gBattleStruct->hazardsQueue[B_SIDE_PLAYER][i] = gBattleStruct->hazardsQueue[B_SIDE_OPPONENT][i];
     for (u32 i = 0; i < HAZARDS_MAX_COUNT; i++)
         gBattleStruct->hazardsQueue[B_SIDE_OPPONENT][i] = tempQueue[i];
+    SWAP(gBattleStruct->numHazards[B_SIDE_PLAYER], gBattleStruct->numHazards[B_SIDE_OPPONENT], temp);
     SWAP(sideTimerPlayer->spikesAmount, sideTimerOpp->spikesAmount, temp);
     SWAP(sideTimerPlayer->toxicSpikesAmount, sideTimerOpp->toxicSpikesAmount, temp);
 
@@ -10886,6 +10887,9 @@ static void Cmd_switchoutabilities(void)
     CMD_ARGS(u8 battler);
 
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
+    if (gBattleControllerExecFlags)
+        return;
+
     if (gBattleMons[battler].volatiles.neutralizingGas)
     {
         gBattleMons[battler].volatiles.neutralizingGas = FALSE;
@@ -10906,20 +10910,35 @@ static void Cmd_switchoutabilities(void)
                                      sizeof(gBattleMons[battler].status1),
                                      &gBattleMons[battler].status1);
         MarkBattlerForControllerExec(battler);
+        return;
     }
 
-    if (BattlerHasTrait(battler, ABILITY_NATURAL_CURE))
-        {
+    if (BattlerHasTrait(battler, ABILITY_NATURAL_CURE) && gBattleMons[battler].status1)
+    {
         if (gBattleMons[battler].status1 & STATUS1_SLEEP)
             TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
 
-            gBattleMons[battler].status1 = 0;
-            BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE,
-                                         1u << gBattleStruct->battlerPartyIndexes[battler],
-                                         sizeof(gBattleMons[battler].status1),
-                                         &gBattleMons[battler].status1);
-            MarkBattlerForControllerExec(battler);
-        }
+        gBattleMons[battler].status1 = 0;
+        BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE,
+                                     1u << gBattleStruct->battlerPartyIndexes[battler],
+                                     sizeof(gBattleMons[battler].status1),
+                                     &gBattleMons[battler].status1);
+        MarkBattlerForControllerExec(battler);
+        // Finish the status update before Regenerator can reuse the controller buffer.
+        return;
+    }
+    if (BattlerHasTrait(battler, ABILITY_HOT_TAG)
+     && !gBattleStruct->hotTagPending[battler]
+     && gChosenActionByBattler[battler] == B_ACTION_USE_MOVE
+     && IsVoluntarySwitchOut(battler)
+     && IsBattlerAlive(battler))
+    {
+        gBattleStruct->hotTagPending[battler] = TRUE;
+        gBattlerAbility = battler;
+        PushTraitStack(battler, ABILITY_HOT_TAG);
+        BattleScriptCall(BattleScript_GenerateAbilityPopUp);
+        return;
+    }
     if (BattlerHasTrait(battler, ABILITY_REGENERATOR))
     {
         {

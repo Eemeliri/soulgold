@@ -1,4 +1,31 @@
 Update notes:
+1.1.4
+- Some new innates: Resonance and Tempo (Meloetta), Controlled Burn (Flareon), Crossfire (Iron Moth), Hot Tag (Incineroar), Bull Rush (Paldean Tauros Blaze, Talonflame) and Mind Float (Chimecho).
+- Updated innates for Charizard, Cinccino, Cyclizar, Ho-Oh, Mega Steelix, Galarian Articuno, Yanma, Blaziken, Cradily, Runegrigus, Corviknight, Flapple, Armarouge, Ceruledge, and Gouging Fire. 
+- Added options to disable night-lighting in overworld and battle.
+- Baoba calls to unlock Safari Zone expansions are now *slightly* earlier (Before Ice Cave and After exiting Tohjo Falls to right side)
+- Cursola can be found in Rinto Village waters.
+- Small fixes.
+
+Recap from 1.1.3 and 1.1.2 which did not get a newspost:
+- Docs button in start menu with QR code to docs and for checking if there's an update to the hack (Notifies you via toast notification).
+- New Champions season move and ability changes
+- OHKO moves reworked to 150 pow/90% acc with recharge.
+- Smoothed Normal mode Jasmine, Chuck and Pryce difficulty. 
+- Rocket Hideout warns you before entering if you have not beaten Chuck/Jasmine.
+- Improved dark mode bag text readability.
+- Shiny odds settings: 1/256 (default), 1/512 and 1/1024.
+- Option to toggle Mega followers off.
+- Rocket Arcade has TV to check your winstreaks.
+- DexNav shows how many you have caught on the route.
+- Goldenrod Rocket event call now happens after seven badges regardless of order.
+- Lowered Battle Pyramid trophy requirements to 3/6/10.
+- Plasma Fists for Electivire, Stone Axe for Barbaracle.
+
+
+
+
+
 1.1
 - PC Box count increased to 19. Existing saves are compatible assuming you have not done some truly heinous things to it that would corrupt the storage data. (This has been tested on MGBA, Hardware and Pizza Boy, non-compatible emulator status unknown.) **Once you save on this version, you cannot go back to old 16 box versions! Forward compatible only!**
 - Added option to mass release Pokémon or Eggs from PC box by clicking on the box number.

@@ -295,6 +295,7 @@ s32 CalcCritChanceStage(struct BattleContext *ctx);
 s32 CalcCritChanceStageGen1(struct BattleContext *ctx);
 s32 CalculateMoveDamage(struct BattleContext *ctx);
 s32 CalculateMoveDamageVars(struct BattleContext *ctx);
+s32 ApplyHotTagDamageReduction(struct BattleContext *ctx, s32 damage);
 s32 DoFixedDamageMoveCalc(struct BattleContext *ctx);
 s32 ApplyModifiersAfterDmgRoll(struct BattleContext *ctx, s32 dmg);
 uq4_12_t CalcTypeEffectivenessMultiplier(struct BattleContext *ctx);

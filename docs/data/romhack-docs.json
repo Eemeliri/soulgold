@@ -1404,7 +1404,7 @@
         "ABILITY_SOLAR_POWER"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_FLAMEBURST",
         "ABILITY_BERSERK",
         "ABILITY_RECKLESS"
       ],
@@ -13381,15 +13381,6 @@
           "minLevel": 33,
           "maxLevel": 33,
           "rate": 14
-        },
-        {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 65,
-          "maxLevel": 65,
-          "rate": 1
         }
       ],
       "acquisitionPaths": [],
@@ -20279,15 +20270,6 @@
           "minLevel": 21,
           "maxLevel": 26,
           "rate": 10
-        },
-        {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 64,
-          "maxLevel": 64,
-          "rate": 20
         }
       ],
       "acquisitionPaths": [],
@@ -20538,6 +20520,15 @@
         {
           "map": "MAP_MT_SILVER_2F",
           "name": "Mt. Silver 2F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 64,
+          "maxLevel": 65,
+          "rate": 30
+        },
+        {
+          "map": "MAP_MT_SILVER_3F",
+          "name": "Mt. Silver 3F",
           "time": "",
           "method": "Land Mons",
           "minLevel": 64,
@@ -23643,15 +23634,6 @@
           "minLevel": 51,
           "maxLevel": 57,
           "rate": 30
-        },
-        {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 63,
-          "maxLevel": 63,
-          "rate": 20
         }
       ],
       "acquisitionPaths": [],
@@ -30381,15 +30363,6 @@
           "minLevel": 23,
           "maxLevel": 26,
           "rate": 20
-        },
-        {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 62,
-          "maxLevel": 62,
-          "rate": 15
         }
       ],
       "acquisitionPaths": [],
@@ -39350,7 +39323,7 @@
         "ABILITY_CUD_CHEW"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_BULL_RUSH",
         "ABILITY_VITAL_SPIRIT",
         "ABILITY_UNSTOPPABLE"
       ],
@@ -43309,7 +43282,7 @@
       "innates": [
         "ABILITY_ADAPTABILITY",
         "ABILITY_POISON_HEAL",
-        "ABILITY_FLAME_BODY"
+        "ABILITY_CONTROLLED_BURN"
       ],
       "sprite": "sprites/pokemon/flareon.png",
       "shinySprite": "sprites/pokemon/flareon_shiny.png",
@@ -45480,7 +45453,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_CURSED_BODY",
-        "ABILITY_SHARPNESS",
+        "ABILITY_SEER",
         "ABILITY_INNER_FOCUS"
       ],
       "sprite": "sprites/pokemon/articuno_galar.png",
@@ -52800,18 +52773,122 @@
         "MOVE_VENOM_DRENCH"
       ],
       "evolutions": [],
-      "locations": [
+      "locations": [],
+      "acquisitionPaths": [
         {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 64,
-          "maxLevel": 65,
-          "rate": 18
+          "source": "SPECIES_GOLBAT",
+          "locations": [
+            {
+              "map": "MAP_UNION_CAVE_B2F",
+              "name": "Union Cave B2F",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 25,
+              "maxLevel": 25,
+              "rate": 20
+            },
+            {
+              "map": "MAP_WHIRL_ISLANDS_1F",
+              "name": "Whirl Islands 1F",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 33,
+              "maxLevel": 40,
+              "rate": 30
+            },
+            {
+              "map": "MAP_WHIRL_ISLANDS_B1F",
+              "name": "Whirl Islands B1F",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 33,
+              "maxLevel": 40,
+              "rate": 30
+            },
+            {
+              "map": "MAP_WHIRL_ISLANDS_B2F",
+              "name": "Whirl Islands B2F",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 33,
+              "maxLevel": 40,
+              "rate": 30
+            },
+            {
+              "map": "MAP_CLIFF_EDGE_CAVE",
+              "name": "Cliff Edge Cave",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 23,
+              "maxLevel": 25,
+              "rate": 40
+            },
+            {
+              "map": "MAP_MT_MORTAR_1F_SOUTH",
+              "name": "Mt Mortar 1F South",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 20,
+              "maxLevel": 27,
+              "rate": 15
+            },
+            {
+              "map": "MAP_MT_MORTAR_1F_NORTH",
+              "name": "Mt Mortar 1F North",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 20,
+              "maxLevel": 27,
+              "rate": 15
+            },
+            {
+              "map": "MAP_MT_MORTAR_B1F",
+              "name": "Mt Mortar B1F",
+              "time": "",
+              "method": "Land Mons",
+              "minLevel": 20,
+              "maxLevel": 27,
+              "rate": 15
+            },
+            {
+              "map": "MAP_DARK_CAVE_NORTH_SIDE",
+              "name": "Dark Cave North Side",
+              "time": "Day",
+              "method": "Land Mons",
+              "minLevel": 33,
+              "maxLevel": 33,
+              "rate": 14
+            },
+            {
+              "map": "MAP_DARK_CAVE_NORTH_SIDE",
+              "name": "Dark Cave North Side",
+              "time": "Night",
+              "method": "Land Mons",
+              "minLevel": 33,
+              "maxLevel": 33,
+              "rate": 14
+            }
+          ],
+          "steps": [
+            {
+              "kind": "evolve",
+              "source": "SPECIES_GOLBAT",
+              "target": "SPECIES_CROBAT",
+              "requirement": "",
+              "evolution": {
+                "method": "EVO_LEVEL",
+                "param": "0",
+                "target": "SPECIES_CROBAT",
+                "conditions": [
+                  "High Friendship"
+                ],
+                "label": "Level Up (High Friendship)",
+                "itemName": ""
+              }
+            }
+          ]
         }
       ],
-      "acquisitionPaths": [],
       "heldItems": [],
       "slug": "crobat"
     },
@@ -58815,7 +58892,7 @@
         "ABILITY_FRISK"
       ],
       "innates": [
-        "ABILITY_WIND_POWER"
+        "ABILITY_WINDBURST"
       ],
       "sprite": "sprites/pokemon/yanma.png",
       "shinySprite": "sprites/pokemon/yanma_shiny.png",
@@ -59435,6 +59512,33 @@
           "rate": 34
         },
         {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 5,
+          "maxLevel": 15,
+          "rate": 70
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 5,
+          "maxLevel": 15,
+          "rate": 30
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 15,
+          "maxLevel": 30,
+          "rate": 60
+        },
+        {
           "map": "MAP_ROUTE32",
           "name": "Route 32",
           "time": "",
@@ -59743,6 +59847,15 @@
           "minLevel": 60,
           "maxLevel": 65,
           "rate": 30
+        },
+        {
+          "map": "MAP_MT_SILVER_3F",
+          "name": "Mt. Silver 3F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 62,
+          "maxLevel": 62,
+          "rate": 15
         }
       ],
       "acquisitionPaths": [],
@@ -62744,6 +62857,15 @@
           "minLevel": 63,
           "maxLevel": 63,
           "rate": 30
+        },
+        {
+          "map": "MAP_MT_SILVER_3F",
+          "name": "Mt. Silver 3F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 63,
+          "maxLevel": 63,
+          "rate": 30
         }
       ],
       "acquisitionPaths": [],
@@ -62796,9 +62918,9 @@
         "ABILITY_SAND_FORCE"
       ],
       "innates": [
-        "ABILITY_ROCK_HEAD",
-        "ABILITY_SOLID_ROCK",
-        "ABILITY_RECKLESS"
+        "ABILITY_FILTER",
+        "ABILITY_BURROWER",
+        "ABILITY_SIEGEBREAKER"
       ],
       "sprite": "sprites/pokemon/steelix_mega.png",
       "shinySprite": "sprites/pokemon/steelix_mega_shiny.png",
@@ -65589,15 +65711,6 @@
           "minLevel": 64,
           "maxLevel": 65,
           "rate": 30
-        },
-        {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 62,
-          "maxLevel": 65,
-          "rate": 21
         }
       ],
       "acquisitionPaths": [],
@@ -66455,6 +66568,15 @@
           "minLevel": 25,
           "maxLevel": 35,
           "rate": 30
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Water Mons",
+          "minLevel": 33,
+          "maxLevel": 35,
+          "rate": 95
         }
       ],
       "acquisitionPaths": [],
@@ -66652,6 +66774,33 @@
           "minLevel": 55,
           "maxLevel": 56,
           "rate": 20
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Water Mons",
+          "minLevel": 33,
+          "maxLevel": 37,
+          "rate": 5
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 15,
+          "maxLevel": 30,
+          "rate": 20
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 42,
+          "maxLevel": 45,
+          "rate": 40
         }
       ],
       "acquisitionPaths": [],
@@ -71918,15 +72067,6 @@
           "minLevel": 33,
           "maxLevel": 33,
           "rate": 5
-        },
-        {
-          "map": "MAP_MT_SILVER_3F",
-          "name": "Mt. Silver 3F",
-          "time": "",
-          "method": "Land Mons",
-          "minLevel": 35,
-          "maxLevel": 40,
-          "rate": 5
         }
       ],
       "acquisitionPaths": [],
@@ -72214,6 +72354,15 @@
         {
           "map": "MAP_MT_SILVER_2F",
           "name": "Mt. Silver 2F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 62,
+          "maxLevel": 65,
+          "rate": 5
+        },
+        {
+          "map": "MAP_MT_SILVER_3F",
+          "name": "Mt. Silver 3F",
           "time": "",
           "method": "Land Mons",
           "minLevel": 62,
@@ -72689,8 +72838,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -72698,8 +72847,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -72989,8 +73138,8 @@
         "ABILITY_REGENERATOR"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
         "ABILITY_FLARE",
+        "ABILITY_BLAZING_SUN",
         "ABILITY_REBORN"
       ],
       "sprite": "sprites/pokemon/ho_oh.png",
@@ -74972,7 +75121,7 @@
         "ABILITY_SPEED_BOOST"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_BLITZ",
         "ABILITY_RECKLESS",
         "ABILITY_IRON_FIST"
       ],
@@ -75269,7 +75418,7 @@
         "ABILITY_SPEED_BOOST"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_BLITZ",
         "ABILITY_RECKLESS",
         "ABILITY_IRON_FIST"
       ],
@@ -90143,7 +90292,7 @@
       "innates": [
         "ABILITY_SOLID_ROCK",
         "ABILITY_REJUVENATION",
-        "ABILITY_ROOTED"
+        "ABILITY_SEED_SOWER"
       ],
       "sprite": "sprites/pokemon/cradily.png",
       "shinySprite": "sprites/pokemon/cradily_shiny.png",
@@ -92287,10 +92436,10 @@
       "categories": [],
       "bst": 455,
       "abilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT"
       ],
       "regularAbilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT"
       ],
       "hiddenAbilities": [],
       "innates": [
@@ -92504,16 +92653,16 @@
       ],
       "bst": 555,
       "abilities": [
-        "ABILITY_LEVITATE",
-        "ABILITY_LEVITATE",
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT",
+        "ABILITY_MIND_FLOAT",
+        "ABILITY_MIND_FLOAT"
       ],
       "regularAbilities": [
-        "ABILITY_LEVITATE",
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT",
+        "ABILITY_MIND_FLOAT"
       ],
       "hiddenAbilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT"
       ],
       "innates": [
         "ABILITY_WIND_CHIME",
@@ -116168,7 +116317,16 @@
           "name": "Mt. Silver 2F",
           "time": "",
           "method": "Land Mons",
-          "minLevel": 35,
+          "minLevel": 63,
+          "maxLevel": 64,
+          "rate": 15
+        },
+        {
+          "map": "MAP_MT_SILVER_3F",
+          "name": "Mt. Silver 3F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 63,
           "maxLevel": 64,
           "rate": 15
         }
@@ -138470,8 +138628,8 @@
       ],
       "innates": [
         "ABILITY_GENERALIST",
-        "ABILITY_ADRENALINE",
-        "ABILITY_READY_STANCE"
+        "ABILITY_READY_STANCE",
+        "ABILITY_LONG_REACH"
       ],
       "sprite": "sprites/pokemon/cinccino.png",
       "shinySprite": "sprites/pokemon/cinccino_shiny.png",
@@ -140001,7 +140159,7 @@
           "name": "Mt. Silver 1F Item Room",
           "time": "",
           "method": "Land Mons",
-          "minLevel": 15,
+          "minLevel": 64,
           "maxLevel": 65,
           "rate": 2
         },
@@ -149778,7 +149936,7 @@
       "innates": [
         "ABILITY_ICE_BODY",
         "ABILITY_WHITE_SMOKE",
-        "ABILITY_FLAME_BODY"
+        "ABILITY_CROSSFIRE"
       ],
       "sprite": "sprites/pokemon/kyurem_white.png",
       "shinySprite": "sprites/pokemon/kyurem_white_shiny.png",
@@ -150515,8 +150673,8 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_ECHOING",
-        "ABILITY_MIND_FORCE",
-        "ABILITY_SHOWTIME"
+        "ABILITY_RESONANCE",
+        "ABILITY_TEMPO"
       ],
       "sprite": "sprites/pokemon/meloetta_aria.png",
       "shinySprite": "sprites/pokemon/meloetta_aria_shiny.png",
@@ -150727,7 +150885,7 @@
       "innates": [
         "ABILITY_SUPER_LUCK",
         "ABILITY_DANCER",
-        "ABILITY_STEEL_FEET"
+        "ABILITY_SCRAPPY"
       ],
       "sprite": "sprites/pokemon/meloetta_pirouette.png",
       "shinySprite": "sprites/pokemon/meloetta_pirouette_shiny.png",
@@ -155361,7 +155519,7 @@
         "ABILITY_GALE_WINGS"
       ],
       "innates": [
-        "ABILITY_EARLY_BIRD",
+        "ABILITY_BULL_RUSH",
         "ABILITY_RECKLESS"
       ],
       "sprite": "sprites/pokemon/fletchinder.png",
@@ -155575,7 +155733,7 @@
         "ABILITY_GALE_WINGS"
       ],
       "innates": [
-        "ABILITY_EARLY_BIRD",
+        "ABILITY_BULL_RUSH",
         "ABILITY_RECKLESS",
         "ABILITY_WINDCALLER"
       ],
@@ -170649,7 +170807,7 @@
         "ABILITY_INTIMIDATE"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_HOT_TAG",
         "ABILITY_COSTAR",
         "ABILITY_BACKDRAFT"
       ],
@@ -178158,6 +178316,15 @@
           "minLevel": 65,
           "maxLevel": 65,
           "rate": 5
+        },
+        {
+          "map": "MAP_MT_SILVER_3F",
+          "name": "Mt. Silver 3F",
+          "time": "",
+          "method": "Land Mons",
+          "minLevel": 65,
+          "maxLevel": 65,
+          "rate": 5
         }
       ],
       "acquisitionPaths": [],
@@ -185132,7 +185299,7 @@
         "ABILITY_MIRROR_ARMOR"
       ],
       "innates": [
-        "ABILITY_BIG_PECKS",
+        "ABILITY_IRON_BARBS",
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_WIND_RIDER"
       ],
@@ -185339,7 +185506,7 @@
         "ABILITY_MIRROR_ARMOR"
       ],
       "innates": [
-        "ABILITY_BIG_PECKS",
+        "ABILITY_IRON_BARBS",
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_WIND_RIDER"
       ],
@@ -185644,7 +185811,7 @@
       "innates": [
         "ABILITY_LEAF_GUARD",
         "ABILITY_NATURAL_CURE",
-        "ABILITY_SHARPNESS"
+        "ABILITY_GRAVITY_WELL"
       ],
       "sprite": "sprites/pokemon/flapple.png",
       "shinySprite": "sprites/pokemon/flapple_shiny.png",
@@ -190202,6 +190369,33 @@
           "minLevel": 55,
           "maxLevel": 56,
           "rate": 18
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 50,
+          "maxLevel": 55,
+          "rate": 15
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 50,
+          "maxLevel": 55,
+          "rate": 4
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 50,
+          "maxLevel": 55,
+          "rate": 1
         }
       ],
       "acquisitionPaths": [],
@@ -190752,7 +190946,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_FILL_VOID",
+        "ABILITY_STAMINA",
         "ABILITY_SPECTRAL",
         "ABILITY_SPECTRAL_DRAIN"
       ],
@@ -196312,15 +196506,6 @@
               "minLevel": 64,
               "maxLevel": 65,
               "rate": 30
-            },
-            {
-              "map": "MAP_MT_SILVER_3F",
-              "name": "Mt. Silver 3F",
-              "time": "",
-              "method": "Land Mons",
-              "minLevel": 62,
-              "maxLevel": 65,
-              "rate": 21
             }
           ],
           "steps": [
@@ -206538,7 +206723,7 @@
         "ABILITY_WEAK_ARMOR"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_SHARDPLATE",
         "ABILITY_MEGA_LAUNCHER",
         "ABILITY_SMOULDERING"
       ],
@@ -206755,7 +206940,7 @@
         "ABILITY_WEAK_ARMOR"
       ],
       "innates": [
-        "ABILITY_FLAME_BODY",
+        "ABILITY_HAUNTING",
         "ABILITY_SHARPNESS",
         "ABILITY_SMOULDERING"
       ],
@@ -209212,8 +209397,8 @@
       ],
       "innates": [
         "ABILITY_INNER_FOCUS",
-        "ABILITY_MARVEL_SCALE",
-        "ABILITY_PRESSURE"
+        "ABILITY_NATURAL_CURE",
+        "ABILITY_BACKDRAFT"
       ],
       "sprite": "sprites/pokemon/cyclizar.png",
       "shinySprite": "sprites/pokemon/cyclizar_shiny.png",
@@ -210788,6 +210973,15 @@
           "minLevel": 30,
           "maxLevel": 40,
           "rate": 4
+        },
+        {
+          "map": "MAP_RINTO_VILLAGE",
+          "name": "Rinto Village",
+          "time": "",
+          "method": "Fishing Mons",
+          "minLevel": 30,
+          "maxLevel": 33,
+          "rate": 20
         }
       ],
       "acquisitionPaths": [],
@@ -213103,7 +213297,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_FLASH_FIRE",
-        "ABILITY_FLAME_BODY",
+        "ABILITY_CROSSFIRE",
         "ABILITY_SMOULDERING"
       ],
       "sprite": "sprites/pokemon/iron_moth.png",
@@ -216773,7 +216967,7 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_FLASH_FIRE",
-        "ABILITY_FLAME_BODY",
+        "ABILITY_SUNHARDENED",
         "ABILITY_SMOULDERING"
       ],
       "sprite": "sprites/pokemon/gouging_fire.png",
@@ -233519,18 +233713,6 @@
             "sprite": "sprites/pokemon/duskull.png"
           },
           {
-            "species": "SPECIES_CHIMECHO",
-            "name": "Chimecho",
-            "dex": 276,
-            "sprite": "sprites/pokemon/chimecho.png"
-          },
-          {
-            "species": "SPECIES_CHIMECHO_MEGA",
-            "name": "Chimecho",
-            "dex": 276,
-            "sprite": "sprites/pokemon/chimecho_mega.png"
-          },
-          {
             "species": "SPECIES_LATIAS",
             "name": "Latias",
             "dex": 293,
@@ -234389,6 +234571,12 @@
             "name": "Scovillain",
             "dex": 646,
             "sprite": "sprites/pokemon/scovillain_mega.png"
+          },
+          {
+            "species": "SPECIES_CYCLIZAR",
+            "name": "Cyclizar",
+            "dex": 654,
+            "sprite": "sprites/pokemon/cyclizar.png"
           },
           {
             "species": "SPECIES_BRUTE_BONNET",
@@ -236751,12 +236939,6 @@
             "name": "Yveltal",
             "dex": 516,
             "sprite": "sprites/pokemon/yveltal.png"
-          },
-          {
-            "species": "SPECIES_CYCLIZAR",
-            "name": "Cyclizar",
-            "dex": 654,
-            "sprite": "sprites/pokemon/cyclizar.png"
           }
         ]
       }
@@ -237051,18 +237233,6 @@
             "name": "Fletchling",
             "dex": 476,
             "sprite": "sprites/pokemon/fletchling.png"
-          },
-          {
-            "species": "SPECIES_FLETCHINDER",
-            "name": "Fletchinder",
-            "dex": 477,
-            "sprite": "sprites/pokemon/fletchinder.png"
-          },
-          {
-            "species": "SPECIES_TALONFLAME",
-            "name": "Talonflame",
-            "dex": 478,
-            "sprite": "sprites/pokemon/talonflame.png"
           }
         ]
       }
@@ -237209,28 +237379,10 @@
             "sprite": "sprites/pokemon/charmeleon.png"
           },
           {
-            "species": "SPECIES_CHARIZARD",
-            "name": "Charizard",
-            "dex": 6,
-            "sprite": "sprites/pokemon/charizard.png"
-          },
-          {
             "species": "SPECIES_CHARIZARD_MEGA_X",
             "name": "Charizard",
             "dex": 6,
             "sprite": "sprites/pokemon/charizard_mega_x.png"
-          },
-          {
-            "species": "SPECIES_TAUROS_PALDEA_BLAZE",
-            "name": "Tauros",
-            "dex": 111,
-            "sprite": "sprites/pokemon/tauros_paldea_blaze.png"
-          },
-          {
-            "species": "SPECIES_FLAREON",
-            "name": "Flareon",
-            "dex": 119,
-            "sprite": "sprites/pokemon/flareon.png"
           },
           {
             "species": "SPECIES_CYNDAQUIL",
@@ -237257,12 +237409,6 @@
             "sprite": "sprites/pokemon/typhlosion_mega.png"
           },
           {
-            "species": "SPECIES_HO_OH",
-            "name": "Ho-Oh",
-            "dex": 214,
-            "sprite": "sprites/pokemon/ho_oh.png"
-          },
-          {
             "species": "SPECIES_TORCHIC",
             "name": "Torchic",
             "dex": 219,
@@ -237273,18 +237419,6 @@
             "name": "Combusken",
             "dex": 220,
             "sprite": "sprites/pokemon/combusken.png"
-          },
-          {
-            "species": "SPECIES_BLAZIKEN",
-            "name": "Blaziken",
-            "dex": 221,
-            "sprite": "sprites/pokemon/blaziken.png"
-          },
-          {
-            "species": "SPECIES_BLAZIKEN_MEGA",
-            "name": "Blaziken",
-            "dex": 221,
-            "sprite": "sprites/pokemon/blaziken_mega.png"
           },
           {
             "species": "SPECIES_TEPIG",
@@ -237299,12 +237433,6 @@
             "sprite": "sprites/pokemon/pignite.png"
           },
           {
-            "species": "SPECIES_KYUREM_WHITE",
-            "name": "Kyurem",
-            "dex": 463,
-            "sprite": "sprites/pokemon/kyurem_white.png"
-          },
-          {
             "species": "SPECIES_LITTEN",
             "name": "Litten",
             "dex": 524,
@@ -237315,12 +237443,6 @@
             "name": "Torracat",
             "dex": 525,
             "sprite": "sprites/pokemon/torracat.png"
-          },
-          {
-            "species": "SPECIES_INCINEROAR",
-            "name": "Incineroar",
-            "dex": 526,
-            "sprite": "sprites/pokemon/incineroar.png"
           },
           {
             "species": "SPECIES_ORICORIO_BAILE",
@@ -237351,30 +237473,6 @@
             "name": "Skeledirge",
             "dex": 628,
             "sprite": "sprites/pokemon/skeledirge.png"
-          },
-          {
-            "species": "SPECIES_ARMAROUGE",
-            "name": "Armarouge",
-            "dex": 641,
-            "sprite": "sprites/pokemon/armarouge.png"
-          },
-          {
-            "species": "SPECIES_CERULEDGE",
-            "name": "Ceruledge",
-            "dex": 642,
-            "sprite": "sprites/pokemon/ceruledge.png"
-          },
-          {
-            "species": "SPECIES_IRON_MOTH",
-            "name": "Iron Moth",
-            "dex": 675,
-            "sprite": "sprites/pokemon/iron_moth.png"
-          },
-          {
-            "species": "SPECIES_GOUGING_FIRE",
-            "name": "Gouging Fire",
-            "dex": 697,
-            "sprite": "sprites/pokemon/gouging_fire.png"
           }
         ]
       }
@@ -239077,12 +239175,6 @@
             "sprite": "sprites/pokemon/tatsugiri_stretchy_mega.png"
           },
           {
-            "species": "SPECIES_CYCLIZAR",
-            "name": "Cyclizar",
-            "dex": 654,
-            "sprite": "sprites/pokemon/cyclizar.png"
-          },
-          {
             "species": "SPECIES_ROARING_MOON",
             "name": "Roaring Moon",
             "dex": 684,
@@ -240106,12 +240198,6 @@
             "name": "Aerodactyl",
             "dex": 123,
             "sprite": "sprites/pokemon/aerodactyl_mega.png"
-          },
-          {
-            "species": "SPECIES_STEELIX_MEGA",
-            "name": "Steelix",
-            "dex": 181,
-            "sprite": "sprites/pokemon/steelix_mega.png"
           },
           {
             "species": "SPECIES_ENTEI",
@@ -244517,6 +244603,12 @@
             "sprite": "sprites/pokemon/steelix.png"
           },
           {
+            "species": "SPECIES_STEELIX_MEGA",
+            "name": "Steelix",
+            "dex": 181,
+            "sprite": "sprites/pokemon/steelix_mega.png"
+          },
+          {
             "species": "SPECIES_MANTINE",
             "name": "Mantine",
             "dex": 192,
@@ -244844,6 +244936,12 @@
             "name": "Minccino",
             "dex": 420,
             "sprite": "sprites/pokemon/minccino.png"
+          },
+          {
+            "species": "SPECIES_MELOETTA_PIROUETTE",
+            "name": "Meloetta",
+            "dex": 465,
+            "sprite": "sprites/pokemon/meloetta_pirouette.png"
           },
           {
             "species": "SPECIES_HAWLUCHA",
@@ -245332,12 +245430,6 @@
             "sprite": "sprites/pokemon/quagsire.png"
           },
           {
-            "species": "SPECIES_STEELIX_MEGA",
-            "name": "Steelix",
-            "dex": 181,
-            "sprite": "sprites/pokemon/steelix_mega.png"
-          },
-          {
             "species": "SPECIES_TYRANITAR_MEGA",
             "name": "Tyranitar",
             "dex": 212,
@@ -245767,12 +245859,6 @@
             "name": "Pichu",
             "dex": 149,
             "sprite": "sprites/pokemon/pichu_spiky_eared.png"
-          },
-          {
-            "species": "SPECIES_STEELIX_MEGA",
-            "name": "Steelix",
-            "dex": 181,
-            "sprite": "sprites/pokemon/steelix_mega.png"
           },
           {
             "species": "SPECIES_HITMONTOP",
@@ -248651,18 +248737,6 @@
             "sprite": "sprites/pokemon/archen.png"
           },
           {
-            "species": "SPECIES_CORVIKNIGHT",
-            "name": "Corviknight",
-            "dex": 578,
-            "sprite": "sprites/pokemon/corviknight.png"
-          },
-          {
-            "species": "SPECIES_CORVIKNIGHT_GMAX",
-            "name": "Corviknight",
-            "dex": 578,
-            "sprite": "sprites/pokemon/corviknight_gmax.png"
-          },
-          {
             "species": "SPECIES_FLAMIGO",
             "name": "Flamigo",
             "dex": 657,
@@ -250193,6 +250267,18 @@
             "name": "Chesnaught",
             "dex": 469,
             "sprite": "sprites/pokemon/chesnaught_mega.png"
+          },
+          {
+            "species": "SPECIES_CORVIKNIGHT",
+            "name": "Corviknight",
+            "dex": 578,
+            "sprite": "sprites/pokemon/corviknight.png"
+          },
+          {
+            "species": "SPECIES_CORVIKNIGHT_GMAX",
+            "name": "Corviknight",
+            "dex": 578,
+            "sprite": "sprites/pokemon/corviknight_gmax.png"
           }
         ]
       }
@@ -252507,6 +252593,12 @@
             "sprite": "sprites/pokemon/melmetal.png"
           },
           {
+            "species": "SPECIES_RUNERIGUS",
+            "name": "Runerigus",
+            "dex": 598,
+            "sprite": "sprites/pokemon/runerigus.png"
+          },
+          {
             "species": "SPECIES_URSALUNA",
             "name": "Ursaluna",
             "dex": 618,
@@ -253176,6 +253268,12 @@
             "name": "Tangrowth",
             "dex": 353,
             "sprite": "sprites/pokemon/tangrowth.png"
+          },
+          {
+            "species": "SPECIES_CINCCINO",
+            "name": "Cinccino",
+            "dex": 421,
+            "sprite": "sprites/pokemon/cinccino.png"
           }
         ]
       }
@@ -255866,6 +255964,12 @@
             "sprite": "sprites/pokemon/snorlax_gmax.png"
           },
           {
+            "species": "SPECIES_CRADILY",
+            "name": "Cradily",
+            "dex": 268,
+            "sprite": "sprites/pokemon/cradily.png"
+          },
+          {
             "species": "SPECIES_ROTOM_MOW",
             "name": "Rotom",
             "dex": 367,
@@ -256255,12 +256359,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_YANMA",
-            "name": "Yanma",
-            "dex": 168,
-            "sprite": "sprites/pokemon/yanma.png"
-          },
           {
             "species": "SPECIES_EMOLGA",
             "name": "Emolga",
@@ -256909,12 +257007,6 @@
             "sprite": "sprites/pokemon/kabutops.png"
           },
           {
-            "species": "SPECIES_ARTICUNO_GALAR",
-            "name": "Articuno",
-            "dex": 125,
-            "sprite": "sprites/pokemon/articuno_galar.png"
-          },
-          {
             "species": "SPECIES_TREECKO",
             "name": "Treecko",
             "dex": 216,
@@ -257051,12 +257143,6 @@
             "name": "Dhelmise",
             "dex": 547,
             "sprite": "sprites/pokemon/dhelmise.png"
-          },
-          {
-            "species": "SPECIES_FLAPPLE",
-            "name": "Flapple",
-            "dex": 580,
-            "sprite": "sprites/pokemon/flapple.png"
           },
           {
             "species": "SPECIES_MEOWSCARADA",
@@ -258154,12 +258240,6 @@
             "sprite": "sprites/pokemon/lopunny_mega.png"
           },
           {
-            "species": "SPECIES_MELOETTA_PIROUETTE",
-            "name": "Meloetta",
-            "dex": 465,
-            "sprite": "sprites/pokemon/meloetta_pirouette.png"
-          },
-          {
             "species": "SPECIES_HAWLUCHA",
             "name": "Hawlucha",
             "dex": 504,
@@ -258590,12 +258670,6 @@
             "name": "Scrafty",
             "dex": 413,
             "sprite": "sprites/pokemon/scrafty_mega.png"
-          },
-          {
-            "species": "SPECIES_CINCCINO",
-            "name": "Cinccino",
-            "dex": 421,
-            "sprite": "sprites/pokemon/cinccino.png"
           },
           {
             "species": "SPECIES_PYROAR",
@@ -259032,12 +259106,6 @@
             "name": "Victini",
             "dex": 382,
             "sprite": "sprites/pokemon/victini.png"
-          },
-          {
-            "species": "SPECIES_MELOETTA_ARIA",
-            "name": "Meloetta",
-            "dex": 465,
-            "sprite": "sprites/pokemon/meloetta_aria.png"
           }
         ]
       }
@@ -259753,12 +259821,6 @@
             "name": "Reuniclus",
             "dex": 424,
             "sprite": "sprites/pokemon/reuniclus.png"
-          },
-          {
-            "species": "SPECIES_MELOETTA_ARIA",
-            "name": "Meloetta",
-            "dex": 465,
-            "sprite": "sprites/pokemon/meloetta_aria.png"
           }
         ]
       }
@@ -259782,12 +259844,6 @@
             "name": "Snorlax",
             "dex": 124,
             "sprite": "sprites/pokemon/snorlax_gmax.png"
-          },
-          {
-            "species": "SPECIES_CRADILY",
-            "name": "Cradily",
-            "dex": 268,
-            "sprite": "sprites/pokemon/cradily.png"
           },
           {
             "species": "SPECIES_LEAFEON",
@@ -260725,6 +260781,12 @@
             "sprite": "sprites/pokemon/pidgeot_mega.png"
           },
           {
+            "species": "SPECIES_YANMA",
+            "name": "Yanma",
+            "dex": 168,
+            "sprite": "sprites/pokemon/yanma.png"
+          },
+          {
             "species": "SPECIES_TORNADUS_INCARNATE",
             "name": "Tornadus",
             "dex": 458,
@@ -261033,6 +261095,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_ARTICUNO_GALAR",
+            "name": "Articuno",
+            "dex": 125,
+            "sprite": "sprites/pokemon/articuno_galar.png"
+          },
+          {
             "species": "SPECIES_NATU",
             "name": "Natu",
             "dex": 154,
@@ -261321,6 +261389,12 @@
             "name": "Mismagius",
             "dex": 327,
             "sprite": "sprites/pokemon/mismagius.png"
+          },
+          {
+            "species": "SPECIES_CERULEDGE",
+            "name": "Ceruledge",
+            "dex": 642,
+            "sprite": "sprites/pokemon/ceruledge.png"
           }
         ]
       }
@@ -261397,6 +261471,12 @@
             "name": "Steelix",
             "dex": 181,
             "sprite": "sprites/pokemon/steelix.png"
+          },
+          {
+            "species": "SPECIES_STEELIX_MEGA",
+            "name": "Steelix",
+            "dex": 181,
+            "sprite": "sprites/pokemon/steelix_mega.png"
           },
           {
             "species": "SPECIES_AGGRON",
@@ -262068,6 +262148,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_HO_OH",
+            "name": "Ho-Oh",
+            "dex": 214,
+            "sprite": "sprites/pokemon/ho_oh.png"
+          },
+          {
             "species": "SPECIES_LARVESTA",
             "name": "Larvesta",
             "dex": 453,
@@ -262196,12 +262282,6 @@
             "name": "Cofagrigus",
             "dex": 415,
             "sprite": "sprites/pokemon/cofagrigus.png"
-          },
-          {
-            "species": "SPECIES_RUNERIGUS",
-            "name": "Runerigus",
-            "dex": 598,
-            "sprite": "sprites/pokemon/runerigus.png"
           }
         ]
       }
@@ -262675,6 +262755,12 @@
             "name": "Arcanine",
             "dex": 51,
             "sprite": "sprites/pokemon/arcanine_hisui.png"
+          },
+          {
+            "species": "SPECIES_GOUGING_FIRE",
+            "name": "Gouging Fire",
+            "dex": 697,
+            "sprite": "sprites/pokemon/gouging_fire.png"
           }
         ]
       }
@@ -262961,6 +263047,12 @@
             "name": "Steelix",
             "dex": 181,
             "sprite": "sprites/pokemon/steelix.png"
+          },
+          {
+            "species": "SPECIES_STEELIX_MEGA",
+            "name": "Steelix",
+            "dex": 181,
+            "sprite": "sprites/pokemon/steelix_mega.png"
           },
           {
             "species": "SPECIES_DRILBUR",
@@ -263709,7 +263801,14 @@
       "slug": "shardplate",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_ARMAROUGE",
+            "name": "Armarouge",
+            "dex": 641,
+            "sprite": "sprites/pokemon/armarouge.png"
+          }
+        ]
       }
     },
     "ABILITY_HAUNTED": {
@@ -263941,7 +264040,20 @@
       "slug": "blitz",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_BLAZIKEN",
+            "name": "Blaziken",
+            "dex": 221,
+            "sprite": "sprites/pokemon/blaziken.png"
+          },
+          {
+            "species": "SPECIES_BLAZIKEN_MEGA",
+            "name": "Blaziken",
+            "dex": 221,
+            "sprite": "sprites/pokemon/blaziken_mega.png"
+          }
+        ]
       }
     },
     "ABILITY_GUARDIAN": {
@@ -264022,6 +264134,12 @@
             "name": "Kilowattrel",
             "dex": 644,
             "sprite": "sprites/pokemon/kilowattrel.png"
+          },
+          {
+            "species": "SPECIES_CYCLIZAR",
+            "name": "Cyclizar",
+            "dex": 654,
+            "sprite": "sprites/pokemon/cyclizar.png"
           }
         ]
       }
@@ -264541,6 +264659,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_CHARIZARD",
+            "name": "Charizard",
+            "dex": 6,
+            "sprite": "sprites/pokemon/charizard.png"
+          },
+          {
             "species": "SPECIES_TORKOAL",
             "name": "Torkoal",
             "dex": 255,
@@ -264810,6 +264934,12 @@
             "sprite": "sprites/pokemon/meowstic_m_mega.png"
           },
           {
+            "species": "SPECIES_FLAPPLE",
+            "name": "Flapple",
+            "dex": 580,
+            "sprite": "sprites/pokemon/flapple.png"
+          },
+          {
             "species": "SPECIES_INDEEDEE_F",
             "name": "Indeedee",
             "dex": 600,
@@ -265067,6 +265197,191 @@
           }
         ]
       }
+    },
+    "ABILITY_RESONANCE": {
+      "constant": "ABILITY_RESONANCE",
+      "name": "Resonance",
+      "description": "Boosts sound moves by 30% and halves the damage taken from sound-based moves.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "resonance",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_MELOETTA_ARIA",
+            "name": "Meloetta",
+            "dex": 465,
+            "sprite": "sprites/pokemon/meloetta_aria.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_TEMPO": {
+      "constant": "ABILITY_TEMPO",
+      "name": "Tempo",
+      "description": "After dealing damage with a sound move, raises Speed by 1 stage.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "tempo",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_MELOETTA_ARIA",
+            "name": "Meloetta",
+            "dex": 465,
+            "sprite": "sprites/pokemon/meloetta_aria.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_CONTROLLED_BURN": {
+      "constant": "ABILITY_CONTROLLED_BURN",
+      "name": "Controlled Burn",
+      "description": "Fire recoil attacks deal 20% more damage and have their recoil or HP costs halved.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "controlled-burn",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_FLAREON",
+            "name": "Flareon",
+            "dex": 119,
+            "sprite": "sprites/pokemon/flareon.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_CROSSFIRE": {
+      "constant": "ABILITY_CROSSFIRE",
+      "name": "Crossfire",
+      "description": "Attacks deal 25% more if their type differs from its previous attack. Resets on switching.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "crossfire",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_KYUREM_WHITE",
+            "name": "Kyurem",
+            "dex": 463,
+            "sprite": "sprites/pokemon/kyurem_white.png"
+          },
+          {
+            "species": "SPECIES_IRON_MOTH",
+            "name": "Iron Moth",
+            "dex": 675,
+            "sprite": "sprites/pokemon/iron_moth.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_HOT_TAG": {
+      "constant": "ABILITY_HOT_TAG",
+      "name": "Hot Tag",
+      "description": "After pivoting with a move, its replacement takes 40% less damage from its next direct hit.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "hot-tag",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_INCINEROAR",
+            "name": "Incineroar",
+            "dex": 526,
+            "sprite": "sprites/pokemon/incineroar.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_BULL_RUSH": {
+      "constant": "ABILITY_BULL_RUSH",
+      "name": "Bull Rush",
+      "description": "Its first damaging move after entering battle deals 20% more damage.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "bull-rush",
+      "usage": {
+        "base": [],
+        "innate": [
+          {
+            "species": "SPECIES_TAUROS_PALDEA_BLAZE",
+            "name": "Tauros",
+            "dex": 111,
+            "sprite": "sprites/pokemon/tauros_paldea_blaze.png"
+          },
+          {
+            "species": "SPECIES_FLETCHINDER",
+            "name": "Fletchinder",
+            "dex": 477,
+            "sprite": "sprites/pokemon/fletchinder.png"
+          },
+          {
+            "species": "SPECIES_TALONFLAME",
+            "name": "Talonflame",
+            "dex": 478,
+            "sprite": "sprites/pokemon/talonflame.png"
+          }
+        ]
+      }
+    },
+    "ABILITY_MIND_FLOAT": {
+      "constant": "ABILITY_MIND_FLOAT",
+      "name": "Mind Float",
+      "description": "The Pokemon is immune to Ground-type moves and grounded entry hazards, but benefits from effects of Psychic Terrain.",
+      "power": 0,
+      "accuracy": 0,
+      "pp": 0,
+      "priority": 0,
+      "type": "",
+      "category": "",
+      "slug": "mind-float",
+      "usage": {
+        "base": [
+          {
+            "species": "SPECIES_CHIMECHO",
+            "name": "Chimecho",
+            "dex": 276,
+            "sprite": "sprites/pokemon/chimecho.png"
+          },
+          {
+            "species": "SPECIES_CHIMECHO_MEGA",
+            "name": "Chimecho",
+            "dex": 276,
+            "sprite": "sprites/pokemon/chimecho_mega.png"
+          }
+        ],
+        "innate": []
+      }
     }
   },
   "tms": [
@@ -265288,7 +265603,7 @@
       "move": "MOVE_HIDDEN_POWER",
       "label": "TM10",
       "name": "TM Hidden Power",
-      "description": "The attack power varies among different Pokemon.",
+      "description": "The type varies with the user.",
       "moveName": "Hidden Power",
       "type": "TYPE_NORMAL",
       "category": "DAMAGE_CATEGORY_SPECIAL",
@@ -282419,7 +282734,7 @@
                   "hasSpecies": true,
                   "name": "Galvantula",
                   "sprite": "sprites/pokemon/galvantula.png",
-                  "minLevel": 15,
+                  "minLevel": 64,
                   "maxLevel": 65,
                   "rate": 2
                 }
@@ -285637,7 +285952,7 @@
                   "hasSpecies": true,
                   "name": "Rhyperior",
                   "sprite": "sprites/pokemon/rhyperior.png",
-                  "minLevel": 35,
+                  "minLevel": 63,
                   "maxLevel": 64,
                   "rate": 15
                 },
@@ -285804,67 +286119,58 @@
               "method": "Land Mons",
               "mons": [
                 {
-                  "species": "SPECIES_GOLEM",
+                  "species": "SPECIES_STEELIX",
                   "hasSpecies": true,
-                  "name": "Golem",
-                  "sprite": "sprites/pokemon/golem.png",
+                  "name": "Steelix",
+                  "sprite": "sprites/pokemon/steelix.png",
                   "minLevel": 63,
                   "maxLevel": 63,
-                  "rate": 20
+                  "rate": 30
                 },
                 {
-                  "species": "SPECIES_MACHOKE",
+                  "species": "SPECIES_MACHAMP",
                   "hasSpecies": true,
-                  "name": "Machoke",
-                  "sprite": "sprites/pokemon/machoke.png",
+                  "name": "Machamp",
+                  "sprite": "sprites/pokemon/machamp.png",
                   "minLevel": 64,
-                  "maxLevel": 64,
-                  "rate": 20
+                  "maxLevel": 65,
+                  "rate": 30
                 },
                 {
-                  "species": "SPECIES_ONIX",
+                  "species": "SPECIES_QUAGSIRE",
                   "hasSpecies": true,
-                  "name": "Onix",
-                  "sprite": "sprites/pokemon/onix.png",
+                  "name": "Quagsire",
+                  "sprite": "sprites/pokemon/quagsire.png",
                   "minLevel": 62,
                   "maxLevel": 62,
                   "rate": 15
                 },
                 {
-                  "species": "SPECIES_URSARING",
+                  "species": "SPECIES_RHYPERIOR",
                   "hasSpecies": true,
-                  "name": "Ursaring",
-                  "sprite": "sprites/pokemon/ursaring.png",
+                  "name": "Rhyperior",
+                  "sprite": "sprites/pokemon/rhyperior.png",
+                  "minLevel": 63,
+                  "maxLevel": 64,
+                  "rate": 15
+                },
+                {
+                  "species": "SPECIES_TYRANITAR",
+                  "hasSpecies": true,
+                  "name": "Tyranitar",
+                  "sprite": "sprites/pokemon/tyranitar.png",
                   "minLevel": 62,
                   "maxLevel": 65,
-                  "rate": 21
-                },
-                {
-                  "species": "SPECIES_CROBAT",
-                  "hasSpecies": true,
-                  "name": "Crobat",
-                  "sprite": "sprites/pokemon/crobat.png",
-                  "minLevel": 64,
-                  "maxLevel": 65,
-                  "rate": 18
-                },
-                {
-                  "species": "SPECIES_PUPITAR",
-                  "hasSpecies": true,
-                  "name": "Pupitar",
-                  "sprite": "sprites/pokemon/pupitar.png",
-                  "minLevel": 35,
-                  "maxLevel": 40,
                   "rate": 5
                 },
                 {
-                  "species": "SPECIES_GOLBAT",
+                  "species": "SPECIES_KOMMO_O",
                   "hasSpecies": true,
-                  "name": "Golbat",
-                  "sprite": "sprites/pokemon/golbat.png",
+                  "name": "Kommo-o",
+                  "sprite": "sprites/pokemon/kommo_o.png",
                   "minLevel": 65,
                   "maxLevel": 65,
-                  "rate": 1
+                  "rate": 5
                 }
               ]
             }
@@ -291480,6 +291786,141 @@
         }
       ],
       "hasTimeVariants": false
+    },
+    {
+      "map": "MAP_RINTO_VILLAGE",
+      "name": "Rinto Village",
+      "baseLabel": "gRintoVillage",
+      "variants": [
+        {
+          "time": "Day",
+          "baseLabel": "gRintoVillage",
+          "methods": [
+            {
+              "key": "water_mons",
+              "method": "Water Mons",
+              "mons": [
+                {
+                  "species": "SPECIES_CORSOLA",
+                  "hasSpecies": true,
+                  "name": "Corsola",
+                  "sprite": "sprites/pokemon/corsola.png",
+                  "minLevel": 33,
+                  "maxLevel": 35,
+                  "rate": 95
+                },
+                {
+                  "species": "SPECIES_CORSOLA_GALAR",
+                  "hasSpecies": true,
+                  "name": "Corsola",
+                  "sprite": "sprites/pokemon/corsola_galar.png",
+                  "minLevel": 33,
+                  "maxLevel": 37,
+                  "rate": 5
+                }
+              ]
+            },
+            {
+              "key": "fishing_mons",
+              "method": "Fishing Mons",
+              "mons": [
+                {
+                  "species": "SPECIES_WOOPER_PALDEA",
+                  "hasSpecies": true,
+                  "name": "Wooper",
+                  "sprite": "sprites/pokemon/wooper_paldea.png",
+                  "minLevel": 5,
+                  "maxLevel": 15,
+                  "rate": 70
+                },
+                {
+                  "species": "SPECIES_WOOPER_PALDEA",
+                  "hasSpecies": true,
+                  "name": "Wooper",
+                  "sprite": "sprites/pokemon/wooper_paldea.png",
+                  "minLevel": 5,
+                  "maxLevel": 15,
+                  "rate": 30
+                },
+                {
+                  "species": "SPECIES_WOOPER_PALDEA",
+                  "hasSpecies": true,
+                  "name": "Wooper",
+                  "sprite": "sprites/pokemon/wooper_paldea.png",
+                  "minLevel": 15,
+                  "maxLevel": 30,
+                  "rate": 60
+                },
+                {
+                  "species": "SPECIES_CORSOLA_GALAR",
+                  "hasSpecies": true,
+                  "name": "Corsola",
+                  "sprite": "sprites/pokemon/corsola_galar.png",
+                  "minLevel": 15,
+                  "maxLevel": 30,
+                  "rate": 20
+                },
+                {
+                  "species": "SPECIES_CLODSIRE",
+                  "hasSpecies": true,
+                  "name": "Clodsire",
+                  "sprite": "sprites/pokemon/clodsire.png",
+                  "minLevel": 30,
+                  "maxLevel": 33,
+                  "rate": 20
+                },
+                {
+                  "species": "SPECIES_CORSOLA_GALAR",
+                  "hasSpecies": true,
+                  "name": "Corsola",
+                  "sprite": "sprites/pokemon/corsola_galar.png",
+                  "minLevel": 42,
+                  "maxLevel": 45,
+                  "rate": 40
+                },
+                {
+                  "species": "SPECIES_CORSOLA_GALAR",
+                  "hasSpecies": true,
+                  "name": "Corsola",
+                  "sprite": "sprites/pokemon/corsola_galar.png",
+                  "minLevel": 42,
+                  "maxLevel": 45,
+                  "rate": 40
+                },
+                {
+                  "species": "SPECIES_CURSOLA",
+                  "hasSpecies": true,
+                  "name": "Cursola",
+                  "sprite": "sprites/pokemon/cursola.png",
+                  "minLevel": 50,
+                  "maxLevel": 55,
+                  "rate": 15
+                },
+                {
+                  "species": "SPECIES_CURSOLA",
+                  "hasSpecies": true,
+                  "name": "Cursola",
+                  "sprite": "sprites/pokemon/cursola.png",
+                  "minLevel": 50,
+                  "maxLevel": 55,
+                  "rate": 4
+                },
+                {
+                  "species": "SPECIES_CURSOLA",
+                  "hasSpecies": true,
+                  "name": "Cursola",
+                  "sprite": "sprites/pokemon/cursola.png",
+                  "minLevel": 50,
+                  "maxLevel": 55,
+                  "rate": 1
+                }
+              ]
+            }
+          ],
+          "showTime": false
+        }
+      ],
+      "hasTimeVariants": false
     }
   ],
   "trainers": [
@@ -294322,7 +294763,7 @@
           "constant": "SPECIES_YANMA",
           "displayName": "Yanma",
           "innates": [
-            "ABILITY_WIND_POWER"
+            "ABILITY_WINDBURST"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -297183,8 +297624,8 @@
           "displayName": "Cinccino",
           "innates": [
             "ABILITY_GENERALIST",
-            "ABILITY_ADRENALINE",
-            "ABILITY_READY_STANCE"
+            "ABILITY_READY_STANCE",
+            "ABILITY_LONG_REACH"
           ],
           "itemConstant": "ITEM_LOADED_DICE",
           "itemName": "Loaded Dice",
@@ -297558,8 +297999,8 @@
           "displayName": "Cinccino",
           "innates": [
             "ABILITY_GENERALIST",
-            "ABILITY_ADRENALINE",
-            "ABILITY_READY_STANCE"
+            "ABILITY_READY_STANCE",
+            "ABILITY_LONG_REACH"
           ],
           "itemConstant": "ITEM_SITRUS_BERRY",
           "itemName": "Sitrus Berry",
@@ -302229,7 +302670,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -305387,7 +305828,7 @@
           "innates": [
             "ABILITY_ADAPTABILITY",
             "ABILITY_POISON_HEAL",
-            "ABILITY_FLAME_BODY"
+            "ABILITY_CONTROLLED_BURN"
           ],
           "itemConstant": "ITEM_CHARCOAL",
           "itemName": "Charcoal",
@@ -305592,7 +306033,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -307898,7 +308339,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -308918,7 +309359,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_POWER_HERB",
           "itemName": "Power Herb",
@@ -310895,7 +311336,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -312981,7 +313422,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -314642,7 +315083,7 @@
           "constant": "SPECIES_TAUROS_PALDEA_BLAZE",
           "displayName": "Tauros Paldea Blaze",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_BULL_RUSH",
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_UNSTOPPABLE"
           ],
@@ -315605,7 +316046,7 @@
           "constant": "SPECIES_TAUROS_PALDEA_BLAZE",
           "displayName": "Tauros Paldea Blaze",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_BULL_RUSH",
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_UNSTOPPABLE"
           ],
@@ -317929,8 +318370,8 @@
           "displayName": "Cyclizar",
           "innates": [
             "ABILITY_INNER_FOCUS",
-            "ABILITY_MARVEL_SCALE",
-            "ABILITY_PRESSURE"
+            "ABILITY_NATURAL_CURE",
+            "ABILITY_BACKDRAFT"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -318861,7 +319302,7 @@
           "innates": [
             "ABILITY_ADAPTABILITY",
             "ABILITY_POISON_HEAL",
-            "ABILITY_FLAME_BODY"
+            "ABILITY_CONTROLLED_BURN"
           ],
           "itemConstant": "ITEM_FIRE_GEM",
           "itemName": "Fire Gem",
@@ -319395,7 +319836,7 @@
           "constant": "SPECIES_CERULEDGE",
           "displayName": "Ceruledge",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_HAUNTING",
             "ABILITY_SHARPNESS",
             "ABILITY_SMOULDERING"
           ],
@@ -319562,7 +320003,7 @@
           "constant": "SPECIES_CERULEDGE",
           "displayName": "Ceruledge",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_HAUNTING",
             "ABILITY_SHARPNESS",
             "ABILITY_SMOULDERING"
           ],
@@ -320255,7 +320696,7 @@
           "constant": "SPECIES_ARMAROUGE",
           "displayName": "Armarouge",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_SHARDPLATE",
             "ABILITY_MEGA_LAUNCHER",
             "ABILITY_SMOULDERING"
           ],
@@ -320623,7 +321064,7 @@
           "innates": [
             "ABILITY_ADAPTABILITY",
             "ABILITY_POISON_HEAL",
-            "ABILITY_FLAME_BODY"
+            "ABILITY_CONTROLLED_BURN"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -320862,7 +321303,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -321819,7 +322260,7 @@
           "constant": "SPECIES_ARMAROUGE",
           "displayName": "Armarouge",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_SHARDPLATE",
             "ABILITY_MEGA_LAUNCHER",
             "ABILITY_SMOULDERING"
           ],
@@ -322663,7 +323104,7 @@
           "constant": "SPECIES_ARMAROUGE",
           "displayName": "Armarouge",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_SHARDPLATE",
             "ABILITY_MEGA_LAUNCHER",
             "ABILITY_SMOULDERING"
           ],
@@ -323679,7 +324120,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -325291,7 +325732,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -325457,7 +325898,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -327069,7 +327510,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
           "itemName": "Leftovers",
@@ -327223,7 +327664,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
           "itemName": "Leftovers",
@@ -327699,7 +328140,7 @@
           "constant": "SPECIES_TALONFLAME",
           "displayName": "Talonflame",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_BULL_RUSH",
             "ABILITY_RECKLESS",
             "ABILITY_WINDCALLER"
           ],
@@ -327853,7 +328294,7 @@
           "constant": "SPECIES_TALONFLAME",
           "displayName": "Talonflame",
           "innates": [
-            "ABILITY_EARLY_BIRD",
+            "ABILITY_BULL_RUSH",
             "ABILITY_RECKLESS",
             "ABILITY_WINDCALLER"
           ],
@@ -328328,7 +328769,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -329323,7 +329764,7 @@
           "constant": "SPECIES_CERULEDGE",
           "displayName": "Ceruledge",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_HAUNTING",
             "ABILITY_SHARPNESS",
             "ABILITY_SMOULDERING"
           ],
@@ -329556,7 +329997,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -331019,7 +331460,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -331175,7 +331616,7 @@
           "constant": "SPECIES_RUNERIGUS",
           "displayName": "Runerigus",
           "innates": [
-            "ABILITY_FILL_VOID",
+            "ABILITY_STAMINA",
             "ABILITY_SPECTRAL",
             "ABILITY_SPECTRAL_DRAIN"
           ],
@@ -331331,7 +331772,7 @@
           "constant": "SPECIES_RUNERIGUS",
           "displayName": "Runerigus",
           "innates": [
-            "ABILITY_FILL_VOID",
+            "ABILITY_STAMINA",
             "ABILITY_SPECTRAL",
             "ABILITY_SPECTRAL_DRAIN"
           ],
@@ -331823,7 +332264,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -332568,7 +333009,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -332873,7 +333314,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_EXPERT_BELT",
           "itemName": "Expert Belt",
@@ -333362,7 +333803,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -333468,7 +333909,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_EXPERT_BELT",
           "itemName": "Expert Belt",
@@ -335124,7 +335565,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -335333,7 +335774,7 @@
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_FLAMEBURST",
             "ABILITY_BERSERK",
             "ABILITY_RECKLESS"
           ],
@@ -336243,7 +336684,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -336479,7 +336920,7 @@
           "constant": "SPECIES_CORVIKNIGHT",
           "displayName": "Corviknight",
           "innates": [
-            "ABILITY_BIG_PECKS",
+            "ABILITY_IRON_BARBS",
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_WIND_RIDER"
           ],
@@ -339280,7 +339721,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_EXPERT_BELT",
           "itemName": "Expert Belt",
@@ -339474,7 +339915,7 @@
           "innates": [
             "ABILITY_SOLID_ROCK",
             "ABILITY_REJUVENATION",
-            "ABILITY_ROOTED"
+            "ABILITY_SEED_SOWER"
           ],
           "itemConstant": "ITEM_EXPERT_BELT",
           "itemName": "Expert Belt",
@@ -342109,7 +342550,7 @@
           "constant": "SPECIES_BLAZIKEN",
           "displayName": "Blaziken",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_BLITZ",
             "ABILITY_RECKLESS",
             "ABILITY_IRON_FIST"
           ],
@@ -343652,7 +344093,7 @@
           "constant": "SPECIES_BLAZIKEN",
           "displayName": "Blaziken",
           "innates": [
-            "ABILITY_FLAME_BODY",
+            "ABILITY_BLITZ",
             "ABILITY_RECKLESS",
             "ABILITY_IRON_FIST"
           ],

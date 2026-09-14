@@ -582,8 +582,9 @@ AI_SINGLE_BATTLE_TEST("First Impression is preferred on the first turn of the sp
 {
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_FIRST_IMPRESSION) == EFFECT_FIRST_TURN_ONLY);
-        ASSUME(GetMovePower(MOVE_FIRST_IMPRESSION) == 90);
-        ASSUME(GetMovePower(MOVE_LUNGE) == 80);
+        ASSUME(GetMovePower(MOVE_FIRST_IMPRESSION) > GetMovePower(MOVE_LUNGE));
+        ASSUME(GetMoveType(MOVE_FIRST_IMPRESSION) == GetMoveType(MOVE_LUNGE));
+        ASSUME(GetMoveCategory(MOVE_FIRST_IMPRESSION) == GetMoveCategory(MOVE_LUNGE));
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_KANGASKHAN);
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_FIRST_IMPRESSION, MOVE_LUNGE); }
@@ -604,8 +605,9 @@ AI_SINGLE_BATTLE_TEST("First Impression is not chosen if it's blocked by certain
 
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_FIRST_IMPRESSION) == EFFECT_FIRST_TURN_ONLY);
-        ASSUME(GetMovePower(MOVE_FIRST_IMPRESSION) == 90);
-        ASSUME(GetMovePower(MOVE_LUNGE) == 80);
+        ASSUME(GetMovePower(MOVE_FIRST_IMPRESSION) > GetMovePower(MOVE_LUNGE));
+        ASSUME(GetMoveType(MOVE_FIRST_IMPRESSION) == GetMoveType(MOVE_LUNGE));
+        ASSUME(GetMoveCategory(MOVE_FIRST_IMPRESSION) == GetMoveCategory(MOVE_LUNGE));
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
         PLAYER(species) { Ability(ability); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_FIRST_IMPRESSION, MOVE_LUNGE); }
@@ -769,17 +771,19 @@ AI_SINGLE_BATTLE_TEST("AI uses a guaranteed KO move instead of the move with the
 
     GIVEN {
         ASSUME(GetMoveCriticalHitStage(MOVE_SLASH) == 1);
-        ASSUME(GetMovePower(MOVE_SLASH) == 70);
-        ASSUME(GetMovePower(MOVE_STRENGTH) == 80);
-        ASSUME(GetMoveType(MOVE_SLASH) == GetMoveType(MOVE_STRENGTH));
-        ASSUME(GetMoveCategory(MOVE_SLASH) == GetMoveCategory(MOVE_STRENGTH));
+        ASSUME(GetMovePower(MOVE_SLASH) == 80);
+        ASSUME(GetMovePower(MOVE_RAGING_BULL) == 90);
+        ASSUME(GetMoveCriticalHitStage(MOVE_RAGING_BULL) == 0);
+        ASSUME(GetMoveAccuracy(MOVE_RAGING_BULL) == 100);
+        ASSUME(GetMoveType(MOVE_SLASH) == GetMoveType(MOVE_RAGING_BULL));
+        ASSUME(GetMoveCategory(MOVE_SLASH) == GetMoveCategory(MOVE_RAGING_BULL));
         AI_FLAGS(flags);
-        PLAYER(SPECIES_WOBBUFFET) { HP(225); }
-        OPPONENT(SPECIES_ABSOL) { Ability(ABILITY_SUPER_LUCK); Moves(MOVE_SLASH, MOVE_STRENGTH); }
+        PLAYER(SPECIES_WOBBUFFET) { HP(255); }
+        OPPONENT(SPECIES_ABSOL) { Ability(ABILITY_SUPER_LUCK); Moves(MOVE_SLASH, MOVE_RAGING_BULL); }
     } WHEN {
         TURN { EXPECT_MOVE(opponent, MOVE_SLASH); }
         if (flags & AI_FLAG_TRY_TO_FAINT)
-            TURN { EXPECT_MOVE(opponent, MOVE_STRENGTH); }
+            TURN { EXPECT_MOVE(opponent, MOVE_RAGING_BULL); }
         else
             TURN { EXPECT_MOVE(opponent, MOVE_SLASH); }
     } SCENE {
@@ -1693,8 +1697,9 @@ AI_SINGLE_BATTLE_TEST("First Impression is not chosen if it's blocked by certain
 
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_FIRST_IMPRESSION) == EFFECT_FIRST_TURN_ONLY);
-        ASSUME(GetMovePower(MOVE_FIRST_IMPRESSION) == 90);
-        ASSUME(GetMovePower(MOVE_LUNGE) == 80);
+        ASSUME(GetMovePower(MOVE_FIRST_IMPRESSION) > GetMovePower(MOVE_LUNGE));
+        ASSUME(GetMoveType(MOVE_FIRST_IMPRESSION) == GetMoveType(MOVE_LUNGE));
+        ASSUME(GetMoveCategory(MOVE_FIRST_IMPRESSION) == GetMoveCategory(MOVE_LUNGE));
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
         PLAYER(species) { Ability(ABILITY_LIGHT_METAL); Innates(ability); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(MOVE_FIRST_IMPRESSION, MOVE_LUNGE); }
@@ -1791,17 +1796,19 @@ AI_SINGLE_BATTLE_TEST("AI uses a guaranteed KO move instead of the move with the
 
     GIVEN {
         ASSUME(GetMoveCriticalHitStage(MOVE_SLASH) == 1);
-        ASSUME(GetMovePower(MOVE_SLASH) == 70);
-        ASSUME(GetMovePower(MOVE_STRENGTH) == 80);
-        ASSUME(GetMoveType(MOVE_SLASH) == GetMoveType(MOVE_STRENGTH));
-        ASSUME(GetMoveCategory(MOVE_SLASH) == GetMoveCategory(MOVE_STRENGTH));
+        ASSUME(GetMovePower(MOVE_SLASH) == 80);
+        ASSUME(GetMovePower(MOVE_RAGING_BULL) == 90);
+        ASSUME(GetMoveCriticalHitStage(MOVE_RAGING_BULL) == 0);
+        ASSUME(GetMoveAccuracy(MOVE_RAGING_BULL) == 100);
+        ASSUME(GetMoveType(MOVE_SLASH) == GetMoveType(MOVE_RAGING_BULL));
+        ASSUME(GetMoveCategory(MOVE_SLASH) == GetMoveCategory(MOVE_RAGING_BULL));
         AI_FLAGS(flags);
-        PLAYER(SPECIES_WOBBUFFET) { HP(225); }
-        OPPONENT(SPECIES_ABSOL) { Ability(ABILITY_PRESSURE); Innates(ABILITY_SUPER_LUCK); Moves(MOVE_SLASH, MOVE_STRENGTH); }
+        PLAYER(SPECIES_WOBBUFFET) { HP(255); }
+        OPPONENT(SPECIES_ABSOL) { Ability(ABILITY_PRESSURE); Innates(ABILITY_SUPER_LUCK); Moves(MOVE_SLASH, MOVE_RAGING_BULL); }
     } WHEN {
         TURN { EXPECT_MOVE(opponent, MOVE_SLASH); }
         if (flags & AI_FLAG_TRY_TO_FAINT)
-            TURN { EXPECT_MOVE(opponent, MOVE_STRENGTH); }
+            TURN { EXPECT_MOVE(opponent, MOVE_RAGING_BULL); }
         else
             TURN { EXPECT_MOVE(opponent, MOVE_SLASH); }
     } SCENE {

@@ -249,3 +249,22 @@ MahoganyMart1F_Text_Lance_SplitUp:
     .string "Lance: {PLAYER}, we should split up\n"
     .string "to check this place.\p"
     .string "I'll go first.$"
+
+MahoganyMart_LowBadgeCountWarning::
+	setvar VAR_TEMP_0, 1
+	goto_if_ge VAR_NUM_BADGES, 6, MahoganyMart_LowBadgeCountWarning_End
+	goto_if_lt VAR_MAHOGANY_TOWN_STATE, 5, MahoganyMart_LowBadgeCountWarning_End
+	goto_if_set FLAG_ROCKETWARNING_SET, MahoganyMart_LowBadgeCountWarning_End
+	lock
+	msgbox MahoganyMart_Text_LowBadgeCountWarning, MSGBOX_DEFAULT
+	setflag FLAG_ROCKETWARNING_SET
+	release
+MahoganyMart_LowBadgeCountWarning_End:
+	end
+
+MahoganyMart_Text_LowBadgeCountWarning:
+	.string "You have a feeling that the area\n"
+	.string "beyond this point may be challenging\l"
+	.string "with your current experience.\p"
+	.string "It might be useful to gather more\n"
+	.string "badges first if you feel uncertain.$"

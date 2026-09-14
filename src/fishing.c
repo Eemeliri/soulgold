@@ -580,7 +580,6 @@ static u32 CalculateFishingBiteOdds(u32 rod, bool32 isStickyHold)
         odds *= 2;
 
     odds = min(100, odds);
-    DebugPrintf("Fishing odds: %d", odds);
     return odds;
 }
 

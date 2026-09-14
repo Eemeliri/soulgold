@@ -81,7 +81,7 @@ bool32 AI_IsBattlerGrounded(enum BattlerId battler)
         return FALSE;
     if (Ai_BattlerHasHoldEffect(battler, HOLD_EFFECT_AIR_BALLOON, gAiLogicData))
         return FALSE;
-    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ELECTROLEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
+    if (AI_BATTLER_HAS_TRAIT(battler, ABILITY_LEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_EELEVATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_MIND_FLOAT) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ELECTROLEVITATE) || AI_BATTLER_HAS_TRAIT(battler, ABILITY_ALLSEEING_IDOL))
         return FALSE;
     if (IS_BATTLER_OF_TYPE(battler, TYPE_FLYING) && !FlagGet(B_FLAG_INVERSE_BATTLE))
         return FALSE;
@@ -775,17 +775,30 @@ static inline void AI_RestoreBattlerTypes(enum BattlerId battlerAtk, enum Type *
     gBattleMons[battlerAtk].types[2] = types[2];
 }
 
-static u32 AI_ApplyAegisToHit(struct BattleContext *ctx, u32 damage, bool32 *aegisUsed)
+struct AIHitDefenses
+{
+    bool32 aegisUsed;
+    bool32 hotTagUsed;
+};
+
+static u32 AI_ApplyHitDefenses(struct BattleContext *ctx, u32 damage, struct AIHitDefenses *used)
 {
     u32 cap = max(1, gBattleMons[ctx->battlerDef].maxHP / 4);
 
-    if (!*aegisUsed
+    // Track consumption locally for each damage roll, without spending the real shield.
+    if (!used->hotTagUsed && gBattleStruct->hotTagActive[ctx->battlerDef] && damage > 0)
+    {
+        damage = ApplyHotTagDamageReduction(ctx, damage);
+        used->hotTagUsed = TRUE;
+    }
+
+    if (!used->aegisUsed
      && !gBattleStruct->aegisUsed[ctx->battlerDef]
      && AI_BATTLER_HAS_TRAIT(ctx->battlerDef, ABILITY_AEGIS)
      && IsCustomAbilityDirectDamagingMove(ctx->move)
      && damage > cap)
     {
-        *aegisUsed = TRUE;
+        used->aegisUsed = TRUE;
         return cap;
     }
     return damage;
@@ -802,7 +815,7 @@ static inline void CalcDynamicMoveDamage(struct BattleContext *ctx, u16 *medianD
     u16 firstMedian = median;
     u16 firstMinimum = minimum;
     u16 firstMaximum = maximum;
-    bool32 aegisHandled = FALSE;
+    bool32 hitDefensesHandled = FALSE;
     enum Ability battlerTraits[MAX_MON_TRAITS];
     STORE_BATTLER_TRAITS(ctx->battlerAtk);
 
@@ -816,27 +829,27 @@ static inline void CalcDynamicMoveDamage(struct BattleContext *ctx, u16 *medianD
         ctx->isCrit = FALSE;
         ctx->fixedBasePower = 0;
         median = minimum = maximum = 0;
-        bool32 aegisUsedMinimum = FALSE;
-        bool32 aegisUsedMedian = FALSE;
-        bool32 aegisUsedMaximum = FALSE;
+        struct AIHitDefenses defensesUsedMinimum = {0};
+        struct AIHitDefenses defensesUsedMedian = {0};
+        struct AIHitDefenses defensesUsedMaximum = {0};
         for (i = 0; i < partyCount; i++)
         {
             s32 oneBeatUpHit = CalculateMoveDamageVars(ctx);
             s32 damageByRollType = GetDamageByRollType(oneBeatUpHit, DMG_ROLL_LOWEST);
 
             damageByRollType = AI_ApplyModifiersAfterDmgRoll(ctx, damageByRollType);
-            minimum += AI_ApplyAegisToHit(ctx, damageByRollType, &aegisUsedMinimum);
+            minimum += AI_ApplyHitDefenses(ctx, damageByRollType, &defensesUsedMinimum);
 
             damageByRollType = GetDamageByRollType(oneBeatUpHit, DMG_ROLL_DEFAULT);
             damageByRollType = AI_ApplyModifiersAfterDmgRoll(ctx, damageByRollType);
-            median += AI_ApplyAegisToHit(ctx, damageByRollType, &aegisUsedMedian);
+            median += AI_ApplyHitDefenses(ctx, damageByRollType, &defensesUsedMedian);
 
             damageByRollType = GetDamageByRollType(oneBeatUpHit, DMG_ROLL_HIGHEST);
             damageByRollType = AI_ApplyModifiersAfterDmgRoll(ctx, damageByRollType);
-            maximum += AI_ApplyAegisToHit(ctx, damageByRollType, &aegisUsedMaximum);
+            maximum += AI_ApplyHitDefenses(ctx, damageByRollType, &defensesUsedMaximum);
         }
         gBattleStruct->beatUpSlot = 0;
-        aegisHandled = TRUE;
+        hitDefensesHandled = TRUE;
     }
     else if (strikeCount > 1 && effect != EFFECT_TRIPLE_KICK)
     {
@@ -891,15 +904,18 @@ static inline void CalcDynamicMoveDamage(struct BattleContext *ctx, u16 *medianD
         maximum += maximum / divisor;
     }
 
-    if (!aegisHandled && effect != EFFECT_TRIPLE_KICK)
+    // Most targets have neither defense: avoid three per-roll calls in that case.
+    if (!hitDefensesHandled && effect != EFFECT_TRIPLE_KICK
+     && (gBattleStruct->hotTagActive[ctx->battlerDef]
+      || (!gBattleStruct->aegisUsed[ctx->battlerDef] && AI_BATTLER_HAS_TRAIT(ctx->battlerDef, ABILITY_AEGIS))))
     {
-        bool32 aegisUsed = FALSE;
+        struct AIHitDefenses defensesUsed = {0};
 
-        median -= firstMedian - AI_ApplyAegisToHit(ctx, firstMedian, &aegisUsed);
-        aegisUsed = FALSE;
-        minimum -= firstMinimum - AI_ApplyAegisToHit(ctx, firstMinimum, &aegisUsed);
-        aegisUsed = FALSE;
-        maximum -= firstMaximum - AI_ApplyAegisToHit(ctx, firstMaximum, &aegisUsed);
+        median -= firstMedian - AI_ApplyHitDefenses(ctx, firstMedian, &defensesUsed);
+        defensesUsed = (struct AIHitDefenses){0};
+        minimum -= firstMinimum - AI_ApplyHitDefenses(ctx, firstMinimum, &defensesUsed);
+        defensesUsed = (struct AIHitDefenses){0};
+        maximum -= firstMaximum - AI_ApplyHitDefenses(ctx, firstMaximum, &defensesUsed);
     }
 
     if (median == 0)
@@ -1042,9 +1058,9 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
         }
         else if (moveEffect == EFFECT_TRIPLE_KICK)
         {
-            bool32 aegisUsedMinimum = FALSE;
-            bool32 aegisUsedMedian = FALSE;
-            bool32 aegisUsedMaximum = FALSE;
+            struct AIHitDefenses defensesUsedMinimum = {0};
+            struct AIHitDefenses defensesUsedMedian = {0};
+            struct AIHitDefenses defensesUsedMaximum = {0};
 
             for (gMultiHitCounter = GetMoveStrikeCount(move); gMultiHitCounter > 0; gMultiHitCounter--) // The global is used to simulate actual damage done
             {
@@ -1054,15 +1070,15 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
 
                 damageByRollType = GetDamageByRollType(oneTripleKickHit, DMG_ROLL_LOWEST);
                 damageByRollType = AI_ApplyModifiersAfterDmgRoll(&ctx, damageByRollType);
-                simDamage.minimum += AI_ApplyAegisToHit(&ctx, damageByRollType, &aegisUsedMinimum);
+                simDamage.minimum += AI_ApplyHitDefenses(&ctx, damageByRollType, &defensesUsedMinimum);
 
                 damageByRollType = GetDamageByRollType(oneTripleKickHit, DMG_ROLL_DEFAULT);
                 damageByRollType = AI_ApplyModifiersAfterDmgRoll(&ctx, damageByRollType);
-                simDamage.median += AI_ApplyAegisToHit(&ctx, damageByRollType, &aegisUsedMedian);
+                simDamage.median += AI_ApplyHitDefenses(&ctx, damageByRollType, &defensesUsedMedian);
 
                 damageByRollType = GetDamageByRollType(oneTripleKickHit, DMG_ROLL_HIGHEST);
                 damageByRollType = AI_ApplyModifiersAfterDmgRoll(&ctx, damageByRollType);
-                simDamage.maximum += AI_ApplyAegisToHit(&ctx, damageByRollType, &aegisUsedMaximum);
+                simDamage.maximum += AI_ApplyHitDefenses(&ctx, damageByRollType, &defensesUsedMaximum);
             }
         }
         else
@@ -1083,13 +1099,13 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
             CalcDynamicMoveDamage(&ctx, &simDamage.median, &simDamage.minimum, &simDamage.maximum);
         else
         {
-            bool32 aegisUsed = FALSE;
+            struct AIHitDefenses defensesUsed = {0};
 
-            simDamage.median = AI_ApplyAegisToHit(&ctx, simDamage.median, &aegisUsed);
-            aegisUsed = FALSE;
-            simDamage.minimum = AI_ApplyAegisToHit(&ctx, simDamage.minimum, &aegisUsed);
-            aegisUsed = FALSE;
-            simDamage.maximum = AI_ApplyAegisToHit(&ctx, simDamage.maximum, &aegisUsed);
+            simDamage.median = AI_ApplyHitDefenses(&ctx, simDamage.median, &defensesUsed);
+            defensesUsed = (struct AIHitDefenses){0};
+            simDamage.minimum = AI_ApplyHitDefenses(&ctx, simDamage.minimum, &defensesUsed);
+            defensesUsed = (struct AIHitDefenses){0};
+            simDamage.maximum = AI_ApplyHitDefenses(&ctx, simDamage.maximum, &defensesUsed);
         }
 
         AI_RestoreBattlerTypes(battlerAtk, types);

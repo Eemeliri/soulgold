@@ -287,8 +287,17 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 45,
-      "y": 19,
+      "x": 43,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_ROUTE27_BAOBA_CALL",
+      "var_value": "0",
+      "script": "Route27_EventScript_BaobaCall"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 11,
       "elevation": 0,
       "var": "VAR_ROUTE27_BAOBA_CALL",
       "var_value": "0",
@@ -299,9 +308,18 @@
       "x": 46,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_ROUTE27_BAOBA_CALL",
+      "var": "VAR_SAFFRON_CITY_STATE",
       "var_value": "0",
-      "script": "Route27_EventScript_BaobaCall"
+      "script": "SaffronCity_EventScript_BaobaCall"
+    },
+    {
+      "type": "trigger",
+      "x": 45,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_SAFFRON_CITY_STATE",
+      "var_value": "0",
+      "script": "SaffronCity_EventScript_BaobaCall"
     }
   ],
   "bg_events": [

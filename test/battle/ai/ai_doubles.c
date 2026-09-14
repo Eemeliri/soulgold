@@ -342,7 +342,11 @@ AI_DOUBLE_BATTLE_TEST("AI won't use the same nondamaging move as its partner for
         OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
         OPPONENT(SPECIES_WOBBUFFET) { Moves(move, MOVE_TACKLE); }
     } WHEN {
-        TURN { EXPECT_MOVE(opponentLeft, move); EXPECT_MOVE(opponentRight, MOVE_TACKLE); }
+        TURN {
+            // Court Change has nothing to swap, so neither partner should use it.
+            EXPECT_MOVE(opponentLeft, move == MOVE_COURT_CHANGE ? MOVE_TACKLE : move);
+            EXPECT_MOVE(opponentRight, MOVE_TACKLE);
+        }
     }
 }
 

@@ -1,6 +1,36 @@
 #include "global.h"
 #include "test/battle.h"
 
+AI_SINGLE_BATTLE_TEST("AI bases Psychic Terrain priority protection on the defender")
+{
+    enum Ability attackerAbility = ABILITY_NONE;
+    enum Ability defenderAbility = ABILITY_NONE;
+    u32 defenderSpecies = SPECIES_WOBBUFFET;
+    bool32 protected = FALSE;
+
+    for (u32 j = 0; j < 3; j++)
+    {
+        enum Ability ability = j == 0 ? ABILITY_NONE : j == 1 ? ABILITY_LEVITATE : ABILITY_MIND_FLOAT;
+        PARAMETRIZE { attackerAbility = ability; defenderAbility = ABILITY_NONE; defenderSpecies = SPECIES_WOBBUFFET; protected = TRUE; }
+        PARAMETRIZE { attackerAbility = ability; defenderAbility = ABILITY_LEVITATE; defenderSpecies = SPECIES_WOBBUFFET; protected = FALSE; }
+        PARAMETRIZE { attackerAbility = ability; defenderAbility = ABILITY_MIND_FLOAT; defenderSpecies = SPECIES_WOBBUFFET; protected = TRUE; }
+        PARAMETRIZE { attackerAbility = ability; defenderAbility = ABILITY_NONE; defenderSpecies = SPECIES_PIDGEY; protected = FALSE; }
+    }
+    GIVEN {
+        ASSUME(GetMovePower(MOVE_QUICK_ATTACK) == GetMovePower(MOVE_SCRATCH));
+        ASSUME(GetMoveType(MOVE_QUICK_ATTACK) == GetMoveType(MOVE_SCRATCH));
+        ASSUME(GetMoveCategory(MOVE_QUICK_ATTACK) == GetMoveCategory(MOVE_SCRATCH));
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_OMNISCIENT);
+        PLAYER(defenderSpecies) { Ability(defenderAbility); }
+        OPPONENT(SPECIES_WOBBUFFET) { Ability(attackerAbility); Innates(ABILITY_PSYCHIC_SURGE); Moves(MOVE_QUICK_ATTACK, MOVE_SCRATCH); }
+    } WHEN {
+        if (protected)
+            TURN { SCORE_GT(opponent, MOVE_SCRATCH, MOVE_QUICK_ATTACK); EXPECT_MOVE(opponent, MOVE_SCRATCH); }
+        else
+            TURN { SCORE_EQ(opponent, MOVE_QUICK_ATTACK, MOVE_SCRATCH); }
+    }
+}
+
 SINGLE_BATTLE_TEST("Psychic Terrain protects grounded battlers from priority moves")
 {
     GIVEN {

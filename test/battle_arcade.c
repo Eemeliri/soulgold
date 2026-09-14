@@ -138,6 +138,9 @@ TEST("Rocket Arcade opponent setup preserves the local round after an early cash
 
 TEST("Rocket Arcade Classic opponent generation ignores stale Battle Cafe state")
 {
+    u32 savedBattleTypeFlags = gBattleTypeFlags;
+    u8 savedSpecialTrainerBattleType = gBattleScripting.specialTrainerBattleType;
+
     VarSet(VAR_FRONTIER_FACILITY, FRONTIER_FACILITY_ARCADE);
     VarSet(VAR_FRONTIER_BATTLE_MODE, FRONTIER_MODE_SINGLES);
     FRONTIER_SAVEDATA.lvlMode = FRONTIER_LVL_50;
@@ -150,6 +153,9 @@ TEST("Rocket Arcade Classic opponent generation ignores stale Battle Cafe state"
 
     for (u32 i = 0; i < FRONTIER_PARTY_SIZE; i++)
         EXPECT_EQ(GetMonData(&gEnemyParty[i], MON_DATA_LEVEL), FRONTIER_MAX_LEVEL_50);
+
+    gBattleTypeFlags = savedBattleTypeFlags;
+    gBattleScripting.specialTrainerBattleType = savedSpecialTrainerBattleType;
 }
 
 TEST("Rocket Arcade schedules the Brain for the final battle of a set")

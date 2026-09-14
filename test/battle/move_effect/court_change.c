@@ -39,6 +39,9 @@ DOUBLE_BATTLE_TEST("Court Change swaps entry hazards used by the opponent")
         MESSAGE("Pointed stones dug into the opposing Wobbuffet!");
         MESSAGE("The opposing Wobbuffet was hurt by the spikes!");
         MESSAGE("The opposing Wobbuffet was poisoned!");
+    } THEN {
+        EXPECT_EQ(gBattleStruct->numHazards[B_SIDE_PLAYER], 0);
+        EXPECT_EQ(gBattleStruct->numHazards[B_SIDE_OPPONENT], 4);
     }
 }
 
@@ -75,6 +78,9 @@ DOUBLE_BATTLE_TEST("Court Change swaps entry hazards used by the player")
             MESSAGE("The opposing Wynaut was hurt by the spikes!");
             MESSAGE("The opposing Wynaut was poisoned!");
         }
+    } THEN {
+        EXPECT_EQ(gBattleStruct->numHazards[B_SIDE_PLAYER], 4);
+        EXPECT_EQ(gBattleStruct->numHazards[B_SIDE_OPPONENT], 0);
     }
 }
 
@@ -218,7 +224,7 @@ DOUBLE_BATTLE_TEST("Court Change used by the player swaps G-Max Vine Lash, G-Max
     }
 }
 
-AI_SINGLE_BATTLE_TEST("AI uses Court Change")
+AI_SINGLE_BATTLE_TEST("Court Change: AI swaps useful side effects only once")
 {
     enum Move move;
 
@@ -246,5 +252,43 @@ AI_SINGLE_BATTLE_TEST("AI uses Court Change")
             TURN { MOVE(player, MOVE_CELEBRATE); NOT_EXPECT_MOVE(opponent, MOVE_COURT_CHANGE); }
         else
             TURN { MOVE(player, MOVE_CELEBRATE); EXPECT_MOVE(opponent, MOVE_COURT_CHANGE); }
+        TURN { MOVE(player, MOVE_CELEBRATE); NOT_EXPECT_MOVE(opponent, MOVE_COURT_CHANGE); }
+    }
+}
+
+AI_SINGLE_BATTLE_TEST("Court Change: Cinderace attacks Lucario on an empty field")
+{
+    enum Move move;
+
+    PARAMETRIZE { move = MOVE_CALM_MIND; }
+    PARAMETRIZE { move = MOVE_AURA_SPHERE; }
+    PARAMETRIZE { move = MOVE_BULLET_PUNCH; }
+    PARAMETRIZE { move = MOVE_EXTREME_SPEED; }
+
+    GIVEN {
+        AI_FLAGS(AI_FLAG_SMART_TRAINER);
+        PLAYER(SPECIES_LUCARIO) { USE_DEFAULT_INNATES; Level(60); Moves(move); }
+        OPPONENT(SPECIES_CINDERACE) {
+            USE_DEFAULT_INNATES;
+            Level(60);
+            Nature(NATURE_JOLLY);
+            Ability(ABILITY_LIBERO);
+            Item(ITEM_HEAVY_DUTY_BOOTS);
+            Moves(MOVE_HIGH_JUMP_KICK, MOVE_SUCKER_PUNCH, MOVE_COURT_CHANGE, MOVE_PYRO_BALL);
+        }
+    } WHEN {
+        TURN { MOVE(player, move); NOT_EXPECT_MOVE(opponent, MOVE_COURT_CHANGE); }
+        TURN { MOVE(player, move); NOT_EXPECT_MOVE(opponent, MOVE_COURT_CHANGE); }
+    }
+}
+
+AI_SINGLE_BATTLE_TEST("Court Change: AI penalizes an empty field")
+{
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE);
+        PLAYER(SPECIES_LUCARIO);
+        OPPONENT(SPECIES_CINDERACE) { Moves(MOVE_COURT_CHANGE, MOVE_PYRO_BALL); }
+    } WHEN {
+        TURN { SCORE_LT_VAL(opponent, MOVE_COURT_CHANGE, AI_SCORE_DEFAULT); }
     }
 }

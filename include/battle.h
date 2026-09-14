@@ -88,7 +88,8 @@ struct ProtectStruct
     // End of 32-bit bitfield
     u16 helpingHand:3;
     u16 revengeDoubled:4;
-    u16 padding2:9;
+    u16 tempoUsed:1;
+    u16 padding2:8;
     // End of 16-bit bitfield
     u16 physicalDmg;
     u16 specialDmg;
@@ -702,6 +703,10 @@ struct BattleStruct
     u8 pendulumStreak[MAX_BATTLERS_COUNT];
     u8 aegisUsed[MAX_BATTLERS_COUNT];
     u8 blitzReady[MAX_BATTLERS_COUNT];
+    u8 crossfireLastType[MAX_BATTLERS_COUNT];
+    bool8 bullRushUsed[MAX_BATTLERS_COUNT];
+    bool8 hotTagPending[MAX_BATTLERS_COUNT];
+    bool8 hotTagActive[MAX_BATTLERS_COUNT];
     u8 nullSpaceProtectedHit[MAX_BATTLERS_COUNT];
     u16 moveResultFlags[MAX_BATTLERS_COUNT];
     enum CalcDamageState noResultString[MAX_BATTLERS_COUNT];

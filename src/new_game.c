@@ -82,6 +82,8 @@ struct NewGameOptions
     enum ReplayBattleFormat battleFormat;
     u16 followerMegaOff;
     enum ShinyRateOption shinyRate;
+    bool8 overworldLighting;
+    bool8 battleLighting;
 };
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -227,6 +229,8 @@ void NewGameInitData(void)
         .battleFormat = GetReplayBattleFormat(),
         .followerMegaOff = !IsFollowerMegaEnabled(),
         .shinyRate = GetShinyRateOption(),
+        .overworldLighting = !FlagGet(FLAG_OW_LIGHTING),
+        .battleLighting = !FlagGet(FLAG_BATTLE_LIGHTING),
     };
 
     if (options.overworldSpeed > OPTIONS_OVERWORLD_SPEED_4X)
@@ -312,6 +316,10 @@ void NewGameInitData(void)
     SetReplayBattleFormat(options.battleFormat);
     VarSet(VAR_FOLLOWER_MEGA_OFF, options.followerMegaOff);
     VarSet(VAR_SHINY_RATE, options.shinyRate);
+    if (!options.overworldLighting)
+        FlagSet(FLAG_OW_LIGHTING);
+    if (!options.battleLighting)
+        FlagSet(FLAG_BATTLE_LIGHTING);
     VarSet(VAR_BATTLE_FACILITY_BGM, 0);
     ResetItemFlags();
     ResetDexNav();

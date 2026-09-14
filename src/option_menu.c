@@ -22,6 +22,7 @@
 #include "text_window.h"
 #include "window.h"
 #include "gba/m4a_internal.h"
+#include "constants/flags.h"
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/vars.h"
@@ -78,6 +79,8 @@ enum
     MENUITEM_INTRO_SLIDE,
     MENUITEM_UI_ANIMATIONS,
     MENUITEM_DARK_BATTLE_UI,
+    MENUITEM_OW_LIGHTING,
+    MENUITEM_BATTLE_LIGHTING,
     MENUITEM_FAST_MEGAS,
     MENUITEM_FAST_WEATHER,
     MENUITEM_SURF_MUSIC,
@@ -179,6 +182,8 @@ static u8 UiAnimations_ProcessInput(u8 selection);
 static void UiAnimations_DrawChoices(u8 selection);
 static u8 DarkBattleUi_ProcessInput(u8 selection);
 static void DarkBattleUi_DrawChoices(u8 selection);
+static u8 Lighting_ProcessInput(u8 selection);
+static void Lighting_DrawChoices(u8 selection);
 static u8 FastMegas_ProcessInput(u8 selection);
 static void FastMegas_DrawChoices(u8 selection);
 static void ShinyRate_DrawChoices(u8 selection);
@@ -199,6 +204,8 @@ static void DrawBgWindowFrames(void);
 EWRAM_DATA static bool8 sArrowPressed = FALSE;
 EWRAM_DATA static bool8 sUiAnimationsOff = FALSE;
 EWRAM_DATA static bool8 sDarkBattleUi = FALSE;
+EWRAM_DATA static bool8 sOverworldLighting = FALSE;
+EWRAM_DATA static bool8 sBattleLighting = FALSE;
 EWRAM_DATA static bool8 sFastMegas = FALSE;
 EWRAM_DATA static bool8 sFollowerMega = FALSE;
 EWRAM_DATA static u8 sShinyRate = 0;
@@ -316,6 +323,8 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_INTRO_SLIDE] = COMPOUND_STRING("Battle intro"),
     [MENUITEM_UI_ANIMATIONS] = COMPOUND_STRING("UI animations"),
     [MENUITEM_DARK_BATTLE_UI] = COMPOUND_STRING("Battle/Bag UI"),
+    [MENUITEM_OW_LIGHTING] = COMPOUND_STRING("OW lighting"),
+    [MENUITEM_BATTLE_LIGHTING] = COMPOUND_STRING("Battle lighting"),
     [MENUITEM_FOLLOWER_MEGA] = COMPOUND_STRING("Follower Mega"),
     [MENUITEM_SHINY_RATE] = COMPOUND_STRING("Shiny odds"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
@@ -413,6 +422,16 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
         "uses dark healthboxes, battle\n"
         "menus, and Bag screens.\n"
         "Shiny healthboxes are unchanged."),
+    [MENUITEM_OW_LIGHTING] = COMPOUND_STRING(
+        "On applies day/night visuals in\n"
+        "the overworld. Off keeps daytime\n"
+        "colors. Time-based encounters and\n"
+        "events are unaffected by this."),
+    [MENUITEM_BATTLE_LIGHTING] = COMPOUND_STRING(
+        "On applies day/night effects to\n"
+        "battle backgrounds, Pokémon,\n"
+        "Trainers, and other sprites.\n"
+        "Off keeps their normal colors."),
     [MENUITEM_FOLLOWER_MEGA] = COMPOUND_STRING(
         "Show Mega forms on follower\n"
         "instead of base form when equipped\n"
@@ -530,6 +549,8 @@ static void ReadAllCurrentSettings(u8 taskId)
         gTasks[taskId].tFastIntroNoSlide = gSaveBlock2Ptr->optionsFastIntroNoSlide;
         sUiAnimationsOff = gSaveBlock2Ptr->optionsUiAnimationsOff;
         sDarkBattleUi = gSaveBlock2Ptr->optionsDarkBattleUi;
+        sOverworldLighting = !FlagGet(FLAG_OW_LIGHTING);
+        sBattleLighting = !FlagGet(FLAG_BATTLE_LIGHTING);
         sFastMegas = gSaveBlock2Ptr->optionsFastMegas;
         sFollowerMega = IsFollowerMegaEnabled();
         sShinyRate = GetShinyRateOption();
@@ -721,6 +742,12 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG3_START + MENUITEM_DARK_BATTLE_UI:
         DarkBattleUi_DrawChoices(sDarkBattleUi);
         break;
+    case OPTION_MENU_PG3_START + MENUITEM_OW_LIGHTING:
+        Lighting_DrawChoices(sOverworldLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_LIGHTING:
+        Lighting_DrawChoices(sBattleLighting);
+        break;
     case OPTION_MENU_PG3_START + MENUITEM_FOLLOWER_MEGA:
         FastMegas_DrawChoices(sFollowerMega);
         break;
@@ -854,6 +881,18 @@ static void ProcessOptionInput(u8 taskId)
         sDarkBattleUi = DarkBattleUi_ProcessInput(sDarkBattleUi);
         if (previousOption != sDarkBattleUi)
             DarkBattleUi_DrawChoices(sDarkBattleUi);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_OW_LIGHTING:
+        previousOption = sOverworldLighting;
+        sOverworldLighting = Lighting_ProcessInput(sOverworldLighting);
+        if (previousOption != sOverworldLighting)
+            Lighting_DrawChoices(sOverworldLighting);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_BATTLE_LIGHTING:
+        previousOption = sBattleLighting;
+        sBattleLighting = Lighting_ProcessInput(sBattleLighting);
+        if (previousOption != sBattleLighting)
+            Lighting_DrawChoices(sBattleLighting);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_FOLLOWER_MEGA:
         sFollowerMega = FastMegas_ProcessInput(sFollowerMega);
@@ -1039,6 +1078,14 @@ static void SaveCurrentSettings(u8 taskId)
     gSaveBlock2Ptr->optionsFastIntroNoSlide = gTasks[taskId].tFastIntroNoSlide;
     gSaveBlock2Ptr->optionsUiAnimationsOff = sUiAnimationsOff;
     gSaveBlock2Ptr->optionsDarkBattleUi = sDarkBattleUi;
+    if (sOverworldLighting)
+        FlagClear(FLAG_OW_LIGHTING);
+    else
+        FlagSet(FLAG_OW_LIGHTING);
+    if (sBattleLighting)
+        FlagClear(FLAG_BATTLE_LIGHTING);
+    else
+        FlagSet(FLAG_BATTLE_LIGHTING);
     gSaveBlock2Ptr->optionsFastMegas = sFastMegas;
     VarSet(VAR_FOLLOWER_MEGA_OFF, !sFollowerMega);
     VarSet(VAR_SHINY_RATE, sShinyRate);
@@ -1613,6 +1660,26 @@ static void DarkBattleUi_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_BattleUiLight, 104, YPOS_DARK_BATTLE_UI, styles[FALSE]);
     DrawOptionMenuChoice(gText_BattleUiDark, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleUiDark, 198), YPOS_DARK_BATTLE_UI, styles[TRUE]);
+}
+
+static u8 Lighting_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void Lighting_DrawChoices(u8 selection)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+    DrawOptionMenuChoice(gText_BattleSceneOn, 104, sOptionDrawY, styles[TRUE]);
+    DrawOptionMenuChoice(gText_BattleSceneOff, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSceneOff, 198), sOptionDrawY, styles[FALSE]);
 }
 
 static u8 FastMegas_ProcessInput(u8 selection)

@@ -86,6 +86,7 @@ enum MoveEndState
     MOVEEND_ABILITIES,
     MOVEEND_FORM_CHANGE_ON_HIT, // Disguise / Gulp Missile
     MOVEEND_ABILITIES_ATTACKER,
+    MOVEEND_TEMPO,
     MOVEEND_QUEUE_DANCER,
     MOVEEND_STATUS_IMMUNITY_ABILITIES, // TODO: Do berries come before????
     MOVEEND_SYNCHRONIZE_ATTACKER,
@@ -103,6 +104,7 @@ enum MoveEndState
     MOVEEND_NEXT_TARGET, // Everything up until here is handled for each strike of a spread move
     MOVEEND_HP_THRESHOLD_ITEMS_TARGET, // Activation only during a multi hit move / ability (Parental Bond)
     MOVEEND_MULTIHIT_MOVE,
+    MOVEEND_ATTACK_HISTORY,
     MOVEEND_DEFROST,
     MOVEEND_MOVE_BLOCK_RECOIL, // Recoil effects should still happen even if Sheer Force applies
     MOVEEND_SHEER_FORCE, // If move is Sheer Force affected, jump to effects that are not suppressed
