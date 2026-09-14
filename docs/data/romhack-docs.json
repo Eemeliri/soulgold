@@ -44451,8 +44451,8 @@
         "ABILITY_TOUGH_CLAWS"
       ],
       "innates": [
+        "ABILITY_STRONG_JAW",
         "ABILITY_ROCK_HEAD",
-        "ABILITY_ROUGH_SKIN",
         "ABILITY_LAST_STAND"
       ],
       "sprite": "sprites/pokemon/aerodactyl_mega.png",
@@ -72838,8 +72838,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -72847,8 +72847,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73300,8 +73300,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73309,8 +73309,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -233524,12 +233524,6 @@
             "sprite": "sprites/pokemon/jolteon.png"
           },
           {
-            "species": "SPECIES_AERODACTYL_MEGA",
-            "name": "Aerodactyl",
-            "dex": 123,
-            "sprite": "sprites/pokemon/aerodactyl_mega.png"
-          },
-          {
             "species": "SPECIES_CACNEA",
             "name": "Cacnea",
             "dex": 259,
@@ -251168,6 +251162,12 @@
             "name": "Aerodactyl",
             "dex": 123,
             "sprite": "sprites/pokemon/aerodactyl.png"
+          },
+          {
+            "species": "SPECIES_AERODACTYL_MEGA",
+            "name": "Aerodactyl",
+            "dex": 123,
+            "sprite": "sprites/pokemon/aerodactyl_mega.png"
           },
           {
             "species": "SPECIES_TOTODILE",
