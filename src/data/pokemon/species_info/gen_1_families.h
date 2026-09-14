@@ -20251,7 +20251,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
         .abilities = { ABILITY_TOUGH_CLAWS, ABILITY_TOUGH_CLAWS, ABILITY_TOUGH_CLAWS },
-        .innates = { ABILITY_ROCK_HEAD, ABILITY_ROUGH_SKIN, ABILITY_LAST_STAND },
+        .innates = { ABILITY_STRONG_JAW, ABILITY_ROCK_HEAD , ABILITY_LAST_STAND },
 		.bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Aerodactyl"),
     #if P_MODIFIED_MEGA_CRIES
