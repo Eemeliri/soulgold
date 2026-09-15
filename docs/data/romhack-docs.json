@@ -51928,7 +51928,7 @@
       ],
       "innates": [
         "ABILITY_SOOTHING",
-        "ABILITY_WONDER_SKIN",
+        "ABILITY_MAGIC_GUARD",
         "ABILITY_STYGIAN"
       ],
       "sprite": "sprites/pokemon/noctowl.png",
@@ -242990,6 +242990,12 @@
             "sprite": "sprites/pokemon/mr_mime.png"
           },
           {
+            "species": "SPECIES_NOCTOWL",
+            "name": "Noctowl",
+            "dex": 143,
+            "sprite": "sprites/pokemon/noctowl.png"
+          },
+          {
             "species": "SPECIES_TOGETIC",
             "name": "Togetic",
             "dex": 153,
@@ -248853,12 +248859,6 @@
             "name": "Starmie",
             "dex": 105,
             "sprite": "sprites/pokemon/starmie_mega.png"
-          },
-          {
-            "species": "SPECIES_NOCTOWL",
-            "name": "Noctowl",
-            "dex": 143,
-            "sprite": "sprites/pokemon/noctowl.png"
           }
         ]
       }
@@ -299505,7 +299505,7 @@
           "displayName": "Noctowl",
           "innates": [
             "ABILITY_SOOTHING",
-            "ABILITY_WONDER_SKIN",
+            "ABILITY_MAGIC_GUARD",
             "ABILITY_STYGIAN"
           ],
           "itemConstant": "",
@@ -319603,7 +319603,7 @@
           "displayName": "Noctowl",
           "innates": [
             "ABILITY_SOOTHING",
-            "ABILITY_WONDER_SKIN",
+            "ABILITY_MAGIC_GUARD",
             "ABILITY_STYGIAN"
           ],
           "itemConstant": "ITEM_CHOICE_SCARF",
@@ -336226,7 +336226,7 @@
           "displayName": "Noctowl",
           "innates": [
             "ABILITY_SOOTHING",
-            "ABILITY_WONDER_SKIN",
+            "ABILITY_MAGIC_GUARD",
             "ABILITY_STYGIAN"
           ],
           "itemConstant": "ITEM_CHOICE_SCARF",
@@ -336410,7 +336410,7 @@
           "displayName": "Noctowl",
           "innates": [
             "ABILITY_SOOTHING",
-            "ABILITY_WONDER_SKIN",
+            "ABILITY_MAGIC_GUARD",
             "ABILITY_STYGIAN"
           ],
           "itemConstant": "ITEM_CHOICE_SCARF",
