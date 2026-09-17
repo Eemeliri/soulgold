@@ -41925,7 +41925,7 @@
         "hp": 130,
         "atk": 85,
         "def": 105,
-        "spa": 130,
+        "spa": 135,
         "spd": 120,
         "spe": 60
       },
@@ -41939,7 +41939,7 @@
       "categories": [
         "mega"
       ],
-      "bst": 630,
+      "bst": 635,
       "abilities": [
         "ABILITY_ARCTIC_AURA",
         "ABILITY_ARCTIC_AURA",
@@ -72838,8 +72838,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -72847,8 +72847,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73082,8 +73082,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73091,8 +73091,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73300,8 +73300,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73309,8 +73309,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -185478,7 +185478,7 @@
       "stats": {
         "hp": 98,
         "atk": 130,
-        "def": 130,
+        "def": 140,
         "spa": 53,
         "spd": 85,
         "spe": 89
@@ -185492,7 +185492,7 @@
       "categories": [
         "mega"
       ],
-      "bst": 585,
+      "bst": 595,
       "abilities": [
         "ABILITY_PRESSURE",
         "ABILITY_UNNERVE",
@@ -203765,7 +203765,7 @@
       "stats": {
         "hp": 76,
         "atk": 140,
-        "def": 90,
+        "def": 93,
         "spa": 91,
         "spd": 90,
         "spe": 140
@@ -203780,7 +203780,7 @@
       "categories": [
         "mega"
       ],
-      "bst": 627,
+      "bst": 630,
       "abilities": [
         "ABILITY_PROTEAN",
         "ABILITY_PROTEAN",
@@ -211269,6 +211269,10 @@
           "move": "MOVE_TORMENT"
         },
         {
+          "level": 17,
+          "move": "MOVE_FEINT_ATTACK"
+        },
+        {
           "level": 20,
           "move": "MOVE_SCARY_FACE"
         },
@@ -211291,6 +211295,10 @@
         {
           "level": 45,
           "move": "MOVE_IRON_DEFENSE"
+        },
+        {
+          "level": 47,
+          "move": "MOVE_EMBARGO"
         },
         {
           "level": 50,
@@ -342519,17 +342527,19 @@
       "party": [
         {
           "name": "Dragonite",
-          "item": "Yache Berry",
+          "item": "Dragotite",
           "level": 90,
-          "ability": "",
-          "nature": "",
+          "ability": "Multiscale",
+          "nature": "Modest",
           "evs": {},
-          "ivs": {},
+          "ivs": {
+            "atk": 0
+          },
           "moves": [
-            "Ice Punch",
-            "Fire Punch",
-            "Earthquake",
-            "Dragon Dance"
+            "Hurricane",
+            "Thunder",
+            "Draco Meteor",
+            "Ice Beam"
           ],
           "constant": "SPECIES_DRAGONITE",
           "displayName": "Dragonite",
@@ -342538,78 +342548,78 @@
             "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
-          "itemConstant": "ITEM_YACHE_BERRY",
-          "itemName": "Yache Berry",
-          "itemDescription": "A hold item that weakens a Ice move if weak to it.",
-          "itemIcon": "sprites/items/yache_berry.png",
+          "itemConstant": "ITEM_DRAGOTITE",
+          "itemName": "Dragotite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Dragon -type form.",
+          "itemIcon": "sprites/items/dragoninite.png",
           "sprite": "sprites/pokemon/dragonite.png"
         },
         {
-          "name": "Blaziken",
-          "item": "Life Orb",
+          "name": "Clodsire",
+          "item": "Leftovers",
           "level": 90,
-          "ability": "Speed Boost",
-          "nature": "",
+          "ability": "Water Absorb",
+          "nature": "Careful",
           "evs": {},
           "ivs": {},
           "moves": [
-            "Earthquake",
-            "Flare Blitz",
-            "Protect",
-            "Close Combat"
+            "Rain Dance",
+            "Recover",
+            "Poison Jab",
+            "Earthquake"
           ],
-          "constant": "SPECIES_BLAZIKEN",
-          "displayName": "Blaziken",
+          "constant": "SPECIES_CLODSIRE",
+          "displayName": "Clodsire",
           "innates": [
-            "ABILITY_BLITZ",
-            "ABILITY_RECKLESS",
-            "ABILITY_IRON_FIST"
+            "ABILITY_POISON_TOUCH",
+            "ABILITY_PURIFYING_SALT",
+            "ABILITY_EARTH_EATER"
           ],
-          "itemConstant": "ITEM_LIFE_ORB",
-          "itemName": "Life Orb",
-          "itemDescription": "Boosts move power but holder loses HP with each attack.",
-          "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/blaziken.png"
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/clodsire.png"
         },
         {
-          "name": "Ampharos",
-          "item": "Light Clay",
+          "name": "Tinkaton",
+          "item": "Air Balloon",
           "level": 90,
-          "ability": "",
-          "nature": "",
+          "ability": "Mold Breaker",
+          "nature": "Jolly",
           "evs": {},
           "ivs": {},
           "moves": [
-            "Volt Switch",
-            "Focus Blast",
-            "Dragon Pulse",
-            "Reflect"
+            "Gigaton Hammer",
+            "Swords Dance",
+            "Rock Slide",
+            "Play Rough"
           ],
-          "constant": "SPECIES_AMPHAROS",
-          "displayName": "Ampharos",
+          "constant": "SPECIES_TINKATON",
+          "displayName": "Tinkaton",
           "innates": [
-            "ABILITY_KEEN_EYE",
-            "ABILITY_BATTERY",
-            "ABILITY_LIGHTNING_ROD"
+            "ABILITY_SWEET_VEIL",
+            "ABILITY_MAGNET_PULL",
+            "ABILITY_STEELWORKER"
           ],
-          "itemConstant": "ITEM_LIGHT_CLAY",
-          "itemName": "Light Clay",
-          "itemDescription": "Extends the length of barrier moves used by the holder.",
-          "itemIcon": "sprites/items/light_clay.png",
-          "sprite": "sprites/pokemon/ampharos.png"
+          "itemConstant": "ITEM_AIR_BALLOON",
+          "itemName": "Air Balloon",
+          "itemDescription": "Makes the holder float but bursts if hit by an attack.",
+          "itemIcon": "sprites/items/air_balloon.png",
+          "sprite": "sprites/pokemon/tinkaton.png"
         },
         {
           "name": "Scizor",
-          "item": "Occa Berry",
+          "item": "Life Orb",
           "level": 90,
           "ability": "Technician",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {},
           "ivs": {},
           "moves": [
-            "Swords Dance",
-            "U-Turn",
             "Bullet Punch",
+            "Swords Dance",
+            "Lunge",
             "Knock Off"
           ],
           "constant": "SPECIES_SCIZOR",
@@ -342619,65 +342629,67 @@
             "ABILITY_IRON_FIST",
             "ABILITY_INTIMIDATE"
           ],
-          "itemConstant": "ITEM_OCCA_BERRY",
-          "itemName": "Occa Berry",
-          "itemDescription": "A hold item that weakens a Fire move if weak to it.",
-          "itemIcon": "sprites/items/occa_berry.png",
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/scizor.png"
         },
         {
-          "name": "Gallade",
-          "item": "Psychite",
+          "name": "Dialga Primal",
+          "item": "Choice Specs",
           "level": 90,
-          "ability": "",
-          "nature": "",
+          "ability": "Telepathy",
+          "nature": "Timid",
           "evs": {},
-          "ivs": {},
+          "ivs": {
+            "atk": 0
+          },
           "moves": [
-            "Rock Slide",
-            "Leaf Blade",
-            "Psycho Cut",
-            "Trick Room"
+            "Roar of Time",
+            "Flash Cannon",
+            "Thunder",
+            "Hyper Beam"
           ],
-          "constant": "SPECIES_GALLADE",
-          "displayName": "Gallade",
+          "constant": "SPECIES_DIALGA_PRIMAL",
+          "displayName": "Dialga Primal",
           "innates": [
-            "ABILITY_MOXIE",
-            "ABILITY_TOUGH_CLAWS",
-            "ABILITY_MINDS_EYE"
-          ],
-          "itemConstant": "ITEM_PSYCHITE",
-          "itemName": "Psychite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Psychic -type form.",
-          "itemIcon": "sprites/items/alakazite.png",
-          "sprite": "sprites/pokemon/gallade.png"
-        },
-        {
-          "name": "Dialga",
-          "item": "Adamant Orb",
-          "level": 90,
-          "ability": "",
-          "nature": "",
-          "evs": {},
-          "ivs": {},
-          "moves": [
-            "Draco Meteor",
-            "Toxic",
-            "Earthquake",
-            "Iron Head"
-          ],
-          "constant": "SPECIES_DIALGA",
-          "displayName": "Dialga",
-          "innates": [
-            "ABILITY_BATTLE_ARMOR",
-            "ABILITY_SPACETIME_RIFT",
+            "ABILITY_TIRELESS",
+            "ABILITY_BERSERK",
             "ABILITY_TIME_SPIRAL"
           ],
-          "itemConstant": "ITEM_ADAMANT_ORB",
-          "itemName": "Adamant Orb",
-          "itemDescription": "Boosts Dialga's Dragon/Steel moves and changes form.",
-          "itemIcon": "sprites/items/adamant_orb.png",
-          "sprite": "sprites/pokemon/dialga.png"
+          "itemConstant": "ITEM_CHOICE_SPECS",
+          "itemName": "Choice Specs",
+          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_specs.png",
+          "sprite": "sprites/pokemon/dialga_primal.png"
+        },
+        {
+          "name": "Blaziken",
+          "item": "Assault Vest",
+          "level": 90,
+          "ability": "Speed Boost",
+          "nature": "Adamant",
+          "evs": {},
+          "ivs": {},
+          "moves": [
+            "Power-Up Punch",
+            "Drain Punch",
+            "Flare Blitz",
+            "Earthquake"
+          ],
+          "constant": "SPECIES_BLAZIKEN",
+          "displayName": "Blaziken",
+          "innates": [
+            "ABILITY_BLITZ",
+            "ABILITY_RECKLESS",
+            "ABILITY_IRON_FIST"
+          ],
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
+          "sprite": "sprites/pokemon/blaziken.png"
         }
       ]
     },
@@ -344054,21 +344066,23 @@
       "party": [
         {
           "name": "Dragonite",
-          "item": "Yache Berry",
+          "item": "Dragotite",
           "level": 100,
-          "ability": "",
-          "nature": "",
+          "ability": "Multiscale",
+          "nature": "Modest",
           "evs": {
-            "atk": 252,
-            "spd": 4,
-            "spe": 252
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
           },
-          "ivs": {},
+          "ivs": {
+            "atk": 0
+          },
           "moves": [
-            "Ice Punch",
-            "Fire Punch",
-            "Earthquake",
-            "Dragon Dance"
+            "Hurricane",
+            "Thunder",
+            "Draco Meteor",
+            "Ice Beam"
           ],
           "constant": "SPECIES_DRAGONITE",
           "displayName": "Dragonite",
@@ -344077,18 +344091,49 @@
             "ABILITY_AERILATE",
             "ABILITY_HOSPITALITY"
           ],
-          "itemConstant": "ITEM_YACHE_BERRY",
-          "itemName": "Yache Berry",
-          "itemDescription": "A hold item that weakens a Ice move if weak to it.",
-          "itemIcon": "sprites/items/yache_berry.png",
+          "itemConstant": "ITEM_DRAGOTITE",
+          "itemName": "Dragotite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Dragon -type form.",
+          "itemIcon": "sprites/items/dragoninite.png",
           "sprite": "sprites/pokemon/dragonite.png"
         },
         {
-          "name": "Blaziken",
-          "item": "Life Orb",
+          "name": "Clodsire",
+          "item": "Leftovers",
           "level": 100,
-          "ability": "Speed Boost",
-          "nature": "",
+          "ability": "Water Absorb",
+          "nature": "Careful",
+          "evs": {
+            "hp": 252,
+            "atk": 4,
+            "spd": 252
+          },
+          "ivs": {},
+          "moves": [
+            "Rain Dance",
+            "Recover",
+            "Poison Jab",
+            "Earthquake"
+          ],
+          "constant": "SPECIES_CLODSIRE",
+          "displayName": "Clodsire",
+          "innates": [
+            "ABILITY_POISON_TOUCH",
+            "ABILITY_PURIFYING_SALT",
+            "ABILITY_EARTH_EATER"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/clodsire.png"
+        },
+        {
+          "name": "Tinkaton",
+          "item": "Air Balloon",
+          "level": 100,
+          "ability": "Mold Breaker",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spd": 4,
@@ -344096,61 +344141,30 @@
           },
           "ivs": {},
           "moves": [
-            "Earthquake",
-            "Flare Blitz",
-            "Protect",
-            "Close Combat"
+            "Gigaton Hammer",
+            "Swords Dance",
+            "Rock Slide",
+            "Play Rough"
           ],
-          "constant": "SPECIES_BLAZIKEN",
-          "displayName": "Blaziken",
+          "constant": "SPECIES_TINKATON",
+          "displayName": "Tinkaton",
           "innates": [
-            "ABILITY_BLITZ",
-            "ABILITY_RECKLESS",
-            "ABILITY_IRON_FIST"
+            "ABILITY_SWEET_VEIL",
+            "ABILITY_MAGNET_PULL",
+            "ABILITY_STEELWORKER"
           ],
-          "itemConstant": "ITEM_LIFE_ORB",
-          "itemName": "Life Orb",
-          "itemDescription": "Boosts move power but holder loses HP with each attack.",
-          "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/blaziken.png"
-        },
-        {
-          "name": "Ampharos",
-          "item": "Light Clay",
-          "level": 100,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "hp": 252,
-            "spa": 252,
-            "spd": 4
-          },
-          "ivs": {},
-          "moves": [
-            "Volt Switch",
-            "Focus Blast",
-            "Dragon Pulse",
-            "Reflect"
-          ],
-          "constant": "SPECIES_AMPHAROS",
-          "displayName": "Ampharos",
-          "innates": [
-            "ABILITY_KEEN_EYE",
-            "ABILITY_BATTERY",
-            "ABILITY_LIGHTNING_ROD"
-          ],
-          "itemConstant": "ITEM_LIGHT_CLAY",
-          "itemName": "Light Clay",
-          "itemDescription": "Extends the length of barrier moves used by the holder.",
-          "itemIcon": "sprites/items/light_clay.png",
-          "sprite": "sprites/pokemon/ampharos.png"
+          "itemConstant": "ITEM_AIR_BALLOON",
+          "itemName": "Air Balloon",
+          "itemDescription": "Makes the holder float but bursts if hit by an attack.",
+          "itemIcon": "sprites/items/air_balloon.png",
+          "sprite": "sprites/pokemon/tinkaton.png"
         },
         {
           "name": "Scizor",
-          "item": "Occa Berry",
+          "item": "Life Orb",
           "level": 100,
           "ability": "Technician",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
             "hp": 248,
             "atk": 252,
@@ -344158,9 +344172,9 @@
           },
           "ivs": {},
           "moves": [
-            "Swords Dance",
-            "U-Turn",
             "Bullet Punch",
+            "Swords Dance",
+            "Lunge",
             "Knock Off"
           ],
           "constant": "SPECIES_SCIZOR",
@@ -344170,73 +344184,75 @@
             "ABILITY_IRON_FIST",
             "ABILITY_INTIMIDATE"
           ],
-          "itemConstant": "ITEM_OCCA_BERRY",
-          "itemName": "Occa Berry",
-          "itemDescription": "A hold item that weakens a Fire move if weak to it.",
-          "itemIcon": "sprites/items/occa_berry.png",
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/scizor.png"
         },
         {
-          "name": "Gallade",
-          "item": "Psychite",
+          "name": "Dialga Primal",
+          "item": "Choice Specs",
           "level": 100,
-          "ability": "",
-          "nature": "",
+          "ability": "Telepathy",
+          "nature": "Timid",
           "evs": {
-            "hp": 252,
-            "atk": 252,
-            "spd": 4
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
           },
-          "ivs": {},
-          "moves": [
-            "Rock Slide",
-            "Leaf Blade",
-            "Psycho Cut",
-            "Trick Room"
-          ],
-          "constant": "SPECIES_GALLADE",
-          "displayName": "Gallade",
-          "innates": [
-            "ABILITY_MOXIE",
-            "ABILITY_TOUGH_CLAWS",
-            "ABILITY_MINDS_EYE"
-          ],
-          "itemConstant": "ITEM_PSYCHITE",
-          "itemName": "Psychite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Psychic -type form.",
-          "itemIcon": "sprites/items/alakazite.png",
-          "sprite": "sprites/pokemon/gallade.png"
-        },
-        {
-          "name": "Dialga",
-          "item": "Adamant Orb",
-          "level": 100,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "hp": 252,
-            "atk": 252,
-            "spa": 4
+          "ivs": {
+            "atk": 0
           },
-          "ivs": {},
           "moves": [
-            "Draco Meteor",
-            "Toxic",
-            "Earthquake",
-            "Iron Head"
+            "Roar of Time",
+            "Flash Cannon",
+            "Thunder",
+            "Hyper Beam"
           ],
-          "constant": "SPECIES_DIALGA",
-          "displayName": "Dialga",
+          "constant": "SPECIES_DIALGA_PRIMAL",
+          "displayName": "Dialga Primal",
           "innates": [
-            "ABILITY_BATTLE_ARMOR",
-            "ABILITY_SPACETIME_RIFT",
+            "ABILITY_TIRELESS",
+            "ABILITY_BERSERK",
             "ABILITY_TIME_SPIRAL"
           ],
-          "itemConstant": "ITEM_ADAMANT_ORB",
-          "itemName": "Adamant Orb",
-          "itemDescription": "Boosts Dialga's Dragon/Steel moves and changes form.",
-          "itemIcon": "sprites/items/adamant_orb.png",
-          "sprite": "sprites/pokemon/dialga.png"
+          "itemConstant": "ITEM_CHOICE_SPECS",
+          "itemName": "Choice Specs",
+          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_specs.png",
+          "sprite": "sprites/pokemon/dialga_primal.png"
+        },
+        {
+          "name": "Blaziken",
+          "item": "Assault Vest",
+          "level": 100,
+          "ability": "Speed Boost",
+          "nature": "Adamant",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spe": 4
+          },
+          "ivs": {},
+          "moves": [
+            "Power-Up Punch",
+            "Drain Punch",
+            "Flare Blitz",
+            "Earthquake"
+          ],
+          "constant": "SPECIES_BLAZIKEN",
+          "displayName": "Blaziken",
+          "innates": [
+            "ABILITY_BLITZ",
+            "ABILITY_RECKLESS",
+            "ABILITY_IRON_FIST"
+          ],
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
+          "sprite": "sprites/pokemon/blaziken.png"
         }
       ]
     },
