@@ -72838,8 +72838,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -72847,8 +72847,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -73082,8 +73082,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73091,8 +73091,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -135109,7 +135109,7 @@
       ],
       "innates": [
         "ABILITY_NO_GUARD",
-        "ABILITY_THINK_AHEAD",
+        "ABILITY_MAGIC_BOUNCE",
         "ABILITY_SHOWTIME"
       ],
       "sprite": "sprites/pokemon/darmanitan_zen.png",
@@ -249810,6 +249810,12 @@
             "name": "Latios",
             "dex": 294,
             "sprite": "sprites/pokemon/latios_mega.png"
+          },
+          {
+            "species": "SPECIES_DARMANITAN_ZEN",
+            "name": "Darmanitan",
+            "dex": 410,
+            "sprite": "sprites/pokemon/darmanitan_zen.png"
           }
         ]
       }
@@ -259172,7 +259178,7 @@
     "ABILITY_PLANTATION": {
       "constant": "ABILITY_PLANTATION",
       "name": "Plantation",
-      "description": "Damaging moves have a 30% chance to seed the target if it is not Grass.",
+      "description": "Damaging moves have a 30% chance to seed the target if it is not Grass. Does not trigger from False Swipe.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -260301,12 +260307,6 @@
       "usage": {
         "base": [],
         "innate": [
-          {
-            "species": "SPECIES_DARMANITAN_ZEN",
-            "name": "Darmanitan",
-            "dex": 410,
-            "sprite": "sprites/pokemon/darmanitan_zen.png"
-          },
           {
             "species": "SPECIES_BRAVIARY_HISUI",
             "name": "Braviary",
