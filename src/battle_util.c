@@ -5810,6 +5810,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             effect++;
         }
         else if (SearchTraits(battlerTraits, ABILITY_PLANTATION)
+         && GetMoveEffect(gCurrentMove) != EFFECT_FALSE_SWIPE
          && IsBattlerAlive(gBattlerTarget)
          && !gBattleStruct->unableToUseMove
          && RandomPercentage(RNG_PLANTATION, 30)

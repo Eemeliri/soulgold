@@ -3915,7 +3915,9 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Attacks may seed foes."),
         .longDescription = COMPOUND_STRING("Damaging moves have a\n"
                                            "30% chance to seed the\n"
-                                           "target if it is not Grass."),
+                                           "target if it is not Grass.\n"
+                                           "Does not trigger from False\n"
+                                           "Swipe."),
         .aiRating = 5,
     },
 

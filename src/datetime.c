@@ -14,6 +14,37 @@ const struct DateTime gGen3Epoch =
     .second = 0,
 };
 
+static void DateTime_SubtractDays(struct DateTime *dateTime, u32 days)
+{
+    u32 weekdayDelta = days % WEEKDAY_COUNT;
+
+    dateTime->dayOfWeek = (dateTime->dayOfWeek + WEEKDAY_COUNT - weekdayDelta) % WEEKDAY_COUNT;
+
+    while (days > 0)
+    {
+        if (days >= dateTime->day)
+        {
+            days -= dateTime->day;
+            if (dateTime->month == MONTH_JAN)
+            {
+                dateTime->month = MONTH_DEC;
+                dateTime->year--;
+            }
+            else
+            {
+                dateTime->month--;
+            }
+            dateTime->day = sNumDaysInMonths[dateTime->month - 1]
+                          + (dateTime->month == MONTH_FEB && IsLeapYear(dateTime->year));
+        }
+        else
+        {
+            dateTime->day -= days;
+            days = 0;
+        }
+    }
+}
+
 void DateTime_AddDays(struct DateTime *dateTime, u32 days)
 {
     while (days > 0)
@@ -107,9 +138,28 @@ void ConvertRtcToDateTime(struct DateTime *result, struct SiiRtcInfo *rtc)
 
 void ConvertTimeToDateTime(struct DateTime *result, struct Time *timeSinceEpoch)
 {
+    s32 seconds = timeSinceEpoch->seconds
+                + MINUTES_PER_HOUR * timeSinceEpoch->minutes
+                + MINUTES_PER_HOUR * SECONDS_PER_MINUTE * timeSinceEpoch->hours;
+    s32 days = timeSinceEpoch->days;
+
     result = memcpy(result, &gGen3Epoch, sizeof(struct DateTime));
-    DateTime_AddSeconds(result, timeSinceEpoch->seconds);
-    DateTime_AddMinutes(result, timeSinceEpoch->minutes);
-    DateTime_AddHours(result, timeSinceEpoch->hours);
-    DateTime_AddDays(result, timeSinceEpoch->days);
+
+    days += seconds / (HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE);
+    seconds %= HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE;
+    if (seconds < 0)
+    {
+        seconds += HOURS_PER_DAY * MINUTES_PER_HOUR * SECONDS_PER_MINUTE;
+        days--;
+    }
+
+    result->hour = seconds / (MINUTES_PER_HOUR * SECONDS_PER_MINUTE);
+    seconds %= MINUTES_PER_HOUR * SECONDS_PER_MINUTE;
+    result->minute = seconds / SECONDS_PER_MINUTE;
+    result->second = seconds % SECONDS_PER_MINUTE;
+
+    if (days < 0)
+        DateTime_SubtractDays(result, -days);
+    else
+        DateTime_AddDays(result, days);
 }
