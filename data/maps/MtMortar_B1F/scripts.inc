@@ -23,7 +23,9 @@ MountMortar4_EventScript_KiyoTryGiveTyrogue::
 	bufferspeciesname STR_VAR_1, SPECIES_TYROGUE
 	removefieldmugshot
 	givemon SPECIES_TYROGUE, 25
+	showgivemonpic 10, 3
 	call Common_EventScript_GiftMon
+	hidemonpic
 	setflag FLAG_GOT_TYROGUE
 MountMortar4_EventScript_KiyoAfter::
 	msgbox MountMortar4_Text_KiyoGotTyrogue, MSGBOX_DEFAULT

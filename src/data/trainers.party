@@ -19084,49 +19084,63 @@ Music: Hg Boy 1
 Double Battle: Yes
 AI: Smart Trainer
 
-Dragonite @ Yache Berry
+Dragonite @ Dragotite
+Ability: Multiscale
+Shiny: Yes
 Level: 90
-- Ice Punch
-- Fire Punch
-- Earthquake
-- Dragon Dance
+Modest Nature
+IVs: 0 Atk
+- Hurricane 
+- Thunder 
+- Draco Meteor 
+- Ice Beam 
 
-Blaziken @ Life Orb
-Ability: Speed Boost
+Clodsire (M) @ Leftovers
+Ability: Water Absorb
 Level: 90
-- Earthquake
-- Flare Blitz
-- Protect
-- Close Combat
+Careful Nature
+- Rain Dance 
+- Recover 
+- Poison Jab 
+- Earthquake 
 
-Ampharos @ Light Clay
+Tinkaton @ Air Balloon
+Ability: Mold Breaker
 Level: 90
-- Volt Switch
-- Focus Blast
-- Dragon Pulse
-- Reflect
+Jolly Nature
+- Gigaton Hammer 
+- Swords Dance 
+- Rock Slide 
+- Play Rough 
 
-Scizor @ Occa Berry
+Scizor @ Life Orb
 Ability: Technician
 Level: 90
-- Swords Dance
-- U-Turn
-- Bullet Punch
-- Knock Off
+Adamant Nature
+- Bullet Punch 
+- Swords Dance 
+- Lunge 
+- Knock Off 
 
-Gallade @ Psychite
+Dialga Primal @ Choice Specs
+Ability: Telepathy
+Shiny: Yes
 Level: 90
-- Rock Slide
-- Leaf Blade
-- Psycho Cut
-- Trick Room
+Timid Nature
+IVs: 0 Atk
+- Roar of Time 
+- Flash Cannon 
+- Thunder 
+- Hyper Beam
 
-Dialga @ Adamant Orb
+Blaziken @ Assault Vest
+Ability: Speed Boost
 Level: 90
-- Draco Meteor
-- Toxic
-- Earthquake
-- Iron Head
+Adamant Nature
+- Power-Up Punch 
+- Drain Punch 
+- Flare Blitz 
+- Earthquake 
 
 === TRAINER_CAFE_DRAC ===
 Name: Drac
@@ -19138,55 +19152,63 @@ Double Battle: Yes
 AI: Smart Trainer
 Difficulty: Hard
 
-Dragonite @ Yache Berry
-Level: 100
-EVs: 252 Atk / 4 SpD / 252 Spe
-- Ice Punch
-- Fire Punch
-- Earthquake
-- Dragon Dance
-
-Blaziken @ Life Orb
-Ability: Speed Boost
-Level: 100
-EVs: 252 Atk / 4 SpD / 252 Spe
-- Earthquake
-- Flare Blitz
-- Protect
-- Close Combat
-
-Ampharos @ Light Clay
-Level: 100
+Dragonite @ Dragotite
+Ability: Multiscale
+Shiny: Yes
 EVs: 252 HP / 252 SpA / 4 SpD
-- Volt Switch
-- Focus Blast
-- Dragon Pulse
-- Reflect
+Modest Nature
+IVs: 0 Atk
+- Hurricane 
+- Thunder 
+- Draco Meteor 
+- Ice Beam 
 
-Scizor @ Occa Berry
+Clodsire (M) @ Leftovers
+Ability: Water Absorb
+EVs: 252 HP / 4 Atk / 252 SpD
+Careful Nature
+- Rain Dance 
+- Recover 
+- Poison Jab 
+- Earthquake 
+
+Tinkaton @ Air Balloon
+Ability: Mold Breaker
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Gigaton Hammer 
+- Swords Dance 
+- Rock Slide 
+- Play Rough 
+
+Scizor @ Life Orb
 Ability: Technician
-Level: 100
 EVs: 248 HP / 252 Atk / 8 SpD
-- Swords Dance
-- U-Turn
-- Bullet Punch
-- Knock Off
+Adamant Nature
+- Bullet Punch 
+- Swords Dance 
+- Lunge 
+- Knock Off 
 
-Gallade @ Psychite
-Level: 100
-EVs: 252 HP / 252 Atk / 4 SpD
-- Rock Slide
-- Leaf Blade
-- Psycho Cut
-- Trick Room
+Dialga Primal @ Choice Specs
+Ability: Telepathy
+Shiny: Yes
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Roar of Time 
+- Flash Cannon 
+- Thunder 
+- Hyper Beam
 
-Dialga @ Adamant Orb
-Level: 100
-EVs: 252 HP / 252 Atk / 4 SpA
-- Draco Meteor
-- Toxic
-- Earthquake
-- Iron Head
+Blaziken @ Assault Vest
+Ability: Speed Boost
+EVs: 252 HP / 252 Atk / 4 Spe
+Adamant Nature
+- Power-Up Punch 
+- Drain Punch 
+- Flare Blitz 
+- Earthquake 
 
 === TRAINER_CAFE_JUNA ===
 Name: Simpli

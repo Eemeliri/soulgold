@@ -5180,6 +5180,17 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         }
     }
 
+    if (CheckMonHasHadPokerus(mon))
+        multiplier *= 2;
+    if (braceCount > 0)
+        multiplier *= braceCount + 1;
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, 0);
+        totalEVs += evs[i];
+    }
+
     for (j = 0; j < MAX_MON_ITEMS; j++)
     {
         heldItem = GetMonData(mon, MON_DATA_HELD_ITEM + j, 0);
@@ -5203,12 +5214,6 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         stat = GetItemSecondaryId(heldItem);
         bonus = GetItemHoldEffectParam(heldItem);
 
-        for (i = 0; i < NUM_STATS; i++)
-        {
-            evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, 0);
-            totalEVs += evs[i];
-        }
-        
         for (i = 0; i < NUM_STATS; i++)
         {
             evIncrease = 0;
@@ -5258,13 +5263,8 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
                 break;
             }
 
-            if (CheckMonHasHadPokerus(mon))
-                multiplier *= 2;
-
-            if (braceCount > 0)
-                multiplier *= braceCount + 1;
-             
-            evIncrease *= multiplier; // Multiplier split out so that multi item additions happen first and then the multiplier is only applied once
+            // Apply the same bonuses to every stat and held-item contribution.
+            evIncrease *= multiplier;
 
             if (totalEVs + (s16)evIncrease > currentEVCap)
                 evIncrease = ((s16)evIncrease + currentEVCap) - (totalEVs + evIncrease);

@@ -26,7 +26,9 @@ script BlackThornCave_Expert {
     setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KUBFU)
     bufferspeciesname(STR_VAR_1, SPECIES_KUBFU)
     givemon(SPECIES_KUBFU, 5)
+    showgivemonpic(10, 3)
     call(Common_EventScript_GiftMon)
+    hidemonpic
     setflag(FLAG_GOT_KUBFU)
     msgbox("I hear a batch of scrolls for evolving
             that Pokémon were stolen by Team

@@ -223,452 +223,456 @@ GoldenrodCity_GameCorner_PrizeRoom_EventScript_GivePinsir::
 # 112 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 GoldenrodCity_GameCorner_PrizeRoom_EventScript_CheckReceivedMon::
 # 113 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+	showgivemonpic 10, 3
 # 114 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto_if_eq VAR_RESULT, 0, GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 # 115 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto_if_eq VAR_RESULT, 1, GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonPC
+	goto_if_eq VAR_RESULT, 0, GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty
 # 116 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto_if_eq VAR_RESULT, 2, GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyFull
+	goto_if_eq VAR_RESULT, 1, GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonPC
 # 117 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	goto_if_eq VAR_RESULT, 2, GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyFull
 # 118 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	end
 # 119 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyFull::
+
 # 120 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox Route119_WeatherInstitute_2F_Text_NoRoomForPokemon
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyFull::
 # 121 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	hidecoinsbox 0, 0
+	msgbox Route119_WeatherInstitute_2F_Text_NoRoomForPokemon
 # 122 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	hidecoinsbox 0, 0
 # 123 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	closemessage
 # 124 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	release
 # 125 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	end
 # 126 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_NicknamePartyMon::
+
 # 127 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	getpartysize
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_NicknamePartyMon::
 # 128 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	subvar VAR_RESULT, 1
+	getpartysize
 # 129 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	copyvar VAR_0x8004, VAR_RESULT
+	subvar VAR_RESULT, 1
 # 130 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
+	copyvar VAR_0x8004, VAR_RESULT
 # 131 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-# 132 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
-# 133 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 134 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 135 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_NeedCoinCase::
-# 136 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_PrizeVendorNoCoinCase
-# 137 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
-# 138 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 139 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 140 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_NotEnoughCoins::
-# 141 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_PrizeVendorNeedMoreCoins
-# 142 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
-# 143 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 144 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 145 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty::
-# 146 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	removecoins VAR_TEMP_2
-# 147 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	playse SE_SHOP
-# 148 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	updatecoinsbox 1, 1
-# 149 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_TEMP_1
-# 150 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	playfanfare MUS_LEVEL_UP
-# 151 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	message GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon
-# 152 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	waitmessage
-# 153 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	waitfanfare
-# 154 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodGamecorner_Text_GiveNicknameToThisMon, MSGBOX_YESNO
-# 155 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto_if_eq VAR_RESULT, YES, GoldenrodCity_GameCorner_PrizeRoom_EventScript_NicknamePartyMon
-# 156 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
-# 157 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 158 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 159 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonPC::
-# 160 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	removecoins VAR_TEMP_2
-# 161 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	playse SE_SHOP
-# 162 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	updatecoinsbox 1, 1
-# 163 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	bufferspeciesname STR_VAR_1, VAR_TEMP_1
-# 164 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	playfanfare MUS_LEVEL_UP
-# 165 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	message GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon
-# 166 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	waitmessage
-# 167 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	waitfanfare
-# 168 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_TransferredToPC
-# 169 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 170 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 171 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_TransferredToPC::
-# 172 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 173 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
-# 174 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 175 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 176 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyMon::
-# 177 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	call Common_EventScript_GetGiftMonPartySlot
-# 178 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 132 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
-# 179 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 133 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
+# 134 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	end
-# 180 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	
-# 181 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_EventScript_PcMon::
-# 182 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 183 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto_if_eq VAR_RESULT, NO, GoldenrodCity_GameCorner_EventScript_SendMon
-# 184 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	call Common_EventScript_NameReceivedBoxMon
-# 185 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	goto GoldenrodCity_GameCorner_EventScript_SendMon
-# 186 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
-# 187 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	hidecoinsbox 0, 0
-# 188 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
-# 189 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 190 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 135 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 
-# 191 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_SendMon::
-# 192 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 136 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_NeedCoinCase::
+# 137 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	msgbox GoldenrodCity_GameCorner_Text_PrizeVendorNoCoinCase
+# 138 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	release
+# 139 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 140 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 141 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_NotEnoughCoins::
+# 142 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	msgbox GoldenrodCity_GameCorner_Text_PrizeVendorNeedMoreCoins
+# 143 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
+# 144 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 145 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 146 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonParty::
+# 147 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	removecoins VAR_TEMP_2
+# 148 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	playse SE_SHOP
+# 149 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	updatecoinsbox 1, 1
+# 150 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+# 151 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	playfanfare MUS_LEVEL_UP
+# 152 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	message GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon
+# 153 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	waitmessage
+# 154 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	waitfanfare
+# 155 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	hidemonpic
+# 156 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	msgbox GoldenrodGamecorner_Text_GiveNicknameToThisMon, MSGBOX_YESNO
+# 157 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto_if_eq VAR_RESULT, YES, GoldenrodCity_GameCorner_PrizeRoom_EventScript_NicknamePartyMon
+# 158 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
+# 159 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 160 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 161 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_ReceivedMonPC::
+# 162 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	removecoins VAR_TEMP_2
+# 163 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	playse SE_SHOP
+# 164 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	updatecoinsbox 1, 1
+# 165 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
+# 166 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	playfanfare MUS_LEVEL_UP
+# 167 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	message GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon
+# 168 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	waitmessage
+# 169 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	waitfanfare
+# 170 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	hidemonpic
+# 171 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_TransferredToPC
+# 172 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 173 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 174 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_TransferredToPC::
+# 175 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	call Common_EventScript_TransferredToPC
-# 193 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 176 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto GoldenrodCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
+# 177 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 178 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 179 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_PartyMon::
+# 180 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 181 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+# 182 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 183 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_PrizeRoom_EventScript_PcMon::
+# 184 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 185 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto_if_eq VAR_RESULT, NO, GoldenrodCity_GameCorner_EventScript_SendMon
+# 186 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	call Common_EventScript_NameReceivedBoxMon
+# 187 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	goto GoldenrodCity_GameCorner_EventScript_SendMon
+# 188 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	closemessage
-# 194 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 189 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	hidecoinsbox 0, 0
+# 190 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	release
+# 191 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	end
+# 192 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 193 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_EventScript_SendMon::
+# 194 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	call Common_EventScript_TransferredToPC
 # 195 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	closemessage
 # 196 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	hidecoinsbox 0, 0
 # 197 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 198 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_PokefanM::
+	end
 # 199 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 200 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_PokefanM::
 # 201 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_PokefanM1, MSGBOX_DEFAULT
+	lock
 # 202 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	faceplayer
 # 203 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	msgbox GoldenrodCity_GameCorner_Text_PokefanM1, MSGBOX_DEFAULT
 # 204 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	closemessage
 # 205 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 206 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_Hiker::
+	end
 # 207 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 208 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_Hiker::
 # 209 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_MoveTutorInside, MSGBOX_DEFAULT
+	lock
 # 210 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	faceplayer
 # 211 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	msgbox GoldenrodCity_GameCorner_Text_MoveTutorInside, MSGBOX_DEFAULT
 # 212 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	closemessage
 # 213 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 214 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_Woman::
+	end
 # 215 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 216 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_Woman::
 # 217 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_Woman, MSGBOX_DEFAULT
+	lock
 # 218 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	faceplayer
 # 219 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	msgbox GoldenrodCity_GameCorner_Text_Woman, MSGBOX_DEFAULT
 # 220 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	closemessage
 # 221 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 222 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_Gentleman::
+	end
 # 223 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 224 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_Gentleman::
 # 225 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_Gentleman, MSGBOX_DEFAULT
+	lock
 # 226 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	faceplayer
 # 227 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	msgbox GoldenrodCity_GameCorner_Text_Gentleman, MSGBOX_DEFAULT
 # 228 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	closemessage
 # 229 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 230 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_PokefanF::
+	end
 # 231 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 232 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_PokefanF::
 # 233 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_PokefanF, MSGBOX_DEFAULT
+	lock
 # 234 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	faceplayer
 # 235 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	msgbox GoldenrodCity_GameCorner_Text_PokefanF, MSGBOX_DEFAULT
 # 236 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	closemessage
 # 237 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 238 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_PokefanM2::
+	end
 # 239 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 240 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_PokefanM2::
 # 241 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_PokefanM2, MSGBOX_DEFAULT
+	lock
 # 242 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
+	faceplayer
 # 243 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
+	msgbox GoldenrodCity_GameCorner_Text_PokefanM2, MSGBOX_DEFAULT
 # 244 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
+	closemessage
 # 245 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 246 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_CooltrainerM::
+	end
 # 247 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	lock
+
 # 248 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	faceplayer
+GoldenrodCity_GameCorner_EventScript_CooltrainerM::
 # 249 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_CooltrainerM, MSGBOX_DEFAULT
-# 250 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	closemessage
-# 251 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	release
-# 252 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	end
-# 253 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
-# 254 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_EventScript_Pharmacist::
-# 255 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	lock
-# 256 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 250 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	faceplayer
-# 257 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	msgbox GoldenrodCity_GameCorner_Text_Pharmacist, MSGBOX_DEFAULT
-# 258 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 251 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	msgbox GoldenrodCity_GameCorner_Text_CooltrainerM, MSGBOX_DEFAULT
+# 252 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	closemessage
-# 259 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 253 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	release
-# 260 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+# 254 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 	end
+# 255 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+
+# 256 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_EventScript_Pharmacist::
+# 257 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	lock
+# 258 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	faceplayer
+# 259 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	msgbox GoldenrodCity_GameCorner_Text_Pharmacist, MSGBOX_DEFAULT
+# 260 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+	closemessage
 # 261 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+	release
 # 262 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_PrizeRoom_Text_YouWantPrize:
+	end
 # 263 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	.string "{STR_VAR_1} is what you want?$"
+
 # 264 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_PrizeRoom_Text_YouWantPrize:
 # 265 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon:
+	.string "{STR_VAR_1} is what you want?$"
 # 266 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	.string "{PLAYER} got {STR_VAR_1}!$"
+
 # 267 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_PlayerObtainedTheMon:
 # 268 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodGamecorner_Text_GiveNicknameToThisMon:
+	.string "{PLAYER} got {STR_VAR_1}!$"
 # 269 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-	.string "Nickname {STR_VAR_1}?$"
+
 # 270 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodGamecorner_Text_GiveNicknameToThisMon:
 # 271 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorIntro:
+	.string "Nickname {STR_VAR_1}?$"
 # 272 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Welcome!\p"
+
 # 273 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "We exchange your game coins for\n"
+GoldenrodCity_GameCorner_Text_PrizeVendorIntro:
 # 274 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "fabulous prizes!$"
+    .string "Welcome!\p"
 # 275 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "We exchange your game coins for\n"
 # 276 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorWhichPrize:
+    .string "fabulous prizes!$"
 # 277 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Which prize would you like?$"
+
 # 278 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_PrizeVendorWhichPrize:
 # 279 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorHereYouGo:
+    .string "Which prize would you like?$"
 # 280 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Here you go!$"
+
 # 281 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_PrizeVendorHereYouGo:
 # 282 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorNeedMoreCoins:
+    .string "Here you go!$"
 # 283 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Sorry! You need more coins.$"
+
 # 284 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_PrizeVendorNeedMoreCoins:
 # 285 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorNoMoreRoom:
+    .string "Sorry! You need more coins.$"
 # 286 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Sorry. You can't carry any more.$"
+
 # 287 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_PrizeVendorNoMoreRoom:
 # 288 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorQuit:
+    .string "Sorry. You can't carry any more.$"
 # 289 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Ok. Please save your coins and come\n"
+
 # 290 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "again!$"
+GoldenrodCity_GameCorner_Text_PrizeVendorQuit:
 # 291 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "Ok. Please save your coins and come\n"
 # 292 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PrizeVendorNoCoinCase:
+    .string "again!$"
 # 293 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Oh? You don't have a Coin Case.$"
+
 # 294 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_PrizeVendorNoCoinCase:
 # 295 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_Pharmacist:
+    .string "Oh? You don't have a Coin Case.$"
 # 296 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I always play this slot machine.\n"
+
 # 297 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "It pays out more than others,\l"
+GoldenrodCity_GameCorner_Text_Pharmacist:
 # 298 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I think.$"
+    .string "I always play this slot machine.\n"
 # 299 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "It pays out more than others,\l"
 # 300 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_Woman:
+    .string "I think.$"
 # 301 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I can't stop winning!$"
+
 # 302 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_Woman:
 # 303 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PokefanM1:
+    .string "I can't stop winning!$"
 # 304 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I just love this new slot machine.\p"
+
 # 305 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "It's more of a challenge than the\n"
+GoldenrodCity_GameCorner_Text_PokefanM1:
 # 306 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "ones in Celadon.$"
+    .string "I just love this new slot machine.\p"
 # 307 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "It's more of a challenge than the\n"
 # 308 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_CooltrainerM:
+    .string "ones in Celadon.$"
 # 309 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Life is a gamble. I'm going to pull\n"
+
 # 310 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "till I drop!$"
+GoldenrodCity_GameCorner_Text_CooltrainerM:
 # 311 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "Life is a gamble. I'm going to pull\n"
 # 312 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PokefanF:
+    .string "till I drop!$"
 # 313 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Roulette…\p"
+
 # 314 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I prefer it over the slots because\n"
+GoldenrodCity_GameCorner_Text_PokefanF:
 # 315 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "it's easier to figure the odds.\p"
+    .string "Roulette…\p"
 # 316 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "But the payout is much lower.$"
+    .string "I prefer it over the slots because\n"
 # 317 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "it's easier to figure the odds.\p"
 # 318 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_CooltrainerF:
+    .string "But the payout is much lower.$"
 # 319 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I won't quit until I win!$"
+
 # 320 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+GoldenrodCity_GameCorner_Text_CooltrainerF:
 # 321 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_Gentleman:
+    .string "I won't quit until I win!$"
 # 322 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I taught Blizzard to my Pokémon.\p"
+
 # 323 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "It was hard to get enough coins for\n"
+GoldenrodCity_GameCorner_Text_Gentleman:
 # 324 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "it, but it was worth it.$"
+    .string "I taught Blizzard to my Pokémon.\p"
 # 325 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "It was hard to get enough coins for\n"
 # 326 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_PokefanM2:
+    .string "it, but it was worth it.$"
 # 327 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I couldn't win at the slots, and I\n"
+
 # 328 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "blew it on roulette.\p"
+GoldenrodCity_GameCorner_Text_PokefanM2:
 # 329 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "I got so furious, I tossed out my\n"
+    .string "I couldn't win at the slots, and I\n"
 # 330 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Coin Case in the Underground.$"
+    .string "blew it on roulette.\p"
 # 331 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-
+    .string "I got so furious, I tossed out my\n"
 # 332 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_MoveTutorInside:
+    .string "Coin Case in the Underground.$"
 # 333 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Wahahah! The coins keep rolling in!$"
-# 334 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
 
+# 334 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_Text_MoveTutorInside:
 # 335 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-GoldenrodCity_GameCorner_Text_LeftTheirDrink:
+    .string "Wahahah! The coins keep rolling in!$"
 # 336 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
-    .string "Someone left their drink.\p"
+
 # 337 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+GoldenrodCity_GameCorner_Text_LeftTheirDrink:
+# 338 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
+    .string "Someone left their drink.\p"
+# 339 "data/maps/GoldenrodCity_GameCorner/scripts.pory"
     .string "It smells sweet.$"

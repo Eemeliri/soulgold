@@ -26,12 +26,16 @@ BlackThornCave_Expert::
 # 28 "data/maps/BlackthornCave/scripts.pory"
 	givemon SPECIES_KUBFU, 5
 # 29 "data/maps/BlackthornCave/scripts.pory"
-	call Common_EventScript_GiftMon
+	showgivemonpic 10, 3
 # 30 "data/maps/BlackthornCave/scripts.pory"
-	setflag FLAG_GOT_KUBFU
+	call Common_EventScript_GiftMon
 # 31 "data/maps/BlackthornCave/scripts.pory"
+	hidemonpic
+# 32 "data/maps/BlackthornCave/scripts.pory"
+	setflag FLAG_GOT_KUBFU
+# 33 "data/maps/BlackthornCave/scripts.pory"
 	msgbox BlackThornCave_Expert_Text_2
-# 38 "data/maps/BlackthornCave/scripts.pory"
+# 40 "data/maps/BlackthornCave/scripts.pory"
 	release
 	end
 
@@ -63,7 +67,7 @@ BlackThornCave_Expert_Text_1:
 	.string "from me. Fine! Take this and leave.$"
 
 BlackThornCave_Expert_Text_2:
-# 31 "data/maps/BlackthornCave/scripts.pory"
+# 33 "data/maps/BlackthornCave/scripts.pory"
 	.string "I hear a batch of scrolls for evolving\n"
 	.string "that Pokémon were stolen by Team\l"
 	.string "Rocket.\p"

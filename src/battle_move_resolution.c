@@ -815,6 +815,7 @@ static bool32 HandleMoveTargetRedirection(enum MoveTarget moveTarget)
          && BattlerHasTrait(guardian, ABILITY_GUARDIAN))
         {
             RecordAbilityBattle(guardian, ABILITY_GUARDIAN);
+            gSpecialStatuses[guardian].redirectingAbility = ABILITY_GUARDIAN;
             gSpecialStatuses[guardian].abilityRedirected = TRUE;
             gBattleStruct->moveTarget[gBattlerAttacker] = gBattlerTarget = guardian;
             return TRUE;
@@ -853,10 +854,8 @@ static bool32 HandleMoveTargetRedirection(enum MoveTarget moveTarget)
         if (redirectorOrderNum != MAX_BATTLERS_COUNT)
         {
             battler = gBattlerByTurnOrder[redirectorOrderNum];
-            if (BattlerHasTrait(battler, ABILITY_LIGHTNING_ROD))
-                RecordAbilityBattle(battler, ABILITY_LIGHTNING_ROD);
-            else if (BattlerHasTrait(battler, ABILITY_STORM_DRAIN))
-                RecordAbilityBattle(battler, ABILITY_STORM_DRAIN);
+            gSpecialStatuses[battler].redirectingAbility = moveType == TYPE_ELECTRIC ? ABILITY_LIGHTNING_ROD : ABILITY_STORM_DRAIN;
+            RecordAbilityBattle(battler, gSpecialStatuses[battler].redirectingAbility);
             gSpecialStatuses[battler].abilityRedirected = TRUE;
             gBattlerTarget = battler;
             return TRUE;
@@ -1756,11 +1755,9 @@ static enum CancelerResult CancelerTookAttack(struct BattleContext *ctx)
     if (gSpecialStatuses[gBattlerTarget].abilityRedirected)
     {
         // gDisplay set manually because the redirection text appears before the ability popup (Multi)
-        if (BattlerHasTrait(gBattlerTarget, ABILITY_LIGHTNING_ROD))
-            gDisplayAbility = ABILITY_LIGHTNING_ROD;
-        else if (BattlerHasTrait(gBattlerTarget, ABILITY_STORM_DRAIN))
-            gDisplayAbility = ABILITY_STORM_DRAIN;
+        gDisplayAbility = gSpecialStatuses[gBattlerTarget].redirectingAbility;
         gSpecialStatuses[gBattlerTarget].abilityRedirected = FALSE;
+        gSpecialStatuses[gBattlerTarget].redirectingAbility = ABILITY_NONE;
         BattleScriptCall(BattleScript_TookAttack);
         return CANCELER_RESULT_BREAK;
     }
