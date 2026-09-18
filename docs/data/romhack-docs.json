@@ -25996,6 +25996,10 @@
           "move": "MOVE_YAWN"
         },
         {
+          "level": 9,
+          "move": "MOVE_WATER_GUN"
+        },
+        {
           "level": 12,
           "move": "MOVE_CONFUSION"
         },
@@ -26070,6 +26074,7 @@
         "MOVE_PSYCHIC",
         "MOVE_SHADOW_BALL",
         "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_SLUDGE_WAVE",
         "MOVE_FLAMETHROWER",
         "MOVE_SLUDGE_BOMB",
@@ -26079,6 +26084,7 @@
         "MOVE_REST",
         "MOVE_ATTRACT",
         "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
         "MOVE_FOCUS_BLAST",
         "MOVE_SCALD",
         "MOVE_FLING",
@@ -26102,10 +26108,13 @@
         "MOVE_WHIRLPOOL"
       ],
       "tutors": [
+        "MOVE_AFTER_YOU",
+        "MOVE_AQUA_TAIL",
         "MOVE_BODY_PRESS",
         "MOVE_BODY_SLAM",
         "MOVE_CURSE",
         "MOVE_DOUBLE_EDGE",
+        "MOVE_DREAM_EATER",
         "MOVE_ENDURE",
         "MOVE_EXPANDING_FORCE",
         "MOVE_FOUL_PLAY",
@@ -26134,6 +26143,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_STORED_POWER",
+        "MOVE_SWAGGER",
         "MOVE_SWIFT",
         "MOVE_TOXIC_SPIKES",
         "MOVE_TRICK",
@@ -61215,6 +61225,10 @@
           "move": "MOVE_YAWN"
         },
         {
+          "level": 9,
+          "move": "MOVE_WATER_GUN"
+        },
+        {
           "level": 12,
           "move": "MOVE_CONFUSION"
         },
@@ -61290,6 +61304,7 @@
         "MOVE_PSYCHIC",
         "MOVE_SHADOW_BALL",
         "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_SLUDGE_WAVE",
         "MOVE_FLAMETHROWER",
         "MOVE_SLUDGE_BOMB",
@@ -61299,6 +61314,7 @@
         "MOVE_ATTRACT",
         "MOVE_LOW_SWEEP",
         "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
         "MOVE_FOCUS_BLAST",
         "MOVE_SCALD",
         "MOVE_FLING",
@@ -61322,8 +61338,11 @@
         "MOVE_WHIRLPOOL"
       ],
       "tutors": [
+        "MOVE_AFTER_YOU",
+        "MOVE_AQUA_TAIL",
         "MOVE_BODY_SLAM",
         "MOVE_CURSE",
+        "MOVE_DREAM_EATER",
         "MOVE_ENDURE",
         "MOVE_EXPANDING_FORCE",
         "MOVE_FOUL_PLAY",
@@ -61711,7 +61730,8 @@
       ],
       "innates": [
         "ABILITY_FRIEND_GUARD",
-        "ABILITY_MIRROR_ARMOR"
+        "ABILITY_FORCE_RETURN",
+        "ABILITY_MAGIC_BOUNCE"
       ],
       "sprite": "sprites/pokemon/wobbuffet.png",
       "shinySprite": "sprites/pokemon/wobbuffet_shiny.png",
@@ -72838,8 +72858,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -72847,8 +72867,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -93623,7 +93643,7 @@
       "innates": [
         "ABILITY_FRIEND_GUARD",
         "ABILITY_FORCE_RETURN",
-        "ABILITY_CURSED_BODY"
+        "ABILITY_MAGIC_BOUNCE"
       ],
       "sprite": "sprites/pokemon/wynaut.png",
       "shinySprite": "sprites/pokemon/wynaut_shiny.png",
@@ -106644,6 +106664,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_KARATE_CHOP"
+        },
+        {
+          "level": 1,
           "move": "MOVE_SAND_ATTACK"
         },
         {
@@ -106696,6 +106720,10 @@
         },
         {
           "level": 43,
+          "move": "MOVE_POWER_UP_PUNCH"
+        },
+        {
+          "level": 47,
           "move": "MOVE_LAST_RESORT"
         }
       ],
@@ -145729,6 +145757,10 @@
           "move": "MOVE_QUICK_ATTACK"
         },
         {
+          "level": 5,
+          "move": "MOVE_FURY_ATTACK"
+        },
+        {
           "level": 11,
           "move": "MOVE_TWISTER"
         },
@@ -145769,6 +145801,10 @@
           "move": "MOVE_CRUSH_CLAW"
         },
         {
+          "level": 53,
+          "move": "MOVE_SKY_DROP"
+        },
+        {
           "level": 57,
           "move": "MOVE_AIR_SLASH"
         },
@@ -145786,8 +145822,10 @@
         }
       ],
       "tmhm": [
+        "MOVE_WORK_UP",
         "MOVE_PSYSHOCK",
         "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
         "MOVE_BULK_UP",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
@@ -145799,10 +145837,15 @@
         "MOVE_RETURN",
         "MOVE_PSYCHIC",
         "MOVE_SHADOW_BALL",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_ROCK_TOMB",
         "MOVE_AERIAL_ACE",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_ROUND",
+        "MOVE_STEEL_WING",
+        "MOVE_SKY_DROP",
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
@@ -145836,8 +145879,10 @@
         "MOVE_PSYCHIC_TERRAIN",
         "MOVE_PSYCH_UP",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_STORED_POWER",
         "MOVE_SUPERPOWER",
+        "MOVE_SWAGGER",
         "MOVE_SWIFT",
         "MOVE_TAILWIND",
         "MOVE_VACUUM_WAVE",
@@ -164891,6 +164936,10 @@
           "move": "MOVE_ACID_ARMOR"
         },
         {
+          "level": 13,
+          "move": "MOVE_BIDE"
+        },
+        {
           "level": 15,
           "move": "MOVE_PROTECT"
         },
@@ -164950,6 +164999,7 @@
         "MOVE_THUNDER",
         "MOVE_EARTHQUAKE",
         "MOVE_RETURN",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_SLUDGE_WAVE",
         "MOVE_FLAMETHROWER",
         "MOVE_SLUDGE_BOMB",
@@ -164958,6 +165008,8 @@
         "MOVE_ROCK_TOMB",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
+        "MOVE_ROUND",
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
@@ -164965,6 +165017,7 @@
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
+        "MOVE_INFESTATION",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -164994,7 +165047,9 @@
         "MOVE_OUTRAGE",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
+        "MOVE_SWAGGER",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -190747,8 +190802,48 @@
           "move": "MOVE_ICE_SHARD"
         },
         {
+          "level": 1,
+          "move": "MOVE_MAGICAL_LEAF"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_QUICK_GUARD"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_WIDE_GUARD"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_POWER_SWAP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_GUARD_SWAP"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_BARRIER"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_TICKLE"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_MEDITATE"
+        },
+        {
+          "level": 11,
+          "move": "MOVE_DOUBLE_SLAP"
+        },
+        {
           "level": 12,
           "move": "MOVE_CONFUSION"
+        },
+        {
+          "level": 15,
+          "move": "MOVE_PSYWAVE"
         },
         {
           "level": 16,
@@ -190767,12 +190862,20 @@
           "move": "MOVE_PSYBEAM"
         },
         {
+          "level": 29,
+          "move": "MOVE_SUBSTITUTE"
+        },
+        {
           "level": 32,
           "move": "MOVE_HYPNOSIS"
         },
         {
           "level": 36,
           "move": "MOVE_MIRROR_COAT"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_TRICK"
         },
         {
           "level": 40,
@@ -190794,6 +190897,7 @@
       "tmhm": [
         "MOVE_PSYSHOCK",
         "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
         "MOVE_HAIL",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
@@ -190813,7 +190917,10 @@
         "MOVE_PSYCHIC",
         "MOVE_SHADOW_BALL",
         "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_REFLECT",
+        "MOVE_AERIAL_ACE",
+        "MOVE_TORMENT",
         "MOVE_FACADE",
         "MOVE_REST",
         "MOVE_ATTRACT",
@@ -190822,9 +190929,13 @@
         "MOVE_FOCUS_BLAST",
         "MOVE_ENERGY_BALL",
         "MOVE_FLING",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_THUNDER_PUNCH",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_INFESTATION",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -190837,9 +190948,12 @@
         "MOVE_ALLY_SWITCH",
         "MOVE_BATON_PASS",
         "MOVE_BODY_SLAM",
+        "MOVE_COVET",
+        "MOVE_DREAM_EATER",
         "MOVE_ENCORE",
         "MOVE_ENDURE",
         "MOVE_EXPANDING_FORCE",
+        "MOVE_FOCUS_PUNCH",
         "MOVE_FOUL_PLAY",
         "MOVE_FUTURE_SIGHT",
         "MOVE_HELPING_HAND",
@@ -190853,11 +190967,13 @@
         "MOVE_MISTY_TERRAIN",
         "MOVE_NASTY_PLOT",
         "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_PSYCH_UP",
         "MOVE_SKILL_SWAP",
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_STORED_POWER",
+        "MOVE_SWAGGER",
         "MOVE_TRICK",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR",
@@ -195864,6 +195980,10 @@
           "move": "MOVE_TACKLE"
         },
         {
+          "level": 1,
+          "move": "MOVE_ME_FIRST"
+        },
+        {
           "level": 3,
           "move": "MOVE_LEER"
         },
@@ -195912,8 +196032,16 @@
           "move": "MOVE_ZEN_HEADBUTT"
         },
         {
+          "level": 43,
+          "move": "MOVE_JUMP_KICK"
+        },
+        {
           "level": 49,
           "move": "MOVE_IMPRISON"
+        },
+        {
+          "level": 51,
+          "move": "MOVE_CAPTIVATE"
         },
         {
           "level": 55,
@@ -195925,8 +196053,10 @@
         }
       ],
       "tmhm": [
+        "MOVE_WORK_UP",
         "MOVE_PSYSHOCK",
         "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
         "MOVE_HYPER_BEAM",
@@ -195941,10 +196071,13 @@
         "MOVE_RETURN",
         "MOVE_PSYCHIC",
         "MOVE_SHADOW_BALL",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_REFLECT",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
+        "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_CHARGE_BEAM",
         "MOVE_TRAILBLAZE",
@@ -195958,8 +196091,10 @@
       ],
       "tutors": [
         "MOVE_BODY_SLAM",
+        "MOVE_BOUNCE",
         "MOVE_CURSE",
         "MOVE_DOUBLE_EDGE",
+        "MOVE_DREAM_EATER",
         "MOVE_EARTH_POWER",
         "MOVE_ENDURE",
         "MOVE_EXPANDING_FORCE",
@@ -195975,8 +196110,10 @@
         "MOVE_PSYCH_UP",
         "MOVE_SKILL_SWAP",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_STORED_POWER",
+        "MOVE_SWAGGER",
         "MOVE_SWIFT",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
@@ -196090,7 +196227,15 @@
         },
         {
           "level": 1,
+          "move": "MOVE_FEINT"
+        },
+        {
+          "level": 1,
           "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_VACUUM_WAVE"
         },
         {
           "level": 4,
@@ -196103,6 +196248,10 @@
         {
           "level": 8,
           "move": "MOVE_FALSE_SWIPE"
+        },
+        {
+          "level": 9,
+          "move": "MOVE_PURSUIT"
         },
         {
           "level": 11,
@@ -196129,6 +196278,10 @@
           "move": "MOVE_DOUBLE_HIT"
         },
         {
+          "level": 21,
+          "move": "MOVE_WING_ATTACK"
+        },
+        {
           "level": 24,
           "move": "MOVE_SLASH"
         },
@@ -196139,6 +196292,10 @@
         {
           "level": 32,
           "move": "MOVE_AGILITY"
+        },
+        {
+          "level": 33,
+          "move": "MOVE_RAZOR_WIND"
         },
         {
           "level": 36,
@@ -196155,16 +196312,23 @@
         {
           "level": 44,
           "move": "MOVE_SWORDS_DANCE"
+        },
+        {
+          "level": 47,
+          "move": "MOVE_NIGHT_SLASH"
         }
       ],
       "tmhm": [
         "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
         "MOVE_HYPER_BEAM",
         "MOVE_LIGHT_SCREEN",
         "MOVE_PROTECT",
         "MOVE_RAIN_DANCE",
+        "MOVE_ROOST",
+        "MOVE_SAFEGUARD",
         "MOVE_FRUSTRATION",
         "MOVE_SMACK_DOWN",
         "MOVE_RETURN",
@@ -196175,8 +196339,12 @@
         "MOVE_AERIAL_ACE",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_STEEL_WING",
         "MOVE_FALSE_SWIPE",
+        "MOVE_BRUTAL_SWING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
@@ -196200,12 +196368,15 @@
         "MOVE_ENDURE",
         "MOVE_FURY_CUTTER",
         "MOVE_HELPING_HAND",
+        "MOVE_KNOCK_OFF",
         "MOVE_LUNGE",
         "MOVE_MIMIC",
         "MOVE_ROCK_BLAST",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
+        "MOVE_SWAGGER",
         "MOVE_SWIFT",
         "MOVE_TAILWIND",
         "MOVE_VACUUM_WAVE"
@@ -196310,6 +196481,10 @@
         },
         {
           "level": 1,
+          "move": "MOVE_FLING"
+        },
+        {
+          "level": 1,
           "move": "MOVE_TACKLE"
         },
         {
@@ -196327,6 +196502,10 @@
         {
           "level": 13,
           "move": "MOVE_PAYBACK"
+        },
+        {
+          "level": 15,
+          "move": "MOVE_FEINT_ATTACK"
         },
         {
           "level": 17,
@@ -196347,6 +196526,10 @@
         {
           "level": 35,
           "move": "MOVE_SCARY_FACE"
+        },
+        {
+          "level": 38,
+          "move": "MOVE_CHARM"
         },
         {
           "level": 41,
@@ -196378,6 +196561,8 @@
         }
       ],
       "tmhm": [
+        "MOVE_WORK_UP",
+        "MOVE_TOXIC",
         "MOVE_BULK_UP",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
@@ -196390,11 +196575,16 @@
         "MOVE_EARTHQUAKE",
         "MOVE_RETURN",
         "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_ROCK_TOMB",
         "MOVE_AERIAL_ACE",
+        "MOVE_TORMENT",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_FOCUS_BLAST",
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_THUNDER_PUNCH",
@@ -196441,6 +196631,8 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERCELL_SLAM",
+        "MOVE_SUPERPOWER",
+        "MOVE_SWAGGER",
         "MOVE_SWIFT",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
@@ -199956,12 +200148,24 @@
           "move": "MOVE_FLAIL"
         },
         {
+          "level": 1,
+          "move": "MOVE_RAGE"
+        },
+        {
           "level": 4,
           "move": "MOVE_MUD_SLAP"
         },
         {
+          "level": 6,
+          "move": "MOVE_SPITE"
+        },
+        {
           "level": 8,
           "move": "MOVE_ROLLOUT"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_PURSUIT"
         },
         {
           "level": 12,
@@ -199976,6 +200180,10 @@
           "move": "MOVE_ANCIENT_POWER"
         },
         {
+          "level": 22,
+          "move": "MOVE_BODY_SLAM"
+        },
+        {
           "level": 24,
           "move": "MOVE_DRILL_RUN"
         },
@@ -199986,6 +200194,10 @@
         {
           "level": 28,
           "move": "MOVE_DIG"
+        },
+        {
+          "level": 30,
+          "move": "MOVE_TAKE_DOWN"
         },
         {
           "level": 32,
@@ -200000,12 +200212,20 @@
           "move": "MOVE_DRAGON_RUSH"
         },
         {
+          "level": 42,
+          "move": "MOVE_AIR_SLASH"
+        },
+        {
           "level": 44,
           "move": "MOVE_COIL"
         },
         {
           "level": 48,
           "move": "MOVE_DOUBLE_EDGE"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_ENDURE"
         },
         {
           "level": 52,
@@ -200039,22 +200259,28 @@
         "MOVE_EARTHQUAKE",
         "MOVE_RETURN",
         "MOVE_SHADOW_BALL",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_FLAMETHROWER",
         "MOVE_SANDSTORM",
         "MOVE_FIRE_BLAST",
         "MOVE_ROCK_TOMB",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_CHARGE_BEAM",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
         "MOVE_POISON_JAB",
+        "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_ICE_SPINNER"
@@ -200068,6 +200294,7 @@
         "MOVE_CURSE",
         "MOVE_DEFENSE_CURL",
         "MOVE_DOUBLE_EDGE",
+        "MOVE_DREAM_EATER",
         "MOVE_DRILL_RUN",
         "MOVE_DUAL_WINGBEAT",
         "MOVE_EARTH_POWER",
@@ -200078,6 +200305,7 @@
         "MOVE_HELPING_HAND",
         "MOVE_HURRICANE",
         "MOVE_HYPER_VOICE",
+        "MOVE_IRON_TAIL",
         "MOVE_LUNGE",
         "MOVE_MIMIC",
         "MOVE_MUD_SLAP",
@@ -200088,10 +200316,12 @@
         "MOVE_SCALE_SHOT",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_STORED_POWER",
+        "MOVE_SWAGGER",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
@@ -200224,12 +200454,24 @@
           "move": "MOVE_FLAIL"
         },
         {
+          "level": 1,
+          "move": "MOVE_RAGE"
+        },
+        {
           "level": 4,
           "move": "MOVE_MUD_SLAP"
         },
         {
+          "level": 6,
+          "move": "MOVE_SPITE"
+        },
+        {
           "level": 8,
           "move": "MOVE_ROLLOUT"
+        },
+        {
+          "level": 8,
+          "move": "MOVE_PURSUIT"
         },
         {
           "level": 12,
@@ -200244,6 +200486,10 @@
           "move": "MOVE_ANCIENT_POWER"
         },
         {
+          "level": 22,
+          "move": "MOVE_BODY_SLAM"
+        },
+        {
           "level": 24,
           "move": "MOVE_DRILL_RUN"
         },
@@ -200254,6 +200500,10 @@
         {
           "level": 28,
           "move": "MOVE_DIG"
+        },
+        {
+          "level": 30,
+          "move": "MOVE_TAKE_DOWN"
         },
         {
           "level": 32,
@@ -200268,12 +200518,20 @@
           "move": "MOVE_DRAGON_RUSH"
         },
         {
+          "level": 42,
+          "move": "MOVE_AIR_SLASH"
+        },
+        {
           "level": 44,
           "move": "MOVE_COIL"
         },
         {
           "level": 48,
           "move": "MOVE_DOUBLE_EDGE"
+        },
+        {
+          "level": 50,
+          "move": "MOVE_ENDURE"
         },
         {
           "level": 52,
@@ -200307,22 +200565,28 @@
         "MOVE_EARTHQUAKE",
         "MOVE_RETURN",
         "MOVE_SHADOW_BALL",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_FLAMETHROWER",
         "MOVE_SANDSTORM",
         "MOVE_FIRE_BLAST",
         "MOVE_ROCK_TOMB",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_CHARGE_BEAM",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
         "MOVE_POISON_JAB",
+        "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_ICE_SPINNER"
@@ -200336,6 +200600,7 @@
         "MOVE_CURSE",
         "MOVE_DEFENSE_CURL",
         "MOVE_DOUBLE_EDGE",
+        "MOVE_DREAM_EATER",
         "MOVE_DRILL_RUN",
         "MOVE_DUAL_WINGBEAT",
         "MOVE_EARTH_POWER",
@@ -200346,6 +200611,7 @@
         "MOVE_HELPING_HAND",
         "MOVE_HURRICANE",
         "MOVE_HYPER_VOICE",
+        "MOVE_IRON_TAIL",
         "MOVE_LUNGE",
         "MOVE_MIMIC",
         "MOVE_MUD_SLAP",
@@ -200356,10 +200622,12 @@
         "MOVE_SCALE_SHOT",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_STORED_POWER",
+        "MOVE_SWAGGER",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
@@ -210586,6 +210854,14 @@
           "move": "MOVE_FOCUS_ENERGY"
         },
         {
+          "level": 1,
+          "move": "MOVE_RAGE"
+        },
+        {
+          "level": 1,
+          "move": "MOVE_COVET"
+        },
+        {
           "level": 5,
           "move": "MOVE_FURY_SWIPES"
         },
@@ -210594,8 +210870,16 @@
           "move": "MOVE_LOW_KICK"
         },
         {
+          "level": 8,
+          "move": "MOVE_KARATE_CHOP"
+        },
+        {
           "level": 12,
           "move": "MOVE_SEISMIC_TOSS"
+        },
+        {
+          "level": 12,
+          "move": "MOVE_PURSUIT"
         },
         {
           "level": 17,
@@ -210612,6 +210896,10 @@
         {
           "level": 30,
           "move": "MOVE_THRASH"
+        },
+        {
+          "level": 30,
+          "move": "MOVE_PUNISHMENT"
         },
         {
           "level": 35,
@@ -210639,6 +210927,8 @@
         }
       ],
       "tmhm": [
+        "MOVE_WORK_UP",
+        "MOVE_TOXIC",
         "MOVE_BULK_UP",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
@@ -210654,17 +210944,22 @@
         "MOVE_RETURN",
         "MOVE_SHADOW_BALL",
         "MOVE_BRICK_BREAK",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_ROCK_TOMB",
+        "MOVE_AERIAL_ACE",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
         "MOVE_LOW_SWEEP",
+        "MOVE_ROUND",
         "MOVE_OVERHEAT",
         "MOVE_FOCUS_BLAST",
         "MOVE_FLING",
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
+        "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
@@ -210682,6 +210977,7 @@
         "MOVE_CLOSE_COMBAT",
         "MOVE_COACHING",
         "MOVE_COUNTER",
+        "MOVE_COVET",
         "MOVE_CURSE",
         "MOVE_DOUBLE_EDGE",
         "MOVE_ENCORE",
@@ -210690,6 +210986,7 @@
         "MOVE_FOCUS_PUNCH",
         "MOVE_GUNK_SHOT",
         "MOVE_HELPING_HAND",
+        "MOVE_IRON_TAIL",
         "MOVE_LASH_OUT",
         "MOVE_LOW_KICK",
         "MOVE_METRONOME",
@@ -210698,6 +210995,7 @@
         "MOVE_SEED_BOMB",
         "MOVE_SEISMIC_TOSS",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
@@ -211058,6 +211356,10 @@
           "move": "MOVE_CONFUSION"
         },
         {
+          "level": 5,
+          "move": "MOVE_ODOR_SLEUTH"
+        },
+        {
           "level": 10,
           "move": "MOVE_ASSURANCE"
         },
@@ -211082,6 +211384,10 @@
           "move": "MOVE_TWIN_BEAM"
         },
         {
+          "level": 32,
+          "move": "MOVE_ZEN_HEADBUTT"
+        },
+        {
           "level": 37,
           "move": "MOVE_CRUNCH"
         },
@@ -211099,8 +211405,10 @@
         }
       ],
       "tmhm": [
+        "MOVE_WORK_UP",
         "MOVE_PSYSHOCK",
         "MOVE_CALM_MIND",
+        "MOVE_TOXIC",
         "MOVE_HIDDEN_POWER",
         "MOVE_SUNNY_DAY",
         "MOVE_HYPER_BEAM",
@@ -211114,10 +211422,14 @@
         "MOVE_RETURN",
         "MOVE_PSYCHIC",
         "MOVE_SHADOW_BALL",
+        "MOVE_DOUBLE_TEAM",
         "MOVE_REFLECT",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_ATTRACT",
         "MOVE_THIEF",
+        "MOVE_ROUND",
+        "MOVE_ECHOED_VOICE",
         "MOVE_ENERGY_BALL",
         "MOVE_CHARGE_BEAM",
         "MOVE_TRAILBLAZE",
@@ -211136,6 +211448,7 @@
         "MOVE_CRUNCH",
         "MOVE_CURSE",
         "MOVE_DOUBLE_EDGE",
+        "MOVE_DREAM_EATER",
         "MOVE_ENDEAVOR",
         "MOVE_ENDURE",
         "MOVE_EXPANDING_FORCE",
@@ -211146,6 +211459,7 @@
         "MOVE_HIGH_HORSEPOWER",
         "MOVE_HYPER_VOICE",
         "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
         "MOVE_LOW_KICK",
         "MOVE_MIMIC",
         "MOVE_NASTY_PLOT",
@@ -211155,8 +211469,10 @@
         "MOVE_PSYCH_UP",
         "MOVE_SKILL_SWAP",
         "MOVE_SLEEP_TALK",
+        "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_STORED_POWER",
+        "MOVE_SWAGGER",
         "MOVE_SWIFT",
         "MOVE_TRICK",
         "MOVE_UPROAR",
@@ -246990,12 +247306,6 @@
             "sprite": "sprites/pokemon/dusclops.png"
           },
           {
-            "species": "SPECIES_WYNAUT",
-            "name": "Wynaut",
-            "dex": 278,
-            "sprite": "sprites/pokemon/wynaut.png"
-          },
-          {
             "species": "SPECIES_DRIFBLIM",
             "name": "Drifblim",
             "dex": 324,
@@ -249802,10 +250112,22 @@
             "sprite": "sprites/pokemon/slowking.png"
           },
           {
+            "species": "SPECIES_WOBBUFFET",
+            "name": "Wobbuffet",
+            "dex": 177,
+            "sprite": "sprites/pokemon/wobbuffet.png"
+          },
+          {
             "species": "SPECIES_ABSOL_MEGA_Z",
             "name": "Absol",
             "dex": 277,
             "sprite": "sprites/pokemon/absol_mega_z.png"
+          },
+          {
+            "species": "SPECIES_WYNAUT",
+            "name": "Wynaut",
+            "dex": 278,
+            "sprite": "sprites/pokemon/wynaut.png"
           },
           {
             "species": "SPECIES_LATIOS",
@@ -254904,12 +255226,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_WOBBUFFET",
-            "name": "Wobbuffet",
-            "dex": 177,
-            "sprite": "sprites/pokemon/wobbuffet.png"
-          },
           {
             "species": "SPECIES_SKARMORY",
             "name": "Skarmory",
@@ -262953,6 +263269,12 @@
             "name": "Cleffa",
             "dex": 150,
             "sprite": "sprites/pokemon/cleffa.png"
+          },
+          {
+            "species": "SPECIES_WOBBUFFET",
+            "name": "Wobbuffet",
+            "dex": 177,
+            "sprite": "sprites/pokemon/wobbuffet.png"
           },
           {
             "species": "SPECIES_WYNAUT",
@@ -303344,7 +303666,8 @@
           "displayName": "Wobbuffet",
           "innates": [
             "ABILITY_FRIEND_GUARD",
-            "ABILITY_MIRROR_ARMOR"
+            "ABILITY_FORCE_RETURN",
+            "ABILITY_MAGIC_BOUNCE"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
           "itemName": "Leftovers",

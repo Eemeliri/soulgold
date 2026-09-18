@@ -1,0 +1,446 @@
+{
+  "ANNIHILAPE": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_RAGE"
+      },
+      {
+        "Level": 8,
+        "Move": "MOVE_KARATE_CHOP"
+      },
+      {
+        "Level": 12,
+        "Move": "MOVE_PURSUIT"
+      },
+      {
+        "Level": 30,
+        "Move": "MOVE_PUNISHMENT"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_COVET"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_AERIAL_ACE",
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_PAYBACK",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_TOXIC"
+    ],
+    "EggMoves": [
+      "MOVE_FORESIGHT",
+      "MOVE_MEDITATE",
+      "MOVE_POWER_TRIP",
+      "MOVE_REVENGE",
+      "MOVE_SMELLING_SALTS"
+    ],
+    "TutorMoves": [
+      "MOVE_COVET",
+      "MOVE_IRON_TAIL",
+      "MOVE_ROLE_PLAY",
+      "MOVE_SNORE"
+    ]
+  },
+  "SLOWBRO_GALAR": {
+    "LevelMoves": [
+      {
+        "Level": 9,
+        "Move": "MOVE_WATER_GUN"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_DREAM_EATER",
+      "MOVE_ECHOED_VOICE",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_SWAGGER"
+    ],
+    "EggMoves": [
+      "MOVE_ME_FIRST",
+      "MOVE_MUD_SPORT"
+    ],
+    "TutorMoves": [
+      "MOVE_AFTER_YOU",
+      "MOVE_AQUA_TAIL",
+      "MOVE_MAGIC_COAT",
+      "MOVE_RECYCLE",
+      "MOVE_SIGNAL_BEAM",
+      "MOVE_TELEKINESIS"
+    ]
+  },
+  "SLOWKING_GALAR": {
+    "LevelMoves": [
+      {
+        "Level": 9,
+        "Move": "MOVE_WATER_GUN"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_DREAM_EATER",
+      "MOVE_ECHOED_VOICE",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN"
+    ],
+    "EggMoves": [
+      "MOVE_ME_FIRST",
+      "MOVE_MUD_SPORT"
+    ],
+    "TutorMoves": [
+      "MOVE_AFTER_YOU",
+      "MOVE_AQUA_TAIL",
+      "MOVE_MAGIC_COAT",
+      "MOVE_RECYCLE",
+      "MOVE_SIGNAL_BEAM",
+      "MOVE_TELEKINESIS"
+    ]
+  },
+  "MR_RIME": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_MAGICAL_LEAF"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_QUICK_GUARD"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_WIDE_GUARD"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_BARRIER"
+      },
+      {
+        "Level": 8,
+        "Move": "MOVE_MEDITATE"
+      },
+      {
+        "Level": 11,
+        "Move": "MOVE_DOUBLE_SLAP"
+      },
+      {
+        "Level": 15,
+        "Move": "MOVE_PSYWAVE"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_AERIAL_ACE",
+      "MOVE_CHARGE_BEAM",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_DREAM_EATER",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_INFESTATION",
+      "MOVE_PSYCH_UP",
+      "MOVE_RETURN",
+      "MOVE_SWAGGER",
+      "MOVE_TORMENT",
+      "MOVE_TOXIC"
+    ],
+    "EggMoves": [
+      "MOVE_HEALING_WISH",
+      "MOVE_WAKE_UP_SLAP"
+    ],
+    "TutorMoves": [
+      "MOVE_COVET",
+      "MOVE_FIRE_PUNCH",
+      "MOVE_FOCUS_PUNCH",
+      "MOVE_MAGIC_COAT",
+      "MOVE_SHOCK_WAVE",
+      "MOVE_SIGNAL_BEAM",
+      "MOVE_SNATCH",
+      "MOVE_TELEKINESIS",
+      "MOVE_THUNDER_PUNCH"
+    ]
+  },
+  "KLEAVOR": {
+    "LevelMoves": [
+      {
+        "Level": 9,
+        "Move": "MOVE_PURSUIT"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_ROOST",
+      "MOVE_ROUND",
+      "MOVE_SAFEGUARD",
+      "MOVE_STEEL_WING",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC"
+    ],
+    "EggMoves": [
+      "MOVE_STEEL_WING"
+    ],
+    "TutorMoves": [
+      "MOVE_LASER_FOCUS",
+      "MOVE_SNORE"
+    ]
+  },
+  "FARIGIRAF": {
+    "LevelMoves": [
+      {
+        "Level": 5,
+        "Move": "MOVE_ODOR_SLEUTH"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_DREAM_EATER",
+      "MOVE_ECHOED_VOICE",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
+      "MOVE_WORK_UP"
+    ],
+    "EggMoves": [
+      "MOVE_FORESIGHT",
+      "MOVE_MAGIC_COAT",
+      "MOVE_RAZOR_WIND",
+      "MOVE_SECRET_POWER"
+    ],
+    "TutorMoves": [
+      "MOVE_IRON_TAIL",
+      "MOVE_MAGIC_COAT",
+      "MOVE_RECYCLE",
+      "MOVE_SHOCK_WAVE",
+      "MOVE_SIGNAL_BEAM",
+      "MOVE_SNORE",
+      "MOVE_TELEKINESIS"
+    ]
+  },
+  "DUDUNSPARCE": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_RAGE"
+      },
+      {
+        "Level": 8,
+        "Move": "MOVE_PURSUIT"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CHARGE_BEAM",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_DREAM_EATER",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_SWAGGER",
+      "MOVE_THUNDER_WAVE"
+    ],
+    "EggMoves": [
+      "MOVE_BIDE",
+      "MOVE_MAGIC_COAT",
+      "MOVE_SECRET_POWER",
+      "MOVE_SNORE",
+      "MOVE_TRUMP_CARD"
+    ],
+    "TutorMoves": [
+      "MOVE_BIND",
+      "MOVE_IRON_TAIL",
+      "MOVE_MAGIC_COAT",
+      "MOVE_SHOCK_WAVE",
+      "MOVE_SNORE",
+      "MOVE_WATER_PULSE"
+    ]
+  },
+  "URSALUNA": {
+    "LevelMoves": [
+      {
+        "Level": 15,
+        "Move": "MOVE_FEINT_ATTACK"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_FOCUS_BLAST",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_SWAGGER",
+      "MOVE_TORMENT",
+      "MOVE_TOXIC",
+      "MOVE_WORK_UP"
+    ],
+    "EggMoves": [
+      "MOVE_CHIP_AWAY"
+    ],
+    "TutorMoves": [
+      "MOVE_LASER_FOCUS",
+      "MOVE_LAST_RESORT",
+      "MOVE_SUPERPOWER"
+    ]
+  },
+  "WYRDEER": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_ME_FIRST"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_JUMP_KICK"
+      },
+      {
+        "Level": 50,
+        "Move": "MOVE_CAPTIVATE"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_DREAM_EATER",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
+      "MOVE_WORK_UP"
+    ],
+    "EggMoves": [
+      "MOVE_ME_FIRST",
+      "MOVE_MUD_SPORT",
+      "MOVE_RAGE"
+    ],
+    "TutorMoves": [
+      "MOVE_BOUNCE",
+      "MOVE_LAST_RESORT",
+      "MOVE_MAGIC_ROOM",
+      "MOVE_SHOCK_WAVE",
+      "MOVE_SIGNAL_BEAM",
+      "MOVE_SNORE"
+    ]
+  },
+  "KINGAMBIT": {
+    "LevelMoves": [
+      {
+        "Level": 17,
+        "Move": "MOVE_FEINT_ATTACK"
+      },
+      {
+        "Level": 41,
+        "Move": "MOVE_EMBARGO"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_EMBARGO",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_PAYBACK",
+      "MOVE_RETURN",
+      "MOVE_ROCK_POLISH",
+      "MOVE_ROUND",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC"
+    ],
+    "EggMoves": [
+      "MOVE_PSYCHO_CUT",
+      "MOVE_PURSUIT",
+      "MOVE_REVENGE"
+    ],
+    "TutorMoves": [
+      "MOVE_DUAL_CHOP",
+      "MOVE_KNOCK_OFF",
+      "MOVE_LASER_FOCUS",
+      "MOVE_MAGNET_RISE",
+      "MOVE_ROLE_PLAY",
+      "MOVE_SNATCH",
+      "MOVE_SNORE"
+    ]
+  },
+  "BRAVIARY_HISUI": {
+    "LevelMoves": [
+      {
+        "Level": 5,
+        "Move": "MOVE_FURY_ATTACK"
+      },
+      {
+        "Level": 50,
+        "Move": "MOVE_SKY_DROP"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_SKY_DROP",
+      "MOVE_STEEL_WING",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
+      "MOVE_WORK_UP"
+    ],
+    "EggMoves": [],
+    "TutorMoves": [
+      "MOVE_SNORE"
+    ]
+  },
+  "GOODRA_HISUI": {
+    "LevelMoves": [
+      {
+        "Level": 13,
+        "Move": "MOVE_BIDE"
+      }
+    ],
+    "TMMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_CONFIDE",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_FRUSTRATION",
+      "MOVE_HIDDEN_POWER",
+      "MOVE_INFESTATION",
+      "MOVE_RETURN",
+      "MOVE_ROUND",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC"
+    ],
+    "EggMoves": [
+      "MOVE_POISON_TAIL"
+    ],
+    "TutorMoves": [
+      "MOVE_SHOCK_WAVE",
+      "MOVE_SNORE"
+    ]
+  }
+}
