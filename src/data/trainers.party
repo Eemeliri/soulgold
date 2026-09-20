@@ -967,7 +967,7 @@ Adamant Nature
 - Fake Out
 - Drain Punch
 - Knock Off
-- Protect
+- Rock Tomb
 
 Hydreigon @ Life Orb
 Ability: Levitate
@@ -1000,7 +1000,7 @@ Jolly Nature
 - Night Slash
 - Play Rough
 - Sucker Punch
-- Protect
+- Close Combat
 
 Kingambit @ Blackglasses
 Ability: Supreme Overlord
@@ -1011,7 +1011,7 @@ Adamant Nature
 - Kowtow Cleave
 - Iron Head
 - Sucker Punch
-- Protect
+- Swords Dance
 
 === TRAINER_GIOVANNI ===
 Name: Giovanni
@@ -2468,7 +2468,7 @@ Jolly Nature
 - Fly
 - Close Combat
 - Tailwind
-- Protect
+- Double-Edge
 
 Gallade @ Choice Scarf
 Ability: Sharpness
@@ -2490,7 +2490,7 @@ Timid Nature
 - Aura Sphere
 - Flash Cannon
 - Vacuum Wave
-- Protect
+- Dark Pulse
 
 Kommo-o @ Throat Spray
 Ability: Soundproof
@@ -2501,7 +2501,7 @@ Modest Nature
 - Clanging Scales
 - Aura Sphere
 - Flamethrower
-- Protect
+- Clangorous Soul
 
 Annihilape @ Leftovers
 Ability: Defiant
@@ -5841,7 +5841,7 @@ Quiet Nature
 - Expanding Force
 - Shadow Ball
 - Energy Ball
-- Protect
+- Focus Blast
 
 Exeggutor @ Sitrus Berry
 Ability: Harvest
@@ -5874,7 +5874,7 @@ Quiet Nature
 - Armor Cannon
 - Expanding Force
 - Wide Guard
-- Protect
+- Aura Sphere
 
 Slowbro @ Watertite
 Ability: Regenerator
@@ -6220,7 +6220,7 @@ Adamant Nature
 - Barb Barrage
 - Throat Chop
 - Aqua Jet
-- Protect
+- Liquidation
 
 Weezing @ Sitrus Berry
 Ability: Levitate
@@ -6231,7 +6231,7 @@ Bold Nature
 - Sludge Bomb
 - Flamethrower
 - Will-O-Wisp
-- Protect
+- Clear Smog
 
 Roserade @ Life Orb
 Ability: Technician
@@ -6242,7 +6242,7 @@ Timid Nature
 - Magical Leaf
 - Sludge Bomb
 - Sleep Powder
-- Protect
+- Dazzling Gleam
 
 Muk Alola @ Assault Vest
 Ability: Poison Touch
@@ -15864,7 +15864,7 @@ Happiness: 255
 IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
 Quiet Nature
 - Trick Room
-- Protect
+- Thunderbolt
 - Tri-Attack
 - Shadow Ball
 
@@ -15899,7 +15899,7 @@ EVs: 252 SpA / 252 Spe
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 Timid Nature
 - Bitter Malice
-- Protect
+- Nasty Plot
 - Flamethrower
 - Focus Blast
 
@@ -15913,7 +15913,7 @@ IVs: 31 HP / 0 Atk / 31 Def / 31 SpA / 31 SpD / 0 Spe
 - Hyper Voice
 - Thunder
 - Draco Meteor
-- Protect
+- Energy Ball
 
 === TRAINER_TITLE_DEFENSE_MORTY ===
 Name: Morty
@@ -19798,7 +19798,7 @@ Timid Nature
 - Expanding Force
 - Dazzling Gleam
 - Helping Hand
-- Protect
+- Encore
 
 Delphox @ Life Orb
 Ability: Blaze
@@ -19809,7 +19809,7 @@ Timid Nature
 - Expanding Force
 - Heat Wave
 - Grass Knot
-- Protect
+- Will-O-Wisp
 
 Espeon @ Choice Specs
 Ability: Magic Bounce
@@ -19831,7 +19831,7 @@ Timid Nature
 - Scald
 - Ice Beam
 - Thunderbolt
-- Protect
+- Psychic
 
 Gallade @ Scope Lens
 Ability: Sharpness
@@ -19842,7 +19842,7 @@ Jolly Nature
 - Sacred Sword
 - Psycho Cut
 - Leaf Blade
-- Protect
+- Night Slash
 
 Alakazam @ Psychite
 Ability: Magic Guard
@@ -19967,7 +19967,7 @@ Jolly Nature
 - High Horsepower
 - Iron Head
 - Rock Slide
-- Protect
+- Swords Dance
 
 Aggron @ Assault Vest
 Ability: Sturdy
@@ -20000,7 +20000,7 @@ Impish Nature
 - Heavy Slam
 - Dig
 - Rock Slide
-- Protect
+- Body Press
 
 === TRAINER_KAREN_REMATCH_ALT ===
 Name: Karen
@@ -20103,7 +20103,7 @@ Timid Nature
 - Shadow Ball
 - Sludge Bomb
 - Icy Wind
-- Protect
+- Taunt
 
 Chandelure @ Charcoal
 Ability: Flash Fire
@@ -20125,7 +20125,7 @@ Jolly Nature
 - Play Rough
 - Shadow Claw
 - Swords Dance
-- Protect
+- Shadow Sneak
 
 Aegislash @ Leftovers
 Ability: Stance Change
@@ -20239,7 +20239,7 @@ Timid Nature
 - Tailwind
 - Pollen Puff
 - Moonblast
-- Protect
+- Struggle Bug
 
 Scizor @ Bugtite
 Ability: Technician
@@ -20250,7 +20250,7 @@ Adamant Nature
 - Bullet Punch
 - Bug Bite
 - Close Combat
-- Protect
+- Knock Off
 
 Yanmega @ Life Orb
 Ability: Tinted Lens
@@ -20261,7 +20261,7 @@ Modest Nature
 - Air Slash
 - Bug Buzz
 - Giga Drain
-- Protect
+- Ancient Power
 
 Volcarona @ Sitrus Berry
 Ability: Flame Body
@@ -20283,7 +20283,7 @@ Adamant Nature
 - First Impression
 - Liquidation
 - Wide Guard
-- Protect
+- Aqua Jet
 
 Crobat @ Sharp Beak
 Ability: Inner Focus

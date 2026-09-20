@@ -73158,8 +73158,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73167,8 +73167,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -334817,7 +334817,7 @@
             "Fly",
             "Close Combat",
             "Tailwind",
-            "Protect"
+            "Double-Edge"
           ],
           "constant": "SPECIES_STARAPTOR",
           "displayName": "Staraptor",
@@ -334893,7 +334893,7 @@
             "Aura Sphere",
             "Flash Cannon",
             "Vacuum Wave",
-            "Protect"
+            "Dark Pulse"
           ],
           "constant": "SPECIES_LUCARIO",
           "displayName": "Lucario",
@@ -334931,7 +334931,7 @@
             "Clanging Scales",
             "Aura Sphere",
             "Flamethrower",
-            "Protect"
+            "Clangorous Soul"
           ],
           "constant": "SPECIES_KOMMO_O",
           "displayName": "Kommo-o",
@@ -335315,7 +335315,7 @@
             "High Horsepower",
             "Iron Head",
             "Rock Slide",
-            "Protect"
+            "Swords Dance"
           ],
           "constant": "SPECIES_EXCADRILL",
           "displayName": "Excadrill",
@@ -335429,7 +335429,7 @@
             "Heavy Slam",
             "Dig",
             "Rock Slide",
-            "Protect"
+            "Body Press"
           ],
           "constant": "SPECIES_STEELIX",
           "displayName": "Steelix",
@@ -338687,7 +338687,7 @@
             "Fake Out",
             "Drain Punch",
             "Knock Off",
-            "Protect"
+            "Rock Tomb"
           ],
           "constant": "SPECIES_SCRAFTY",
           "displayName": "Scrafty",
@@ -338801,7 +338801,7 @@
             "Night Slash",
             "Play Rough",
             "Sucker Punch",
-            "Protect"
+            "Close Combat"
           ],
           "constant": "SPECIES_ABSOL",
           "displayName": "Absol",
@@ -338839,7 +338839,7 @@
             "Kowtow Cleave",
             "Iron Head",
             "Sucker Punch",
-            "Protect"
+            "Swords Dance"
           ],
           "constant": "SPECIES_KINGAMBIT",
           "displayName": "Kingambit",
@@ -339147,7 +339147,7 @@
             "Shadow Ball",
             "Sludge Bomb",
             "Icy Wind",
-            "Protect"
+            "Taunt"
           ],
           "constant": "SPECIES_GENGAR",
           "displayName": "Gengar",
@@ -339223,7 +339223,7 @@
             "Play Rough",
             "Shadow Claw",
             "Swords Dance",
-            "Protect"
+            "Shadow Sneak"
           ],
           "constant": "SPECIES_MIMIKYU_DISGUISED",
           "displayName": "Mimikyu",
@@ -339607,7 +339607,7 @@
             "Barb Barrage",
             "Throat Chop",
             "Aqua Jet",
-            "Protect"
+            "Liquidation"
           ],
           "constant": "SPECIES_OVERQWIL",
           "displayName": "Overqwil",
@@ -339645,7 +339645,7 @@
             "Sludge Bomb",
             "Flamethrower",
             "Will-O-Wisp",
-            "Protect"
+            "Clear Smog"
           ],
           "constant": "SPECIES_WEEZING",
           "displayName": "Weezing",
@@ -339683,7 +339683,7 @@
             "Magical Leaf",
             "Sludge Bomb",
             "Sleep Powder",
-            "Protect"
+            "Dazzling Gleam"
           ],
           "constant": "SPECIES_ROSERADE",
           "displayName": "Roserade",
@@ -340029,7 +340029,7 @@
             "Tailwind",
             "Pollen Puff",
             "Moonblast",
-            "Protect"
+            "Struggle Bug"
           ],
           "constant": "SPECIES_RIBOMBEE",
           "displayName": "Ribombee",
@@ -340067,7 +340067,7 @@
             "Bullet Punch",
             "Bug Bite",
             "Close Combat",
-            "Protect"
+            "Knock Off"
           ],
           "constant": "SPECIES_SCIZOR",
           "displayName": "Scizor",
@@ -340105,7 +340105,7 @@
             "Air Slash",
             "Bug Buzz",
             "Giga Drain",
-            "Protect"
+            "Ancient Power"
           ],
           "constant": "SPECIES_YANMEGA",
           "displayName": "Yanmega",
@@ -340181,7 +340181,7 @@
             "First Impression",
             "Liquidation",
             "Wide Guard",
-            "Protect"
+            "Aqua Jet"
           ],
           "constant": "SPECIES_GOLISOPOD",
           "displayName": "Golisopod",
@@ -342189,7 +342189,7 @@
           },
           "moves": [
             "Trick Room",
-            "Protect",
+            "Thunderbolt",
             "Tri-Attack",
             "Shadow Ball"
           ],
@@ -342300,7 +342300,7 @@
           },
           "moves": [
             "Bitter Malice",
-            "Protect",
+            "Nasty Plot",
             "Flamethrower",
             "Focus Blast"
           ],
@@ -342339,7 +342339,7 @@
             "Hyper Voice",
             "Thunder",
             "Draco Meteor",
-            "Protect"
+            "Energy Ball"
           ],
           "constant": "SPECIES_DRAMPA",
           "displayName": "Drampa",
@@ -342647,7 +342647,7 @@
             "Expanding Force",
             "Shadow Ball",
             "Energy Ball",
-            "Protect"
+            "Focus Blast"
           ],
           "constant": "SPECIES_REUNICLUS",
           "displayName": "Reuniclus",
@@ -342761,7 +342761,7 @@
             "Armor Cannon",
             "Expanding Force",
             "Wide Guard",
-            "Protect"
+            "Aura Sphere"
           ],
           "constant": "SPECIES_ARMAROUGE",
           "displayName": "Armarouge",
@@ -343069,7 +343069,7 @@
             "Expanding Force",
             "Dazzling Gleam",
             "Helping Hand",
-            "Protect"
+            "Encore"
           ],
           "constant": "SPECIES_INDEEDEE_M",
           "displayName": "Indeedee",
@@ -343107,7 +343107,7 @@
             "Expanding Force",
             "Heat Wave",
             "Grass Knot",
-            "Protect"
+            "Will-O-Wisp"
           ],
           "constant": "SPECIES_DELPHOX",
           "displayName": "Delphox",
@@ -343183,7 +343183,7 @@
             "Scald",
             "Ice Beam",
             "Thunderbolt",
-            "Protect"
+            "Psychic"
           ],
           "constant": "SPECIES_STARMIE",
           "displayName": "Starmie",
@@ -343221,7 +343221,7 @@
             "Sacred Sword",
             "Psycho Cut",
             "Leaf Blade",
-            "Protect"
+            "Night Slash"
           ],
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
