@@ -55,14 +55,14 @@ TITLE_DEFENSE_TRAINERS = {
 }
 
 ELITE_FOUR_REMATCH_THEMES = {
-    "TRAINER_WILL_2": "Trick Room",
-    "TRAINER_WILL_REMATCH_ALT": "Psychic Offense",
-    "TRAINER_KOGA_2": "Toxic Pressure",
-    "TRAINER_KOGA_REMATCH_ALT": "Swarm Wing",
-    "TRAINER_BRUNO_2": "Fighting Offense",
-    "TRAINER_BRUNO_REMATCH_ALT": "Iron Bastion",
-    "TRAINER_KAREN_2": "Dark Covenant",
-    "TRAINER_KAREN_REMATCH_ALT": "Haunted Court",
+    "TRAINER_WILL_2": "Variant 1",
+    "TRAINER_WILL_REMATCH_ALT": "Variant 2",
+    "TRAINER_KOGA_2": "Variant 1",
+    "TRAINER_KOGA_REMATCH_ALT": "Variant 2",
+    "TRAINER_BRUNO_2": "Variant 1",
+    "TRAINER_BRUNO_REMATCH_ALT": "Variant 2",
+    "TRAINER_KAREN_2": "Variant 1",
+    "TRAINER_KAREN_REMATCH_ALT": "Variant 2",
 }
 
 GYM_BADGE_COUNT_VARIANTS = {

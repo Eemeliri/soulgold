@@ -73158,8 +73158,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73167,8 +73167,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -73376,8 +73376,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73385,8 +73385,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -334529,7 +334529,7 @@
     {
       "constant": "TRAINER_BRUNO_2",
       "name": "Bruno",
-      "displayName": "Bruno (Rematch)",
+      "displayName": "Bruno (Rematch: Variant 1)",
       "difficulty": "Normal",
       "averageLevel": 85.0,
       "pic": "Elite Four Bruno",
@@ -334540,14 +334540,11 @@
       "party": [
         {
           "name": "Hitmontop",
-          "item": "White Herb",
+          "item": "Sitrus Berry",
           "level": 85,
           "ability": "Intimidate",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "atk": 100
-          },
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -334557,10 +334554,10 @@
             "spe": 31
           },
           "moves": [
-            "Rapid Spin",
+            "Fake Out",
             "Close Combat",
             "Ice Spinner",
-            "Thunder Punch"
+            "Mach Punch"
           ],
           "constant": "SPECIES_HITMONTOP",
           "displayName": "Hitmontop",
@@ -334569,10 +334566,10 @@
             "ABILITY_STEEL_FEET",
             "ABILITY_RECKLESS"
           ],
-          "itemConstant": "ITEM_WHITE_HERB",
-          "itemName": "White Herb",
-          "itemDescription": "A hold item that restores any lowered stat.",
-          "itemIcon": "sprites/items/in_battle_herb.png",
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
           "sprite": "sprites/pokemon/hitmontop.png"
         },
         {
@@ -334580,11 +334577,8 @@
           "item": "Flyingite",
           "level": 85,
           "ability": "Intimidate",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
+          "nature": "Jolly",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -334594,10 +334588,10 @@
             "spe": 31
           },
           "moves": [
-            "Brave Bird",
+            "Fly",
             "Close Combat",
-            "Knock Off",
-            "Blaze Kick"
+            "Tailwind",
+            "Protect"
           ],
           "constant": "SPECIES_STARAPTOR",
           "displayName": "Staraptor",
@@ -334617,11 +334611,8 @@
           "item": "Choice Scarf",
           "level": 85,
           "ability": "Sharpness",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
+          "nature": "Jolly",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -334631,10 +334622,10 @@
             "spe": 31
           },
           "moves": [
-            "Shadow Claw",
+            "Sacred Sword",
+            "Psycho Cut",
             "Leaf Blade",
-            "Close Combat",
-            "Psycho Cut"
+            "Knock Off"
           ],
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
@@ -334650,15 +334641,80 @@
           "sprite": "sprites/pokemon/gallade.png"
         },
         {
+          "name": "Lucario",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Inner Focus",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Aura Sphere",
+            "Flash Cannon",
+            "Vacuum Wave",
+            "Protect"
+          ],
+          "constant": "SPECIES_LUCARIO",
+          "displayName": "Lucario",
+          "innates": [
+            "ABILITY_MINDS_EYE",
+            "ABILITY_QUICK_FEET",
+            "ABILITY_AURA_SHIELD"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/lucario.png"
+        },
+        {
+          "name": "Kommo-o",
+          "item": "Throat Spray",
+          "level": 85,
+          "ability": "Soundproof",
+          "nature": "Modest",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Clanging Scales",
+            "Aura Sphere",
+            "Flamethrower",
+            "Protect"
+          ],
+          "constant": "SPECIES_KOMMO_O",
+          "displayName": "Kommo-o",
+          "innates": [
+            "ABILITY_ECHOING",
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_INNER_FOCUS"
+          ],
+          "itemConstant": "ITEM_THROAT_SPRAY",
+          "itemName": "Throat Spray",
+          "itemDescription": "Raises Sp. Atk. if the holder uses a sound-based move.",
+          "itemIcon": "sprites/items/throat_spray.png",
+          "sprite": "sprites/pokemon/kommo_o.png"
+        },
+        {
           "name": "Annihilape",
           "item": "Leftovers",
           "level": 85,
-          "ability": "Inner Focus",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "atk": 100
-          },
+          "ability": "Defiant",
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -334669,9 +334725,9 @@
           },
           "moves": [
             "Rage Fist",
-            "Bulk Up",
             "Drain Punch",
-            "Outrage"
+            "Bulk Up",
+            "Protect"
           ],
           "constant": "SPECIES_ANNIHILAPE",
           "displayName": "Annihilape",
@@ -334685,87 +334741,13 @@
           "itemDescription": "A hold item that gradually restores HP in battle.",
           "itemIcon": "sprites/items/leftovers.png",
           "sprite": "sprites/pokemon/annihilape.png"
-        },
-        {
-          "name": "Kommo O",
-          "item": "Dragon Gem",
-          "level": 85,
-          "ability": "Soundproof",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "atk": 100
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Dragon Dance",
-            "Dragon Claw",
-            "Close Combat",
-            "Clanging Scales"
-          ],
-          "constant": "SPECIES_KOMMO_O",
-          "displayName": "Kommo O",
-          "innates": [
-            "ABILITY_ECHOING",
-            "ABILITY_BATTLE_ARMOR",
-            "ABILITY_INNER_FOCUS"
-          ],
-          "itemConstant": "ITEM_DRAGON_GEM",
-          "itemName": "Dragon Gem",
-          "itemDescription": "Increases the power of Dragon Type moves.",
-          "itemIcon": "sprites/items/type_gem.png",
-          "sprite": "sprites/pokemon/kommo_o.png"
-        },
-        {
-          "name": "Machamp",
-          "item": "Expert Belt",
-          "level": 85,
-          "ability": "No Guard",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Rock Slide",
-            "Ice Punch",
-            "Dynamic Punch",
-            "Knock Off"
-          ],
-          "constant": "SPECIES_MACHAMP",
-          "displayName": "Machamp",
-          "innates": [
-            "ABILITY_SHEER_FORCE",
-            "ABILITY_DEFIANT",
-            "ABILITY_TITAN_GRIP"
-          ],
-          "itemConstant": "ITEM_EXPERT_BELT",
-          "itemName": "Expert Belt",
-          "itemDescription": "A belt that boosts the power of super effective moves.",
-          "itemIcon": "sprites/items/expert_belt.png",
-          "sprite": "sprites/pokemon/machamp.png"
         }
       ]
     },
     {
       "constant": "TRAINER_BRUNO_2",
       "name": "Bruno",
-      "displayName": "Bruno (Rematch, Hard)",
+      "displayName": "Bruno (Rematch: Variant 1, Hard)",
       "difficulty": "Hard",
       "averageLevel": 85.0,
       "pic": "Elite Four Bruno",
@@ -334776,13 +334758,14 @@
       "party": [
         {
           "name": "Hitmontop",
-          "item": "White Herb",
+          "item": "Sitrus Berry",
           "level": 85,
           "ability": "Intimidate",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
             "hp": 252,
-            "atk": 252
+            "atk": 252,
+            "spd": 4
           },
           "ivs": {
             "hp": 31,
@@ -334793,10 +334776,10 @@
             "spe": 31
           },
           "moves": [
-            "Rapid Spin",
+            "Fake Out",
             "Close Combat",
-            "Ice Spinner",
-            "Thunder Punch"
+            "Wide Guard",
+            "Helping Hand"
           ],
           "constant": "SPECIES_HITMONTOP",
           "displayName": "Hitmontop",
@@ -334805,10 +334788,10 @@
             "ABILITY_STEEL_FEET",
             "ABILITY_RECKLESS"
           ],
-          "itemConstant": "ITEM_WHITE_HERB",
-          "itemName": "White Herb",
-          "itemDescription": "A hold item that restores any lowered stat.",
-          "itemIcon": "sprites/items/in_battle_herb.png",
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
           "sprite": "sprites/pokemon/hitmontop.png"
         },
         {
@@ -334816,8 +334799,9 @@
           "item": "Flyingite",
           "level": 85,
           "ability": "Intimidate",
-          "nature": "",
+          "nature": "Jolly",
           "evs": {
+            "hp": 4,
             "atk": 252,
             "spe": 252
           },
@@ -334830,10 +334814,10 @@
             "spe": 31
           },
           "moves": [
-            "Brave Bird",
+            "Fly",
             "Close Combat",
-            "Knock Off",
-            "Blaze Kick"
+            "Tailwind",
+            "Protect"
           ],
           "constant": "SPECIES_STARAPTOR",
           "displayName": "Staraptor",
@@ -334853,8 +334837,9 @@
           "item": "Choice Scarf",
           "level": 85,
           "ability": "Sharpness",
-          "nature": "",
+          "nature": "Jolly",
           "evs": {
+            "hp": 4,
             "atk": 252,
             "spe": 252
           },
@@ -334867,10 +334852,10 @@
             "spe": 31
           },
           "moves": [
-            "Shadow Claw",
+            "Sacred Sword",
+            "Psycho Cut",
             "Leaf Blade",
-            "Close Combat",
-            "Psycho Cut"
+            "Knock Off"
           ],
           "constant": "SPECIES_GALLADE",
           "displayName": "Gallade",
@@ -334886,14 +334871,91 @@
           "sprite": "sprites/pokemon/gallade.png"
         },
         {
+          "name": "Lucario",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Inner Focus",
+          "nature": "Timid",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Aura Sphere",
+            "Flash Cannon",
+            "Vacuum Wave",
+            "Protect"
+          ],
+          "constant": "SPECIES_LUCARIO",
+          "displayName": "Lucario",
+          "innates": [
+            "ABILITY_MINDS_EYE",
+            "ABILITY_QUICK_FEET",
+            "ABILITY_AURA_SHIELD"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/lucario.png"
+        },
+        {
+          "name": "Kommo-o",
+          "item": "Throat Spray",
+          "level": 85,
+          "ability": "Soundproof",
+          "nature": "Modest",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Clanging Scales",
+            "Aura Sphere",
+            "Flamethrower",
+            "Protect"
+          ],
+          "constant": "SPECIES_KOMMO_O",
+          "displayName": "Kommo-o",
+          "innates": [
+            "ABILITY_ECHOING",
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_INNER_FOCUS"
+          ],
+          "itemConstant": "ITEM_THROAT_SPRAY",
+          "itemName": "Throat Spray",
+          "itemDescription": "Raises Sp. Atk. if the holder uses a sound-based move.",
+          "itemIcon": "sprites/items/throat_spray.png",
+          "sprite": "sprites/pokemon/kommo_o.png"
+        },
+        {
           "name": "Annihilape",
           "item": "Leftovers",
           "level": 85,
-          "ability": "Inner Focus",
-          "nature": "",
+          "ability": "Defiant",
+          "nature": "Adamant",
           "evs": {
             "hp": 252,
-            "atk": 252
+            "atk": 252,
+            "spd": 4
           },
           "ivs": {
             "hp": 31,
@@ -334905,9 +334967,9 @@
           },
           "moves": [
             "Rage Fist",
-            "Bulk Up",
             "Drain Punch",
-            "Outrage"
+            "Bulk Up",
+            "Protect"
           ],
           "constant": "SPECIES_ANNIHILAPE",
           "displayName": "Annihilape",
@@ -334921,16 +334983,249 @@
           "itemDescription": "A hold item that gradually restores HP in battle.",
           "itemIcon": "sprites/items/leftovers.png",
           "sprite": "sprites/pokemon/annihilape.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_BRUNO_REMATCH_ALT",
+      "name": "Bruno",
+      "displayName": "Bruno (Rematch: Variant 2)",
+      "difficulty": "Normal",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Bruno",
+      "sprite": "sprites/trainers/elite_four_bruno.png?v=alpha2",
+      "locations": [
+        "Pokemon League Brunos Room"
+      ],
+      "party": [
+        {
+          "name": "Tyranitar",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Sand Stream",
+          "nature": "Adamant",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Rock Slide",
+            "Crunch",
+            "Low Kick",
+            "Protect"
+          ],
+          "constant": "SPECIES_TYRANITAR",
+          "displayName": "Tyranitar",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_SAND_FORCE",
+            "ABILITY_ROCKSTORM"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/tyranitar.png"
         },
         {
-          "name": "Kommo O",
-          "item": "Dragon Gem",
+          "name": "Skarmory",
+          "item": "Leftovers",
           "level": 85,
-          "ability": "Soundproof",
-          "nature": "",
+          "ability": "Sturdy",
+          "nature": "Impish",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Tailwind",
+            "Body Press",
+            "Iron Defense",
+            "Roost"
+          ],
+          "constant": "SPECIES_SKARMORY",
+          "displayName": "Skarmory",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_MIRROR_ARMOR",
+            "ABILITY_PHALANX"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/skarmory.png"
+        },
+        {
+          "name": "Excadrill",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Sand Rush",
+          "nature": "Jolly",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "High Horsepower",
+            "Iron Head",
+            "Rock Slide",
+            "Protect"
+          ],
+          "constant": "SPECIES_EXCADRILL",
+          "displayName": "Excadrill",
+          "innates": [
+            "ABILITY_BURROWER",
+            "ABILITY_CLEAR_BODY",
+            "ABILITY_TOUGH_CLAWS"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/excadrill.png"
+        },
+        {
+          "name": "Aggron",
+          "item": "Assault Vest",
+          "level": 85,
+          "ability": "Sturdy",
+          "nature": "Impish",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heavy Slam",
+            "Rock Slide",
+            "Body Press",
+            "Fire Punch"
+          ],
+          "constant": "SPECIES_AGGRON",
+          "displayName": "Aggron",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_STAMINA",
+            "ABILITY_SIEGEBREAKER"
+          ],
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
+          "sprite": "sprites/pokemon/aggron.png"
+        },
+        {
+          "name": "Lucario",
+          "item": "Choice Specs",
+          "level": 85,
+          "ability": "Inner Focus",
+          "nature": "Modest",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Aura Sphere",
+            "Flash Cannon",
+            "Dark Pulse",
+            "Vacuum Wave"
+          ],
+          "constant": "SPECIES_LUCARIO",
+          "displayName": "Lucario",
+          "innates": [
+            "ABILITY_MINDS_EYE",
+            "ABILITY_QUICK_FEET",
+            "ABILITY_AURA_SHIELD"
+          ],
+          "itemConstant": "ITEM_CHOICE_SPECS",
+          "itemName": "Choice Specs",
+          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_specs.png",
+          "sprite": "sprites/pokemon/lucario.png"
+        },
+        {
+          "name": "Steelix",
+          "item": "Steeltite",
+          "level": 85,
+          "ability": "Sturdy",
+          "nature": "Impish",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heavy Slam",
+            "Dig",
+            "Rock Slide",
+            "Protect"
+          ],
+          "constant": "SPECIES_STEELIX",
+          "displayName": "Steelix",
+          "innates": [
+            "ABILITY_FILTER",
+            "ABILITY_BURROWER",
+            "ABILITY_SIEGEBREAKER"
+          ],
+          "itemConstant": "ITEM_STEELTITE",
+          "itemName": "Steeltite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Steel -type form.",
+          "itemIcon": "sprites/items/steelixite.png",
+          "sprite": "sprites/pokemon/steelix.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_BRUNO_REMATCH_ALT",
+      "name": "Bruno",
+      "displayName": "Bruno (Rematch: Variant 2, Hard)",
+      "difficulty": "Hard",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Bruno",
+      "sprite": "sprites/trainers/elite_four_bruno.png?v=alpha2",
+      "locations": [
+        "Pokemon League Brunos Room"
+      ],
+      "party": [
+        {
+          "name": "Tyranitar",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Sand Stream",
+          "nature": "Adamant",
           "evs": {
             "hp": 252,
-            "atk": 252
+            "atk": 252,
+            "spd": 4
           },
           "ivs": {
             "hp": 31,
@@ -334941,31 +335236,70 @@
             "spe": 31
           },
           "moves": [
-            "Dragon Dance",
-            "Dragon Claw",
-            "Close Combat",
-            "Clanging Scales"
+            "Rock Slide",
+            "Crunch",
+            "Low Kick",
+            "Protect"
           ],
-          "constant": "SPECIES_KOMMO_O",
-          "displayName": "Kommo O",
+          "constant": "SPECIES_TYRANITAR",
+          "displayName": "Tyranitar",
           "innates": [
-            "ABILITY_ECHOING",
             "ABILITY_BATTLE_ARMOR",
-            "ABILITY_INNER_FOCUS"
+            "ABILITY_SAND_FORCE",
+            "ABILITY_ROCKSTORM"
           ],
-          "itemConstant": "ITEM_DRAGON_GEM",
-          "itemName": "Dragon Gem",
-          "itemDescription": "Increases the power of Dragon Type moves.",
-          "itemIcon": "sprites/items/type_gem.png",
-          "sprite": "sprites/pokemon/kommo_o.png"
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/tyranitar.png"
         },
         {
-          "name": "Machamp",
-          "item": "Expert Belt",
+          "name": "Skarmory",
+          "item": "Leftovers",
           "level": 85,
-          "ability": "No Guard",
-          "nature": "",
+          "ability": "Sturdy",
+          "nature": "Impish",
           "evs": {
+            "hp": 252,
+            "def": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Tailwind",
+            "Body Press",
+            "Iron Defense",
+            "Roost"
+          ],
+          "constant": "SPECIES_SKARMORY",
+          "displayName": "Skarmory",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_MIRROR_ARMOR",
+            "ABILITY_PHALANX"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/skarmory.png"
+        },
+        {
+          "name": "Excadrill",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Sand Rush",
+          "nature": "Jolly",
+          "evs": {
+            "hp": 4,
             "atk": 252,
             "spe": 252
           },
@@ -334978,23 +335312,137 @@
             "spe": 31
           },
           "moves": [
+            "High Horsepower",
+            "Iron Head",
             "Rock Slide",
-            "Ice Punch",
-            "Dynamic Punch",
-            "Thunder Punch"
+            "Protect"
           ],
-          "constant": "SPECIES_MACHAMP",
-          "displayName": "Machamp",
+          "constant": "SPECIES_EXCADRILL",
+          "displayName": "Excadrill",
           "innates": [
-            "ABILITY_SHEER_FORCE",
-            "ABILITY_DEFIANT",
-            "ABILITY_TITAN_GRIP"
+            "ABILITY_BURROWER",
+            "ABILITY_CLEAR_BODY",
+            "ABILITY_TOUGH_CLAWS"
           ],
-          "itemConstant": "ITEM_EXPERT_BELT",
-          "itemName": "Expert Belt",
-          "itemDescription": "A belt that boosts the power of super effective moves.",
-          "itemIcon": "sprites/items/expert_belt.png",
-          "sprite": "sprites/pokemon/machamp.png"
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/excadrill.png"
+        },
+        {
+          "name": "Aggron",
+          "item": "Assault Vest",
+          "level": 85,
+          "ability": "Sturdy",
+          "nature": "Impish",
+          "evs": {
+            "hp": 252,
+            "def": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heavy Slam",
+            "Rock Slide",
+            "Body Press",
+            "Fire Punch"
+          ],
+          "constant": "SPECIES_AGGRON",
+          "displayName": "Aggron",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_STAMINA",
+            "ABILITY_SIEGEBREAKER"
+          ],
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
+          "sprite": "sprites/pokemon/aggron.png"
+        },
+        {
+          "name": "Lucario",
+          "item": "Choice Specs",
+          "level": 85,
+          "ability": "Inner Focus",
+          "nature": "Modest",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Aura Sphere",
+            "Flash Cannon",
+            "Dark Pulse",
+            "Vacuum Wave"
+          ],
+          "constant": "SPECIES_LUCARIO",
+          "displayName": "Lucario",
+          "innates": [
+            "ABILITY_MINDS_EYE",
+            "ABILITY_QUICK_FEET",
+            "ABILITY_AURA_SHIELD"
+          ],
+          "itemConstant": "ITEM_CHOICE_SPECS",
+          "itemName": "Choice Specs",
+          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_specs.png",
+          "sprite": "sprites/pokemon/lucario.png"
+        },
+        {
+          "name": "Steelix",
+          "item": "Steeltite",
+          "level": 85,
+          "ability": "Sturdy",
+          "nature": "Impish",
+          "evs": {
+            "hp": 252,
+            "def": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heavy Slam",
+            "Dig",
+            "Rock Slide",
+            "Protect"
+          ],
+          "constant": "SPECIES_STEELIX",
+          "displayName": "Steelix",
+          "innates": [
+            "ABILITY_FILTER",
+            "ABILITY_BURROWER",
+            "ABILITY_SIEGEBREAKER"
+          ],
+          "itemConstant": "ITEM_STEELTITE",
+          "itemName": "Steeltite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Steel -type form.",
+          "itemIcon": "sprites/items/steelixite.png",
+          "sprite": "sprites/pokemon/steelix.png"
         }
       ]
     },
@@ -335247,11 +335695,49 @@
       ],
       "party": [
         {
+          "name": "Ribombee",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Shield Dust",
+          "nature": "Timid",
+          "evs": {
+            "hp": 252,
+            "spa": 4,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Tailwind",
+            "Pollen Puff",
+            "Moonblast",
+            "Sticky Web"
+          ],
+          "constant": "SPECIES_RIBOMBEE",
+          "displayName": "Ribombee",
+          "innates": [
+            "ABILITY_AROMA_VEIL",
+            "ABILITY_DAZZLING",
+            "ABILITY_FRIEND_GUARD"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/ribombee.png"
+        },
+        {
           "name": "Kleavor",
           "item": "Focus Sash",
           "level": 85,
           "ability": "Sharpness",
-          "nature": "",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -335266,7 +335752,7 @@
           },
           "moves": [
             "Stone Axe",
-            "Stone Edge",
+            "Rock Slide",
             "X-Scissor",
             "Aerial Ace"
           ],
@@ -335282,43 +335768,6 @@
           "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
           "itemIcon": "sprites/items/focus_sash.png",
           "sprite": "sprites/pokemon/kleavor.png"
-        },
-        {
-          "name": "Ribombee",
-          "item": "Sitrus Berry",
-          "level": 85,
-          "ability": "Shield Dust",
-          "nature": "",
-          "evs": {
-            "spa": 252,
-            "spe": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Sticky Web",
-            "Pollen Puff",
-            "Bug Buzz",
-            "Quiver Dance"
-          ],
-          "constant": "SPECIES_RIBOMBEE",
-          "displayName": "Ribombee",
-          "innates": [
-            "ABILITY_AROMA_VEIL",
-            "ABILITY_DAZZLING",
-            "ABILITY_FRIEND_GUARD"
-          ],
-          "itemConstant": "ITEM_SITRUS_BERRY",
-          "itemName": "Sitrus Berry",
-          "itemDescription": "A hold item that restores the user's HP a little.",
-          "itemIcon": "sprites/items/sitrus_berry.png",
-          "sprite": "sprites/pokemon/ribombee.png"
         },
         {
           "name": "Centiskorch",
@@ -335362,7 +335811,7 @@
           "item": "Bugtite",
           "level": 85,
           "ability": "Technician",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -335378,8 +335827,8 @@
           "moves": [
             "Bullet Punch",
             "Swords Dance",
-            "U-Turn",
-            "Roost"
+            "Bug Bite",
+            "Night Slash"
           ],
           "constant": "SPECIES_SCIZOR",
           "displayName": "Scizor",
@@ -335399,7 +335848,7 @@
           "item": "Charti Berry",
           "level": 85,
           "ability": "Flame Body",
-          "nature": "",
+          "nature": "Timid",
           "evs": {
             "spa": 252,
             "spe": 252
@@ -335415,8 +335864,8 @@
           "moves": [
             "Quiver Dance",
             "Bug Buzz",
-            "Hurricane",
-            "Fiery Dance"
+            "Heat Wave",
+            "Giga Drain"
           ],
           "constant": "SPECIES_VOLCARONA",
           "displayName": "Volcarona",
@@ -335647,10 +336096,10 @@
           "sprite": "sprites/pokemon/hawlucha.png"
         },
         {
-          "name": "Zamazenta",
-          "item": "Rusted Shield",
+          "name": "Zapdos Galar",
+          "item": "Leftovers",
           "level": 85,
-          "ability": "Dauntless Shield",
+          "ability": "",
           "nature": "Jolly",
           "evs": {
             "atk": 100,
@@ -335659,22 +336108,22 @@
           "ivs": {},
           "moves": [
             "Close Combat",
-            "Iron Head",
-            "Crunch",
-            "Play Rough"
+            "Thunderous Kick",
+            "Drill Peck",
+            "U-Turn"
           ],
-          "constant": "SPECIES_ZAMAZENTA_HERO",
-          "displayName": "Zamazenta",
+          "constant": "SPECIES_ZAPDOS_GALAR",
+          "displayName": "Zapdos Galar",
           "innates": [
-            "ABILITY_INNER_FOCUS",
-            "ABILITY_SCRAPPY",
-            "ABILITY_GUARDIAN"
+            "ABILITY_SPEED_BOOST",
+            "ABILITY_TOUGH_CLAWS",
+            "ABILITY_GUTS"
           ],
-          "itemConstant": "ITEM_RUSTED_SHIELD",
-          "itemName": "Rusted Shield",
-          "itemDescription": "A rusty shield. A hero used it to halt a disaster.",
-          "itemIcon": "sprites/items/rusted_shield.png",
-          "sprite": "sprites/pokemon/zamazenta_hero.png"
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/zapdos_galar.png"
         }
       ]
     },
@@ -335692,10 +336141,10 @@
       "party": [
         {
           "name": "Mienshao",
-          "item": "Choice Band",
+          "item": "Sitrus Berry",
           "level": 85,
           "ability": "Inner Focus",
-          "nature": "",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -335709,9 +336158,9 @@
             "spe": 31
           },
           "moves": [
-            "Hi Jump Kick",
-            "U-Turn",
-            "Meteor Mash",
+            "Fake Out",
+            "Close Combat",
+            "Wide Guard",
             "Triple Axel"
           ],
           "constant": "SPECIES_MIENSHAO",
@@ -335721,10 +336170,10 @@
             "ABILITY_TECHNICIAN",
             "ABILITY_LIMBER"
           ],
-          "itemConstant": "ITEM_CHOICE_BAND",
-          "itemName": "Choice Band",
-          "itemDescription": "Boosts Attack, but allows the use of only one move.",
-          "itemIcon": "sprites/items/choice_band.png",
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
           "sprite": "sprites/pokemon/mienshao.png"
         },
         {
@@ -335763,7 +336212,7 @@
           "item": "Wide Lens",
           "level": 85,
           "ability": "Hustle",
-          "nature": "",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -335780,7 +336229,7 @@
             "Victory Dance",
             "Close Combat",
             "Leaf Blade",
-            "Ice Spinner"
+            "Drain Punch"
           ],
           "constant": "SPECIES_LILLIGANT_HISUI",
           "displayName": "Lilligant Hisui",
@@ -335840,7 +336289,7 @@
           },
           "ivs": {},
           "moves": [
-            "Swords Dance",
+            "Tailwind",
             "Flying Press",
             "Close Combat",
             "Fire Punch"
@@ -335859,35 +336308,35 @@
           "sprite": "sprites/pokemon/hawlucha.png"
         },
         {
-          "name": "Zamazenta",
-          "item": "Rusted Shield",
+          "name": "Zapdos Galar",
+          "item": "Leftovers",
           "level": 85,
-          "ability": "Dauntless Shield",
-          "nature": "Jolly",
+          "ability": "",
+          "nature": "Impish",
           "evs": {
-            "atk": 252,
-            "spd": 4,
-            "spe": 252
+            "hp": 252,
+            "def": 252,
+            "spe": 4
           },
           "ivs": {},
           "moves": [
             "Close Combat",
-            "Iron Head",
-            "Crunch",
-            "Play Rough"
+            "Thunderous Kick",
+            "Drill Peck",
+            "U-Turn"
           ],
-          "constant": "SPECIES_ZAMAZENTA_HERO",
-          "displayName": "Zamazenta",
+          "constant": "SPECIES_ZAPDOS_GALAR",
+          "displayName": "Zapdos Galar",
           "innates": [
-            "ABILITY_INNER_FOCUS",
-            "ABILITY_SCRAPPY",
-            "ABILITY_GUARDIAN"
+            "ABILITY_SPEED_BOOST",
+            "ABILITY_TOUGH_CLAWS",
+            "ABILITY_GUTS"
           ],
-          "itemConstant": "ITEM_RUSTED_SHIELD",
-          "itemName": "Rusted Shield",
-          "itemDescription": "A rusty shield. A hero used it to halt a disaster.",
-          "itemIcon": "sprites/items/rusted_shield.png",
-          "sprite": "sprites/pokemon/zamazenta_hero.png"
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/zapdos_galar.png"
         }
       ]
     },
@@ -336120,8 +336569,8 @@
           "ivs": {},
           "moves": [
             "Draco Meteor",
-            "Fire Blast",
-            "Sludge Wave",
+            "Thunder",
+            "Sludge Bomb",
             "Hydro Pump"
           ],
           "constant": "SPECIES_GOODRA",
@@ -336139,7 +336588,7 @@
         },
         {
           "name": "Kingdra",
-          "item": "Choice Specs",
+          "item": "Life Orb",
           "level": 85,
           "ability": "Swift Swim",
           "nature": "Modest",
@@ -336164,10 +336613,10 @@
             "ABILITY_MARVEL_SCALE",
             "ABILITY_MULTISCALE"
           ],
-          "itemConstant": "ITEM_CHOICE_SPECS",
-          "itemName": "Choice Specs",
-          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
-          "itemIcon": "sprites/items/choice_specs.png",
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/kingdra.png"
         },
         {
@@ -336183,9 +336632,9 @@
           },
           "ivs": {},
           "moves": [
-            "First Impression",
+            "Close Combat",
             "Outrage",
-            "Earthquake",
+            "Stomping Tantrum",
             "Poison Jab"
           ],
           "constant": "SPECIES_HAXORUS",
@@ -336222,9 +336671,9 @@
           },
           "moves": [
             "Dragon Ascent",
-            "Dragon Dance",
+            "Tailwind",
             "Extreme Speed",
-            "Outrage"
+            "Dragon Claw"
           ],
           "constant": "SPECIES_RAYQUAZA",
           "displayName": "Rayquaza",
@@ -336241,21 +336690,21 @@
         },
         {
           "name": "Kommo-o",
-          "item": "Leftovers",
+          "item": "Throat Spray",
           "level": 85,
           "ability": "Soundproof",
-          "nature": "Jolly",
+          "nature": "Timid",
           "evs": {
-            "hp": 248,
-            "atk": 8,
+            "hp": 4,
+            "spa": 252,
             "spe": 252
           },
           "ivs": {},
           "moves": [
             "Clangorous Soul",
-            "Drain Punch",
-            "Shadow Claw",
-            "Substitute"
+            "Clanging Scales",
+            "Aura Sphere",
+            "Protect"
           ],
           "constant": "SPECIES_KOMMO_O",
           "displayName": "Kommo-o",
@@ -336264,10 +336713,10 @@
             "ABILITY_BATTLE_ARMOR",
             "ABILITY_INNER_FOCUS"
           ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
+          "itemConstant": "ITEM_THROAT_SPRAY",
+          "itemName": "Throat Spray",
+          "itemDescription": "Raises Sp. Atk. if the holder uses a sound-based move.",
+          "itemIcon": "sprites/items/throat_spray.png",
           "sprite": "sprites/pokemon/kommo_o.png"
         },
         {
@@ -336285,8 +336734,8 @@
           "moves": [
             "Dragon Claw",
             "Flare Blitz",
-            "Brick Break",
-            "Shadow Claw"
+            "Thunder Punch",
+            "Brick Break"
           ],
           "constant": "SPECIES_CHARIZARD",
           "displayName": "Charizard",
@@ -336489,6 +336938,39 @@
       ],
       "party": [
         {
+          "name": "Tornadus-Therian",
+          "item": "Leftovers",
+          "level": 85,
+          "ability": "Regenerator",
+          "nature": "Timid",
+          "evs": {
+            "hp": 88,
+            "def": 164,
+            "spa": 32,
+            "spd": 8,
+            "spe": 216
+          },
+          "ivs": {},
+          "moves": [
+            "Bleakwind Storm",
+            "Knock Off",
+            "Tailwind",
+            "Taunt"
+          ],
+          "constant": "SPECIES_TORNADUS_THERIAN",
+          "displayName": "Tornadus-Therian",
+          "innates": [
+            "ABILITY_DISQUIET",
+            "ABILITY_WINDBURST",
+            "ABILITY_VITAL_SPIRIT"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/tornadus_therian.png"
+        },
+        {
           "name": "Rotom-Wash",
           "item": "Wiki Berry",
           "level": 84,
@@ -336502,7 +336984,7 @@
           "ivs": {},
           "moves": [
             "Hydro Pump",
-            "Volt Switch",
+            "Thunderbolt",
             "Will-O-Wisp",
             "Pain Split"
           ],
@@ -336532,10 +337014,10 @@
           },
           "ivs": {},
           "moves": [
+            "Dragon Claw",
             "Stealth Rock",
-            "Swords Dance",
-            "Earthquake",
-            "Stone Edge"
+            "Stomping Tantrum",
+            "Rock Slide"
           ],
           "constant": "SPECIES_GARCHOMP",
           "displayName": "Garchomp",
@@ -336579,39 +337061,6 @@
           "sprite": "sprites/pokemon/ditto.png"
         },
         {
-          "name": "Tornadus-Therian",
-          "item": "Leftovers",
-          "level": 85,
-          "ability": "Regenerator",
-          "nature": "Timid",
-          "evs": {
-            "hp": 88,
-            "def": 164,
-            "spa": 32,
-            "spd": 8,
-            "spe": 216
-          },
-          "ivs": {},
-          "moves": [
-            "Hurricane",
-            "Knock Off",
-            "Defog",
-            "Taunt"
-          ],
-          "constant": "SPECIES_TORNADUS_THERIAN",
-          "displayName": "Tornadus-Therian",
-          "innates": [
-            "ABILITY_DISQUIET",
-            "ABILITY_WINDBURST",
-            "ABILITY_VITAL_SPIRIT"
-          ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/tornadus_therian.png"
-        },
-        {
           "name": "Ferrothorn",
           "item": "Leftovers",
           "level": 85,
@@ -336622,10 +337071,12 @@
             "def": 48,
             "spd": 208
           },
-          "ivs": {},
+          "ivs": {
+            "spe": 0
+          },
           "moves": [
             "Leech Seed",
-            "Spikes",
+            "Gyro Ball",
             "Power Whip",
             "Protect"
           ],
@@ -336646,7 +337097,7 @@
           "name": "Scizor",
           "item": "Bugtite",
           "level": 86,
-          "ability": "Light Metal",
+          "ability": "Technician",
           "nature": "Impish",
           "evs": {
             "hp": 248,
@@ -336657,8 +337108,8 @@
           "moves": [
             "Bullet Punch",
             "Swords Dance",
-            "Roost",
-            "U-turn"
+            "Dual Wingbeat",
+            "Bug Bite"
           ],
           "constant": "SPECIES_SCIZOR",
           "displayName": "Scizor",
@@ -336879,7 +337330,7 @@
             "Reflect",
             "Light Screen",
             "Psychic",
-            "Dazzling Gleam"
+            "Tailwind"
           ],
           "constant": "SPECIES_XATU",
           "displayName": "Xatu",
@@ -336895,53 +337346,22 @@
           "sprite": "sprites/pokemon/xatu.png"
         },
         {
-          "name": "Noctowl",
-          "item": "Choice Scarf",
-          "level": 85,
-          "ability": "",
-          "nature": "Timid",
-          "evs": {
-            "def": 4,
-            "spa": 252,
-            "spe": 252
-          },
-          "ivs": {},
-          "moves": [
-            "Moonblast",
-            "Extrasensory",
-            "Hurricane",
-            "Boomburst"
-          ],
-          "constant": "SPECIES_NOCTOWL",
-          "displayName": "Noctowl",
-          "innates": [
-            "ABILITY_SOOTHING",
-            "ABILITY_MAGIC_GUARD",
-            "ABILITY_STYGIAN"
-          ],
-          "itemConstant": "ITEM_CHOICE_SCARF",
-          "itemName": "Choice Scarf",
-          "itemDescription": "Boosts Speed, but allows the use of only one move.",
-          "itemIcon": "sprites/items/choice_scarf.png",
-          "sprite": "sprites/pokemon/noctowl.png"
-        },
-        {
           "name": "Clefable",
           "item": "Sitrus Berry",
           "level": 85,
           "ability": "Magic Guard",
-          "nature": "Modest",
+          "nature": "Bold",
           "evs": {
             "hp": 252,
-            "def": 4,
-            "spa": 252
+            "def": 252,
+            "spd": 4
           },
           "ivs": {},
           "moves": [
             "Moonblast",
-            "Cosmic Power",
-            "Ice Beam",
-            "Focus Blast"
+            "Follow Me",
+            "Helping Hand",
+            "Cosmic Power"
           ],
           "constant": "SPECIES_CLEFABLE",
           "displayName": "Clefable",
@@ -336955,6 +337375,37 @@
           "itemDescription": "A hold item that restores the user's HP a little.",
           "itemIcon": "sprites/items/sitrus_berry.png",
           "sprite": "sprites/pokemon/clefable.png"
+        },
+        {
+          "name": "Noctowl",
+          "item": "Choice Scarf",
+          "level": 85,
+          "ability": "Tinted Lens",
+          "nature": "Timid",
+          "evs": {
+            "def": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {},
+          "moves": [
+            "Moonblast",
+            "Extrasensory",
+            "Hurricane",
+            "Hyper Voice"
+          ],
+          "constant": "SPECIES_NOCTOWL",
+          "displayName": "Noctowl",
+          "innates": [
+            "ABILITY_SOOTHING",
+            "ABILITY_MAGIC_GUARD",
+            "ABILITY_STYGIAN"
+          ],
+          "itemConstant": "ITEM_CHOICE_SCARF",
+          "itemName": "Choice Scarf",
+          "itemDescription": "Boosts Speed, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_scarf.png",
+          "sprite": "sprites/pokemon/noctowl.png"
         },
         {
           "name": "Snorlax",
@@ -336972,7 +337423,7 @@
             "High Horsepower",
             "Body Slam",
             "Thunder Punch",
-            "Earthquake"
+            "Grav Apple"
           ],
           "constant": "SPECIES_SNORLAX",
           "displayName": "Snorlax",
@@ -337001,9 +337452,9 @@
           "ivs": {},
           "moves": [
             "Victory Dance",
-            "Axe Kick",
+            "Close Combat",
             "Leaf Blade",
-            "Triple Axel"
+            "Drain Punch"
           ],
           "constant": "SPECIES_LILLIGANT_HISUI",
           "displayName": "Lilligant-Hisui",
@@ -337064,13 +337515,13 @@
       ],
       "party": [
         {
-          "name": "Salamence",
-          "item": "Dragotite",
+          "name": "Pidgeot",
+          "item": "Flyingite",
           "level": 85,
-          "ability": "Intimidate",
+          "ability": "Keen Eye",
           "nature": "",
           "evs": {
-            "atk": 100,
+            "spa": 100,
             "spe": 100
           },
           "ivs": {
@@ -337082,23 +337533,23 @@
             "spe": 31
           },
           "moves": [
-            "Zen Headbutt",
-            "Double-Edge",
-            "Dragon Claw",
-            "Dual Wingbeat"
+            "Hurricane",
+            "Heat Wave",
+            "Roost",
+            "Protect"
           ],
-          "constant": "SPECIES_SALAMENCE",
-          "displayName": "Salamence",
+          "constant": "SPECIES_PIDGEOT",
+          "displayName": "Pidgeot",
           "innates": [
-            "ABILITY_WINDCALLER",
-            "ABILITY_BATTLE_ARMOR",
-            "ABILITY_RIVALRY"
+            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_WINDBURST",
+            "ABILITY_NO_GUARD"
           ],
-          "itemConstant": "ITEM_DRAGOTITE",
-          "itemName": "Dragotite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Dragon -type form.",
-          "itemIcon": "sprites/items/dragoninite.png",
-          "sprite": "sprites/pokemon/salamence.png"
+          "itemConstant": "ITEM_FLYINGITE",
+          "itemName": "Flyingite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Flying -type form.",
+          "itemIcon": "sprites/items/staraptite.png",
+          "sprite": "sprites/pokemon/pidgeot.png"
         },
         {
           "name": "Flamigo",
@@ -337300,13 +337751,13 @@
       ],
       "party": [
         {
-          "name": "Salamence",
-          "item": "Dragotite",
+          "name": "Pidgeot",
+          "item": "Flyingite",
           "level": 85,
-          "ability": "Intimidate",
-          "nature": "",
+          "ability": "Keen Eye",
+          "nature": "Jolly",
           "evs": {
-            "atk": 252,
+            "spa": 252,
             "spe": 252
           },
           "ivs": {
@@ -337318,30 +337769,30 @@
             "spe": 31
           },
           "moves": [
-            "Zen Headbutt",
-            "Double-Edge",
-            "Dragon Claw",
-            "Dual Wingbeat"
+            "Hurricane",
+            "Heat Wave",
+            "Roost",
+            "Protect"
           ],
-          "constant": "SPECIES_SALAMENCE",
-          "displayName": "Salamence",
+          "constant": "SPECIES_PIDGEOT",
+          "displayName": "Pidgeot",
           "innates": [
-            "ABILITY_WINDCALLER",
-            "ABILITY_BATTLE_ARMOR",
-            "ABILITY_RIVALRY"
+            "ABILITY_VITAL_SPIRIT",
+            "ABILITY_WINDBURST",
+            "ABILITY_NO_GUARD"
           ],
-          "itemConstant": "ITEM_DRAGOTITE",
-          "itemName": "Dragotite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Dragon -type form.",
-          "itemIcon": "sprites/items/dragoninite.png",
-          "sprite": "sprites/pokemon/salamence.png"
+          "itemConstant": "ITEM_FLYINGITE",
+          "itemName": "Flyingite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Flying -type form.",
+          "itemIcon": "sprites/items/staraptite.png",
+          "sprite": "sprites/pokemon/pidgeot.png"
         },
         {
           "name": "Flamigo",
           "item": "Choice Band",
           "level": 85,
           "ability": "Scrappy",
-          "nature": "",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -337357,8 +337808,8 @@
           "moves": [
             "Brave Bird",
             "Throat Chop",
-            "Hi Jump Kick",
-            "U-Turn"
+            "Close Combat",
+            "U-turn"
           ],
           "constant": "SPECIES_FLAMIGO",
           "displayName": "Flamigo",
@@ -337377,8 +337828,8 @@
           "name": "Landorus Therian",
           "item": "Life Orb",
           "level": 85,
-          "ability": "",
-          "nature": "",
+          "ability": "Intimidate",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -337392,7 +337843,7 @@
             "spe": 31
           },
           "moves": [
-            "Outrage",
+            "Rock Slide",
             "Earthquake",
             "Knock Off",
             "Hammer Arm"
@@ -337415,7 +337866,7 @@
           "item": "Leftovers",
           "level": 85,
           "ability": "Mirror Armor",
-          "nature": "",
+          "nature": "Impish",
           "evs": {
             "hp": 252,
             "def": 252
@@ -337431,7 +337882,7 @@
           "moves": [
             "Body Press",
             "Iron Defense",
-            "Drill Peck",
+            "Tailwind",
             "Roost"
           ],
           "constant": "SPECIES_CORVIKNIGHT",
@@ -337452,7 +337903,7 @@
           "item": "Life Orb",
           "level": 85,
           "ability": "Moxie",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -337469,7 +337920,7 @@
             "Sucker Punch",
             "Night Slash",
             "Brave Bird",
-            "U-Turn"
+            "Heat Wave"
           ],
           "constant": "SPECIES_HONCHKROW",
           "displayName": "Honchkrow",
@@ -337758,9 +338209,9 @@
             "atk": 0
           },
           "moves": [
-            "Spikes",
+            "Tailwind",
             "Body Press",
-            "Whirlwind",
+            "Iron Defense",
             "Roost"
           ],
           "constant": "SPECIES_SKARMORY",
@@ -337792,7 +338243,7 @@
             "atk": 0
           },
           "moves": [
-            "Discharge",
+            "Thunderbolt",
             "Flash Cannon",
             "Volt Switch",
             "Body Press"
@@ -337824,7 +338275,7 @@
           "ivs": {},
           "moves": [
             "Heavy Slam",
-            "Earthquake",
+            "Stomping Tantrum",
             "Knock Off",
             "Bullet Punch"
           ],
@@ -337928,7 +338379,7 @@
             "Aura Sphere",
             "Dragon Pulse",
             "Flash Cannon",
-            "Nasty Plot"
+            "Quick Guard"
           ],
           "constant": "SPECIES_LUCARIO",
           "displayName": "Lucario",
@@ -337948,7 +338399,7 @@
     {
       "constant": "TRAINER_KAREN_2",
       "name": "Karen",
-      "displayName": "Karen (Rematch)",
+      "displayName": "Karen (Rematch: Variant 1)",
       "difficulty": "Normal",
       "averageLevel": 85.0,
       "pic": "Elite Four Karen",
@@ -337962,11 +338413,8 @@
           "item": "Light Clay",
           "level": 85,
           "ability": "Prankster",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "atk": 100
-          },
+          "nature": "Careful",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -337978,8 +338426,8 @@
           "moves": [
             "Reflect",
             "Light Screen",
-            "Parting Shot",
-            "Play Rough"
+            "Spirit Break",
+            "Thunder Wave"
           ],
           "constant": "SPECIES_GRIMMSNARL",
           "displayName": "Grimmsnarl",
@@ -337995,15 +338443,12 @@
           "sprite": "sprites/pokemon/grimmsnarl.png"
         },
         {
-          "name": "Absol",
-          "item": "Ghostite",
+          "name": "Scrafty",
+          "item": "Sitrus Berry",
           "level": 85,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
+          "ability": "Intimidate",
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338013,34 +338458,65 @@
             "spe": 31
           },
           "moves": [
-            "Shadow Claw",
-            "Night Slash",
-            "Swords Dance",
-            "Play Rough"
+            "Fake Out",
+            "Drain Punch",
+            "Knock Off",
+            "Protect"
           ],
-          "constant": "SPECIES_ABSOL",
-          "displayName": "Absol",
+          "constant": "SPECIES_SCRAFTY",
+          "displayName": "Scrafty",
           "innates": [
-            "ABILITY_SHARPNESS",
-            "ABILITY_STAKEOUT",
-            "ABILITY_DARK_AURA"
+            "ABILITY_GANG_UP",
+            "ABILITY_ADRENALINE",
+            "ABILITY_INFILTRATOR"
           ],
-          "itemConstant": "ITEM_GHOSTITE",
-          "itemName": "Ghostite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Ghost -type form.",
-          "itemIcon": "sprites/items/gengarite.png",
-          "sprite": "sprites/pokemon/absol.png"
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/scrafty.png"
+        },
+        {
+          "name": "Hydreigon",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Levitate",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Dark Pulse",
+            "Draco Meteor",
+            "Heat Wave",
+            "Protect"
+          ],
+          "constant": "SPECIES_HYDREIGON",
+          "displayName": "Hydreigon",
+          "innates": [
+            "ABILITY_STRONG_JAW",
+            "ABILITY_AFTERMATH",
+            "ABILITY_UNSTOPPABLE"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/hydreigon.png"
         },
         {
           "name": "Umbreon",
-          "item": "Sitrus Berry",
+          "item": "Leftovers",
           "level": 85,
-          "ability": "Synchronize",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "def": 100
-          },
+          "ability": "Inner Focus",
+          "nature": "Bold",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338050,9 +338526,9 @@
             "spe": 31
           },
           "moves": [
-            "Wish",
             "Foul Play",
-            "Baton Pass",
+            "Snarl",
+            "Toxic",
             "Moonlight"
           ],
           "constant": "SPECIES_UMBREON",
@@ -338062,22 +338538,53 @@
             "ABILITY_POISON_TOUCH",
             "ABILITY_INFILTRATOR"
           ],
-          "itemConstant": "ITEM_SITRUS_BERRY",
-          "itemName": "Sitrus Berry",
-          "itemDescription": "A hold item that restores the user's HP a little.",
-          "itemIcon": "sprites/items/sitrus_berry.png",
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
           "sprite": "sprites/pokemon/umbreon.png"
+        },
+        {
+          "name": "Absol",
+          "item": "Darktite",
+          "level": 85,
+          "ability": "Super Luck",
+          "nature": "Jolly",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Night Slash",
+            "Play Rough",
+            "Sucker Punch",
+            "Protect"
+          ],
+          "constant": "SPECIES_ABSOL",
+          "displayName": "Absol",
+          "innates": [
+            "ABILITY_SHARPNESS",
+            "ABILITY_STAKEOUT",
+            "ABILITY_DARK_AURA"
+          ],
+          "itemConstant": "ITEM_DARKTITE",
+          "itemName": "Darktite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Dark -type form.",
+          "itemIcon": "sprites/items/houndoominite.png",
+          "sprite": "sprites/pokemon/absol.png"
         },
         {
           "name": "Kingambit",
           "item": "Blackglasses",
           "level": 85,
           "ability": "Supreme Overlord",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spd": 100
-          },
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338090,7 +338597,7 @@
             "Kowtow Cleave",
             "Iron Head",
             "Sucker Punch",
-            "Brick Break"
+            "Protect"
           ],
           "constant": "SPECIES_KINGAMBIT",
           "displayName": "Kingambit",
@@ -338104,87 +338611,13 @@
           "itemDescription": "A hold item that raises the power of Dark-type moves.",
           "itemIcon": "sprites/items/black_glasses.png",
           "sprite": "sprites/pokemon/kingambit.png"
-        },
-        {
-          "name": "Scrafty",
-          "item": "Leftovers",
-          "level": 85,
-          "ability": "Intimidate",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Hi Jump Kick",
-            "Crunch",
-            "Parting Shot",
-            "Head Smash"
-          ],
-          "constant": "SPECIES_SCRAFTY",
-          "displayName": "Scrafty",
-          "innates": [
-            "ABILITY_GANG_UP",
-            "ABILITY_ADRENALINE",
-            "ABILITY_INFILTRATOR"
-          ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/scrafty.png"
-        },
-        {
-          "name": "Honchkrow",
-          "item": "Life Orb",
-          "level": 85,
-          "ability": "Moxie",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Superpower",
-            "Sucker Punch",
-            "Steel Wing",
-            "Brave Bird"
-          ],
-          "constant": "SPECIES_HONCHKROW",
-          "displayName": "Honchkrow",
-          "innates": [
-            "ABILITY_STAKEOUT",
-            "ABILITY_DARK_AURA",
-            "ABILITY_SUPREME_OVERLORD"
-          ],
-          "itemConstant": "ITEM_LIFE_ORB",
-          "itemName": "Life Orb",
-          "itemDescription": "Boosts move power but holder loses HP with each attack.",
-          "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/honchkrow.png"
         }
       ]
     },
     {
       "constant": "TRAINER_KAREN_2",
       "name": "Karen",
-      "displayName": "Karen (Rematch, Hard)",
+      "displayName": "Karen (Rematch: Variant 1, Hard)",
       "difficulty": "Hard",
       "averageLevel": 85.0,
       "pic": "Elite Four Karen",
@@ -338198,120 +338631,10 @@
           "item": "Light Clay",
           "level": 85,
           "ability": "Prankster",
-          "nature": "",
+          "nature": "Careful",
           "evs": {
             "hp": 252,
-            "atk": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Reflect",
-            "Light Screen",
-            "Parting Shot",
-            "Play Rough"
-          ],
-          "constant": "SPECIES_GRIMMSNARL",
-          "displayName": "Grimmsnarl",
-          "innates": [
-            "ABILITY_UNNERVE",
-            "ABILITY_INFILTRATOR",
-            "ABILITY_BULLETPROOF"
-          ],
-          "itemConstant": "ITEM_LIGHT_CLAY",
-          "itemName": "Light Clay",
-          "itemDescription": "Extends the length of barrier moves used by the holder.",
-          "itemIcon": "sprites/items/light_clay.png",
-          "sprite": "sprites/pokemon/grimmsnarl.png"
-        },
-        {
-          "name": "Absol",
-          "item": "Ghostite",
-          "level": 85,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "atk": 252,
-            "spe": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Shadow Claw",
-            "Night Slash",
-            "Swords Dance",
-            "Play Rough"
-          ],
-          "constant": "SPECIES_ABSOL",
-          "displayName": "Absol",
-          "innates": [
-            "ABILITY_SHARPNESS",
-            "ABILITY_STAKEOUT",
-            "ABILITY_DARK_AURA"
-          ],
-          "itemConstant": "ITEM_GHOSTITE",
-          "itemName": "Ghostite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Ghost -type form.",
-          "itemIcon": "sprites/items/gengarite.png",
-          "sprite": "sprites/pokemon/absol.png"
-        },
-        {
-          "name": "Umbreon",
-          "item": "Sitrus Berry",
-          "level": 85,
-          "ability": "Synchronize",
-          "nature": "",
-          "evs": {
-            "hp": 252,
-            "def": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Wish",
-            "Foul Play",
-            "Baton Pass",
-            "Moonlight"
-          ],
-          "constant": "SPECIES_UMBREON",
-          "displayName": "Umbreon",
-          "innates": [
-            "ABILITY_ADAPTABILITY",
-            "ABILITY_POISON_TOUCH",
-            "ABILITY_INFILTRATOR"
-          ],
-          "itemConstant": "ITEM_SITRUS_BERRY",
-          "itemName": "Sitrus Berry",
-          "itemDescription": "A hold item that restores the user's HP a little.",
-          "itemIcon": "sprites/items/sitrus_berry.png",
-          "sprite": "sprites/pokemon/umbreon.png"
-        },
-        {
-          "name": "Kingambit",
-          "item": "Blackglasses",
-          "level": 85,
-          "ability": "Supreme Overlord",
-          "nature": "",
-          "evs": {
-            "atk": 252,
+            "def": 4,
             "spd": 252
           },
           "ivs": {
@@ -338323,10 +338646,200 @@
             "spe": 31
           },
           "moves": [
+            "Reflect",
+            "Light Screen",
+            "Spirit Break",
+            "Thunder Wave"
+          ],
+          "constant": "SPECIES_GRIMMSNARL",
+          "displayName": "Grimmsnarl",
+          "innates": [
+            "ABILITY_UNNERVE",
+            "ABILITY_INFILTRATOR",
+            "ABILITY_BULLETPROOF"
+          ],
+          "itemConstant": "ITEM_LIGHT_CLAY",
+          "itemName": "Light Clay",
+          "itemDescription": "Extends the length of barrier moves used by the holder.",
+          "itemIcon": "sprites/items/light_clay.png",
+          "sprite": "sprites/pokemon/grimmsnarl.png"
+        },
+        {
+          "name": "Scrafty",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Intimidate",
+          "nature": "Adamant",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Fake Out",
+            "Drain Punch",
+            "Knock Off",
+            "Protect"
+          ],
+          "constant": "SPECIES_SCRAFTY",
+          "displayName": "Scrafty",
+          "innates": [
+            "ABILITY_GANG_UP",
+            "ABILITY_ADRENALINE",
+            "ABILITY_INFILTRATOR"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/scrafty.png"
+        },
+        {
+          "name": "Hydreigon",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Levitate",
+          "nature": "Timid",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Dark Pulse",
+            "Draco Meteor",
+            "Heat Wave",
+            "Protect"
+          ],
+          "constant": "SPECIES_HYDREIGON",
+          "displayName": "Hydreigon",
+          "innates": [
+            "ABILITY_STRONG_JAW",
+            "ABILITY_AFTERMATH",
+            "ABILITY_UNSTOPPABLE"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/hydreigon.png"
+        },
+        {
+          "name": "Umbreon",
+          "item": "Leftovers",
+          "level": 85,
+          "ability": "Inner Focus",
+          "nature": "Bold",
+          "evs": {
+            "hp": 252,
+            "def": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Foul Play",
+            "Snarl",
+            "Helping Hand",
+            "Moonlight"
+          ],
+          "constant": "SPECIES_UMBREON",
+          "displayName": "Umbreon",
+          "innates": [
+            "ABILITY_ADAPTABILITY",
+            "ABILITY_POISON_TOUCH",
+            "ABILITY_INFILTRATOR"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/umbreon.png"
+        },
+        {
+          "name": "Absol",
+          "item": "Darktite",
+          "level": 85,
+          "ability": "Super Luck",
+          "nature": "Jolly",
+          "evs": {
+            "hp": 4,
+            "atk": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Night Slash",
+            "Play Rough",
+            "Sucker Punch",
+            "Protect"
+          ],
+          "constant": "SPECIES_ABSOL",
+          "displayName": "Absol",
+          "innates": [
+            "ABILITY_SHARPNESS",
+            "ABILITY_STAKEOUT",
+            "ABILITY_DARK_AURA"
+          ],
+          "itemConstant": "ITEM_DARKTITE",
+          "itemName": "Darktite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Dark -type form.",
+          "itemIcon": "sprites/items/houndoominite.png",
+          "sprite": "sprites/pokemon/absol.png"
+        },
+        {
+          "name": "Kingambit",
+          "item": "Blackglasses",
+          "level": 85,
+          "ability": "Supreme Overlord",
+          "nature": "Adamant",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
             "Kowtow Cleave",
             "Iron Head",
             "Sucker Punch",
-            "Brick Break"
+            "Protect"
           ],
           "constant": "SPECIES_KINGAMBIT",
           "displayName": "Kingambit",
@@ -338340,17 +338853,28 @@
           "itemDescription": "A hold item that raises the power of Dark-type moves.",
           "itemIcon": "sprites/items/black_glasses.png",
           "sprite": "sprites/pokemon/kingambit.png"
-        },
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_KAREN_REMATCH_ALT",
+      "name": "Karen",
+      "displayName": "Karen (Rematch: Variant 2)",
+      "difficulty": "Normal",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Karen",
+      "sprite": "sprites/trainers/elite_four_karen.png?v=alpha2",
+      "locations": [
+        "Pokemon League Karens Room"
+      ],
+      "party": [
         {
-          "name": "Scrafty",
-          "item": "Leftovers",
+          "name": "Sableye",
+          "item": "Sitrus Berry",
           "level": 85,
-          "ability": "Intimidate",
-          "nature": "",
-          "evs": {
-            "atk": 252,
-            "spe": 252
-          },
+          "ability": "Prankster",
+          "nature": "Careful",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338360,34 +338884,99 @@
             "spe": 31
           },
           "moves": [
-            "Hi Jump Kick",
-            "Crunch",
-            "Parting Shot",
-            "Head Smash"
+            "Fake Out",
+            "Will-O-Wisp",
+            "Quash",
+            "Foul Play"
           ],
-          "constant": "SPECIES_SCRAFTY",
-          "displayName": "Scrafty",
+          "constant": "SPECIES_SABLEYE",
+          "displayName": "Sableye",
           "innates": [
-            "ABILITY_GANG_UP",
-            "ABILITY_ADRENALINE",
-            "ABILITY_INFILTRATOR"
+            "ABILITY_CURSED_BODY",
+            "ABILITY_PICKPOCKET",
+            "ABILITY_SHADOW_SHIELD"
           ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/scrafty.png"
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/sableye.png"
         },
         {
-          "name": "Honchkrow",
+          "name": "Gengar",
+          "item": "Ghostite",
+          "level": 85,
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Icy Wind",
+            "Protect"
+          ],
+          "constant": "SPECIES_GENGAR",
+          "displayName": "Gengar",
+          "innates": [
+            "ABILITY_PRANKSTER",
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
+          ],
+          "itemConstant": "ITEM_GHOSTITE",
+          "itemName": "Ghostite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Ghost -type form.",
+          "itemIcon": "sprites/items/gengarite.png",
+          "sprite": "sprites/pokemon/gengar.png"
+        },
+        {
+          "name": "Chandelure",
+          "item": "Charcoal",
+          "level": 85,
+          "ability": "Flash Fire",
+          "nature": "Modest",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heat Wave",
+            "Hex",
+            "Energy Ball",
+            "Protect"
+          ],
+          "constant": "SPECIES_CHANDELURE",
+          "displayName": "Chandelure",
+          "innates": [
+            "ABILITY_RITUAL",
+            "ABILITY_UNAWARE",
+            "ABILITY_CURSED_BODY"
+          ],
+          "itemConstant": "ITEM_CHARCOAL",
+          "itemName": "Charcoal",
+          "itemDescription": "A hold item that raises the power of Fire-type moves.",
+          "itemIcon": "sprites/items/charcoal.png",
+          "sprite": "sprites/pokemon/chandelure.png"
+        },
+        {
+          "name": "Mimikyu",
           "item": "Life Orb",
           "level": 85,
-          "ability": "Moxie",
-          "nature": "",
-          "evs": {
-            "atk": 252,
-            "spe": 252
-          },
+          "ability": "Disguise",
+          "nature": "Jolly",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338397,30 +338986,340 @@
             "spe": 31
           },
           "moves": [
-            "Superpower",
-            "Sucker Punch",
-            "Steel Wing",
-            "Brave Bird"
+            "Play Rough",
+            "Shadow Claw",
+            "Swords Dance",
+            "Protect"
           ],
-          "constant": "SPECIES_HONCHKROW",
-          "displayName": "Honchkrow",
+          "constant": "SPECIES_MIMIKYU_DISGUISED",
+          "displayName": "Mimikyu",
           "innates": [
-            "ABILITY_STAKEOUT",
-            "ABILITY_DARK_AURA",
-            "ABILITY_SUPREME_OVERLORD"
+            "ABILITY_CURSED_BODY",
+            "ABILITY_CUTE_CHARM",
+            "ABILITY_DAZZLING"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
           "itemDescription": "Boosts move power but holder loses HP with each attack.",
           "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/honchkrow.png"
+          "sprite": "sprites/pokemon/mimikyu_disguised.png"
+        },
+        {
+          "name": "Aegislash",
+          "item": "Leftovers",
+          "level": 85,
+          "ability": "Stance Change",
+          "nature": "Quiet",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Shadow Ball",
+            "Flash Cannon",
+            "Wide Guard",
+            "King's Shield"
+          ],
+          "constant": "SPECIES_AEGISLASH_SHIELD",
+          "displayName": "Aegislash",
+          "innates": [
+            "ABILITY_SHARPNESS",
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_PHALANX"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/aegislash_shield.png"
+        },
+        {
+          "name": "Dragapult",
+          "item": "Choice Specs",
+          "level": 85,
+          "ability": "Infiltrator",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Dragon Pulse",
+            "Shadow Ball",
+            "Flamethrower",
+            "Thunderbolt"
+          ],
+          "constant": "SPECIES_DRAGAPULT",
+          "displayName": "Dragapult",
+          "innates": [
+            "ABILITY_SHED_SKIN",
+            "ABILITY_INNER_FOCUS",
+            "ABILITY_ADRENALINE"
+          ],
+          "itemConstant": "ITEM_CHOICE_SPECS",
+          "itemName": "Choice Specs",
+          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_specs.png",
+          "sprite": "sprites/pokemon/dragapult.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_KAREN_REMATCH_ALT",
+      "name": "Karen",
+      "displayName": "Karen (Rematch: Variant 2, Hard)",
+      "difficulty": "Hard",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Karen",
+      "sprite": "sprites/trainers/elite_four_karen.png?v=alpha2",
+      "locations": [
+        "Pokemon League Karens Room"
+      ],
+      "party": [
+        {
+          "name": "Sableye",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Prankster",
+          "nature": "Careful",
+          "evs": {
+            "hp": 252,
+            "def": 4,
+            "spd": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Fake Out",
+            "Will-O-Wisp",
+            "Quash",
+            "Foul Play"
+          ],
+          "constant": "SPECIES_SABLEYE",
+          "displayName": "Sableye",
+          "innates": [
+            "ABILITY_CURSED_BODY",
+            "ABILITY_PICKPOCKET",
+            "ABILITY_SHADOW_SHIELD"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/sableye.png"
+        },
+        {
+          "name": "Gengar",
+          "item": "Ghostite",
+          "level": 85,
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Shadow Ball",
+            "Sludge Bomb",
+            "Icy Wind",
+            "Protect"
+          ],
+          "constant": "SPECIES_GENGAR",
+          "displayName": "Gengar",
+          "innates": [
+            "ABILITY_PRANKSTER",
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
+          ],
+          "itemConstant": "ITEM_GHOSTITE",
+          "itemName": "Ghostite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Ghost -type form.",
+          "itemIcon": "sprites/items/gengarite.png",
+          "sprite": "sprites/pokemon/gengar.png"
+        },
+        {
+          "name": "Chandelure",
+          "item": "Charcoal",
+          "level": 85,
+          "ability": "Flash Fire",
+          "nature": "Modest",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heat Wave",
+            "Hex",
+            "Energy Ball",
+            "Protect"
+          ],
+          "constant": "SPECIES_CHANDELURE",
+          "displayName": "Chandelure",
+          "innates": [
+            "ABILITY_RITUAL",
+            "ABILITY_UNAWARE",
+            "ABILITY_CURSED_BODY"
+          ],
+          "itemConstant": "ITEM_CHARCOAL",
+          "itemName": "Charcoal",
+          "itemDescription": "A hold item that raises the power of Fire-type moves.",
+          "itemIcon": "sprites/items/charcoal.png",
+          "sprite": "sprites/pokemon/chandelure.png"
+        },
+        {
+          "name": "Mimikyu",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Disguise",
+          "nature": "Jolly",
+          "evs": {
+            "hp": 4,
+            "atk": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Play Rough",
+            "Shadow Claw",
+            "Swords Dance",
+            "Protect"
+          ],
+          "constant": "SPECIES_MIMIKYU_DISGUISED",
+          "displayName": "Mimikyu",
+          "innates": [
+            "ABILITY_CURSED_BODY",
+            "ABILITY_CUTE_CHARM",
+            "ABILITY_DAZZLING"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/mimikyu_disguised.png"
+        },
+        {
+          "name": "Aegislash",
+          "item": "Leftovers",
+          "level": 85,
+          "ability": "Stance Change",
+          "nature": "Quiet",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Shadow Ball",
+            "Flash Cannon",
+            "Wide Guard",
+            "King's Shield"
+          ],
+          "constant": "SPECIES_AEGISLASH_SHIELD",
+          "displayName": "Aegislash",
+          "innates": [
+            "ABILITY_SHARPNESS",
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_PHALANX"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/aegislash_shield.png"
+        },
+        {
+          "name": "Dragapult",
+          "item": "Choice Specs",
+          "level": 85,
+          "ability": "Infiltrator",
+          "nature": "Timid",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Dragon Pulse",
+            "Shadow Ball",
+            "Flamethrower",
+            "Thunderbolt"
+          ],
+          "constant": "SPECIES_DRAGAPULT",
+          "displayName": "Dragapult",
+          "innates": [
+            "ABILITY_SHED_SKIN",
+            "ABILITY_INNER_FOCUS",
+            "ABILITY_ADRENALINE"
+          ],
+          "itemConstant": "ITEM_CHOICE_SPECS",
+          "itemName": "Choice Specs",
+          "itemDescription": "Boosts Sp. Atk, but allows the use of only one move.",
+          "itemIcon": "sprites/items/choice_specs.png",
+          "sprite": "sprites/pokemon/dragapult.png"
         }
       ]
     },
     {
       "constant": "TRAINER_KOGA_2",
       "name": "Koga",
-      "displayName": "Koga (Rematch)",
+      "displayName": "Koga (Rematch: Variant 1)",
       "difficulty": "Normal",
       "averageLevel": 85.0,
       "pic": "Elite Four Koga",
@@ -338430,14 +339329,12 @@
       ],
       "party": [
         {
-          "name": "Toxapex",
-          "item": "Payapa Berry",
+          "name": "Crobat",
+          "item": "Focus Sash",
           "level": 85,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "hp": 100
-          },
+          "ability": "Inner Focus",
+          "nature": "Jolly",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338447,34 +339344,31 @@
             "spe": 31
           },
           "moves": [
-            "Scald",
-            "Sludge Bomb",
-            "Baneful Bunker",
-            "Toxic"
+            "Tailwind",
+            "Fly",
+            "Cross Poison",
+            "Taunt"
           ],
-          "constant": "SPECIES_TOXAPEX",
-          "displayName": "Toxapex",
+          "constant": "SPECIES_CROBAT",
+          "displayName": "Crobat",
           "innates": [
-            "ABILITY_POISON_POINT",
-            "ABILITY_POISON_TOUCH",
-            "ABILITY_WATER_ABSORB"
+            "ABILITY_FLIER",
+            "ABILITY_STRONG_JAW",
+            "ABILITY_QUICK_DRAW"
           ],
-          "itemConstant": "ITEM_PAYAPA_BERRY",
-          "itemName": "Payapa Berry",
-          "itemDescription": "A hold item that weakens a Psychic move if weak to it.",
-          "itemIcon": "sprites/items/payapa_berry.png",
-          "sprite": "sprites/pokemon/toxapex.png"
+          "itemConstant": "ITEM_FOCUS_SASH",
+          "itemName": "Focus Sash",
+          "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
+          "itemIcon": "sprites/items/focus_sash.png",
+          "sprite": "sprites/pokemon/crobat.png"
         },
         {
           "name": "Overqwil",
-          "item": "Sitrus Berry",
+          "item": "Black Sludge",
           "level": 85,
           "ability": "Intimidate",
-          "nature": "",
-          "evs": {
-            "atk": 100,
-            "spe": 100
-          },
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338485,9 +339379,9 @@
           },
           "moves": [
             "Barb Barrage",
-            "Crunch",
-            "Destiny Bond",
-            "Fell Stinger"
+            "Throat Chop",
+            "Aqua Jet",
+            "Protect"
           ],
           "constant": "SPECIES_OVERQWIL",
           "displayName": "Overqwil",
@@ -338496,35 +339390,66 @@
             "ABILITY_TOXIC_DEBRIS",
             "ABILITY_ROUGH_SKIN"
           ],
-          "itemConstant": "ITEM_SITRUS_BERRY",
-          "itemName": "Sitrus Berry",
-          "itemDescription": "A hold item that restores the user's HP a little.",
-          "itemIcon": "sprites/items/sitrus_berry.png",
+          "itemConstant": "ITEM_BLACK_SLUDGE",
+          "itemName": "Black Sludge",
+          "itemDescription": "Restores HP for Poison-types. Damages all others.",
+          "itemIcon": "sprites/items/black_sludge.png",
           "sprite": "sprites/pokemon/overqwil.png"
         },
         {
-          "name": "Roserade",
-          "item": "Grass Gem",
+          "name": "Weezing",
+          "item": "Sitrus Berry",
           "level": 85,
-          "ability": "Technician",
-          "nature": "",
-          "evs": {
-            "spa": 100,
-            "spe": 100
-          },
+          "ability": "Levitate",
+          "nature": "Bold",
+          "evs": {},
           "ivs": {
             "hp": 31,
-            "atk": 31,
+            "atk": 0,
             "def": 31,
             "spa": 31,
             "spd": 31,
             "spe": 31
           },
           "moves": [
-            "Weather Ball",
-            "Toxic",
+            "Sludge Bomb",
+            "Flamethrower",
+            "Will-O-Wisp",
+            "Protect"
+          ],
+          "constant": "SPECIES_WEEZING",
+          "displayName": "Weezing",
+          "innates": [
+            "ABILITY_AFTERMATH",
+            "ABILITY_TOXIC_CHAIN",
+            "ABILITY_ANALYTIC"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/weezing.png"
+        },
+        {
+          "name": "Roserade",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Technician",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
             "Magical Leaf",
-            "Sludge Bomb"
+            "Sludge Bomb",
+            "Sleep Powder",
+            "Protect"
           ],
           "constant": "SPECIES_ROSERADE",
           "displayName": "Roserade",
@@ -338533,22 +339458,19 @@
             "ABILITY_CORROSION",
             "ABILITY_MERCILESS"
           ],
-          "itemConstant": "ITEM_GRASS_GEM",
-          "itemName": "Grass Gem",
-          "itemDescription": "Increases the power of Grass Type moves.",
-          "itemIcon": "sprites/items/type_gem.png",
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/roserade.png"
         },
         {
           "name": "Muk Alola",
-          "item": "Leftovers",
+          "item": "Assault Vest",
           "level": 85,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "atk": 100
-          },
+          "ability": "Poison Touch",
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338558,10 +339480,10 @@
             "spe": 31
           },
           "moves": [
-            "Gunk Shot",
-            "Shadow Punch",
             "Knock Off",
-            "Pain Split"
+            "Poison Jab",
+            "Drain Punch",
+            "Ice Punch"
           ],
           "constant": "SPECIES_MUK_ALOLA",
           "displayName": "Muk Alola",
@@ -338570,10 +339492,10 @@
             "ABILITY_TOXIC_DEBRIS",
             "ABILITY_SOLIDIFY"
           ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
           "sprite": "sprites/pokemon/muk_alola.png"
         },
         {
@@ -338581,11 +339503,8 @@
           "item": "Poisontite",
           "level": 85,
           "ability": "Speed Boost",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "atk": 100
-          },
+          "nature": "Adamant",
+          "evs": {},
           "ivs": {
             "hp": 31,
             "atk": 31,
@@ -338597,8 +339516,8 @@
           "moves": [
             "Megahorn",
             "Poison Jab",
-            "Swords Dance",
-            "Earthquake"
+            "Stomping Tantrum",
+            "Protect"
           ],
           "constant": "SPECIES_SCOLIPEDE",
           "displayName": "Scolipede",
@@ -338612,50 +339531,13 @@
           "itemDescription": "Allows certain Pokemon to Mega Evolve into Poison -type form.",
           "itemIcon": "sprites/items/dragalgite.png",
           "sprite": "sprites/pokemon/scolipede.png"
-        },
-        {
-          "name": "Crobat",
-          "item": "Charti Berry",
-          "level": 85,
-          "ability": "",
-          "nature": "",
-          "evs": {
-            "spa": 100,
-            "spe": 100
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Sludge Bomb",
-            "Air Cutter",
-            "Roost",
-            "Giga Drain"
-          ],
-          "constant": "SPECIES_CROBAT",
-          "displayName": "Crobat",
-          "innates": [
-            "ABILITY_FLIER",
-            "ABILITY_STRONG_JAW",
-            "ABILITY_QUICK_DRAW"
-          ],
-          "itemConstant": "ITEM_CHARTI_BERRY",
-          "itemName": "Charti Berry",
-          "itemDescription": "A hold item that weakens a Rock move if weak to it.",
-          "itemIcon": "sprites/items/charti_berry.png",
-          "sprite": "sprites/pokemon/crobat.png"
         }
       ]
     },
     {
       "constant": "TRAINER_KOGA_2",
       "name": "Koga",
-      "displayName": "Koga (Rematch, Hard)",
+      "displayName": "Koga (Rematch: Variant 1, Hard)",
       "difficulty": "Hard",
       "averageLevel": 85.0,
       "pic": "Elite Four Koga",
@@ -338665,48 +339547,13 @@
       ],
       "party": [
         {
-          "name": "Toxapex",
-          "item": "Payapa Berry",
+          "name": "Crobat",
+          "item": "Focus Sash",
           "level": 85,
-          "ability": "",
-          "nature": "",
+          "ability": "Inner Focus",
+          "nature": "Jolly",
           "evs": {
-            "hp": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Scald",
-            "Sludge Bomb",
-            "Baneful Bunker",
-            "Toxic"
-          ],
-          "constant": "SPECIES_TOXAPEX",
-          "displayName": "Toxapex",
-          "innates": [
-            "ABILITY_POISON_POINT",
-            "ABILITY_POISON_TOUCH",
-            "ABILITY_WATER_ABSORB"
-          ],
-          "itemConstant": "ITEM_PAYAPA_BERRY",
-          "itemName": "Payapa Berry",
-          "itemDescription": "A hold item that weakens a Psychic move if weak to it.",
-          "itemIcon": "sprites/items/payapa_berry.png",
-          "sprite": "sprites/pokemon/toxapex.png"
-        },
-        {
-          "name": "Overqwil",
-          "item": "Sitrus Berry",
-          "level": 85,
-          "ability": "Intimidate",
-          "nature": "",
-          "evs": {
+            "hp": 4,
             "atk": 252,
             "spe": 252
           },
@@ -338719,10 +339566,48 @@
             "spe": 31
           },
           "moves": [
+            "Tailwind",
+            "Fly",
+            "Cross Poison",
+            "Taunt"
+          ],
+          "constant": "SPECIES_CROBAT",
+          "displayName": "Crobat",
+          "innates": [
+            "ABILITY_FLIER",
+            "ABILITY_STRONG_JAW",
+            "ABILITY_QUICK_DRAW"
+          ],
+          "itemConstant": "ITEM_FOCUS_SASH",
+          "itemName": "Focus Sash",
+          "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
+          "itemIcon": "sprites/items/focus_sash.png",
+          "sprite": "sprites/pokemon/crobat.png"
+        },
+        {
+          "name": "Overqwil",
+          "item": "Black Sludge",
+          "level": 85,
+          "ability": "Intimidate",
+          "nature": "Adamant",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
             "Barb Barrage",
-            "Crunch",
-            "Destiny Bond",
-            "Fell Stinger"
+            "Throat Chop",
+            "Aqua Jet",
+            "Protect"
           ],
           "constant": "SPECIES_OVERQWIL",
           "displayName": "Overqwil",
@@ -338731,35 +339616,74 @@
             "ABILITY_TOXIC_DEBRIS",
             "ABILITY_ROUGH_SKIN"
           ],
-          "itemConstant": "ITEM_SITRUS_BERRY",
-          "itemName": "Sitrus Berry",
-          "itemDescription": "A hold item that restores the user's HP a little.",
-          "itemIcon": "sprites/items/sitrus_berry.png",
+          "itemConstant": "ITEM_BLACK_SLUDGE",
+          "itemName": "Black Sludge",
+          "itemDescription": "Restores HP for Poison-types. Damages all others.",
+          "itemIcon": "sprites/items/black_sludge.png",
           "sprite": "sprites/pokemon/overqwil.png"
         },
         {
-          "name": "Roserade",
-          "item": "Grass Gem",
+          "name": "Weezing",
+          "item": "Sitrus Berry",
           "level": 85,
-          "ability": "Technician",
-          "nature": "",
+          "ability": "Levitate",
+          "nature": "Bold",
           "evs": {
-            "spa": 252,
-            "spe": 252
+            "hp": 252,
+            "def": 252,
+            "spd": 4
           },
           "ivs": {
             "hp": 31,
-            "atk": 31,
+            "atk": 0,
             "def": 31,
             "spa": 31,
             "spd": 31,
             "spe": 31
           },
           "moves": [
-            "Weather Ball",
-            "Toxic",
+            "Sludge Bomb",
+            "Flamethrower",
+            "Will-O-Wisp",
+            "Protect"
+          ],
+          "constant": "SPECIES_WEEZING",
+          "displayName": "Weezing",
+          "innates": [
+            "ABILITY_AFTERMATH",
+            "ABILITY_TOXIC_CHAIN",
+            "ABILITY_ANALYTIC"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/weezing.png"
+        },
+        {
+          "name": "Roserade",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Technician",
+          "nature": "Timid",
+          "evs": {
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
             "Magical Leaf",
-            "Sludge Bomb"
+            "Sludge Bomb",
+            "Sleep Powder",
+            "Protect"
           ],
           "constant": "SPECIES_ROSERADE",
           "displayName": "Roserade",
@@ -338768,21 +339692,22 @@
             "ABILITY_CORROSION",
             "ABILITY_MERCILESS"
           ],
-          "itemConstant": "ITEM_GRASS_GEM",
-          "itemName": "Grass Gem",
-          "itemDescription": "Increases the power of Grass Type moves.",
-          "itemIcon": "sprites/items/type_gem.png",
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/roserade.png"
         },
         {
           "name": "Muk Alola",
-          "item": "Leftovers",
+          "item": "Assault Vest",
           "level": 85,
-          "ability": "",
-          "nature": "",
+          "ability": "Poison Touch",
+          "nature": "Adamant",
           "evs": {
             "hp": 252,
-            "atk": 252
+            "atk": 252,
+            "spd": 4
           },
           "ivs": {
             "hp": 31,
@@ -338793,10 +339718,10 @@
             "spe": 31
           },
           "moves": [
-            "Gunk Shot",
-            "Shadow Punch",
             "Knock Off",
-            "Pain Split"
+            "Poison Jab",
+            "Drain Punch",
+            "Ice Punch"
           ],
           "constant": "SPECIES_MUK_ALOLA",
           "displayName": "Muk Alola",
@@ -338805,10 +339730,10 @@
             "ABILITY_TOXIC_DEBRIS",
             "ABILITY_SOLIDIFY"
           ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
           "sprite": "sprites/pokemon/muk_alola.png"
         },
         {
@@ -338816,10 +339741,11 @@
           "item": "Poisontite",
           "level": 85,
           "ability": "Speed Boost",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
-            "hp": 252,
-            "atk": 252
+            "hp": 4,
+            "atk": 252,
+            "spe": 252
           },
           "ivs": {
             "hp": 31,
@@ -338832,8 +339758,8 @@
           "moves": [
             "Megahorn",
             "Poison Jab",
-            "Swords Dance",
-            "Earthquake"
+            "Stomping Tantrum",
+            "Protect"
           ],
           "constant": "SPECIES_SCOLIPEDE",
           "displayName": "Scolipede",
@@ -338847,15 +339773,438 @@
           "itemDescription": "Allows certain Pokemon to Mega Evolve into Poison -type form.",
           "itemIcon": "sprites/items/dragalgite.png",
           "sprite": "sprites/pokemon/scolipede.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_KOGA_REMATCH_ALT",
+      "name": "Koga",
+      "displayName": "Koga (Rematch: Variant 2)",
+      "difficulty": "Normal",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Koga",
+      "sprite": "sprites/trainers/elite_four_koga.png?v=alpha2",
+      "locations": [
+        "Pokemon League Kogas Room"
+      ],
+      "party": [
+        {
+          "name": "Ribombee",
+          "item": "Focus Sash",
+          "level": 85,
+          "ability": "Shield Dust",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Tailwind",
+            "Pollen Puff",
+            "Moonblast",
+            "Protect"
+          ],
+          "constant": "SPECIES_RIBOMBEE",
+          "displayName": "Ribombee",
+          "innates": [
+            "ABILITY_AROMA_VEIL",
+            "ABILITY_DAZZLING",
+            "ABILITY_FRIEND_GUARD"
+          ],
+          "itemConstant": "ITEM_FOCUS_SASH",
+          "itemName": "Focus Sash",
+          "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
+          "itemIcon": "sprites/items/focus_sash.png",
+          "sprite": "sprites/pokemon/ribombee.png"
+        },
+        {
+          "name": "Scizor",
+          "item": "Bugtite",
+          "level": 85,
+          "ability": "Technician",
+          "nature": "Adamant",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Bullet Punch",
+            "Bug Bite",
+            "Close Combat",
+            "Protect"
+          ],
+          "constant": "SPECIES_SCIZOR",
+          "displayName": "Scizor",
+          "innates": [
+            "ABILITY_HYPER_CUTTER",
+            "ABILITY_IRON_FIST",
+            "ABILITY_INTIMIDATE"
+          ],
+          "itemConstant": "ITEM_BUGTITE",
+          "itemName": "Bugtite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Bug -type form.",
+          "itemIcon": "sprites/items/beedrillite.png",
+          "sprite": "sprites/pokemon/scizor.png"
+        },
+        {
+          "name": "Yanmega",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Tinted Lens",
+          "nature": "Modest",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Air Slash",
+            "Bug Buzz",
+            "Giga Drain",
+            "Protect"
+          ],
+          "constant": "SPECIES_YANMEGA",
+          "displayName": "Yanmega",
+          "innates": [
+            "ABILITY_TECHNICIAN",
+            "ABILITY_COMPOUND_EYES",
+            "ABILITY_AERILATE"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/yanmega.png"
+        },
+        {
+          "name": "Volcarona",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Flame Body",
+          "nature": "Modest",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heat Wave",
+            "Bug Buzz",
+            "Quiver Dance",
+            "Protect"
+          ],
+          "constant": "SPECIES_VOLCARONA",
+          "displayName": "Volcarona",
+          "innates": [
+            "ABILITY_BLAZING_SUN",
+            "ABILITY_UNNERVE",
+            "ABILITY_LEVITATE"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/volcarona.png"
+        },
+        {
+          "name": "Golisopod",
+          "item": "Mystic Water",
+          "level": 85,
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "First Impression",
+            "Liquidation",
+            "Leech Life",
+            "Protect"
+          ],
+          "constant": "SPECIES_GOLISOPOD",
+          "displayName": "Golisopod",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_TOUGH_CLAWS",
+            "ABILITY_INDOMITABLE"
+          ],
+          "itemConstant": "ITEM_MYSTIC_WATER",
+          "itemName": "Mystic Water",
+          "itemDescription": "A hold item that raises the power of Water-type moves.",
+          "itemIcon": "sprites/items/mystic_water.png",
+          "sprite": "sprites/pokemon/golisopod.png"
         },
         {
           "name": "Crobat",
-          "item": "Charti Berry",
+          "item": "Sharp Beak",
           "level": 85,
-          "ability": "",
-          "nature": "",
+          "ability": "Inner Focus",
+          "nature": "Jolly",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Tailwind",
+            "Fly",
+            "Cross Poison",
+            "Super Fang"
+          ],
+          "constant": "SPECIES_CROBAT",
+          "displayName": "Crobat",
+          "innates": [
+            "ABILITY_FLIER",
+            "ABILITY_STRONG_JAW",
+            "ABILITY_QUICK_DRAW"
+          ],
+          "itemConstant": "ITEM_SHARP_BEAK",
+          "itemName": "Sharp Beak",
+          "itemDescription": "A hold item that raises the power of Flying-type moves.",
+          "itemIcon": "sprites/items/sharp_beak.png",
+          "sprite": "sprites/pokemon/crobat.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_KOGA_REMATCH_ALT",
+      "name": "Koga",
+      "displayName": "Koga (Rematch: Variant 2, Hard)",
+      "difficulty": "Hard",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Koga",
+      "sprite": "sprites/trainers/elite_four_koga.png?v=alpha2",
+      "locations": [
+        "Pokemon League Kogas Room"
+      ],
+      "party": [
+        {
+          "name": "Ribombee",
+          "item": "Focus Sash",
+          "level": 85,
+          "ability": "Shield Dust",
+          "nature": "Timid",
           "evs": {
+            "hp": 252,
+            "spa": 4,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Tailwind",
+            "Pollen Puff",
+            "Moonblast",
+            "Protect"
+          ],
+          "constant": "SPECIES_RIBOMBEE",
+          "displayName": "Ribombee",
+          "innates": [
+            "ABILITY_AROMA_VEIL",
+            "ABILITY_DAZZLING",
+            "ABILITY_FRIEND_GUARD"
+          ],
+          "itemConstant": "ITEM_FOCUS_SASH",
+          "itemName": "Focus Sash",
+          "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
+          "itemIcon": "sprites/items/focus_sash.png",
+          "sprite": "sprites/pokemon/ribombee.png"
+        },
+        {
+          "name": "Scizor",
+          "item": "Bugtite",
+          "level": 85,
+          "ability": "Technician",
+          "nature": "Adamant",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Bullet Punch",
+            "Bug Bite",
+            "Close Combat",
+            "Protect"
+          ],
+          "constant": "SPECIES_SCIZOR",
+          "displayName": "Scizor",
+          "innates": [
+            "ABILITY_HYPER_CUTTER",
+            "ABILITY_IRON_FIST",
+            "ABILITY_INTIMIDATE"
+          ],
+          "itemConstant": "ITEM_BUGTITE",
+          "itemName": "Bugtite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Bug -type form.",
+          "itemIcon": "sprites/items/beedrillite.png",
+          "sprite": "sprites/pokemon/scizor.png"
+        },
+        {
+          "name": "Yanmega",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Tinted Lens",
+          "nature": "Modest",
+          "evs": {
+            "hp": 4,
             "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Air Slash",
+            "Bug Buzz",
+            "Giga Drain",
+            "Protect"
+          ],
+          "constant": "SPECIES_YANMEGA",
+          "displayName": "Yanmega",
+          "innates": [
+            "ABILITY_TECHNICIAN",
+            "ABILITY_COMPOUND_EYES",
+            "ABILITY_AERILATE"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/yanmega.png"
+        },
+        {
+          "name": "Volcarona",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Flame Body",
+          "nature": "Modest",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Heat Wave",
+            "Bug Buzz",
+            "Rage Powder",
+            "Protect"
+          ],
+          "constant": "SPECIES_VOLCARONA",
+          "displayName": "Volcarona",
+          "innates": [
+            "ABILITY_BLAZING_SUN",
+            "ABILITY_UNNERVE",
+            "ABILITY_LEVITATE"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/volcarona.png"
+        },
+        {
+          "name": "Golisopod",
+          "item": "Mystic Water",
+          "level": 85,
+          "ability": "Emergency Exit",
+          "nature": "Adamant",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "First Impression",
+            "Liquidation",
+            "Wide Guard",
+            "Protect"
+          ],
+          "constant": "SPECIES_GOLISOPOD",
+          "displayName": "Golisopod",
+          "innates": [
+            "ABILITY_BATTLE_ARMOR",
+            "ABILITY_TOUGH_CLAWS",
+            "ABILITY_INDOMITABLE"
+          ],
+          "itemConstant": "ITEM_MYSTIC_WATER",
+          "itemName": "Mystic Water",
+          "itemDescription": "A hold item that raises the power of Water-type moves.",
+          "itemIcon": "sprites/items/mystic_water.png",
+          "sprite": "sprites/pokemon/golisopod.png"
+        },
+        {
+          "name": "Crobat",
+          "item": "Sharp Beak",
+          "level": 85,
+          "ability": "Inner Focus",
+          "nature": "Jolly",
+          "evs": {
+            "hp": 4,
+            "atk": 252,
             "spe": 252
           },
           "ivs": {
@@ -338867,10 +340216,10 @@
             "spe": 31
           },
           "moves": [
-            "Sludge Bomb",
-            "Air Cutter",
-            "Roost",
-            "Giga Drain"
+            "Tailwind",
+            "Fly",
+            "Cross Poison",
+            "Super Fang"
           ],
           "constant": "SPECIES_CROBAT",
           "displayName": "Crobat",
@@ -338879,10 +340228,10 @@
             "ABILITY_STRONG_JAW",
             "ABILITY_QUICK_DRAW"
           ],
-          "itemConstant": "ITEM_CHARTI_BERRY",
-          "itemName": "Charti Berry",
-          "itemDescription": "A hold item that weakens a Rock move if weak to it.",
-          "itemIcon": "sprites/items/charti_berry.png",
+          "itemConstant": "ITEM_SHARP_BEAK",
+          "itemName": "Sharp Beak",
+          "itemDescription": "A hold item that raises the power of Flying-type moves.",
+          "itemIcon": "sprites/items/sharp_beak.png",
           "sprite": "sprites/pokemon/crobat.png"
         }
       ]
@@ -339519,7 +340868,7 @@
           "item": "Sitrus Berry",
           "level": 85,
           "ability": "Stance Change",
-          "nature": "",
+          "nature": "Brave",
           "evs": {
             "hp": 252,
             "atk": 252
@@ -339530,13 +340879,13 @@
             "def": 31,
             "spa": 31,
             "spd": 31,
-            "spe": 31
+            "spe": 0
           },
           "moves": [
             "Shadow Claw",
             "King's Shield",
             "Sacred Sword",
-            "Swords Dance"
+            "Wide Guard"
           ],
           "constant": "SPECIES_AEGISLASH_SHIELD",
           "displayName": "Aegislash",
@@ -339550,6 +340899,43 @@
           "itemDescription": "A hold item that restores the user's HP a little.",
           "itemIcon": "sprites/items/sitrus_berry.png",
           "sprite": "sprites/pokemon/aegislash_shield.png"
+        },
+        {
+          "name": "Gengar",
+          "item": "Ghostite",
+          "level": 85,
+          "ability": "Cursed Body",
+          "nature": "Timid",
+          "evs": {
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Shadow Ball",
+            "Icy Wind",
+            "Sludge Bomb",
+            "Protect"
+          ],
+          "constant": "SPECIES_GENGAR",
+          "displayName": "Gengar",
+          "innates": [
+            "ABILITY_PRANKSTER",
+            "ABILITY_INFILTRATOR",
+            "ABILITY_LEVITATE"
+          ],
+          "itemConstant": "ITEM_GHOSTITE",
+          "itemName": "Ghostite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Ghost -type form.",
+          "itemIcon": "sprites/items/gengarite.png",
+          "sprite": "sprites/pokemon/gengar.png"
         },
         {
           "name": "Dragapult",
@@ -339587,43 +340973,6 @@
           "itemDescription": "Boosts Speed, but allows the use of only one move.",
           "itemIcon": "sprites/items/choice_scarf.png",
           "sprite": "sprites/pokemon/dragapult.png"
-        },
-        {
-          "name": "Gengar",
-          "item": "Ghostite",
-          "level": 85,
-          "ability": "Cursed Body",
-          "nature": "",
-          "evs": {
-            "spa": 252,
-            "spe": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Shadow Ball",
-            "Destiny Bond",
-            "Sludge Bomb",
-            "Nasty Plot"
-          ],
-          "constant": "SPECIES_GENGAR",
-          "displayName": "Gengar",
-          "innates": [
-            "ABILITY_PRANKSTER",
-            "ABILITY_INFILTRATOR",
-            "ABILITY_LEVITATE"
-          ],
-          "itemConstant": "ITEM_GHOSTITE",
-          "itemName": "Ghostite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Ghost -type form.",
-          "itemIcon": "sprites/items/gengarite.png",
-          "sprite": "sprites/pokemon/gengar.png"
         },
         {
           "name": "Mismagius",
@@ -339667,7 +341016,7 @@
           "item": "Choice Band",
           "level": 85,
           "ability": "Adaptability",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -339682,9 +341031,9 @@
           },
           "moves": [
             "Wave Crash",
-            "Double-Edge",
-            "Head Smash",
-            "Phantom Force"
+            "Crunch",
+            "Aqua Jet",
+            "Last Respects"
           ],
           "constant": "SPECIES_BASCULEGION_M",
           "displayName": "Basculegion",
@@ -339719,9 +341068,9 @@
             "spe": 31
           },
           "moves": [
-            "Shadow Force",
+            "Poltergeist",
             "Dragon Claw",
-            "Earthquake",
+            "Skitter Smack",
             "Shadow Sneak"
           ],
           "constant": "SPECIES_GIRATINA_ALTERED",
@@ -339844,7 +341193,7 @@
           "sprite": "sprites/pokemon/cloyster.png"
         },
         {
-          "name": "Kyurem",
+          "name": "Articuno",
           "item": "Life Orb",
           "level": 85,
           "ability": "Pressure",
@@ -339863,22 +341212,22 @@
           },
           "moves": [
             "Ice Beam",
-            "Draco Meteor",
-            "Earth Power",
-            "Flash Cannon"
+            "Hurricane",
+            "Freeze-Dry",
+            "Roost"
           ],
-          "constant": "SPECIES_KYUREM",
-          "displayName": "Kyurem",
+          "constant": "SPECIES_ARTICUNO",
+          "displayName": "Articuno",
           "innates": [
-            "ABILITY_ICE_BODY",
-            "ABILITY_THERMAL_EXCHANGE",
-            "ABILITY_UNCANNY"
+            "ABILITY_SNOW_WARNING",
+            "ABILITY_KEEN_EYE",
+            "ABILITY_GLACIAL"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
           "itemDescription": "Boosts move power but holder loses HP with each attack.",
           "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/kyurem.png"
+          "sprite": "sprites/pokemon/articuno.png"
         },
         {
           "name": "Darmanitan-Galar",
@@ -339952,7 +341301,7 @@
       "party": [
         {
           "name": "Ninetales-Alola",
-          "item": "Icy Rock",
+          "item": "Light Clay",
           "level": 85,
           "ability": "Snow Warning",
           "nature": "Timid",
@@ -339975,11 +341324,49 @@
             "ABILITY_ICE_SCALES",
             "ABILITY_ICE_BODY"
           ],
-          "itemConstant": "ITEM_ICY_ROCK",
-          "itemName": "Icy Rock",
-          "itemDescription": "Extends the length of cold weathers used by the holder.",
-          "itemIcon": "sprites/items/icy_rock.png",
+          "itemConstant": "ITEM_LIGHT_CLAY",
+          "itemName": "Light Clay",
+          "itemDescription": "Extends the length of barrier moves used by the holder.",
+          "itemIcon": "sprites/items/light_clay.png",
           "sprite": "sprites/pokemon/ninetales_alola.png"
+        },
+        {
+          "name": "Articuno",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Snow Cloak",
+          "nature": "Modest",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Freeze-Dry",
+            "Blizzard",
+            "Tailwind",
+            "Hurricane"
+          ],
+          "constant": "SPECIES_ARTICUNO",
+          "displayName": "Articuno",
+          "innates": [
+            "ABILITY_SNOW_WARNING",
+            "ABILITY_KEEN_EYE",
+            "ABILITY_GLACIAL"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/articuno.png"
         },
         {
           "name": "Lapras",
@@ -339998,8 +341385,8 @@
           "moves": [
             "Freeze-Dry",
             "Hydro Pump",
-            "Alluring Voice",
-            "Ice Beam"
+            "Blizzard",
+            "Alluring Voice"
           ],
           "constant": "SPECIES_LAPRAS",
           "displayName": "Lapras",
@@ -340030,7 +341417,7 @@
             "Shell Smash",
             "Icicle Spear",
             "Drill Run",
-            "Waterfall"
+            "Protect"
           ],
           "constant": "SPECIES_CLOYSTER",
           "displayName": "Cloyster",
@@ -340044,44 +341431,6 @@
           "itemDescription": "A hold item that restores any lowered stat.",
           "itemIcon": "sprites/items/in_battle_herb.png",
           "sprite": "sprites/pokemon/cloyster.png"
-        },
-        {
-          "name": "Kyurem",
-          "item": "Life Orb",
-          "level": 85,
-          "ability": "Pressure",
-          "nature": "Timid",
-          "evs": {
-            "spa": 252,
-            "spd": 4,
-            "spe": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Ice Beam",
-            "Draco Meteor",
-            "Earth Power",
-            "Flash Cannon"
-          ],
-          "constant": "SPECIES_KYUREM",
-          "displayName": "Kyurem",
-          "innates": [
-            "ABILITY_ICE_BODY",
-            "ABILITY_THERMAL_EXCHANGE",
-            "ABILITY_UNCANNY"
-          ],
-          "itemConstant": "ITEM_LIFE_ORB",
-          "itemName": "Life Orb",
-          "itemDescription": "Boosts move power but holder loses HP with each attack.",
-          "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/kyurem.png"
         },
         {
           "name": "Darmanitan-Galar",
@@ -340125,7 +341474,7 @@
           "moves": [
             "Icicle Spear",
             "Glaive Rush",
-            "Earthquake",
+            "High Horsepower",
             "Dragon Dance"
           ],
           "constant": "SPECIES_BAXCALIBUR",
@@ -340381,21 +341730,52 @@
           "sprite": "sprites/pokemon/gholdengo.png"
         },
         {
-          "name": "Aggron",
-          "item": "Air Balloon",
+          "name": "Archeops",
+          "item": "Sitrus Berry",
           "level": 85,
-          "ability": "Rock Head",
-          "nature": "",
+          "ability": "Defeatist",
+          "nature": "Jolly",
           "evs": {
-            "hp": 252,
-            "atk": 252
+            "atk": 252,
+            "spe": 252
           },
           "ivs": {},
           "moves": [
             "Head Smash",
-            "Avalanche",
-            "Earthquake",
-            "Heavy Slam"
+            "Dual Wingbeat",
+            "Tailwind",
+            "Protect"
+          ],
+          "constant": "SPECIES_ARCHEOPS",
+          "displayName": "Archeops",
+          "innates": [
+            "ABILITY_OWN_TEMPO",
+            "ABILITY_ROCK_HEAD",
+            "ABILITY_ARMOR_TAIL"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/archeops.png"
+        },
+        {
+          "name": "Aggron",
+          "item": "Air Balloon",
+          "level": 85,
+          "ability": "Rock Head",
+          "nature": "Impish",
+          "evs": {
+            "hp": 252,
+            "def": 252,
+            "spd": 4
+          },
+          "ivs": {},
+          "moves": [
+            "Head Smash",
+            "High Horsepower",
+            "Heavy Slam",
+            "Earthquake"
           ],
           "constant": "SPECIES_AGGRON",
           "displayName": "Aggron",
@@ -340412,20 +341792,21 @@
         },
         {
           "name": "Cradily",
-          "item": "Expert Belt",
+          "item": "Leftovers",
           "level": 85,
-          "ability": "Suction Cups",
-          "nature": "",
+          "ability": "Storm Drain",
+          "nature": "Calm",
           "evs": {
             "hp": 252,
+            "spa": 4,
             "spd": 252
           },
           "ivs": {},
           "moves": [
-            "Stone Edge",
-            "Seed Bomb",
-            "Sandstorm",
-            "Earthquake"
+            "Giga Drain",
+            "Ancient Power",
+            "Recover",
+            "Sappy Seed"
           ],
           "constant": "SPECIES_CRADILY",
           "displayName": "Cradily",
@@ -340434,28 +341815,28 @@
             "ABILITY_REJUVENATION",
             "ABILITY_SEED_SOWER"
           ],
-          "itemConstant": "ITEM_EXPERT_BELT",
-          "itemName": "Expert Belt",
-          "itemDescription": "A belt that boosts the power of super effective moves.",
-          "itemIcon": "sprites/items/expert_belt.png",
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
           "sprite": "sprites/pokemon/cradily.png"
         },
         {
           "name": "Excadrill",
           "item": "Focus Sash",
           "level": 85,
-          "ability": "Sand Rush",
-          "nature": "",
+          "ability": "Mold Breaker",
+          "nature": "Jolly",
           "evs": {
             "atk": 252,
             "spe": 252
           },
           "ivs": {},
           "moves": [
-            "X-scissor",
-            "Earthquake",
-            "Stone Edge",
-            "Iron Head"
+            "High Horsepower",
+            "Rock Slide",
+            "Iron Head",
+            "Earthquake"
           ],
           "constant": "SPECIES_EXCADRILL",
           "displayName": "Excadrill",
@@ -340471,41 +341852,11 @@
           "sprite": "sprites/pokemon/excadrill.png"
         },
         {
-          "name": "Archeops",
-          "item": "Sitrus Berry",
-          "level": 85,
-          "ability": "Defeatist",
-          "nature": "",
-          "evs": {
-            "atk": 252,
-            "spe": 252
-          },
-          "ivs": {},
-          "moves": [
-            "Head Smash",
-            "Dual Wingbeat",
-            "Earthquake",
-            "Quick Attack"
-          ],
-          "constant": "SPECIES_ARCHEOPS",
-          "displayName": "Archeops",
-          "innates": [
-            "ABILITY_OWN_TEMPO",
-            "ABILITY_ROCK_HEAD",
-            "ABILITY_ARMOR_TAIL"
-          ],
-          "itemConstant": "ITEM_SITRUS_BERRY",
-          "itemName": "Sitrus Berry",
-          "itemDescription": "A hold item that restores the user's HP a little.",
-          "itemIcon": "sprites/items/sitrus_berry.png",
-          "sprite": "sprites/pokemon/archeops.png"
-        },
-        {
           "name": "Metagross",
           "item": "Steeltite",
           "level": 86,
           "ability": "Clear Body",
-          "nature": "",
+          "nature": "Adamant",
           "evs": {
             "atk": 252,
             "spe": 252
@@ -340514,7 +341865,7 @@
           "moves": [
             "Bullet Punch",
             "Meteor Mash",
-            "Earthquake",
+            "Stomping Tantrum",
             "Zen Headbutt"
           ],
           "constant": "SPECIES_METAGROSS",
@@ -340781,162 +342132,15 @@
       ],
       "party": [
         {
-          "name": "Ursaluna",
-          "item": "Flame Orb",
-          "level": 85,
-          "ability": "Guts",
-          "nature": "",
-          "evs": {
-            "hp": 252,
-            "atk": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 0
-          },
-          "moves": [
-            "Protect",
-            "Earthquake",
-            "Headlong Rush",
-            "Facade"
-          ],
-          "constant": "SPECIES_URSALUNA",
-          "displayName": "Ursaluna",
-          "innates": [
-            "ABILITY_STRONG_JAW",
-            "ABILITY_STAMINA",
-            "ABILITY_EARTH_EATER"
-          ],
-          "itemConstant": "ITEM_FLAME_ORB",
-          "itemName": "Flame Orb",
-          "itemDescription": "A bizarre orb that inflicts a burn on holder in battle.",
-          "itemIcon": "sprites/items/flame_orb.png",
-          "sprite": "sprites/pokemon/ursaluna.png"
-        },
-        {
-          "name": "Regigigas",
-          "item": "Leftovers",
-          "level": 85,
-          "ability": "Slow Start",
-          "nature": "Adamant",
-          "evs": {
-            "hp": 252,
-            "atk": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Crush Grip",
-            "Knock Off",
-            "Earthquake",
-            "Protect"
-          ],
-          "constant": "SPECIES_REGIGIGAS",
-          "displayName": "Regigigas",
-          "innates": [
-            "ABILITY_UNSTOPPABLE",
-            "ABILITY_TIRELESS",
-            "ABILITY_REJUVENATION"
-          ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/regigigas.png"
-        },
-        {
-          "name": "Zoroark Hisui",
-          "item": "Life Orb",
-          "level": 85,
-          "ability": "Illusion",
-          "nature": "",
-          "evs": {
-            "spa": 252,
-            "spe": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Bitter Malice",
-            "Nasty Plot",
-            "Flamethrower",
-            "Focus Blast"
-          ],
-          "constant": "SPECIES_ZOROARK_HISUI",
-          "displayName": "Zoroark Hisui",
-          "innates": [
-            "ABILITY_PHANTOM_STEP",
-            "ABILITY_NIGHT_STALKER",
-            "ABILITY_SHADOW_SHIELD"
-          ],
-          "itemConstant": "ITEM_LIFE_ORB",
-          "itemName": "Life Orb",
-          "itemDescription": "Boosts move power but holder loses HP with each attack.",
-          "itemIcon": "sprites/items/life_orb.png",
-          "sprite": "sprites/pokemon/zoroark_hisui.png"
-        },
-        {
-          "name": "Drampa",
-          "item": "Normalite",
-          "level": 85,
-          "ability": "Berserk",
-          "nature": "",
-          "evs": {
-            "hp": 252,
-            "spa": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 31,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Hyper Voice",
-            "Icy Wind",
-            "Draco Meteor",
-            "Dragon Pulse"
-          ],
-          "constant": "SPECIES_DRAMPA",
-          "displayName": "Drampa",
-          "innates": [
-            "ABILITY_DRIZZLE",
-            "ABILITY_OWN_TEMPO",
-            "ABILITY_SCRAPPY"
-          ],
-          "itemConstant": "ITEM_NORMALITE",
-          "itemName": "Normalite",
-          "itemDescription": "Allows certain Pokemon to Mega Evolve into Normal -type form.",
-          "itemIcon": "sprites/items/pidgeotite.png",
-          "sprite": "sprites/pokemon/drampa.png"
-        },
-        {
           "name": "Maushold",
-          "item": "Wide Lens",
+          "item": "Sitrus Berry",
           "level": 85,
-          "ability": "Technician",
-          "nature": "",
+          "ability": "Friend Guard",
+          "nature": "Impish",
           "evs": {
-            "atk": 252,
-            "spe": 252
+            "hp": 252,
+            "def": 252,
+            "spd": 4
           },
           "ivs": {
             "hp": 31,
@@ -340948,9 +342152,9 @@
           },
           "moves": [
             "Population Bomb",
-            "Bullet Seed",
-            "Tidy Up",
-            "Low Kick"
+            "Follow Me",
+            "Helping Hand",
+            "Bite"
           ],
           "constant": "SPECIES_MAUSHOLD_THREE",
           "displayName": "Maushold",
@@ -340959,10 +342163,10 @@
             "ABILITY_RALLY",
             "ABILITY_MAGNIFY_FIELD"
           ],
-          "itemConstant": "ITEM_WIDE_LENS",
-          "itemName": "Wide Lens",
-          "itemDescription": "A magnifying lens that boosts the accuracy of moves.",
-          "itemIcon": "sprites/items/wide_lens.png",
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
           "sprite": "sprites/pokemon/maushold_three.png"
         },
         {
@@ -340985,7 +342189,7 @@
           },
           "moves": [
             "Trick Room",
-            "Thunderbolt",
+            "Protect",
             "Tri-Attack",
             "Shadow Ball"
           ],
@@ -341001,13 +342205,161 @@
           "itemDescription": "Boosts move power but holder loses HP with each attack.",
           "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/porygon_z.png"
+        },
+        {
+          "name": "Ursaluna",
+          "item": "Flame Orb",
+          "level": 85,
+          "ability": "Guts",
+          "nature": "Brave",
+          "evs": {
+            "hp": 252,
+            "atk": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Protect",
+            "Crunch",
+            "Headlong Rush",
+            "Facade"
+          ],
+          "constant": "SPECIES_URSALUNA",
+          "displayName": "Ursaluna",
+          "innates": [
+            "ABILITY_STRONG_JAW",
+            "ABILITY_STAMINA",
+            "ABILITY_EARTH_EATER"
+          ],
+          "itemConstant": "ITEM_FLAME_ORB",
+          "itemName": "Flame Orb",
+          "itemDescription": "A bizarre orb that inflicts a burn on holder in battle.",
+          "itemIcon": "sprites/items/flame_orb.png",
+          "sprite": "sprites/pokemon/ursaluna.png"
+        },
+        {
+          "name": "Regigigas",
+          "item": "Leftovers",
+          "level": 85,
+          "ability": "Slow Start",
+          "nature": "Brave",
+          "evs": {
+            "hp": 252,
+            "atk": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Crush Grip",
+            "Knock Off",
+            "High Horsepower",
+            "Protect"
+          ],
+          "constant": "SPECIES_REGIGIGAS",
+          "displayName": "Regigigas",
+          "innates": [
+            "ABILITY_UNSTOPPABLE",
+            "ABILITY_TIRELESS",
+            "ABILITY_REJUVENATION"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/regigigas.png"
+        },
+        {
+          "name": "Zoroark Hisui",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Illusion",
+          "nature": "Timid",
+          "evs": {
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Bitter Malice",
+            "Protect",
+            "Flamethrower",
+            "Focus Blast"
+          ],
+          "constant": "SPECIES_ZOROARK_HISUI",
+          "displayName": "Zoroark Hisui",
+          "innates": [
+            "ABILITY_PHANTOM_STEP",
+            "ABILITY_NIGHT_STALKER",
+            "ABILITY_SHADOW_SHIELD"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/zoroark_hisui.png"
+        },
+        {
+          "name": "Drampa",
+          "item": "Normalite",
+          "level": 85,
+          "ability": "Berserk",
+          "nature": "Quiet",
+          "evs": {
+            "hp": 252,
+            "spa": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Hyper Voice",
+            "Thunder",
+            "Draco Meteor",
+            "Protect"
+          ],
+          "constant": "SPECIES_DRAMPA",
+          "displayName": "Drampa",
+          "innates": [
+            "ABILITY_DRIZZLE",
+            "ABILITY_OWN_TEMPO",
+            "ABILITY_SCRAPPY"
+          ],
+          "itemConstant": "ITEM_NORMALITE",
+          "itemName": "Normalite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Normal -type form.",
+          "itemIcon": "sprites/items/pidgeotite.png",
+          "sprite": "sprites/pokemon/drampa.png"
         }
       ]
     },
     {
       "constant": "TRAINER_WILL_2",
       "name": "Will",
-      "displayName": "Will (Rematch)",
+      "displayName": "Will (Rematch: Variant 1)",
       "difficulty": "Normal",
       "averageLevel": 85.0,
       "pic": "Elite Four Will",
@@ -341022,16 +342374,20 @@
           "level": 85,
           "ability": "Armor Tail",
           "nature": "Sassy",
-          "evs": {
-            "hp": 100,
-            "spd": 100
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
           },
-          "ivs": {},
           "moves": [
-            "Trick Room",
-            "Dazzling Gleam",
             "Psychic",
-            "Hyper Voice"
+            "Dazzling Gleam",
+            "Energy Ball",
+            "Trick Room"
           ],
           "constant": "SPECIES_FARIGIRAF",
           "displayName": "Farigiraf",
@@ -341048,20 +342404,24 @@
         },
         {
           "name": "Reuniclus",
-          "item": "Rocky Helmet",
+          "item": "Life Orb",
           "level": 85,
           "ability": "Magic Guard",
-          "nature": "",
-          "evs": {
-            "def": 100,
-            "spa": 100
+          "nature": "Quiet",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
           },
-          "ivs": {},
           "moves": [
-            "Psychic",
-            "Calm Mind",
+            "Expanding Force",
             "Shadow Ball",
-            "Mystical Fire"
+            "Energy Ball",
+            "Protect"
           ],
           "constant": "SPECIES_REUNICLUS",
           "displayName": "Reuniclus",
@@ -341070,28 +342430,492 @@
             "ABILITY_SHOWTIME",
             "ABILITY_BULLETPROOF"
           ],
-          "itemConstant": "ITEM_ROCKY_HELMET",
-          "itemName": "Rocky Helmet",
-          "itemDescription": "Hurts the foe if they touch its holder.",
-          "itemIcon": "sprites/items/rocky_helmet.png",
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
           "sprite": "sprites/pokemon/reuniclus.png"
+        },
+        {
+          "name": "Exeggutor",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Harvest",
+          "nature": "Quiet",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Giga Drain",
+            "Psychic",
+            "Trick Room",
+            "Protect"
+          ],
+          "constant": "SPECIES_EXEGGUTOR",
+          "displayName": "Exeggutor",
+          "innates": [
+            "ABILITY_TELEPATHY",
+            "ABILITY_LEAF_GUARD",
+            "ABILITY_SKILL_LINK"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/exeggutor.png"
+        },
+        {
+          "name": "Metagross",
+          "item": "Assault Vest",
+          "level": 85,
+          "ability": "Clear Body",
+          "nature": "Brave",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Iron Head",
+            "Zen Headbutt",
+            "Hammer Arm",
+            "Ice Punch"
+          ],
+          "constant": "SPECIES_METAGROSS",
+          "displayName": "Metagross",
+          "innates": [
+            "ABILITY_ANALYTIC",
+            "ABILITY_IRON_FIST",
+            "ABILITY_PHALANX"
+          ],
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
+          "sprite": "sprites/pokemon/metagross.png"
+        },
+        {
+          "name": "Armarouge",
+          "item": "Charcoal",
+          "level": 85,
+          "ability": "Flash Fire",
+          "nature": "Quiet",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Armor Cannon",
+            "Expanding Force",
+            "Aura Sphere",
+            "Protect"
+          ],
+          "constant": "SPECIES_ARMAROUGE",
+          "displayName": "Armarouge",
+          "innates": [
+            "ABILITY_SHARDPLATE",
+            "ABILITY_MEGA_LAUNCHER",
+            "ABILITY_SMOULDERING"
+          ],
+          "itemConstant": "ITEM_CHARCOAL",
+          "itemName": "Charcoal",
+          "itemDescription": "A hold item that raises the power of Fire-type moves.",
+          "itemIcon": "sprites/items/charcoal.png",
+          "sprite": "sprites/pokemon/armarouge.png"
+        },
+        {
+          "name": "Slowbro",
+          "item": "Watertite",
+          "level": 85,
+          "ability": "Regenerator",
+          "nature": "Quiet",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Scald",
+            "Psychic",
+            "Ice Beam",
+            "Slack Off"
+          ],
+          "constant": "SPECIES_SLOWBRO",
+          "displayName": "Slowbro",
+          "innates": [
+            "ABILITY_SIMPLE",
+            "ABILITY_UNAWARE",
+            "ABILITY_THICK_FAT"
+          ],
+          "itemConstant": "ITEM_WATERTITE",
+          "itemName": "Watertite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Water -type form.",
+          "itemIcon": "sprites/items/blastoisinite.png",
+          "sprite": "sprites/pokemon/slowbro.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_WILL_2",
+      "name": "Will",
+      "displayName": "Will (Rematch: Variant 1, Hard)",
+      "difficulty": "Hard",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Will",
+      "sprite": "sprites/trainers/elite_four_will.png?v=alpha2",
+      "locations": [
+        "Pokemon League Wills Room"
+      ],
+      "party": [
+        {
+          "name": "Farigiraf",
+          "item": "Safety Goggles",
+          "level": 85,
+          "ability": "Armor Tail",
+          "nature": "Sassy",
+          "evs": {
+            "hp": 252,
+            "def": 4,
+            "spd": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Psychic",
+            "Dazzling Gleam",
+            "Helping Hand",
+            "Trick Room"
+          ],
+          "constant": "SPECIES_FARIGIRAF",
+          "displayName": "Farigiraf",
+          "innates": [
+            "ABILITY_PSYCHIC_SURGE",
+            "ABILITY_INNER_FOCUS",
+            "ABILITY_INVERSION"
+          ],
+          "itemConstant": "ITEM_SAFETY_GOGGLES",
+          "itemName": "Safety Goggles",
+          "itemDescription": "Protect from weather damage and powder moves.",
+          "itemIcon": "sprites/items/safety_goggles.png",
+          "sprite": "sprites/pokemon/farigiraf.png"
+        },
+        {
+          "name": "Reuniclus",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Magic Guard",
+          "nature": "Quiet",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Expanding Force",
+            "Shadow Ball",
+            "Energy Ball",
+            "Protect"
+          ],
+          "constant": "SPECIES_REUNICLUS",
+          "displayName": "Reuniclus",
+          "innates": [
+            "ABILITY_UNCANNY",
+            "ABILITY_SHOWTIME",
+            "ABILITY_BULLETPROOF"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/reuniclus.png"
+        },
+        {
+          "name": "Exeggutor",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Harvest",
+          "nature": "Quiet",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Giga Drain",
+            "Psychic",
+            "Trick Room",
+            "Protect"
+          ],
+          "constant": "SPECIES_EXEGGUTOR",
+          "displayName": "Exeggutor",
+          "innates": [
+            "ABILITY_TELEPATHY",
+            "ABILITY_LEAF_GUARD",
+            "ABILITY_SKILL_LINK"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/exeggutor.png"
+        },
+        {
+          "name": "Metagross",
+          "item": "Assault Vest",
+          "level": 85,
+          "ability": "Clear Body",
+          "nature": "Brave",
+          "evs": {
+            "hp": 252,
+            "atk": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Iron Head",
+            "Zen Headbutt",
+            "Hammer Arm",
+            "Ice Punch"
+          ],
+          "constant": "SPECIES_METAGROSS",
+          "displayName": "Metagross",
+          "innates": [
+            "ABILITY_ANALYTIC",
+            "ABILITY_IRON_FIST",
+            "ABILITY_PHALANX"
+          ],
+          "itemConstant": "ITEM_ASSAULT_VEST",
+          "itemName": "Assault Vest",
+          "itemDescription": "Raises Sp. Def but prevents the use of status moves.",
+          "itemIcon": "sprites/items/assault_vest.png",
+          "sprite": "sprites/pokemon/metagross.png"
+        },
+        {
+          "name": "Armarouge",
+          "item": "Charcoal",
+          "level": 85,
+          "ability": "Flash Fire",
+          "nature": "Quiet",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Armor Cannon",
+            "Expanding Force",
+            "Wide Guard",
+            "Protect"
+          ],
+          "constant": "SPECIES_ARMAROUGE",
+          "displayName": "Armarouge",
+          "innates": [
+            "ABILITY_SHARDPLATE",
+            "ABILITY_MEGA_LAUNCHER",
+            "ABILITY_SMOULDERING"
+          ],
+          "itemConstant": "ITEM_CHARCOAL",
+          "itemName": "Charcoal",
+          "itemDescription": "A hold item that raises the power of Fire-type moves.",
+          "itemIcon": "sprites/items/charcoal.png",
+          "sprite": "sprites/pokemon/armarouge.png"
+        },
+        {
+          "name": "Slowbro",
+          "item": "Watertite",
+          "level": 85,
+          "ability": "Regenerator",
+          "nature": "Quiet",
+          "evs": {
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 0
+          },
+          "moves": [
+            "Scald",
+            "Psychic",
+            "Ice Beam",
+            "Slack Off"
+          ],
+          "constant": "SPECIES_SLOWBRO",
+          "displayName": "Slowbro",
+          "innates": [
+            "ABILITY_SIMPLE",
+            "ABILITY_UNAWARE",
+            "ABILITY_THICK_FAT"
+          ],
+          "itemConstant": "ITEM_WATERTITE",
+          "itemName": "Watertite",
+          "itemDescription": "Allows certain Pokemon to Mega Evolve into Water -type form.",
+          "itemIcon": "sprites/items/blastoisinite.png",
+          "sprite": "sprites/pokemon/slowbro.png"
+        }
+      ]
+    },
+    {
+      "constant": "TRAINER_WILL_REMATCH_ALT",
+      "name": "Will",
+      "displayName": "Will (Rematch: Variant 2)",
+      "difficulty": "Normal",
+      "averageLevel": 85.0,
+      "pic": "Elite Four Will",
+      "sprite": "sprites/trainers/elite_four_will.png?v=alpha2",
+      "locations": [
+        "Pokemon League Wills Room"
+      ],
+      "party": [
+        {
+          "name": "Indeedee",
+          "item": "Focus Sash",
+          "level": 85,
+          "ability": "Psychic Surge",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Expanding Force",
+            "Dazzling Gleam",
+            "Encore",
+            "Protect"
+          ],
+          "constant": "SPECIES_INDEEDEE_M",
+          "displayName": "Indeedee",
+          "innates": [
+            "ABILITY_FOREWARN",
+            "ABILITY_TELEPATHY",
+            "ABILITY_SEER"
+          ],
+          "itemConstant": "ITEM_FOCUS_SASH",
+          "itemName": "Focus Sash",
+          "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
+          "itemIcon": "sprites/items/focus_sash.png",
+          "sprite": "sprites/pokemon/indeedee_m.png"
+        },
+        {
+          "name": "Delphox",
+          "item": "Life Orb",
+          "level": 85,
+          "ability": "Blaze",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Expanding Force",
+            "Heat Wave",
+            "Grass Knot",
+            "Protect"
+          ],
+          "constant": "SPECIES_DELPHOX",
+          "displayName": "Delphox",
+          "innates": [
+            "ABILITY_DAZZLING",
+            "ABILITY_UNCANNY",
+            "ABILITY_MYSTIC_FORCE"
+          ],
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/delphox.png"
         },
         {
           "name": "Espeon",
           "item": "Choice Specs",
           "level": 85,
           "ability": "Magic Bounce",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "spa": 100
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
           },
-          "ivs": {},
           "moves": [
-            "Draining Kiss",
             "Expanding Force",
-            "Power Gem",
-            "Psychic"
+            "Dazzling Gleam",
+            "Shadow Ball",
+            "Power Gem"
           ],
           "constant": "SPECIES_ESPEON",
           "displayName": "Espeon",
@@ -341107,81 +342931,93 @@
           "sprite": "sprites/pokemon/espeon.png"
         },
         {
-          "name": "Slowbro",
-          "item": "Leftovers",
+          "name": "Starmie",
+          "item": "Expert Belt",
           "level": 85,
-          "ability": "Regenerator",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "spd": 100
+          "ability": "Natural Cure",
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
           },
-          "ivs": {},
           "moves": [
-            "Blizzard",
             "Scald",
-            "Slack Off",
-            "Psychic"
+            "Ice Beam",
+            "Thunderbolt",
+            "Protect"
           ],
-          "constant": "SPECIES_SLOWBRO",
-          "displayName": "Slowbro",
+          "constant": "SPECIES_STARMIE",
+          "displayName": "Starmie",
           "innates": [
-            "ABILITY_SIMPLE",
-            "ABILITY_UNAWARE",
-            "ABILITY_THICK_FAT"
+            "ABILITY_REGENERATOR",
+            "ABILITY_TINTED_LENS",
+            "ABILITY_WONDER_SKIN"
           ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/slowbro.png"
+          "itemConstant": "ITEM_EXPERT_BELT",
+          "itemName": "Expert Belt",
+          "itemDescription": "A belt that boosts the power of super effective moves.",
+          "itemIcon": "sprites/items/expert_belt.png",
+          "sprite": "sprites/pokemon/starmie.png"
         },
         {
-          "name": "Braviary-Hisui",
-          "item": "Twisted Spoon",
+          "name": "Gallade",
+          "item": "Scope Lens",
           "level": 85,
-          "ability": "Tinted Lens",
-          "nature": "",
-          "evs": {
-            "spa": 100,
-            "spd": 100
+          "ability": "Sharpness",
+          "nature": "Jolly",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
           },
-          "ivs": {},
           "moves": [
-            "Air Slash",
-            "Esper Wing",
-            "U-turn",
-            "Psychic Terrain"
+            "Sacred Sword",
+            "Psycho Cut",
+            "Leaf Blade",
+            "Protect"
           ],
-          "constant": "SPECIES_BRAVIARY_HISUI",
-          "displayName": "Braviary-Hisui",
+          "constant": "SPECIES_GALLADE",
+          "displayName": "Gallade",
           "innates": [
-            "ABILITY_THINK_AHEAD",
-            "ABILITY_PSYCHIC_ATE",
-            "ABILITY_MYSTIC_FORCE"
+            "ABILITY_MOXIE",
+            "ABILITY_TOUGH_CLAWS",
+            "ABILITY_MINDS_EYE"
           ],
-          "itemConstant": "ITEM_TWISTED_SPOON",
-          "itemName": "Twisted Spoon",
-          "itemDescription": "A hold item that boosts Psychic- type moves.",
-          "itemIcon": "sprites/items/twisted_spoon.png",
-          "sprite": "sprites/pokemon/braviary_hisui.png"
+          "itemConstant": "ITEM_SCOPE_LENS",
+          "itemName": "Scope Lens",
+          "itemDescription": "A hold item that improves the critical-hit rate.",
+          "itemIcon": "sprites/items/scope_lens.png",
+          "sprite": "sprites/pokemon/gallade.png"
         },
         {
           "name": "Alakazam",
           "item": "Psychite",
           "level": 85,
           "ability": "Magic Guard",
-          "nature": "",
-          "evs": {
-            "hp": 100,
-            "spa": 100
+          "nature": "Timid",
+          "evs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
           },
-          "ivs": {},
           "moves": [
+            "Expanding Force",
             "Shadow Ball",
-            "Psychic",
-            "Recover",
-            "Expanding Force"
+            "Focus Blast",
+            "Protect"
           ],
           "constant": "SPECIES_ALAKAZAM",
           "displayName": "Alakazam",
@@ -341199,9 +343035,9 @@
       ]
     },
     {
-      "constant": "TRAINER_WILL_2",
+      "constant": "TRAINER_WILL_REMATCH_ALT",
       "name": "Will",
-      "displayName": "Will (Rematch, Hard)",
+      "displayName": "Will (Rematch: Variant 2, Hard)",
       "difficulty": "Hard",
       "averageLevel": 85.0,
       "pic": "Elite Four Will",
@@ -341211,81 +343047,105 @@
       ],
       "party": [
         {
-          "name": "Farigiraf",
-          "item": "Safety Goggles",
+          "name": "Indeedee",
+          "item": "Focus Sash",
           "level": 85,
-          "ability": "Armor Tail",
-          "nature": "Sassy",
+          "ability": "Psychic Surge",
+          "nature": "Timid",
           "evs": {
-            "hp": 252,
-            "spd": 252
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
           },
-          "ivs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
           "moves": [
-            "Trick Room",
+            "Expanding Force",
             "Dazzling Gleam",
-            "Psychic",
-            "Hyper Voice"
+            "Helping Hand",
+            "Protect"
           ],
-          "constant": "SPECIES_FARIGIRAF",
-          "displayName": "Farigiraf",
+          "constant": "SPECIES_INDEEDEE_M",
+          "displayName": "Indeedee",
           "innates": [
-            "ABILITY_PSYCHIC_SURGE",
-            "ABILITY_INNER_FOCUS",
-            "ABILITY_INVERSION"
+            "ABILITY_FOREWARN",
+            "ABILITY_TELEPATHY",
+            "ABILITY_SEER"
           ],
-          "itemConstant": "ITEM_SAFETY_GOGGLES",
-          "itemName": "Safety Goggles",
-          "itemDescription": "Protect from weather damage and powder moves.",
-          "itemIcon": "sprites/items/safety_goggles.png",
-          "sprite": "sprites/pokemon/farigiraf.png"
+          "itemConstant": "ITEM_FOCUS_SASH",
+          "itemName": "Focus Sash",
+          "itemDescription": "If the holder has full HP, it endures KO hits with 1 HP.",
+          "itemIcon": "sprites/items/focus_sash.png",
+          "sprite": "sprites/pokemon/indeedee_m.png"
         },
         {
-          "name": "Reuniclus",
-          "item": "Rocky Helmet",
+          "name": "Delphox",
+          "item": "Life Orb",
           "level": 85,
-          "ability": "Magic Guard",
-          "nature": "",
+          "ability": "Blaze",
+          "nature": "Timid",
           "evs": {
-            "def": 252,
-            "spa": 252
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
           },
-          "ivs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
           "moves": [
-            "Psychic",
-            "Calm Mind",
-            "Shadow Ball",
-            "Mystical Fire"
+            "Expanding Force",
+            "Heat Wave",
+            "Grass Knot",
+            "Protect"
           ],
-          "constant": "SPECIES_REUNICLUS",
-          "displayName": "Reuniclus",
+          "constant": "SPECIES_DELPHOX",
+          "displayName": "Delphox",
           "innates": [
+            "ABILITY_DAZZLING",
             "ABILITY_UNCANNY",
-            "ABILITY_SHOWTIME",
-            "ABILITY_BULLETPROOF"
+            "ABILITY_MYSTIC_FORCE"
           ],
-          "itemConstant": "ITEM_ROCKY_HELMET",
-          "itemName": "Rocky Helmet",
-          "itemDescription": "Hurts the foe if they touch its holder.",
-          "itemIcon": "sprites/items/rocky_helmet.png",
-          "sprite": "sprites/pokemon/reuniclus.png"
+          "itemConstant": "ITEM_LIFE_ORB",
+          "itemName": "Life Orb",
+          "itemDescription": "Boosts move power but holder loses HP with each attack.",
+          "itemIcon": "sprites/items/life_orb.png",
+          "sprite": "sprites/pokemon/delphox.png"
         },
         {
           "name": "Espeon",
           "item": "Choice Specs",
           "level": 85,
           "ability": "Magic Bounce",
-          "nature": "",
+          "nature": "Timid",
           "evs": {
-            "hp": 252,
-            "spa": 252
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
           },
-          "ivs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
           "moves": [
-            "Draining Kiss",
             "Expanding Force",
-            "Power Gem",
-            "Psychic"
+            "Dazzling Gleam",
+            "Shadow Ball",
+            "Power Gem"
           ],
           "constant": "SPECIES_ESPEON",
           "displayName": "Espeon",
@@ -341301,82 +343161,105 @@
           "sprite": "sprites/pokemon/espeon.png"
         },
         {
-          "name": "Slowbro",
-          "item": "Leftovers",
+          "name": "Starmie",
+          "item": "Expert Belt",
           "level": 85,
-          "ability": "Regenerator",
-          "nature": "",
+          "ability": "Natural Cure",
+          "nature": "Timid",
           "evs": {
-            "hp": 192,
-            "spa": 64,
-            "spd": 252
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
           },
-          "ivs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
           "moves": [
-            "Blizzard",
             "Scald",
-            "Slack Off",
-            "Psychic"
+            "Ice Beam",
+            "Thunderbolt",
+            "Protect"
           ],
-          "constant": "SPECIES_SLOWBRO",
-          "displayName": "Slowbro",
+          "constant": "SPECIES_STARMIE",
+          "displayName": "Starmie",
           "innates": [
-            "ABILITY_SIMPLE",
-            "ABILITY_UNAWARE",
-            "ABILITY_THICK_FAT"
+            "ABILITY_REGENERATOR",
+            "ABILITY_TINTED_LENS",
+            "ABILITY_WONDER_SKIN"
           ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/slowbro.png"
+          "itemConstant": "ITEM_EXPERT_BELT",
+          "itemName": "Expert Belt",
+          "itemDescription": "A belt that boosts the power of super effective moves.",
+          "itemIcon": "sprites/items/expert_belt.png",
+          "sprite": "sprites/pokemon/starmie.png"
         },
         {
-          "name": "Braviary-Hisui",
-          "item": "Twisted Spoon",
+          "name": "Gallade",
+          "item": "Scope Lens",
           "level": 85,
-          "ability": "Tinted Lens",
-          "nature": "",
+          "ability": "Sharpness",
+          "nature": "Jolly",
           "evs": {
-            "spa": 252,
-            "spd": 252
+            "hp": 4,
+            "atk": 252,
+            "spe": 252
           },
-          "ivs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 31,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
           "moves": [
-            "Air Slash",
-            "Esper Wing",
-            "U-turn",
-            "Psychic Terrain"
+            "Sacred Sword",
+            "Psycho Cut",
+            "Leaf Blade",
+            "Protect"
           ],
-          "constant": "SPECIES_BRAVIARY_HISUI",
-          "displayName": "Braviary-Hisui",
+          "constant": "SPECIES_GALLADE",
+          "displayName": "Gallade",
           "innates": [
-            "ABILITY_THINK_AHEAD",
-            "ABILITY_PSYCHIC_ATE",
-            "ABILITY_MYSTIC_FORCE"
+            "ABILITY_MOXIE",
+            "ABILITY_TOUGH_CLAWS",
+            "ABILITY_MINDS_EYE"
           ],
-          "itemConstant": "ITEM_TWISTED_SPOON",
-          "itemName": "Twisted Spoon",
-          "itemDescription": "A hold item that boosts Psychic- type moves.",
-          "itemIcon": "sprites/items/twisted_spoon.png",
-          "sprite": "sprites/pokemon/braviary_hisui.png"
+          "itemConstant": "ITEM_SCOPE_LENS",
+          "itemName": "Scope Lens",
+          "itemDescription": "A hold item that improves the critical-hit rate.",
+          "itemIcon": "sprites/items/scope_lens.png",
+          "sprite": "sprites/pokemon/gallade.png"
         },
         {
           "name": "Alakazam",
           "item": "Psychite",
           "level": 85,
           "ability": "Magic Guard",
-          "nature": "",
+          "nature": "Timid",
           "evs": {
-            "hp": 252,
-            "spa": 252
+            "hp": 4,
+            "spa": 252,
+            "spe": 252
           },
-          "ivs": {},
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
           "moves": [
+            "Expanding Force",
             "Shadow Ball",
-            "Psychic",
-            "Recover",
-            "Expanding Force"
+            "Focus Blast",
+            "Protect"
           ],
           "constant": "SPECIES_ALAKAZAM",
           "displayName": "Alakazam",
@@ -341874,7 +343757,7 @@
             "Glaive Rush",
             "High Horsepower",
             "Icicle Crash",
-            "Substitute"
+            "Protect"
           ],
           "constant": "SPECIES_BAXCALIBUR",
           "displayName": "Baxcalibur",
@@ -341903,8 +343786,8 @@
           "moves": [
             "Draco Meteor",
             "Hurricane",
-            "Flamethrower",
-            "Ice Beam"
+            "Tailwind",
+            "Flamethrower"
           ],
           "constant": "SPECIES_DRAGONITE",
           "displayName": "Dragonite",
@@ -341933,7 +343816,7 @@
           "ivs": {},
           "moves": [
             "Dragon Hammer",
-            "Earthquake",
+            "Stomping Tantrum",
             "Seed Bomb",
             "Zen Headbutt"
           ],
@@ -341955,17 +343838,18 @@
           "item": "Yache Berry",
           "level": 86,
           "ability": "Sticky Hold",
-          "nature": "",
+          "nature": "Modest",
           "evs": {
-            "atk": 252,
-            "spa": 252
+            "hp": 252,
+            "spa": 252,
+            "spd": 4
           },
           "ivs": {},
           "moves": [
-            "Draco Meteor",
-            "Leaf Storm",
+            "Fickle Beam",
             "Giga Drain",
-            "Outrage"
+            "Earth Power",
+            "Protect"
           ],
           "constant": "SPECIES_HYDRAPPLE",
           "displayName": "Hydrapple",
@@ -341995,8 +343879,8 @@
           "moves": [
             "Dragon Darts",
             "Phantom Force",
-            "Body Slam",
-            "Trick"
+            "U-turn",
+            "Psychic Fangs"
           ],
           "constant": "SPECIES_DRAGAPULT",
           "displayName": "Dragapult",
@@ -342015,7 +343899,7 @@
           "name": "Archaludon",
           "item": "Choice Specs",
           "level": 86,
-          "ability": "",
+          "ability": "Stamina",
           "nature": "Modest",
           "evs": {
             "spa": 252,
@@ -342254,6 +344138,75 @@
       ],
       "party": [
         {
+          "name": "Thundurus-Therian",
+          "item": "Sitrus Berry",
+          "level": 85,
+          "ability": "Volt Absorb",
+          "nature": "Timid",
+          "evs": {
+            "def": 4,
+            "spa": 252,
+            "spe": 252
+          },
+          "ivs": {},
+          "moves": [
+            "Wildbolt Storm",
+            "Electroweb",
+            "Grass Knot",
+            "Focus Blast"
+          ],
+          "constant": "SPECIES_THUNDURUS_THERIAN",
+          "displayName": "Thundurus-Therian",
+          "innates": [
+            "ABILITY_FILTER",
+            "ABILITY_NO_GUARD",
+            "ABILITY_DRIZZLE"
+          ],
+          "itemConstant": "ITEM_SITRUS_BERRY",
+          "itemName": "Sitrus Berry",
+          "itemDescription": "A hold item that restores the user's HP a little.",
+          "itemIcon": "sprites/items/sitrus_berry.png",
+          "sprite": "sprites/pokemon/thundurus_therian.png"
+        },
+        {
+          "name": "Tapu Fini",
+          "item": "Leftovers",
+          "level": 86,
+          "ability": "Telepathy",
+          "nature": "Calm",
+          "evs": {
+            "hp": 248,
+            "def": 8,
+            "spd": 252
+          },
+          "ivs": {
+            "hp": 31,
+            "atk": 0,
+            "def": 31,
+            "spa": 31,
+            "spd": 31,
+            "spe": 31
+          },
+          "moves": [
+            "Calm Mind",
+            "Muddy Water",
+            "Moonblast",
+            "Ice Beam"
+          ],
+          "constant": "SPECIES_TAPU_FINI",
+          "displayName": "Tapu Fini",
+          "innates": [
+            "ABILITY_WATER_VEIL",
+            "ABILITY_RAIN_DISH",
+            "ABILITY_STORM_DRAIN"
+          ],
+          "itemConstant": "ITEM_LEFTOVERS",
+          "itemName": "Leftovers",
+          "itemDescription": "A hold item that gradually restores HP in battle.",
+          "itemIcon": "sprites/items/leftovers.png",
+          "sprite": "sprites/pokemon/tapu_fini.png"
+        },
+        {
           "name": "Chansey",
           "item": "Eviolite",
           "level": 85,
@@ -342273,10 +344226,10 @@
             "spe": 31
           },
           "moves": [
-            "Stealth Rock",
+            "Helping Hand",
             "Seismic Toss",
-            "Protect",
-            "Wish"
+            "Icy Wind",
+            "Soft-Boiled"
           ],
           "constant": "SPECIES_CHANSEY",
           "displayName": "Chansey",
@@ -342292,7 +344245,7 @@
         },
         {
           "name": "Volcarona",
-          "item": "Heavy-Duty Boots",
+          "item": "Charti Berry",
           "level": 86,
           "ability": "Flame Body",
           "nature": "Timid",
@@ -342306,10 +344259,10 @@
             "atk": 0
           },
           "moves": [
-            "Quiver Dance",
-            "Flamethrower",
+            "Rage Powder",
+            "Heat Wave",
             "Roost",
-            "Giga Drain"
+            "Bug Buzz"
           ],
           "constant": "SPECIES_VOLCARONA",
           "displayName": "Volcarona",
@@ -342318,80 +344271,11 @@
             "ABILITY_UNNERVE",
             "ABILITY_LEVITATE"
           ],
-          "itemConstant": "ITEM_HEAVY_DUTY_BOOTS",
-          "itemName": "Heavy-Duty Boots",
-          "itemDescription": "Boots that prevent effects of traps set in the field.",
-          "itemIcon": "sprites/items/heavy_duty_boots.png",
+          "itemConstant": "ITEM_CHARTI_BERRY",
+          "itemName": "Charti Berry",
+          "itemDescription": "A hold item that weakens a Rock move if weak to it.",
+          "itemIcon": "sprites/items/charti_berry.png",
           "sprite": "sprites/pokemon/volcarona.png"
-        },
-        {
-          "name": "Thundurus-Therian",
-          "item": "Heavy-Duty Boots",
-          "level": 85,
-          "ability": "Volt Absorb",
-          "nature": "Timid",
-          "evs": {
-            "def": 4,
-            "spa": 252,
-            "spe": 252
-          },
-          "ivs": {},
-          "moves": [
-            "Volt Switch",
-            "Psychic",
-            "Grass Knot",
-            "Focus Blast"
-          ],
-          "constant": "SPECIES_THUNDURUS_THERIAN",
-          "displayName": "Thundurus-Therian",
-          "innates": [
-            "ABILITY_FILTER",
-            "ABILITY_NO_GUARD",
-            "ABILITY_DRIZZLE"
-          ],
-          "itemConstant": "ITEM_HEAVY_DUTY_BOOTS",
-          "itemName": "Heavy-Duty Boots",
-          "itemDescription": "Boots that prevent effects of traps set in the field.",
-          "itemIcon": "sprites/items/heavy_duty_boots.png",
-          "sprite": "sprites/pokemon/thundurus_therian.png"
-        },
-        {
-          "name": "Tapu Fini",
-          "item": "Leftovers",
-          "level": 86,
-          "ability": "Misty Surge",
-          "nature": "Timid",
-          "evs": {
-            "hp": 248,
-            "def": 8,
-            "spd": 252
-          },
-          "ivs": {
-            "hp": 31,
-            "atk": 0,
-            "def": 31,
-            "spa": 31,
-            "spd": 31,
-            "spe": 31
-          },
-          "moves": [
-            "Ice Beam",
-            "Scald",
-            "Moonblast",
-            "Defog"
-          ],
-          "constant": "SPECIES_TAPU_FINI",
-          "displayName": "Tapu Fini",
-          "innates": [
-            "ABILITY_WATER_VEIL",
-            "ABILITY_RAIN_DISH",
-            "ABILITY_STORM_DRAIN"
-          ],
-          "itemConstant": "ITEM_LEFTOVERS",
-          "itemName": "Leftovers",
-          "itemDescription": "A hold item that gradually restores HP in battle.",
-          "itemIcon": "sprites/items/leftovers.png",
-          "sprite": "sprites/pokemon/tapu_fini.png"
         },
         {
           "name": "Dragapult",
@@ -342438,8 +344322,8 @@
           "ivs": {},
           "moves": [
             "Leech Seed",
-            "Chloroblast",
-            "Synthesis",
+            "Giga Drain",
+            "Weather Ball",
             "Earth Power"
           ],
           "constant": "SPECIES_VENUSAUR",
