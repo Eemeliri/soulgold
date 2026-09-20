@@ -14,7 +14,7 @@
 #define TRAINER_TYLER       8
 #define TRAINER_ROD                   9
 #define TRAINER_TONY        10
-#define TRAINER_MARCEL                       11
+#define TRAINER_WILL_REMATCH_ALT             11
 #define TRAINER_ARNOLD                      12
 #define TRAINER_ED                           13
 #define TRAINER_VALERIE      14
@@ -33,12 +33,12 @@
 #define TRAINER_SID         27
 #define TRAINER_STANLY         28
 #define TRAINER_REBECCA                     29
-#define TRAINER_MATT                         30
-#define TRAINER_ZANDER                       31
+#define TRAINER_KOGA_REMATCH_ALT             30
+#define TRAINER_BRUNO_REMATCH_ALT            31
 #define TRAINER_DEVIN     32
 #define TRAINER_GRANT       33
 #define TRAINER_CASSIE                       34
-#define TRAINER_LEAH                         35
+#define TRAINER_KAREN_REMATCH_ALT            35
 #define TRAINER_JEFFREY                        36
 #define TRAINER_GRUNT_33                       37
 #define TRAINER_NORMAN                        38

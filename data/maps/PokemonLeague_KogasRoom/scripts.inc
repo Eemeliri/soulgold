@@ -24,7 +24,12 @@ PokemonLeague_KogasRoom_EventScript_KogaRematch::
 	msgbox PokemonLeague_KogasRoom_Text_RematchBefore, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_5
+	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_KogasRoom_EventScript_KogaRematchAlt
 	trainerbattle_no_intro TRAINER_KOGA_2, PokemonLeague_KogasRoom_Text_Beaten
+	goto PokemonLeague_KogasRoom_EventScript_KogaOnDefeat
+
+PokemonLeague_KogasRoom_EventScript_KogaRematchAlt::
+	trainerbattle_no_intro TRAINER_KOGA_REMATCH_ALT, PokemonLeague_KogasRoom_Text_Beaten
 	goto PokemonLeague_KogasRoom_EventScript_KogaOnDefeat
 
 PokemonLeague_KogasRoom_EventScript_KogaOnDefeat::

@@ -28,6 +28,7 @@ EliteFourRoom_OnFrame::
 
 EliteFourRoom_CloseDoor::
 	lock
+	call_if_set FLAG_IS_CHAMPION, EliteFourRoom_RollRematchParty
 	setflag FLAG_TEMP_2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
 	waitmovement 0
@@ -51,6 +52,11 @@ EliteFourRoom_CloseDoor::
 	release
 	end
 
+EliteFourRoom_RollRematchParty::
+	random 2
+	copyvar VAR_TEMP_1, VAR_RESULT
+	return
+
 PokemonLeague_WillsRoom_EventScript_Will::
 	lock 
 	faceplayer
@@ -66,7 +72,12 @@ PokemonLeague_WillsRoom_EventScript_WillRematch::
 	msgbox PokemonLeague_WillsRoom_Text_RematchBefore, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_5
+	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_WillsRoom_EventScript_WillRematchAlt
 	trainerbattle_no_intro TRAINER_WILL_2, PokemonLeague_WillsRoom_Text_Beaten
+	goto PokemonLeague_WillsRoom_EventScript_WillOnDefeat
+
+PokemonLeague_WillsRoom_EventScript_WillRematchAlt::
+	trainerbattle_no_intro TRAINER_WILL_REMATCH_ALT, PokemonLeague_WillsRoom_Text_Beaten
 	goto PokemonLeague_WillsRoom_EventScript_WillOnDefeat
 
 PokemonLeague_WillsRoom_EventScript_WillOnDefeat::

@@ -34,7 +34,12 @@ PokemonLeague_KarensRoom_EventScript_KarenRematch::
 	msgbox PokemonLeague_KarensRoom_Text_RematchBefore, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_5
+	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_KarensRoom_EventScript_KarenRematchAlt
 	trainerbattle_no_intro TRAINER_KAREN_2, PokemonLeague_KarensRoom_Text_Beaten
+	goto PokemonLeague_KarensRoom_EventScript_KarenOnDefeatPostgame
+
+PokemonLeague_KarensRoom_EventScript_KarenRematchAlt::
+	trainerbattle_no_intro TRAINER_KAREN_REMATCH_ALT, PokemonLeague_KarensRoom_Text_Beaten
 	goto PokemonLeague_KarensRoom_EventScript_KarenOnDefeatPostgame
 
 PokemonLeague_KarensRoom_EventScript_KarenOnDefeat::

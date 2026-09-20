@@ -28,9 +28,13 @@ GYM_LEADER_POSTGAME_REMATCHES = {
 
 POKEMON_LEAGUE_REMATCHES = {
     "TRAINER_WILL_2",
+    "TRAINER_WILL_REMATCH_ALT",
     "TRAINER_KOGA_2",
+    "TRAINER_KOGA_REMATCH_ALT",
     "TRAINER_BRUNO_2",
+    "TRAINER_BRUNO_REMATCH_ALT",
     "TRAINER_KAREN_2",
+    "TRAINER_KAREN_REMATCH_ALT",
     "TRAINER_LANCE_2",
 }
 
@@ -48,6 +52,17 @@ TITLE_DEFENSE_TRAINERS = {
     "TRAINER_TITLE_DEFENSE_ELDER_LI",
     "TRAINER_TITLE_DEFENSE_DIRECTOR",
     "TRAINER_TITLE_DEFENSE_LEAF",
+}
+
+ELITE_FOUR_REMATCH_THEMES = {
+    "TRAINER_WILL_2": "Trick Room",
+    "TRAINER_WILL_REMATCH_ALT": "Psychic Offense",
+    "TRAINER_KOGA_2": "Toxic Pressure",
+    "TRAINER_KOGA_REMATCH_ALT": "Swarm Wing",
+    "TRAINER_BRUNO_2": "Fighting Offense",
+    "TRAINER_BRUNO_REMATCH_ALT": "Iron Bastion",
+    "TRAINER_KAREN_2": "Dark Covenant",
+    "TRAINER_KAREN_REMATCH_ALT": "Haunted Court",
 }
 
 GYM_BADGE_COUNT_VARIANTS = {
@@ -194,6 +209,8 @@ def trainer_display_name(name: str, constant: str, difficulty: str) -> str:
         rematch_label = "Postgame Rematch"
     elif constant in POKEMON_LEAGUE_REMATCHES:
         rematch_label = "Rematch"
+        if constant in ELITE_FOUR_REMATCH_THEMES:
+            rematch_label += f": {ELITE_FOUR_REMATCH_THEMES[constant]}"
     elif constant in TITLE_DEFENSE_TRAINERS:
         rematch_label = "Title Defense"
     elif constant in GYM_BADGE_COUNT_VARIANTS:

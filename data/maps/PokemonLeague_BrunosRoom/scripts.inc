@@ -24,7 +24,12 @@ PokemonLeague_BrunosRoom_EventScript_BrunoRematch::
 	msgbox PokemonLeague_BrunosRoom_Text_RematchBefore, MSGBOX_DEFAULT
 	setflag FLAG_TEMP_3
 	setflag FLAG_TEMP_5
+	goto_if_eq VAR_TEMP_1, 1, PokemonLeague_BrunosRoom_EventScript_BrunoRematchAlt
 	trainerbattle_no_intro TRAINER_BRUNO_2, PokemonLeague_BrunosRoom_Text_Beaten
+	goto PokemonLeague_BrunosRoom_EventScript_BrunoOnDefeat
+
+PokemonLeague_BrunosRoom_EventScript_BrunoRematchAlt::
+	trainerbattle_no_intro TRAINER_BRUNO_REMATCH_ALT, PokemonLeague_BrunosRoom_Text_Beaten
 	goto PokemonLeague_BrunosRoom_EventScript_BrunoOnDefeat
 
 PokemonLeague_BrunosRoom_EventScript_BrunoOnDefeat::
