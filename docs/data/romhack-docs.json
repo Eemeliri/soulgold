@@ -72952,8 +72952,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -72961,8 +72961,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73196,8 +73196,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73205,8 +73205,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -73414,8 +73414,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73423,8 +73423,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -268850,6 +268850,40 @@
       ],
       "location": "Ice Path B2F (Item ball); Mt Mortar B1F (Item ball); Route 36 (Hidden item); Goldenrod City Department Store 4F (Mart)",
       "slug": "carbos"
+    },
+    {
+      "id": 71,
+      "constant": "ITEM_PP_UP",
+      "name": "PP Up",
+      "description": "Raises the maximum PP of a selected move.",
+      "pocket": "POCKET_MEDICINE",
+      "sortType": "ITEM_TYPE_STAT_BOOST_DRINK",
+      "itemIcon": "sprites/items/pp_up.png",
+      "itemIcons": [],
+      "locations": [
+        {
+          "map": "Ice Path 1F",
+          "source": "Item ball"
+        },
+        {
+          "map": "Ice Path 1F",
+          "source": "Hidden item"
+        },
+        {
+          "map": "Ilex Forest",
+          "source": "Hidden item"
+        },
+        {
+          "map": "Mt Mortar B1F",
+          "source": "Item ball"
+        },
+        {
+          "map": "Route 47",
+          "source": "Hidden item"
+        }
+      ],
+      "location": "Ice Path 1F (Item ball); Ice Path 1F (Hidden item); Ilex Forest (Hidden item); Mt Mortar B1F (Item ball); Route 47 (Hidden item)",
+      "slug": "pp-up"
     },
     {
       "id": 73,
