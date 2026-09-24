@@ -75,6 +75,57 @@ class GiftLocationTests(unittest.TestCase):
                 self.assertEqual(exchange["minLevel"], 15)
                 self.assertEqual(exchange["maxLevel"], 15)
 
+    def test_battle_cafe_prizes_are_point_exchange_sources(self) -> None:
+        prizes = {
+            "SPECIES_ARTICUNO_GALAR",
+            "SPECIES_ZAPDOS_GALAR",
+            "SPECIES_MOLTRES_GALAR",
+            "SPECIES_TORNADUS_INCARNATE",
+            "SPECIES_THUNDURUS_INCARNATE",
+            "SPECIES_LANDORUS_INCARNATE",
+            "SPECIES_ENAMORUS_INCARNATE",
+            "SPECIES_TAPU_KOKO",
+            "SPECIES_TAPU_LELE",
+            "SPECIES_TAPU_BULU",
+            "SPECIES_TAPU_FINI",
+            "SPECIES_MIRAIDON",
+            "SPECIES_KORAIDON",
+        }
+        other_species = {"SPECIES_DIANCIE", "SPECIES_ZAPDOS"}
+        by_species = {species: object() for species in prizes | other_species}
+        locations = {}
+
+        for _ in range(2):
+            add_gift_species_locations(locations, by_species)
+
+        for species in prizes:
+            with self.subTest(species=species):
+                cafe_locations = [
+                    location for location in locations.get(species, [])
+                    if location["map"] == "MAP_BATTLE_CAFE"
+                ]
+                self.assertEqual(cafe_locations, [{
+                    "map": "MAP_BATTLE_CAFE",
+                    "name": "Battle Cafe point exchange",
+                    "time": "",
+                    "method": "Exchange",
+                    "minLevel": 70,
+                    "maxLevel": 70,
+                    "rate": None,
+                }])
+
+        diancie = [
+            location for location in locations["SPECIES_DIANCIE"]
+            if location["map"] == "MAP_BATTLE_CAFE"
+        ]
+        self.assertEqual(len(diancie), 1)
+        self.assertEqual(diancie[0]["name"], "Battle Cafe")
+        self.assertEqual(diancie[0]["method"], "Gift")
+        self.assertFalse(any(
+            location["map"] == "MAP_BATTLE_CAFE"
+            for location in locations.get("SPECIES_ZAPDOS", [])
+        ))
+
     def test_fossil_revivals_are_not_presented_as_ordinary_gifts(self) -> None:
         locations = {}
 

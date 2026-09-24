@@ -43854,6 +43854,14 @@
         {
           "level": 60,
           "move": "MOVE_STONE_EDGE"
+        },
+        {
+          "level": 65,
+          "move": "MOVE_AQUA_CUTTER"
+        },
+        {
+          "level": 70,
+          "move": "MOVE_STONE_AXE"
         }
       ],
       "tmhm": [
@@ -45616,7 +45624,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "articuno-galar"
@@ -45972,7 +45990,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "zapdos-galar"
@@ -46334,7 +46362,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "moltres-galar"
@@ -72914,8 +72952,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -72923,8 +72961,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -74256,6 +74294,10 @@
         {
           "level": 60,
           "move": "MOVE_DRAGON_RUSH"
+        },
+        {
+          "level": 65,
+          "move": "MOVE_SACRED_SWORD"
         }
       ],
       "tmhm": [
@@ -74581,6 +74623,10 @@
         {
           "level": 60,
           "move": "MOVE_DRAGON_RUSH"
+        },
+        {
+          "level": 65,
+          "move": "MOVE_SACRED_SWORD"
         }
       ],
       "tmhm": [
@@ -148455,7 +148501,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tornadus-incarnate"
@@ -148860,7 +148916,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "thundurus-incarnate"
@@ -149666,7 +149732,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "landorus-incarnate"
@@ -152943,11 +153019,13 @@
       ],
       "bst": 630,
       "abilities": [
-        "ABILITY_OVERGROW",
+        "ABILITY_BULLETPROOF",
+        "ABILITY_BULLETPROOF",
         "ABILITY_BULLETPROOF"
       ],
       "regularAbilities": [
-        "ABILITY_OVERGROW"
+        "ABILITY_BULLETPROOF",
+        "ABILITY_BULLETPROOF"
       ],
       "hiddenAbilities": [
         "ABILITY_BULLETPROOF"
@@ -178733,7 +178811,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tapu-koko"
@@ -178910,7 +178998,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tapu-lele"
@@ -179106,7 +179204,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tapu-bulu"
@@ -179297,7 +179405,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "tapu-fini"
@@ -198261,7 +198379,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "enamorus-incarnate"
@@ -215985,7 +216113,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "koraidon"
@@ -216150,7 +216288,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_BATTLE_CAFE",
+          "name": "Battle Cafe point exchange",
+          "time": "",
+          "method": "Exchange",
+          "minLevel": 70,
+          "maxLevel": 70,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "miraidon"
@@ -216179,6 +216327,7 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
+        "legendary",
         "paradox"
       ],
       "bst": 590,
@@ -216359,6 +216508,7 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
+        "legendary",
         "paradox"
       ],
       "bst": 590,
@@ -217465,6 +217615,7 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
+        "legendary",
         "paradox"
       ],
       "bst": 590,
@@ -217660,6 +217811,7 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
+        "legendary",
         "paradox"
       ],
       "bst": 590,
@@ -217846,6 +217998,7 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
+        "legendary",
         "paradox"
       ],
       "bst": 590,
@@ -218031,6 +218184,7 @@
         "EGG_GROUP_NO_EGGS_DISCOVERED"
       ],
       "categories": [
+        "legendary",
         "paradox"
       ],
       "bst": 590,
@@ -239198,7 +239352,7 @@
     "ABILITY_SHED_SKIN": {
       "constant": "ABILITY_SHED_SKIN",
       "name": "Shed Skin",
-      "description": "Pokemon may cure it's status problems by shedding its skin.",
+      "description": "Pokemon may cure its status problems by shedding its skin.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -239903,12 +240057,6 @@
             "name": "Chesnaught",
             "dex": 469,
             "sprite": "sprites/pokemon/chesnaught.png"
-          },
-          {
-            "species": "SPECIES_CHESNAUGHT_MEGA",
-            "name": "Chesnaught",
-            "dex": 469,
-            "sprite": "sprites/pokemon/chesnaught_mega.png"
           },
           {
             "species": "SPECIES_ROWLET",

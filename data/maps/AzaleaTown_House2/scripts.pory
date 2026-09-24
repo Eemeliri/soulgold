@@ -4,12 +4,12 @@ script Azalea_SlowpokeTrade {
     lock
     faceplayer
     if (flag(FLAG_SLOWPOKE_TRADE)) {
-        msgbox("Have you been amassing more slowpokes?")
+        msgbox("Have you been amassing more slowpoke?")
     } else {
-        ingame_trade(INGAME_TRADE_SLOWPOKE, "I love Slowpokes! They are adorable,
+        ingame_trade(INGAME_TRADE_SLOWPOKE, "I love Slowpoke! They are adorable,
                                          cuddly, cute, sweet, amazing and
                                          awesome! How about I prove it to you?
-                                         I'll give you one of my finest slowpokes
+                                         I'll give you one of my finest slowpoke
                                          if you give me one of yours.", 
                                          SlowpokeTrade_Declined,
                                          SlowpokeTrade_NotRequested,
@@ -22,7 +22,7 @@ script Azalea_SlowpokeTrade {
 
 script SlowpokeTrade_Declined {
     msgbox("Huh? Don't you understand how amazing
-           slowpokes are?!?")
+           slowpoke are?!?")
     release
     end                                 
 }

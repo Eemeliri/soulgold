@@ -3,13 +3,11 @@ Gate_KitakamiBorder_MapScripts::
 
 
 KitakamiBorderGuard::
-# 4 "data/maps/Gate_KitakamiBorder/scripts.pory"
 	msgbox KitakamiBorderGuard_Text_0, MSGBOX_NPC
 	return
 
 
 KitakamiBorderGuard_Text_0:
-# 4 "data/maps/Gate_KitakamiBorder/scripts.pory"
 	.string "Welcome to Kitakami, traveller!\p"
 	.string "You're quite far off from the\n"
 	.string "civilization here, but I hope\l"

@@ -728,7 +728,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Shed Skin"),
         .description = COMPOUND_STRING("Heals the body by shedding."),
-        .longDescription = COMPOUND_STRING("Pokemon may cure it's  \n"
+        .longDescription = COMPOUND_STRING("Pokemon may cure its  \n"
                                            "status problems by shedding\n"
                                            "its skin.                  \n"
                                            "               "),

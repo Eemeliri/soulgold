@@ -64,9 +64,6 @@ tools/flips/flips
 *.smolTM
 __pycache__
 node_modules/
-.mp4
-.codex
-/tools/species_distribution_report_icons
 .map_version
 docs_site/dist/
 !docs_site/src/assets/app.js
@@ -75,3 +72,5 @@ porytiles/
 *.bps
 porydaw/
 src/data/docs_qr.h
+/Soulgold*.png
+/*.pal

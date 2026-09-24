@@ -177,6 +177,52 @@ def add_game_corner_exchange_locations(
             locations[species].append(location)
 
 
+def add_battle_cafe_exchange_locations(
+    locations: dict[str, list[SpeciesLocation]],
+    by_species: dict[str, SpeciesRow],
+) -> None:
+    """Show cafe point exchange rewards in the docs."""
+    map_dir = REPO_ROOT / "data" / "maps" / "BattleCafe"
+    try:
+        map_data = json.loads(read(map_dir / "map.json"))
+        blocks = script_blocks(read(map_dir / "scripts.inc"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return
+
+    reachable = reachable_script_labels(map_data, blocks)
+    aliases = species_aliases()
+    for confirmation in ("BattleCafe_ConfirmRewardMon", "BattleCafe_ConfirmParadoxLegend"):
+        reward_script = "\n".join(
+            block for label, block in blocks.items()
+            if label in reachable and (label == confirmation or label.startswith(confirmation + "_"))
+        )
+        gift = re.search(r"\bgivemon\s+VAR_TEMP_TRANSFERRED_SPECIES\s*,\s*(\d+)\b", reward_script)
+        if not gift:
+            continue
+        level = int(gift.group(1))
+        for label, block in blocks.items():
+            if label not in reachable or not re.search(rf"\bgoto\s+{confirmation}\b", block):
+                continue
+            choice = re.search(r"\bsetvar\s+VAR_TEMP_TRANSFERRED_SPECIES\s*,\s*(SPECIES_[A-Z0-9_]+)", block)
+            if not choice:
+                continue
+            species = aliases.get(choice.group(1), choice.group(1))
+            if species not in by_species:
+                continue
+            location: SpeciesLocation = {
+                "map": str(map_data.get("id") or "MAP_BATTLE_CAFE"),
+                "name": "Battle Cafe point exchange",
+                "time": "",
+                "method": "Exchange",
+                "minLevel": level,
+                "maxLevel": level,
+                "rate": None,
+            }
+            locations.setdefault(species, [])
+            if location not in locations[species]:
+                locations[species].append(location)
+
+
 def add_gift_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
@@ -229,6 +275,7 @@ def add_gift_species_locations(
 
     add_fossil_revival_locations(gifts, by_species)
     add_game_corner_exchange_locations(gifts, by_species)
+    add_battle_cafe_exchange_locations(gifts, by_species)
 
     for species, gift_locations in gifts.items():
         locations.setdefault(species, [])

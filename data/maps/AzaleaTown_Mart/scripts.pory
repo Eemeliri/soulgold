@@ -69,7 +69,7 @@ script AzaleaTownMartNpc {
     }
     msgbox("Apparently the Team Rocket had taken 
             all evolution items specifically for
-            Galarian Slowpokes.")
+            Galarian Slowpoke.")
     release
     end
 }
