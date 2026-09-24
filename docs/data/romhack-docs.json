@@ -43856,11 +43856,11 @@
           "move": "MOVE_STONE_EDGE"
         },
         {
-          "level": 65,
+          "level": 64,
           "move": "MOVE_AQUA_CUTTER"
         },
         {
-          "level": 70,
+          "level": 75,
           "move": "MOVE_STONE_AXE"
         }
       ],
@@ -44106,12 +44106,20 @@
           "move": "MOVE_METAL_SOUND"
         },
         {
-          "level": 67,
+          "level": 63,
           "move": "MOVE_WRING_OUT"
+        },
+        {
+          "level": 66,
+          "move": "MOVE_AQUA_CUTTER"
         },
         {
           "level": 70,
           "move": "MOVE_STONE_EDGE"
+        },
+        {
+          "level": 75,
+          "move": "MOVE_STONE_AXE"
         }
       ],
       "tmhm": [
@@ -73414,8 +73422,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73423,8 +73431,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
