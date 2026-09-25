@@ -1,6 +1,6 @@
 gText_WouldYouLikeToRestYourPkmn::
 	.string "Hello, and welcome to\n"
-	.string "the Pokémon CENTER.\p"
+	.string "the Pokémon Center.\p"
 	.string "We restore your tired Pokémon\n"
 	.string "to full health.\p"
 	.string "Would you like to rest your Pokémon?$"
@@ -26,13 +26,13 @@ gText_WelcomeCutShort::
 
 gText_NoticesGoldCard::
 	.string "Th-that card…\n"
-	.string "Could it be… The GOLD CARD?!\p"
+	.string "Could it be… The Gold Card?!\p"
 	.string "Oh, the gold color is brilliant!\n"
 	.string "The four stars seem to sparkle!\p"
-	.string "I've seen several TRAINERS with\n"
-	.string "a SILVER CARD before, but, {PLAYER},\l"
-	.string "you're the first TRAINER I've ever\l"
-	.string "seen with a GOLD CARD!\p"
+	.string "I've seen several Trainers with\n"
+	.string "a Silver Card before, but, {PLAYER},\l"
+	.string "you're the first Trainer I've ever\l"
+	.string "seen with a Gold Card!\p"
 	.string "Okay, {PLAYER}, please allow me\n"
 	.string "the honor of resting your Pokémon!$"
 
