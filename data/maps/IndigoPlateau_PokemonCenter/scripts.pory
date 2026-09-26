@@ -163,6 +163,8 @@ mart IndigoPlateau_StoneMerchantMart {
     ITEM_LINKING_CORD
     ITEM_AUSPICIOUS_ARMOR
     ITEM_MALICIOUS_ARMOR
+    ITEM_PEAT_BLOCK
+    ITEM_BLACK_AUGURITE
 }
 
 mart IndigoPlateau_GemMerchantMart {

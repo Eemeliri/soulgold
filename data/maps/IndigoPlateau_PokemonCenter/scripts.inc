@@ -163,6 +163,8 @@ IndigoPlateau_StoneMerchantMart:
 	.2byte ITEM_LINKING_CORD
 	.2byte ITEM_AUSPICIOUS_ARMOR
 	.2byte ITEM_MALICIOUS_ARMOR
+	.2byte ITEM_PEAT_BLOCK
+	.2byte ITEM_BLACK_AUGURITE
 	.2byte ITEM_NONE
 
 	.align 2
