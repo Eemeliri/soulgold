@@ -558,14 +558,24 @@ static s32 GetParentToInheritNature(struct DayCare *daycare)
     return Random() & 1 ? slot : -1;
 }
 
-static bool32 IsDaycareEggShiny(u32 personality)
+static bool32 IsDaycareEggShiny(u32 personality, struct DayCare *daycare)
 {
+    u32 shinyOdds = GetShinyGenerationOdds();
+
+    if (GetBoxMonData(&daycare->mons[0].mon, MON_DATA_IS_SHINY) || GetBoxMonData(&daycare->mons[1].mon, MON_DATA_IS_SHINY))
+    {
+        shinyOdds *= 2;
+    }
+    if (GetBoxMonData(&daycare->mons[0].mon, MON_DATA_IS_SHINY) && GetBoxMonData(&daycare->mons[1].mon, MON_DATA_IS_SHINY))
+    {
+        shinyOdds *= 2; // 1/64
+    }
     if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
         return FALSE;
     if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
         return TRUE;
 
-    return GET_SHINY_VALUE(READ_OTID_FROM_SAVE, personality) < GetShinyGenerationOdds();
+    return GET_SHINY_VALUE(READ_OTID_FROM_SAVE, personality) < shinyOdds;
 }
 
 static void _TriggerPendingDaycareEgg(struct DayCare *daycare)
@@ -600,7 +610,7 @@ static void _TriggerPendingDaycareEgg(struct DayCare *daycare)
         daycare->offspringPersonality = personality;
     }
 
-    if (IsDaycareEggShiny(daycare->offspringPersonality))
+    if (IsDaycareEggShiny(daycare->offspringPersonality, daycare))
         FlagSet(FLAG_PENDING_DAYCARE_EGG_SHINY);
     else
         FlagClear(FLAG_PENDING_DAYCARE_EGG_SHINY);
@@ -611,7 +621,7 @@ static void _TriggerPendingDaycareEgg(struct DayCare *daycare)
 static void _TriggerPendingDaycareMaleEgg(struct DayCare *daycare)
 {
     daycare->offspringPersonality = (Random()) | (EGG_GENDER_MALE);
-    if (IsDaycareEggShiny(daycare->offspringPersonality))
+    if (IsDaycareEggShiny(daycare->offspringPersonality, daycare))
         FlagSet(FLAG_PENDING_DAYCARE_EGG_SHINY);
     else
         FlagClear(FLAG_PENDING_DAYCARE_EGG_SHINY);
