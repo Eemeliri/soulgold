@@ -564,11 +564,11 @@ static bool32 IsDaycareEggShiny(u32 personality, struct DayCare *daycare)
 
     if (GetBoxMonData(&daycare->mons[0].mon, MON_DATA_IS_SHINY) || GetBoxMonData(&daycare->mons[1].mon, MON_DATA_IS_SHINY))
     {
-        shinyOdds *= 2;
+        shinyOdds *= 4;
     }
     if (GetBoxMonData(&daycare->mons[0].mon, MON_DATA_IS_SHINY) && GetBoxMonData(&daycare->mons[1].mon, MON_DATA_IS_SHINY))
     {
-        shinyOdds *= 2; // 1/64
+        shinyOdds *= 2; // 1/32
     }
     if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
         return FALSE;
