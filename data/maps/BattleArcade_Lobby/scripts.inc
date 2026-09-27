@@ -29,9 +29,9 @@ BattleArcade_Lobby_EventScript_WarpToHallway::
 
 BattleArcade_Lobby_EventScript_WalkToElevator::
 	closemessage
-	applymovement VAR_LAST_TALKED, BattleArcade_Lobby_EventScript_WalkToElevator_Movement_0
+	applymovement 1, BattleArcade_Lobby_EventScript_WalkToElevator_Movement_0
 	applymovement OBJ_EVENT_ID_PLAYER, BattleArcade_Lobby_EventScript_WalkToElevator_Movement_1
-	waitmovement VAR_LAST_TALKED
+	waitmovement 1
 	waitmovement OBJ_EVENT_ID_PLAYER
 	return
 

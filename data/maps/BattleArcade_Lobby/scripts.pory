@@ -36,8 +36,8 @@ script BattleArcade_Lobby_EventScript_WalkToElevator
 {
 	closemessage
 
-	applymovement(VAR_LAST_TALKED, moves(walk_up * 3, set_invisible))
+	applymovement(1, moves(walk_up * 3, set_invisible))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 4))
-	waitmovement(VAR_LAST_TALKED)
+	waitmovement(1)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 }
