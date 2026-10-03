@@ -5787,7 +5787,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_MIND_FLOAT] =
     {
         .name = _("Mind Float"),
-        .description = COMPOUND_STRING("Levitates with Psychic Terrain."),
+        .description = COMPOUND_STRING("Not hit by Ground attacks."),
         .longDescription = COMPOUND_STRING("The Pokemon is immune\n"
                                            "to Ground-type moves and\n"
                                            "grounded entry hazards,\n"

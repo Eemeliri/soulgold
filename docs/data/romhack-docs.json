@@ -4775,7 +4775,7 @@
       "innates": [
         "ABILITY_VITAL_SPIRIT",
         "ABILITY_WINDBURST",
-        "ABILITY_NO_GUARD"
+        "ABILITY_WINDCALLER"
       ],
       "sprite": "sprites/pokemon/pidgeot.png",
       "shinySprite": "sprites/pokemon/pidgeot_shiny.png",
@@ -6358,7 +6358,7 @@
       "innates": [
         "ABILITY_HUNTER",
         "ABILITY_ACIDIC",
-        "ABILITY_MERCILESS"
+        "ABILITY_STRONG_JAW"
       ],
       "sprite": "sprites/pokemon/arbok.png",
       "shinySprite": "sprites/pokemon/arbok_shiny.png",
@@ -12666,7 +12666,7 @@
       ],
       "innates": [
         "ABILITY_FORCE_RETURN",
-        "ABILITY_OVERCOAT",
+        "ABILITY_ECHO_CHAMBER",
         "ABILITY_LIMBER"
       ],
       "sprite": "sprites/pokemon/wigglytuff.png",
@@ -18325,7 +18325,7 @@
       ],
       "innates": [
         "ABILITY_GUTS",
-        "ABILITY_WATER_VEIL"
+        "ABILITY_IRON_FIST"
       ],
       "sprite": "sprites/pokemon/poliwhirl.png",
       "shinySprite": "sprites/pokemon/poliwhirl_shiny.png",
@@ -18707,7 +18707,7 @@
       ],
       "innates": [
         "ABILITY_GUTS",
-        "ABILITY_WATER_VEIL",
+        "ABILITY_IRON_FIST",
         "ABILITY_STAMINA"
       ],
       "sprite": "sprites/pokemon/poliwrath.png",
@@ -26834,7 +26834,7 @@
       ],
       "innates": [
         "ABILITY_SHARPNESS",
-        "ABILITY_WIND_RIDER",
+        "ABILITY_FLEXIBLE",
         "ABILITY_SUPER_LUCK"
       ],
       "sprite": "sprites/pokemon/farfetchd.png",
@@ -37382,7 +37382,7 @@
         "ABILITY_TECHNICIAN"
       ],
       "innates": [
-        "ABILITY_MIMICRY",
+        "ABILITY_ELEMENTALIST",
         "ABILITY_SYNCHRONIZE",
         "ABILITY_MAGIC_GUARD"
       ],
@@ -57666,7 +57666,7 @@
         "ABILITY_RATTLED"
       ],
       "innates": [
-        "ABILITY_HEATPROOF",
+        "ABILITY_ROCK_AND_STONE",
         "ABILITY_SOLID_ROCK",
         "ABILITY_SAP_SIPPER"
       ],
@@ -67070,7 +67070,7 @@
       "innates": [
         "ABILITY_UNBURDEN",
         "ABILITY_QUICK_DRAW",
-        "ABILITY_REFRIGERATE"
+        "ABILITY_GLASS_CANNON"
       ],
       "sprite": "sprites/pokemon/delibird.png",
       "shinySprite": "sprites/pokemon/delibird_shiny.png",
@@ -73078,8 +73078,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73087,8 +73087,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -73322,8 +73322,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73331,8 +73331,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -73540,8 +73540,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73549,8 +73549,8 @@
           "name": "Tin Tower Roof Day",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -109148,7 +109148,7 @@
         "ABILITY_RATTLED"
       ],
       "innates": [
-        "ABILITY_HEATPROOF"
+        "ABILITY_ROCK_AND_STONE"
       ],
       "sprite": "sprites/pokemon/bonsly.png",
       "shinySprite": "sprites/pokemon/bonsly_shiny.png",
@@ -124287,7 +124287,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_UNSTOPPABLE",
+        "ABILITY_IRON_FIST",
         "ABILITY_TIRELESS",
         "ABILITY_REJUVENATION"
       ],
@@ -125078,6 +125078,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
+        "ABILITY_TIDAL_REFLEX",
         "ABILITY_WATER_VEIL",
         "ABILITY_FRIEND_GUARD"
       ],
@@ -128964,7 +128965,7 @@
       "innates": [
         "ABILITY_RESTORING",
         "ABILITY_NIGHT_STALKER",
-        "ABILITY_UNSTOPPABLE"
+        "ABILITY_ROCK_AND_STONE"
       ],
       "sprite": "sprites/pokemon/samurott_hisui.png",
       "shinySprite": "sprites/pokemon/samurott_hisui_shiny.png",
@@ -146101,9 +146102,9 @@
         "ABILITY_TINTED_LENS"
       ],
       "innates": [
-        "ABILITY_THINK_AHEAD",
+        "ABILITY_ELEMENTALIST",
         "ABILITY_PSYCHIC_ATE",
-        "ABILITY_MYSTIC_FORCE"
+        "ABILITY_SPECTRAL"
       ],
       "sprite": "sprites/pokemon/braviary_hisui.png",
       "shinySprite": "sprites/pokemon/braviary_hisui_shiny.png",
@@ -186643,7 +186644,7 @@
       "innates": [
         "ABILITY_LEAF_GUARD",
         "ABILITY_NATURAL_CURE",
-        "ABILITY_SEED_SOWER"
+        "ABILITY_WELL_BAKED_BODY"
       ],
       "sprite": "sprites/pokemon/appletun.png",
       "shinySprite": "sprites/pokemon/appletun_shiny.png",
@@ -210275,7 +210276,7 @@
       ],
       "innates": [
         "ABILITY_INNER_FOCUS",
-        "ABILITY_NATURAL_CURE",
+        "ABILITY_OVERLOCK",
         "ABILITY_BACKDRAFT"
       ],
       "sprite": "sprites/pokemon/cyclizar.png",
@@ -229128,7 +229129,12 @@
       "priority": 0,
       "type": "TYPE_GRASS",
       "category": "DAMAGE_CATEGORY_PHYSICAL",
-      "abilityBoosts": [],
+      "abilityBoosts": [
+        {
+          "ability": "ABILITY_PUNK_ROCK",
+          "percent": 30
+        }
+      ],
       "slug": "drum-beating"
     },
     "MOVE_SNAP_TRAP": {
@@ -235585,12 +235591,6 @@
             "sprite": "sprites/pokemon/scovillain_mega.png"
           },
           {
-            "species": "SPECIES_CYCLIZAR",
-            "name": "Cyclizar",
-            "dex": 654,
-            "sprite": "sprites/pokemon/cyclizar.png"
-          },
-          {
             "species": "SPECIES_BRUTE_BONNET",
             "name": "Brute Bonnet",
             "dex": 667,
@@ -237131,18 +237131,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_POLIWHIRL",
-            "name": "Poliwhirl",
-            "dex": 53,
-            "sprite": "sprites/pokemon/poliwhirl.png"
-          },
-          {
-            "species": "SPECIES_POLIWRATH",
-            "name": "Poliwrath",
-            "dex": 54,
-            "sprite": "sprites/pokemon/poliwrath.png"
-          },
           {
             "species": "SPECIES_MARILL",
             "name": "Marill",
@@ -242668,12 +242656,6 @@
             "sprite": "sprites/pokemon/victreebel_mega.png"
           },
           {
-            "species": "SPECIES_SUDOWOODO",
-            "name": "Sudowoodo",
-            "dex": 162,
-            "sprite": "sprites/pokemon/sudowoodo.png"
-          },
-          {
             "species": "SPECIES_SUICUNE",
             "name": "Suicune",
             "dex": 209,
@@ -242684,12 +242666,6 @@
             "name": "Lugia",
             "dex": 213,
             "sprite": "sprites/pokemon/lugia.png"
-          },
-          {
-            "species": "SPECIES_BONSLY",
-            "name": "Bonsly",
-            "dex": 330,
-            "sprite": "sprites/pokemon/bonsly.png"
           },
           {
             "species": "SPECIES_KLEFKI",
@@ -242997,6 +242973,18 @@
         ],
         "innate": [
           {
+            "species": "SPECIES_POLIWHIRL",
+            "name": "Poliwhirl",
+            "dex": 53,
+            "sprite": "sprites/pokemon/poliwhirl.png"
+          },
+          {
+            "species": "SPECIES_POLIWRATH",
+            "name": "Poliwrath",
+            "dex": 54,
+            "sprite": "sprites/pokemon/poliwrath.png"
+          },
+          {
             "species": "SPECIES_SCIZOR",
             "name": "Scizor",
             "dex": 183,
@@ -243061,6 +243049,12 @@
             "name": "Dusknoir",
             "dex": 365,
             "sprite": "sprites/pokemon/dusknoir.png"
+          },
+          {
+            "species": "SPECIES_REGIGIGAS",
+            "name": "Regigigas",
+            "dex": 374,
+            "sprite": "sprites/pokemon/regigigas.png"
           },
           {
             "species": "SPECIES_URSHIFU_RAPID_STRIKE",
@@ -244128,12 +244122,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_PIDGEOT",
-            "name": "Pidgeot",
-            "dex": 18,
-            "sprite": "sprites/pokemon/pidgeot.png"
-          },
           {
             "species": "SPECIES_PINSIR_MEGA",
             "name": "Pinsir",
@@ -249197,12 +249185,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_WIGGLYTUFF",
-            "name": "Wigglytuff",
-            "dex": 38,
-            "sprite": "sprites/pokemon/wigglytuff.png"
-          },
-          {
             "species": "SPECIES_ROWLET",
             "name": "Rowlet",
             "dex": 521,
@@ -252128,6 +252110,12 @@
             "sprite": "sprites/pokemon/raticate_alola.png"
           },
           {
+            "species": "SPECIES_ARBOK",
+            "name": "Arbok",
+            "dex": 22,
+            "sprite": "sprites/pokemon/arbok.png"
+          },
+          {
             "species": "SPECIES_GOLBAT",
             "name": "Golbat",
             "dex": 40,
@@ -252354,12 +252342,6 @@
             "name": "Sandslash",
             "dex": 26,
             "sprite": "sprites/pokemon/sandslash_alola.png"
-          },
-          {
-            "species": "SPECIES_DELIBIRD",
-            "name": "Delibird",
-            "dex": 191,
-            "sprite": "sprites/pokemon/delibird.png"
           },
           {
             "species": "SPECIES_SNORUNT",
@@ -253702,12 +253684,6 @@
             "name": "Beedrill",
             "dex": 15,
             "sprite": "sprites/pokemon/beedrill_mega.png"
-          },
-          {
-            "species": "SPECIES_ARBOK",
-            "name": "Arbok",
-            "dex": 22,
-            "sprite": "sprites/pokemon/arbok.png"
           },
           {
             "species": "SPECIES_QWILFISH",
@@ -256237,12 +256213,6 @@
         ],
         "innate": [
           {
-            "species": "SPECIES_MR_MIME",
-            "name": "Mr. Mime",
-            "dex": 106,
-            "sprite": "sprites/pokemon/mr_mime.png"
-          },
-          {
             "species": "SPECIES_MIME_JR",
             "name": "Mime Jr.",
             "dex": 331,
@@ -256964,12 +256934,6 @@
             "sprite": "sprites/pokemon/rillaboom.png"
           },
           {
-            "species": "SPECIES_APPLETUN",
-            "name": "Appletun",
-            "dex": 581,
-            "sprite": "sprites/pokemon/appletun.png"
-          },
-          {
             "species": "SPECIES_SCOVILLAIN",
             "name": "Scovillain",
             "dex": 646,
@@ -257109,7 +257073,14 @@
       "slug": "well-baked-body",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_APPLETUN",
+            "name": "Appletun",
+            "dex": 581,
+            "sprite": "sprites/pokemon/appletun.png"
+          }
+        ]
       }
     },
     "ABILITY_WIND_RIDER": {
@@ -257133,12 +257104,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_FARFETCHD",
-            "name": "Farfetch'd",
-            "dex": 75,
-            "sprite": "sprites/pokemon/farfetchd.png"
-          },
           {
             "species": "SPECIES_HOPPIP",
             "name": "Hoppip",
@@ -259309,18 +259274,6 @@
             "sprite": "sprites/pokemon/palkia_origin.png"
           },
           {
-            "species": "SPECIES_REGIGIGAS",
-            "name": "Regigigas",
-            "dex": 374,
-            "sprite": "sprites/pokemon/regigigas.png"
-          },
-          {
-            "species": "SPECIES_SAMUROTT_HISUI",
-            "name": "Samurott",
-            "dex": 391,
-            "sprite": "sprites/pokemon/samurott_hisui.png"
-          },
-          {
             "species": "SPECIES_DARMANITAN_STANDARD",
             "name": "Darmanitan",
             "dex": 410,
@@ -259509,12 +259462,6 @@
             "name": "Golurk",
             "dex": 443,
             "sprite": "sprites/pokemon/golurk_mega.png"
-          },
-          {
-            "species": "SPECIES_BRAVIARY_HISUI",
-            "name": "Braviary",
-            "dex": 447,
-            "sprite": "sprites/pokemon/braviary_hisui.png"
           },
           {
             "species": "SPECIES_DELPHOX",
@@ -261179,7 +261126,14 @@
       "slug": "tidal-reflex",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_PHIONE",
+            "name": "Phione",
+            "dex": 377,
+            "sprite": "sprites/pokemon/phione.png"
+          }
+        ]
       }
     },
     "ABILITY_VERDANT_GALE": {
@@ -261253,14 +261207,7 @@
       "slug": "think-ahead",
       "usage": {
         "base": [],
-        "innate": [
-          {
-            "species": "SPECIES_BRAVIARY_HISUI",
-            "name": "Braviary",
-            "dex": 447,
-            "sprite": "sprites/pokemon/braviary_hisui.png"
-          }
-        ]
+        "innate": []
       }
     },
     "ABILITY_FROST_SNAP": {
@@ -261406,7 +261353,20 @@
       "slug": "elementalist",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_MR_MIME",
+            "name": "Mr. Mime",
+            "dex": 106,
+            "sprite": "sprites/pokemon/mr_mime.png"
+          },
+          {
+            "species": "SPECIES_BRAVIARY_HISUI",
+            "name": "Braviary",
+            "dex": 447,
+            "sprite": "sprites/pokemon/braviary_hisui.png"
+          }
+        ]
       }
     },
     "ABILITY_SOOTHING": {
@@ -262372,6 +262332,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_PIDGEOT",
+            "name": "Pidgeot",
+            "dex": 18,
+            "sprite": "sprites/pokemon/pidgeot.png"
+          },
+          {
             "species": "SPECIES_PELIPPER",
             "name": "Pelipper",
             "dex": 228,
@@ -263046,7 +263012,14 @@
       "slug": "overlock",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_CYCLIZAR",
+            "name": "Cyclizar",
+            "dex": 654,
+            "sprite": "sprites/pokemon/cyclizar.png"
+          }
+        ]
       }
     },
     "ABILITY_SPECTRAL_DRAIN": {
@@ -263692,6 +263665,12 @@
             "sprite": "sprites/pokemon/yamask_galar.png"
           },
           {
+            "species": "SPECIES_BRAVIARY_HISUI",
+            "name": "Braviary",
+            "dex": 447,
+            "sprite": "sprites/pokemon/braviary_hisui.png"
+          },
+          {
             "species": "SPECIES_RUNERIGUS",
             "name": "Runerigus",
             "dex": 598,
@@ -264281,7 +264260,14 @@
       "slug": "flexible",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_FARFETCHD",
+            "name": "Farfetch'd",
+            "dex": 75,
+            "sprite": "sprites/pokemon/farfetchd.png"
+          }
+        ]
       }
     },
     "ABILITY_REBORN": {
@@ -264620,7 +264606,14 @@
       "slug": "glass-cannon",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_DELIBIRD",
+            "name": "Delibird",
+            "dex": 191,
+            "sprite": "sprites/pokemon/delibird.png"
+          }
+        ]
       }
     },
     "ABILITY_AEGIS": {
@@ -265169,7 +265162,14 @@
       "slug": "echo-chamber",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_WIGGLYTUFF",
+            "name": "Wigglytuff",
+            "dex": 38,
+            "sprite": "sprites/pokemon/wigglytuff.png"
+          }
+        ]
       }
     },
     "ABILITY_FLARE": {
@@ -265468,7 +265468,26 @@
       "slug": "rock-and-stone",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_SUDOWOODO",
+            "name": "Sudowoodo",
+            "dex": 162,
+            "sprite": "sprites/pokemon/sudowoodo.png"
+          },
+          {
+            "species": "SPECIES_BONSLY",
+            "name": "Bonsly",
+            "dex": 330,
+            "sprite": "sprites/pokemon/bonsly.png"
+          },
+          {
+            "species": "SPECIES_SAMUROTT_HISUI",
+            "name": "Samurott",
+            "dex": 391,
+            "sprite": "sprites/pokemon/samurott_hisui.png"
+          }
+        ]
       }
     },
     "ABILITY_POLARITY_SHIFT": {
@@ -297999,7 +298018,7 @@
           "displayName": "Wigglytuff",
           "innates": [
             "ABILITY_FORCE_RETURN",
-            "ABILITY_OVERCOAT",
+            "ABILITY_ECHO_CHAMBER",
             "ABILITY_LIMBER"
           ],
           "itemConstant": "",
@@ -298843,7 +298862,7 @@
           "displayName": "Wigglytuff",
           "innates": [
             "ABILITY_FORCE_RETURN",
-            "ABILITY_OVERCOAT",
+            "ABILITY_ECHO_CHAMBER",
             "ABILITY_LIMBER"
           ],
           "itemConstant": "",
@@ -300124,7 +300143,7 @@
           "constant": "SPECIES_MR_MIME",
           "displayName": "Mr Mime",
           "innates": [
-            "ABILITY_MIMICRY",
+            "ABILITY_ELEMENTALIST",
             "ABILITY_SYNCHRONIZE",
             "ABILITY_MAGIC_GUARD"
           ],
@@ -300854,7 +300873,7 @@
           "displayName": "Poliwhirl",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL"
+            "ABILITY_IRON_FIST"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -306200,7 +306219,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_BLACK_BELT",
@@ -306640,7 +306659,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_BLACK_BELT",
@@ -308980,7 +308999,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_BLACK_BELT",
@@ -309222,7 +309241,7 @@
           "innates": [
             "ABILITY_HUNTER",
             "ABILITY_ACIDIC",
-            "ABILITY_MERCILESS"
+            "ABILITY_STRONG_JAW"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -309985,7 +310004,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_BLACK_BELT",
@@ -311194,7 +311213,7 @@
           "innates": [
             "ABILITY_HUNTER",
             "ABILITY_ACIDIC",
-            "ABILITY_MERCILESS"
+            "ABILITY_STRONG_JAW"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -311367,7 +311386,7 @@
           "innates": [
             "ABILITY_HUNTER",
             "ABILITY_ACIDIC",
-            "ABILITY_MERCILESS"
+            "ABILITY_STRONG_JAW"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -312258,7 +312277,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_BLACK_BELT",
@@ -312870,7 +312889,7 @@
           "innates": [
             "ABILITY_UNBURDEN",
             "ABILITY_QUICK_DRAW",
-            "ABILITY_REFRIGERATE"
+            "ABILITY_GLASS_CANNON"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -313436,7 +313455,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_BLACK_BELT",
@@ -313719,7 +313738,7 @@
           "innates": [
             "ABILITY_HUNTER",
             "ABILITY_ACIDIC",
-            "ABILITY_MERCILESS"
+            "ABILITY_STRONG_JAW"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -315663,7 +315682,7 @@
           "innates": [
             "ABILITY_HUNTER",
             "ABILITY_ACIDIC",
-            "ABILITY_MERCILESS"
+            "ABILITY_STRONG_JAW"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -316270,7 +316289,7 @@
           "innates": [
             "ABILITY_HUNTER",
             "ABILITY_ACIDIC",
-            "ABILITY_MERCILESS"
+            "ABILITY_STRONG_JAW"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
@@ -317739,7 +317758,7 @@
           "innates": [
             "ABILITY_LEAF_GUARD",
             "ABILITY_NATURAL_CURE",
-            "ABILITY_SEED_SOWER"
+            "ABILITY_WELL_BAKED_BODY"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -318614,7 +318633,7 @@
           "innates": [
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_WINDBURST",
-            "ABILITY_NO_GUARD"
+            "ABILITY_WINDCALLER"
           ],
           "itemConstant": "ITEM_CHOICE_SCARF",
           "itemName": "Choice Scarf",
@@ -319402,7 +319421,7 @@
           "displayName": "Cyclizar",
           "innates": [
             "ABILITY_INNER_FOCUS",
-            "ABILITY_NATURAL_CURE",
+            "ABILITY_OVERLOCK",
             "ABILITY_BACKDRAFT"
           ],
           "itemConstant": "",
@@ -321305,7 +321324,7 @@
           "displayName": "Farfetchd",
           "innates": [
             "ABILITY_SHARPNESS",
-            "ABILITY_WIND_RIDER",
+            "ABILITY_FLEXIBLE",
             "ABILITY_SUPER_LUCK"
           ],
           "itemConstant": "ITEM_LEEK",
@@ -321335,7 +321354,7 @@
           "innates": [
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_WINDBURST",
-            "ABILITY_NO_GUARD"
+            "ABILITY_WINDCALLER"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -323468,9 +323487,9 @@
           "constant": "SPECIES_BRAVIARY_HISUI",
           "displayName": "Braviary-Hisui",
           "innates": [
-            "ABILITY_THINK_AHEAD",
+            "ABILITY_ELEMENTALIST",
             "ABILITY_PSYCHIC_ATE",
-            "ABILITY_MYSTIC_FORCE"
+            "ABILITY_SPECTRAL"
           ],
           "itemConstant": "ITEM_TWISTED_SPOON",
           "itemName": "Twisted Spoon",
@@ -324737,9 +324756,9 @@
           "constant": "SPECIES_BRAVIARY_HISUI",
           "displayName": "Braviary-Hisui",
           "innates": [
-            "ABILITY_THINK_AHEAD",
+            "ABILITY_ELEMENTALIST",
             "ABILITY_PSYCHIC_ATE",
-            "ABILITY_MYSTIC_FORCE"
+            "ABILITY_SPECTRAL"
           ],
           "itemConstant": "ITEM_TWISTED_SPOON",
           "itemName": "Twisted Spoon",
@@ -329877,7 +329896,7 @@
           "innates": [
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_WINDBURST",
-            "ABILITY_NO_GUARD"
+            "ABILITY_WINDCALLER"
           ],
           "itemConstant": "ITEM_FLYINGITE",
           "itemName": "Flyingite",
@@ -330987,7 +331006,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -332331,7 +332350,7 @@
           "displayName": "Poliwrath",
           "innates": [
             "ABILITY_GUTS",
-            "ABILITY_WATER_VEIL",
+            "ABILITY_IRON_FIST",
             "ABILITY_STAMINA"
           ],
           "itemConstant": "ITEM_LEFTOVERS",
@@ -338058,7 +338077,7 @@
           "innates": [
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_WINDBURST",
-            "ABILITY_NO_GUARD"
+            "ABILITY_WINDCALLER"
           ],
           "itemConstant": "ITEM_FLYINGITE",
           "itemName": "Flyingite",
@@ -338294,7 +338313,7 @@
           "innates": [
             "ABILITY_VITAL_SPIRIT",
             "ABILITY_WINDBURST",
-            "ABILITY_NO_GUARD"
+            "ABILITY_WINDCALLER"
           ],
           "itemConstant": "ITEM_FLYINGITE",
           "itemName": "Flyingite",
@@ -342474,7 +342493,7 @@
           "constant": "SPECIES_REGIGIGAS",
           "displayName": "Regigigas",
           "innates": [
-            "ABILITY_UNSTOPPABLE",
+            "ABILITY_IRON_FIST",
             "ABILITY_TIRELESS",
             "ABILITY_REJUVENATION"
           ],
@@ -342785,7 +342804,7 @@
           "constant": "SPECIES_REGIGIGAS",
           "displayName": "Regigigas",
           "innates": [
-            "ABILITY_UNSTOPPABLE",
+            "ABILITY_IRON_FIST",
             "ABILITY_TIRELESS",
             "ABILITY_REJUVENATION"
           ],
