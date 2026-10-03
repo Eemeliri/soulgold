@@ -137,7 +137,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -169,6 +168,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -346,7 +346,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -378,6 +377,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -600,7 +600,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
@@ -638,6 +637,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -869,7 +869,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
@@ -907,6 +906,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [],
@@ -1046,7 +1046,6 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -1086,6 +1085,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
       ],
@@ -1262,7 +1262,6 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -1302,6 +1301,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
       ],
@@ -1532,7 +1532,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -1582,6 +1581,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
@@ -1822,7 +1822,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -1872,6 +1871,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
@@ -2052,7 +2052,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -2102,6 +2101,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
@@ -4040,7 +4040,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
@@ -4072,6 +4072,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
@@ -4262,7 +4263,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
@@ -4294,6 +4295,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
@@ -4359,16 +4361,20 @@
           "move": "MOVE_TACKLE"
         },
         {
-          "level": 5,
+          "level": 4,
           "move": "MOVE_SAND_ATTACK"
         },
         {
-          "level": 9,
+          "level": 7,
           "move": "MOVE_GUST"
         },
         {
-          "level": 13,
+          "level": 10,
           "move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "level": 14,
+          "move": "MOVE_TWISTER"
         },
         {
           "level": 17,
@@ -4376,7 +4382,7 @@
         },
         {
           "level": 21,
-          "move": "MOVE_TWISTER"
+          "move": "MOVE_PLUCK"
         },
         {
           "level": 25,
@@ -4434,6 +4440,7 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -4571,12 +4578,16 @@
           "move": "MOVE_QUICK_ATTACK"
         },
         {
+          "level": 15,
+          "move": "MOVE_TWISTER"
+        },
+        {
           "level": 17,
           "move": "MOVE_WHIRLWIND"
         },
         {
-          "level": 22,
-          "move": "MOVE_TWISTER"
+          "level": 21,
+          "move": "MOVE_PLUCK"
         },
         {
           "level": 27,
@@ -4634,6 +4645,7 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -4801,6 +4813,10 @@
           "move": "MOVE_QUICK_ATTACK"
         },
         {
+          "level": 15,
+          "move": "MOVE_PLUCK"
+        },
+        {
           "level": 17,
           "move": "MOVE_WHIRLWIND"
         },
@@ -4865,7 +4881,9 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
+        "MOVE_FOCUS_BLAST",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -5040,6 +5058,10 @@
           "move": "MOVE_QUICK_ATTACK"
         },
         {
+          "level": 15,
+          "move": "MOVE_PLUCK"
+        },
+        {
           "level": 17,
           "move": "MOVE_WHIRLWIND"
         },
@@ -5104,7 +5126,9 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
+        "MOVE_FOCUS_BLAST",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -5701,7 +5725,6 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
@@ -5732,6 +5755,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
@@ -5969,7 +5993,6 @@
         "MOVE_ROUND",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
@@ -5993,6 +6016,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
@@ -6692,6 +6716,7 @@
         "MOVE_DRAINING_KISS",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -6993,6 +7018,7 @@
         "MOVE_DRAINING_KISS",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -7240,6 +7266,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -7545,6 +7572,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -7844,6 +7872,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -8070,6 +8099,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -8268,7 +8298,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -8313,6 +8343,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -8538,7 +8569,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_AURORA_VEIL",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -8580,6 +8610,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRIPLE_AXEL"
       ],
@@ -8778,7 +8809,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -8825,6 +8856,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -9072,7 +9104,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -9116,6 +9148,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRIPLE_AXEL"
       ],
@@ -11502,6 +11535,7 @@
         "MOVE_ENERGY_BALL",
         "MOVE_WILL_O_WISP",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL",
@@ -11743,6 +11777,7 @@
         "MOVE_DRAINING_KISS",
         "MOVE_PAYBACK",
         "MOVE_AURORA_VEIL",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_FROST_BREATH",
         "MOVE_SUBSTITUTE",
@@ -11973,6 +12008,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL",
@@ -12192,6 +12228,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_FROST_BREATH",
         "MOVE_SUBSTITUTE",
@@ -13021,6 +13058,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -13242,6 +13280,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -13518,7 +13557,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -13544,7 +13582,8 @@
         "MOVE_SEED_BOMB",
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_RAZOR_LEAF",
@@ -13729,7 +13768,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -13758,7 +13796,8 @@
         "MOVE_SEED_BOMB",
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_RAZOR_LEAF",
@@ -13947,7 +13986,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -13979,6 +14017,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -14165,7 +14204,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_SHADOW_CLAW",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -14195,6 +14234,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -14381,7 +14421,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_SHADOW_CLAW",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -14410,6 +14450,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -14631,7 +14672,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -14662,6 +14703,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -14861,7 +14903,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -14894,6 +14936,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -15119,6 +15162,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_WATER_PULSE",
@@ -15353,6 +15397,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
@@ -15565,7 +15610,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -15602,6 +15646,7 @@
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -15797,6 +15842,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_WATER_PULSE",
@@ -16069,6 +16115,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
@@ -16878,6 +16925,7 @@
         "MOVE_ROUND",
         "MOVE_OVERHEAT",
         "MOVE_WILL_O_WISP",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -17094,6 +17142,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_SMART_STRIKE",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
@@ -17305,6 +17354,7 @@
         "MOVE_OVERHEAT",
         "MOVE_WILL_O_WISP",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -17529,6 +17579,7 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -20907,7 +20958,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
@@ -20936,6 +20986,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_WEATHER_BALL"
       ],
@@ -21124,7 +21175,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
@@ -21156,6 +21206,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_WEATHER_BALL"
       ],
@@ -21357,7 +21408,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
@@ -21390,6 +21440,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_WEATHER_BALL"
       ],
@@ -21607,7 +21658,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
@@ -21640,6 +21690,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_WEATHER_BALL"
       ],
@@ -21800,7 +21851,6 @@
         "MOVE_SCALD",
         "MOVE_BRUTAL_SWING",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_GIGA_DRAIN",
@@ -21832,6 +21882,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -22242,7 +22293,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_GIGA_DRAIN",
@@ -22275,6 +22325,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES",
         "MOVE_WEATHER_BALL"
@@ -24044,6 +24095,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_OVERHEAT",
         "MOVE_WILL_O_WISP",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_PLAY_ROUGH",
@@ -24220,6 +24272,7 @@
         "MOVE_REST",
         "MOVE_ATTRACT",
         "MOVE_ROUND",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_PLAY_ROUGH",
@@ -24430,7 +24483,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -24459,6 +24512,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -24623,7 +24677,7 @@
         "MOVE_ROUND",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -24653,6 +24707,7 @@
         "MOVE_SNORE",
         "MOVE_STORED_POWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -26891,7 +26946,7 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_BRUTAL_SWING",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -26924,6 +26979,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
@@ -27090,7 +27146,6 @@
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
         "MOVE_BRUTAL_SWING",
-        "MOVE_SWORDS_DANCE",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
         "MOVE_ROCK_SMASH"
@@ -27115,6 +27170,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -30533,6 +30589,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_FLASH"
@@ -30732,6 +30789,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -30941,6 +30999,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_FLASH"
@@ -31161,6 +31220,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -31342,7 +31402,6 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -31375,6 +31434,7 @@
         "MOVE_SNORE",
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
@@ -31599,7 +31659,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
@@ -31640,6 +31699,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
@@ -31868,7 +31928,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
         "MOVE_INFESTATION",
@@ -31914,6 +31973,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
@@ -32092,7 +32152,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_THUNDER_PUNCH",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -32131,6 +32190,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -32365,7 +32425,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -32404,6 +32463,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -32622,7 +32682,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -32662,6 +32721,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -32887,7 +32947,6 @@
         "MOVE_FLING",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -32930,6 +32989,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -33165,7 +33225,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -33206,6 +33266,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -33405,7 +33466,6 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -33451,6 +33511,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -34350,7 +34411,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -34395,6 +34455,7 @@
         "MOVE_SUPERCELL_SLAM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_UPROAR"
       ],
@@ -34628,7 +34689,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -34691,6 +34751,7 @@
         "MOVE_SUPERCELL_SLAM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_UPROAR"
       ],
@@ -35204,7 +35265,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -35233,7 +35293,8 @@
         "MOVE_SEED_BOMB",
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_FLAIL",
@@ -35886,6 +35947,7 @@
         "MOVE_ATTRACT",
         "MOVE_ROUND",
         "MOVE_SCALD",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -36222,6 +36284,7 @@
         "MOVE_ROUND",
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -36942,6 +37005,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -37221,6 +37285,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -37956,7 +38021,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -37986,6 +38051,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -38657,7 +38723,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -38691,6 +38756,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -38876,7 +38942,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -38910,6 +38975,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -43180,6 +43246,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -43450,7 +43517,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_WILL_O_WISP",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_STRENGTH",
@@ -43483,6 +43549,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
       ],
@@ -43688,6 +43755,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
         "MOVE_FLASH"
@@ -43856,11 +43924,11 @@
           "move": "MOVE_STONE_EDGE"
         },
         {
-          "level": 64,
+          "level": 65,
           "move": "MOVE_AQUA_CUTTER"
         },
         {
-          "level": 75,
+          "level": 70,
           "move": "MOVE_STONE_AXE"
         }
       ],
@@ -44149,7 +44217,6 @@
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -44196,7 +44263,8 @@
         "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_BUBBLE_BEAM",
@@ -44389,6 +44457,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -44627,6 +44696,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -45423,6 +45493,7 @@
         "MOVE_SKY_DROP",
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
+        "MOVE_AGILITY",
         "MOVE_FROST_BREATH",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
@@ -45604,6 +45675,7 @@
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -45785,6 +45857,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -45966,6 +46039,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY",
@@ -46167,6 +46241,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY",
@@ -46343,6 +46418,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL",
@@ -46515,6 +46591,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -46822,6 +46899,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -47097,6 +47175,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -47415,6 +47494,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -47673,6 +47753,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -47942,6 +48023,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -48201,6 +48283,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -48451,7 +48534,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -48621,6 +48704,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TEMPER_FLARE",
         "MOVE_THROAT_CHOP",
@@ -48789,7 +48873,6 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -48822,7 +48905,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_VINE_WHIP",
@@ -48999,7 +49083,6 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -49035,7 +49118,8 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_STOMPING_TANTRUM",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_VINE_WHIP",
@@ -49257,7 +49341,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
         "MOVE_GRASS_KNOT",
@@ -49301,6 +49384,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL",
         "MOVE_ZEN_HEADBUTT",
         "MOVE_HYPER_VOICE"
@@ -49534,7 +49618,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
         "MOVE_GRASS_KNOT",
@@ -49578,6 +49661,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL",
         "MOVE_ZEN_HEADBUTT",
         "MOVE_HYPER_VOICE"
@@ -50909,7 +50993,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -50956,6 +51039,7 @@
         "MOVE_SPITE",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -51137,7 +51221,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -51188,6 +51271,7 @@
         "MOVE_SPITE",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -51407,7 +51491,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -51466,6 +51550,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -51694,7 +51779,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -51753,6 +51838,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [],
@@ -51906,6 +51992,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY",
         "MOVE_FLASH"
@@ -52137,6 +52224,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY",
         "MOVE_FLASH"
@@ -52360,6 +52448,7 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_TRAILBLAZE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -52595,7 +52684,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -52628,6 +52717,7 @@
         "MOVE_SPITE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -52814,6 +52904,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -53110,6 +53201,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -53629,6 +53721,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -55834,6 +55927,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -56048,6 +56142,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -56296,6 +56391,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
@@ -56569,6 +56665,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
@@ -56779,7 +56876,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -56814,6 +56910,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR",
         "MOVE_WEATHER_BALL"
@@ -58196,7 +58293,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -58226,6 +58322,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -58415,7 +58512,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -58446,6 +58542,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -58528,7 +58625,7 @@
       "innates": [
         "ABILITY_WIND_RIDER",
         "ABILITY_PRANKSTER",
-        "ABILITY_COTTON_DOWN"
+        "ABILITY_JADE_BLOOM"
       ],
       "sprite": "sprites/pokemon/jumpluff.png",
       "shinySprite": "sprites/pokemon/jumpluff_shiny.png",
@@ -58642,7 +58739,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -58673,6 +58769,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -58858,6 +58955,7 @@
         "MOVE_PAYBACK",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
@@ -59088,7 +59186,6 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -59112,6 +59209,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_UPROAR"
       ],
@@ -62049,6 +62147,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -62312,6 +62411,7 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -62574,7 +62674,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -62626,6 +62726,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_THUNDER_FANG",
@@ -63409,7 +63510,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -63444,6 +63545,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -63728,7 +63830,7 @@
         "MOVE_REST",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -63755,6 +63857,7 @@
         "MOVE_SPIKES",
         "MOVE_SPITE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -64026,7 +64129,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -64063,6 +64166,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -64261,7 +64365,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -64298,6 +64402,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -64471,7 +64576,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -64511,6 +64615,7 @@
         "MOVE_SNORE",
         "MOVE_SPIKES",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
@@ -64717,7 +64822,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -64757,6 +64861,7 @@
         "MOVE_SNORE",
         "MOVE_SPIKES",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
@@ -64918,7 +65023,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -64964,6 +65069,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPPER_HAND"
@@ -65235,7 +65341,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -65261,6 +65367,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SPITE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES",
         "MOVE_VACUUM_WAVE"
@@ -65468,7 +65575,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -65512,6 +65618,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -65713,7 +65820,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -65759,6 +65865,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -67003,6 +67110,7 @@
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
+        "MOVE_AGILITY",
         "MOVE_FROST_BREATH",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -67258,6 +67366,7 @@
         "MOVE_SCALD",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_WATER_PULSE",
@@ -67492,7 +67601,7 @@
         "MOVE_SKY_DROP",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
         "MOVE_SUBSTITUTE",
@@ -67528,6 +67637,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -67751,7 +67861,7 @@
         "MOVE_SKY_DROP",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
         "MOVE_SUBSTITUTE",
@@ -67787,6 +67897,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [],
@@ -68610,6 +68721,7 @@
         "MOVE_ROUND",
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -69363,6 +69475,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
         "MOVE_FLASH"
@@ -69585,6 +69698,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -70003,6 +70117,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -71297,6 +71412,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -71499,6 +71615,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -71698,6 +71815,7 @@
         "MOVE_SCALD",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_WATER_PULSE",
@@ -72960,8 +73078,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -72969,8 +73087,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73204,8 +73322,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73213,8 +73331,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73577,7 +73695,6 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_WATER_PULSE",
@@ -73623,6 +73740,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_UPROAR",
         "MOVE_WEATHER_BALL",
@@ -73780,7 +73898,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
@@ -73823,6 +73941,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND"
       ],
       "eggMoves": [
@@ -74030,7 +74149,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -74076,6 +74195,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -74340,7 +74460,7 @@
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -74395,6 +74515,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
@@ -74669,7 +74790,7 @@
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -74724,6 +74845,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
@@ -74875,7 +74997,7 @@
         "MOVE_OVERHEAT",
         "MOVE_WILL_O_WISP",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -74908,6 +75030,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPROAR"
       ],
@@ -75110,7 +75233,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -75150,6 +75273,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPROAR",
         "MOVE_VACUUM_WAVE"
@@ -75388,7 +75512,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -75437,6 +75561,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -75685,7 +75810,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -75734,6 +75859,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -77811,6 +77937,7 @@
         "MOVE_STEEL_WING",
         "MOVE_SCALD",
         "MOVE_ACROBATICS",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -78066,6 +78193,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -79583,7 +79711,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_FALSE_SWIPE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -79606,6 +79733,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -79827,7 +79955,6 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -79869,6 +79996,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -80285,7 +80413,7 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -80312,6 +80440,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -80476,6 +80605,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -82430,7 +82560,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -82474,6 +82603,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [
@@ -82717,7 +82847,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -82761,6 +82890,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [
@@ -84236,6 +84366,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -84531,6 +84662,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -84709,6 +84841,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_SNARL",
@@ -84919,6 +85052,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_SNARL",
@@ -85178,6 +85312,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_SNARL",
@@ -85363,7 +85498,6 @@
         "MOVE_ATTRACT",
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -85393,6 +85527,7 @@
         "MOVE_SPIKES",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPROAR",
         "MOVE_WEATHER_BALL"
@@ -85566,6 +85701,7 @@
         "MOVE_ROUND",
         "MOVE_SCALD",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL",
@@ -85980,6 +86116,7 @@
         "MOVE_SCALD",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
@@ -86259,6 +86396,7 @@
         "MOVE_SCALD",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
@@ -87860,6 +87998,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -88092,7 +88231,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_THUNDER_PUNCH",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
@@ -88137,6 +88275,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -88349,7 +88488,6 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
@@ -88401,6 +88539,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES",
         "MOVE_ZEN_HEADBUTT"
@@ -88607,6 +88746,7 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_PLAY_ROUGH",
         "MOVE_DAZZLING_GLEAM",
@@ -88852,6 +88992,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -89122,6 +89263,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -90319,7 +90461,6 @@
         "MOVE_ATTRACT",
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
@@ -90346,7 +90487,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_BARRIER",
@@ -90552,7 +90694,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -90586,7 +90727,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_BARRIER",
@@ -91291,7 +91433,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
         "MOVE_DARK_PULSE",
@@ -91325,6 +91466,7 @@
         "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -91530,7 +91672,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -91567,6 +91708,7 @@
         "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_ZEN_HEADBUTT"
@@ -91787,7 +91929,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_INFESTATION",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -91824,6 +91965,7 @@
         "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_ZEN_HEADBUTT"
@@ -92480,7 +92622,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
         "MOVE_GRASS_KNOT",
@@ -92523,6 +92664,7 @@
         "MOVE_SPITE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -93152,7 +93294,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -93193,6 +93334,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -93433,7 +93575,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -93474,6 +93615,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -93668,7 +93810,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -93709,6 +93850,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -95350,7 +95492,6 @@
         "MOVE_ROUND",
         "MOVE_ECHOED_VOICE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_FROST_BREATH",
         "MOVE_ROCK_SLIDE",
@@ -95390,7 +95531,8 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPER_FANG",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_WATER_SPORT",
@@ -96454,7 +96596,9 @@
           "move": "MOVE_TAKE_DOWN"
         }
       ],
-      "tmhm": [],
+      "tmhm": [
+        "MOVE_AGILITY"
+      ],
       "tutors": [
         "MOVE_HEADBUTT",
         "MOVE_IRON_DEFENSE",
@@ -96632,6 +96776,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -96883,6 +97028,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -97147,6 +97293,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -97973,6 +98120,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
@@ -98210,6 +98358,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
@@ -98438,6 +98587,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
@@ -98682,6 +98832,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
@@ -99217,7 +99368,6 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -99269,6 +99419,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -99427,7 +99578,6 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -99479,6 +99629,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -99632,7 +99783,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -99683,6 +99833,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_UPROAR"
       ],
@@ -99852,7 +100003,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -99903,6 +100053,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_UPROAR"
       ],
@@ -100286,6 +100437,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -100492,6 +100644,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -100710,6 +100863,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -100918,6 +101072,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -101091,7 +101246,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -101128,6 +101282,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -101287,7 +101442,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -101324,6 +101478,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -101527,7 +101682,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -101575,6 +101729,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -101773,7 +101928,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -101815,6 +101970,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPROAR",
         "MOVE_VACUUM_WAVE",
@@ -101996,7 +102152,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -102041,6 +102197,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -102264,7 +102421,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -102314,6 +102471,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
@@ -102519,6 +102677,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_SCALD",
         "MOVE_FLING",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
@@ -102732,6 +102891,7 @@
         "MOVE_SCALD",
         "MOVE_FLING",
         "MOVE_SHADOW_CLAW",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
@@ -102978,7 +103138,7 @@
         "MOVE_FLING",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -103025,6 +103185,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR",
@@ -103209,6 +103370,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -103436,6 +103598,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -103634,6 +103797,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -103849,6 +104013,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -104423,6 +104588,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_SNARL",
@@ -104584,7 +104750,6 @@
         "MOVE_ATTRACT",
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -104610,6 +104775,7 @@
         "MOVE_SPIKES",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR",
         "MOVE_WEATHER_BALL"
       ],
@@ -104830,7 +104996,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_POISON_JAB",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -104860,6 +105025,7 @@
         "MOVE_SPIKES",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPROAR",
         "MOVE_WEATHER_BALL"
@@ -105044,6 +105210,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
@@ -105269,6 +105436,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_SCALD",
         "MOVE_FLING",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -105584,6 +105752,7 @@
         "MOVE_FLING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -106900,6 +107069,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
@@ -107645,6 +107815,7 @@
         "MOVE_PAYBACK",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -107918,7 +108089,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -107961,6 +108132,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR"
       ],
@@ -108205,7 +108377,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -108248,6 +108420,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR"
       ],
@@ -110054,7 +110227,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_SHADOW_CLAW",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -110091,6 +110263,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [
@@ -110283,7 +110456,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_SHADOW_CLAW",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -110325,6 +110497,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [
@@ -110526,7 +110699,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -110573,6 +110745,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [
@@ -110790,7 +110963,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -110837,6 +111009,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [],
@@ -110991,7 +111164,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -111038,6 +111210,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [],
@@ -111460,7 +111633,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -111496,6 +111669,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
@@ -111764,7 +111938,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -111809,6 +111983,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
@@ -112049,7 +112224,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -112094,6 +112269,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
@@ -112307,7 +112483,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -112352,6 +112528,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
@@ -112911,7 +113088,7 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_FLING",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -112941,6 +113118,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES"
       ],
       "eggMoves": [
@@ -113153,7 +113331,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -113193,6 +113371,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_THUNDER_FANG",
         "MOVE_TOXIC_SPIKES"
@@ -113379,6 +113558,7 @@
         "MOVE_SCALD",
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -114072,6 +114252,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -114571,6 +114752,7 @@
         "MOVE_ROUND",
         "MOVE_SCALD",
         "MOVE_ACROBATICS",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_WATER_PULSE",
@@ -114777,7 +114959,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_FROST_BREATH",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -114807,6 +114988,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -115087,7 +115269,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_FROST_BREATH",
         "MOVE_ROCK_SLIDE",
@@ -115130,6 +115311,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -115306,7 +115488,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_FROST_BREATH",
         "MOVE_ROCK_SLIDE",
@@ -115349,6 +115530,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [],
@@ -115534,7 +115716,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -115579,6 +115761,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPPER_HAND"
@@ -116154,7 +116337,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -116198,6 +116380,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -116400,7 +116583,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -116463,6 +116645,7 @@
         "MOVE_SUPERCELL_SLAM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_THUNDER_FANG",
         "MOVE_UPROAR"
@@ -116663,7 +116846,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_INFESTATION",
@@ -116697,7 +116879,8 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_STOMPING_TANTRUM",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_FLAIL",
@@ -117665,7 +117848,6 @@
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -117691,6 +117873,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_UPROAR"
       ],
@@ -117929,7 +118112,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
         "MOVE_GRASS_KNOT",
@@ -117968,6 +118150,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -118550,7 +118733,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -118600,6 +118783,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_THUNDER_FANG",
@@ -119099,6 +119283,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
         "MOVE_DARK_PULSE",
@@ -119411,7 +119596,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -119465,6 +119650,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_TRIPLE_AXEL",
@@ -119781,7 +119967,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -119835,6 +120021,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_TRIPLE_AXEL",
@@ -121857,8 +122044,8 @@
       "hiddenAbilities": [],
       "innates": [
         "ABILITY_ELECTROMORPHOSIS",
-        "ABILITY_SEED_SOWER",
-        "ABILITY_GRASS_ATE"
+        "ABILITY_DOWNLOAD",
+        "ABILITY_SPECTRAL_FORCE"
       ],
       "sprite": "sprites/pokemon/rotom_mow.png",
       "shinySprite": "sprites/pokemon/rotom_mow_shiny.png",
@@ -122027,7 +122214,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_FOREWARN",
+        "ABILITY_SOLIDIFY",
         "ABILITY_FILTER",
         "ABILITY_CURSED_BODY"
       ],
@@ -122506,10 +122693,10 @@
       ],
       "bst": 580,
       "abilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT"
       ],
       "regularAbilities": [
-        "ABILITY_LEVITATE"
+        "ABILITY_MIND_FLOAT"
       ],
       "hiddenAbilities": [],
       "innates": [
@@ -125411,7 +125598,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
@@ -125445,6 +125631,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK"
       ],
@@ -125603,7 +125790,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
@@ -125637,6 +125823,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK"
       ],
@@ -125765,7 +125952,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -125796,6 +125982,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -125936,7 +126123,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -125966,6 +126152,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -126136,7 +126323,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -126217,6 +126404,7 @@
         "MOVE_SUPERCELL_SLAM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TRICK",
         "MOVE_ZEN_HEADBUTT"
@@ -126577,7 +126765,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -126605,7 +126792,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_CAPTIVATE",
@@ -126776,7 +126964,6 @@
         "MOVE_ROUND",
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -126804,7 +126991,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_CAPTIVATE",
@@ -127000,7 +127188,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DRAGON_TAIL",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -127037,6 +127224,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_DRACO_METEOR"
       ],
       "eggMoves": [
@@ -128170,7 +128358,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_SCALD",
         "MOVE_FLING",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
         "MOVE_GRASS_KNOT",
@@ -128201,7 +128388,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_COPYCAT",
@@ -128377,7 +128565,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_SCALD",
         "MOVE_FLING",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
         "MOVE_GRASS_KNOT",
@@ -128409,6 +128596,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_VACUUM_WAVE"
       ],
       "eggMoves": [
@@ -128630,7 +128818,6 @@
         "MOVE_FLING",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_X_SCISSOR",
@@ -128669,6 +128856,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -128881,7 +129069,6 @@
         "MOVE_FLING",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_X_SCISSOR",
@@ -128916,6 +129103,7 @@
         "MOVE_MIMIC",
         "MOVE_SLEEP_TALK",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
@@ -129075,7 +129263,7 @@
         "MOVE_ROUND",
         "MOVE_FLING",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -129106,7 +129294,8 @@
         "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_IRON_DEFENSE",
@@ -129295,7 +129484,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -129331,6 +129520,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -129534,7 +129724,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -129570,6 +129760,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [],
@@ -130173,6 +130364,7 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -130359,6 +130551,7 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -130592,7 +130785,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
@@ -130628,6 +130821,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRIPLE_AXEL"
       ],
@@ -130792,6 +130986,7 @@
         "MOVE_ROUND",
         "MOVE_PAYBACK",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -130999,6 +131194,7 @@
         "MOVE_ROUND",
         "MOVE_PAYBACK",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -131238,7 +131434,7 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -131275,6 +131471,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -131457,7 +131654,7 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -131494,6 +131691,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -132326,7 +132524,6 @@
         "MOVE_ENERGY_BALL",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -132357,6 +132554,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -132601,7 +132799,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -132634,6 +132831,7 @@
         "MOVE_SEED_BOMB",
         "MOVE_SLEEP_TALK",
         "MOVE_SOLAR_BLADE",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
@@ -132834,6 +133032,7 @@
         "MOVE_ROUND",
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_CUT",
@@ -133050,6 +133249,7 @@
         "MOVE_ROUND",
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_CUT",
@@ -133329,6 +133529,7 @@
         "MOVE_RETURN",
         "MOVE_FACADE",
         "MOVE_REST",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_SURF",
@@ -135299,7 +135500,7 @@
       "innates": [
         "ABILITY_NO_GUARD",
         "ABILITY_MAGIC_BOUNCE",
-        "ABILITY_SHOWTIME"
+        "ABILITY_REACTIVE"
       ],
       "sprite": "sprites/pokemon/darmanitan_zen.png",
       "shinySprite": "sprites/pokemon/darmanitan_zen_shiny.png",
@@ -136285,7 +136486,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
@@ -136334,6 +136534,7 @@
         "MOVE_SPITE",
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -136536,7 +136737,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
@@ -136585,6 +136785,7 @@
         "MOVE_SPITE",
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -137388,6 +137589,7 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -137609,6 +137811,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -137812,7 +138015,7 @@
         "MOVE_FLING",
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
@@ -137844,6 +138047,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_UPROAR"
       ],
@@ -138022,6 +138226,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_U_TURN",
@@ -138253,7 +138458,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
@@ -138291,6 +138496,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_UPROAR"
@@ -138471,7 +138677,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
@@ -138504,6 +138710,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SPITE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK"
       ],
@@ -139907,6 +140114,7 @@
         "MOVE_ACROBATICS",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -140095,6 +140303,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
@@ -140301,6 +140510,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_INFESTATION",
         "MOVE_POISON_JAB",
@@ -140723,7 +140933,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_BULLDOZE",
         "MOVE_POISON_JAB",
@@ -140759,7 +140968,8 @@
         "MOVE_SNORE",
         "MOVE_SPIKES",
         "MOVE_STEALTH_ROCK",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_BULLET_SEED",
@@ -142649,7 +142859,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -142685,7 +142894,8 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_COUNTER",
@@ -142965,7 +143175,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -143002,7 +143211,8 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_COUNTER",
@@ -143219,7 +143429,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -143260,7 +143469,8 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_COUNTER",
@@ -143890,7 +144100,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -143922,6 +144132,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND"
       ],
       "eggMoves": [
@@ -144141,7 +144352,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -144176,6 +144387,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
@@ -145131,7 +145343,6 @@
         "MOVE_PAYBACK",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -145161,7 +145372,8 @@
         "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_REVENGE",
@@ -145362,7 +145574,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -145393,6 +145604,7 @@
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -145577,6 +145789,7 @@
         "MOVE_SKY_DROP",
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_U_TURN",
@@ -145799,6 +146012,7 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_U_TURN",
@@ -146019,6 +146233,7 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_U_TURN",
@@ -147902,7 +148117,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
@@ -147936,6 +148150,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
@@ -148083,7 +148298,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -148116,6 +148330,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -148267,7 +148482,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_X_SCISSOR",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -148301,6 +148515,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE",
         "MOVE_ZEN_HEADBUTT"
@@ -148476,6 +148691,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -148678,6 +148894,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -148887,6 +149104,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -149110,6 +149328,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -149702,7 +149921,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -149736,6 +149954,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [],
@@ -149913,7 +150132,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -149947,6 +150165,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [],
@@ -150659,7 +150878,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
@@ -150696,6 +150914,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -150837,7 +151056,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
@@ -150874,6 +151092,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPPER_HAND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -151030,7 +151249,6 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -151068,6 +151286,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR",
@@ -151242,7 +151461,6 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -151280,6 +151498,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPROAR",
@@ -152403,7 +152622,6 @@
         "MOVE_PAYBACK",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -152447,6 +152665,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -152619,7 +152838,6 @@
         "MOVE_PAYBACK",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -152664,6 +152882,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -152883,7 +153102,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -152936,6 +153154,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -153164,7 +153383,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -153217,6 +153435,7 @@
         "MOVE_SUPER_FANG",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -153363,6 +153582,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_OVERHEAT",
         "MOVE_WILL_O_WISP",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -153559,6 +153779,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_THUNDER_PUNCH",
         "MOVE_FIRE_PUNCH",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -153810,6 +154031,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -154078,6 +154300,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
@@ -154469,7 +154692,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -154506,6 +154728,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES"
       ],
       "eggMoves": [
@@ -154754,7 +154977,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -154792,6 +155014,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPPER_HAND",
         "MOVE_WEATHER_BALL",
@@ -155046,7 +155269,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -155084,6 +155306,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPPER_HAND",
         "MOVE_WEATHER_BALL",
@@ -155277,7 +155500,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -155315,6 +155537,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPPER_HAND",
         "MOVE_WEATHER_BALL",
@@ -155505,7 +155728,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -155543,6 +155765,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPPER_HAND",
         "MOVE_WEATHER_BALL",
@@ -155689,7 +155912,7 @@
         "MOVE_STEEL_WING",
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -155709,6 +155932,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -155881,7 +156105,7 @@
         "MOVE_STEEL_WING",
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -155901,6 +156125,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TEMPER_FLARE"
       ],
@@ -156108,7 +156333,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -156129,6 +156354,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_TEMPER_FLARE",
         "MOVE_UPPER_HAND"
@@ -159360,7 +159586,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_SHADOW_CLAW",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -159381,7 +159606,8 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SPITE",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_METAL_SOUND",
@@ -159533,7 +159759,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_SHADOW_CLAW",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -159555,6 +159780,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -159734,7 +159960,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -159756,6 +159981,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [
@@ -159944,7 +160170,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -159966,6 +160191,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -160807,7 +161033,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -160841,6 +161066,7 @@
         "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -161092,7 +161318,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -161134,6 +161359,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -161324,7 +161550,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
@@ -161366,6 +161591,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [],
@@ -162228,7 +162454,6 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_SCALD",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_WATER_PULSE",
@@ -162259,6 +162484,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -162488,7 +162714,6 @@
         "MOVE_FOCUS_BLAST",
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_WATER_PULSE",
@@ -162520,6 +162745,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_WEATHER_BALL"
       ],
       "eggMoves": [
@@ -163865,7 +164091,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -163908,6 +164134,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
@@ -164107,7 +164334,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -164150,6 +164377,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
@@ -166751,6 +166979,7 @@
         "MOVE_STEEL_WING",
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
@@ -166997,6 +167226,7 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_X_SCISSOR",
         "MOVE_DRAGON_TAIL",
@@ -169876,7 +170106,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -169905,7 +170134,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_CURSE",
@@ -170076,7 +170306,6 @@
         "MOVE_FALSE_SWIPE",
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -170106,6 +170335,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -170338,7 +170568,6 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -170375,6 +170604,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -170603,7 +170833,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -170636,6 +170865,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SPIKES",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_UPPER_HAND"
       ],
@@ -170794,7 +171024,6 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE"
       ],
@@ -170815,6 +171044,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE"
       ],
       "eggMoves": [
@@ -170984,7 +171214,6 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE"
       ],
@@ -171005,6 +171234,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE"
       ],
       "eggMoves": [
@@ -171224,7 +171454,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAIN_PUNCH",
         "MOVE_U_TURN",
@@ -171265,6 +171494,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_THROAT_CHOP"
       ],
@@ -172654,6 +172884,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_X_SCISSOR",
@@ -173571,7 +173802,7 @@
         "MOVE_STEEL_WING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -173593,6 +173824,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -173753,7 +173985,7 @@
         "MOVE_STEEL_WING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -173775,6 +174007,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -173935,7 +174168,7 @@
         "MOVE_STEEL_WING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -173957,6 +174190,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -174117,7 +174351,7 @@
         "MOVE_STEEL_WING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLY"
@@ -174139,6 +174373,7 @@
         "MOVE_SNORE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND"
       ],
       "eggMoves": [
@@ -174502,6 +174737,7 @@
         "MOVE_ACROBATICS",
         "MOVE_DRAINING_KISS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_INFESTATION",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
@@ -174715,7 +174951,6 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_TRAILBLAZE",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -174747,6 +174982,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -174914,7 +175150,6 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_TRAILBLAZE",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -174946,6 +175181,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -175130,7 +175366,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -175166,6 +175402,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -175381,7 +175618,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -175423,6 +175659,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_THUNDER_FANG",
         "MOVE_UPPER_HAND",
@@ -175622,7 +175859,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -175659,6 +175895,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_THUNDER_FANG",
         "MOVE_ZEN_HEADBUTT"
@@ -176487,7 +176724,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_FROST_BREATH",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -176527,6 +176763,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -176755,7 +176992,6 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_FROST_BREATH",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -176795,6 +177031,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [],
@@ -177164,7 +177401,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_X_SCISSOR",
         "MOVE_INFESTATION",
@@ -177191,6 +177427,7 @@
         "MOVE_SNORE",
         "MOVE_SPITE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRICK"
       ],
       "eggMoves": [
@@ -177848,7 +178085,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
@@ -177880,7 +178116,8 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SPITE",
-        "MOVE_SWAGGER"
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -178026,7 +178263,6 @@
         "MOVE_FLING",
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -178055,6 +178291,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -178261,7 +178498,6 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_SHADOW_CLAW",
         "MOVE_PAYBACK",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -178296,6 +178532,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -178545,7 +178782,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -178594,6 +178830,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -178790,6 +179027,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -179179,7 +179417,6 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -179208,6 +179445,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -179725,6 +179963,7 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
@@ -179924,6 +180163,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM",
         "MOVE_DAZZLING_GLEAM",
@@ -180112,7 +180352,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -180150,7 +180389,8 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -180311,7 +180551,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -180349,7 +180588,8 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -180510,7 +180750,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -180548,7 +180787,8 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -180711,7 +180951,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
@@ -180749,7 +180988,8 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STORED_POWER",
         "MOVE_SWAGGER",
-        "MOVE_SWIFT"
+        "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -180940,6 +181180,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -181180,6 +181421,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -181421,6 +181663,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -181652,6 +181895,7 @@
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -181861,6 +182105,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -182427,6 +182672,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -182626,6 +182872,7 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -183085,7 +183332,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -183112,6 +183358,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -183259,7 +183506,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -183287,6 +183533,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -183480,7 +183727,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -183518,6 +183764,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [
@@ -183720,7 +183967,6 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
@@ -183758,6 +184004,7 @@
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR"
       ],
       "eggMoves": [],
@@ -183873,6 +184120,7 @@
         "MOVE_OVERHEAT",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE"
       ],
@@ -184040,7 +184288,7 @@
         "MOVE_OVERHEAT",
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE"
       ],
@@ -184067,6 +184315,7 @@
         "MOVE_SNORE",
         "MOVE_SUPER_FANG",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL"
       ],
@@ -184259,7 +184508,7 @@
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL"
@@ -184291,6 +184540,7 @@
         "MOVE_SNORE",
         "MOVE_SUPER_FANG",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL",
         "MOVE_ZEN_HEADBUTT"
@@ -184493,7 +184743,7 @@
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL"
@@ -184525,6 +184775,7 @@
         "MOVE_SNORE",
         "MOVE_SUPER_FANG",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_WEATHER_BALL",
         "MOVE_ZEN_HEADBUTT"
@@ -185015,7 +185266,7 @@
         "MOVE_FLING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -185045,6 +185296,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_VACUUM_WAVE",
         "MOVE_WEATHER_BALL"
       ],
@@ -185250,7 +185502,7 @@
         "MOVE_FLING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -185280,6 +185532,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_VACUUM_WAVE",
         "MOVE_WEATHER_BALL"
       ],
@@ -185393,6 +185646,7 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -185552,6 +185806,7 @@
         "MOVE_THIEF",
         "MOVE_ROUND",
         "MOVE_PAYBACK",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -185736,6 +185991,7 @@
         "MOVE_STEEL_WING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -185943,6 +186199,7 @@
         "MOVE_STEEL_WING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -190444,7 +190701,6 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -190484,6 +190740,7 @@
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR"
       ],
@@ -190883,7 +191140,6 @@
         "MOVE_ROUND",
         "MOVE_STEEL_WING",
         "MOVE_BRUTAL_SWING",
-        "MOVE_SWORDS_DANCE",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
         "MOVE_ROCK_SMASH"
@@ -190911,6 +191167,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [
@@ -191692,7 +191949,7 @@
         "MOVE_PAYBACK",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -191720,6 +191977,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -191944,7 +192202,7 @@
         "MOVE_PAYBACK",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -191972,6 +192230,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND",
         "MOVE_UPROAR",
@@ -192439,7 +192698,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
@@ -192468,7 +192726,8 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_STEALTH_ROCK",
-        "MOVE_STOMPING_TANTRUM"
+        "MOVE_STOMPING_TANTRUM",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_SLASH",
@@ -192829,6 +193088,7 @@
         "MOVE_WILL_O_WISP",
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_INFESTATION",
         "MOVE_U_TURN",
@@ -193072,6 +193332,7 @@
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_INFESTATION",
         "MOVE_U_TURN",
@@ -193289,7 +193550,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -193318,6 +193579,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [],
@@ -193446,7 +193708,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -193475,6 +193737,7 @@
         "MOVE_SNORE",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [],
@@ -193606,6 +193869,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -193765,6 +194029,7 @@
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -193933,6 +194198,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -194094,6 +194360,7 @@
         "MOVE_BRUTAL_SWING",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE",
@@ -194244,7 +194511,6 @@
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -194270,6 +194536,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SNORE",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -194444,7 +194711,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -194483,6 +194749,7 @@
         "MOVE_SNORE",
         "MOVE_SUPERPOWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -194663,7 +194930,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_POISON_JAB",
@@ -194701,6 +194967,7 @@
         "MOVE_SNORE",
         "MOVE_SUPERPOWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -194877,7 +195144,6 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAIN_PUNCH",
@@ -194921,6 +195187,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [],
@@ -195062,6 +195329,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE"
       ],
@@ -195351,7 +195619,6 @@
         "MOVE_PAYBACK",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL"
@@ -195377,6 +195644,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
         "MOVE_ZEN_HEADBUTT"
@@ -195505,6 +195773,7 @@
         "MOVE_DRAINING_KISS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
         "MOVE_SNARL",
@@ -195667,6 +195936,7 @@
         "MOVE_ENERGY_BALL",
         "MOVE_DRAINING_KISS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_SUBSTITUTE",
@@ -195907,7 +196177,7 @@
         "MOVE_PAYBACK",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -195955,6 +196225,7 @@
         "MOVE_STORED_POWER",
         "MOVE_SUPERPOWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_UPROAR",
@@ -196163,6 +196434,7 @@
         "MOVE_DRAINING_KISS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -196374,6 +196646,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_SUBSTITUTE",
@@ -196640,7 +196913,7 @@
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_ROCK_SLIDE",
         "MOVE_X_SCISSOR",
         "MOVE_U_TURN",
@@ -196669,6 +196942,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_VACUUM_WAVE"
       ],
@@ -196884,7 +197158,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -196925,6 +197198,7 @@
         "MOVE_SUPERPOWER",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_UPROAR",
         "MOVE_THUNDER_FANG",
@@ -197147,7 +197421,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -197180,6 +197453,7 @@
         "MOVE_SNORE",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_UPROAR",
         "MOVE_VACUUM_WAVE"
       ],
@@ -197342,6 +197616,7 @@
         "MOVE_FACADE",
         "MOVE_REST",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_SURF",
@@ -197588,6 +197863,7 @@
         "MOVE_FACADE",
         "MOVE_REST",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_SURF",
@@ -197819,7 +198095,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_ROCK_SLIDE",
@@ -197847,6 +198123,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SPITE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES",
         "MOVE_UPPER_HAND",
@@ -198110,7 +198387,7 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
@@ -198137,6 +198414,7 @@
         "MOVE_SPIKES",
         "MOVE_SPITE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TOXIC_SPIKES"
       ],
@@ -198357,6 +198635,7 @@
         "MOVE_FOCUS_BLAST",
         "MOVE_DRAINING_KISS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_PLAY_ROUGH",
@@ -198543,6 +198822,7 @@
         "MOVE_FOCUS_BLAST",
         "MOVE_DRAINING_KISS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_PLAY_ROUGH",
@@ -198708,6 +198988,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
@@ -198919,6 +199200,7 @@
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
@@ -199128,6 +199410,7 @@
         "MOVE_ACROBATICS",
         "MOVE_DRAINING_KISS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
@@ -199416,6 +199699,7 @@
         "MOVE_ACROBATICS",
         "MOVE_DRAINING_KISS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
@@ -199497,7 +199781,7 @@
         "ABILITY_STORM_DRAIN"
       ],
       "innates": [
-        "ABILITY_SHED_SKIN",
+        "ABILITY_DAMP",
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
@@ -199720,7 +200004,7 @@
         "ABILITY_STORM_DRAIN"
       ],
       "innates": [
-        "ABILITY_SHED_SKIN",
+        "ABILITY_DAMP",
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
@@ -199861,7 +200145,7 @@
         "ABILITY_STORM_DRAIN"
       ],
       "innates": [
-        "ABILITY_SHED_SKIN",
+        "ABILITY_DAMP",
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
@@ -200004,7 +200288,7 @@
         "ABILITY_STORM_DRAIN"
       ],
       "innates": [
-        "ABILITY_SHED_SKIN",
+        "ABILITY_DAMP",
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
@@ -200147,7 +200431,7 @@
         "ABILITY_STORM_DRAIN"
       ],
       "innates": [
-        "ABILITY_SHED_SKIN",
+        "ABILITY_DAMP",
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
@@ -200290,7 +200574,7 @@
         "ABILITY_STORM_DRAIN"
       ],
       "innates": [
-        "ABILITY_SHED_SKIN",
+        "ABILITY_DAMP",
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
@@ -200576,6 +200860,7 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -200882,6 +201167,7 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -201965,7 +202251,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -201992,6 +202277,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -202151,7 +202437,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -202178,6 +202463,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -202327,7 +202613,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -202354,6 +202639,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -202503,7 +202789,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -202530,6 +202815,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -202680,7 +202966,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -202707,6 +202992,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -202857,7 +203143,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -202884,6 +203169,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -203034,7 +203320,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -203061,6 +203346,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -203211,7 +203497,6 @@
         "MOVE_FLING",
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
         "MOVE_U_TURN",
@@ -203238,6 +203523,7 @@
         "MOVE_SPIKES",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERPOWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -203831,6 +204117,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -204003,6 +204290,7 @@
         "MOVE_ACROBATICS",
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -204228,6 +204516,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -204477,6 +204766,7 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -205632,7 +205922,7 @@
         "MOVE_FLING",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -205665,6 +205955,7 @@
         "MOVE_PSYCH_UP",
         "MOVE_SLEEP_TALK",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TRIPLE_AXEL",
         "MOVE_UPPER_HAND"
       ],
@@ -205863,7 +206154,9 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
+        "MOVE_DRAIN_PUNCH",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_PLAY_ROUGH"
@@ -206051,7 +206344,9 @@
         "MOVE_THUNDER_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
+        "MOVE_DRAIN_PUNCH",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
         "MOVE_PLAY_ROUGH"
@@ -206255,7 +206550,9 @@
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
+        "MOVE_DRAIN_PUNCH",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -206450,6 +206747,7 @@
         "MOVE_ECHOED_VOICE",
         "MOVE_SHADOW_CLAW",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_GRASS_KNOT",
         "MOVE_WATER_PULSE",
@@ -207627,7 +207925,6 @@
         "MOVE_FLING",
         "MOVE_WILL_O_WISP",
         "MOVE_SHADOW_CLAW",
-        "MOVE_SWORDS_DANCE",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
         "MOVE_SUBSTITUTE"
@@ -207649,6 +207946,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_SPITE",
         "MOVE_STORED_POWER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_VACUUM_WAVE"
       ],
@@ -207811,6 +208109,7 @@
         "MOVE_ACROBATICS",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -208004,6 +208303,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_WILD_CHARGE",
@@ -208706,6 +209006,7 @@
         "MOVE_FACADE",
         "MOVE_REST",
         "MOVE_THIEF",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_TRICK_ROOM"
@@ -208914,6 +209215,7 @@
         "MOVE_THIEF",
         "MOVE_ENERGY_BALL",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -209100,7 +209402,6 @@
         "MOVE_DRAINING_KISS",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -209121,7 +209422,8 @@
         "MOVE_SKILL_SWAP",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
-        "MOVE_STEALTH_ROCK"
+        "MOVE_STEALTH_ROCK",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_FEINT",
@@ -209288,7 +209590,6 @@
         "MOVE_DRAINING_KISS",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -209309,7 +209610,8 @@
         "MOVE_SKILL_SWAP",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
-        "MOVE_STEALTH_ROCK"
+        "MOVE_STEALTH_ROCK",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_FEINT",
@@ -209503,7 +209805,6 @@
         "MOVE_DRAINING_KISS",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_SUBSTITUTE",
@@ -209527,7 +209828,8 @@
         "MOVE_SKILL_SWAP",
         "MOVE_SKITTER_SMACK",
         "MOVE_SLEEP_TALK",
-        "MOVE_STEALTH_ROCK"
+        "MOVE_STEALTH_ROCK",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_FEINT",
@@ -209699,6 +210001,7 @@
         "MOVE_FLING",
         "MOVE_ACROBATICS",
         "MOVE_DRAINING_KISS",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_SUBSTITUTE",
         "MOVE_SURF",
@@ -210054,6 +210357,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -210803,7 +211107,7 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -210824,6 +211128,7 @@
         "MOVE_MIMIC",
         "MOVE_PSYCH_UP",
         "MOVE_SLEEP_TALK",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_THROAT_CHOP",
         "MOVE_UPPER_HAND"
@@ -211745,6 +212050,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_GIGA_IMPACT",
         "MOVE_THUNDER_WAVE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_GRASS_KNOT",
         "MOVE_SUBSTITUTE",
@@ -211972,7 +212278,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_DIG",
         "MOVE_X_SCISSOR",
@@ -212003,6 +212308,7 @@
         "MOVE_SPITE",
         "MOVE_STEALTH_ROCK",
         "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -213487,6 +213793,7 @@
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
         "MOVE_AURORA_VEIL",
+        "MOVE_AGILITY",
         "MOVE_WATER_PULSE",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -213666,7 +213973,6 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_VOLT_SWITCH",
-        "MOVE_SWORDS_DANCE",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAIN_PUNCH",
@@ -213694,7 +214000,8 @@
         "MOVE_SEISMIC_TOSS",
         "MOVE_SLEEP_TALK",
         "MOVE_STOMPING_TANTRUM",
-        "MOVE_SUPERCELL_SLAM"
+        "MOVE_SUPERCELL_SLAM",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [],
       "evolutions": [],
@@ -214045,6 +214352,7 @@
         "MOVE_CHARGE_BEAM",
         "MOVE_ACROBATICS",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
         "MOVE_FLASH_CANNON",
@@ -214236,7 +214544,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_ROCK_SLIDE",
@@ -214277,6 +214584,7 @@
         "MOVE_STEALTH_ROCK",
         "MOVE_STOMPING_TANTRUM",
         "MOVE_SUPERCELL_SLAM",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG"
       ],
       "eggMoves": [],
@@ -214408,7 +214716,6 @@
         "MOVE_RETURN",
         "MOVE_FACADE",
         "MOVE_REST",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_DRAGON_TAIL",
         "MOVE_SUBSTITUTE"
@@ -214426,7 +214733,8 @@
         "MOVE_ICY_WIND",
         "MOVE_MIMIC",
         "MOVE_OUTRAGE",
-        "MOVE_SLEEP_TALK"
+        "MOVE_SLEEP_TALK",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_AQUA_TAIL",
@@ -214564,7 +214872,6 @@
         "MOVE_AERIAL_ACE",
         "MOVE_FACADE",
         "MOVE_REST",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_DRAGON_TAIL",
         "MOVE_SUBSTITUTE"
@@ -214583,7 +214890,8 @@
         "MOVE_IRON_HEAD",
         "MOVE_MIMIC",
         "MOVE_OUTRAGE",
-        "MOVE_SLEEP_TALK"
+        "MOVE_SLEEP_TALK",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_AQUA_TAIL",
@@ -214755,7 +215063,6 @@
         "MOVE_REST",
         "MOVE_FALSE_SWIPE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
@@ -214784,6 +215091,7 @@
         "MOVE_SCALE_SHOT",
         "MOVE_SLEEP_TALK",
         "MOVE_STOMPING_TANTRUM",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -214973,7 +215281,6 @@
         "MOVE_REST",
         "MOVE_FALSE_SWIPE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
@@ -215002,6 +215309,7 @@
         "MOVE_SCALE_SHOT",
         "MOVE_SLEEP_TALK",
         "MOVE_STOMPING_TANTRUM",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THUNDER_FANG",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -215321,7 +215629,6 @@
         "MOVE_ACROBATICS",
         "MOVE_PAYBACK",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
         "MOVE_SUBSTITUTE",
         "MOVE_ICE_SPINNER",
         "MOVE_SNARL",
@@ -215338,6 +215645,7 @@
         "MOVE_PSYCHIC_FANGS",
         "MOVE_SLEEP_TALK",
         "MOVE_SPITE",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [],
@@ -215555,9 +215863,9 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_SHED_SKIN",
         "ABILITY_INNER_FOCUS",
-        "ABILITY_MARVEL_SCALE"
+        "ABILITY_MARVEL_SCALE",
+        "ABILITY_HAUNTED"
       ],
       "sprite": "sprites/pokemon/roaring_moon.png",
       "shinySprite": "sprites/pokemon/roaring_moon_shiny.png",
@@ -215879,7 +216187,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_FIRE_PUNCH",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
         "MOVE_DRAIN_PUNCH",
@@ -215915,6 +216223,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_STORED_POWER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_TRICK",
         "MOVE_VACUUM_WAVE",
@@ -216073,7 +216382,7 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DIG",
         "MOVE_BULLDOZE",
         "MOVE_DRAGON_TAIL",
@@ -216114,6 +216423,7 @@
         "MOVE_SCALE_SHOT",
         "MOVE_SLEEP_TALK",
         "MOVE_STOMPING_TANTRUM",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TEMPER_FLARE",
         "MOVE_THUNDER_FANG",
         "MOVE_UPROAR",
@@ -216265,7 +216575,7 @@
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
         "MOVE_THUNDER_WAVE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_DRAGON_TAIL",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -216292,6 +216602,7 @@
         "MOVE_POWER_GEM",
         "MOVE_SLEEP_TALK",
         "MOVE_SUPERCELL_SLAM",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -216437,6 +216748,7 @@
         "MOVE_REST",
         "MOVE_SCALD",
         "MOVE_GIGA_IMPACT",
+        "MOVE_AGILITY",
         "MOVE_HONE_CLAWS",
         "MOVE_DRAGON_TAIL",
         "MOVE_WATER_PULSE",
@@ -216530,7 +216842,7 @@
       "innates": [
         "ABILITY_LEAF_GUARD",
         "ABILITY_NATURAL_CURE",
-        "ABILITY_SEED_SOWER"
+        "ABILITY_PLANTATION"
       ],
       "sprite": "sprites/pokemon/iron_leaves.png",
       "shinySprite": "sprites/pokemon/iron_leaves_shiny.png",
@@ -216632,7 +216944,7 @@
         "MOVE_TRAILBLAZE",
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_X_SCISSOR",
         "MOVE_GRASS_KNOT",
         "MOVE_GIGA_DRAIN",
@@ -216659,6 +216971,7 @@
         "MOVE_SLEEP_TALK",
         "MOVE_SOLAR_BLADE",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP"
       ],
       "eggMoves": [],
@@ -217039,7 +217352,7 @@
         "MOVE_ACROBATICS",
         "MOVE_SHADOW_CLAW",
         "MOVE_GIGA_IMPACT",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_POISON_JAB",
         "MOVE_U_TURN",
         "MOVE_SUBSTITUTE",
@@ -217066,6 +217379,7 @@
         "MOVE_SPITE",
         "MOVE_SWAGGER",
         "MOVE_SWIFT",
+        "MOVE_SWORDS_DANCE",
         "MOVE_TAILWIND",
         "MOVE_UPROAR"
       ],
@@ -217211,7 +217525,6 @@
         "MOVE_STONE_EDGE",
         "MOVE_THUNDER_WAVE",
         "MOVE_GYRO_BALL",
-        "MOVE_SWORDS_DANCE",
         "MOVE_HONE_CLAWS",
         "MOVE_ROCK_SLIDE",
         "MOVE_DRAGON_TAIL",
@@ -217241,7 +217554,8 @@
         "MOVE_MIMIC",
         "MOVE_OUTRAGE",
         "MOVE_SLEEP_TALK",
-        "MOVE_STEALTH_ROCK"
+        "MOVE_STEALTH_ROCK",
+        "MOVE_SWORDS_DANCE"
       ],
       "eggMoves": [
         "MOVE_SLASH",
@@ -218120,7 +218434,7 @@
         "MOVE_REST",
         "MOVE_GIGA_IMPACT",
         "MOVE_STONE_EDGE",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_X_SCISSOR",
         "MOVE_POISON_JAB",
@@ -218142,6 +218456,7 @@
         "MOVE_ROCK_BLAST",
         "MOVE_SLEEP_TALK",
         "MOVE_SOLAR_BLADE",
+        "MOVE_SWORDS_DANCE",
         "MOVE_THROAT_CHOP",
         "MOVE_ZEN_HEADBUTT"
       ],
@@ -218296,7 +218611,7 @@
         "MOVE_SMART_STRIKE",
         "MOVE_GIGA_IMPACT",
         "MOVE_VOLT_SWITCH",
-        "MOVE_SWORDS_DANCE",
+        "MOVE_AGILITY",
         "MOVE_BULLDOZE",
         "MOVE_X_SCISSOR",
         "MOVE_SUBSTITUTE",
@@ -218320,6 +218635,7 @@
         "MOVE_SOLAR_BLADE",
         "MOVE_STORED_POWER",
         "MOVE_SUPERCELL_SLAM",
+        "MOVE_SWORDS_DANCE",
         "MOVE_ZEN_HEADBUTT"
       ],
       "eggMoves": [],
@@ -225294,7 +225610,7 @@
       "name": "Dark Void",
       "description": "Drags the foes into total darkness, inducing Sleep.",
       "power": 0,
-      "accuracy": 50,
+      "accuracy": 75,
       "pp": 10,
       "priority": 0,
       "type": "TYPE_DARK",
@@ -231904,6 +232220,42 @@
             "name": "Volcanion",
             "dex": 520,
             "sprite": "sprites/pokemon/volcanion.png"
+          },
+          {
+            "species": "SPECIES_TATSUGIRI_CURLY",
+            "name": "Tatsugiri",
+            "dex": 659,
+            "sprite": "sprites/pokemon/tatsugiri_curly.png"
+          },
+          {
+            "species": "SPECIES_TATSUGIRI_DROOPY",
+            "name": "Tatsugiri",
+            "dex": 659,
+            "sprite": "sprites/pokemon/tatsugiri_droopy.png"
+          },
+          {
+            "species": "SPECIES_TATSUGIRI_STRETCHY",
+            "name": "Tatsugiri",
+            "dex": 659,
+            "sprite": "sprites/pokemon/tatsugiri_stretchy.png"
+          },
+          {
+            "species": "SPECIES_TATSUGIRI_CURLY_MEGA",
+            "name": "Tatsugiri",
+            "dex": 659,
+            "sprite": "sprites/pokemon/tatsugiri_curly_mega.png"
+          },
+          {
+            "species": "SPECIES_TATSUGIRI_DROOPY_MEGA",
+            "name": "Tatsugiri",
+            "dex": 659,
+            "sprite": "sprites/pokemon/tatsugiri_droopy_mega.png"
+          },
+          {
+            "species": "SPECIES_TATSUGIRI_STRETCHY_MEGA",
+            "name": "Tatsugiri",
+            "dex": 659,
+            "sprite": "sprites/pokemon/tatsugiri_stretchy_mega.png"
           }
         ]
       }
@@ -234461,12 +234813,6 @@
             "name": "Mesprit",
             "dex": 369,
             "sprite": "sprites/pokemon/mesprit.png"
-          },
-          {
-            "species": "SPECIES_AZELF",
-            "name": "Azelf",
-            "dex": 370,
-            "sprite": "sprites/pokemon/azelf.png"
           },
           {
             "species": "SPECIES_GIRATINA_ORIGIN",
@@ -239473,48 +239819,6 @@
             "name": "Regidrago",
             "dex": 612,
             "sprite": "sprites/pokemon/regidrago.png"
-          },
-          {
-            "species": "SPECIES_TATSUGIRI_CURLY",
-            "name": "Tatsugiri",
-            "dex": 659,
-            "sprite": "sprites/pokemon/tatsugiri_curly.png"
-          },
-          {
-            "species": "SPECIES_TATSUGIRI_DROOPY",
-            "name": "Tatsugiri",
-            "dex": 659,
-            "sprite": "sprites/pokemon/tatsugiri_droopy.png"
-          },
-          {
-            "species": "SPECIES_TATSUGIRI_STRETCHY",
-            "name": "Tatsugiri",
-            "dex": 659,
-            "sprite": "sprites/pokemon/tatsugiri_stretchy.png"
-          },
-          {
-            "species": "SPECIES_TATSUGIRI_CURLY_MEGA",
-            "name": "Tatsugiri",
-            "dex": 659,
-            "sprite": "sprites/pokemon/tatsugiri_curly_mega.png"
-          },
-          {
-            "species": "SPECIES_TATSUGIRI_DROOPY_MEGA",
-            "name": "Tatsugiri",
-            "dex": 659,
-            "sprite": "sprites/pokemon/tatsugiri_droopy_mega.png"
-          },
-          {
-            "species": "SPECIES_TATSUGIRI_STRETCHY_MEGA",
-            "name": "Tatsugiri",
-            "dex": 659,
-            "sprite": "sprites/pokemon/tatsugiri_stretchy_mega.png"
-          },
-          {
-            "species": "SPECIES_ROARING_MOON",
-            "name": "Roaring Moon",
-            "dex": 684,
-            "sprite": "sprites/pokemon/roaring_moon.png"
           }
         ]
       }
@@ -242589,6 +242893,12 @@
             "name": "Deoxys",
             "dex": 299,
             "sprite": "sprites/pokemon/deoxys_speed.png"
+          },
+          {
+            "species": "SPECIES_ROTOM_MOW",
+            "name": "Rotom",
+            "dex": 367,
+            "sprite": "sprites/pokemon/rotom_mow.png"
           }
         ]
       }
@@ -244907,12 +245217,6 @@
             "name": "Gardevoir",
             "dex": 231,
             "sprite": "sprites/pokemon/gardevoir_mega.png"
-          },
-          {
-            "species": "SPECIES_UXIE",
-            "name": "Uxie",
-            "dex": 368,
-            "sprite": "sprites/pokemon/uxie.png"
           },
           {
             "species": "SPECIES_DUOSION",
@@ -249705,7 +250009,7 @@
     "ABILITY_INFILTRATOR": {
       "constant": "ABILITY_INFILTRATOR",
       "name": "Infiltrator",
-      "description": "The Pokemon's moves ignore the foe's screens, Safeguard, Mist, and Substitute.",
+      "description": "The Pokemon's moves ignore the foe's screens, Safeguard, Mist, Substitute, and Aura Shield.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -255475,12 +255779,6 @@
             "sprite": "sprites/pokemon/skiploom.png"
           },
           {
-            "species": "SPECIES_JUMPLUFF",
-            "name": "Jumpluff",
-            "dex": 166,
-            "sprite": "sprites/pokemon/jumpluff.png"
-          },
-          {
             "species": "SPECIES_SWABLU",
             "name": "Swablu",
             "dex": 261,
@@ -256147,7 +256445,7 @@
     "ABILITY_NEUTRALIZING_GAS": {
       "constant": "ABILITY_NEUTRALIZING_GAS",
       "name": "Neutralizing Gas",
-      "description": "While this Pokemon is in battle, other Abilities are nullified or cannot trigger.",
+      "description": "While this Pokemon is in battle, suppressible Abilities and innates are nullified or cannot trigger.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -256642,12 +256940,6 @@
             "sprite": "sprites/pokemon/cradily.png"
           },
           {
-            "species": "SPECIES_ROTOM_MOW",
-            "name": "Rotom",
-            "dex": 367,
-            "sprite": "sprites/pokemon/rotom_mow.png"
-          },
-          {
             "species": "SPECIES_SWADLOON",
             "name": "Swadloon",
             "dex": 396,
@@ -256694,12 +256986,6 @@
             "name": "Brute Bonnet",
             "dex": 667,
             "sprite": "sprites/pokemon/brute_bonnet.png"
-          },
-          {
-            "species": "SPECIES_IRON_LEAVES",
-            "name": "Iron Leaves",
-            "dex": 689,
-            "sprite": "sprites/pokemon/iron_leaves.png"
           }
         ]
       }
@@ -258814,14 +259100,7 @@
       "slug": "grass-ate",
       "usage": {
         "base": [],
-        "innate": [
-          {
-            "species": "SPECIES_ROTOM_MOW",
-            "name": "Rotom",
-            "dex": 367,
-            "sprite": "sprites/pokemon/rotom_mow.png"
-          }
-        ]
+        "innate": []
       }
     },
     "ABILITY_PSYCHIC_ATE": {
@@ -259249,7 +259528,7 @@
     "ABILITY_MANEUVERABILITY": {
       "constant": "ABILITY_MANEUVERABILITY",
       "name": "Maneuverability",
-      "description": "Damaging moves under 60 power gain +1 priority.",
+      "description": "Damaging moves at or under 60 power gain +1 priority.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -259454,6 +259733,12 @@
             "name": "Basculin",
             "dex": 405,
             "sprite": "sprites/pokemon/basculin_blue_striped.png"
+          },
+          {
+            "species": "SPECIES_DARMANITAN_ZEN",
+            "name": "Darmanitan",
+            "dex": 410,
+            "sprite": "sprites/pokemon/darmanitan_zen.png"
           },
           {
             "species": "SPECIES_ZOROARK",
@@ -259674,7 +259959,14 @@
       "slug": "spectral-force",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_ROTOM_MOW",
+            "name": "Rotom",
+            "dex": 367,
+            "sprite": "sprites/pokemon/rotom_mow.png"
+          }
+        ]
       }
     },
     "ABILITY_FIERY_HEART": {
@@ -259915,6 +260207,12 @@
             "name": "Lilligant",
             "dex": 404,
             "sprite": "sprites/pokemon/lilligant.png"
+          },
+          {
+            "species": "SPECIES_IRON_LEAVES",
+            "name": "Iron Leaves",
+            "dex": 689,
+            "sprite": "sprites/pokemon/iron_leaves.png"
           }
         ]
       }
@@ -260052,7 +260350,7 @@
     "ABILITY_AURA_SHIELD": {
       "constant": "ABILITY_AURA_SHIELD",
       "name": "Aura Shield",
-      "description": "Blocks the first attack that would hit this Pokemon.",
+      "description": "Blocks the first attack that would hit this Pokemon. Infiltrator and Mold Breaker bypass the shield.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -260482,12 +260780,6 @@
       "usage": {
         "base": [],
         "innate": [
-          {
-            "species": "SPECIES_DARMANITAN_ZEN",
-            "name": "Darmanitan",
-            "dex": 410,
-            "sprite": "sprites/pokemon/darmanitan_zen.png"
-          },
           {
             "species": "SPECIES_REUNICLUS",
             "name": "Reuniclus",
@@ -262203,6 +262495,12 @@
         "base": [],
         "innate": [
           {
+            "species": "SPECIES_JUMPLUFF",
+            "name": "Jumpluff",
+            "dex": 166,
+            "sprite": "sprites/pokemon/jumpluff.png"
+          },
+          {
             "species": "SPECIES_ROSELIA",
             "name": "Roselia",
             "dex": 250,
@@ -262314,7 +262612,7 @@
     "ABILITY_OMEGA": {
       "constant": "ABILITY_OMEGA",
       "name": "Omega",
-      "description": "This Pokemon's attacks are always super effective; damage it takes is never very effective.",
+      "description": "This Pokemon's attacks are super effective. hits it takes are not very effective. Type immunities and absorbing Abilities still apply.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -263019,6 +263317,12 @@
             "name": "Muk",
             "dex": 79,
             "sprite": "sprites/pokemon/muk_alola.png"
+          },
+          {
+            "species": "SPECIES_UXIE",
+            "name": "Uxie",
+            "dex": 368,
+            "sprite": "sprites/pokemon/uxie.png"
           },
           {
             "species": "SPECIES_GOODRA",
@@ -264496,7 +264800,14 @@
       "slug": "haunted",
       "usage": {
         "base": [],
-        "innate": []
+        "innate": [
+          {
+            "species": "SPECIES_ROARING_MOON",
+            "name": "Roaring Moon",
+            "dex": 684,
+            "sprite": "sprites/pokemon/roaring_moon.png"
+          }
+        ]
       }
     },
     "ABILITY_MENDING": {
@@ -266050,6 +266361,12 @@
             "name": "Chimecho",
             "dex": 276,
             "sprite": "sprites/pokemon/chimecho_mega.png"
+          },
+          {
+            "species": "SPECIES_AZELF",
+            "name": "Azelf",
+            "dex": 370,
+            "sprite": "sprites/pokemon/azelf.png"
           }
         ],
         "innate": []
@@ -267770,17 +268087,17 @@
     {
       "kind": "TM",
       "number": 75,
-      "item": "ITEM_TM_SWORDS_DANCE",
-      "move": "MOVE_SWORDS_DANCE",
+      "item": "ITEM_TM_AGILITY",
+      "move": "MOVE_AGILITY",
       "label": "TM75",
-      "name": "TM75 Swords Dance",
-      "description": "A frenetic dance that sharply raises the user's Attack.",
-      "moveName": "Swords Dance",
-      "type": "TYPE_NORMAL",
+      "name": "TM75 Agility",
+      "description": "User relaxes to sharply raise its Speed.",
+      "moveName": "Agility",
+      "type": "TYPE_PSYCHIC",
       "category": "DAMAGE_CATEGORY_STATUS",
       "power": 0,
       "accuracy": 0,
-      "pp": 20,
+      "pp": 30,
       "locations": [
         {
           "map": "Kitakami Mountain 2F",
@@ -273255,9 +273572,13 @@
         {
           "map": "Lake of Rage",
           "source": "Item ball"
+        },
+        {
+          "map": "Indigo Plateau Pokemon Center",
+          "source": "Mart"
         }
       ],
-      "location": "Lake of Rage (Item ball)",
+      "location": "Lake of Rage (Item ball); Indigo Plateau Pokemon Center (Mart)",
       "slug": "black-augurite"
     },
     {
@@ -273303,9 +273624,13 @@
         {
           "map": "Dark Cave North Side",
           "source": "Item ball"
+        },
+        {
+          "map": "Indigo Plateau Pokemon Center",
+          "source": "Mart"
         }
       ],
-      "location": "Dark Cave North Side (Item ball)",
+      "location": "Dark Cave North Side (Item ball); Indigo Plateau Pokemon Center (Mart)",
       "slug": "peat-block"
     },
     {
@@ -303107,7 +303432,7 @@
           "innates": [
             "ABILITY_WIND_RIDER",
             "ABILITY_PRANKSTER",
-            "ABILITY_COTTON_DOWN"
+            "ABILITY_JADE_BLOOM"
           ],
           "itemConstant": "",
           "itemName": "",
@@ -327207,7 +327532,7 @@
           "constant": "SPECIES_TATSUGIRI_DROOPY",
           "displayName": "Tatsugiri-Droopy",
           "innates": [
-            "ABILITY_SHED_SKIN",
+            "ABILITY_DAMP",
             "ABILITY_INNER_FOCUS",
             "ABILITY_MARVEL_SCALE"
           ],
@@ -327365,7 +327690,7 @@
           "constant": "SPECIES_TATSUGIRI_DROOPY",
           "displayName": "Tatsugiri-Droopy",
           "innates": [
-            "ABILITY_SHED_SKIN",
+            "ABILITY_DAMP",
             "ABILITY_INNER_FOCUS",
             "ABILITY_MARVEL_SCALE"
           ],
@@ -329795,7 +330120,7 @@
           "innates": [
             "ABILITY_LEAF_GUARD",
             "ABILITY_NATURAL_CURE",
-            "ABILITY_SEED_SOWER"
+            "ABILITY_PLANTATION"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
@@ -330001,7 +330326,7 @@
           "innates": [
             "ABILITY_LEAF_GUARD",
             "ABILITY_NATURAL_CURE",
-            "ABILITY_SEED_SOWER"
+            "ABILITY_PLANTATION"
           ],
           "itemConstant": "ITEM_LIFE_ORB",
           "itemName": "Life Orb",
