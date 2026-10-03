@@ -57,7 +57,7 @@
 #define SONG_MUS_DP_INSIDE_POKEMON_LEAGUE               0
 #define SONG_MUS_DP_HALL_OF_FAME_ROOM                   0
 #define SONG_MUS_DP_POKE_CENTER_DAY                     0
-#define SONG_MUS_DP_POKE_CENTER_NIGHT                   0
+#define SONG_MUS_DP_POKE_CENTER_NIGHT                   1
 #define SONG_MUS_DP_GYM                                 0
 #define SONG_MUS_DP_ROWAN_LAB                           0
 #define SONG_MUS_DP_CONTEST_LOBBY                       0

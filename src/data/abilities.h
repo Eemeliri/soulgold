@@ -1708,7 +1708,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .longDescription = COMPOUND_STRING("The Pokémon's moves\n"
                                            "ignore the foe's\n"
                                            "screens, Safeguard,\n"
-                                           "Mist, and Substitute."),
+                                           "Mist, Substitute,\n"
+                                           "and Aura Shield."),
         .aiRating = 6,
     },
 
@@ -2869,7 +2870,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Neutralizing Gas"),
         .description = COMPOUND_STRING("All Abilities are nullified."),
         .longDescription = COMPOUND_STRING("While this Pokemon is in\n"
-                                           "battle, other Abilities\n"
+                                           "battle, suppressible\n"
+                                           "Abilities and innates\n"
                                            "are nullified or cannot\n"
                                            "trigger."),
         .aiRating = 5,
@@ -3736,8 +3738,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Maneuverability"),
         .description = COMPOUND_STRING("Prioritizes weaker attacks."),
-        .longDescription = COMPOUND_STRING("Damaging moves under 60\n"
-                                           "power gain +1 priority."),
+        .longDescription = COMPOUND_STRING("Damaging moves at or under\n"
+                                           "60 power gain +1 priority."),
         .aiRating = 5,
     },
 
@@ -3947,8 +3949,11 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Blocks one attack."),
         .longDescription = COMPOUND_STRING("Blocks the first attack\n"
                                            "that would hit this\n"
-                                           "Pokemon."),
+                                           "Pokemon. Infiltrator\n"
+                                           "and Mold Breaker bypass\n"
+                                           "the shield."),
         .aiRating = 7,
+        .breakable = TRUE,
     },
 
     [ABILITY_PLAIN_SOUL] =
@@ -4561,11 +4566,13 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Omega"),
         .description = COMPOUND_STRING("Deals SE; takes NVE hits."),
         .longDescription = COMPOUND_STRING("This Pokemon's attacks\n"
-                                           "are always super\n"
-                                           "effective; damage it\n"
-                                           "takes is never very\n"
-                                           "effective."),
+                                           "are super effective.\n"
+                                           "hits it takes are not\n"
+                                           "very effective. Type\n"
+                                           "immunities and absorbing\n"
+                                           "Abilities still apply."),
         .aiRating = 8,
+        .breakable = TRUE,
     },
 
     [ABILITY_PERMAFROST] =

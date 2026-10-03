@@ -1446,7 +1446,9 @@ static inline bool32 DoesBattlerNegateDamage(enum BattlerId battler)
         return TRUE;
     if (BattlerHasTrait(battler, ABILITY_ICE_FACE) && species == SPECIES_EISCUE_ICE && GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_PHYSICAL)
         return TRUE;
-    if (BattlerHasTrait(battler, ABILITY_AURA_SHIELD) && gBattleMons[battler].volatiles.auraShieldState <= 1)
+    if (BattlerHasTrait(battler, ABILITY_AURA_SHIELD)
+     && !BattlerHasTrait(gBattlerAttacker, ABILITY_INFILTRATOR)
+     && gBattleMons[battler].volatiles.auraShieldState <= 1)
         return TRUE;
 
     return FALSE;
@@ -11200,6 +11202,10 @@ bool32 DoesIceFaceBlockMove(enum BattlerId battler, enum Move move)
 
 static bool32 DoesAuraShieldBlockMove(enum BattlerId battler, enum Move move)
 {
+    // Passing through the shield does not consume its protected hit.
+    if (BattlerHasTrait(gBattlerAttacker, ABILITY_INFILTRATOR))
+        return FALSE;
+
     if (gBattleMons[battler].volatiles.auraShieldState == 1)
         return TRUE;
 
@@ -14537,7 +14543,7 @@ void BS_JumpIfAbilityCantBeReactivated(void)
 {
     NATIVE_ARGS(u8 battler, const u8 *jumpInstr);
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
-    u32 ability = gBattleMons[battler].ability; //Specific to Main Ability negation (Multi)
+    bool32 canReactivate = FALSE;
 
     if (!IsBattlerAlive(battler) || gBattleStruct->battlerState[battler].fainted)
     {
@@ -14551,21 +14557,47 @@ void BS_JumpIfAbilityCantBeReactivated(void)
         return;
     }
 
-    switch (ability)
+    if (gBattleMons[battler].ability == ABILITY_NEUTRALIZING_GAS
+     && !gBattleMons[battler].volatiles.gastroAcid)
     {
-    case ABILITY_IMPOSTER:
-    case ABILITY_NEUTRALIZING_GAS:
-    case ABILITY_AIR_LOCK:
-    case ABILITY_CLOUD_NINE:
         gBattlescriptCurrInstr = cmd->jumpInstr;
-        break;
-    default:
-        if (gAbilitiesInfo[ability].cantBeSuppressed)
-            gBattlescriptCurrInstr = cmd->jumpInstr;
-        else
-            gBattlescriptCurrInstr = cmd->nextInstr;
-        break;
+        return;
     }
+
+    // An unsuppressible main ability does not prevent suppressed innates
+    // from getting their switch-in effects when Neutralizing Gas ends.
+    for (u32 slot = 0; slot < MAX_MON_TRAITS; slot++)
+    {
+        enum Ability ability = GetBattlerTrait(battler, slot, TRUE);
+
+        if (ability != ABILITY_NONE
+         && ability != ABILITY_IMPOSTER
+         && ability != ABILITY_NEUTRALIZING_GAS
+         && ability != ABILITY_AIR_LOCK
+         && ability != ABILITY_CLOUD_NINE
+         && !gAbilitiesInfo[ability].cantBeSuppressed)
+            canReactivate = TRUE;
+    }
+
+    if (!canReactivate)
+    {
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+        return;
+    }
+
+
+    for (u32 slot = 0; slot < MAX_MON_TRAITS; slot++)
+    {
+        enum Ability ability = GetBattlerTrait(battler, slot, TRUE);
+
+        if (ability == ABILITY_IMPOSTER
+         || ability == ABILITY_NEUTRALIZING_GAS
+         || ability == ABILITY_AIR_LOCK
+         || ability == ABILITY_CLOUD_NINE)
+            gSpecialStatuses[battler].switchInTraitDone[slot] = TRUE;
+    }
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 void BS_TryActivateAbilityShield(void)
@@ -14573,8 +14605,30 @@ void BS_TryActivateAbilityShield(void)
     NATIVE_ARGS(u8 battler);
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
     enum Ability ability = GetBattlerAbility(battler);
+    enum Ability popupAbility = PullTraitStackAbility();
+    bool32 popupIsInnate = FALSE;
 
     gBattlescriptCurrInstr = cmd->nextInstr;
+
+    for (u32 slot = 1; slot < MAX_MON_TRAITS; slot++)
+        if (popupAbility != ABILITY_NONE
+         && popupAbility != gBattleMons[battler].ability
+         && GetBattlerTrait(battler, slot, TRUE) == popupAbility)
+            popupIsInnate = TRUE;
+
+    if (popupIsInnate)
+    {
+        if (popupAbility != ABILITY_NEUTRALIZING_GAS
+         && !gAbilitiesInfo[popupAbility].cantBeSuppressed
+         && IsNeutralizingGasOnField()
+         && BattlerHasHeldItemEffectIgnoreAbility(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE))
+        {
+            gLastUsedItem = GetBattlerHeldItemWithEffect(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE);
+            RecordItemEffectBattle(battler, GetItemHoldEffect(gLastUsedItem));
+            BattleScriptCall(BattleScript_AbilityShieldProtects);
+        }
+        return;
+    }
 
     if (ability != ABILITY_NONE // if ability would be negated by breaking effects Ability Shield doesn't print message
      && ability == GetBattlerAbilityInternal(battler, TRUE, TRUE))
@@ -16391,12 +16445,23 @@ void BS_TryActivateAbilityWithAbilityShield(void)
             return;
     }
 
-    // check if Ability Shield is protecting battler's ability from being suppressed (no breaking effects)
-    if (GetBattlerAbilityInternal(battler, TRUE, TRUE) == ABILITY_NONE
-     && GetBattlerAbility(battler) != ABILITY_NONE)
+    // Ability Shield can expose suppressible innates even when the main
+    // ability is ABILITY_NONE or cannot itself be suppressed.
+    if (IsNeutralizingGasOnField())
     {
-        gBattleScripting.battler = battler;
-        BattleScriptCall(BattleScript_ActivateSwitchInAbility);
+        for (u32 slot = 0; slot < MAX_MON_TRAITS; slot++)
+        {
+            enum Ability ability = GetBattlerTrait(battler, slot, TRUE);
+
+            if (ability != ABILITY_NONE
+             && ability != ABILITY_NEUTRALIZING_GAS
+             && !gAbilitiesInfo[ability].cantBeSuppressed)
+            {
+                gBattleScripting.battler = battler;
+                BattleScriptCall(BattleScript_ActivateSwitchInAbility);
+                return;
+            }
+        }
     }
 }
 

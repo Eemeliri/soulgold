@@ -7,7 +7,9 @@ script Route33Kyogre {
     if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
         if (!flag(FLAG_GOT_BLUEORB)) {
             finditem(ITEM_BLUE_ORB)
-            setflag(FLAG_GOT_BLUEORB)
+            if (var(VAR_0x8007) == TRUE) {
+                setflag(FLAG_GOT_BLUEORB)
+            }
         }
         if (!flag(FLAG_ONETIME_KYOGRE)) {
             if (var(VAR_POSTGAME_RIVAL_LEGENDARYQ) == 7 || var(VAR_POSTGAME_RIVAL_LEGENDARYQ) == 8) {

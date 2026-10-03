@@ -14382,14 +14382,14 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_SWORDS_DANCE] =
+    [ITEM_TM_AGILITY] =
     {
-        .name = ITEM_NAME("TM75 Swords Dance"),
+        .name = ITEM_NAME("TM75 Agility"),
         .price = 3000,
         .description = COMPOUND_STRING(
-    "A frenetic dance\n"
-    "that sharply raises\n"
-    "the user's Attack."),
+    "User relaxes to\n"
+    "sharply raise\n"
+    "its Speed."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .heldSlot = 0,

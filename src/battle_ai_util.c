@@ -1620,6 +1620,7 @@ bool32 CanEndureHit(enum BattlerId battler, enum BattlerId battlerTarget, enum M
          && !(gBattleStruct->rebornUsed[GetBattlerSide(battlerTarget)] & (1u << gBattlerPartyIndexes[battlerTarget])))
             return TRUE;
         if (AI_BATTLER_HAS_TRAIT(battlerTarget, ABILITY_AURA_SHIELD)
+         && !AI_BATTLER_HAS_TRAIT(battler, ABILITY_INFILTRATOR)
          && gBattleMons[battlerTarget].volatiles.auraShieldState <= 1
          && !gBattleMons[battlerTarget].volatiles.transformed
          && GetMoveCategory(move) != DAMAGE_CATEGORY_STATUS)

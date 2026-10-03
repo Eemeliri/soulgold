@@ -2909,11 +2909,6 @@ bool32 CanAbilityAbsorbMove(struct BattleContext *ctx)
 
     const u8 *battleScript = NULL;
 
-    if (!IsBattleMoveStatus(ctx->move)
-     && GetMovePower(ctx->move) != 0
-     && ((hasLiveAttacker && BattlerHasTrait(ctx->battlerAtk, ABILITY_OMEGA)) || BattlerHasTrait(ctx->battlerDef, ABILITY_OMEGA)))
-        return FALSE;
-
     if (hasLiveAttacker
      && BattlerHasTrait(ctx->battlerAtk, ABILITY_MONSOON)
      && ctx->moveType == TYPE_WATER
@@ -6738,6 +6733,17 @@ static inline bool32 CanBreakThroughAbility(enum BattlerId battlerAtk, enum Batt
     return gBattleStruct->moldBreakerActive && gAbilitiesInfo[ability].breakable;
 }
 
+static bool32 IsInnateSuppressedByNeutralizingGas(enum Ability ability, bool32 hasAbilityShield)
+{
+    // Suppress each innate independently of the main ability. Multitype and
+    // other unsuppressible traits must not protect a Pokemon's other innates.
+    return ability != ABILITY_NONE
+        && ability != ABILITY_NEUTRALIZING_GAS
+        && !gAbilitiesInfo[ability].cantBeSuppressed
+        && !hasAbilityShield
+        && IsNeutralizingGasOnField();
+}
+
 enum Ability GetBattlerAbilityNoAbilityShield(enum BattlerId battler)
 {
     return GetBattlerAbilityInternal(battler, FALSE, TRUE);
@@ -8886,8 +8892,7 @@ static bool32 IsRuinStatusActive(u32 fieldEffect)
         if (gBattleMons[battler].volatiles.gastroAcid)
             continue;
         if (!BattlerHasHeldItemEffectIgnoreAbility(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE)
-         && isNeutralizingGasOnField
-         && gBattleMons[battler].ability != ABILITY_NEUTRALIZING_GAS)
+         && isNeutralizingGasOnField)
             continue;
 
         if (GetBattlerVolatile(battler, fieldEffect))
@@ -10393,6 +10398,7 @@ s32 GetAdjustedDamage(struct BattleContext *ctx, s32 damage)
      || DoesDisguiseBlockMove(ctx->battlerDef, ctx->move)
      || DoesIceFaceBlockMove(ctx->battlerDef, ctx->move)
      || (BattlerHasTrait(ctx->battlerDef, ABILITY_AURA_SHIELD)
+      && !BattlerHasTrait(ctx->battlerAtk, ABILITY_INFILTRATOR)
       && gBattleMons[ctx->battlerDef].volatiles.auraShieldState <= 1
       && !gBattleMons[ctx->battlerDef].volatiles.transformed
       && !IsBattleMoveStatus(ctx->move)))
@@ -10984,6 +10990,60 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct BattleCont
     return modifier;
 }
 
+static bool32 BattlerHasTraitForTypeEffectiveness(enum BattlerId battler, enum Ability ability)
+{
+    if (gAiLogicData != NULL && gAiLogicData->aiCalcInProgress)
+    {
+        bool32 hasAbilityShield = Ai_BattlerHasHoldEffect(battler, HOLD_EFFECT_ABILITY_SHIELD, gAiLogicData);
+
+        if (gAiLogicData->abilities[battler] == ability)
+        {
+            if (gBattleMons[battler].volatiles.gastroAcid)
+                return FALSE;
+            if (IsInnateSuppressedByNeutralizingGas(ability, hasAbilityShield))
+                return FALSE;
+            return TRUE;
+        }
+
+        for (u32 i = 0; i < gAiLogicData->activeInnateCount[battler]; i++)
+        {
+            if (gAiLogicData->innates[battler][i] == ability)
+                return !IsInnateSuppressedByNeutralizingGas(ability, hasAbilityShield);
+        }
+
+        return FALSE;
+    }
+
+    for (u32 slot = 0; slot < MAX_MON_TRAITS; slot++)
+        if (GetBattlerTrait(battler, slot, TRUE) == ability)
+            return TRUE;
+
+    return FALSE;
+}
+
+static bool32 BattlerHasAbilityShieldForTypeEffectiveness(enum BattlerId battler)
+{
+    if (gAiLogicData != NULL && gAiLogicData->aiCalcInProgress)
+        return Ai_BattlerHasHoldEffect(battler, HOLD_EFFECT_ABILITY_SHIELD, gAiLogicData);
+
+    return BattlerHasHeldItemEffectIgnoreAbility(battler, HOLD_EFFECT_ABILITY_SHIELD, TRUE);
+}
+
+static bool32 HasOmegaForTypeEffectiveness(const struct BattleContext *ctx, enum BattlerId battler)
+{
+    if (!BattlerHasTraitForTypeEffectiveness(battler, ABILITY_OMEGA))
+        return FALSE;
+
+    if (battler == ctx->battlerAtk
+     || BattlerHasAbilityShieldForTypeEffectiveness(battler))
+        return TRUE;
+
+    return !BattlerHasTraitForTypeEffectiveness(ctx->battlerAtk, ABILITY_MOLD_BREAKER)
+        && !BattlerHasTraitForTypeEffectiveness(ctx->battlerAtk, ABILITY_TERAVOLT)
+        && !BattlerHasTraitForTypeEffectiveness(ctx->battlerAtk, ABILITY_TURBOBLAZE)
+        && !MoveIgnoresTargetAbility(ctx->move);
+}
+
 uq4_12_t CalcTypeEffectivenessMultiplier(struct BattleContext *ctx)
 {
     uq4_12_t modifier = UQ_4_12(1.0);
@@ -11000,12 +11060,14 @@ uq4_12_t CalcTypeEffectivenessMultiplier(struct BattleContext *ctx)
         }
     }
 
+    // Omega changes effective hits, but never turns an immunity into a hit.
     if (ctx->move != MOVE_STRUGGLE
      && ctx->moveType != TYPE_MYSTERY
      && !IsBattleMoveStatus(ctx->move)
-     && GetMovePower(ctx->move) != 0)
+     && GetMovePower(ctx->move) != 0
+     && modifier != UQ_4_12(0.0))
     {
-        if (BattlerHasTrait(ctx->battlerAtk, ABILITY_OMEGA))
+        if (HasOmegaForTypeEffectiveness(ctx, ctx->battlerAtk))
         {
             modifier = UQ_4_12(2.0);
             if (ctx->updateFlags)
@@ -11014,7 +11076,7 @@ uq4_12_t CalcTypeEffectivenessMultiplier(struct BattleContext *ctx)
                 RecordAbilityBattle(ctx->battlerAtk, ABILITY_OMEGA);
             }
         }
-        else if (BattlerHasTrait(ctx->battlerDef, ABILITY_OMEGA))
+        else if (HasOmegaForTypeEffectiveness(ctx, ctx->battlerDef))
         {
             modifier = UQ_4_12(0.5);
             if (ctx->updateFlags)
@@ -13906,6 +13968,9 @@ enum Ability GetBattlerTrait(enum BattlerId battlerId, u32 traitNum, bool32 igno
         //DebugPrintf("Trait %d: %S", traitNum, gAbilitiesInfo[ability].name);
         
         // Check if ability is nullified
+        if (IsInnateSuppressedByNeutralizingGas(ability, hasAbilityShield))
+            return ABILITY_NONE;
+
          if (battlerId != gBattlerAttacker
           && !ignoreMoldBreaker
           && CanBreakThroughAbility(gBattlerAttacker, battlerId, ability, hasAbilityShield, FALSE))
@@ -13918,15 +13983,14 @@ enum Ability GetBattlerTrait(enum BattlerId battlerId, u32 traitNum, bool32 igno
 //Returns the slot the Innate is found in accouting for randomization and ability disabling. Assumes the Ability is already slot 1.  Returns 0 if not found.
 u32 BattlerHasInnate(enum BattlerId battlerId, enum Ability ability)
 {
-    /*if (BattlerIgnoresAbility(gBattlerAttacker, battlerId, ability) && B_MOLD_BREAKER_WORKS_ON_INNATES == TRUE)
+    bool32 hasAbilityShield = BattlerHasHeldItemEffectIgnoreAbility(battlerId, HOLD_EFFECT_ABILITY_SHIELD, TRUE);
+
+    if (IsInnateSuppressedByNeutralizingGas(ability, hasAbilityShield))
         return 0;
-    else if (BattlerAbilityWasRemoved(battlerId, ability) && B_NEUTRALIZING_GAS_WORKS_ON_INNATES == TRUE)
-        return 0;
-    else*/
 
     //Check for Mold Breaker type negation
     if (battlerId != gBattlerAttacker
-     && CanBreakThroughAbility(gBattlerAttacker, battlerId, ability, FALSE, FALSE))
+     && CanBreakThroughAbility(gBattlerAttacker, battlerId, ability, hasAbilityShield, FALSE))
         return 0;
 
 #if TESTING
@@ -13984,6 +14048,8 @@ static inline u32 AiCachedBattlerTraitSlot(enum BattlerId battlerId, enum Abilit
     {
         if (gAiLogicData->innates[battlerId][i] == ability)
         {
+            if (IsInnateSuppressedByNeutralizingGas(ability, hasAbilityShield))
+                return 0;
             if (CanBreakThroughAbility(gBattlerAttacker, battlerId, ability, hasAbilityShield, FALSE))
                 return 0;
             return i + 2;

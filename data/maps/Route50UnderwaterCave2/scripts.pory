@@ -7,7 +7,9 @@ script GroudonEncounter {
     if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
         if (!flag(FLAG_GOT_REDORB)) {
             finditem(ITEM_RED_ORB)
-            setflag(FLAG_GOT_REDORB)
+            if (var(VAR_0x8007) == TRUE) {
+                setflag(FLAG_GOT_REDORB)
+            }
         }
         if (!flag(FLAG_ONETIME_GROUDON)) {
             if (var(VAR_POSTGAME_RIVAL_LEGENDARYQ) == 7 || var(VAR_POSTGAME_RIVAL_LEGENDARYQ) == 8) {

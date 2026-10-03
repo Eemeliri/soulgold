@@ -1209,6 +1209,8 @@ static bool16 IsGoldenrodRocketTakeover(struct WarpData *warp)
 
 u16 GetLocationMusic(struct WarpData *warp)
 {
+    u16 music;
+
     if (IsGoldenrodRocketTakeover(warp) == TRUE)
         return MUS_HG_ROCKET_TAKEOVER;
     else if (NoMusicInSootopolisWithLegendaries(warp) == TRUE)
@@ -1219,8 +1221,19 @@ u16 GetLocationMusic(struct WarpData *warp)
         return MUS_ENCOUNTER_MAGMA;
     else if (IsInfiltratedWeatherInstitute(warp) == TRUE)
         return MUS_MT_CHIMNEY;
-    else
-        return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
+
+    music = Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
+    switch (music)
+    {
+    case MUS_POKE_CENTER:
+    case MUS_RG_POKE_CENTER:
+    case MUS_HG_POKE_CENTER:
+        if (GetTimeOfDay() == TIME_NIGHT)
+            return MUS_DP_POKE_CENTER_NIGHT;
+        break;
+    }
+
+    return music;
 }
 
 u16 GetCurrLocationDefaultMusic(void)

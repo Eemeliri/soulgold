@@ -76,7 +76,7 @@
     F(VOLT_SWITCH) \
     F(THUNDER_WAVE) \
     F(GYRO_BALL) \
-    F(SWORDS_DANCE) \
+    F(AGILITY) \
     F(HONE_CLAWS) \
     F(DIG) \
     F(BULLDOZE) \

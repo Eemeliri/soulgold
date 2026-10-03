@@ -5216,7 +5216,7 @@ s32 GetBattleMovePriority(enum BattlerId battler, enum Move move)
     if (SearchTraits(battlerTraits, ABILITY_MANEUVERABILITY)
      && !IsBattleMoveStatus(move)
      && GetMovePower(move) > 0
-     && GetMovePower(move) < 60)
+     && GetMovePower(move) <= 60)
         priority++;
     if (SearchTraits(battlerTraits, ABILITY_REACTIVE) && ShouldReactiveIncreasePriority(battler))
     {
