@@ -18,7 +18,7 @@ Speak to the gentleman in Route 40 house to collect rewards and to check your cu
 
 ### 15 trophies
 
-- **Reward** Shiny Patch
+- **Reward** Shiny Genome
     - This consumable turns any Pokémon you own into a shiny version!
 
 ### 30 achievements

@@ -189,3 +189,6 @@ Each Pokemon must hold the item shown below and you must have the Mega Ring.
 ## [Wellspring Mask](https://eemeliri.github.io/soulgold/items/wellspring-mask/)
 
 - [Ogerpon (Wellspring Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-wellspring/) -> [Mega Ogerpon (Wellspring Mask)](https://eemeliri.github.io/soulgold/pokedex/ogerpon-wellspring-tera/)
+
+## Rayquaza
+- Rayquaza is an exception to the held item rule and can mega evolve by knowing the move "Dragon Ascent".

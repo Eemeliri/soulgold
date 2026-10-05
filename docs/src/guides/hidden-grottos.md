@@ -43,7 +43,7 @@ order: 4
 
 ![](images/grotto-vajradesert.png){small}
 
-- **Lake of Rage (Lv. 35):** Cyclizar, Maushold, Falinks, or Drampa. Grotto specific item: Eviolite.
+- **Lake of Rage (Lv. 35):** Cyclizar, Oricorio-Sensu, Falinks, or Drampa. Grotto specific item: Eviolite.
 
 ![](images/grotto-lakeofrage.png){small}
 

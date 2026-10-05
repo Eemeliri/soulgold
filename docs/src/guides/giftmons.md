@@ -33,7 +33,7 @@ order: 50
 
 
 ### Blackthorn City: 
-- Dratini after answering the Dragon Den Shrine's questions and speaking with Clair. This Dratini has an unique move "Spacial Rend".
+- Dratini after answering the Dragon Den Shrine's questions and speaking with Clair. Re-enter the shrine to receive it. If you answer the questions correctly, the Dratini will have an unique move "Spacial Rend".
 
 
 ### Kitakami: 

@@ -20,11 +20,12 @@ order: 5
 ## Eggs
 
 - Eggs use the base 1/256 odds. The Masuda Method is not enabled in this hack.
+- Having a shiny parent boosts the odds of offspring being shiny. Having both parents shiny boosts this even more.
 - Gift eggs can be shiny just like any regular gift Pokémon.
 - Shiny eggs have blue dots on their sprite.
 - An egg's shininess when breeding at the Day Care is decided when the egg is spawned at the Daycare Man, not when it's accepted/hatches.
 - The Day-Care Man says, "This Egg looks quite different from the ones we usually see!" when a shiny egg is ready. This message is shown before he asks if you want the egg.
-- Accept the egg after the special message. Otherwise, decline it and walk until another egg is ready.
+- Accept the egg if you see this special message. Otherwise, decline it and walk until another egg is ready.
 
 ## Legendaries, statis encounters and gifts
 

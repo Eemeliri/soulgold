@@ -167,7 +167,7 @@ Found in the Dream Garden, accessible from Tohjo Falls after obtaining Rock Clim
 
 #### Arceus
 
-Reward from Oak in Radio Tower 2F for completing the Pokédex. Requires having caught all 615 non-legendary/non-mythical Pokémon.
+Reward from Oak in Radio Tower 2F for completing the Pokédex. Requires having caught all 608 non-legendary/non-mythical Pokémon.
 
 #### Victini
 

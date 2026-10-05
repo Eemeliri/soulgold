@@ -21,7 +21,7 @@ order: 1
 - Hackdex, and it is only available from there, other sources are unofficial and may be out of date.
 
 ### Saves compatible between versions?
-- Always
+- Always forward-compatible. Going back to older versions from newer versions is not supported.
 
 ### Are there any cheats?
 - No, cheats are not supported and they are likely to corrupt your save, don't trust 3rd party sites offering them.
@@ -41,6 +41,9 @@ order: 1
 
 ### Dexnav?
 - After obtaining first set of Poké Balls.
+
+### Level caps?
+- 12, 19, 26, 34, 42, 45, 48, 55 (Rocket takeover event cap), 58, 62 (Until you catch Ho-Oh/Lugia) and 70 (Until you become the Champion).
 
 ### Unregistering dexnav species?
 - Select in the dexnav screen.
@@ -95,7 +98,7 @@ order: 1
 - Most are available in the Baoba's Safari Zone, but several can be found before this.
 
 ### Shiny odds?
-- 1/256. Eggs will show with blue dots if they are shiny.
+- 1/256. The shiny rate can be adjusted to be 1/512 or 1/1024 from the ingame settings. Eggs will show with blue dots if they are shiny. 
 
 ### Shiny locks?
 - None. Even NPC trades can be shiny.
@@ -116,6 +119,7 @@ order: 1
 - Pawmi in Violet (for Cottonee)
 - G-Slowpoke in Azalea (for regular Slowpoke)
 - Honedge in Goldenrod Dept Store (for Clefairy),
+- Rotom in Route 39-Route-49 Gatehouse (for regular Zorua)
 - Hisui-Voltorb in Olivine (for Mareanie)
 - Gabite in Blackthorn City (for Dragonair)
 - Meltan in Rinto Village (for Tinkaton)
@@ -158,7 +162,7 @@ order: 1
 - Blackthorn City egg move master sells you infinite access to egg moves for 88888 pokedollars similar to tutor move master.
 
 ### Why do innates unlock so late?
-- They are meant to act as a form of postgame progression. Most Pokémon stop learning moves around 60~ usually, so this gives something to look forward to after that. If you really want to play with innates during the main game, you can activate them from the bookcase behind the starter case table in Elm's lab. However this will be a very unbalanced experience and not the intended way to play.
+- They are meant to act as a form of postgame progression. Most Pokémon stop learning moves around 60~ usually, so this gives something to look forward to after that. If you really want to play with innates during the main game, you can activate them from the bookcase behind the starter case table in Elm's lab. However this will be a very unbalanced experience and not the intended way to play. You can also completely disable innates at all levels by activating the Artifact of Order from the right side bookcase.
 
 ### Raising IVs?
 - Fishing and Battle Factory (after gym 3) can net you feather items which permanently raise your IVs by 5 with each use. Additionally Hyper Training is available in Rinto Village with Bottle Caps (which can also be obtained by fishing with Super Rod).
