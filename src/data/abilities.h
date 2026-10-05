@@ -915,7 +915,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Motor Drive"),
         .description = COMPOUND_STRING("Electricity raises Speed."),
         .longDescription = COMPOUND_STRING("Being hit by electricity\n"
-                                           "raisesd Speed by one stage.\n"
+                                           "raises Speed by one stage.\n"
                                            "                        \n"
                                            "               "),
         .aiRating = 6,
