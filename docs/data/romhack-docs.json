@@ -43924,11 +43924,11 @@
           "move": "MOVE_STONE_EDGE"
         },
         {
-          "level": 65,
+          "level": 64,
           "move": "MOVE_AQUA_CUTTER"
         },
         {
-          "level": 70,
+          "level": 75,
           "move": "MOVE_STONE_AXE"
         }
       ],
@@ -73078,8 +73078,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73087,8 +73087,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -73322,8 +73322,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         },
         {
@@ -73331,8 +73331,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         }
       ],
@@ -262320,7 +262320,7 @@
     "ABILITY_WINDCALLER": {
       "constant": "ABILITY_WINDCALLER",
       "name": "Windcaller",
-      "description": "Flying-type moves deal 30% more damage, and Tailwind lasts longer.",
+      "description": "Flying-type moves deal 30% more damage, and Tailwind lasts 2 turns longer.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
