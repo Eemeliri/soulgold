@@ -2990,7 +2990,8 @@ u8 GiveCapturedMonToPlayer(struct Pokemon *mon)
     else
     {
         CopyMon(&gPlayerParty[i], mon, sizeof(*mon));
-        gPlayerPartyCount = i + 1;
+        // A caught mon can replace a middle slot in an otherwise full party.
+        CalculatePlayerPartyCount();
         giveResult = MON_GIVEN_TO_PARTY;
     }
 

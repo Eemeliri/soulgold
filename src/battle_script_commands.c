@@ -8351,7 +8351,9 @@ static u32 ChangeStatBuffs(enum BattlerId battler, s8 statValue, enum Stat statI
     }
     else if (SearchTraits(battlerTraits, ABILITY_SIMPLE) && !flags.onlyChecking)
     {
-        statValue = (SET_STAT_BUFF_VALUE(GET_STAT_BUFF_VALUE(statValue) * 2)) | ((statValue <= -1) ? STAT_BUFF_NEGATIVE : 0);
+        // Simple turns +12 attack buff into +24 which overflows, cap it.
+        u32 stages = min(GET_STAT_BUFF_VALUE(statValue) * 2, MAX_STAT_STAGE);
+        statValue = SET_STAT_BUFF_VALUE(stages) | (statValue & STAT_BUFF_NEGATIVE);
         RecordAbilityBattle(battler, ABILITY_SIMPLE);
     }
 
@@ -11927,6 +11929,8 @@ static void Cmd_givecaughtmon(void)
                     GetMonNickname(&gPlayerParty[gSelectedMonPartyId], gStringVar2);
                     StringCopy(gStringVar1, GetBoxNamePtr(GetPCBoxToSendMon()));
                     ZeroMonData(&gPlayerParty[gSelectedMonPartyId]);
+                    // The caught mon must not inherit the outgoing mon's level-up evolution check.
+                    gLeveledUpInBattle &= ~(1u << gSelectedMonPartyId);
                     for(int i = 0; i < MAX_MON_ITEMS; i++)
                         gBattleStruct->itemLost[B_SIDE_PLAYER][gSelectedMonPartyId][i].originalItem = ITEM_NONE;
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWAPPED_INTO_PARTY;
@@ -13066,10 +13070,10 @@ void BS_ItemRestoreHP(void)
             healAmount = maxHP;
             break;
         case ITEM6_HEAL_HP_HALF:
-            healAmount = maxHP / 2;
+            healAmount = max(1, maxHP / 2);
             break;
         case ITEM6_HEAL_HP_QUARTER:
-            healAmount = maxHP / 4;
+            healAmount = max(1, maxHP / 4);
             break;
         default:
             healAmount = healParam;

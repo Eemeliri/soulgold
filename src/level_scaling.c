@@ -468,6 +468,19 @@ const struct LevelScalingConfig *GetTrainerLevelScalingConfig(u16 trainerId, u8 
     sTrainerOptionConfig.useAuthoredLevelFloor = isOptionalTrainer;
     sTrainerOptionConfig.evolveAboveLevel = forceScaling;
 
+    // There's a chance that the random variance from trainer scaling applies +1 level to these trainers, which can feel unfair.
+    switch (trainerId)
+    {
+        case TRAINER_RIVAL_TOTODILE_1:
+        case TRAINER_RIVAL_CHIKORITA_1:
+        case TRAINER_RIVAL_CYNDAQUIL_1:
+        case TRAINER_RIVALCRYSTAL1:
+        case TRAINER_RIVALGOLD1:
+            sTrainerOptionConfig.levelAugmentAdd = 0;
+            sTrainerOptionConfig.levelVariation = 0;
+            break;
+    }
+
     return &sTrainerOptionConfig;
 }
 

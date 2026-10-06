@@ -4505,7 +4505,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Bolsters Flying/Tailwind."),
         .longDescription = COMPOUND_STRING("Flying-type moves deal\n"
                                            "30% more damage, and\n"
-                                           "Tailwind lasts longer."),
+                                           "Tailwind lasts 2 turns\n"
+                                           "longer."),
         .aiRating = 7,
     },
 
