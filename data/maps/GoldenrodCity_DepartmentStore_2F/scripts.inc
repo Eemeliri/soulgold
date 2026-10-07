@@ -41,7 +41,7 @@ GoldenrodDeptStore_Text_2FYoungster:
     .string "to keep.$"
 
 GoldenrodDeptStore_Text_2FCooltrainerF:
-    .string "I got my Abra at the Game Corner.\p"
+    .string "I got my Deino at the Game Corner.\p"
     .string "Now it's my best partner.$"
 
 GoldenrodDeptStore_Text_2FGentleman:
