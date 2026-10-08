@@ -83,6 +83,7 @@ enum
     MENUITEM_BATTLE_LIGHTING,
     MENUITEM_FAST_MEGAS,
     MENUITEM_FAST_WEATHER,
+    MENUITEM_FAST_HMS,
     MENUITEM_SURF_MUSIC,
     MENUITEM_BATTLE_MUSIC,
     MENUITEM_PARTY_MENU,
@@ -221,6 +222,7 @@ EWRAM_DATA static u8 sBattleFormat = REPLAY_BATTLE_FORMAT_DESIGNED;
 EWRAM_DATA static u16 sOptionScrollOffset = 0;
 EWRAM_DATA static u8 sOptionScrollArrowTaskId = 0;
 EWRAM_DATA static u8 sOptionDrawY = 0;
+EWRAM_DATA static bool8 sFastHMs = FALSE;
 
 static const u8 gText_Option[]             = _("Options");
 static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
@@ -270,12 +272,12 @@ static const u8 gText_FastWeatherOn[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_FastWeatherOff[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
 static const u8 gText_SurfMusicOn[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}On");
 static const u8 gText_SurfMusicOff[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Off");
-static const u8 gText_BattleMusicDefault[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Default");
-static const u8 gText_BattleMusicHgssKanto[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}HG Kanto");
-static const u8 gText_BattleMusicFrlg[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}FRLG");
-static const u8 gText_BattleMusicRse[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}RSE");
-static const u8 gText_BattleMusicDppt[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}D/P/Pt");
-static const u8 gText_BattleMusicRandom[]  = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Random");
+static const u8 gText_BattleMusicDefault[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<Default>");
+static const u8 gText_BattleMusicHgssKanto[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<Kanto>");
+static const u8 gText_BattleMusicFrlg[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<FRLG>");
+static const u8 gText_BattleMusicRse[]     = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<RSE>");
+static const u8 gText_BattleMusicDppt[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<D/P/Pt>");
+static const u8 gText_BattleMusicRandom[]  = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}<Random>");
 static const u8 gText_PartyMenuCustom[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Custom");
 static const u8 gText_PartyMenuHGSS[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}HGSS");
 static const u8 gText_PartyMenuBW[]        = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}BW");
@@ -340,6 +342,7 @@ static const u8 *const sOptionMenuItemsNames_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_SHINY_RATE] = COMPOUND_STRING("Shiny odds"),
     [MENUITEM_FAST_MEGAS] = COMPOUND_STRING("Fast megas"),
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING("Fast weather"),
+    [MENUITEM_FAST_HMS] = COMPOUND_STRING("Fast HMs"),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING("Surf music"),
     [MENUITEM_BATTLE_MUSIC] = COMPOUND_STRING("Battle music"),
     [MENUITEM_PARTY_MENU] = COMPOUND_STRING("Party menu"),
@@ -456,6 +459,9 @@ static const u8 *const sOptionMenuHelpTexts_Pg3[MENUITEM_COUNT_PG3] =
     [MENUITEM_FAST_WEATHER] = COMPOUND_STRING(
         "On skips repeated weather text\n"
         "and animations."),
+    [MENUITEM_FAST_HMS] = COMPOUND_STRING(
+        "On skips the yes/no prompt when\n"
+        "using HMs."),
     [MENUITEM_SURF_MUSIC] = COMPOUND_STRING(
         "On plays the Surf theme while\n"
         "surfing. Off keeps the map music."),
@@ -566,6 +572,7 @@ static void ReadAllCurrentSettings(u8 taskId)
         sFollowerMega = IsFollowerMegaEnabled();
         sShinyRate = GetShinyRateOption();
         sFastWeather = gSaveBlock2Ptr->optionsFastWeather;
+        sFastHMs = FlagGet(FLAG_FAST_HMS);
         sSurfMusic = gSaveBlock2Ptr->optionsSurfMusic;
         sBattleMusicTheme = GetBattleMusicTheme();
         sPartyMenuStyle = GetSavedPartyMenuStyle();
@@ -772,6 +779,9 @@ static void DrawOptionChoices(u8 taskId, u8 option)
     case OPTION_MENU_PG3_START + MENUITEM_FAST_WEATHER:
         FastWeather_DrawChoices(sFastWeather);
         break;
+    case OPTION_MENU_PG3_START + MENUITEM_FAST_HMS:
+        FastWeather_DrawChoices(sFastHMs);
+        break;
     case OPTION_MENU_PG3_START + MENUITEM_SURF_MUSIC:
         SurfMusic_DrawChoices(sSurfMusic);
         break;
@@ -937,6 +947,12 @@ static void ProcessOptionInput(u8 taskId)
         sFastWeather = FastWeather_ProcessInput(sFastWeather);
         if (previousOption != sFastWeather)
             FastWeather_DrawChoices(sFastWeather);
+        break;
+    case OPTION_MENU_PG3_START + MENUITEM_FAST_HMS:
+        previousOption = sFastHMs;
+        sFastHMs = FastWeather_ProcessInput(sFastHMs);
+        if (previousOption != sFastHMs)
+            FastWeather_DrawChoices(sFastHMs);
         break;
     case OPTION_MENU_PG3_START + MENUITEM_SURF_MUSIC:
         previousOption = sSurfMusic;
@@ -1111,6 +1127,10 @@ static void SaveCurrentSettings(u8 taskId)
     VarSet(VAR_FOLLOWER_MEGA_OFF, !sFollowerMega);
     VarSet(VAR_SHINY_RATE, sShinyRate);
     gSaveBlock2Ptr->optionsFastWeather = sFastWeather;
+    if (sFastHMs)
+        FlagSet(FLAG_FAST_HMS);
+    else
+        FlagClear(FLAG_FAST_HMS);
     gSaveBlock2Ptr->optionsSurfMusic = sSurfMusic;
     SetBattleMusicTheme(sBattleMusicTheme);
     SetSavedPartyMenuStyle(sPartyMenuStyle);

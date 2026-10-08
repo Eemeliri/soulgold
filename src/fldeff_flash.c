@@ -7,6 +7,7 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "main.h"
+#include "oras_dowse.h"
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -100,7 +101,16 @@ bool32 SetUpFieldMove_Flash(void)
 
 static void FieldCallback_Flash(void)
 {
-    u8 taskId = CreateFieldMoveTask();
+    u8 taskId;
+
+    if (FlagGet(FLAG_FAST_HMS))
+    {
+        EndORASDowsing();
+        FldEff_UseFlash();
+        return;
+    }
+
+    taskId = CreateFieldMoveTask();
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
     gTasks[taskId].data[8] = (uintptr_t)FldEff_UseFlash >> 16;
     gTasks[taskId].data[9] = (uintptr_t)FldEff_UseFlash;

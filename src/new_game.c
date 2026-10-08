@@ -85,6 +85,7 @@ struct NewGameOptions
     enum ShinyRateOption shinyRate;
     bool8 overworldLighting;
     bool8 battleLighting;
+    bool8 fastHMs;
 };
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -149,6 +150,7 @@ static void SetDefaultOptions(void)
     SetBattleMusicTheme(BATTLE_MUSIC_THEME_DEFAULT);
     VarSet(VAR_FOLLOWER_MEGA_OFF, 0);
     VarSet(VAR_SHINY_RATE, SHINY_RATE_256);
+    FlagClear(FLAG_FAST_HMS);
     SetDefaultPartyMenuStyle();
                
 }
@@ -234,6 +236,7 @@ void NewGameInitData(void)
         .shinyRate = GetShinyRateOption(),
         .overworldLighting = !FlagGet(FLAG_OW_LIGHTING),
         .battleLighting = !FlagGet(FLAG_BATTLE_LIGHTING),
+        .fastHMs = FlagGet(FLAG_FAST_HMS),
     };
 
     if (options.overworldSpeed > OPTIONS_OVERWORLD_SPEED_4X)
@@ -324,6 +327,8 @@ void NewGameInitData(void)
         FlagSet(FLAG_OW_LIGHTING);
     if (!options.battleLighting)
         FlagSet(FLAG_BATTLE_LIGHTING);
+    if (options.fastHMs)
+        FlagSet(FLAG_FAST_HMS);
     VarSet(VAR_BATTLE_FACILITY_BGM, 0);
     ResetItemFlags();
     ResetDexNav();

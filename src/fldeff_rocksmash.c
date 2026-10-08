@@ -7,6 +7,7 @@
 #include "field_player_avatar.h"
 #include "fldeff.h"
 #include "item_use.h"
+#include "oras_dowse.h"
 #include "overworld.h"
 #include "party_menu.h"
 #include "script.h"
@@ -53,6 +54,7 @@ u8 CreateFieldMoveTask(void)
 static void Task_DoFieldMove_Init(u8 taskId)
 {
     u8 objEventId;
+    bool32 skipHmAnimation;
 
     LockPlayerFieldControls();
     gPlayerAvatar.preventStep = TRUE;
@@ -60,9 +62,12 @@ static void Task_DoFieldMove_Init(u8 taskId)
     if (!ObjectEventIsMovementOverridden(&gObjectEvents[objEventId])
      || ObjectEventClearHeldMovementIfFinished(&gObjectEvents[objEventId]))
     {
-        if (gMapHeader.mapType == MAP_TYPE_UNDERWATER || gFieldEffectArguments[3])
+        skipHmAnimation = ShouldSkipHmAnimation();
+        if (skipHmAnimation || gMapHeader.mapType == MAP_TYPE_UNDERWATER || gFieldEffectArguments[3])
         {
-            // Skip field move pose underwater, or if arg3 is nonzero
+            // Skip the posing for fast HMs, underwater, or if arg3 is nonzero
+            if (skipHmAnimation)
+                EndORASDowsing();
             if (gFieldEffectArguments[3])
                 gFieldEffectArguments[3] = 0;
             FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);

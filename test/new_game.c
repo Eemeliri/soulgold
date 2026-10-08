@@ -16,6 +16,7 @@ TEST("A fresh new game defaults to 2x battle speed")
 {
     FlagClear(FLAG_OW_LIGHTING);
     FlagClear(FLAG_BATTLE_LIGHTING);
+    FlagSet(FLAG_FAST_HMS);
     Sav2_ClearSetDefault();
 
     NewGameInitData();
@@ -25,6 +26,7 @@ TEST("A fresh new game defaults to 2x battle speed")
     EXPECT_EQ(GetBattleMusicTheme(), BATTLE_MUSIC_THEME_DEFAULT);
     EXPECT(IsOverworldLightingEnabled());
     EXPECT(IsBattleLightingEnabled());
+    EXPECT(!FlagGet(FLAG_FAST_HMS));
     EXPECT(FlagGet(FLAG_PYRAMID_ACHIEVEMENT_MIGRATION_COMPLETE));
     EXPECT_EQ(GetGameStat(GAME_STAT_BATTLE_PYRAMID_FLOORS), 0);
 }
@@ -41,6 +43,7 @@ TEST("Starting a new game preserves settings selected from the main menu")
     SetReplayBattleFormat(REPLAY_BATTLE_FORMAT_DOUBLES);
     FlagSet(FLAG_OW_LIGHTING);
     FlagClear(FLAG_BATTLE_LIGHTING);
+    FlagSet(FLAG_FAST_HMS);
 
     NewGameInitData();
 
@@ -54,6 +57,8 @@ TEST("Starting a new game preserves settings selected from the main menu")
     EXPECT_EQ(GetReplayBattleFormat(), REPLAY_BATTLE_FORMAT_DOUBLES);
     EXPECT(!IsOverworldLightingEnabled());
     EXPECT(IsBattleLightingEnabled());
+    EXPECT(FlagGet(FLAG_FAST_HMS));
+    FlagClear(FLAG_FAST_HMS);
 }
 
 TEST("Shiny RNG audit: a fresh new game sets exactly 1-in-256 base odds")

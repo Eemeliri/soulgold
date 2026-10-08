@@ -4,6 +4,7 @@ EventScript_CutTree::
 	checkfieldmove FIELD_MOVE_CUT, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
 	setfieldeffectargument 0, VAR_RESULT
+	goto_if_set FLAG_FAST_HMS, EventScript_CutTreeCommon
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, MOVE_CUT
 	msgbox Text_WantToCut, MSGBOX_YESNO
@@ -13,7 +14,10 @@ EventScript_CutATree::
 	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
 	closemessage
 EventScript_CutTreeCommon:
+	setvar VAR_0x8004, FALSE
+	goto_if_set FLAG_FAST_HMS, EventScript_CutTreeStartEffect
 	isfollowerfieldmoveuser VAR_0x8004
+EventScript_CutTreeStartEffect:
 	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
 	dofieldeffect FLDEFF_USE_CUT_ON_TREE
 	waitstate
@@ -68,6 +72,7 @@ EventScript_RockSmash::
 	checkfieldmove FIELD_MOVE_ROCK_SMASH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
 	setfieldeffectargument 0, VAR_RESULT
+	goto_if_set FLAG_FAST_HMS, EventScript_RockSmashCommon
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
 	msgbox Text_WantToSmash, MSGBOX_YESNO
@@ -78,7 +83,10 @@ EventScript_SmashARock:
 	closemessage
 EventScript_RockSmashCommon:
 	@ check if follower should use the field move
+	setvar VAR_0x8004, FALSE
+	goto_if_set FLAG_FAST_HMS, EventScript_RockSmashStartEffect
 	isfollowerfieldmoveuser VAR_0x8004
+EventScript_RockSmashStartEffect:
 	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
 	dofieldeffect FLDEFF_USE_ROCK_SMASH
 	waitstate
@@ -239,6 +247,7 @@ EventScript_StrengthBoulder::
 	checkfieldmove FIELD_MOVE_STRENGTH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
 	setfieldeffectargument 0, VAR_RESULT
+	goto_if_set FLAG_FAST_HMS, EventScript_PushABoulderLikeBathanielNandy
 	msgbox Text_WantToStrength, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
 	closemessage
@@ -258,7 +267,9 @@ EventScript_UseStrength::
 
 EventScript_ActivateStrength::
 	setflag FLAG_SYS_USE_STRENGTH
+	goto_if_set FLAG_FAST_HMS, EventScript_EndStrength
 	msgbox Text_MonUsedStrength, MSGBOX_DEFAULT
+EventScript_EndStrength:
 	releaseall
 	end
 
@@ -268,6 +279,7 @@ EventScript_CantStrength::
 	end
 
 EventScript_CheckActivatedBoulder::
+	goto_if_set FLAG_FAST_HMS, EventScript_EndStrength
 	msgbox Text_StrengthActivated, MSGBOX_DEFAULT
 	releaseall
 	end
@@ -301,6 +313,7 @@ EventScript_UseWaterfall::
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantWaterfall
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
+	goto_if_set FLAG_FAST_HMS, EventScript_MoveUpAWaterfall
 	msgbox Text_WantToWaterfall, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
 	msgbox Text_MonUsedWaterfall, MSGBOX_DEFAULT
@@ -345,9 +358,11 @@ EventScript_UseDive::
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
+	goto_if_set FLAG_FAST_HMS, EventScript_DiveDown
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
 	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
+EventScript_DiveDown:
 	hidefollowernpc
 	setfieldeffectargument 0, VAR_0x8004
 	setfieldeffectargument 1, 1
@@ -372,9 +387,11 @@ EventScript_UseDiveUnderwater::
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
+	goto_if_set FLAG_FAST_HMS, EventScript_DiveSurface
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_NoSurface
 	msgbox Text_MonUsedDive, MSGBOX_DEFAULT
+EventScript_DiveSurface:
 	hidefollowernpc
 	closemessage
 	dofieldeffect FLDEFF_USE_DIVE
@@ -412,7 +429,10 @@ EventScript_UseDig::
 
 
 EventScript_CutGrassCommon:
+	setvar VAR_0x8004, FALSE
+	goto_if_set FLAG_FAST_HMS, EventScript_CutGrassStartEffect
 	isfollowerfieldmoveuser VAR_0x8004
+EventScript_CutGrassStartEffect:
 	setfieldeffectargument 3, VAR_0x8004 @ skip pose if true
 	dofieldeffect FLDEFF_USE_CUT_ON_GRASS
 	waitstate
@@ -471,9 +491,11 @@ EventScript_UseRockClimb::
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantRockClimb
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
+	goto_if_set FLAG_FAST_HMS, EventScript_RockClimbStartEffect
 	msgbox Text_WantToRockClimb, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndRockClimb
 	msgbox Text_MonUsedRockClimb, MSGBOX_DEFAULT
+EventScript_RockClimbStartEffect:
 	closemessage
 	dofieldeffect FLDEFF_USE_ROCK_CLIMB
 	waitstate

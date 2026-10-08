@@ -2854,6 +2854,33 @@ static void TeleportWarpInFieldEffect_SpinGround(struct Task *task)
 #define sOnscreenTimer data[1]
 #define sSlidOffscreen data[7]
 
+bool32 ShouldSkipHmAnimation(void)
+{
+    static const u8 hmEffects[] =
+    {
+        FLDEFF_USE_CUT_ON_GRASS,
+        FLDEFF_USE_CUT_ON_TREE,
+        FLDEFF_USE_ROCK_SMASH,
+        FLDEFF_USE_STRENGTH,
+        FLDEFF_USE_SURF,
+        FLDEFF_USE_FLY,
+        FLDEFF_USE_WATERFALL,
+        FLDEFF_USE_DIVE,
+        FLDEFF_USE_ROCK_CLIMB,
+        FLDEFF_DEFOG,
+    };
+
+    if (!FlagGet(FLAG_FAST_HMS))
+        return FALSE;
+
+    for (u32 i = 0; i < ARRAY_COUNT(hmEffects); i++)
+    {
+        if (FieldEffectActiveListContains(hmEffects[i]))
+            return TRUE;
+    }
+    return FALSE;
+}
+
 // There are two variants (outdoor/indoor) of the "show mon for a field move" effect
 // Outdoor has a black background with thick white streaks and appears from the right by stretching vertically and horizontally
 // Indoor has blue background with thin white streaks and appears from the left by stretching horizontally
@@ -2861,6 +2888,13 @@ static void TeleportWarpInFieldEffect_SpinGround(struct Task *task)
 bool8 FldEff_FieldMoveShowMon(void)
 {
     u8 taskId;
+
+    if (ShouldSkipHmAnimation())
+    {
+        FieldEffectActiveListRemove(FLDEFF_FIELD_MOVE_SHOW_MON);
+        return FALSE;
+    }
+
     if (IsMapTypeOutdoors(GetCurrentMapType()) == TRUE)
         taskId = CreateTask(Task_FieldMoveShowMonOutdoors, 0xff);
     else
@@ -3318,8 +3352,13 @@ static void SurfFieldEffect_FieldMovePose(struct Task *task)
     objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
     if (!ObjectEventIsMovementOverridden(objectEvent) || ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
-        SetPlayerAvatarFieldMove();
-        ObjectEventSetHeldMovement(objectEvent, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        if (ShouldSkipHmAnimation())
+            EndORASDowsing();
+        else
+        {
+            SetPlayerAvatarFieldMove();
+            ObjectEventSetHeldMovement(objectEvent, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        }
         task->tState++;
     }
 }
@@ -3328,7 +3367,7 @@ static void SurfFieldEffect_ShowMon(struct Task *task)
 {
     struct ObjectEvent *objectEvent;
     objectEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    if (ObjectEventCheckHeldMovementStatus(objectEvent))
+    if (ShouldSkipHmAnimation() || ObjectEventCheckHeldMovementStatus(objectEvent))
     {
         gFieldEffectArguments[0] = task->tMonId | SHOW_MON_CRY_NO_DUCKING;
         FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
@@ -4323,8 +4362,13 @@ static bool8 RockClimb_FieldMovePose(struct Task *task, struct ObjectEvent *obje
 {
     if (!ObjectEventIsMovementOverridden(objectEvent) || ObjectEventClearHeldMovementIfFinished(objectEvent))
     {
-        SetPlayerAvatarFieldMove();
-        ObjectEventSetHeldMovement(objectEvent, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        if (ShouldSkipHmAnimation())
+            EndORASDowsing();
+        else
+        {
+            SetPlayerAvatarFieldMove();
+            ObjectEventSetHeldMovement(objectEvent, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        }
         task->tState++;
     }
     return FALSE;
@@ -4332,7 +4376,7 @@ static bool8 RockClimb_FieldMovePose(struct Task *task, struct ObjectEvent *obje
 
 static bool8 RockClimb_ShowMon(struct Task *task, struct ObjectEvent *objectEvent)
 {
-    if (ObjectEventCheckHeldMovementStatus(objectEvent))
+    if (ShouldSkipHmAnimation() || ObjectEventCheckHeldMovementStatus(objectEvent))
     {
         gFieldEffectArguments[0] = task->tMonId | 0x80000000;
         FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);

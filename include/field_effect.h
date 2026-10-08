@@ -11,6 +11,7 @@ extern bool8 (*gFieldCallback2)(void);
 
 u32 FieldEffectStart(u8 id);
 bool8 FieldEffectActiveListContains(u8 id);
+bool32 ShouldSkipHmAnimation(void);
 void FieldEffectActiveListClear(void);
 void ReturnToFieldFromFlyMapSelect(void);
 void FieldCallback_UseFly(void);
