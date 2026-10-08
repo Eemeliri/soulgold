@@ -40,6 +40,7 @@ RocketHideout_B3F_EventScript_LancePassword::
 	applymovement LOCALID_ROCKETHIDEOUT3_LANCE, Common_Movement_ExclamationMark
 	delay 20
 	applymovement LOCALID_ROCKETHIDEOUT3_LANCE, Common_Movement_WalkRight1
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B3F_Text_LanceGetPassword, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ROCKETHIDEOUT3_LANCE, RocketHideout_B3F_Movement_LanceLeave

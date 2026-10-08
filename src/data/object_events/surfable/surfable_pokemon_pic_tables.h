@@ -5039,3 +5039,235 @@ const struct SpriteFrameImage gSurfingOverworldPicTable_KyogrePrimal[] = {
     overworld_frame(gSurfablePokemonPic_KyogrePrimal, 8, 8, 5),
 };
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_RaichuAlola[] = {
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_RaichuAlola[] = {
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_RaichuAlola, 4, 4, 11),
+};
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_SlowpokeGalar[] = {
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_SlowpokeGalar[] = {
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_SlowpokeGalar, 4, 4, 11),
+};
+
+const struct SpriteFrameImage gSurfingOverworldPicTable_SlowbroGalar[] = {
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_SlowbroGalar[] = {
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_SlowbroGalar, 4, 4, 11),
+};
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+const struct SpriteFrameImage gSurfingOverworldPicTable_SlowkingGalar[] = {
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_SlowkingGalar[] = {
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_SlowkingGalar, 4, 4, 11),
+};
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_CorsolaGalar[] = {
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_CorsolaGalar[] = {
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_CorsolaGalar, 4, 4, 11),
+};
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_ZigzagoonGalar[] = {
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_ZigzagoonGalar[] = {
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_ZigzagoonGalar, 4, 4, 11),
+};
+
+const struct SpriteFrameImage gSurfingOverworldPicTable_LinooneGalar[] = {
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_LinooneGalar[] = {
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_LinooneGalar, 4, 4, 11),
+};
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_QwilfishHisui[] = {
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_QwilfishHisui[] = {
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_QwilfishHisui, 4, 4, 11),
+};
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_TaurosPaldeaCombat[] = {
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_TaurosPaldeaCombat[] = {
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaCombat, 4, 4, 11),
+};
+
+const struct SpriteFrameImage gSurfingOverworldPicTable_TaurosPaldeaAqua[] = {
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_TaurosPaldeaAqua[] = {
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_TaurosPaldeaAqua, 4, 4, 11),
+};
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+const struct SpriteFrameImage gSurfingOverworldPicTable_WooperPaldea[] = {
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_WooperPaldea[] = {
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_WooperPaldea, 4, 4, 11),
+};
+
+const struct SpriteFrameImage gSurfingOverworldPicTable_Clodsire[] = {
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 0),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 1),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 2),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 3),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 4),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 5),
+};
+
+const struct SpriteFrameImage gSurfingOverlayPicTable_Clodsire[] = {
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 6),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 7),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 8),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 9),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 10),
+    overworld_frame(gSurfablePokemonPic_Clodsire, 4, 4, 11),
+};
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS

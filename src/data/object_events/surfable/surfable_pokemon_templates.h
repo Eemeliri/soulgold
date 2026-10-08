@@ -542,6 +542,35 @@ PAL_TAG_RAYQUAZA_MEGA_SURF,
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
 PAL_TAG_KYOGRE_PRIMAL_SURF,
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+// Regional forms and their evolutions
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+    PAL_TAG_RAICHU_ALOLA_SURF,
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+    PAL_TAG_SLOWPOKE_GALAR_SURF,
+    PAL_TAG_SLOWBRO_GALAR_SURF,
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+    PAL_TAG_SLOWKING_GALAR_SURF,
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+    PAL_TAG_CORSOLA_GALAR_SURF,
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+    PAL_TAG_ZIGZAGOON_GALAR_SURF,
+    PAL_TAG_LINOONE_GALAR_SURF,
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+    PAL_TAG_QWILFISH_HISUI_SURF,
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+    PAL_TAG_TAUROS_PALDEA_COMBAT_SURF,
+    PAL_TAG_TAUROS_PALDEA_AQUA_SURF,
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+    PAL_TAG_WOOPER_PALDEA_SURF,
+    PAL_TAG_CLODSIRE_SURF,
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS
 };
 
 const struct SpritePalette sSurfablePokemonPalettes[] = {
@@ -1237,6 +1266,35 @@ const struct SpritePalette sSurfablePokemonPalettes[] = {
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
 {gSurfablePokemonPalette_KyogrePrimal, PAL_TAG_KYOGRE_PRIMAL_SURF},
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+// Regional forms and their evolutions
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+    {gSurfablePokemonPalette_RaichuAlola, PAL_TAG_RAICHU_ALOLA_SURF},
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+    {gSurfablePokemonPalette_SlowpokeGalar, PAL_TAG_SLOWPOKE_GALAR_SURF},
+    {gSurfablePokemonPalette_SlowbroGalar, PAL_TAG_SLOWBRO_GALAR_SURF},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+    {gSurfablePokemonPalette_SlowkingGalar, PAL_TAG_SLOWKING_GALAR_SURF},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+    {gSurfablePokemonPalette_CorsolaGalar, PAL_TAG_CORSOLA_GALAR_SURF},
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+    {gSurfablePokemonPalette_ZigzagoonGalar, PAL_TAG_ZIGZAGOON_GALAR_SURF},
+    {gSurfablePokemonPalette_LinooneGalar, PAL_TAG_LINOONE_GALAR_SURF},
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+    {gSurfablePokemonPalette_QwilfishHisui, PAL_TAG_QWILFISH_HISUI_SURF},
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+    {gSurfablePokemonPalette_TaurosPaldeaCombat, PAL_TAG_TAUROS_PALDEA_COMBAT_SURF},
+    {gSurfablePokemonPalette_TaurosPaldeaAqua, PAL_TAG_TAUROS_PALDEA_AQUA_SURF},
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+    {gSurfablePokemonPalette_WooperPaldea, PAL_TAG_WOOPER_PALDEA_SURF},
+    {gSurfablePokemonPalette_Clodsire, PAL_TAG_CLODSIRE_SURF},
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS
 };
 
 const struct SpritePalette sSurfablePokemonShinyPalettes[] = {
@@ -1932,6 +1990,35 @@ const struct SpritePalette sSurfablePokemonShinyPalettes[] = {
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
 {gSurfablePokemonShinyPalette_KyogrePrimal, PAL_TAG_KYOGRE_PRIMAL_SURF},
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+// Regional forms and their evolutions
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+    {gSurfablePokemonShinyPalette_RaichuAlola, PAL_TAG_RAICHU_ALOLA_SURF},
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+    {gSurfablePokemonShinyPalette_SlowpokeGalar, PAL_TAG_SLOWPOKE_GALAR_SURF},
+    {gSurfablePokemonShinyPalette_SlowbroGalar, PAL_TAG_SLOWBRO_GALAR_SURF},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+    {gSurfablePokemonShinyPalette_SlowkingGalar, PAL_TAG_SLOWKING_GALAR_SURF},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+    {gSurfablePokemonShinyPalette_CorsolaGalar, PAL_TAG_CORSOLA_GALAR_SURF},
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+    {gSurfablePokemonShinyPalette_ZigzagoonGalar, PAL_TAG_ZIGZAGOON_GALAR_SURF},
+    {gSurfablePokemonShinyPalette_LinooneGalar, PAL_TAG_LINOONE_GALAR_SURF},
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+    {gSurfablePokemonShinyPalette_QwilfishHisui, PAL_TAG_QWILFISH_HISUI_SURF},
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+    {gSurfablePokemonShinyPalette_TaurosPaldeaCombat, PAL_TAG_TAUROS_PALDEA_COMBAT_SURF},
+    {gSurfablePokemonShinyPalette_TaurosPaldeaAqua, PAL_TAG_TAUROS_PALDEA_AQUA_SURF},
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+    {gSurfablePokemonShinyPalette_WooperPaldea, PAL_TAG_WOOPER_PALDEA_SURF},
+    {gSurfablePokemonShinyPalette_Clodsire, PAL_TAG_CLODSIRE_SURF},
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS
 };
 
 const union AnimCmd gSurfablePokemonAnim_FaceSouth[] =
@@ -2679,6 +2766,35 @@ const struct SpriteTemplate gSurfablePokemonOverworldSprites[] =
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
     {0xFFFF, PAL_TAG_KYOGRE_PRIMAL_SURF, &gObjectEventBaseOam_64x64, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_KyogrePrimal, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+// Regional forms and their evolutions
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+    {0xFFFF, PAL_TAG_RAICHU_ALOLA_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_RaichuAlola, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+    {0xFFFF, PAL_TAG_SLOWPOKE_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_SlowpokeGalar, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+    {0xFFFF, PAL_TAG_SLOWBRO_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_SlowbroGalar, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+    {0xFFFF, PAL_TAG_SLOWKING_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_SlowkingGalar, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+    {0xFFFF, PAL_TAG_CORSOLA_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_CorsolaGalar, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+    {0xFFFF, PAL_TAG_ZIGZAGOON_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_ZigzagoonGalar, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+    {0xFFFF, PAL_TAG_LINOONE_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_LinooneGalar, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+    {0xFFFF, PAL_TAG_QWILFISH_HISUI_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_QwilfishHisui, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+    {0xFFFF, PAL_TAG_TAUROS_PALDEA_COMBAT_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_TaurosPaldeaCombat, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+    {0xFFFF, PAL_TAG_TAUROS_PALDEA_AQUA_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_TaurosPaldeaAqua, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+    {0xFFFF, PAL_TAG_WOOPER_PALDEA_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_WooperPaldea, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+    {0xFFFF, PAL_TAG_CLODSIRE_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverworldPicTable_Clodsire, gDummySpriteAffineAnimTable, UpdateSurfBlobFieldEffect},
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS
 };
 
 #define NO_OVERLAY {0, 0, NULL, NULL, NULL, NULL, NULL}
@@ -3378,4 +3494,33 @@ const struct SpriteTemplate gSurfablePokemonOverlaySprites[] =
 #if P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
     NO_OVERLAY, // Primal Kyogre
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+// Regional forms and their evolutions
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+    {0xFFFF, PAL_TAG_RAICHU_ALOLA_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_RaichuAlola, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+    {0xFFFF, PAL_TAG_SLOWPOKE_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_SlowpokeGalar, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+    {0xFFFF, PAL_TAG_SLOWBRO_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_SlowbroGalar, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+    {0xFFFF, PAL_TAG_SLOWKING_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_SlowkingGalar, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+    {0xFFFF, PAL_TAG_CORSOLA_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_CorsolaGalar, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+    {0xFFFF, PAL_TAG_ZIGZAGOON_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_ZigzagoonGalar, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+    {0xFFFF, PAL_TAG_LINOONE_GALAR_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_LinooneGalar, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+    {0xFFFF, PAL_TAG_QWILFISH_HISUI_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_QwilfishHisui, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+    {0xFFFF, PAL_TAG_TAUROS_PALDEA_COMBAT_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_TaurosPaldeaCombat, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+    {0xFFFF, PAL_TAG_TAUROS_PALDEA_AQUA_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_TaurosPaldeaAqua, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+    {0xFFFF, PAL_TAG_WOOPER_PALDEA_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_WooperPaldea, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+    {0xFFFF, PAL_TAG_CLODSIRE_SURF, &gObjectEventBaseOam_32x32, gSurfablePokemonAnimTable, gSurfingOverlayPicTable_Clodsire, gDummySpriteAffineAnimTable, UpdateSurfMonOverlay},
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS
 };

@@ -225,6 +225,7 @@ RocketHideout_B2F_Trigger_Ariana::
 	delay 20
 	applymovement LOCALID_ROCKETHIDEOUT2_DRAGONITE, RocketHideout_B2F_Movement_Lance
 	waitmovement 0
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceInterrupt, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ROCKETHIDEOUT2_ARIANA, Common_Movement_WalkInPlaceFasterUp
@@ -299,7 +300,9 @@ RocketHideout_B2F_Text_LanceChooseMons:
 	.string "your Pokémon!$"
 
 RocketHideout_B2F_EventScript_ReadyForBattlePrompt::
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceChooseMons, MSGBOX_DEFAULT
+	removefieldmugshot
 	goto RocketHideout_B2F_EventScript_ChoosePartyForMultiBattle
 	end
 
@@ -370,6 +373,7 @@ RocketHideout_B2F_EventScript_DefeatedAriana::
 	removeobject LOCALID_ROCKETHIDEOUT2_GRUNT
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	fadescreenswapbuffers FADE_FROM_BLACK
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_Text_LanceStepBack, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ROCKETHIDEOUT2_LANCE, RocketHideout_B2F_Movement_LanceWalkToGenerator
@@ -384,6 +388,7 @@ RocketHideout_B2F_EventScript_DefeatedAriana::
 	playmoncry SPECIES_DRAGONITE, CRY_MODE_NORMAL
 	waitmovement LOCALID_ROCKETHIDEOUT2_DRAGONITE
 	waitmovement LOCALID_ROCKETHIDEOUT2_LANCE
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceElectrodeFaint, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ROCKETHIDEOUT2_LANCE, RocketHideout_B2F_Movement_LanceWalkToElectrode
@@ -481,6 +486,7 @@ RocketHideout_B2F_Trigger_Electrode::
 	lock
 	goto_if_eq VAR_ELECTRODES_FAINTED, 3, RocketHideout_B2F_EventScript_ElectrodeDone
 	turnobject LOCALID_ROCKETHIDEOUT2_LANCE, DIR_WEST
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceSide, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_ROCKETHIDEOUT2_LANCE, DIR_NORTH
@@ -531,12 +537,16 @@ RocketHideout_B2F_EventScript_ElectrodeDone::
 	turnobject LOCALID_ROCKETHIDEOUT2_LANCE DIR_WEST
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	delay 30
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceElectrodeDone, MSGBOX_DEFAULT
+	removefieldmugshot
 	giveitem ITEM_HM_WHIRLPOOL
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceWhirlpool, MSGBOX_DEFAULT
 	closemessage
 	turnobject LOCALID_ROCKETHIDEOUT2_LANCE, DIR_SOUTH
 	delay 20
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceMonMaster, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ROCKETHIDEOUT2_LANCE, RocketHideout_B2F_Movement_LanceFinalExit
@@ -727,9 +737,11 @@ RocketHideout_B2F_EventScript_Lance::
 	lock
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
 	waitmovement 0
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceHeals1, MSGBOX_DEFAULT
 	closemessage
 	special HealPlayerParty
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox RocketHideout_B2F_Text_LanceHeals2, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_ROCKETHIDEOUT2_LANCE, RocketHideout_B2F_Movement_LanceGoDeeper

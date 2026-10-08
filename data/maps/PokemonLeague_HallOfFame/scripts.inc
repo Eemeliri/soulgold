@@ -15,6 +15,7 @@ PokemonLeague_HallOfFame_EventScript_Cutscene::
 	applymovement OBJ_EVENT_ID_PLAYER, PokemonLeague_HallOfFame_Movement_PlayerEnter
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement LOCALID_HALLOFFAME_LANCE
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox PokemonLeague_HallOfFame_LanceText, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -38,6 +39,7 @@ PokemonLeague_HallOfFame_EventScript_CutsceneKantoChamp::
 	applymovement OBJ_EVENT_ID_PLAYER, PokemonLeague_HallOfFame_Movement_PlayerEnter
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement LOCALID_HALLOFFAME_LANCE
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox PokemonLeague_HallOfFame_Rematch_LanceText, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp

@@ -1482,6 +1482,7 @@ const struct RideablePokemon gSurfablePokemon[] =
 {
         .species = SPECIES_OBSTAGOON,
         .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_Obstagoon,
     },
 #endif // OW_SURF_OBSTAGOON
 #endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
@@ -1490,6 +1491,7 @@ const struct RideablePokemon gSurfablePokemon[] =
 {
         .species = SPECIES_CURSOLA,
         .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_Cursola,
     },
 #endif // OW_SURF_CURSOLA
 #endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
@@ -1560,6 +1562,7 @@ const struct RideablePokemon gSurfablePokemon[] =
 {
         .species = SPECIES_OVERQWIL,
         .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_Overqwil,
     },
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
@@ -1577,4 +1580,80 @@ const struct RideablePokemon gSurfablePokemon[] =
         .shinyPic = gSurfablePokemonShinyPic_KyogrePrimal,
     },
 #endif // P_FAMILY_KYOGRE && P_PRIMAL_REVERSIONS
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+    {
+        .species = SPECIES_RAICHU_ALOLA,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_RaichuAlola,
+    },
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+    {
+        .species = SPECIES_SLOWPOKE_GALAR,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_SlowpokeGalar,
+    },
+    {
+        .species = SPECIES_SLOWBRO_GALAR,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_SlowbroGalar,
+    },
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+    {
+        .species = SPECIES_SLOWKING_GALAR,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_SlowkingGalar,
+    },
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+    {
+        .species = SPECIES_CORSOLA_GALAR,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_CorsolaGalar,
+    },
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+    {
+        .species = SPECIES_ZIGZAGOON_GALAR,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_ZigzagoonGalar,
+    },
+    {
+        .species = SPECIES_LINOONE_GALAR,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_LinooneGalar,
+    },
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+    {
+        .species = SPECIES_QWILFISH_HISUI,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_QwilfishHisui,
+    },
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+    {
+        .species = SPECIES_TAUROS_PALDEA_COMBAT,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_TaurosPaldeaCombat,
+    },
+    {
+        .species = SPECIES_TAUROS_PALDEA_AQUA,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_TaurosPaldeaAqua,
+    },
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+    {
+        .species = SPECIES_WOOPER_PALDEA,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_WooperPaldea,
+    },
+    {
+        .species = SPECIES_CLODSIRE,
+        .trainerPose = 0,
+        .shinyPic = gSurfablePokemonShinyPic_Clodsire,
+    },
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS
 };

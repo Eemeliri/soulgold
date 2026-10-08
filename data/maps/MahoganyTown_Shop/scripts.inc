@@ -25,6 +25,7 @@ MahoganyTown_Shop_EventScript_Raid::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	delay 60
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox MahoganyMart1F_Text_Lance_HyperBeam, MSGBOX_DEFAULT
 	closemessage
 	playse SE_M_HYPER_BEAM
@@ -45,6 +46,7 @@ MahoganyTown_Shop_EventScript_Raid::
 	delay 50
 	applymovement LOCALID_MAHOGANYSHOP_LANCE, MahoganyTown_Shop_Movement_LanceGreetPlayer
 	waitmovement 0
+	createfieldmugshot MUGSHOT_LANCE
 	msgbox MahoganyMart1F_Text_Lance_Radio, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN

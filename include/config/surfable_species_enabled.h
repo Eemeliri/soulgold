@@ -28,7 +28,7 @@
 #define OW_SURF_CLAWITZER                            0
 #define OW_SURF_CRAMORANT                            0
 #define OW_SURF_CUBCHOO                              0
-#define OW_SURF_CURSOLA                              0
+#define OW_SURF_CURSOLA                              1
 #define OW_SURF_DEWPIDER                             0
 #define OW_SURF_DHELMISE                             0
 #define OW_SURF_DIGGERSBY                            0
@@ -60,8 +60,8 @@
 #define OW_SURF_JELLICENT                            0
 #define OW_SURF_KELDEO                               0
 #define OW_SURF_MAREANIE                             0
-#define OW_SURF_OBSTAGOON                            0
-#define OW_SURF_OVERQWIL                             0
+#define OW_SURF_OBSTAGOON                            1
+#define OW_SURF_OVERQWIL                             1
 #define OW_SURF_PANCHAM                              0
 #define OW_SURF_PANGORO                              0
 #define OW_SURF_PINCURCHIN                           0

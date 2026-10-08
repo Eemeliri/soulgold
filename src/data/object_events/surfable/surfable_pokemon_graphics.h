@@ -1667,19 +1667,23 @@ STATIC_ASSERT(sizeof(gSurfablePokemonPic_Grapploct) == 6144, GrapploctSurfSheetM
 
 #if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
 #if OW_SURF_OBSTAGOON
-const u32 gSurfablePokemonPic_Obstagoon[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/obstagoon.4bpp");
-const u16 gSurfablePokemonPalette_Obstagoon[] = INCBIN_U16("graphics/pokemon/obstagoon/overworld_normal.gbapal");
-const u16 gSurfablePokemonShinyPalette_Obstagoon[] = INCBIN_U16("graphics/pokemon/obstagoon/overworld_shiny.gbapal");
+const u32 gSurfablePokemonPic_Obstagoon[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_obstagoon.4bpp");
+const u32 gSurfablePokemonShinyPic_Obstagoon[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_obstagoon_shiny.4bpp");
 STATIC_ASSERT(sizeof(gSurfablePokemonPic_Obstagoon) == 6144, ObstagoonSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_Obstagoon) == sizeof(gSurfablePokemonPic_Obstagoon), ObstagoonSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_Obstagoon[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_obstagoon.gbapal");
+const u16 gSurfablePokemonShinyPalette_Obstagoon[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_obstagoon_shiny.gbapal");
 #endif // OW_SURF_OBSTAGOON
 #endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
 
 #if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
 #if OW_SURF_CURSOLA
-const u32 gSurfablePokemonPic_Cursola[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/cursola.4bpp");
-const u16 gSurfablePokemonPalette_Cursola[] = INCBIN_U16("graphics/pokemon/cursola/overworld_normal.gbapal");
-const u16 gSurfablePokemonShinyPalette_Cursola[] = INCBIN_U16("graphics/pokemon/cursola/overworld_shiny.gbapal");
+const u32 gSurfablePokemonPic_Cursola[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_cursola.4bpp");
+const u32 gSurfablePokemonShinyPic_Cursola[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_cursola_shiny.4bpp");
 STATIC_ASSERT(sizeof(gSurfablePokemonPic_Cursola) == 6144, CursolaSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_Cursola) == sizeof(gSurfablePokemonPic_Cursola), CursolaSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_Cursola[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_cursola.gbapal");
+const u16 gSurfablePokemonShinyPalette_Cursola[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_cursola_shiny.gbapal");
 #endif // OW_SURF_CURSOLA
 #endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
 
@@ -1755,9 +1759,111 @@ STATIC_ASSERT(sizeof(gSurfablePokemonPic_Basculegion) == 6144, BasculegionSurfSh
 
 #if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
 #if OW_SURF_OVERQWIL
-const u32 gSurfablePokemonPic_Overqwil[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/overqwil.4bpp");
-const u16 gSurfablePokemonPalette_Overqwil[] = INCBIN_U16("graphics/pokemon/overqwil/overworld_normal.gbapal");
-const u16 gSurfablePokemonShinyPalette_Overqwil[] = INCBIN_U16("graphics/pokemon/overqwil/overworld_shiny.gbapal");
+const u32 gSurfablePokemonPic_Overqwil[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_overqwil.4bpp");
+const u32 gSurfablePokemonShinyPic_Overqwil[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_overqwil_shiny.4bpp");
 STATIC_ASSERT(sizeof(gSurfablePokemonPic_Overqwil) == 6144, OverqwilSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_Overqwil) == sizeof(gSurfablePokemonPic_Overqwil), OverqwilSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_Overqwil[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_overqwil.gbapal");
+const u16 gSurfablePokemonShinyPalette_Overqwil[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_overqwil_shiny.gbapal");
 #endif // OW_SURF_OVERQWIL
 #endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+
+#if P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+const u32 gSurfablePokemonPic_RaichuAlola[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_raichu_alola.4bpp");
+const u32 gSurfablePokemonShinyPic_RaichuAlola[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_raichu_alola_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_RaichuAlola) == 6144, RaichuAlolaSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_RaichuAlola) == sizeof(gSurfablePokemonPic_RaichuAlola), RaichuAlolaSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_RaichuAlola[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_raichu_alola.gbapal");
+const u16 gSurfablePokemonShinyPalette_RaichuAlola[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_raichu_alola_shiny.gbapal");
+#endif // P_FAMILY_PIKACHU && P_ALOLAN_FORMS
+
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+const u32 gSurfablePokemonPic_SlowpokeGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_slowpoke_galar.4bpp");
+const u32 gSurfablePokemonShinyPic_SlowpokeGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_slowpoke_galar_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_SlowpokeGalar) == 6144, SlowpokeGalarSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_SlowpokeGalar) == sizeof(gSurfablePokemonPic_SlowpokeGalar), SlowpokeGalarSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_SlowpokeGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_slowpoke_galar.gbapal");
+const u16 gSurfablePokemonShinyPalette_SlowpokeGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_slowpoke_galar_shiny.gbapal");
+
+const u32 gSurfablePokemonPic_SlowbroGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_slowbro_galar.4bpp");
+const u32 gSurfablePokemonShinyPic_SlowbroGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_slowbro_galar_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_SlowbroGalar) == 6144, SlowbroGalarSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_SlowbroGalar) == sizeof(gSurfablePokemonPic_SlowbroGalar), SlowbroGalarSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_SlowbroGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_slowbro_galar.gbapal");
+const u16 gSurfablePokemonShinyPalette_SlowbroGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_slowbro_galar_shiny.gbapal");
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS
+
+#if P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+const u32 gSurfablePokemonPic_SlowkingGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_slowking_galar.4bpp");
+const u32 gSurfablePokemonShinyPic_SlowkingGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_slowking_galar_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_SlowkingGalar) == 6144, SlowkingGalarSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_SlowkingGalar) == sizeof(gSurfablePokemonPic_SlowkingGalar), SlowkingGalarSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_SlowkingGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_slowking_galar.gbapal");
+const u16 gSurfablePokemonShinyPalette_SlowkingGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_slowking_galar_shiny.gbapal");
+#endif // P_FAMILY_SLOWPOKE && P_GALARIAN_FORMS && P_GEN_2_CROSS_EVOS
+
+#if P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+const u32 gSurfablePokemonPic_CorsolaGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_corsola_galar.4bpp");
+const u32 gSurfablePokemonShinyPic_CorsolaGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_corsola_galar_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_CorsolaGalar) == 6144, CorsolaGalarSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_CorsolaGalar) == sizeof(gSurfablePokemonPic_CorsolaGalar), CorsolaGalarSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_CorsolaGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_corsola_galar.gbapal");
+const u16 gSurfablePokemonShinyPalette_CorsolaGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_corsola_galar_shiny.gbapal");
+#endif // P_FAMILY_CORSOLA && P_GALARIAN_FORMS
+
+#if P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+const u32 gSurfablePokemonPic_ZigzagoonGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_zigzagoon_galar.4bpp");
+const u32 gSurfablePokemonShinyPic_ZigzagoonGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_zigzagoon_galar_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_ZigzagoonGalar) == 6144, ZigzagoonGalarSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_ZigzagoonGalar) == sizeof(gSurfablePokemonPic_ZigzagoonGalar), ZigzagoonGalarSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_ZigzagoonGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_zigzagoon_galar.gbapal");
+const u16 gSurfablePokemonShinyPalette_ZigzagoonGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_zigzagoon_galar_shiny.gbapal");
+
+const u32 gSurfablePokemonPic_LinooneGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_linoone_galar.4bpp");
+const u32 gSurfablePokemonShinyPic_LinooneGalar[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_linoone_galar_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_LinooneGalar) == 6144, LinooneGalarSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_LinooneGalar) == sizeof(gSurfablePokemonPic_LinooneGalar), LinooneGalarSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_LinooneGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_linoone_galar.gbapal");
+const u16 gSurfablePokemonShinyPalette_LinooneGalar[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_linoone_galar_shiny.gbapal");
+#endif // P_FAMILY_ZIGZAGOON && P_GALARIAN_FORMS
+
+#if P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+const u32 gSurfablePokemonPic_QwilfishHisui[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_qwilfish_hisui.4bpp");
+const u32 gSurfablePokemonShinyPic_QwilfishHisui[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_qwilfish_hisui_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_QwilfishHisui) == 6144, QwilfishHisuiSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_QwilfishHisui) == sizeof(gSurfablePokemonPic_QwilfishHisui), QwilfishHisuiSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_QwilfishHisui[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_qwilfish_hisui.gbapal");
+const u16 gSurfablePokemonShinyPalette_QwilfishHisui[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_qwilfish_hisui_shiny.gbapal");
+#endif // P_FAMILY_QWILFISH && P_HISUIAN_FORMS
+
+#if P_FAMILY_TAUROS && P_PALDEAN_FORMS
+const u32 gSurfablePokemonPic_TaurosPaldeaCombat[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_combat.4bpp");
+const u32 gSurfablePokemonShinyPic_TaurosPaldeaCombat[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_combat_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_TaurosPaldeaCombat) == 6144, TaurosPaldeaCombatSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_TaurosPaldeaCombat) == sizeof(gSurfablePokemonPic_TaurosPaldeaCombat), TaurosPaldeaCombatSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_TaurosPaldeaCombat[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_combat.gbapal");
+const u16 gSurfablePokemonShinyPalette_TaurosPaldeaCombat[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_combat_shiny.gbapal");
+
+const u32 gSurfablePokemonPic_TaurosPaldeaAqua[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_aqua.4bpp");
+const u32 gSurfablePokemonShinyPic_TaurosPaldeaAqua[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_aqua_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_TaurosPaldeaAqua) == 6144, TaurosPaldeaAquaSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_TaurosPaldeaAqua) == sizeof(gSurfablePokemonPic_TaurosPaldeaAqua), TaurosPaldeaAquaSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_TaurosPaldeaAqua[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_aqua.gbapal");
+const u16 gSurfablePokemonShinyPalette_TaurosPaldeaAqua[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_tauros_paldea_aqua_shiny.gbapal");
+#endif // P_FAMILY_TAUROS && P_PALDEAN_FORMS
+
+#if P_FAMILY_WOOPER && P_PALDEAN_FORMS
+const u32 gSurfablePokemonPic_WooperPaldea[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_wooper_paldea.4bpp");
+const u32 gSurfablePokemonShinyPic_WooperPaldea[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_wooper_paldea_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_WooperPaldea) == 6144, WooperPaldeaSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_WooperPaldea) == sizeof(gSurfablePokemonPic_WooperPaldea), WooperPaldeaSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_WooperPaldea[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_wooper_paldea.gbapal");
+const u16 gSurfablePokemonShinyPalette_WooperPaldea[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_wooper_paldea_shiny.gbapal");
+
+const u32 gSurfablePokemonPic_Clodsire[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_clodsire.4bpp");
+const u32 gSurfablePokemonShinyPic_Clodsire[] = INCBIN_U32("graphics/object_events/pics/pokemon/surfable/regional_clodsire_shiny.4bpp");
+STATIC_ASSERT(sizeof(gSurfablePokemonPic_Clodsire) == 6144, ClodsireSurfSheetMustContainTwelve32x32Frames);
+STATIC_ASSERT(sizeof(gSurfablePokemonShinyPic_Clodsire) == sizeof(gSurfablePokemonPic_Clodsire), ClodsireSurfNormalAndShinySheetSizeMismatch);
+const u16 gSurfablePokemonPalette_Clodsire[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_clodsire.gbapal");
+const u16 gSurfablePokemonShinyPalette_Clodsire[16] = INCBIN_U16("graphics/object_events/pics/pokemon/surfable/regional_clodsire_shiny.gbapal");
+#endif // P_FAMILY_WOOPER && P_PALDEAN_FORMS

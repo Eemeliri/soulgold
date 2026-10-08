@@ -5916,3 +5916,6 @@ $(OBJEVENTGFXDIR)/pokemon/surfable/overqwil.4bpp: %.4bpp: %.png
 
 $(OBJEVENTGFXDIR)/pokemon/surfable/0382_kyogre_primal.4bpp $(OBJEVENTGFXDIR)/pokemon/surfable/0382_kyogre_primal_shiny.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+$(OBJEVENTGFXDIR)/pokemon/surfable/regional_%.4bpp: $(OBJEVENTGFXDIR)/pokemon/surfable/regional_%.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
