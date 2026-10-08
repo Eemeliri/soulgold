@@ -68,7 +68,7 @@
 #define SONG_MUS_DP_AZURE_FLUTE                         0
 #define SONG_MUS_DP_HALL_OF_ORIGIN                      0
 #define SONG_MUS_DP_GTS                                 0
-#define SONG_MUS_DP_VS_WILD                             0
+#define SONG_MUS_DP_VS_WILD                             1
 #define SONG_MUS_DP_VS_GALACTIC_BOSS                    0
 #define SONG_MUS_DP_VS_DIALGA_PALKIA                    1
 #define SONG_MUS_DP_VS_GALACTIC                         0
@@ -177,7 +177,7 @@
 #define SONG_MUS_HG_MAGNET_TRAIN                        0
 #define SONG_MUS_HG_RADIO_JINGLE                        0
 #define SONG_MUS_HG_CLAIR                               0
-#define SONG_MUS_HG_VS_WILD_KANTO                       0
+#define SONG_MUS_HG_VS_WILD_KANTO                       1
 #define SONG_MUS_HG_VICTORY_TRAINER                     1
 #define SONG_MUS_HG_VICTORY_WILD                        1
 #define SONG_MUS_HG_CAUGHT                              1

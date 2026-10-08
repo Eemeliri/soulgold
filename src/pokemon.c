@@ -5378,8 +5378,73 @@ bool32 IsSpeciesInHoennDex(u16 species)
         return TRUE;
 }
 
+static const u16 sBattleMusicThemeSongs[BATTLE_MUSIC_THEME_COUNT][BATTLE_MUSIC_CATEGORY_COUNT] =
+{
+    [BATTLE_MUSIC_THEME_DEFAULT] =
+    {
+        [BATTLE_MUSIC_CATEGORY_WILD] = MUS_HG_VS_WILD,
+        [BATTLE_MUSIC_CATEGORY_TRAINER] = MUS_HG_VS_TRAINER,
+        [BATTLE_MUSIC_CATEGORY_GYM] = MUS_HG_VS_GYM_LEADER,
+    },
+    [BATTLE_MUSIC_THEME_FRLG] =
+    {
+        [BATTLE_MUSIC_CATEGORY_WILD] = MUS_RG_VS_WILD,
+        [BATTLE_MUSIC_CATEGORY_TRAINER] = MUS_RG_VS_TRAINER,
+        [BATTLE_MUSIC_CATEGORY_GYM] = MUS_RG_VS_GYM_LEADER,
+    },
+    [BATTLE_MUSIC_THEME_RSE] =
+    {
+        [BATTLE_MUSIC_CATEGORY_WILD] = MUS_VS_WILD,
+        [BATTLE_MUSIC_CATEGORY_TRAINER] = MUS_VS_TRAINER,
+        [BATTLE_MUSIC_CATEGORY_GYM] = MUS_VS_GYM_LEADER,
+    },
+    [BATTLE_MUSIC_THEME_DPPT] =
+    {
+        [BATTLE_MUSIC_CATEGORY_WILD] = MUS_DP_VS_WILD,
+        [BATTLE_MUSIC_CATEGORY_TRAINER] = MUS_DP_VS_TRAINER,
+        [BATTLE_MUSIC_CATEGORY_GYM] = MUS_DP_VS_GYM_LEADER,
+    },
+    [BATTLE_MUSIC_THEME_HGSS_KANTO] =
+    {
+        [BATTLE_MUSIC_CATEGORY_WILD] = MUS_HG_VS_WILD_KANTO,
+        [BATTLE_MUSIC_CATEGORY_TRAINER] = MUS_HG_VS_TRAINER_KANTO,
+        [BATTLE_MUSIC_CATEGORY_GYM] = MUS_HG_VS_GYM_LEADER_KANTO,
+    },
+};
+
+enum BattleMusicTheme GetBattleMusicTheme(void)
+{
+    u16 theme = VarGet(VAR_BATTLE_MUSIC_THEME);
+
+    if (theme >= BATTLE_MUSIC_THEME_COUNT)
+        return BATTLE_MUSIC_THEME_DEFAULT;
+
+    return theme;
+}
+
+void SetBattleMusicTheme(enum BattleMusicTheme theme)
+{
+    if (theme >= BATTLE_MUSIC_THEME_COUNT)
+        theme = BATTLE_MUSIC_THEME_DEFAULT;
+
+    VarSet(VAR_BATTLE_MUSIC_THEME, theme);
+}
+
+u16 GetBattleMusicThemeSong(enum BattleMusicTheme theme, enum BattleMusicCategory category)
+{
+    if (theme >= BATTLE_MUSIC_THEME_COUNT)
+        theme = BATTLE_MUSIC_THEME_DEFAULT;
+    else if (theme == BATTLE_MUSIC_THEME_RANDOM)
+        theme = Random2_32() % BATTLE_MUSIC_THEME_RANDOM;
+    if (category >= BATTLE_MUSIC_CATEGORY_COUNT)
+        return MUS_NONE;
+
+    return sBattleMusicThemeSongs[theme][category];
+}
+
 u16 GetBattleBGM(void)
 {
+    enum BattleMusicTheme battleMusicTheme = GetBattleMusicTheme();
     // Pyramid and Pike wild encounters are also marked as Frontier battles,
     // but the player's facility BGM choice is only for trainer battles.
     if ((gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
@@ -5390,6 +5455,9 @@ u16 GetBattleBGM(void)
         if (override != MUS_NONE)
             return override;
     }
+
+    if (gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+        battleMusicTheme = BATTLE_MUSIC_THEME_DEFAULT;
 
     if (gBattleTypeFlags & BATTLE_TYPE_ROAMER)
     {
@@ -5461,13 +5529,13 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_ROCKETA:
             return MUS_HG_VS_ROCKET;
         case TRAINER_CLASS_LEADER:
-            return MUS_HG_VS_GYM_LEADER;
+            return GetBattleMusicThemeSong(battleMusicTheme, BATTLE_MUSIC_CATEGORY_GYM);
         case TRAINER_CLASS_CHAMPION:
             return MUS_HG_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
             return MUS_HG_VS_RIVAL;
         case TRAINER_CLASS_ELITE_FOUR:
-            return MUS_HG_VS_GYM_LEADER;
+            return GetBattleMusicThemeSong(battleMusicTheme, BATTLE_MUSIC_CATEGORY_GYM);
         case TRAINER_CLASS_SALON_MAIDEN:
         case TRAINER_CLASS_DOME_ACE:
         case TRAINER_CLASS_PALACE_MAVEN:
@@ -5477,12 +5545,12 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_HG_VS_FRONTIER_BRAIN;
         default:
-            return MUS_HG_VS_TRAINER;
+            return GetBattleMusicThemeSong(battleMusicTheme, BATTLE_MUSIC_CATEGORY_TRAINER);
         }
     }
     else
     {
-        return MUS_HG_VS_WILD;
+        return GetBattleMusicThemeSong(battleMusicTheme, BATTLE_MUSIC_CATEGORY_WILD);
     }
 }
 

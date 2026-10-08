@@ -502,7 +502,6 @@ struct PokemonStorageSystemData
     u16 markingsSwapPal[16]; // Used to store dynamic palette to swap into markings combo
     u16 swapInPal[16];
     void *swapInPalDst;
-    s8 transferWholePlttFrames; // if >0, number of frames to transfer whole palette buffer
     u16 unkUnused1; // Never read.
     s16 wallpaperSetId;
     s16 wallpaperId;
@@ -1173,8 +1172,8 @@ static const struct StorageMessage sMessages[] =
     [MSG_PARTY_FULL]           = {gText_YourPartysFull,                          MSG_VAR_NONE},
     [MSG_HOLDING_POKE]         = {COMPOUND_STRING("You're holding a Pokémon!"),  MSG_VAR_NONE},
     [MSG_WHICH_ONE_WILL_TAKE]  = {COMPOUND_STRING("Which one will you take?"),   MSG_VAR_NONE},
-    [MSG_CANT_RELEASE_EGG]     = {COMPOUND_STRING("You can't release an EGG."),  MSG_VAR_NONE},
-    [MSG_CONTINUE_BOX]         = {COMPOUND_STRING("Continue BOX operations?"),   MSG_VAR_NONE},
+    [MSG_CANT_RELEASE_EGG]     = {COMPOUND_STRING("You can't release an Egg."),  MSG_VAR_NONE},
+    [MSG_CONTINUE_BOX]         = {COMPOUND_STRING("Continue Box operations?"),   MSG_VAR_NONE},
     [MSG_CAME_BACK]            = {COMPOUND_STRING("{DYNAMIC 0} came back!"),     MSG_VAR_MON_NAME_1},
     [MSG_WORRIED]              = {COMPOUND_STRING("Was it worried about you?"),  MSG_VAR_NONE},
     [MSG_SURPRISE]             = {COMPOUND_STRING("… … … … !"),                  MSG_VAR_NONE},
@@ -2147,19 +2146,6 @@ static void VBlankCB_PokeStorage(void)
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
-    // Instead of transferring the entire palette buffer, transfer bg and non-dynamic palettes
-    if (sPaletteSwapBuffer && !gPaletteFade.bufferTransferDisabled && !gPaletteFade.active && !sStorage->transferWholePlttFrames) 
-    {
-        RequestDma3Copy(gPlttBufferFaded, (void*)PLTT, 32*17, 0);
-        // Skip the 12-1 palettes that are being dynamically swapped anyway
-        RequestDma3Copy(&gPlttBufferFaded[(12+16)*16], (void*) 0x05000380, 32*4, 0);
-    } 
-    else 
-    {
-        if (sStorage && sStorage->transferWholePlttFrames > 0)
-            sStorage->transferWholePlttFrames--;
-        TransferPlttBuffer();
-    }
 
     SetGpuReg(REG_OFFSET_BG2HOFS, sStorage->bg2_X);
 }
@@ -2211,7 +2197,6 @@ static void EnterPokeStorage(u8 boxOption)
     }
     else
     {
-        sStorage->transferWholePlttFrames = 0;
         sStorage->chooseBoxSwapPal[0] = 0;
         sStorage->boxOption = boxOption;
         sStorage->isReopening = FALSE;
@@ -4229,7 +4214,6 @@ static void Task_OnCloseBoxPressed(u8 taskId)
         }
         break;
     case 3:
-        sStorage->transferWholePlttFrames = -1;
         ComputerScreenCloseEffect(20, 0, 1);
         sStorage->state++;
         break;
@@ -4309,7 +4293,6 @@ static void Task_OnBPressed(u8 taskId)
         }
         break;
     case 3:
-        sStorage->transferWholePlttFrames = -1;
         ComputerScreenCloseEffect(20, 0, 0);
         sStorage->state++;
         break;
@@ -4783,7 +4766,6 @@ static bool8 HidePartyMenu(void)
             TilemapUtil_SetRect(TILEMAPID_CLOSE_BUTTON, 0, 0, 9, 2);
             TilemapUtil_Update(TILEMAPID_CLOSE_BUTTON);
             ScheduleBgCopyTilemapToVram(1);
-            sStorage->transferWholePlttFrames = 0; // transfer only non-dynamic palettes
             return FALSE;
         }
     }
@@ -5537,7 +5519,6 @@ static void CreatePartyMonsSprites(bool8 visible)
     u8 paletteNum;
     bool32 hasItem = FALSE;
 
-    sStorage->transferWholePlttFrames = -1; // keep transferring entire palette buffer until done with party menu
     sStorage->partySprites[0] = CreateMonIconSprite(species, personality, 104, 64, 1, 12, isEgg);
     LoadPalette(GetStorageMonIconPalette(species, isShiny, personality, isEgg), (0+1)* 16 + 0x100, 32);
     sStorage->partySprites[0]->oam.paletteNum = 0+1;

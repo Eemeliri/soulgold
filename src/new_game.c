@@ -78,6 +78,7 @@ struct NewGameOptions
     enum DifficultyLevel difficulty;
     u16 overworldSpeed;
     u8 battleSpeed;
+    enum BattleMusicTheme battleMusicTheme;
     u8 partyMenuStyle;
     enum ReplayBattleFormat battleFormat;
     u16 followerMegaOff;
@@ -145,6 +146,7 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsDarkBattleUi = FALSE;
     gSaveBlock2Ptr->optionsBattleSpeed = OPTIONS_BATTLE_SCENE_2X;
     VarSet(VAR_BATTLE_SPEED, OPTIONS_BATTLE_SCENE_2X);
+    SetBattleMusicTheme(BATTLE_MUSIC_THEME_DEFAULT);
     VarSet(VAR_FOLLOWER_MEGA_OFF, 0);
     VarSet(VAR_SHINY_RATE, SHINY_RATE_256);
     SetDefaultPartyMenuStyle();
@@ -225,6 +227,7 @@ void NewGameInitData(void)
         .difficulty = GetCurrentDifficultyLevel(),
         .overworldSpeed = VarGet(VAR_OVERWORLD_SPEEDUP),
         .battleSpeed = VarGet(VAR_BATTLE_SPEED),
+        .battleMusicTheme = GetBattleMusicTheme(),
         .partyMenuStyle = GetCurrentPartyMenuStyle(),
         .battleFormat = GetReplayBattleFormat(),
         .followerMegaOff = !IsFollowerMegaEnabled(),
@@ -311,6 +314,7 @@ void NewGameInitData(void)
     VarSet(VAR_OVERWORLD_SPEEDUP, options.overworldSpeed);
     gSaveBlock2Ptr->optionsBattleSpeed = options.battleSpeed;
     VarSet(VAR_BATTLE_SPEED, options.battleSpeed);
+    SetBattleMusicTheme(options.battleMusicTheme);
     gSaveBlock1Ptr->optionsPartyMenuStyle = options.partyMenuStyle;
     gSaveBlock1Ptr->optionsPartyMenuStyleMagic = PARTY_MENU_OPTION_SAVE_MAGIC;
     SetReplayBattleFormat(options.battleFormat);

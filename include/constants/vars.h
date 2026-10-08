@@ -309,6 +309,7 @@
 #define VAR_BATTLE_CAFE_ENDLESS_RUSH_RECORD             0x411E
 #define VAR_FOLLOWER_MEGA_OFF                           0x411F
 #define VAR_SHINY_RATE                                  0x4120
+#define VAR_BATTLE_MUSIC_THEME                          0x4121
 
 #define VARS_END                                         0x42FF
 

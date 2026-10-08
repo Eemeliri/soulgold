@@ -817,6 +817,29 @@ u8 CanLearnTeachableMove(u16 species, enum Move move);
 u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves);
 u16 SpeciesToPokedexNum(u16 species);
 bool32 IsSpeciesInHoennDex(u16 species);
+
+enum BattleMusicTheme
+{
+    BATTLE_MUSIC_THEME_DEFAULT,
+    BATTLE_MUSIC_THEME_FRLG,
+    BATTLE_MUSIC_THEME_RSE,
+    BATTLE_MUSIC_THEME_DPPT,
+    BATTLE_MUSIC_THEME_HGSS_KANTO,
+    BATTLE_MUSIC_THEME_RANDOM,
+    BATTLE_MUSIC_THEME_COUNT,
+};
+
+enum BattleMusicCategory
+{
+    BATTLE_MUSIC_CATEGORY_WILD,
+    BATTLE_MUSIC_CATEGORY_TRAINER,
+    BATTLE_MUSIC_CATEGORY_GYM,
+    BATTLE_MUSIC_CATEGORY_COUNT,
+};
+
+enum BattleMusicTheme GetBattleMusicTheme(void);
+void SetBattleMusicTheme(enum BattleMusicTheme theme);
+u16 GetBattleMusicThemeSong(enum BattleMusicTheme theme, enum BattleMusicCategory category);
 u16 GetBattleBGM(void);
 void PlayBattleBGM(void);
 void PlayMapChosenOrBattleBGM(u16 songId);
