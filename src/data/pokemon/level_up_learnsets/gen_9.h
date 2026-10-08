@@ -5837,6 +5837,7 @@ static const struct LevelUpMove sHonchkrowLevelUpLearnset[] = {
     LEVEL_UP_MOVE(60, MOVE_QUASH),
     LEVEL_UP_MOVE(55, MOVE_DARK_PULSE),
     LEVEL_UP_MOVE(65, MOVE_COMEUPPANCE),
+    LEVEL_UP_MOVE(70, MOVE_OBLIVION_WING),
     LEVEL_UP_END
 };
 #endif //P_GEN_4_CROSS_EVOS
