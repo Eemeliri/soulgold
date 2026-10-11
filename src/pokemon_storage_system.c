@@ -2222,6 +2222,7 @@ static void CB2_ReturnToPokeStorage(void)
     }
     else
     {
+        sStorage->chooseBoxSwapPal[0] = 0;
         sStorage->boxOption = sCurrentBoxOption;
         sStorage->isReopening = TRUE;
         sStorage->state = 0;
@@ -2429,6 +2430,13 @@ static void Task_InitPokeStorage(u8 taskId)
         }
         else
         {
+            if (sIsMonBeingMoved && sStorage->movingMonSprite != NULL)
+            {
+                u8 paletteNum = LoadMovingMonIconPalette();
+
+                if (paletteNum < 16)
+                    sStorage->movingMonSprite->oam.paletteNum = paletteNum;
+            }
             BlendPalettes(PALETTES_ALL, 16, RGB_BLACK);
             SetPokeStorageTask(Task_ReshowPokeStorage);
         }
@@ -5103,7 +5111,6 @@ static u8 GetMonIconPriorityByCursorPos(void)
 }
 
 // Only called when returning from naming, etc while holding a pokemon
-// Its palette is therefore always the same as the displayed pokemon's
 static void CreateMovingMonIcon(void)
 {
     u32 personality = GetMonData(&sStorage->movingMon, MON_DATA_PERSONALITY);
@@ -5112,8 +5119,7 @@ static void CreateMovingMonIcon(void)
     bool32 isEgg = GetMonData(&sStorage->movingMon, MON_DATA_IS_EGG);
 
     sStorage->movingMonSprite = CreateMonIconSprite(species, personality, 0, 0, priority, 7, isEgg);
-    // This shouldn't be hardcoded, but the palette tag isn't loaded when this is called :/
-    sStorage->movingMonSprite->oam.paletteNum = 13; // IndexOfSpritePaletteTag(PALTAG_DISPLAY_MON);
+    sStorage->movingMonSprite->oam.paletteNum = 13;
     sStorage->movingMonSprite->callback = SpriteCB_HeldMon;
 }
 
