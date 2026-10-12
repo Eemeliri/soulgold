@@ -1,5 +1,3 @@
-"""Typed data models for intermediate SoulGold docs records."""
-
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -166,6 +164,7 @@ class TMRow(TypedDict, total=False):
     pp: int
     locations: list[ItemLocation]
     location: str
+    moveSlug: str
 
 
 class EncounterMon(TypedDict):
@@ -252,7 +251,11 @@ class TrainerRow(TypedDict):
     party: list[TrainerMon]
 
 
-class SpeciesPayloadRow(TypedDict):
+class SpeciesPayloadOptionalFields(TypedDict, total=False):
+    formLabel: str
+
+
+class SpeciesPayloadRow(SpeciesPayloadOptionalFields):
     id: int
     constant: str
     dex: int

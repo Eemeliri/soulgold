@@ -1,18 +1,9 @@
 const baseElement = document.querySelector("base");
 const siteRootUrl = new URL(baseElement?.getAttribute("href") || "./", window.location.href);
 if (baseElement) baseElement.href = siteRootUrl.href;
-const docsAssetVersion = document.currentScript
-  ? new URL(document.currentScript.src).searchParams.get("v")
-  : "";
+const docsDataVersion = document.querySelector('meta[name="docs-data-version"]')?.content || "";
 
 const themeStorageKey = "soulgold-docs-theme";
-let initialTheme = "dark";
-try {
-  if (localStorage.getItem(themeStorageKey) === "light") initialTheme = "light";
-} catch {
-  // Storage can be unavailable in privacy-focused browsing contexts.
-}
-document.documentElement.dataset.theme = initialTheme;
 
 const state = {
   data: {
@@ -30,7 +21,7 @@ const state = {
     uiIcons: {},
     megaEvolutions: [],
     speciesEvolutions: {},
-    speciesDetails: {},
+    moveLearners: {},
     abilityUsage: {},
   },
   activeTab: "pokedex",
@@ -195,8 +186,6 @@ const searchPlaceholders = {
   abilities: "Search abilities…",
   guides: "Search guides, FAQs, or secrets…",
 };
-// Main-story and notable optional-area order for the trainer location groups.
-// Locations not represented here follow these groups by average trainer level.
 const trainerLocationProgression = [
   /^New Bark Town$/i,
   /^Route 29(?:\b|$)/i,
@@ -368,9 +357,8 @@ function progressiveLoadingNode({ tagName = "div", colspan = 1 } = {}) {
 function renderProgressively(container, entries, createNode, options = {}) {
   cancelProgressiveRendering();
   const token = progressiveRenderToken;
-  const mobile = mobileNavMedia.matches;
-  const initialSize = mobile ? (options.initialSize || 16) : entries.length;
-  const batchSize = mobile ? (options.batchSize || initialSize) : entries.length;
+  const initialSize = options.initialSize || 16;
+  const batchSize = options.batchSize || initialSize;
   let nextIndex = 0;
   let loadingNode = null;
   container.innerHTML = "";
@@ -405,17 +393,21 @@ function renderProgressively(container, entries, createNode, options = {}) {
     }
   };
   progressiveLoadMore = loadNextBatch;
+  const fillWhileIdle = (deadline) => {
+    if (progressiveLoadMore !== loadNextBatch) return;
+    do {
+      loadNextBatch();
+    } while (progressiveLoadMore === loadNextBatch && deadline?.timeRemaining?.() > 8);
+    if (progressiveLoadMore === loadNextBatch) scheduleProgressiveBatch(fillWhileIdle);
+  };
   if ("IntersectionObserver" in window) {
     progressiveObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) loadNextBatch();
     }, { rootMargin: "1200px 0px" });
     progressiveObserver.observe(loadingNode);
+    if (!mobileNavMedia.matches) scheduleProgressiveBatch(fillWhileIdle);
   } else {
-    const appendFallbackBatch = () => {
-      loadNextBatch();
-      if (progressiveLoadMore) scheduleProgressiveBatch(appendFallbackBatch);
-    };
-    scheduleProgressiveBatch(appendFallbackBatch);
+    scheduleProgressiveBatch(fillWhileIdle);
   }
 }
 
@@ -611,31 +603,15 @@ async function init() {
 }
 
 function setupThemeToggle() {
-  const header = document.querySelector(".site-header");
-  const search = document.querySelector(".search-wrap");
-  if (!header || !search) return;
-
-  const actions = el("div", "header-actions");
-  search.before(actions);
-  actions.append(search);
-
-  const button = el("button", "theme-toggle");
-  button.id = "themeToggle";
-  button.type = "button";
-  button.innerHTML = `
-    <span class="theme-toggle-icon" aria-hidden="true"></span>
-    <span class="theme-toggle-label"></span>
-  `;
+  const button = document.getElementById("themeToggle");
+  if (!button) return;
   button.addEventListener("click", () => {
     const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     applyTheme(theme);
     try {
       localStorage.setItem(themeStorageKey, theme);
-    } catch {
-      // The visual toggle still works when persistence is unavailable.
-    }
+    } catch {}
   });
-  actions.append(button);
   applyTheme(document.documentElement.dataset.theme);
 }
 
@@ -648,7 +624,6 @@ function applyTheme(theme) {
     const nextTheme = dark ? "light" : "dark";
     button.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
     button.setAttribute("aria-pressed", String(dark));
-    button.querySelector(".theme-toggle-label").textContent = dark ? "Light" : "Dark";
   }
 }
 
@@ -812,7 +787,7 @@ function routeUrl(tab, detail = null, view = null) {
 
 async function loadJson(path) {
   const url = new URL(path, siteRootUrl);
-  if (docsAssetVersion) url.searchParams.set("v", docsAssetVersion);
+  if (docsDataVersion) url.searchParams.set("v", docsDataVersion);
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${response.status} ${response.statusText} while loading ${path}`);
   return response.json();
@@ -822,9 +797,7 @@ async function loadData(key, path) {
   if (loadedData.has(key)) return;
   if (!dataPromises.has(key)) {
     dataPromises.set(key, loadJson(path).then((payload) => {
-      if (key === "common") {
-        Object.assign(state.data, payload);
-      } else if (key === "ui" || key === "speciesMeta") {
+      if (key === "ui" || key === "speciesMeta") {
         Object.assign(state.data, payload);
       } else if (key === "moveIndex") {
         Object.entries(payload).forEach(([constant, move]) => {
@@ -834,19 +807,17 @@ async function loadData(key, path) {
         Object.entries(payload).forEach(([constant, ability]) => {
           state.data.abilities[constant] = { ...ability, ...state.data.abilities[constant] };
         });
-      } else if (key === "speciesDetails") {
-        state.data.speciesDetails = payload;
-        mergeSpeciesDetails();
       } else if (key.startsWith("speciesDetail:")) {
         const slug = key.slice("speciesDetail:".length);
         const mon = state.data.species.find((entry) => entry.slug === slug);
         if (mon) Object.assign(mon, payload);
+      } else if (key.startsWith("moveLearners:")) {
+        state.data.moveLearners[key.slice("moveLearners:".length)] = payload;
       } else if (key === "abilityUsage") {
         state.data.abilityUsage = payload;
         mergeAbilityUsage();
       } else {
         state.data[key] = payload;
-        if (key === "species") mergeSpeciesDetails();
         if (key === "abilities") mergeAbilityUsage();
       }
       loadedData.add(key);
@@ -859,12 +830,6 @@ async function loadData(key, path) {
   await dataPromises.get(key);
 }
 
-function mergeSpeciesDetails() {
-  state.data.species.forEach((mon) => {
-    Object.assign(mon, state.data.speciesDetails[mon.constant] || {});
-  });
-}
-
 function mergeAbilityUsage() {
   Object.entries(state.data.abilityUsage).forEach(([constant, usage]) => {
     if (state.data.abilities[constant]) state.data.abilities[constant].usage = usage;
@@ -875,12 +840,8 @@ async function ensureSectionData(tab) {
   await Promise.all((sectionDataFiles[tab] || []).map(([key, path]) => loadData(key, path)));
 }
 
-async function ensureSpeciesDetails() {
-  await Promise.all([
-    loadData("species", "data/species.json"),
-    loadData("speciesDetails", "data/species-details.json"),
-  ]);
-  mergeSpeciesDetails();
+function loadMoveLearners(slug) {
+  return loadData(`moveLearners:${slug}`, `data/move-learners/${slug}.json`);
 }
 
 async function ensureSpeciesDetail(slug) {
@@ -893,9 +854,7 @@ async function ensureSpeciesDetail(slug) {
   ]);
   const mon = state.data.species.find((entry) => entry.slug === slug);
   if (!mon) return null;
-  if (!loadedData.has("speciesDetails")) {
-    await loadData(`speciesDetail:${slug}`, `data/species-details/${slug}.json`);
-  }
+  await loadData(`speciesDetail:${slug}`, `data/species-details/${slug}.json`);
   return mon;
 }
 
@@ -1020,10 +979,6 @@ async function navigateDetail(kind, slug) {
   const tab = detailTabs[kind];
   if (!tab || !slug) return;
   if (state.detail?.kind === kind && state.detail.slug === slug) return;
-  // Moving between entries of the same kind (for example, through an evolution
-  // chain) replaces the current detail so closing still returns straight to the
-  // list. Cross-kind links need their own entry so browser Back can return to
-  // the referring detail, such as a Pokemon after viewing its Mega Stone.
   const replacingDetail = state.detail?.kind === kind;
   const detailOpenedInApp = replacingDetail
     ? Boolean(history.state?.detailOpenedInApp)
@@ -1603,7 +1558,6 @@ function handleTypeFilterClick(event) {
     syncFilterHistory();
     window.scrollTo(0, 0);
     renderItems();
-    // Rendering rebuilds the panel; retain keyboard focus on the chosen control.
     const selector = clear ? "[data-clear-item-categories]" : `[data-item-category="${button.dataset.itemCategory}"]`;
     document.querySelector(selector)?.focus({ preventScroll: true });
     return;
@@ -1816,9 +1770,7 @@ async function showAbilityTooltip(button, event) {
       await loadData("abilities", "data/abilities.json");
       ability = state.data.abilities[reference]
         || Object.values(state.data.abilities).find((entry) => entry.name === reference);
-    } catch {
-      // A name-only tooltip is still useful if the optional detail request fails.
-    }
+    } catch {}
   }
   if (!button.isConnected) return;
   if (!ability) return;
@@ -1864,9 +1816,7 @@ async function showMoveTooltip(button, event) {
       await loadData("moves", "data/moves.json");
       move = state.data.moves[reference]
         || Object.values(state.data.moves).find((entry) => entry.name === reference);
-    } catch {
-      // A name-only tooltip is still useful if the optional detail request fails.
-    }
+    } catch {}
   }
   if (!button.isConnected) return;
   if (!move) return;
@@ -2127,23 +2077,7 @@ function evolutionChain(mon) {
 }
 
 function speciesFormLabel(mon) {
-  const ogerponForm = mon.constant.match(/^SPECIES_OGERPON_(TEAL|WELLSPRING|HEARTHFLAME|CORNERSTONE)(?:_TERA)?$/);
-  if (ogerponForm) {
-    const mask = ogerponForm[1][0] + ogerponForm[1].slice(1).toLowerCase();
-    return `${mon.name} (${mask} Mask)`;
-  }
-  const tatsugiriForm = mon.constant.match(/^SPECIES_TATSUGIRI_(CURLY|DROOPY|STRETCHY)(?:_MEGA)?$/);
-  if (tatsugiriForm) {
-    const form = tatsugiriForm[1][0] + tatsugiriForm[1].slice(1).toLowerCase();
-    return `${mon.name} (${form}${mon.constant.endsWith("_MEGA") ? " Mega" : ""})`;
-  }
-  if (mon.constant === "SPECIES_ZACIAN_CROWNED") return `${mon.name} (Crowned Sword)`;
-  if (mon.constant === "SPECIES_ZAMAZENTA_CROWNED") return `${mon.name} (Crowned Shield)`;  if (mon.constant.endsWith("_MEGA_X")) return `${mon.name} X`;
-  if (mon.constant.endsWith("_MEGA_Y")) return `${mon.name} Y`;
-  if (mon.constant.endsWith("_MEGA_Z")) return `${mon.name} Z`;
-  if (mon.constant.endsWith("_MEGA")) return `${mon.name} Mega`;
-  if (mon.constant.endsWith("_GMAX") || mon.constant.endsWith("_DMAX")) return `${mon.name} Mega`;
-  return mon.name;
+  return mon.formLabel || mon.name;
 }
 
 function megaTargetLabel(mon) {
@@ -2488,13 +2422,17 @@ function renderMovedex() {
   setPanelStatus("moves", rows.length ? "" : "No moves match the current search and filters.");
 }
 
-function moveLearners(moveConstant) {
-  const hasMove = (moves) => (moves || []).some((entry) => (typeof entry === "string" ? entry : entry.move) === moveConstant);
+function moveLearnerSpecies(moveSlug, method) {
+  const constants = new Set(state.data.moveLearners[moveSlug]?.[method] || []);
+  return state.data.species.filter((mon) => constants.has(mon.constant));
+}
+
+function moveLearners(moveSlug) {
   return [
-    ["Level-up", state.data.species.filter((mon) => hasMove(mon.levelUp))],
-    ["TM / HM", state.data.species.filter((mon) => hasMove(mon.tmhm))],
-    ["Tutor", state.data.species.filter((mon) => hasMove(mon.tutors))],
-    ["Egg move", state.data.species.filter((mon) => hasMove(mon.eggMoves))],
+    ["Level-up", moveLearnerSpecies(moveSlug, "levelUp")],
+    ["TM / HM", moveLearnerSpecies(moveSlug, "tmhm")],
+    ["Tutor", moveLearnerSpecies(moveSlug, "tutors")],
+    ["Egg move", moveLearnerSpecies(moveSlug, "eggMoves")],
   ].filter(([, species]) => species.length);
 }
 
@@ -2509,7 +2447,7 @@ function openMoveByReference(reference) {
 }
 
 function renderMoveDetail(move) {
-  const learners = moveLearners(move.constant);
+  const learners = moveLearners(move.slug);
   document.getElementById("modalTitle").textContent = `#${move.id ?? "-"} ${move.name}`;
   document.getElementById("modalBody").innerHTML = `
     <div class="move-detail-summary">
@@ -2730,7 +2668,7 @@ function openTm(tm) {
 }
 
 function renderTmDetail(tm) {
-  const compatible = state.data.species.filter((mon) => mon.tmhm.includes(tm.move));
+  const compatible = moveLearnerSpecies(tm.moveSlug, "tmhm");
   document.getElementById("modalTitle").textContent = `${tm.label} ${tm.moveName}`;
   document.getElementById("modalBody").innerHTML = `
     <div class="tm-detail">
@@ -2801,17 +2739,22 @@ async function recordForDetail(detail) {
       loadData("ui", "data/ui.json"),
       loadData("abilityIndex", "data/ability-index.json"),
       loadData("moves", "data/moves.json"),
-      ensureSpeciesDetails(),
+      loadData("species", "data/species.json"),
+      loadMoveLearners(detail.slug).catch(() => {}),
     ]);
-    return Object.values(state.data.moves).find((entry) => entry.slug === detail.slug);
+    const move = Object.values(state.data.moves).find((entry) => entry.slug === detail.slug);
+    if (move) await loadMoveLearners(move.slug);
+    return move;
   }
   if (detail.kind === "machine") {
     await Promise.all([
       loadData("ui", "data/ui.json"),
       loadData("tms", "data/machines.json"),
-      ensureSpeciesDetails(),
+      loadData("species", "data/species.json"),
     ]);
-    return state.data.tms.find((entry) => entry.slug === detail.slug);
+    const tm = state.data.tms.find((entry) => entry.slug === detail.slug);
+    if (tm) await loadMoveLearners(tm.moveSlug);
+    return tm;
   }
   if (detail.kind === "item") {
     await loadData("items", "data/items.json");
@@ -2898,9 +2841,7 @@ function syncGuideDetail() {
     let anchorId = window.location.hash.slice(1);
     try {
       anchorId = decodeURIComponent(anchorId);
-    } catch {
-      // Ignore malformed URL encoding and use the raw fragment.
-    }
+    } catch {}
     const anchor = anchorId ? document.getElementById(anchorId) : null;
     (anchor && selected.contains(anchor) ? anchor : selected).scrollIntoView({ block: "start" });
   });
@@ -2923,9 +2864,7 @@ function guideHeadingId(value, guide) {
   let decoded = String(value || "").replace(/^#/, "");
   try {
     decoded = decodeURIComponent(decoded);
-  } catch {
-    // Keep malformed fragments usable instead of failing guide rendering.
-  }
+  } catch {}
   const slug = guideHeadingSlug(decoded);
   return slug ? `${guide.slug}-${slug}` : `guide-${guide.slug}`;
 }
@@ -3242,8 +3181,6 @@ function renderTrainers() {
     const matchingLocations = locations.filter((location) => matches(location));
     if (!trainerMatches && !matchingLocations.length) return;
 
-    // A location-only match should show the requested area, while a trainer or
-    // party match should show every area where that trainer can be found.
     const visibleLocations = trainerMatches ? locations : matchingLocations;
     visibleLocations.forEach((location) => {
       if (!groups.has(location)) groups.set(location, []);

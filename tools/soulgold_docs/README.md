@@ -2,8 +2,8 @@
 
 Edit the website in `docs/src/`. The published static files live in `docs/`.
 
-Refresh the UI, release manifest and existing page shells without regenerating
-game data or sprites:
+Refresh the UI, release manifest and page shells from the already published
+data, without regenerating game data or sprites:
 
 ```sh
 python3 tools/soulgold_docs/build_docs.py --static-only
@@ -11,6 +11,15 @@ python3 tools/soulgold_docs/build_docs.py --static-only
 
 Run without `--static-only` when game data or guide Markdown changes; that also
 creates/removes detail routes to match the current records.
+
+Every route gets its own `index.html` rendered from `docs/src/index.html`, with
+the record's title and a short description for link previews, plus preloads for
+only the data that route needs. Stylesheet, script and data URLs carry a hash of
+their contents (`?v=…`), added by the build, so there is no version string to
+bump by hand: reference assets in the template without a query string.
+
+Move and TM pages read `data/move-learners/<move>.json`, a small per-move list
+of the species that learn it, instead of every species' learnset.
 
 Both build modes read `DISPLAY_VERSION` from `include/config/version.h` and
 generate `docs/src/version.json` and its published copy, `docs/version.json`.
@@ -30,7 +39,8 @@ older, a dismissible toast directs the player to
 The download destination is fixed in `docs/src/assets/version-check.mjs`;
 query parameters and the release manifest cannot supply a different link.
 Version strings follow [Semantic Versioning precedence](https://semver.org/#spec-item-11),
-with an optional leading `v`. Invalid versions are ignored. The comparison does
+with an optional leading `v`. Two-number versions such as `v1.2` are accepted and
+compare as `v1.2.0`. Invalid versions are ignored. The comparison does
 not authenticate the ROM or check the ROM file itself.
 
 The version must be present as a single valid `version` parameter in the current

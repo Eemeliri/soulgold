@@ -1,5 +1,3 @@
-"""Low-level C and header parsing helpers for the docs generator."""
-
 from __future__ import annotations
 
 import ast
@@ -117,7 +115,6 @@ def parse_enum_constants(path: Path, prefix: str) -> tuple[dict[str, int], dict[
     return name_to_id, id_to_name
 
 def preprocess_source(source: str, *extra_include_dirs: str) -> str:
-    """Run the C preprocessor over an in-memory translation unit."""
     temp = Path("/tmp/soulgold_docs_preprocess.c")
     temp.write_text(source, encoding="utf-8")
     include_args = [f"-I{path}" for path in (".", "include", "src", *extra_include_dirs)]

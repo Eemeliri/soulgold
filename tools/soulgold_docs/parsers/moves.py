@@ -1,5 +1,3 @@
-"""Move table parsing for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import re
@@ -30,8 +28,6 @@ def parse_moves() -> dict[str, NamedRecord]:
     source_text = read(source_path)
     shared_strings = parse_shared_strings(source_text)
     entries = split_designated_entries(text)
-    # Parse the complete enum so generation sentinels such as MOVES_COUNT_GEN9
-    # and FIRST_Z_MOVE can resolve IDs assigned through aliases.
     move_ids, _ = parse_enum_constants(MOVES_H, "")
     hidden_ranges = (
         (move_ids.get("FIRST_Z_MOVE"), move_ids.get("LAST_Z_MOVE")),

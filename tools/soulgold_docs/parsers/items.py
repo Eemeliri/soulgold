@@ -1,5 +1,3 @@
-"""Item, TM/HM, and item-location parsing for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import json
@@ -197,10 +195,6 @@ def parse_item_locations(item_constants: set[str]) -> dict[str, list[ItemLocatio
     }
 
     def add_map_location(item: str, folder_name: str, map_name: str, source: str) -> None:
-        # The base project still contains unused Hoenn and Kanto maps. Do not
-        # surface those as obtainable sources for the explicitly added
-        # training items. This hack repurposes VictoryRoadKanto as its real
-        # Victory Road, so retain those maps despite their internal prefix.
         if (
             item in ADDITIONAL_IMPORTANT_ITEMS
             and not folder_name.startswith("VictoryRoadKanto")
@@ -281,7 +275,6 @@ def add_fishing_feather_locations(
     locations: dict[str, list[ItemLocation]],
     item_constants: set[str],
 ) -> None:
-    """Add the feather pool shared by all three fishing rods."""
     source_path = REPO_ROOT / "src/wild_encounter.c"
     try:
         source_text = read(source_path)
@@ -303,7 +296,6 @@ def add_super_rod_item_locations(
     locations: dict[str, list[ItemLocation]],
     item_constants: set[str],
 ) -> None:
-    """Add bonus items drawn after a successful Super Rod catch."""
     source_path = REPO_ROOT / "src/wild_encounter.c"
     try:
         source_text = read(source_path)
@@ -325,7 +317,6 @@ def add_bug_contest_reward_locations(
     locations: dict[str, list[ItemLocation]],
     item_constants: set[str],
 ) -> None:
-    """Add the selectable evolution-stone prizes awarded by contest placing."""
     source_path = REPO_ROOT / "data/scripts/bug_contest.inc"
     try:
         source_text = read(source_path)

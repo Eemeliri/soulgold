@@ -1,5 +1,3 @@
-"""Parse special overworld sources for obtainable Pokemon forms."""
-
 from __future__ import annotations
 
 import json
@@ -34,7 +32,6 @@ def add_rotom_form_change_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Point alternate Rotom forms to their Goldenrod appliance location."""
     map_dir = REPO_ROOT / "data" / "maps" / ROTOM_APARTMENT_MAP
     try:
         map_data = json.loads(read(map_dir / "map.json"))

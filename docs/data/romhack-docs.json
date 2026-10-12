@@ -754,6 +754,7 @@
         "ABILITY_LEAF_GUARD",
         "ABILITY_CHANNEL_EARTH"
       ],
+      "formLabel": "Venusaur Mega",
       "sprite": "sprites/pokemon/venusaur_mega.png",
       "shinySprite": "sprites/pokemon/venusaur_mega_shiny.png",
       "levelUp": [
@@ -1698,6 +1699,7 @@
         "ABILITY_ROCK_HEAD",
         "ABILITY_RECKLESS"
       ],
+      "formLabel": "Charizard X",
       "sprite": "sprites/pokemon/charizard_mega_x.png",
       "shinySprite": "sprites/pokemon/charizard_mega_x_shiny.png",
       "levelUp": [
@@ -1928,6 +1930,7 @@
         "ABILITY_BERSERK",
         "ABILITY_ASH_ASSETS"
       ],
+      "formLabel": "Charizard Y",
       "sprite": "sprites/pokemon/charizard_mega_y.png",
       "shinySprite": "sprites/pokemon/charizard_mega_y_shiny.png",
       "levelUp": [
@@ -2891,6 +2894,7 @@
         "ABILITY_BULLETPROOF",
         "ABILITY_SHEER_FORCE"
       ],
+      "formLabel": "Blastoise Mega",
       "sprite": "sprites/pokemon/blastoise_mega.png",
       "shinySprite": "sprites/pokemon/blastoise_mega_shiny.png",
       "levelUp": [
@@ -3519,6 +3523,7 @@
         "ABILITY_MYSTIC_FORCE",
         "ABILITY_PSYCHIC_SURGE"
       ],
+      "formLabel": "Butterfree Mega",
       "sprite": "sprites/pokemon/butterfree_gmax.png",
       "shinySprite": "sprites/pokemon/butterfree_gmax_shiny.png",
       "levelUp": [
@@ -4145,6 +4150,7 @@
         "ABILITY_MERCILESS",
         "ABILITY_CORROSION"
       ],
+      "formLabel": "Beedrill Mega",
       "sprite": "sprites/pokemon/beedrill_mega.png",
       "shinySprite": "sprites/pokemon/beedrill_mega_shiny.png",
       "levelUp": [
@@ -5022,6 +5028,7 @@
         "ABILITY_WINDBURST",
         "ABILITY_DELTA_STREAM"
       ],
+      "formLabel": "Pidgeot Mega",
       "sprite": "sprites/pokemon/pidgeot_mega.png",
       "shinySprite": "sprites/pokemon/pidgeot_mega_shiny.png",
       "levelUp": [
@@ -7744,6 +7751,7 @@
         "ABILITY_ROCK_HEAD",
         "ABILITY_PLASMA_SURGE"
       ],
+      "formLabel": "Raichu X",
       "sprite": "sprites/pokemon/raichu_mega_x.png",
       "shinySprite": "sprites/pokemon/raichu_mega_x_shiny.png",
       "levelUp": [
@@ -7971,6 +7979,7 @@
         "ABILITY_SPEED_BOOST",
         "ABILITY_PLASMA_SURGE"
       ],
+      "formLabel": "Raichu Y",
       "sprite": "sprites/pokemon/raichu_mega_y.png",
       "shinySprite": "sprites/pokemon/raichu_mega_y_shiny.png",
       "levelUp": [
@@ -11162,6 +11171,7 @@
         "ABILITY_FAIRY_AURA",
         "ABILITY_PIXILATE"
       ],
+      "formLabel": "Clefable Mega",
       "sprite": "sprites/pokemon/clefable_mega.png",
       "shinySprite": "sprites/pokemon/clefable_mega_shiny.png",
       "levelUp": [
@@ -19679,6 +19689,7 @@
         "ABILITY_LEVITATE",
         "ABILITY_INSOMNIA"
       ],
+      "formLabel": "Alakazam Mega",
       "sprite": "sprites/pokemon/alakazam_mega.png",
       "shinySprite": "sprites/pokemon/alakazam_mega_shiny.png",
       "levelUp": [
@@ -20648,6 +20659,7 @@
         "ABILITY_DEFIANT",
         "ABILITY_TITAN_GRIP"
       ],
+      "formLabel": "Machamp Mega",
       "sprite": "sprites/pokemon/machamp_gmax.png",
       "shinySprite": "sprites/pokemon/machamp_gmax_shiny.png",
       "levelUp": [
@@ -21543,6 +21555,7 @@
         "ABILITY_CORROSION",
         "ABILITY_HEATPROOF"
       ],
+      "formLabel": "Victreebel Mega",
       "sprite": "sprites/pokemon/victreebel_mega.png",
       "shinySprite": "sprites/pokemon/victreebel_mega_shiny.png",
       "levelUp": [
@@ -25794,6 +25807,7 @@
         "ABILITY_STAMINA",
         "ABILITY_THICK_FAT"
       ],
+      "formLabel": "Slowbro Mega",
       "sprite": "sprites/pokemon/slowbro_mega.png",
       "shinySprite": "sprites/pokemon/slowbro_mega_shiny.png",
       "levelUp": [
@@ -30028,6 +30042,7 @@
         "ABILITY_CURSED_BODY",
         "ABILITY_LEVITATE"
       ],
+      "formLabel": "Gengar Mega",
       "sprite": "sprites/pokemon/gengar_mega.png",
       "shinySprite": "sprites/pokemon/gengar_mega_shiny.png",
       "levelUp": [
@@ -35634,6 +35649,7 @@
         "ABILITY_ANGER_POINT",
         "ABILITY_INNER_FOCUS"
       ],
+      "formLabel": "Kangaskhan Mega",
       "sprite": "sprites/pokemon/kangaskhan_mega.png",
       "shinySprite": "sprites/pokemon/kangaskhan_mega_shiny.png",
       "levelUp": [
@@ -37181,6 +37197,7 @@
         "ABILITY_TINTED_LENS",
         "ABILITY_WONDER_SKIN"
       ],
+      "formLabel": "Starmie Mega",
       "sprite": "sprites/pokemon/starmie_mega.png",
       "shinySprite": "sprites/pokemon/starmie_mega_shiny.png",
       "levelUp": [
@@ -38839,6 +38856,7 @@
         "ABILITY_NO_GUARD",
         "ABILITY_SHARPNESS"
       ],
+      "formLabel": "Pinsir Mega",
       "sprite": "sprites/pokemon/pinsir_mega.png",
       "shinySprite": "sprites/pokemon/pinsir_mega_shiny.png",
       "levelUp": [
@@ -41609,6 +41627,7 @@
         "ABILITY_LEVITATE",
         "ABILITY_SHEER_FORCE"
       ],
+      "formLabel": "Gyarados Mega",
       "sprite": "sprites/pokemon/gyarados_mega.png",
       "shinySprite": "sprites/pokemon/gyarados_mega_shiny.png",
       "levelUp": [
@@ -42053,6 +42072,7 @@
         "ABILITY_LIQUID_VOICE",
         "ABILITY_ICE_SCALES"
       ],
+      "formLabel": "Lapras Mega",
       "sprite": "sprites/pokemon/lapras_gmax.png",
       "shinySprite": "sprites/pokemon/lapras_gmax_shiny.png",
       "levelUp": [
@@ -43924,11 +43944,11 @@
           "move": "MOVE_STONE_EDGE"
         },
         {
-          "level": 64,
+          "level": 65,
           "move": "MOVE_AQUA_CUTTER"
         },
         {
-          "level": 75,
+          "level": 70,
           "move": "MOVE_STONE_AXE"
         }
       ],
@@ -44579,6 +44599,7 @@
         "ABILITY_ROCK_HEAD",
         "ABILITY_LAST_STAND"
       ],
+      "formLabel": "Aerodactyl Mega",
       "sprite": "sprites/pokemon/aerodactyl_mega.png",
       "shinySprite": "sprites/pokemon/aerodactyl_mega_shiny.png",
       "levelUp": [
@@ -45100,6 +45121,7 @@
         "ABILITY_SEED_SOWER",
         "ABILITY_ROOTED"
       ],
+      "formLabel": "Snorlax Mega",
       "sprite": "sprites/pokemon/snorlax_gmax.png",
       "shinySprite": "sprites/pokemon/snorlax_gmax_shiny.png",
       "levelUp": [
@@ -47365,6 +47387,7 @@
         "ABILITY_MARVEL_SCALE",
         "ABILITY_GUARDIAN"
       ],
+      "formLabel": "Dragonite Mega",
       "sprite": "sprites/pokemon/dragonite_mega.png",
       "shinySprite": "sprites/pokemon/dragonite_mega_shiny.png",
       "levelUp": [
@@ -47881,6 +47904,7 @@
         "ABILITY_STAMINA",
         "ABILITY_LONG_REACH"
       ],
+      "formLabel": "Mewtwo X",
       "sprite": "sprites/pokemon/mewtwo_mega_x.png",
       "shinySprite": "sprites/pokemon/mewtwo_mega_x_shiny.png",
       "levelUp": [
@@ -48141,6 +48165,7 @@
         "ABILITY_BERSERK",
         "ABILITY_LEVITATE"
       ],
+      "formLabel": "Mewtwo Y",
       "sprite": "sprites/pokemon/mewtwo_mega_y.png",
       "shinySprite": "sprites/pokemon/mewtwo_mega_y_shiny.png",
       "levelUp": [
@@ -49503,6 +49528,7 @@
         "ABILITY_TRIAGE",
         "ABILITY_PIXILATE"
       ],
+      "formLabel": "Meganium Mega",
       "sprite": "sprites/pokemon/meganium_mega.png",
       "shinySprite": "sprites/pokemon/meganium_mega_shiny.png",
       "levelUp": [
@@ -50684,6 +50710,7 @@
         "ABILITY_FLAME_BODY",
         "ABILITY_FLAME_RUSH"
       ],
+      "formLabel": "Typhlosion Mega",
       "sprite": "sprites/pokemon/typhlosion_mega.png",
       "shinySprite": "sprites/pokemon/typhlosion_mega_shiny.png",
       "levelUp": [
@@ -51666,6 +51693,7 @@
         "ABILITY_INTIMIDATE",
         "ABILITY_TOUGH_CLAWS"
       ],
+      "formLabel": "Feraligatr Mega",
       "sprite": "sprites/pokemon/feraligatr_mega.png",
       "shinySprite": "sprites/pokemon/feraligatr_mega_shiny.png",
       "levelUp": [
@@ -56538,6 +56566,7 @@
         "ABILITY_FLUFFY",
         "ABILITY_BATTERY"
       ],
+      "formLabel": "Ampharos Mega",
       "sprite": "sprites/pokemon/ampharos_mega.png",
       "shinySprite": "sprites/pokemon/ampharos_mega_shiny.png",
       "levelUp": [
@@ -63136,6 +63165,7 @@
         "ABILITY_BURROWER",
         "ABILITY_SIEGEBREAKER"
       ],
+      "formLabel": "Steelix Mega",
       "sprite": "sprites/pokemon/steelix_mega.png",
       "shinySprite": "sprites/pokemon/steelix_mega_shiny.png",
       "levelUp": [
@@ -64243,6 +64273,7 @@
         "ABILITY_IRON_FIST",
         "ABILITY_INTIMIDATE"
       ],
+      "formLabel": "Scizor Mega",
       "sprite": "sprites/pokemon/scizor_mega.png",
       "shinySprite": "sprites/pokemon/scizor_mega_shiny.png",
       "levelUp": [
@@ -64701,6 +64732,7 @@
         "ABILITY_MOXIE",
         "ABILITY_TOUGH_CLAWS"
       ],
+      "formLabel": "Heracross Mega",
       "sprite": "sprites/pokemon/heracross_mega.png",
       "shinySprite": "sprites/pokemon/heracross_mega_shiny.png",
       "levelUp": [
@@ -67745,6 +67777,7 @@
         "ABILITY_MIRROR_ARMOR",
         "ABILITY_PHALANX"
       ],
+      "formLabel": "Skarmory Mega",
       "sprite": "sprites/pokemon/skarmory_mega.png",
       "shinySprite": "sprites/pokemon/skarmory_mega_shiny.png",
       "levelUp": [
@@ -68418,6 +68451,7 @@
         "ABILITY_DARK_AURA",
         "ABILITY_BRIMSTONE"
       ],
+      "formLabel": "Houndoom Mega",
       "sprite": "sprites/pokemon/houndoom_mega.png",
       "shinySprite": "sprites/pokemon/houndoom_mega_shiny.png",
       "levelUp": [
@@ -72657,6 +72691,7 @@
         "ABILITY_SAND_FORCE",
         "ABILITY_SOLID_ROCK"
       ],
+      "formLabel": "Tyranitar Mega",
       "sprite": "sprites/pokemon/tyranitar_mega.png",
       "shinySprite": "sprites/pokemon/tyranitar_mega_shiny.png",
       "levelUp": [
@@ -73078,8 +73113,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73087,8 +73122,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -73322,8 +73357,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 80,
-          "maxLevel": 80,
+          "minLevel": 65,
+          "maxLevel": 65,
           "rate": null
         },
         {
@@ -73331,8 +73366,8 @@
           "name": "Whirl Islands Lugia Chamber",
           "time": "",
           "method": "Legendary encounter",
-          "minLevel": 65,
-          "maxLevel": 65,
+          "minLevel": 80,
+          "maxLevel": 80,
           "rate": null
         }
       ],
@@ -74634,6 +74669,7 @@
         "ABILITY_EFFECT_SPORE",
         "ABILITY_DRAGONS_MAW"
       ],
+      "formLabel": "Sceptile Mega",
       "sprite": "sprites/pokemon/sceptile_mega.png",
       "shinySprite": "sprites/pokemon/sceptile_mega_shiny.png",
       "levelUp": [
@@ -75678,6 +75714,7 @@
         "ABILITY_RECKLESS",
         "ABILITY_IRON_FIST"
       ],
+      "formLabel": "Blaziken Mega",
       "sprite": "sprites/pokemon/blaziken_mega.png",
       "shinySprite": "sprites/pokemon/blaziken_mega_shiny.png",
       "levelUp": [
@@ -76710,6 +76747,7 @@
         "ABILITY_EARTH_EATER",
         "ABILITY_STAMINA"
       ],
+      "formLabel": "Swampert Mega",
       "sprite": "sprites/pokemon/swampert_mega.png",
       "shinySprite": "sprites/pokemon/swampert_mega_shiny.png",
       "levelUp": [
@@ -79149,6 +79187,7 @@
         "ABILITY_MAGIC_GUARD",
         "ABILITY_FRIEND_GUARD"
       ],
+      "formLabel": "Gardevoir Mega",
       "sprite": "sprites/pokemon/gardevoir_mega.png",
       "shinySprite": "sprites/pokemon/gardevoir_mega_shiny.png",
       "levelUp": [
@@ -79394,6 +79433,7 @@
         "ABILITY_FILTER",
         "ABILITY_SPECTRAL"
       ],
+      "formLabel": "Gardevoir Z",
       "sprite": "sprites/pokemon/gardevoir_mega_z.png",
       "shinySprite": "sprites/pokemon/gardevoir_mega_z_shiny.png",
       "levelUp": [
@@ -82203,6 +82243,7 @@
         "ABILITY_SHADOW_SHIELD",
         "ABILITY_PRISM_ARMOR"
       ],
+      "formLabel": "Sableye Mega",
       "sprite": "sprites/pokemon/sableye_mega.png",
       "shinySprite": "sprites/pokemon/sableye_mega_shiny.png",
       "levelUp": [
@@ -82736,6 +82777,7 @@
         "ABILITY_CONSUME",
         "ABILITY_STRONG_JAW"
       ],
+      "formLabel": "Mawile Mega",
       "sprite": "sprites/pokemon/mawile_mega.png",
       "shinySprite": "sprites/pokemon/mawile_mega_shiny.png",
       "levelUp": [
@@ -83703,6 +83745,7 @@
         "ABILITY_STAMINA",
         "ABILITY_SIEGEBREAKER"
       ],
+      "formLabel": "Aggron Mega",
       "sprite": "sprites/pokemon/aggron_mega.png",
       "shinySprite": "sprites/pokemon/aggron_mega_shiny.png",
       "levelUp": [
@@ -84523,6 +84566,7 @@
         "ABILITY_IRON_FIST",
         "ABILITY_MINDS_EYE"
       ],
+      "formLabel": "Medicham Mega",
       "sprite": "sprites/pokemon/medicham_mega.png",
       "shinySprite": "sprites/pokemon/medicham_mega_shiny.png",
       "levelUp": [
@@ -85213,6 +85257,7 @@
         "ABILITY_TRANSISTOR",
         "ABILITY_GUARD_DOG"
       ],
+      "formLabel": "Manectric Mega",
       "sprite": "sprites/pokemon/manectric_mega.png",
       "shinySprite": "sprites/pokemon/manectric_mega_shiny.png",
       "levelUp": [
@@ -86276,6 +86321,7 @@
         "ABILITY_SPEED_BOOST",
         "ABILITY_SNIPER"
       ],
+      "formLabel": "Sharpedo Mega",
       "sprite": "sprites/pokemon/sharpedo_mega.png",
       "shinySprite": "sprites/pokemon/sharpedo_mega_shiny.png",
       "levelUp": [
@@ -86959,6 +87005,7 @@
         "ABILITY_SIMPLE",
         "ABILITY_EARTH_EATER"
       ],
+      "formLabel": "Camerupt Mega",
       "sprite": "sprites/pokemon/camerupt_mega.png",
       "shinySprite": "sprites/pokemon/camerupt_mega_shiny.png",
       "levelUp": [
@@ -89140,6 +89187,7 @@
         "ABILITY_FILTER",
         "ABILITY_DRAGONS_MAW"
       ],
+      "formLabel": "Altaria Mega",
       "sprite": "sprites/pokemon/altaria_mega.png",
       "shinySprite": "sprites/pokemon/altaria_mega_shiny.png",
       "levelUp": [
@@ -91822,6 +91870,7 @@
         "ABILITY_VOIDTOUCH",
         "ABILITY_TOUGH_CLAWS"
       ],
+      "formLabel": "Banette Mega",
       "sprite": "sprites/pokemon/banette_mega.png",
       "shinySprite": "sprites/pokemon/banette_mega_shiny.png",
       "levelUp": [
@@ -92960,6 +93009,7 @@
         "ABILITY_PUNK_ROCK",
         "ABILITY_PSYCHIC_SURGE"
       ],
+      "formLabel": "Chimecho Mega",
       "sprite": "sprites/pokemon/chimecho_mega.png",
       "shinySprite": "sprites/pokemon/chimecho_mega_shiny.png",
       "levelUp": [
@@ -93451,6 +93501,7 @@
         "ABILITY_STAKEOUT",
         "ABILITY_DARK_AURA"
       ],
+      "formLabel": "Absol Mega",
       "sprite": "sprites/pokemon/absol_mega.png",
       "shinySprite": "sprites/pokemon/absol_mega_shiny.png",
       "levelUp": [
@@ -93686,6 +93737,7 @@
         "ABILITY_BRAND_OF_TORMENT",
         "ABILITY_MAGIC_BOUNCE"
       ],
+      "formLabel": "Absol Z",
       "sprite": "sprites/pokemon/absol_mega_z.png",
       "shinySprite": "sprites/pokemon/absol_mega_z_shiny.png",
       "levelUp": [
@@ -94681,6 +94733,7 @@
         "ABILITY_ICE_SCALES",
         "ABILITY_MOXIE"
       ],
+      "formLabel": "Glalie Mega",
       "sprite": "sprites/pokemon/glalie_mega.png",
       "shinySprite": "sprites/pokemon/glalie_mega_shiny.png",
       "levelUp": [
@@ -96373,6 +96426,7 @@
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_RIVALRY"
       ],
+      "formLabel": "Salamence Mega",
       "sprite": "sprites/pokemon/salamence_mega.png",
       "shinySprite": "sprites/pokemon/salamence_mega_shiny.png",
       "levelUp": [
@@ -97182,6 +97236,7 @@
         "ABILITY_BULLETPROOF",
         "ABILITY_PHALANX"
       ],
+      "formLabel": "Metagross Mega",
       "sprite": "sprites/pokemon/metagross_mega.png",
       "shinySprite": "sprites/pokemon/metagross_mega_shiny.png",
       "levelUp": [
@@ -98233,6 +98288,7 @@
         "ABILITY_AIR_LOCK",
         "ABILITY_MAGIC_GUARD"
       ],
+      "formLabel": "Latias Mega",
       "sprite": "sprites/pokemon/latias_mega.png",
       "shinySprite": "sprites/pokemon/latias_mega_shiny.png",
       "levelUp": [
@@ -98700,6 +98756,7 @@
         "ABILITY_DRAGONS_MAW",
         "ABILITY_MAGIC_BOUNCE"
       ],
+      "formLabel": "Latios Mega",
       "sprite": "sprites/pokemon/latios_mega.png",
       "shinySprite": "sprites/pokemon/latios_mega_shiny.png",
       "levelUp": [
@@ -99900,6 +99957,7 @@
         "ABILITY_DRAGONS_MAW",
         "ABILITY_SCREEN_CLEANER"
       ],
+      "formLabel": "Rayquaza Mega",
       "sprite": "sprites/pokemon/rayquaza_mega.png",
       "shinySprite": "sprites/pokemon/rayquaza_mega_shiny.png",
       "levelUp": [
@@ -103919,6 +103977,7 @@
         "ABILITY_BIG_PECKS",
         "ABILITY_INTIMIDATE"
       ],
+      "formLabel": "Staraptor Mega",
       "sprite": "sprites/pokemon/staraptor_mega.png",
       "shinySprite": "sprites/pokemon/staraptor_mega_shiny.png",
       "levelUp": [
@@ -108236,6 +108295,7 @@
         "ABILITY_LUNAR_CYCLE",
         "ABILITY_STEEL_FEET"
       ],
+      "formLabel": "Lopunny Mega",
       "sprite": "sprites/pokemon/lopunny_mega.png",
       "shinySprite": "sprites/pokemon/lopunny_mega_shiny.png",
       "levelUp": [
@@ -108815,6 +108875,10 @@
         {
           "level": 65,
           "move": "MOVE_COMEUPPANCE"
+        },
+        {
+          "level": 70,
+          "move": "MOVE_OBLIVION_WING"
         }
       ],
       "tmhm": [
@@ -110863,6 +110927,7 @@
         "ABILITY_ROUGH_SKIN",
         "ABILITY_SAND_RUSH"
       ],
+      "formLabel": "Garchomp Mega",
       "sprite": "sprites/pokemon/garchomp_mega.png",
       "shinySprite": "sprites/pokemon/garchomp_mega_shiny.png",
       "levelUp": [
@@ -111064,6 +111129,7 @@
         "ABILITY_SAND_VEIL",
         "ABILITY_MUDSLIDE"
       ],
+      "formLabel": "Garchomp Z",
       "sprite": "sprites/pokemon/garchomp_mega_z.png",
       "shinySprite": "sprites/pokemon/garchomp_mega_z_shiny.png",
       "levelUp": [
@@ -112068,6 +112134,7 @@
         "ABILITY_QUICK_FEET",
         "ABILITY_AURA_SHIELD"
       ],
+      "formLabel": "Lucario Mega",
       "sprite": "sprites/pokemon/lucario_mega.png",
       "shinySprite": "sprites/pokemon/lucario_mega_shiny.png",
       "levelUp": [
@@ -112327,6 +112394,7 @@
         "ABILITY_QUICK_FEET",
         "ABILITY_MINDS_EYE"
       ],
+      "formLabel": "Lucario Z",
       "sprite": "sprites/pokemon/lucario_mega_z.png",
       "shinySprite": "sprites/pokemon/lucario_mega_z_shiny.png",
       "levelUp": [
@@ -115395,6 +115463,7 @@
         "ABILITY_THICK_FAT",
         "ABILITY_ICE_SCALES"
       ],
+      "formLabel": "Abomasnow Mega",
       "sprite": "sprites/pokemon/abomasnow_mega.png",
       "shinySprite": "sprites/pokemon/abomasnow_mega_shiny.png",
       "levelUp": [
@@ -119779,6 +119848,7 @@
         "ABILITY_TOUGH_CLAWS",
         "ABILITY_MINDS_EYE"
       ],
+      "formLabel": "Gallade Mega",
       "sprite": "sprites/pokemon/gallade_mega.png",
       "shinySprite": "sprites/pokemon/gallade_mega_shiny.png",
       "levelUp": [
@@ -120951,6 +121021,7 @@
         "ABILITY_GLACIAL",
         "ABILITY_SPECTRAL"
       ],
+      "formLabel": "Froslass Mega",
       "sprite": "sprites/pokemon/froslass_mega.png",
       "shinySprite": "sprites/pokemon/froslass_mega_shiny.png",
       "levelUp": [
@@ -124106,6 +124177,7 @@
         "ABILITY_MAGMA_ARMOR",
         "ABILITY_EARTH_EATER"
       ],
+      "formLabel": "Heatran Mega",
       "sprite": "sprites/pokemon/heatran_mega.png",
       "shinySprite": "sprites/pokemon/heatran_mega_shiny.png",
       "levelUp": [
@@ -125694,6 +125766,7 @@
         "ABILITY_BRAND_OF_TORMENT",
         "ABILITY_LEVITATE"
       ],
+      "formLabel": "Darkrai Mega",
       "sprite": "sprites/pokemon/darkrai_mega.png",
       "shinySprite": "sprites/pokemon/darkrai_mega_shiny.png",
       "levelUp": [
@@ -128057,6 +128130,7 @@
         "ABILITY_MIRAGE",
         "ABILITY_ROCK_HEAD"
       ],
+      "formLabel": "Emboar Mega",
       "sprite": "sprites/pokemon/emboar_mega.png",
       "shinySprite": "sprites/pokemon/emboar_mega_shiny.png",
       "levelUp": [
@@ -129624,6 +129698,7 @@
         "ABILITY_CLEAR_BODY",
         "ABILITY_SHARPNESS"
       ],
+      "formLabel": "Excadrill Mega",
       "sprite": "sprites/pokemon/excadrill_mega.png",
       "shinySprite": "sprites/pokemon/excadrill_mega_shiny.png",
       "levelUp": [
@@ -130066,6 +130141,7 @@
         "ABILITY_FRIEND_GUARD",
         "ABILITY_TRIAGE"
       ],
+      "formLabel": "Audino Mega",
       "sprite": "sprites/pokemon/audino_mega.png",
       "shinySprite": "sprites/pokemon/audino_mega_shiny.png",
       "levelUp": [
@@ -131550,6 +131626,7 @@
         "ABILITY_SWARM_INSTINCT",
         "ABILITY_MERCILESS"
       ],
+      "formLabel": "Scolipede Mega",
       "sprite": "sprites/pokemon/scolipede_mega.png",
       "shinySprite": "sprites/pokemon/scolipede_mega_shiny.png",
       "levelUp": [
@@ -136625,6 +136702,7 @@
         "ABILITY_MOXIE",
         "ABILITY_DAMP"
       ],
+      "formLabel": "Scrafty Mega",
       "sprite": "sprites/pokemon/scrafty_mega.png",
       "shinySprite": "sprites/pokemon/scrafty_mega_shiny.png",
       "levelUp": [
@@ -141724,6 +141802,7 @@
         "ABILITY_CONSUME",
         "ABILITY_OVERLOAD"
       ],
+      "formLabel": "Eelektross Mega",
       "sprite": "sprites/pokemon/eelektross_mega.png",
       "shinySprite": "sprites/pokemon/eelektross_mega_shiny.png",
       "levelUp": [
@@ -142567,6 +142646,7 @@
         "ABILITY_UNAWARE",
         "ABILITY_FLASH_FIRE"
       ],
+      "formLabel": "Chandelure Mega",
       "sprite": "sprites/pokemon/chandelure_mega.png",
       "shinySprite": "sprites/pokemon/chandelure_mega_shiny.png",
       "levelUp": [
@@ -145019,6 +145099,7 @@
         "ABILITY_SPECTRAL_DRAIN",
         "ABILITY_MYSTIC_FORCE"
       ],
+      "formLabel": "Golurk Mega",
       "sprite": "sprites/pokemon/golurk_mega.png",
       "shinySprite": "sprites/pokemon/golurk_mega_shiny.png",
       "levelUp": [
@@ -153263,6 +153344,7 @@
         "ABILITY_IRON_BARBS",
         "ABILITY_BATTLE_FERVOR"
       ],
+      "formLabel": "Chesnaught Mega",
       "sprite": "sprites/pokemon/chesnaught_mega.png",
       "shinySprite": "sprites/pokemon/chesnaught_mega_shiny.png",
       "levelUp": [
@@ -154174,6 +154256,7 @@
         "ABILITY_UNCANNY",
         "ABILITY_MAGIC_GUARD"
       ],
+      "formLabel": "Delphox Mega",
       "sprite": "sprites/pokemon/delphox_mega.png",
       "shinySprite": "sprites/pokemon/delphox_mega_shiny.png",
       "levelUp": [
@@ -155596,6 +155679,7 @@
         "ABILITY_SHARPNESS",
         "ABILITY_MANEUVERABILITY"
       ],
+      "formLabel": "Greninja Mega",
       "sprite": "sprites/pokemon/greninja_mega.png",
       "shinySprite": "sprites/pokemon/greninja_mega_shiny.png",
       "levelUp": [
@@ -156862,6 +156946,7 @@
         "ABILITY_BREAKING_PRESENCE",
         "ABILITY_ADRENALINE"
       ],
+      "formLabel": "Pyroar Mega",
       "sprite": "sprites/pokemon/pyroar_mega.png",
       "shinySprite": "sprites/pokemon/pyroar_mega_shiny.png",
       "levelUp": [
@@ -157667,6 +157752,7 @@
         "ABILITY_ARENA_TRAP",
         "ABILITY_DAZZLING"
       ],
+      "formLabel": "Floette Mega",
       "sprite": "sprites/pokemon/floette_mega.png",
       "shinySprite": "sprites/pokemon/floette_mega_shiny.png",
       "levelUp": [
@@ -159085,6 +159171,7 @@
         "ABILITY_GRAVITY_WELL",
         "ABILITY_PRANKSTER"
       ],
+      "formLabel": "Meowstic Mega",
       "sprite": "sprites/pokemon/meowstic_m_mega.png",
       "shinySprite": "sprites/pokemon/meowstic_m_mega_shiny.png",
       "levelUp": [
@@ -159298,6 +159385,7 @@
         "ABILITY_PSYCHIC_SURGE",
         "ABILITY_COMPETITIVE"
       ],
+      "formLabel": "Meowstic Mega",
       "sprite": "sprites/pokemon/meowstic_f_mega.png",
       "shinySprite": "sprites/pokemon/meowstic_f_mega_shiny.png",
       "levelUp": [
@@ -160724,6 +160812,7 @@
         "ABILITY_INKY",
         "ABILITY_TINTED_LENS"
       ],
+      "formLabel": "Malamar Mega",
       "sprite": "sprites/pokemon/malamar_mega.png",
       "shinySprite": "sprites/pokemon/malamar_mega_shiny.png",
       "levelUp": [
@@ -161429,6 +161518,7 @@
         "ABILITY_STAMINA",
         "ABILITY_SHARPNESS"
       ],
+      "formLabel": "Barbaracle Mega",
       "sprite": "sprites/pokemon/barbaracle_mega.png",
       "shinySprite": "sprites/pokemon/barbaracle_mega_shiny.png",
       "levelUp": [
@@ -162174,6 +162264,7 @@
         "ABILITY_ADAPTABILITY",
         "ABILITY_STORM_DRAIN"
       ],
+      "formLabel": "Dragalge Mega",
       "sprite": "sprites/pokemon/dragalge_mega.png",
       "shinySprite": "sprites/pokemon/dragalge_mega_shiny.png",
       "levelUp": [
@@ -164219,6 +164310,7 @@
         "ABILITY_SCRAPPY",
         "ABILITY_BREAKING_PRESENCE"
       ],
+      "formLabel": "Hawlucha Mega",
       "sprite": "sprites/pokemon/hawlucha_mega.png",
       "shinySprite": "sprites/pokemon/hawlucha_mega_shiny.png",
       "levelUp": [
@@ -168811,6 +168903,7 @@
         "ABILITY_FILTER",
         "ABILITY_STAMINA"
       ],
+      "formLabel": "Zygarde Mega",
       "sprite": "sprites/pokemon/zygarde_mega.png",
       "shinySprite": "sprites/pokemon/zygarde_mega_shiny.png",
       "levelUp": [
@@ -169215,6 +169308,7 @@
         "ABILITY_SOLID_ROCK",
         "ABILITY_GUARD_STANCE"
       ],
+      "formLabel": "Diancie Mega",
       "sprite": "sprites/pokemon/diancie_mega.png",
       "shinySprite": "sprites/pokemon/diancie_mega_shiny.png",
       "levelUp": [
@@ -172245,6 +172339,7 @@
         "ABILITY_SOOTHING",
         "ABILITY_AROMA_VEIL"
       ],
+      "formLabel": "Primarina Mega",
       "sprite": "sprites/pokemon/primarina_mega.png",
       "shinySprite": "sprites/pokemon/primarina_mega_shiny.png",
       "levelUp": [
@@ -173501,6 +173596,7 @@
         "ABILITY_STEADFAST",
         "ABILITY_ANGER_POINT"
       ],
+      "formLabel": "Crabominable Mega",
       "sprite": "sprites/pokemon/crabominable_mega.png",
       "shinySprite": "sprites/pokemon/crabominable_mega_shiny.png",
       "levelUp": [
@@ -176889,6 +176985,7 @@
         "ABILITY_SWIFT_SWIM",
         "ABILITY_INDOMITABLE"
       ],
+      "formLabel": "Golisopod Mega",
       "sprite": "sprites/pokemon/golisopod_mega.png",
       "shinySprite": "sprites/pokemon/golisopod_mega_shiny.png",
       "levelUp": [
@@ -177790,6 +177887,7 @@
         "ABILITY_OWN_TEMPO",
         "ABILITY_SCRAPPY"
       ],
+      "formLabel": "Drampa Mega",
       "sprite": "sprites/pokemon/drampa_mega.png",
       "shinySprite": "sprites/pokemon/drampa_mega_shiny.png",
       "levelUp": [
@@ -181521,6 +181619,7 @@
         "ABILITY_HEALER",
         "ABILITY_AROMA_VEIL"
       ],
+      "formLabel": "Magearna Mega",
       "sprite": "sprites/pokemon/magearna_mega.png",
       "shinySprite": "sprites/pokemon/magearna_mega_shiny.png",
       "levelUp": [
@@ -181753,6 +181852,7 @@
         "ABILITY_HEALER",
         "ABILITY_AROMA_VEIL"
       ],
+      "formLabel": "Magearna Mega",
       "sprite": "sprites/pokemon/magearna_original_mega.png",
       "shinySprite": "sprites/pokemon/magearna_original_mega_shiny.png",
       "levelUp": [
@@ -182766,6 +182866,7 @@
         "ABILITY_PLASMA_SURGE",
         "ABILITY_ELECTROMORPHOSIS"
       ],
+      "formLabel": "Zeraora Mega",
       "sprite": "sprites/pokemon/zeraora_mega.png",
       "shinySprite": "sprites/pokemon/zeraora_mega_shiny.png",
       "levelUp": [
@@ -183873,6 +183974,7 @@
         "ABILITY_ECHOING",
         "ABILITY_FORCE_RETURN"
       ],
+      "formLabel": "Rillaboom Mega",
       "sprite": "sprites/pokemon/rillaboom_gmax.png",
       "shinySprite": "sprites/pokemon/rillaboom_gmax_shiny.png",
       "levelUp": [
@@ -184648,6 +184750,7 @@
         "ABILITY_QUICK_FEET",
         "ABILITY_RECKLESS"
       ],
+      "formLabel": "Cinderace Mega",
       "sprite": "sprites/pokemon/cinderace_gmax.png",
       "shinySprite": "sprites/pokemon/cinderace_gmax_shiny.png",
       "levelUp": [
@@ -185406,6 +185509,7 @@
         "ABILITY_RAIN_DISH",
         "ABILITY_TRUESHOT_AURA"
       ],
+      "formLabel": "Inteleon Mega",
       "sprite": "sprites/pokemon/inteleon_gmax.png",
       "shinySprite": "sprites/pokemon/inteleon_gmax_shiny.png",
       "levelUp": [
@@ -186113,6 +186217,7 @@
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_WIND_RIDER"
       ],
+      "formLabel": "Corviknight Mega",
       "sprite": "sprites/pokemon/corviknight_gmax.png",
       "shinySprite": "sprites/pokemon/corviknight_gmax_shiny.png",
       "levelUp": [
@@ -187245,6 +187350,7 @@
         "ABILITY_ROUGH_SKIN",
         "ABILITY_BURROWER"
       ],
+      "formLabel": "Sandaconda Mega",
       "sprite": "sprites/pokemon/sandaconda_gmax.png",
       "shinySprite": "sprites/pokemon/sandaconda_gmax_shiny.png",
       "levelUp": [
@@ -188075,6 +188181,7 @@
         "ABILITY_POISON_TOUCH",
         "ABILITY_OVERLOAD"
       ],
+      "formLabel": "Toxtricity Mega",
       "sprite": "sprites/pokemon/toxtricity_amped_gmax.png",
       "shinySprite": "sprites/pokemon/toxtricity_amped_gmax_shiny.png",
       "levelUp": [
@@ -188294,6 +188401,7 @@
         "ABILITY_POISON_TOUCH",
         "ABILITY_OVERLOAD"
       ],
+      "formLabel": "Toxtricity Mega",
       "sprite": "sprites/pokemon/toxtricity_low_key_gmax.png",
       "shinySprite": "sprites/pokemon/toxtricity_low_key_gmax_shiny.png",
       "levelUp": [
@@ -188861,6 +188969,7 @@
         "ABILITY_MAGMA_ARMOR",
         "ABILITY_BRIMSTONE"
       ],
+      "formLabel": "Centiskorch Mega",
       "sprite": "sprites/pokemon/centiskorch_gmax.png",
       "shinySprite": "sprites/pokemon/centiskorch_gmax_shiny.png",
       "levelUp": [
@@ -192119,6 +192228,7 @@
         "ABILITY_BATTLE_ARMOR",
         "ABILITY_STEADFAST"
       ],
+      "formLabel": "Falinks Mega",
       "sprite": "sprites/pokemon/falinks_mega.png",
       "shinySprite": "sprites/pokemon/falinks_mega_shiny.png",
       "levelUp": [
@@ -193629,6 +193739,7 @@
         "ABILITY_AROMA_VEIL",
         "ABILITY_JUSTIFIED"
       ],
+      "formLabel": "Zacian (Crowned Sword)",
       "sprite": "sprites/pokemon/zacian_crowned.png",
       "shinySprite": "sprites/pokemon/zacian_crowned_shiny.png",
       "levelUp": [
@@ -193947,6 +194058,7 @@
         "ABILITY_SCRAPPY",
         "ABILITY_GUARDIAN"
       ],
+      "formLabel": "Zamazenta (Crowned Shield)",
       "sprite": "sprites/pokemon/zamazenta_crowned.png",
       "shinySprite": "sprites/pokemon/zamazenta_crowned_shiny.png",
       "levelUp": [
@@ -199786,6 +199898,7 @@
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
+      "formLabel": "Tatsugiri (Curly)",
       "sprite": "sprites/pokemon/tatsugiri_curly.png",
       "shinySprite": "sprites/pokemon/tatsugiri_curly_shiny.png",
       "levelUp": [
@@ -200009,6 +200122,7 @@
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
+      "formLabel": "Tatsugiri (Droopy)",
       "sprite": "sprites/pokemon/tatsugiri_droopy.png",
       "shinySprite": "sprites/pokemon/tatsugiri_droopy_shiny.png",
       "levelUp": [
@@ -200150,6 +200264,7 @@
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
+      "formLabel": "Tatsugiri (Stretchy)",
       "sprite": "sprites/pokemon/tatsugiri_stretchy.png",
       "shinySprite": "sprites/pokemon/tatsugiri_stretchy_shiny.png",
       "levelUp": [
@@ -200293,6 +200408,7 @@
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
+      "formLabel": "Tatsugiri (Curly Mega)",
       "sprite": "sprites/pokemon/tatsugiri_curly_mega.png",
       "shinySprite": "sprites/pokemon/tatsugiri_curly_mega_shiny.png",
       "levelUp": [
@@ -200436,6 +200552,7 @@
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
+      "formLabel": "Tatsugiri (Droopy Mega)",
       "sprite": "sprites/pokemon/tatsugiri_droopy_mega.png",
       "shinySprite": "sprites/pokemon/tatsugiri_droopy_mega_shiny.png",
       "levelUp": [
@@ -200579,6 +200696,7 @@
         "ABILITY_INNER_FOCUS",
         "ABILITY_MARVEL_SCALE"
       ],
+      "formLabel": "Tatsugiri (Stretchy Mega)",
       "sprite": "sprites/pokemon/tatsugiri_stretchy_mega.png",
       "shinySprite": "sprites/pokemon/tatsugiri_stretchy_mega_shiny.png",
       "levelUp": [
@@ -202152,6 +202270,7 @@
         "ABILITY_LEAF_GUARD",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Teal Mask)",
       "sprite": "sprites/pokemon/ogerpon_teal.png",
       "shinySprite": "sprites/pokemon/ogerpon_teal_shiny.png",
       "levelUp": [
@@ -202338,6 +202457,7 @@
         "ABILITY_MENDING",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Wellspring Mask)",
       "sprite": "sprites/pokemon/ogerpon_wellspring.png",
       "shinySprite": "sprites/pokemon/ogerpon_wellspring_shiny.png",
       "levelUp": [
@@ -202514,6 +202634,7 @@
         "ABILITY_BLAZING_SUN",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Hearthflame Mask)",
       "sprite": "sprites/pokemon/ogerpon_hearthflame.png",
       "shinySprite": "sprites/pokemon/ogerpon_hearthflame_shiny.png",
       "levelUp": [
@@ -202690,6 +202811,7 @@
         "ABILITY_STONE_FACE",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Cornerstone Mask)",
       "sprite": "sprites/pokemon/ogerpon_cornerstone.png",
       "shinySprite": "sprites/pokemon/ogerpon_cornerstone_shiny.png",
       "levelUp": [
@@ -202867,6 +202989,7 @@
         "ABILITY_LEAF_GUARD",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Teal Mask)",
       "sprite": "sprites/pokemon/ogerpon_teal_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_teal_tera_shiny.png",
       "levelUp": [
@@ -203044,6 +203167,7 @@
         "ABILITY_MENDING",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Wellspring Mask)",
       "sprite": "sprites/pokemon/ogerpon_wellspring_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_wellspring_tera_shiny.png",
       "levelUp": [
@@ -203221,6 +203345,7 @@
         "ABILITY_BRIMSTONE",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Hearthflame Mask)",
       "sprite": "sprites/pokemon/ogerpon_hearthflame_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_hearthflame_tera_shiny.png",
       "levelUp": [
@@ -203398,6 +203523,7 @@
         "ABILITY_STONE_FACE",
         "ABILITY_OGRE_FORCE"
       ],
+      "formLabel": "Ogerpon (Cornerstone Mask)",
       "sprite": "sprites/pokemon/ogerpon_cornerstone_tera.png",
       "shinySprite": "sprites/pokemon/ogerpon_cornerstone_tera_shiny.png",
       "levelUp": [
@@ -204660,6 +204786,7 @@
         "ABILITY_ABYSSAL_VEIL",
         "ABILITY_MAIM_AND_MEND"
       ],
+      "formLabel": "Meowscarada Mega",
       "sprite": "sprites/pokemon/meowscarada_mega.png",
       "shinySprite": "sprites/pokemon/meowscarada_mega_shiny.png",
       "levelUp": [
@@ -208782,6 +208909,7 @@
         "ABILITY_NATURAL_CURE",
         "ABILITY_SEED_SOWER"
       ],
+      "formLabel": "Scovillain Mega",
       "sprite": "sprites/pokemon/scovillain_mega.png",
       "shinySprite": "sprites/pokemon/scovillain_mega_shiny.png",
       "levelUp": [
@@ -210851,6 +210979,7 @@
         "ABILITY_TOXIC_DEBRIS",
         "ABILITY_CORROSION"
       ],
+      "formLabel": "Glimmora Mega",
       "sprite": "sprites/pokemon/glimmora_mega.png",
       "shinySprite": "sprites/pokemon/glimmora_mega_shiny.png",
       "levelUp": [
@@ -215193,6 +215322,7 @@
         "ABILITY_PERMAFROST",
         "ABILITY_THICK_FAT"
       ],
+      "formLabel": "Baxcalibur Mega",
       "sprite": "sprites/pokemon/baxcalibur_mega.png",
       "shinySprite": "sprites/pokemon/baxcalibur_mega_shiny.png",
       "levelUp": [
@@ -266414,7 +266544,8 @@
         }
       ],
       "location": "Route 40 (Item ball)",
-      "slug": "tm01"
+      "slug": "tm01",
+      "moveSlug": "work-up"
     },
     {
       "kind": "TM",
@@ -266437,7 +266568,8 @@
         }
       ],
       "location": "Dragon's Den Cavern (Gift)",
-      "slug": "tm02"
+      "slug": "tm02",
+      "moveSlug": "dragon-claw"
     },
     {
       "kind": "TM",
@@ -266460,7 +266592,8 @@
         }
       ],
       "location": "Battle Factory Grounds (Item ball)",
-      "slug": "tm03"
+      "slug": "tm03",
+      "moveSlug": "psyshock"
     },
     {
       "kind": "TM",
@@ -266483,7 +266616,8 @@
         }
       ],
       "location": "Goldenrod City Underground Storage (Item ball)",
-      "slug": "tm04"
+      "slug": "tm04",
+      "moveSlug": "calm-mind"
     },
     {
       "kind": "TM",
@@ -266506,7 +266640,8 @@
         }
       ],
       "location": "Ecruteak City House 3 (Gift)",
-      "slug": "tm05"
+      "slug": "tm05",
+      "moveSlug": "hex"
     },
     {
       "kind": "TM",
@@ -266529,7 +266664,8 @@
         }
       ],
       "location": "Lost Woods (Item ball)",
-      "slug": "tm06"
+      "slug": "tm06",
+      "moveSlug": "toxic"
     },
     {
       "kind": "TM",
@@ -266552,7 +266688,8 @@
         }
       ],
       "location": "Mahogany Town Gym (Gift)",
-      "slug": "tm07"
+      "slug": "tm07",
+      "moveSlug": "hail"
     },
     {
       "kind": "TM",
@@ -266579,7 +266716,8 @@
         }
       ],
       "location": "Cianwood Gym (Gift); Dewford Town Gym (Gift)",
-      "slug": "tm08"
+      "slug": "tm08",
+      "moveSlug": "bulk-up"
     },
     {
       "kind": "TM",
@@ -266602,7 +266740,8 @@
         }
       ],
       "location": "Safari Zone Gate (Mart)",
-      "slug": "tm09"
+      "slug": "tm09",
+      "moveSlug": "venoshock"
     },
     {
       "kind": "TM",
@@ -266625,7 +266764,8 @@
         }
       ],
       "location": "Lake of Rage House 1 (Gift)",
-      "slug": "tm10"
+      "slug": "tm10",
+      "moveSlug": "hidden-power"
     },
     {
       "kind": "TM",
@@ -266648,7 +266788,8 @@
         }
       ],
       "location": "Ilex Forest (Item ball)",
-      "slug": "tm11"
+      "slug": "tm11",
+      "moveSlug": "sunny-day"
     },
     {
       "kind": "TM",
@@ -266671,7 +266812,8 @@
         }
       ],
       "location": "Burned Tower B1F (Item ball)",
-      "slug": "tm12"
+      "slug": "tm12",
+      "moveSlug": "taunt"
     },
     {
       "kind": "TM",
@@ -266694,7 +266836,8 @@
         }
       ],
       "location": "Goldenrod City Game Corner (Bought)",
-      "slug": "tm13"
+      "slug": "tm13",
+      "moveSlug": "ice-beam"
     },
     {
       "kind": "TM",
@@ -266717,7 +266860,8 @@
         }
       ],
       "location": "Ice Path Depths (Item ball)",
-      "slug": "tm14"
+      "slug": "tm14",
+      "moveSlug": "blizzard"
     },
     {
       "kind": "TM",
@@ -266740,7 +266884,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm15"
+      "slug": "tm15",
+      "moveSlug": "hyper-beam"
     },
     {
       "kind": "TM",
@@ -266763,7 +266908,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm16"
+      "slug": "tm16",
+      "moveSlug": "light-screen"
     },
     {
       "kind": "TM",
@@ -266786,7 +266932,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm17"
+      "slug": "tm17",
+      "moveSlug": "protect"
     },
     {
       "kind": "TM",
@@ -266809,7 +266956,8 @@
         }
       ],
       "location": "Slowpoke Well B2F (Gift)",
-      "slug": "tm18"
+      "slug": "tm18",
+      "moveSlug": "rain-dance"
     },
     {
       "kind": "TM",
@@ -266832,7 +266980,8 @@
         }
       ],
       "location": "Violet City Gym (Gift)",
-      "slug": "tm19"
+      "slug": "tm19",
+      "moveSlug": "roost"
     },
     {
       "kind": "TM",
@@ -266855,7 +267004,8 @@
         }
       ],
       "location": "Cherrygrove City Mart (Mart)",
-      "slug": "tm20"
+      "slug": "tm20",
+      "moveSlug": "safeguard"
     },
     {
       "kind": "TM",
@@ -266878,7 +267028,8 @@
         }
       ],
       "location": "Gate Route 40 Trainer Hill Courtyard (Gift)",
-      "slug": "tm21"
+      "slug": "tm21",
+      "moveSlug": "frustration"
     },
     {
       "kind": "TM",
@@ -266901,7 +267052,8 @@
         }
       ],
       "location": "Route 27 (Item ball)",
-      "slug": "tm22"
+      "slug": "tm22",
+      "moveSlug": "solar-beam"
     },
     {
       "kind": "TM",
@@ -266924,7 +267076,8 @@
         }
       ],
       "location": "Goldenrod City (Gift)",
-      "slug": "tm23"
+      "slug": "tm23",
+      "moveSlug": "smack-down"
     },
     {
       "kind": "TM",
@@ -266947,7 +267100,8 @@
         }
       ],
       "location": "Railway Cave 3F (Item ball)",
-      "slug": "tm24"
+      "slug": "tm24",
+      "moveSlug": "thunderbolt"
     },
     {
       "kind": "TM",
@@ -266970,7 +267124,8 @@
         }
       ],
       "location": "Goldenrod City Game Corner (Bought)",
-      "slug": "tm25"
+      "slug": "tm25",
+      "moveSlug": "thunder"
     },
     {
       "kind": "TM",
@@ -266993,7 +267148,8 @@
         }
       ],
       "location": "Victory Road 1F (Item ball)",
-      "slug": "tm26"
+      "slug": "tm26",
+      "moveSlug": "earthquake"
     },
     {
       "kind": "TM",
@@ -267016,7 +267172,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Gift)",
-      "slug": "tm27"
+      "slug": "tm27",
+      "moveSlug": "return"
     },
     {
       "kind": "TM",
@@ -267039,7 +267196,8 @@
         }
       ],
       "location": "National Park Normal (Item ball)",
-      "slug": "tm28"
+      "slug": "tm28",
+      "moveSlug": "leech-life"
     },
     {
       "kind": "TM",
@@ -267062,7 +267220,8 @@
         }
       ],
       "location": "Goldenrod City Game Corner (Bought)",
-      "slug": "tm29"
+      "slug": "tm29",
+      "moveSlug": "psychic"
     },
     {
       "kind": "TM",
@@ -267085,7 +267244,8 @@
         }
       ],
       "location": "Ecruteak City Gym (Gift)",
-      "slug": "tm30"
+      "slug": "tm30",
+      "moveSlug": "shadow-ball"
     },
     {
       "kind": "TM",
@@ -267108,7 +267268,8 @@
         }
       ],
       "location": "Rinto Village Mart (Mart)",
-      "slug": "tm31"
+      "slug": "tm31",
+      "moveSlug": "brick-break"
     },
     {
       "kind": "TM",
@@ -267131,7 +267292,8 @@
         }
       ],
       "location": "Goldenrod City Game Corner (Bought)",
-      "slug": "tm32"
+      "slug": "tm32",
+      "moveSlug": "double-team"
     },
     {
       "kind": "TM",
@@ -267154,7 +267316,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm33"
+      "slug": "tm33",
+      "moveSlug": "reflect"
     },
     {
       "kind": "TM",
@@ -267177,7 +267340,8 @@
         }
       ],
       "location": "Olivine City (Item ball)",
-      "slug": "tm34"
+      "slug": "tm34",
+      "moveSlug": "sludge-wave"
     },
     {
       "kind": "TM",
@@ -267200,7 +267364,8 @@
         }
       ],
       "location": "Goldenrod City Game Corner (Bought)",
-      "slug": "tm35"
+      "slug": "tm35",
+      "moveSlug": "flamethrower"
     },
     {
       "kind": "TM",
@@ -267223,7 +267388,8 @@
         }
       ],
       "location": "Gate Route 43 (Gift)",
-      "slug": "tm36"
+      "slug": "tm36",
+      "moveSlug": "sludge-bomb"
     },
     {
       "kind": "TM",
@@ -267246,7 +267412,8 @@
         }
       ],
       "location": "Route 27 House (Gift)",
-      "slug": "tm37"
+      "slug": "tm37",
+      "moveSlug": "sandstorm"
     },
     {
       "kind": "TM",
@@ -267269,7 +267436,8 @@
         }
       ],
       "location": "Mt Mortar Depths 1 (Item ball)",
-      "slug": "tm38"
+      "slug": "tm38",
+      "moveSlug": "fire-blast"
     },
     {
       "kind": "TM",
@@ -267292,7 +267460,8 @@
         }
       ],
       "location": "Route 35 (Item ball)",
-      "slug": "tm39"
+      "slug": "tm39",
+      "moveSlug": "rock-tomb"
     },
     {
       "kind": "TM",
@@ -267315,7 +267484,8 @@
         }
       ],
       "location": "Route 37 (Item ball)",
-      "slug": "tm40"
+      "slug": "tm40",
+      "moveSlug": "aerial-ace"
     },
     {
       "kind": "TM",
@@ -267338,7 +267508,8 @@
         }
       ],
       "location": "Burned Tower 1F (Item ball)",
-      "slug": "tm41"
+      "slug": "tm41",
+      "moveSlug": "torment"
     },
     {
       "kind": "TM",
@@ -267361,7 +267532,8 @@
         }
       ],
       "location": "Rinto Village Mart (Mart)",
-      "slug": "tm42"
+      "slug": "tm42",
+      "moveSlug": "facade"
     },
     {
       "kind": "TM",
@@ -267384,7 +267556,8 @@
         }
       ],
       "location": "Union Cave B1F (Item ball)",
-      "slug": "tm43"
+      "slug": "tm43",
+      "moveSlug": "flame-charge"
     },
     {
       "kind": "TM",
@@ -267407,7 +267580,8 @@
         }
       ],
       "location": "Rinto Village (Gift)",
-      "slug": "tm44"
+      "slug": "tm44",
+      "moveSlug": "rest"
     },
     {
       "kind": "TM",
@@ -267430,7 +267604,8 @@
         }
       ],
       "location": "Goldenrod City Gym (Gift)",
-      "slug": "tm45"
+      "slug": "tm45",
+      "moveSlug": "attract"
     },
     {
       "kind": "TM",
@@ -267453,7 +267628,8 @@
         }
       ],
       "location": "Rocket Hideout B2F (Item ball)",
-      "slug": "tm46"
+      "slug": "tm46",
+      "moveSlug": "thief"
     },
     {
       "kind": "TM",
@@ -267476,7 +267652,8 @@
         }
       ],
       "location": "Safari Zone Gate (Mart)",
-      "slug": "tm47"
+      "slug": "tm47",
+      "moveSlug": "low-sweep"
     },
     {
       "kind": "TM",
@@ -267499,7 +267676,8 @@
         }
       ],
       "location": "Goldenrod City Radio Tower 3F (Gift)",
-      "slug": "tm48"
+      "slug": "tm48",
+      "moveSlug": "round"
     },
     {
       "kind": "TM",
@@ -267522,7 +267700,8 @@
         }
       ],
       "location": "Route 39 Farm House (Gift)",
-      "slug": "tm49"
+      "slug": "tm49",
+      "moveSlug": "echoed-voice"
     },
     {
       "kind": "TM",
@@ -267545,7 +267724,8 @@
         }
       ],
       "location": "Southern Passage (Item ball)",
-      "slug": "tm50"
+      "slug": "tm50",
+      "moveSlug": "overheat"
     },
     {
       "kind": "TM",
@@ -267568,7 +267748,8 @@
         }
       ],
       "location": "Route 28 House (Gift)",
-      "slug": "tm51"
+      "slug": "tm51",
+      "moveSlug": "steel-wing"
     },
     {
       "kind": "TM",
@@ -267591,7 +267772,8 @@
         }
       ],
       "location": "Vajra Desert East (Item ball)",
-      "slug": "tm52"
+      "slug": "tm52",
+      "moveSlug": "focus-blast"
     },
     {
       "kind": "TM",
@@ -267614,7 +267796,8 @@
         }
       ],
       "location": "Tohjo Pass (Item ball)",
-      "slug": "tm53"
+      "slug": "tm53",
+      "moveSlug": "energy-ball"
     },
     {
       "kind": "TM",
@@ -267637,7 +267820,8 @@
         }
       ],
       "location": "Gate Goldenrod City Route 35 (Gift)",
-      "slug": "tm54"
+      "slug": "tm54",
+      "moveSlug": "false-swipe"
     },
     {
       "kind": "TM",
@@ -267660,7 +267844,8 @@
         }
       ],
       "location": "Vajra Pyramid Outside (Item ball)",
-      "slug": "tm55"
+      "slug": "tm55",
+      "moveSlug": "scald"
     },
     {
       "kind": "TM",
@@ -267687,7 +267872,8 @@
         }
       ],
       "location": "Snowtop Mountain B1F (Item ball); Sstidal Rooms (Gift)",
-      "slug": "tm56"
+      "slug": "tm56",
+      "moveSlug": "fling"
     },
     {
       "kind": "TM",
@@ -267710,7 +267896,8 @@
         }
       ],
       "location": "Olivine City Mart (Mart)",
-      "slug": "tm57"
+      "slug": "tm57",
+      "moveSlug": "charge-beam"
     },
     {
       "kind": "TM",
@@ -267733,7 +267920,8 @@
         }
       ],
       "location": "Blackthorn City Mart (Mart)",
-      "slug": "tm58"
+      "slug": "tm58",
+      "moveSlug": "sky-drop"
     },
     {
       "kind": "TM",
@@ -267756,7 +267944,8 @@
         }
       ],
       "location": "Olivine City Mart (Mart)",
-      "slug": "tm59"
+      "slug": "tm59",
+      "moveSlug": "brutal-swing"
     },
     {
       "kind": "TM",
@@ -267779,7 +267968,8 @@
         }
       ],
       "location": "Ecruteak City Mart (Mart)",
-      "slug": "tm60"
+      "slug": "tm60",
+      "moveSlug": "trailblaze"
     },
     {
       "kind": "TM",
@@ -267802,7 +267992,8 @@
         }
       ],
       "location": "Ecruteak City Mart (Mart)",
-      "slug": "tm61"
+      "slug": "tm61",
+      "moveSlug": "will-o-wisp"
     },
     {
       "kind": "TM",
@@ -267825,7 +268016,8 @@
         }
       ],
       "location": "Blackthorn City Mart (Mart)",
-      "slug": "tm62"
+      "slug": "tm62",
+      "moveSlug": "acrobatics"
     },
     {
       "kind": "TM",
@@ -267848,7 +268040,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm63"
+      "slug": "tm63",
+      "moveSlug": "thunder-punch"
     },
     {
       "kind": "TM",
@@ -267871,7 +268064,8 @@
         }
       ],
       "location": "Olivine City Mart (Mart)",
-      "slug": "tm64"
+      "slug": "tm64",
+      "moveSlug": "draining-kiss"
     },
     {
       "kind": "TM",
@@ -267894,7 +268088,8 @@
         }
       ],
       "location": "Route 42 (Item ball)",
-      "slug": "tm65"
+      "slug": "tm65",
+      "moveSlug": "shadow-claw"
     },
     {
       "kind": "TM",
@@ -267917,7 +268112,8 @@
         }
       ],
       "location": "Mahogany Town Shop (After Rocket Hideout event)",
-      "slug": "tm66"
+      "slug": "tm66",
+      "moveSlug": "payback"
     },
     {
       "kind": "TM",
@@ -267940,7 +268136,8 @@
         }
       ],
       "location": "Goldenrod Apartment (Item ball)",
-      "slug": "tm67"
+      "slug": "tm67",
+      "moveSlug": "smart-strike"
     },
     {
       "kind": "TM",
@@ -267963,7 +268160,8 @@
         }
       ],
       "location": "Safari Zone Gate (Mart)",
-      "slug": "tm68"
+      "slug": "tm68",
+      "moveSlug": "giga-impact"
     },
     {
       "kind": "TM",
@@ -267986,7 +268184,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm69"
+      "slug": "tm69",
+      "moveSlug": "fire-punch"
     },
     {
       "kind": "TM",
@@ -268009,7 +268208,8 @@
         }
       ],
       "location": "Snowtop Mountain Outside (Item ball)",
-      "slug": "tm70"
+      "slug": "tm70",
+      "moveSlug": "aurora-veil"
     },
     {
       "kind": "TM",
@@ -268032,7 +268232,8 @@
         }
       ],
       "location": "Kitakami Well B1F (Item ball)",
-      "slug": "tm71"
+      "slug": "tm71",
+      "moveSlug": "stone-edge"
     },
     {
       "kind": "TM",
@@ -268055,7 +268256,8 @@
         }
       ],
       "location": "Vajra Desert East (Item ball)",
-      "slug": "tm72"
+      "slug": "tm72",
+      "moveSlug": "volt-switch"
     },
     {
       "kind": "TM",
@@ -268078,7 +268280,8 @@
         }
       ],
       "location": "Route 41 (Item ball)",
-      "slug": "tm73"
+      "slug": "tm73",
+      "moveSlug": "thunder-wave"
     },
     {
       "kind": "TM",
@@ -268101,7 +268304,8 @@
         }
       ],
       "location": "Railway Cave (Item ball)",
-      "slug": "tm74"
+      "slug": "tm74",
+      "moveSlug": "gyro-ball"
     },
     {
       "kind": "TM",
@@ -268124,7 +268328,8 @@
         }
       ],
       "location": "Kitakami Mountain 2F (Item ball)",
-      "slug": "tm75"
+      "slug": "tm75",
+      "moveSlug": "agility"
     },
     {
       "kind": "TM",
@@ -268147,7 +268352,8 @@
         }
       ],
       "location": "Violet City Mart (Mart)",
-      "slug": "tm76"
+      "slug": "tm76",
+      "moveSlug": "hone-claws"
     },
     {
       "kind": "TM",
@@ -268170,7 +268376,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm77"
+      "slug": "tm77",
+      "moveSlug": "dig"
     },
     {
       "kind": "TM",
@@ -268193,7 +268400,8 @@
         }
       ],
       "location": "Vajra Desert West (Item ball)",
-      "slug": "tm78"
+      "slug": "tm78",
+      "moveSlug": "bulldoze"
     },
     {
       "kind": "TM",
@@ -268216,7 +268424,8 @@
         }
       ],
       "location": "Snowtop Mountain Outside (Item ball)",
-      "slug": "tm79"
+      "slug": "tm79",
+      "moveSlug": "frost-breath"
     },
     {
       "kind": "TM",
@@ -268239,7 +268448,8 @@
         }
       ],
       "location": "Route 49 (Item ball)",
-      "slug": "tm80"
+      "slug": "tm80",
+      "moveSlug": "rock-slide"
     },
     {
       "kind": "TM",
@@ -268262,7 +268472,8 @@
         }
       ],
       "location": "Azalea Town (mart, after 4th badge)",
-      "slug": "tm81"
+      "slug": "tm81",
+      "moveSlug": "x-scissor"
     },
     {
       "kind": "TM",
@@ -268285,7 +268496,8 @@
         }
       ],
       "location": "Blackthorn City Mart (Mart)",
-      "slug": "tm82"
+      "slug": "tm82",
+      "moveSlug": "dragon-tail"
     },
     {
       "kind": "TM",
@@ -268312,7 +268524,8 @@
         }
       ],
       "location": "Olivine City Lighthouse (Item ball); Azalea Town Mart (Mart)",
-      "slug": "tm83"
+      "slug": "tm83",
+      "moveSlug": "infestation"
     },
     {
       "kind": "TM",
@@ -268335,7 +268548,8 @@
         }
       ],
       "location": "Route 50 (Item ball)",
-      "slug": "tm84"
+      "slug": "tm84",
+      "moveSlug": "poison-jab"
     },
     {
       "kind": "TM",
@@ -268358,7 +268572,8 @@
         }
       ],
       "location": "Route 39 (Item ball)",
-      "slug": "tm85"
+      "slug": "tm85",
+      "moveSlug": "drain-punch"
     },
     {
       "kind": "TM",
@@ -268381,7 +268596,8 @@
         }
       ],
       "location": "Deep Ilex Forest (Item ball)",
-      "slug": "tm86"
+      "slug": "tm86",
+      "moveSlug": "grass-knot"
     },
     {
       "kind": "TM",
@@ -268404,7 +268620,8 @@
         }
       ],
       "location": "Azalea Town Mart (Mart)",
-      "slug": "tm87"
+      "slug": "tm87",
+      "moveSlug": "giga-drain"
     },
     {
       "kind": "TM",
@@ -268427,7 +268644,8 @@
         }
       ],
       "location": "Kitakami Temple Bedroom (Item ball)",
-      "slug": "tm88"
+      "slug": "tm88",
+      "moveSlug": "water-pulse"
     },
     {
       "kind": "TM",
@@ -268450,7 +268668,8 @@
         }
       ],
       "location": "Azalea Town Gym (Gift)",
-      "slug": "tm89"
+      "slug": "tm89",
+      "moveSlug": "u-turn"
     },
     {
       "kind": "TM",
@@ -268473,7 +268692,8 @@
         }
       ],
       "location": "Mahogany Town Shop (After Rocket Hideout event)",
-      "slug": "tm90"
+      "slug": "tm90",
+      "moveSlug": "substitute"
     },
     {
       "kind": "TM",
@@ -268496,7 +268716,8 @@
         }
       ],
       "location": "Olivine City Gym (Gift)",
-      "slug": "tm91"
+      "slug": "tm91",
+      "moveSlug": "flash-cannon"
     },
     {
       "kind": "TM",
@@ -268519,7 +268740,8 @@
         }
       ],
       "location": "Ecruteak City Mart (Mart)",
-      "slug": "tm92"
+      "slug": "tm92",
+      "moveSlug": "trick-room"
     },
     {
       "kind": "TM",
@@ -268542,7 +268764,8 @@
         }
       ],
       "location": "Kitakami Border (Item ball)",
-      "slug": "tm93"
+      "slug": "tm93",
+      "moveSlug": "wild-charge"
     },
     {
       "kind": "TM",
@@ -268565,7 +268788,8 @@
         }
       ],
       "location": "Ice Path B2F (Item ball)",
-      "slug": "tm94"
+      "slug": "tm94",
+      "moveSlug": "ice-spinner"
     },
     {
       "kind": "TM",
@@ -268588,7 +268812,8 @@
         }
       ],
       "location": "Ecruteak City Mart (Mart)",
-      "slug": "tm95"
+      "slug": "tm95",
+      "moveSlug": "snarl"
     },
     {
       "kind": "TM",
@@ -268611,7 +268836,8 @@
         }
       ],
       "location": "Ruins of Alph Outside (Item ball)",
-      "slug": "tm96"
+      "slug": "tm96",
+      "moveSlug": "nature-power"
     },
     {
       "kind": "TM",
@@ -268634,7 +268860,8 @@
         }
       ],
       "location": "Sprout Tower Basement (Item ball)",
-      "slug": "tm97"
+      "slug": "tm97",
+      "moveSlug": "dark-pulse"
     },
     {
       "kind": "TM",
@@ -268657,7 +268884,8 @@
         }
       ],
       "location": "Rinto Village Mart (Mart)",
-      "slug": "tm98"
+      "slug": "tm98",
+      "moveSlug": "play-rough"
     },
     {
       "kind": "TM",
@@ -268680,7 +268908,8 @@
         }
       ],
       "location": "Meteor Island (Item ball)",
-      "slug": "tm99"
+      "slug": "tm99",
+      "moveSlug": "dazzling-gleam"
     },
     {
       "kind": "TM",
@@ -268703,7 +268932,8 @@
         }
       ],
       "location": "Goldenrod City Department Store 5F (Mart)",
-      "slug": "tm100"
+      "slug": "tm100",
+      "moveSlug": "ice-punch"
     },
     {
       "kind": "HM",
@@ -268726,7 +268956,8 @@
         }
       ],
       "location": "Ilex Forest (Gift)",
-      "slug": "hm01"
+      "slug": "hm01",
+      "moveSlug": "cut"
     },
     {
       "kind": "HM",
@@ -268749,7 +268980,8 @@
         }
       ],
       "location": "Cianwood City (Gift)",
-      "slug": "hm02"
+      "slug": "hm02",
+      "moveSlug": "fly"
     },
     {
       "kind": "HM",
@@ -268772,7 +269004,8 @@
         }
       ],
       "location": "Ecruteak City Theater (Gift)",
-      "slug": "hm03"
+      "slug": "hm03",
+      "moveSlug": "surf"
     },
     {
       "kind": "HM",
@@ -268795,7 +269028,8 @@
         }
       ],
       "location": "Olivine City Cafe (Gift)",
-      "slug": "hm04"
+      "slug": "hm04",
+      "moveSlug": "strength"
     },
     {
       "kind": "HM",
@@ -268818,7 +269052,8 @@
         }
       ],
       "location": "Sprout Tower 3F (Gift)",
-      "slug": "hm05"
+      "slug": "hm05",
+      "moveSlug": "flash"
     },
     {
       "kind": "HM",
@@ -268841,7 +269076,8 @@
         }
       ],
       "location": "Route 36 (Gift)",
-      "slug": "hm06"
+      "slug": "hm06",
+      "moveSlug": "rock-smash"
     },
     {
       "kind": "HM",
@@ -268864,7 +269100,8 @@
         }
       ],
       "location": "Ice Path 1F (Item ball)",
-      "slug": "hm07"
+      "slug": "hm07",
+      "moveSlug": "waterfall"
     },
     {
       "kind": "HM",
@@ -268887,7 +269124,8 @@
         }
       ],
       "location": "New Bark Town House 3 (Gift)",
-      "slug": "hm08"
+      "slug": "hm08",
+      "moveSlug": "dive"
     },
     {
       "kind": "HM",
@@ -268910,7 +269148,8 @@
         }
       ],
       "location": "Victory Road 1F (Gift)",
-      "slug": "hm09"
+      "slug": "hm09",
+      "moveSlug": "rock-climb"
     },
     {
       "kind": "HM",
@@ -268933,7 +269172,8 @@
         }
       ],
       "location": "Rocket Hideout B2F (Gift)",
-      "slug": "hm10"
+      "slug": "hm10",
+      "moveSlug": "whirlpool"
     }
   ],
   "items": [

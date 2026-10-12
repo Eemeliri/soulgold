@@ -8,9 +8,20 @@ test("accepts ROM versions with or without v and normalizes the label", () => {
   assert.equal(parseVersion("v1.2.0-rc.1+build.007").label, "v1.2.0-rc.1+build.007");
 });
 
+test("accepts two-number versions as a zero patch release", () => {
+  assert.equal(parseVersion("1.2").label, "v1.2");
+  assert.equal(parseVersion("v1.2").label, "v1.2");
+  assert.equal(parseVersion("v1.3-rc.1").label, "v1.3-rc.1");
+  assert.equal(compareVersions(parseVersion("v1.2"), parseVersion("v1.2.0")), 0);
+  assert.equal(compareVersions(parseVersion("v1.1.4"), parseVersion("v1.2")), -1);
+  assert.equal(compareVersions(parseVersion("v1.2"), parseVersion("v1.2.1")), -1);
+  assert.equal(compareVersions(parseVersion("v1.10"), parseVersion("v1.9.9")), 1);
+  assert.equal(compareVersions(parseVersion("v1.2-rc.1"), parseVersion("v1.2")), -1);
+});
+
 test("rejects missing, malformed and unsafe values", () => {
   for (const value of [
-    null, undefined, 113, {}, "", "v1.1", "1.1.3.0", "v01.1.3", "1.1.3-01",
+    null, undefined, 113, {}, "", "v1", "1.", "1.1.", "v01.2", "1.1.3.0", "v01.1.3", "1.1.3-01",
     "1.1.3-rc..1", "1.1.3+", " 1.1.3", "1.1.3\n", "1.1.3 ", "V1.1.3",
     "<img src=x onerror=alert(1)>", "https://evil.example/", `1.1.3-${"a".repeat(100)}`,
   ]) {

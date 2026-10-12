@@ -1,5 +1,3 @@
-"""Filesystem paths used by the SoulGold docs generator."""
-
 from __future__ import annotations
 
 from pathlib import Path

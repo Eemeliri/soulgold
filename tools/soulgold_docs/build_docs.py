@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-"""Build the SoulGold docs generation pipeline."""
 
 from __future__ import annotations
 
@@ -147,7 +146,7 @@ def build() -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser()
     parser.add_argument("--static-only", action="store_true", help="Refresh website UI and existing routes without rebuilding game data")
     args = parser.parse_args()
     if args.static_only:

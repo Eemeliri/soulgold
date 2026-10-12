@@ -1,5 +1,3 @@
-"""Species parsing and enrichment for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import re
@@ -197,9 +195,6 @@ def egg_move_symbol_for_family(row: SpeciesRow, by_constant: dict[str, SpeciesRo
         seen.add(current.constant)
         current = by_constant.get(parent_map.get(current.constant, ""))
 
-    # Prefer the species' own learnset, then fall back to its nearest
-    # pre-evolution. Baby Pokemon can have a different egg-move table from
-    # the next stage in their family (for example, Azurill and Marill).
     for family_row in lineage:
         if family_row.egg_move_symbol:
             return family_row.egg_move_symbol

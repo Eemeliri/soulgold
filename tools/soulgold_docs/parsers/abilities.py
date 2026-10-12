@@ -1,5 +1,3 @@
-"""Ability parsing and usage aggregation for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import re

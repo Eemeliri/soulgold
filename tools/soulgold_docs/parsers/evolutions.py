@@ -1,5 +1,3 @@
-"""Evolution and form-change parsing for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import re
@@ -143,7 +141,6 @@ def format_evolution_method(method: str, param: str, item_names: Mapping[str, It
     return label
 
 def preprocess_evolution_entries() -> dict[str, str]:
-    """Expand active species macros while retaining symbolic evolution arguments."""
     species_info_path = REPO_ROOT / "src/data/pokemon/species_info.h"
     source = read(species_info_path)
     source, replacement_count = re.subn(

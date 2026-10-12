@@ -1,5 +1,3 @@
-"""Parse the Johto in-game trades exposed as obtainable Pokemon sources."""
-
 from __future__ import annotations
 
 import json
@@ -16,9 +14,6 @@ IN_GAME_TRADE_COMMAND_RE = re.compile(
     re.IGNORECASE,
 )
 
-# The shared trade table also contains Kanto and Hoenn trades. Keep this an
-# explicit map/trade allowlist so reused trade IDs (such as VOLTORB in Fortree)
-# cannot accidentally add a non-Johto source to the dex.
 JOHTO_TRADE_SOURCES = (
     (
         "VioletCity_House1",
@@ -32,7 +27,6 @@ JOHTO_TRADE_SOURCES = (
         "INGAME_TRADE_SLOWPOKE",
         "Azalea Town",
     ),
-    # The 5F NPC points to a script that is compiled from the 6F script file.
     (
         "GoldenrodCity_DepartmentStore_5F",
         "GoldenrodCity_DepartmentStore_6F",
@@ -67,7 +61,6 @@ JOHTO_TRADE_SOURCES = (
 
 
 def _trade_species() -> dict[str, tuple[str, str]]:
-    """Return each trade ID's received and requested species constants."""
     try:
         entries = split_designated_entries(strip_c_comments(read(TRADE_DATA_H)))
     except FileNotFoundError:
@@ -96,7 +89,6 @@ def add_johto_trade_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add only the allowlisted Johto in-game trades to dex locations."""
     trades = _trade_species()
     for map_name, script_map_name, trade_id, display_name in JOHTO_TRADE_SOURCES:
         map_dir = REPO_ROOT / "data" / "maps" / map_name
@@ -123,7 +115,6 @@ def add_johto_trade_species_locations(
             "name": display_name,
             "time": "",
             "method": f"In-game trade (requires {by_species[requested].name})",
-            # The received Pokemon matches the level of the Pokemon offered.
             "minLevel": None,
             "maxLevel": None,
             "rate": None,

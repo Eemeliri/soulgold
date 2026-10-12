@@ -1,5 +1,3 @@
-"""Parse reachable Hidden Grotto Pokemon and grotto-specific rare items."""
-
 from __future__ import annotations
 
 import json
@@ -84,8 +82,6 @@ def parse_hidden_grottos() -> list[HiddenGrottoRow]:
             continue
 
         grotto_map = map_match.group(1)
-        # Several reserved entries reuse the same unused map. Only its first,
-        # actually warped-to data entry can ever be selected by the game.
         if grotto_map in seen_grotto_maps:
             continue
         seen_grotto_maps.add(grotto_map)

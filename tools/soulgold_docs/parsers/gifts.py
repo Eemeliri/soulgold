@@ -1,5 +1,3 @@
-"""Parse reachable scripted Pokemon sources for species location documentation."""
-
 from __future__ import annotations
 
 import json
@@ -75,7 +73,7 @@ def script_blocks(text: str) -> dict[str, str]:
     }
 
 
-def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, str]) -> set[str]:
+def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, str]) -> list[str]:
     roots = {
         str(event.get("script"))
         for event_key in ("object_events", "coord_events", "bg_events")
@@ -94,11 +92,10 @@ def reachable_script_labels(map_data: Mapping[str, object], blocks: dict[str, st
         reachable.add(label)
         references = set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", blocks[label]))
         pending.extend(references & known_labels - reachable)
-    return reachable
+    return [label for label in blocks if label in reachable]
 
 
 def ruins_of_alph_rock_smash_fossils() -> set[str]:
-    """Return the fossils currently available from the Ruins of Alph rocks."""
     try:
         text = strip_c_comments(read(REPO_ROOT / "src/wild_encounter.c"))
     except FileNotFoundError:
@@ -115,7 +112,6 @@ def add_fossil_revival_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Document fossil revivals separately from ordinary scripted gifts."""
     rock_smash_fossils = ruins_of_alph_rock_smash_fossils()
     for species, fossil in FOSSIL_REVIVAL_ITEMS.items():
         if species not in by_species:
@@ -145,7 +141,6 @@ def add_game_corner_exchange_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add the Pokemon offered by the Goldenrod Game Corner prize menu."""
     map_dir = REPO_ROOT / "data" / "maps" / GAME_CORNER_MAP_NAME
     try:
         map_data = json.loads(read(map_dir / "map.json"))
@@ -181,7 +176,6 @@ def add_battle_cafe_exchange_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Show cafe point exchange rewards in the docs."""
     map_dir = REPO_ROOT / "data" / "maps" / "BattleCafe"
     try:
         map_data = json.loads(read(map_dir / "map.json"))
@@ -288,7 +282,6 @@ def add_scripted_legendary_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add reachable encounters created by the supported legendary script macros."""
     try:
         map_groups = json.loads(read(MAP_GROUPS_JSON))
     except (FileNotFoundError, json.JSONDecodeError):
@@ -371,7 +364,6 @@ def add_odd_egg_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
-    """Add the uniformly random, one-time Route 34 Odd Egg pool."""
     try:
         text = strip_c_comments(read(ODD_EGG_C))
     except FileNotFoundError:

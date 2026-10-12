@@ -3,14 +3,13 @@ const dismissalStorageKey = "soulgold-docs-dismissed-update";
 let updateRequest = null;
 let updateToast = null;
 
-// Semantic Versioning precedence, with the ROM's optional leading "v".
 export function parseVersion(value) {
   if (typeof value !== "string" || value.length > 100) return null;
-  const match = /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/.exec(value);
+  const match = /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)(?:\.(0|[1-9]\d*))?(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$/.exec(value);
   if (!match || match[0] !== value) return null;
   const prerelease = match[4] ? match[4].split(".") : [];
   if (prerelease.some((part) => /^0\d+$/.test(part))) return null;
-  return { label: `v${value.replace(/^v/, "")}`, core: match.slice(1, 4), prerelease };
+  return { label: `v${value.replace(/^v/, "")}`, core: [match[1], match[2], match[3] ?? "0"], prerelease };
 }
 
 function compareNumericStrings(left, right) {
@@ -50,9 +49,7 @@ function readSession(key) {
 function writeSession(key, value) {
   try {
     sessionStorage.setItem(key, value);
-  } catch {
-    // Scanning and dismissing still work when browser storage is unavailable.
-  }
+  } catch {}
 }
 
 function readRomVersion() {
@@ -90,7 +87,6 @@ function showUpdateToast(installed, latest, dismissalKey) {
   versions.textContent = `You're playing ${installed.label}. Latest: ${latest.label}.`;
   const action = document.createElement("p");
   const link = document.createElement("a");
-  // The destination is fixed here; neither QR parameters nor the manifest can change it.
   link.href = downloadUrl;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
@@ -123,16 +119,13 @@ async function checkForRomUpdate() {
     });
     if (!response.ok) return;
     const manifest = await response.json();
-    // Navigation may have removed or changed the QR parameter during the request.
     if (controller.signal.aborted || readRomVersion()?.label !== installed.label) return;
     const latest = parseVersion(manifest?.latestVersion);
     if (!latest || compareVersions(installed, latest) >= 0) return;
     const dismissalKey = `${installed.label}:${latest.label}`;
     if (readSession(dismissalStorageKey) === dismissalKey) return;
     updateToast = showUpdateToast(installed, latest, dismissalKey);
-  } catch {
-    // Offline, unavailable or malformed release data must not interrupt the docs.
-  } finally {
+  } catch {} finally {
     clearTimeout(timeout);
     if (updateRequest === controller) updateRequest = null;
   }

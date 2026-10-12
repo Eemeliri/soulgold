@@ -1,5 +1,3 @@
-"""Author-friendly Markdown guide discovery for the static documentation site."""
-
 from __future__ import annotations
 
 import re

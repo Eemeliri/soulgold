@@ -1,5 +1,3 @@
-"""Trainer party parsing and enrichment for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import json
@@ -81,7 +79,6 @@ RIVAL_CONSTANT_RE = re.compile(r"^TRAINER_RIVAL_(CHIKORITA|CYNDAQUIL|TOTODILE)_(
 
 
 def parse_showdown_team(text: str) -> list[ShowdownMon]:
-    """Parse a Pokemon Showdown export string into a list of Pokemon dicts."""
     mons = []
     current: ShowdownMon | None = None
     for raw_line in text.splitlines():
@@ -92,17 +89,14 @@ def parse_showdown_team(text: str) -> list[ShowdownMon]:
                 current = None
             continue
 
-        # First non-empty line of a new mon: "Name @ Item" or just "Name"
         if current is None:
             if line.startswith("-") or ":" in line.split("@")[0]:
-                # Looks like a move or field line without a header — malformed, skip
                 continue
             if "@" in line:
                 name_part, item_part = line.split("@", 1)
             else:
                 name_part, item_part = line, ""
             species_match = re.search(r"\((SPECIES_[A-Z0-9_]+|[A-Za-z][A-Za-z0-9_ -]+)\)", name_part)
-            # Strip gender marker e.g. "(M)"
             name_clean = re.sub(r"\s*\([MF]\)\s*", " ", name_part).strip()
             if species_match and species_match.group(1) not in {"M", "F"}:
                 name_clean = species_match.group(1).strip()
@@ -118,7 +112,6 @@ def parse_showdown_team(text: str) -> list[ShowdownMon]:
             }
             continue
 
-        # Move line
         if line.startswith("-"):
             move = line.lstrip("- ").strip()
             if move:
@@ -142,7 +135,6 @@ def parse_showdown_team(text: str) -> list[ShowdownMon]:
                 current["ivs"] = _parse_stat_spread(value)
             continue
 
-        # "Modest Nature" style (no colon)
         if line.endswith("Nature"):
             current["nature"] = line.replace("Nature", "").strip()
 
@@ -151,7 +143,6 @@ def parse_showdown_team(text: str) -> list[ShowdownMon]:
     return mons
 
 def _parse_stat_spread(text: str) -> dict[str, int]:
-    """Parse '252 HP / 4 Atk / 252 Spe' into {'hp': 252, 'atk': 4, 'spe': 252}."""
     stat_aliases = {
         "hp": "hp", "atk": "atk", "def": "def",
         "spa": "spa", "spd": "spd", "spe": "spe",
@@ -170,7 +161,6 @@ def _parse_stat_spread(text: str) -> dict[str, int]:
     return result
 
 def normalize_trainer_mon_details(mon: ShowdownMon) -> ShowdownMon:
-    """Keep optional trainer set data present and consistently ordered for the docs UI."""
     stat_order = ("hp", "atk", "def", "spa", "spd", "spe")
     normalized = dict(mon)
     normalized["item"] = normalized.get("item", "")
@@ -312,7 +302,6 @@ def enrich_trainer_party(
     return enriched
 
 def trainer_locations_for_docs_maps() -> dict[str, list[str]]:
-    """Return trainer constants and their display locations from included maps."""
     try:
         map_groups = json.loads(read(MAP_GROUPS_JSON))
     except (FileNotFoundError, json.JSONDecodeError):
@@ -326,8 +315,6 @@ def trainer_locations_for_docs_maps() -> dict[str, list[str]]:
             if map_name.startswith("SSAqua_"):
                 continue
             excluded_map = is_docs_excluded_map(map_name, group_name)
-            # The Indigo interiors are outside the general trainer-map scope,
-            # but their Elite Four teams are deliberately included in the docs.
             if excluded_map and group_name != "gMapGroup_IndoorIndigo":
                 continue
             map_dir = REPO_ROOT / "data/maps" / map_name
@@ -348,8 +335,6 @@ def trainer_locations_for_docs_maps() -> dict[str, list[str]]:
                     if display_name not in trainer_locations:
                         trainer_locations.append(display_name)
 
-    # Title-defense challengers are selected in C rather than through a map
-    # trainerbattle macro, so expose them under their own docs category.
     for constant in TITLE_DEFENSE_TRAINERS:
         locations[constant] = ["Title Defense"]
 
@@ -357,7 +342,6 @@ def trainer_locations_for_docs_maps() -> dict[str, list[str]]:
 
 
 def trainer_constants_for_docs_maps(locations: dict[str, list[str]] | None = None) -> set[str]:
-    """Return trainer constants referenced by included map scripts."""
     return set(locations if locations is not None else trainer_locations_for_docs_maps()) | ALWAYS_INCLUDED_TRAINER_CONSTANTS
 
 
@@ -372,7 +356,6 @@ def parse_trainers(
     allowed_trainer_constants: set[str] | None = None,
     trainer_locations: dict[str, list[str]] | None = None,
 ) -> list[TrainerRow]:
-    """Read trainers.party and parse each === TRAINER_* === block."""
     if not TRAINERS_H.exists():
         return []
 

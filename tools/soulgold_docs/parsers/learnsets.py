@@ -1,5 +1,3 @@
-"""Learnset parsing for level-up, TM/HM, tutor, and egg moves."""
-
 from __future__ import annotations
 
 import json

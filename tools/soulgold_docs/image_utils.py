@@ -1,5 +1,3 @@
-"""Sprite and icon processing helpers for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import re
@@ -53,6 +51,20 @@ def read_gbapal(path: Path) -> list[int]:
     palette.extend([0] * (PIL_PALETTE_SIZE - len(palette)))
     return palette[:PIL_PALETTE_SIZE]
 
+def save_indexed_png(image: Image.Image, target: Path, transparent_indices: set[int]) -> None:
+    alphas = [255] * 256
+    transparency = image.info.get("transparency")
+    if isinstance(transparency, int):
+        alphas[transparency] = 0
+    elif isinstance(transparency, bytes):
+        alphas[: len(transparency)] = transparency
+    for index in transparent_indices:
+        alphas[index] = 0
+    options = {}
+    if image.getextrema()[1] < 16:
+        options["bits"] = 4
+    image.save(target, transparency=bytes(alphas[:256]), optimize=True, **options)
+
 def process_sprite(source: Path, target: Path, palette: Path | None = None) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     image = Image.open(source)
@@ -61,14 +73,7 @@ def process_sprite(source: Path, target: Path, palette: Path | None = None) -> N
     if palette:
         image.putpalette(read_gbapal(palette))
     frame = image.crop((0, 0, min(SPRITE_FRAME_SIZE, image.width), min(SPRITE_FRAME_SIZE, image.height)))
-    rgba = frame.convert("RGBA")
-    pixels = []
-    for y in range(frame.height):
-        for x in range(frame.width):
-            pixel = rgba.getpixel((x, y))
-            pixels.append((pixel[0], pixel[1], pixel[2], 0) if frame.getpixel((x, y)) == 0 else pixel)
-    rgba.putdata(pixels)
-    rgba.save(target)
+    save_indexed_png(frame, target, {0})
 
 def copy_type_icons() -> dict[str, str]:
     output_dir = OUT_DIR / "sprites" / "types"
@@ -146,21 +151,10 @@ def copy_item_icon(item: ItemRecord | None, item_icon_dir: Path) -> str | None:
     target = item_icon_dir / source.name
     target.parent.mkdir(parents=True, exist_ok=True)
     image = Image.open(source)
-    rgba = image.convert("RGBA")
     if image.mode == "P":
-        transparent_indices = {image.getpixel((0, 0))}
-        transparency = image.info.get("transparency")
-        if isinstance(transparency, int):
-            transparent_indices.add(transparency)
-        elif isinstance(transparency, bytes):
-            transparent_indices.update(index for index, alpha in enumerate(transparency) if alpha == 0)
-        pixels = [
-            (*pixel[:3], 0) if image.getpixel((x, y)) in transparent_indices else pixel
-            for y in range(image.height)
-            for x, pixel in ((x, rgba.getpixel((x, y))) for x in range(image.width))
-        ]
-        rgba.putdata(pixels)
-    rgba.save(target)
+        save_indexed_png(image, target, {image.getpixel((0, 0))})
+    else:
+        image.convert("RGBA").save(target)
     return str(target.relative_to(OUT_DIR))
 
 def parse_trainer_front_pic_sources() -> dict[str, Path]:

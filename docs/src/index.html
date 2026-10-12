@@ -1,13 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="./">
     <title>Soulgold Documentation</title>
+    <meta name="description" content="Pokédex, moves, encounters, items, trainers and guides for the Soulgold ROM hack.">
+    <meta property="og:site_name" content="Soulgold Documentation">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Soulgold Documentation">
+    <meta property="og:description" content="Pokédex, moves, encounters, items, trainers and guides for the Soulgold ROM hack.">
     <meta name="theme-color" content="#263532">
-    <link rel="stylesheet" href="assets/styles.css?v=20261005-1">
-    <link rel="stylesheet" href="assets/refined.css?v=20261005-1">
+    <meta name="docs-data-version" content="{{DATA_VERSION}}">
+    <script>
+      try {
+        if (localStorage.getItem("soulgold-docs-theme") === "light") document.documentElement.dataset.theme = "light";
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="assets/styles.css">
   </head>
   <body>
     <div class="top-chrome">
@@ -23,11 +33,17 @@
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </button>
-        <label class="search-wrap">
-          <span class="sr-only">Search the current section</span>
-          <input id="globalSearch" class="search" type="search" placeholder="Search Pokédex…" autocomplete="off">
-          <span class="search-icon" aria-hidden="true"></span>
-        </label>
+        <div class="header-actions">
+          <label class="search-wrap">
+            <span class="sr-only">Search the current section</span>
+            <input id="globalSearch" class="search" type="search" placeholder="Search Pokédex…" autocomplete="off">
+            <span class="search-icon" aria-hidden="true"></span>
+          </label>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-label"></span>
+          </button>
+        </div>
       </header>
 
       <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
@@ -147,8 +163,7 @@
             <span class="dex-stats dex-stats-head"><span>HP</span><span>Atk</span><span>Def</span><span>SpA</span><span>SpD</span><span>Spe</span><span>BST</span></span>
             <span>Abilities</span>
           </div>
-          <div id="dexScroller" class="dex-scroller">
-            <div id="dexSpacer"></div>
+          <div class="dex-scroller">
             <div id="dexRows"></div>
           </div>
         </div>
@@ -233,7 +248,7 @@
     </div>
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script src="assets/app.js?v=20260913-4"></script>
-    <script type="module" src="assets/version-check.mjs?v=20260913-4"></script>
+    <script src="assets/app.js"></script>
+    <script type="module" src="assets/version-check.mjs"></script>
   </body>
 </html>

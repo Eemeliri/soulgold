@@ -1,5 +1,3 @@
-"""Wild encounter parsing and species-location aggregation."""
-
 from __future__ import annotations
 
 import json
@@ -22,7 +20,6 @@ from .hidden_grottos import HiddenGrottoRow
 
 
 def combine_duplicate_species_slots(mons: list[EncounterMon]) -> list[EncounterMon]:
-    """Combine repeated species slots while retaining their full level range."""
     combined: dict[str, EncounterMon] = {}
     for mon in mons:
         species = mon["species"]
@@ -99,8 +96,6 @@ def parse_wild_encounters(by_species: dict[str, SpeciesRow]) -> list[WildEncount
                         "maxLevel": mon.get("max_level"),
                         "rate": slot_rates[slot] if slot < len(slot_rates) else mon.get("encounter_rate"),
                     })
-                # Fishing odds are scoped to separate rod groups that the UI
-                # derives from slot positions, so those slots must stay intact.
                 if method != "fishing_mons":
                     mons = combine_duplicate_species_slots(mons)
                 methods.append({"key": method, "method": method.replace("_", " ").title(), "mons": mons})

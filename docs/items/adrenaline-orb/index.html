@@ -1,14 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="../../">
-    <title>Soulgold Documentation</title>
+    <title>Adrenaline Orb · Items · Soulgold Documentation</title>
+    <meta name="description" content="This orb boosts Speed if the holder is intimidated. Location: Blackthorn City (Item ball).">
+    <meta property="og:site_name" content="Soulgold Documentation">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Adrenaline Orb · Items">
+    <meta property="og:description" content="This orb boosts Speed if the holder is intimidated. Location: Blackthorn City (Item ball).">
     <meta name="theme-color" content="#263532">
-    <link rel="stylesheet" href="assets/styles.css?v=20261005-1">
-    <link rel="stylesheet" href="assets/refined.css?v=20261005-1">
-    <link rel="preload" href="data/items.json?v=20260913-4" as="fetch" crossorigin="anonymous">
+    <meta name="docs-data-version" content="2f018419d94e">
+    <script>
+      try {
+        if (localStorage.getItem("soulgold-docs-theme") === "light") document.documentElement.dataset.theme = "light";
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="assets/styles.css?v=8d676cf7fb45">
+    <link rel="preload" href="data/items.json?v=2f018419d94e" as="fetch" crossorigin="anonymous">
   </head>
   <body>
     <div class="top-chrome">
@@ -24,11 +34,17 @@
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </button>
-        <label class="search-wrap">
-          <span class="sr-only">Search the current section</span>
-          <input id="globalSearch" class="search" type="search" placeholder="Search Pokédex…" autocomplete="off">
-          <span class="search-icon" aria-hidden="true"></span>
-        </label>
+        <div class="header-actions">
+          <label class="search-wrap">
+            <span class="sr-only">Search the current section</span>
+            <input id="globalSearch" class="search" type="search" placeholder="Search Pokédex…" autocomplete="off">
+            <span class="search-icon" aria-hidden="true"></span>
+          </label>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-label"></span>
+          </button>
+        </div>
       </header>
 
       <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
@@ -148,8 +164,7 @@
             <span class="dex-stats dex-stats-head"><span>HP</span><span>Atk</span><span>Def</span><span>SpA</span><span>SpD</span><span>Spe</span><span>BST</span></span>
             <span>Abilities</span>
           </div>
-          <div id="dexScroller" class="dex-scroller">
-            <div id="dexSpacer"></div>
+          <div class="dex-scroller">
             <div id="dexRows"></div>
           </div>
         </div>
@@ -234,7 +249,7 @@
     </div>
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script src="assets/app.js?v=20260913-4"></script>
-    <script type="module" src="assets/version-check.mjs?v=20260913-4"></script>
+    <script src="assets/app.js?v=f6ce090e19d3"></script>
+    <script type="module" src="assets/version-check.mjs?v=361f15e411b3"></script>
   </body>
 </html>

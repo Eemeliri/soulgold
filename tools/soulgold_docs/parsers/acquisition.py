@@ -1,10 +1,3 @@
-"""Document indirect acquisition, anchored to known direct species sources.
-
-Breeding follows GetEggSpecies / DetermineEggSpeciesAndParentSlots in daycare.c.
-We describe a concrete pairing with Ditto; ordinary compatible pairs also work,
-but are not needed to establish these paths. Battle-only forms are not parents.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -55,7 +48,6 @@ def parse_breeding_rules() -> BreedingRules:
 
 
 def egg_species(constant: str, parents: dict[str, str]) -> str | None:
-    """Match daycare's first species-ID predecessor, with a cycle guard."""
     seen = set()
     for _ in range(5):
         if constant not in parents:
@@ -86,8 +78,6 @@ def breeding_steps(
         if baby is None or baby not in by_constant:
             continue
 
-        # Holding an Everstone preserves a foreign regional egg species.
-        # Without one, Johto uses the ordinary member of that form family.
         offspring = [(baby, "")]
         if "regional" in by_constant[baby].categories:
             offspring = [(baby, "Have the parent hold an Everstone to preserve the regional form.")]
@@ -99,7 +89,6 @@ def breeding_steps(
                 offspring.append((native, "Breed in Johto without an Everstone on either parent."))
 
         for target, requirement in offspring:
-            # These special offspring rules run after regional form selection.
             targets = [target]
             if target in {"SPECIES_NIDORAN_F", "SPECIES_ILLUMISE"}:
                 targets.append({"SPECIES_NIDORAN_F": "SPECIES_NIDORAN_M", "SPECIES_ILLUMISE": "SPECIES_VOLBEAT"}[target])
@@ -168,8 +157,6 @@ def attach_acquisition_paths(
             return None
         return {**path, "steps": [*path["steps"], edge]}
 
-    # Start with actual sources, then propagate only proven paths. An isolated
-    # evolution/breeding cycle can never make its own members obtainable.
     changed = True
     while changed:
         changed = False

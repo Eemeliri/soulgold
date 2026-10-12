@@ -1,5 +1,3 @@
-"""Configuration constants for the SoulGold docs generator."""
-
 from __future__ import annotations
 
 import re
@@ -211,9 +209,6 @@ EV_FEATHER_ITEMS = (
     "ITEM_SWIFT_FEATHER",
 )
 
-# Useful training consumables and player-facing key items live outside the
-# pockets and sort types used by the evolution-item index, so opt them into the
-# Items page explicitly.
 ADDITIONAL_IMPORTANT_ITEMS = {
     "ITEM_ABILITY_CAPSULE",
     "ITEM_ABILITY_PATCH",
@@ -260,8 +255,6 @@ ADDITIONAL_IMPORTANT_ITEMS = {
     *EV_FEATHER_ITEMS,
 }
 
-# Held berries that weaken a super-effective attack of the matching type.
-# Chilan Berry is deliberately omitted because Normal cannot be super effective.
 TYPE_RESIST_BERRY_ITEMS = (
     "ITEM_OCCA_BERRY",
     "ITEM_PASSHO_BERRY",

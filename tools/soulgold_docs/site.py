@@ -1,11 +1,11 @@
-"""Static site output preparation and JSON payload assembly."""
-
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import shutil
 from html import escape
+from pathlib import Path
 
 from .c_parser import strip_c_comments
 from .models import (
@@ -25,6 +25,31 @@ from .paths import OUT_DIR, SRC_DIR, VERSION_H
 
 SECTION_ROUTES = ("pokedex", "moves", "encounters", "machines", "items", "trainers", "abilities", "guides")
 
+SITE_NAME = "Soulgold Documentation"
+SITE_DESCRIPTION = "Pokédex, moves, encounters, items, trainers and guides for the Soulgold ROM hack."
+
+SECTION_LABELS = {
+    "pokedex": "Pokédex",
+    "moves": "Movedex",
+    "encounters": "Wild Encounters",
+    "machines": "TMs/HMs",
+    "items": "Items",
+    "trainers": "Trainers",
+    "abilities": "Abilities",
+    "guides": "Guides",
+}
+
+SECTION_DESCRIPTIONS = {
+    "pokedex": "Base stats, types, abilities, learnsets and locations for every Pokémon in Soulgold.",
+    "moves": "Every move in Soulgold with its type, category, power, accuracy, PP and priority.",
+    "encounters": "Wild Pokémon in every Soulgold area, by encounter method and time of day.",
+    "machines": "Every TM and HM in Soulgold, with move data and where to find it.",
+    "items": "Notable Soulgold items and where to find them.",
+    "trainers": "Soulgold trainer parties with levels, abilities, moves and held items.",
+    "abilities": "Every ability in Soulgold and the Pokémon that have it.",
+    "guides": "Player guides for Soulgold.",
+}
+
 SECTION_PRELOADS = {
     "pokedex": ("ui.json", "ability-index.json", "species.json"),
     "moves": ("ui.json", "ability-index.json", "moves.json"),
@@ -38,30 +63,49 @@ SECTION_PRELOADS = {
 
 DETAIL_PRELOADS = {
     "pokedex": ("ui.json", "ability-index.json", "species-meta.json", "species.json", "moves.json"),
-    "moves": ("ui.json", "ability-index.json", "moves.json", "species.json", "species-details.json"),
-    "machines": ("ui.json", "machines.json", "species.json", "species-details.json"),
+    "moves": ("ui.json", "ability-index.json", "moves.json", "species.json"),
+    "machines": ("ui.json", "machines.json", "species.json"),
     "items": ("items.json",),
     "abilities": ("abilities.json", "ability-usage.json"),
     "guides": ("guides.json",),
 }
 
+MOVE_LEARNER_FIELDS = ("levelUp", "tmhm", "tutors", "eggMoves")
+
+META_DESCRIPTION_LIMIT = 300
+
+ASSET_REFERENCE = re.compile(r'((?:href|src)=")(assets/[^"?#]+)(?:\?[^"]*)?(")')
+
 
 def route_slug(constant: str, prefix: str = "") -> str:
-    """Return a stable, URL-safe slug derived from a unique game constant."""
     value = constant.removeprefix(prefix).lower()
     return re.sub(r"[^a-z0-9]+", "-", value).strip("-")
 
 
+def species_form_label(constant: str, name: str) -> str:
+    ogerpon = re.fullmatch(r"SPECIES_OGERPON_(TEAL|WELLSPRING|HEARTHFLAME|CORNERSTONE)(?:_TERA)?", constant)
+    if ogerpon:
+        return f"{name} ({ogerpon.group(1).capitalize()} Mask)"
+    tatsugiri = re.fullmatch(r"SPECIES_TATSUGIRI_(CURLY|DROOPY|STRETCHY)(_MEGA)?", constant)
+    if tatsugiri:
+        return f"{name} ({tatsugiri.group(1).capitalize()}{' Mega' if tatsugiri.group(2) else ''})"
+    if constant == "SPECIES_ZACIAN_CROWNED":
+        return f"{name} (Crowned Sword)"
+    if constant == "SPECIES_ZAMAZENTA_CROWNED":
+        return f"{name} (Crowned Shield)"
+    for suffix, label in (("_MEGA_X", "X"), ("_MEGA_Y", "Y"), ("_MEGA_Z", "Z"), ("_MEGA", "Mega"), ("_GMAX", "Mega"), ("_DMAX", "Mega")):
+        if constant.endswith(suffix):
+            return f"{name} {label}"
+    return name
+
+
 def prepare_output_tree() -> OutputPaths:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    # These directories are generated entry points. Remove them first so
-    # deleted or renamed records cannot leave stale shareable URLs behind.
     for route in SECTION_ROUTES:
         route_dir = OUT_DIR / route
         if route_dir.exists():
             shutil.rmtree(route_dir)
     copy_static_sources()
-    write_section_routes()
     (OUT_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (OUT_DIR / "data").mkdir(parents=True, exist_ok=True)
     return OutputPaths(
@@ -72,32 +116,56 @@ def prepare_output_tree() -> OutputPaths:
 
 
 def copy_static_sources() -> None:
-    """Refresh the ROM version and copy static files without rebuilding game data."""
     write_version_manifest()
     for item in SRC_DIR.rglob("*"):
         relative = item.relative_to(SRC_DIR)
-        # Guide Markdown is authoring source embedded into the JSON payload.
-        # Only its attached assets need to be copied to the published site.
         if relative.parts[0] == "guides" and (item.suffix == ".md" or item.name == ".gitkeep"):
+            continue
+        if relative.as_posix() == "index.html":
             continue
         dest = OUT_DIR / relative
         if item.is_dir():
             dest.mkdir(parents=True, exist_ok=True)
-        elif relative.as_posix() == "index.html":
-            dest.write_text(read_site_template(), encoding="utf-8")
         else:
             shutil.copy2(item, dest)
 
 
+def content_hash(paths: list[Path], root: Path) -> str:
+    digest = hashlib.sha256()
+    for path in sorted(paths):
+        digest.update(path.relative_to(root).as_posix().encode("utf-8") + b"\0")
+        digest.update(path.read_bytes())
+    return digest.hexdigest()[:12]
+
+
+def data_version() -> str:
+    data_dir = OUT_DIR / "data"
+    files = [path for path in data_dir.rglob("*.json") if path.name != "romhack-docs.json"]
+    return content_hash(files, data_dir)
+
+
+def version_asset_references(html: str) -> str:
+
+    def replace(match: re.Match[str]) -> str:
+        path = SRC_DIR / match.group(2)
+        if not path.is_file():
+            raise ValueError(f"docs/src/index.html references missing asset {match.group(2)}")
+        return f"{match.group(1)}{match.group(2)}?v={content_hash([path], SRC_DIR)}{match.group(3)}"
+
+    return ASSET_REFERENCE.sub(replace, html)
+
+
 def read_site_template() -> str:
-    """Render the header version at build time so ordinary visits need no fetch."""
     template = (SRC_DIR / "index.html").read_text(encoding="utf-8")
+    if '<base href="./">' not in template:
+        raise ValueError('docs/src/index.html must contain <base href="./">')
     manifest = json.loads((SRC_DIR / "version.json").read_text(encoding="utf-8"))
-    return template.replace("{{LATEST_VERSION}}", escape(manifest["latestVersion"]))
+    template = template.replace("{{LATEST_VERSION}}", escape(manifest["latestVersion"]))
+    template = template.replace("{{DATA_VERSION}}", data_version())
+    return version_asset_references(template)
 
 
 def write_version_manifest() -> None:
-    """Generate the website's latest version from the ROM's display version."""
     header = strip_c_comments(VERSION_H.read_text(encoding="utf-8"))
     values = re.findall(r'^[ \t]*#[ \t]*define[ \t]+DISPLAY_VERSION[ \t]+("[^"\r\n]+")[ \t]*$', header, re.MULTILINE)
     if len(values) != 1:
@@ -107,70 +175,177 @@ def write_version_manifest() -> None:
 
 
 def refresh_static_site() -> None:
-    """Refresh the UI and existing routes, preserving generated data and sprites."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     copy_static_sources()
-    write_section_routes()
-    # The output index already contains Pokédex preloads. Start from the source
-    # template so each detail route gets only its own data dependencies.
-    index_html = read_site_template()
-    detail_html = index_html.replace('<base href="./">', '<base href="../../">', 1)
-    for route in SECTION_ROUTES:
-        for entry in (OUT_DIR / route).glob("*/index.html"):
-            preloads = list(DETAIL_PRELOADS.get(route, ()))
-            if route == "pokedex":
-                preloads.append(f"species-details/{entry.parent.name}.json")
-            entry.write_text(add_data_preloads(detail_html, tuple(preloads)), encoding="utf-8")
+    write_pages(load_published_records())
 
 
-def add_data_preloads(index_html: str, filenames: tuple[str, ...]) -> str:
-    """Start route-specific JSON downloads while the main script is loading."""
-    version_match = re.search(r'assets/app\.js\?v=([^"\']+)', index_html)
-    version = f"?v={version_match.group(1)}" if version_match else ""
-    links = "\n".join(
-        f'    <link rel="preload" href="data/{filename}{version}" as="fetch" crossorigin="anonymous">'
-        for filename in filenames
+def load_published_records() -> dict[str, object]:
+    data_dir = OUT_DIR / "data"
+
+    def read(name: str, default: object) -> object:
+        path = data_dir / name
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
+
+    return {
+        "species": read("species.json", []),
+        "moves": read("moves.json", {}),
+        "abilities": read("abilities.json", {}),
+        "tms": read("machines.json", []),
+        "items": read("items.json", []),
+        "guides": read("guides.json", []),
+    }
+
+
+def constant_label(value: str, prefix: str) -> str:
+    return value.removeprefix(prefix).replace("_", " ").title()
+
+
+def plain_text(value: object) -> str:
+    return " ".join(str(value or "").split())
+
+
+def metric(value: object) -> str:
+    return "—" if str(value) in {"", "0", "None"} else str(value)
+
+
+def move_summary(record: dict) -> str:
+    return " · ".join((
+        constant_label(record.get("type") or "", "TYPE_"),
+        constant_label(record.get("category") or "", "DAMAGE_CATEGORY_"),
+        f"Power {metric(record.get('power'))}",
+        f"Accuracy {metric(record.get('accuracy'))}",
+        f"PP {metric(record.get('pp'))}",
+    ))
+
+
+def species_description(mon: dict, ability_names: dict[str, str]) -> str:
+    def name(constant: str) -> str:
+        return ability_names.get(constant) or constant_label(constant, "ABILITY_")
+
+    def unique(constants: list[str] | None) -> list[str]:
+        return [c for c in dict.fromkeys(constants or []) if c and c != "ABILITY_NONE"]
+
+    regular = unique(mon.get("regularAbilities"))
+    hidden = [c for c in unique(mon.get("hiddenAbilities")) if c not in regular]
+    abilities = [name(c) for c in regular] + [f"{name(c)} (hidden)" for c in hidden]
+    innates = [name(c) for c in unique(mon.get("innates"))]
+    stats = mon.get("stats") or {}
+    parts = [
+        " / ".join(constant_label(t, "TYPE_") for t in dict.fromkeys(mon.get("types") or []) if t) + ".",
+        "Base stats " + "/".join(str(stats.get(key, "?")) for key in ("hp", "atk", "def", "spa", "spd", "spe")) + f" (BST {mon.get('bst', '?')}).",
+    ]
+    if abilities:
+        parts.append(f"Abilities: {', '.join(abilities)}.")
+    if innates:
+        parts.append(f"Innates: {', '.join(innates)}.")
+    return " ".join(parts)
+
+
+def detail_page(route: str, record: dict, ability_names: dict[str, str]) -> tuple[str, str, tuple[str, ...]]:
+    if route == "pokedex":
+        label = record.get("formLabel") or record["name"]
+        heading = f"#{record.get('dex') or record.get('id')} {label}"
+        return heading, species_description(record, ability_names), (f"species-details/{record['slug']}.json",)
+    if route == "moves":
+        heading = f"#{record.get('id') or '-'} {record['name']}"
+        description = f"{move_summary(record)}. {plain_text(record.get('description'))}"
+        return heading, description, (f"move-learners/{record['slug']}.json",)
+    if route == "machines":
+        heading = f"{record['label']} {record['moveName']}"
+        description = f"{move_summary(record)}. {plain_text(record.get('description'))}"
+        if record.get("location"):
+            description += f" Location: {plain_text(record['location'])}."
+        return heading, description, (f"move-learners/{route_slug(record['move'], 'MOVE_')}.json",)
+    if route == "items":
+        description = plain_text(record.get("description"))
+        if record.get("location"):
+            description += f" Location: {plain_text(record['location'])}."
+        return record["name"], description, ()
+    if route == "abilities":
+        return record["name"], plain_text(record.get("description")), ()
+    if route == "guides":
+        return record["title"], plain_text(record.get("summary")), ()
+    raise ValueError(f"Unknown detail route {route}")
+
+
+def truncate(text: str, limit: int = META_DESCRIPTION_LIMIT) -> str:
+    text = text.strip()
+    if len(text) <= limit:
+        return text
+    return text[: limit - 1].rsplit(" ", 1)[0].rstrip(" ,.;:") + "…"
+
+
+def replace_once(html: str, pattern: str, replacement: str) -> str:
+    result, count = re.subn(pattern, lambda _: replacement, html, count=1)
+    if count != 1:
+        raise ValueError(f"docs/src/index.html is missing {pattern}")
+    return result
+
+
+def render_page(
+    template: str,
+    *,
+    depth: int,
+    title: str,
+    description: str,
+    preloads: tuple[str, ...],
+    version: str,
+) -> str:
+    html = template.replace('<base href="./">', f'<base href="{"../" * depth or "./"}">', 1)
+    og_title = title.removesuffix(f" · {SITE_NAME}")
+    description = escape(truncate(description))
+    html = replace_once(html, r"<title>[^<]*</title>", f"<title>{escape(title)}</title>")
+    html = replace_once(html, r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{description}">')
+    html = replace_once(html, r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{escape(og_title)}">')
+    html = replace_once(html, r'<meta property="og:description" content="[^"]*">', f'<meta property="og:description" content="{description}">')
+    links = "".join(
+        f'    <link rel="preload" href="data/{filename}?v={version}" as="fetch" crossorigin="anonymous">\n'
+        for filename in preloads
     )
-    return index_html.replace("  </head>", f"{links}\n  </head>", 1)
+    return html.replace("  </head>", f"{links}  </head>", 1)
 
 
-def write_section_routes() -> None:
-    """Create static entry points so section URLs work without server rewrites."""
-    index_html = (OUT_DIR / "index.html").read_text(encoding="utf-8")
-    route_html = index_html.replace('<base href="./">', '<base href="../">', 1)
-    if route_html == index_html:
-        raise ValueError('docs/src/index.html must contain <base href="./">')
+def write_pages(records: dict[str, object]) -> None:
+    template = read_site_template()
+    version = data_version()
     (OUT_DIR / "index.html").write_text(
-        add_data_preloads(index_html, SECTION_PRELOADS["pokedex"]),
+        render_page(
+            template,
+            depth=0,
+            title=SITE_NAME,
+            description=SITE_DESCRIPTION,
+            preloads=SECTION_PRELOADS["pokedex"],
+            version=version,
+        ),
         encoding="utf-8",
     )
     for route in SECTION_ROUTES:
         route_dir = OUT_DIR / route
         route_dir.mkdir(parents=True, exist_ok=True)
         (route_dir / "index.html").write_text(
-            add_data_preloads(route_html, SECTION_PRELOADS[route]),
+            render_page(
+                template,
+                depth=1,
+                title=f"{SECTION_LABELS[route]} · {SITE_NAME}",
+                description=SECTION_DESCRIPTIONS[route],
+                preloads=SECTION_PRELOADS[route],
+                version=version,
+            ),
             encoding="utf-8",
         )
 
-
-def write_detail_routes(payload: DocsPayload) -> None:
-    """Create static entry points for every shareable record URL."""
-    # Read the source template so the Pokédex preloads added to docs/index.html
-    # are not inherited by every detail route.
-    index_html = read_site_template()
-    detail_html = index_html.replace('<base href="./">', '<base href="../../">', 1)
-    if detail_html == index_html:
-        raise ValueError('docs/src/index.html must contain <base href="./">')
-
-    records = {
-        "pokedex": payload["species"],
-        "moves": payload["moves"].values(),
-        "machines": payload["tms"],
-        "items": payload["items"],
-        "abilities": payload["abilities"].values(),
-        "guides": payload["guides"],
+    abilities = records["abilities"]
+    ability_names = {key: value.get("name", "") for key, value in abilities.items()}
+    route_records = {
+        "pokedex": records["species"],
+        "moves": records["moves"].values(),
+        "machines": records["tms"],
+        "items": records["items"],
+        "abilities": abilities.values(),
+        "guides": records["guides"],
     }
-    for route, entries in records.items():
+    for route, entries in route_records.items():
         seen_slugs: dict[str, str] = {}
         for entry in entries:
             if entry.get("constant") in {"MOVE_NONE", "ABILITY_NONE"}:
@@ -182,13 +357,18 @@ def write_detail_routes(payload: DocsPayload) -> None:
             if slug in seen_slugs:
                 raise ValueError(f"Duplicate {route} route slug '{slug}': {seen_slugs[slug]} and {identity}")
             seen_slugs[slug] = identity
+            heading, description, extra_preloads = detail_page(route, entry, ability_names)
             route_dir = OUT_DIR / route / slug
             route_dir.mkdir(parents=True, exist_ok=True)
-            preloads = list(DETAIL_PRELOADS[route])
-            if route == "pokedex":
-                preloads.append(f"species-details/{slug}.json")
             (route_dir / "index.html").write_text(
-                add_data_preloads(detail_html, tuple(preloads)),
+                render_page(
+                    template,
+                    depth=2,
+                    title=f"{heading} · {SECTION_LABELS[route]} · {SITE_NAME}",
+                    description=description,
+                    preloads=DETAIL_PRELOADS[route] + extra_preloads,
+                    version=version,
+                ),
                 encoding="utf-8",
             )
 
@@ -228,6 +408,7 @@ def build_docs_payload(
                 "regularAbilities": row.regular_abilities,
                 "hiddenAbilities": row.hidden_abilities,
                 "innates": row.innates,
+                **({"formLabel": label} if (label := species_form_label(row.constant, row.name)) != row.name else {}),
                 "sprite": row.sprite,
                 "shinySprite": row.shiny_sprite,
                 "levelUp": row.level_up,
@@ -254,7 +435,10 @@ def build_docs_payload(
             }
             for key, value in abilities.items()
         },
-        "tms": [{**row, "slug": row["label"].lower()} for row in tms],
+        "tms": [
+            {**row, "slug": row["label"].lower(), "moveSlug": route_slug(row["move"], "MOVE_")}
+            for row in tms
+        ],
         "items": [
             {**row, "slug": route_slug(row["constant"], "ITEM_")}
             for row in important_items
@@ -279,8 +463,6 @@ def write_docs_payload(payload: DocsPayload) -> None:
             encoding="utf-8",
         )
 
-    # Keep the full payload for downstream tooling while the website itself
-    # loads compact, section-specific files on demand.
     write_json("romhack-docs.json", payload, pretty=True)
     write_json("ui.json", {
         "typeIcons": payload["typeIcons"],
@@ -315,21 +497,8 @@ def write_docs_payload(payload: DocsPayload) -> None:
             if row["evolutions"]
         },
     })
-    write_json("common.json", {
-        "meta": payload["meta"],
-        "dedicatedTutors": payload["dedicatedTutors"],
-        "moves": payload["moves"],
-        "abilities": {
-            key: {field: value for field, value in ability.items() if field != "usage"}
-            for key, ability in payload["abilities"].items()
-        },
-        "typeIcons": payload["typeIcons"],
-        "categoryIcons": payload["categoryIcons"],
-        "uiIcons": payload["uiIcons"],
-        "megaEvolutions": payload["megaEvolutions"],
-    })
     summary_fields = {
-        "id", "constant", "dex", "name", "types", "stats", "bst",
+        "id", "constant", "dex", "name", "formLabel", "types", "stats", "bst",
         "categories",
         "abilities", "regularAbilities", "hiddenAbilities", "innates",
         "sprite", "slug",
@@ -338,10 +507,6 @@ def write_docs_payload(payload: DocsPayload) -> None:
         {key: value for key, value in row.items() if key in summary_fields}
         for row in payload["species"]
     ])
-    write_json("species-details.json", {
-        row["constant"]: {key: value for key, value in row.items() if key not in summary_fields}
-        for row in payload["species"]
-    })
     species_detail_dir = data_dir / "species-details"
     if species_detail_dir.exists():
         shutil.rmtree(species_detail_dir)
@@ -354,6 +519,7 @@ def write_docs_payload(payload: DocsPayload) -> None:
             ),
             encoding="utf-8",
         )
+    write_move_learners(payload)
     write_json("ability-usage.json", {
         key: ability["usage"]
         for key, ability in payload["abilities"].items()
@@ -366,4 +532,29 @@ def write_docs_payload(payload: DocsPayload) -> None:
         ("guides.json", "guides"),
     ):
         write_json(name, payload[key])
-    write_detail_routes(payload)
+    for retired in ("common.json", "species-details.json"):
+        (data_dir / retired).unlink(missing_ok=True)
+    write_pages(payload)
+
+
+def write_move_learners(payload: DocsPayload) -> None:
+    learners: dict[str, dict[str, list[str]]] = {}
+    for row in payload["species"]:
+        for field in MOVE_LEARNER_FIELDS:
+            for entry in row[field] or []:
+                move = entry if isinstance(entry, str) else entry["move"]
+                species = learners.setdefault(move, {}).setdefault(field, [])
+                if not species or species[-1] != row["constant"]:
+                    species.append(row["constant"])
+    learner_dir = OUT_DIR / "data" / "move-learners"
+    if learner_dir.exists():
+        shutil.rmtree(learner_dir)
+    learner_dir.mkdir(parents=True)
+    for constant, move in payload["moves"].items():
+        if constant == "MOVE_NONE":
+            continue
+        methods = learners.get(constant, {})
+        (learner_dir / f'{move["slug"]}.json').write_text(
+            json.dumps({field: methods[field] for field in MOVE_LEARNER_FIELDS if field in methods}, separators=(",", ":")),
+            encoding="utf-8",
+        )
