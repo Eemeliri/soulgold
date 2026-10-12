@@ -721,6 +721,7 @@ static u8 GetBattleEnvironmentOverride(void)
         {
         case SPECIES_RAYQUAZA:
         case SPECIES_HO_OH:
+        case SPECIES_ZAPDOS:
             return BATTLE_ENVIRONMENT_RAYQUAZA;
         case SPECIES_LATIAS:
         case SPECIES_LATIAS_MEGA:
