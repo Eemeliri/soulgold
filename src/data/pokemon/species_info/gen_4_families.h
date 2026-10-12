@@ -1006,7 +1006,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         //.backAnimId = BACK_ANIM_NONE,
         .palette = gMonPalette_StaraptorMega,
         .shinyPalette = gMonShinyPalette_StaraptorMega,
-        //.iconSprite = gMonIcon_QuestionMark,
+        .iconSprite = gMonIcon_StaraptorMega,
+        .iconPalette = gMonIconPalette_StaraptorMega,
+        .shinyIconPalette = gMonShinyIconPalette_StaraptorMega,
         //.iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Staraptor)

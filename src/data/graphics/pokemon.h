@@ -15605,8 +15605,10 @@ const u16 gMonPalette_TyphlosionMega[] = INCBIN_U16("graphics/pokemon/typhlosion
     const u16 gMonPalette_StaraptorMega[] = INCBIN_U16("graphics/pokemon/staraptor/mega/normal.gbapal");
     const u32 gMonBackPic_StaraptorMega[] = INCBIN_U32("graphics/pokemon/staraptor/mega/back.4bpp.smol");
     const u16 gMonShinyPalette_StaraptorMega[] = INCBIN_U16("graphics/pokemon/staraptor/mega/shiny.gbapal");
-//    const u8 gMonIcon_StaraptorMega[] = INCBIN_U8("graphics/pokemon/staraptor/mega/icon.4bpp");
-#if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
+    const u8 gMonIcon_StaraptorMega[] = INCBIN_U8("graphics/pokemon/staraptor/mega/icon.4bpp");
+    const u16 gMonIconPalette_StaraptorMega[] = INCBIN_U16("graphics/pokemon/staraptor/mega/icon_normal.gbapal");
+    const u16 gMonShinyIconPalette_StaraptorMega[] = INCBIN_U16("graphics/pokemon/staraptor/mega/icon_shiny.gbapal");
+    #if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
 //    const u32 gObjectEventPic_StaraptorMega[] = INCBIN_COMP("graphics/pokemon/staraptor/mega/overworld.4bpp");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
 //    const u16 gOverworldPalette_StaraptorMega[] = INCBIN_U16("graphics/pokemon/staraptor/mega/overworld_normal.gbapal");
