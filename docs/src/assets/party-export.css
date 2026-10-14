@@ -1,0 +1,108 @@
+.party-header,
+main.party-main { width: min(100% - 32px, 1240px); }
+.party-header { gap: 16px; }
+.party-home { color: inherit; text-decoration: none; }
+.party-main > * + * { margin-top: 16px; }
+.party-main [hidden] { display: none !important; }
+.party-main .panel-status { overflow-wrap: anywhere; }
+.party-main .tab,
+.party-main .tab:first-of-type { width: auto; height: auto; min-height: 40px; flex: 0 1 auto; justify-content: center; padding: 8px 14px; border: 1px solid #40504c; background: #1e2c2a; color: #d9ded8; white-space: normal; }
+.party-main .tab:hover { background: #33433f; color: #fffaf0; }
+.party-main .tab.active { background: #f0e7d2; box-shadow: inset 0 4px var(--gold); color: #28332f; }
+.party-help { color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.5; }
+
+.party-intro { padding: clamp(16px, 4vw, 28px); line-height: 1.55; }
+.party-intro h2,
+.party-summary h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(24px, 4vw, 34px); line-height: 1.15; overflow-wrap: anywhere; }
+.party-intro > * + * { margin-top: 12px; }
+.party-link-form label { display: block; margin-bottom: 6px; font-weight: 700; }
+.party-link-row { display: flex; gap: 8px; }
+.party-link-row input { flex: 1 1 auto; min-width: 0; }
+.party-file { margin: 4px 0; cursor: pointer; }
+
+.party-summary { display: grid; gap: 10px; }
+.party-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.party-meta li { padding: 3px 9px; border: 1px solid var(--line-strong); border-radius: 2px; background: var(--surface-raised); color: var(--muted-strong); font-size: 13px; font-weight: 600; }
+.party-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.party-members { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 12px; }
+.party-mon { display: grid; min-width: 0; padding: 14px; align-content: start; gap: 12px; }
+.party-mon-head { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 12px; }
+.party-sprite-link { display: block; width: 64px; height: 64px; }
+.party-sprite { width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; }
+.party-mon-title { display: grid; min-width: 0; gap: 4px; }
+.party-mon-name { display: flex; min-width: 0; align-items: baseline; gap: 6px; font-size: 19px; line-height: 1.2; overflow-wrap: anywhere; }
+.party-mon-name a { color: inherit; text-decoration: none; }
+.party-mon-name a:hover { color: var(--gold); }
+.party-mon-subtitle { color: var(--muted); font-size: 13px; }
+.party-gender { font-size: 15px; font-weight: 700; }
+.party-gender-m { color: #4a86d8; }
+.party-gender-f { color: #d0577f; }
+.party-shiny { color: #d8a23f; font-size: 15px; }
+
+.party-facts { display: grid; margin: 0; gap: 6px; }
+.party-fact { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 8px; font-size: 14px; }
+.party-fact dt { color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+.party-fact dd { min-width: 0; margin: 0; color: var(--muted-strong); }
+.party-fact .pill-list { gap: 4px; }
+.party-fact a.pill { text-decoration: none; }
+.party-locked { opacity: .55; border-style: dashed; }
+.party-item { display: inline-flex; min-width: 0; align-items: center; gap: 4px; color: inherit; }
+a.party-item:hover { color: var(--gold); }
+.party-item-icon { width: 24px; height: 24px; object-fit: contain; image-rendering: pixelated; }
+
+.party-moves { display: grid; margin: 0; padding: 10px 0 0; gap: 5px; border-top: 1px solid var(--line); list-style: none; }
+.party-moves li { display: grid; grid-template-columns: 70px minmax(0, 1fr); align-items: center; gap: 8px; font-size: 14px; }
+.party-moves .type { min-width: 0; height: 20px; padding: 0 4px; font-size: 10px; }
+.party-move-name { overflow: hidden; color: var(--text); font-weight: 700; text-decoration: none; text-overflow: ellipsis; white-space: nowrap; }
+a.party-move-name:hover { color: var(--gold); }
+
+.party-stats { width: 100%; min-width: 0; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+.party-stats th,
+.party-stats td { padding: 3px 4px; border-bottom: 1px solid var(--line); text-align: right; }
+.party-stats thead th { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.party-stats tbody th { width: 40px; color: var(--muted-strong); text-align: left; }
+.party-stats tr:last-child > * { border-bottom: 0; }
+.party-stat-base { display: grid; grid-template-columns: minmax(40px, 1fr) 30px; align-items: center; gap: 6px; }
+.party-stat-base .bar { height: 6px; }
+.party-stat-value { color: var(--text); font-weight: 800; }
+.party-stats .party-stat-up th,
+.party-stat-up .party-stat-value { color: #c4512f; }
+.party-stats .party-stat-down th,
+.party-stat-down .party-stat-value { color: #3d78c4; }
+
+.party-stats th { background: transparent; font-family: inherit; letter-spacing: normal; }
+.party-stats tbody tr { background: transparent; transition: none; }
+.party-stats thead th { border-bottom: 1px solid var(--line-strong); letter-spacing: .04em; }
+.party-section { padding: clamp(14px, 3vw, 22px); }
+.party-section > * + * { margin-top: 10px; }
+
+.party-export > summary { cursor: pointer; font-weight: 700; }
+.party-export form { display: grid; gap: 6px; }
+.party-export label { margin-top: 12px; font-weight: 700; }
+.party-export input,
+.party-export textarea,
+.party-link-row input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 10px 12px;
+  font: inherit;
+}
+.party-export textarea { resize: vertical; line-height: 1.55; }
+#partyPaste { font: 14px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace; }
+.party-publish { justify-self: start; margin-top: 8px; }
+
+@media (max-width: 420px) {
+  .party-header,
+  main.party-main { width: calc(100% - 24px); }
+  .party-mon { padding: 12px; }
+  .party-section { padding: 12px 8px; }
+  .party-actions .tab,
+  .party-actions .tab:first-of-type { flex: 1 1 calc(50% - 4px); }
+  .party-moves li { grid-template-columns: 62px minmax(0, 1fr); }
+}

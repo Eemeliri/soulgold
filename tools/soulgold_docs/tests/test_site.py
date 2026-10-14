@@ -8,6 +8,14 @@ from unittest.mock import patch
 
 from tools.soulgold_docs import site
 
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
+PARTY_TEMPLATE = """<html><head><base href="../">
+    <meta name="docs-data-version" content="{{DATA_VERSION}}">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/party-export.css?v=1">
+  </head><script type="module" src="assets/party-export.mjs"></script></html>"""
+
 TEMPLATE = """<html><head><base href="./">
     <title>Soulgold Documentation</title>
     <meta name="description" content="Default">
@@ -140,10 +148,73 @@ class StaticSiteRefreshTests(unittest.TestCase):
         site.write_pages({"species": [], "moves": {}, "abilities": {}, "tms": [], "items": [], "guides": []})
         self.assertIn('<span class="header-version">v1.2.1</span>', (self.output / "index.html").read_text())
 
+    def test_party_page_uses_content_hashed_assets_and_links_index(self) -> None:
+        self.write_published_data()
+        (self.output / "data" / "items.json").write_text(json.dumps([
+            {"constant": "ITEM_LEFTOVERS", "name": "Leftovers", "slug": "leftovers", "itemIcon": "sprites/items/leftovers.png"},
+        ]))
+        (self.source / "party").mkdir()
+        (self.source / "party" / "index.html").write_text(PARTY_TEMPLATE)
+        (self.source / "assets" / "party-export.css").write_text(".party {}")
+        (self.source / "assets" / "party-export.mjs").write_text("export {};")
+
+        site.refresh_static_site()
+
+        party = (self.output / "party" / "index.html").read_text()
+        self.assertIn(f'<meta name="docs-data-version" content="{site.content_hash([self.output / "data" / "party-links.json"], self.output)}">', party)
+        for asset in ("styles.css", "party-export.css", "party-export.mjs"):
+            self.assertIn(f'assets/{asset}?v={site.content_hash([self.source / "assets" / asset], self.source)}"', party)
+        self.assertNotIn("v=1", party)
+        links = json.loads((self.output / "data" / "party-links.json").read_text())
+        self.assertEqual(links, {
+            "species": {"SPECIES_VENUSAUR_MEGA": ["venusaur-mega", ""]},
+            "items": {"ITEM_LEFTOVERS": ["leftovers", "sprites/items/leftovers.png"]},
+        })
+
+
+    def test_party_archives_do_not_change_public_docs_cache_version(self) -> None:
+        self.write_published_data()
+        version = site.data_version()
+        archives = self.output / "data" / "party-export"
+        archives.mkdir()
+        (archives / "1234abcd.json").write_text('{"id":"1234abcd"}')
+        (self.output / "data" / "party-links.json").write_text('{}')
+        self.assertEqual(site.data_version(), version)
+        (self.output / "data" / "items.json").write_text('[{"name":"Changed"}]')
+        self.assertNotEqual(site.data_version(), version)
+
+    def test_party_page_with_a_missing_stylesheet_fails_the_build(self) -> None:
+        self.write_published_data()
+        (self.source / "party").mkdir()
+        (self.source / "party" / "index.html").write_text(PARTY_TEMPLATE.replace("party-export.css", "refined.css"))
+        (self.source / "assets" / "party-export.mjs").write_text("export {};")
+        with self.assertRaisesRegex(ValueError, "refined.css"):
+            site.refresh_static_site()
+
     def test_missing_asset_reference_fails_the_build(self) -> None:
         (self.source / "assets" / "styles.css").unlink()
         with self.assertRaises(ValueError):
             site.read_site_template()
+
+
+class PartyExportReleaseTests(unittest.TestCase):
+    def test_archived_beta_dictionary_is_published_unchanged(self) -> None:
+        relative = Path("data/party-export/cc2a9518.json")
+        self.assertEqual((REPO_ROOT / "docs/src" / relative).read_bytes(),
+                         (REPO_ROOT / "docs" / relative).read_bytes())
+
+    def test_party_is_unlisted_and_excluded_from_indexing(self) -> None:
+        page = (REPO_ROOT / "docs/party/index.html").read_text()
+        self.assertIn('<meta name="robots" content="noindex, nofollow">', page)
+        self.assertNotIn('href="party/', (REPO_ROOT / "docs/index.html").read_text())
+        self.assertNotIn("party", site.SECTION_ROUTES)
+
+    def test_party_page_references_only_existing_assets(self) -> None:
+        page = (REPO_ROOT / "docs" / "party" / "index.html").read_text()
+        for asset in site.ASSET_REFERENCE.findall(page):
+            with self.subTest(asset=asset[1]):
+                self.assertTrue((REPO_ROOT / "docs" / asset[1]).is_file())
+        self.assertNotIn("../assets/", page)
 
 
 class FormLabelTests(unittest.TestCase):

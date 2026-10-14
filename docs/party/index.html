@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <base href="../">
+    <title>Soulgold team · Soulgold Documentation</title>
+    <meta name="description" content="A team exported from the game with Showdown text and PokePaste export support.">
+    <meta property="og:site_name" content="Soulgold Documentation">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Soulgold party">
+    <meta property="og:description" content="Open this link to see the full team: Pokémon, moves, abilities, innates and stats.">
+    <meta name="theme-color" content="#263532">
+    <meta name="docs-data-version" content="7b04464eda7f">
+    <script>
+      try {
+        if (localStorage.getItem("soulgold-docs-theme") === "light") document.documentElement.dataset.theme = "light";
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="assets/styles.css?v=8d676cf7fb45">
+    <link rel="stylesheet" href="assets/party-export.css?v=2be55f90eef5">
+  </head>
+  <body>
+    <div class="top-chrome">
+      <header class="site-header party-header">
+        <div class="brand">
+          <div class="brand-title">
+            <h1><a class="party-home" href="./">Soulgold Documentation</a></h1>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+            <span class="theme-toggle-label"></span>
+          </button>
+        </div>
+      </header>
+    </div>
+    <main class="party-main">
+      <p id="partyStatus" class="panel-status" role="status" aria-live="polite">Loading your party…</p>
+      <button id="partyRetry" class="tab" type="button" hidden>Try again</button>
+      <noscript><p>Enable JavaScript to read the party from your QR code.</p></noscript>
+
+      <section id="partyIntro" class="data-panel party-intro" aria-labelledby="partyIntroTitle">
+        <h2 id="partyIntroTitle">Share your team (someday!)</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <form id="partyLinkForm" class="party-link-form">
+          <label for="partyLinkInput">Party link</label>
+          <div class="party-link-row">
+            <input id="partyLinkInput" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://eemeliri.github.io/soulgold/party/#…">
+            <button class="tab active" type="submit">Open</button>
+          </div>
+        </form>
+
+      </section>
+
+      <article id="partyView" class="party-view" hidden>
+        <header class="party-summary">
+          <h2 id="partyHeading"></h2>
+          <ul id="partyMeta" class="party-meta"></ul>
+          <div class="party-actions">
+            <button id="partyShare" class="tab active" type="button">Share team</button>
+            <button id="partyCopyLink" class="tab" type="button">Copy link</button>
+            <button id="partyCopy" class="tab" type="button">Copy Showdown text</button>
+          </div>
+        </header>
+
+        <div id="partyMembers" class="party-members"></div>
+
+        <details class="data-panel party-section party-export">
+          <summary>Showdown text and PokePaste</summary>
+          <form id="partyForm" action="https://pokepast.es/create" method="post" accept-charset="UTF-8">
+            <label for="partyPaste">Showdown text</label>
+            <p id="partyTextHelp" class="party-help">Edits here apply to the copied text, the download and the PokePaste, not to the team link.</p>
+            <textarea id="partyPaste" name="paste" rows="18" spellcheck="false" required aria-describedby="partyTextHelp"></textarea>
+            <div class="party-actions">
+              <button id="partyDownload" class="tab" type="button">Download .txt</button>
+            </div>
+            <label for="partyPasteTitle">Title</label>
+            <input id="partyPasteTitle" name="title" type="text" maxlength="200">
+            <label for="partyAuthor">Author <span class="party-help">(optional)</span></label>
+            <input id="partyAuthor" name="author" type="text" maxlength="100" autocomplete="off">
+            <label for="partyNotes">Notes</label>
+            <textarea id="partyNotes" name="notes" rows="8"></textarea>
+            <p id="partyPublishHelp" class="party-help">Creating a PokePaste publishes this team, author and notes on pokepast.es. Soulgold’s custom mechanics may differ from standard Showdown formats.</p>
+            <button class="tab active party-publish" type="submit" aria-describedby="partyPublishHelp">Create PokePaste</button>
+          </form>
+        </details>
+      </article>
+    </main>
+    <script type="module" src="assets/party-export.mjs?v=3963664aa31b"></script>
+  </body>
+</html>

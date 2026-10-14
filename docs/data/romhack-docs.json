@@ -61888,6 +61888,74 @@
         {
           "level": 1,
           "move": "MOVE_HIDDEN_POWER"
+        },
+        {
+          "level": 6,
+          "move": "MOVE_POWER_SWAP"
+        },
+        {
+          "level": 11,
+          "move": "MOVE_POWER_TRIP"
+        },
+        {
+          "level": 16,
+          "move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "level": 21,
+          "move": "MOVE_POWER_SPLIT"
+        },
+        {
+          "level": 26,
+          "move": "MOVE_SECRET_POWER"
+        },
+        {
+          "level": 31,
+          "move": "MOVE_POWER_UP_PUNCH"
+        },
+        {
+          "level": 36,
+          "move": "MOVE_NATURE_POWER"
+        },
+        {
+          "level": 41,
+          "move": "MOVE_COSMIC_POWER"
+        },
+        {
+          "level": 46,
+          "move": "MOVE_STORED_POWER"
+        },
+        {
+          "level": 51,
+          "move": "MOVE_POWER_TRICK"
+        },
+        {
+          "level": 56,
+          "move": "MOVE_POWER_GEM"
+        },
+        {
+          "level": 66,
+          "move": "MOVE_EARTH_POWER"
+        },
+        {
+          "level": 71,
+          "move": "MOVE_POWER_WHIP"
+        },
+        {
+          "level": 74,
+          "move": "MOVE_POWER_SHIFT"
+        },
+        {
+          "level": 80,
+          "move": "MOVE_HIGH_HORSEPOWER"
+        },
+        {
+          "level": 85,
+          "move": "MOVE_SUPERPOWER"
+        },
+        {
+          "level": 90,
+          "move": "MOVE_MYSTICAL_POWER"
         }
       ],
       "tmhm": [
@@ -66883,7 +66951,7 @@
       ],
       "innates": [
         "ABILITY_REEF_WARDEN",
-        "ABILITY_WANDERING_SPIRIT",
+        "ABILITY_FILTER",
         "ABILITY_PERISH_BODY"
       ],
       "sprite": "sprites/pokemon/corsola_galar.png",
@@ -223018,7 +223086,7 @@
       "id": 280,
       "constant": "MOVE_BRICK_BREAK",
       "name": "Brick Break",
-      "description": "Destroys barriers such as REFLECT and causes damage.",
+      "description": "Destroys barriers such as Reflect and causes damage.",
       "power": 75,
       "accuracy": 100,
       "pp": 15,
@@ -245697,6 +245765,12 @@
             "sprite": "sprites/pokemon/steelix_mega.png"
           },
           {
+            "species": "SPECIES_CORSOLA_GALAR",
+            "name": "Corsola",
+            "dex": 190,
+            "sprite": "sprites/pokemon/corsola_galar.png"
+          },
+          {
             "species": "SPECIES_MANTINE",
             "name": "Mantine",
             "dex": 192,
@@ -256498,12 +256572,6 @@
           }
         ],
         "innate": [
-          {
-            "species": "SPECIES_CORSOLA_GALAR",
-            "name": "Corsola",
-            "dex": 190,
-            "sprite": "sprites/pokemon/corsola_galar.png"
-          },
           {
             "species": "SPECIES_ROTOM",
             "name": "Rotom",
@@ -300599,7 +300667,7 @@
           "displayName": "Corsola Galar",
           "innates": [
             "ABILITY_REEF_WARDEN",
-            "ABILITY_WANDERING_SPIRIT",
+            "ABILITY_FILTER",
             "ABILITY_PERISH_BODY"
           ],
           "itemConstant": "",
@@ -302019,7 +302087,7 @@
           "displayName": "Corsola Galar",
           "innates": [
             "ABILITY_REEF_WARDEN",
-            "ABILITY_WANDERING_SPIRIT",
+            "ABILITY_FILTER",
             "ABILITY_PERISH_BODY"
           ],
           "itemConstant": "",

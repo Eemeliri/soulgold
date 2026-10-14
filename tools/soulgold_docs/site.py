@@ -41,13 +41,13 @@ SECTION_LABELS = {
 
 SECTION_DESCRIPTIONS = {
     "pokedex": "Base stats, types, abilities, learnsets and locations for every Pokémon in Soulgold.",
-    "moves": "Every move in Soulgold with its type, category, power, accuracy, PP and priority.",
-    "encounters": "Wild Pokémon in every Soulgold area, by encounter method and time of day.",
-    "machines": "Every TM and HM in Soulgold, with move data and where to find it.",
-    "items": "Notable Soulgold items and where to find them.",
-    "trainers": "Soulgold trainer parties with levels, abilities, moves and held items.",
-    "abilities": "Every ability in Soulgold and the Pokémon that have it.",
-    "guides": "Player guides for Soulgold.",
+    "moves": "Every move in with its type, category, power, accuracy, PP and priority.",
+    "encounters": "Wild Pokémon in every map.",
+    "machines": "Every TM and HM in alongside the move data and where to find them.",
+    "items": "Notable items and where to find them.",
+    "trainers": "Trainer parties with levels, abilities, moves and held items.",
+    "abilities": "Every ability and which Pokémon gets them.",
+    "guides": "Guides for Soulgold.",
 }
 
 SECTION_PRELOADS = {
@@ -121,7 +121,7 @@ def copy_static_sources() -> None:
         relative = item.relative_to(SRC_DIR)
         if relative.parts[0] == "guides" and (item.suffix == ".md" or item.name == ".gitkeep"):
             continue
-        if relative.as_posix() == "index.html":
+        if relative.as_posix() in {"index.html", "party/index.html"}:
             continue
         dest = OUT_DIR / relative
         if item.is_dir():
@@ -140,7 +140,10 @@ def content_hash(paths: list[Path], root: Path) -> str:
 
 def data_version() -> str:
     data_dir = OUT_DIR / "data"
-    files = [path for path in data_dir.rglob("*.json") if path.name != "romhack-docs.json"]
+    # Party dictionaries are immutable beta snapshots, independent of public docs.
+    files = [path for path in data_dir.rglob("*.json")
+             if path.name not in {"romhack-docs.json", "party-links.json"}
+             and "party-export" not in path.relative_to(data_dir).parts]
     return content_hash(files, data_dir)
 
 
@@ -149,7 +152,7 @@ def version_asset_references(html: str) -> str:
     def replace(match: re.Match[str]) -> str:
         path = SRC_DIR / match.group(2)
         if not path.is_file():
-            raise ValueError(f"docs/src/index.html references missing asset {match.group(2)}")
+            raise ValueError(f"docs/src references missing asset {match.group(2)}")
         return f"{match.group(1)}{match.group(2)}?v={content_hash([path], SRC_DIR)}{match.group(3)}"
 
     return ASSET_REFERENCE.sub(replace, html)
@@ -306,9 +309,36 @@ def render_page(
     return html.replace("  </head>", f"{links}  </head>", 1)
 
 
+def write_party_links(records: dict[str, object]) -> None:
+    data_dir = OUT_DIR / "data"
+    data_dir.mkdir(parents=True, exist_ok=True)
+    links = {
+        "species": {
+            row["constant"]: [row["slug"], row.get("sprite") or ""]
+            for row in records["species"] if row.get("constant") and row.get("slug")
+        },
+        "items": {
+            row["constant"]: [row["slug"], row.get("itemIcon") or ""]
+            for row in records["items"] if row.get("constant") and row.get("slug")
+        },
+    }
+    (data_dir / "party-links.json").write_text(json.dumps(links, sort_keys=True, separators=(",", ":")), encoding="utf-8")
+
+
+def write_party_page(version: str) -> None:
+    template = SRC_DIR / "party" / "index.html"
+    if not template.is_file():
+        return
+    html = version_asset_references(template.read_text(encoding="utf-8").replace("{{DATA_VERSION}}", version))
+    (OUT_DIR / "party").mkdir(parents=True, exist_ok=True)
+    (OUT_DIR / "party" / "index.html").write_text(html, encoding="utf-8")
+
+
 def write_pages(records: dict[str, object]) -> None:
+    write_party_links(records)
     template = read_site_template()
     version = data_version()
+    write_party_page(content_hash([OUT_DIR / "data" / "party-links.json"], OUT_DIR))
     (OUT_DIR / "index.html").write_text(
         render_page(
             template,
