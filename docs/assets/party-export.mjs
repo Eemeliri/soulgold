@@ -288,8 +288,8 @@ function statLine(stats, pick, include = () => true) {
 export function formatPartyExport(view) {
   const notes = [
     `Exported from Soulgold ${view.romVersion}${view.trainerName ? ` by ${view.trainerName}` : ""}: ${view.hallOfFame ? "Hall of Fame team, " : ""}${view.mode}, ${badgeLabel(view.badges)}, ${view.playTime} played.`,
-    "Soulgold has custom species, moves, abilities and innate abilities. This is a party snapshot; standard Pokémon Showdown formats may not support these mechanics or consider the team legal.",
-    "Eggs are omitted. IVs reflect Hyper Training; Hidden Power uses the original IVs. Nature reflects any mint used.",
+    "Soulgold has custom abilities and and changes to moves so direct transfer to Showdown won't work.",
+    "IVs reflect Hyper Training; Hidden Power uses the original IVs. Nature reflects any mint used.",
   ];
   const blocks = view.members.map(member => {
     const gender = ["", " (M)", " (F)"][member.gender];
@@ -510,7 +510,6 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
   let request;
   let generation = 0;
   let snapshot = "";
-  let shareTitle = "";
   let ready = false;
 
   setupTheme(document, window);
@@ -581,7 +580,6 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
       get("partyAuthor").value = exported.author;
       get("partyNotes").value = exported.notes;
       document.title = `${described.title} · Soulgold`;
-      shareTitle = described.title;
       snapshot = window.location.href;
       ready = true;
       intro.hidden = true;
@@ -615,18 +613,6 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
     }
     window.location.hash = fragment;
   };
-  get("partyShare").addEventListener("click", async () => {
-    if (!ready) return;
-    if (typeof window.navigator.share === "function") {
-      try {
-        await window.navigator.share({ title: shareTitle, url: snapshot });
-        return;
-      } catch (error) {
-        if (error?.name === "AbortError") return;
-      }
-    }
-    return copy(snapshot, "Team link copied.");
-  });
   get("partyCopyLink").addEventListener("click", () => { if (ready) return copy(snapshot, "Team link copied."); });
   get("partyCopy").addEventListener("click", () => { if (ready) return copy(paste.value, "Team text copied.", paste); });
   get("partyDownload").addEventListener("click", () => {

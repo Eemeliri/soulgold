@@ -227,9 +227,11 @@ Route41_EventScript_Tentacruel2::
 Route41_EventScript_TentacruelAttack2::
 	msgbox Route41_Text_TentacruelAttack, MSGBOX_DEFAULT
 	waitmessage
+	setflag FLAG_SYS_NO_CATCHING
 	setwildbattle SPECIES_TENTACRUEL, 100, ITEM_NONE
 	dowildbattle
 	closemessage
+	clearflag FLAG_SYS_NO_CATCHING
 	playse SE_USE_ITEM
 	msgbox Route41_Text_TentacruelHeal, MSGBOX_DEFAULT
 	setvar VAR_TEMP_1, 0
@@ -251,9 +253,11 @@ Route41_EventScript_Tentacruel3::
 Route41_EventScript_TentacruelAttack3::
 	msgbox Route41_Text_TentacruelAttack, MSGBOX_DEFAULT
 	waitmessage
+	setflag FLAG_SYS_NO_CATCHING
 	setwildbattle SPECIES_TENTACRUEL, 100, ITEM_NONE
 	dowildbattle
 	closemessage
+	clearflag FLAG_SYS_NO_CATCHING
 	playse SE_USE_ITEM
 	msgbox Route41_Text_TentacruelHeal, MSGBOX_DEFAULT
 	setvar VAR_TEMP_2, 0
@@ -275,9 +279,11 @@ Route41_EventScript_Tentacruel4::
 Route41_EventScript_TentacruelAttack4::
 	msgbox Route41_Text_TentacruelAttack, MSGBOX_DEFAULT
 	waitmessage
+	setflag FLAG_SYS_NO_CATCHING
 	setwildbattle SPECIES_TENTACRUEL, 100, ITEM_NONE
 	dowildbattle
 	closemessage
+	clearflag FLAG_SYS_NO_CATCHING
 	playse SE_USE_ITEM
 	msgbox Route41_Text_TentacruelHeal, MSGBOX_DEFAULT
 	setvar VAR_TEMP_3, 0

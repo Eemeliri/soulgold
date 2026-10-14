@@ -16,10 +16,10 @@ GIFT_COMMAND_RE = re.compile(
     r"\b(givemon|giveegg)\s+(SPECIES_[A-Z0-9_]+)(?:\s*,\s*(\d+))?",
     re.IGNORECASE,
 )
-LEGENDARY_ENCOUNTER_RE = re.compile(
-    r"\b(?:bosslegendaryencounterwithmoves|bosslegendaryencounter|legendaryencounter)"
+SCRIPTED_ENCOUNTER_RE = re.compile(
+    r"^\s*(bosslegendaryencounterwithmoves|bosslegendaryencounter|legendaryencounter|setwildbattle|setwildbattleshiny|setwildbattle2|seteventmon)"
     r"\s+(SPECIES_[A-Z0-9_]+)\s*,\s*(\d+)\b",
-    re.IGNORECASE,
+    re.IGNORECASE | re.MULTILINE,
 )
 MASTER_GACHA_ARRAY_RE = re.compile(
     r"static\s+const\s+u16\s+sGachaMasterSpecies(?:Common|Uncommon|Rare|UltraRare)\[\]\s*=\s*\{(.*?)\};",
@@ -278,7 +278,7 @@ def add_gift_species_locations(
                 locations[species].append(location)
 
 
-def add_scripted_legendary_species_locations(
+def add_scripted_encounter_species_locations(
     locations: dict[str, list[SpeciesLocation]],
     by_species: dict[str, SpeciesRow],
 ) -> None:
@@ -288,7 +288,7 @@ def add_scripted_legendary_species_locations(
         return
 
     aliases = species_aliases()
-    legendary_locations: dict[str, list[SpeciesLocation]] = defaultdict(list)
+    scripted_encounters: dict[str, list[SpeciesLocation]] = defaultdict(list)
     for group_name in map_groups.get("group_order") or []:
         for map_name in map_groups.get(group_name) or []:
             if is_docs_excluded_map(map_name, group_name):
@@ -306,8 +306,14 @@ def add_scripted_legendary_species_locations(
                 map_display_name(map_data, map_name),
             )
             for label in reachable_script_labels(map_data, blocks):
-                for command in LEGENDARY_ENCOUNTER_RE.finditer(blocks[label]):
-                    raw_species, raw_level = command.groups()
+                for command in SCRIPTED_ENCOUNTER_RE.finditer(blocks[label]):
+                    kind, raw_species, raw_level = command.groups()
+                    catching_flags = re.findall(
+                        r"\b(setflag|clearflag)\s+FLAG_SYS_NO_CATCHING\b",
+                        blocks[label][:command.start()],
+                    )
+                    if catching_flags and catching_flags[-1] == "setflag":
+                        continue
                     species = aliases.get(raw_species, raw_species)
                     if species not in by_species:
                         continue
@@ -316,15 +322,19 @@ def add_scripted_legendary_species_locations(
                         "map": map_constant,
                         "name": display_name,
                         "time": "",
-                        "method": "Legendary encounter",
+                        "method": (
+                            "Legendary encounter" if "legendary" in kind.lower()
+                            or {"legendary", "mythical"} & set(getattr(by_species[species], "categories", []))
+                            else "Static encounter"
+                        ),
                         "minLevel": level,
                         "maxLevel": level,
                         "rate": None,
                     }
-                    if location not in legendary_locations[species]:
-                        legendary_locations[species].append(location)
+                    if location not in scripted_encounters[species]:
+                        scripted_encounters[species].append(location)
 
-    for species, scripted_locations in legendary_locations.items():
+    for species, scripted_locations in scripted_encounters.items():
         locations.setdefault(species, [])
         for location in scripted_locations:
             if location not in locations[species]:

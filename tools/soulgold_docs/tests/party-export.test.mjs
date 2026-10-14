@@ -372,8 +372,7 @@ test("loads the exact dictionary and link index, renders the team and sends no p
   app.get("partyPaste").value = "Edited team";
   await app.get("partyCopy").listeners.click();
   await app.get("partyCopyLink").listeners.click();
-  await app.get("partyShare").listeners.click();
-  assert.deepEqual(app.writes, ["Edited team", app.window.location.href, app.window.location.href]);
+  assert.deepEqual(app.writes, ["Edited team", app.window.location.href]);
   let prevented = false;
   app.get("partyForm").listeners.submit({ preventDefault() { prevented = true; } });
   assert.equal(prevented, false);

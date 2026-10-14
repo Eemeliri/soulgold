@@ -25,7 +25,7 @@ from tools.soulgold_docs.parsers.gifts import (
     add_gift_species_locations,
     add_master_gachapon_species_locations,
     add_odd_egg_species_locations,
-    add_scripted_legendary_species_locations,
+    add_scripted_encounter_species_locations,
 )
 from tools.soulgold_docs.parsers.hidden_grottos import parse_hidden_grottos
 from tools.soulgold_docs.parsers.trades import add_johto_trade_species_locations
@@ -100,7 +100,7 @@ def build() -> None:
     species_locations = build_species_locations(encounters)
     add_hidden_grotto_species_locations(species_locations, hidden_grottos)
     add_gift_species_locations(species_locations, species_data.by_constant)
-    add_scripted_legendary_species_locations(species_locations, species_data.by_constant)
+    add_scripted_encounter_species_locations(species_locations, species_data.by_constant)
     add_master_gachapon_species_locations(species_locations, species_data.by_constant)
     add_odd_egg_species_locations(species_locations, species_data.by_constant)
     add_johto_trade_species_locations(species_locations, species_data.by_constant)

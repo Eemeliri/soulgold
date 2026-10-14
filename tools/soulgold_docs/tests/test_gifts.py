@@ -1,8 +1,14 @@
 from __future__ import annotations
 
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
+from types import SimpleNamespace
 
-from tools.soulgold_docs.parsers.gifts import FOSSIL_REVIVAL_ITEMS, add_gift_species_locations
+from tools.soulgold_docs.parsers import gifts
+from tools.soulgold_docs.parsers.gifts import FOSSIL_REVIVAL_ITEMS, add_gift_species_locations, add_scripted_encounter_species_locations
 
 
 class GiftLocationTests(unittest.TestCase):
@@ -161,6 +167,73 @@ class GiftLocationTests(unittest.TestCase):
         self.assertIn("before 4th badge", locations["SPECIES_KABUTO"][0]["method"])
         self.assertEqual(locations["SPECIES_KABUTO"][1]["minLevel"], 20)
         self.assertIn("after 4th badge", locations["SPECIES_KABUTO"][1]["method"])
+
+
+class ScriptedEncounterTests(unittest.TestCase):
+    def test_live_static_encounters_have_area_method_and_level(self) -> None:
+        expected = {
+            "SPECIES_SUDOWOODO": ("Route 36", 30),
+            "SPECIES_LAPRAS": ("Union Cave B2F", 45),
+            "SPECIES_GYARADOS": ("Lake of Rage", 35),
+            "SPECIES_ELECTRODE": ("Rocket Hideout B2F", 40),
+        }
+        locations = {}
+        for _ in range(2):
+            add_scripted_encounter_species_locations(locations, {key: object() for key in expected})
+        for species, (area, level) in expected.items():
+            with self.subTest(species=species):
+                matches = [row for row in locations[species]
+                           if row["name"] == area and row["minLevel"] == level]
+                self.assertEqual(len(matches), 1)
+                self.assertEqual(matches[0]["maxLevel"], level)
+                self.assertEqual(matches[0]["method"], "Static encounter")
+                self.assertIsNone(matches[0]["rate"])
+
+    def test_live_kanto_snorlax_is_not_listed(self) -> None:
+        locations = {}
+        add_scripted_encounter_species_locations(locations, {"SPECIES_SNORLAX": object()})
+        self.assertNotIn("SPECIES_SNORLAX", locations)
+
+    def test_live_route41_tentacruel_guardians_are_not_listed(self) -> None:
+        locations = {}
+        add_scripted_encounter_species_locations(locations, {"SPECIES_TENTACRUEL": object()})
+        self.assertNotIn("SPECIES_TENTACRUEL", locations)
+
+    def test_skips_uncatchable_and_unreachable_battles_and_preserves_legendaries(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            map_dir = root / "data/maps/Route36"
+            map_dir.mkdir(parents=True)
+            groups = root / "groups.json"
+            groups.write_text(json.dumps({"group_order": ["Johto"], "Johto": ["Route36"]}))
+            (map_dir / "map.json").write_text(json.dumps({
+                "id": "MAP_ROUTE36", "name": "Route36",
+                "object_events": [{"script": "Encounter"}],
+            }))
+            (map_dir / "scripts.inc").write_text("""Encounter::
+    setflag FLAG_SYS_NO_CATCHING
+    setwildbattle SPECIES_MACHAMP, 1
+    dowildbattle
+    clearflag FLAG_SYS_NO_CATCHING
+    setwildbattle SPECIES_SUDOWOODO, 30
+    dowildbattle
+    legendaryencounter SPECIES_MEWTWO, 70, 1, FLAG_TEST
+    seteventmon SPECIES_MEWTWO, 70
+    end
+Unused::
+    setwildbattle SPECIES_LAPRAS, 45
+    dowildbattle
+    end
+""")
+            locations = {}
+            with patch.object(gifts, "REPO_ROOT", root), patch.object(gifts, "MAP_GROUPS_JSON", groups):
+                add_scripted_encounter_species_locations(locations, {
+                    species: SimpleNamespace(categories=["legendary"] if species == "SPECIES_MEWTWO" else [])
+                    for species in ["SPECIES_MACHAMP", "SPECIES_SUDOWOODO", "SPECIES_MEWTWO", "SPECIES_LAPRAS"]
+                })
+            self.assertEqual(set(locations), {"SPECIES_SUDOWOODO", "SPECIES_MEWTWO"})
+            self.assertEqual(len(locations["SPECIES_MEWTWO"]), 1)
+            self.assertEqual(locations["SPECIES_MEWTWO"][0]["method"], "Legendary encounter")
 
 
 if __name__ == "__main__":

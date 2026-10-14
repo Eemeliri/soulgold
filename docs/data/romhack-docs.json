@@ -31042,39 +31042,18 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
-      "acquisitionPaths": [
+      "locations": [
         {
-          "source": "SPECIES_VOLTORB",
-          "locations": [
-            {
-              "map": "MAP_ROCKET_HIDEOUT_B1F",
-              "name": "Rocket Hideout B1F",
-              "time": "",
-              "method": "Land Mons",
-              "minLevel": 21,
-              "maxLevel": 21,
-              "rate": 40
-            }
-          ],
-          "steps": [
-            {
-              "kind": "evolve",
-              "source": "SPECIES_VOLTORB",
-              "target": "SPECIES_ELECTRODE",
-              "requirement": "",
-              "evolution": {
-                "method": "EVO_LEVEL",
-                "param": "30",
-                "target": "SPECIES_ELECTRODE",
-                "conditions": [],
-                "label": "Level 30",
-                "itemName": ""
-              }
-            }
-          ]
+          "map": "MAP_ROCKET_HIDEOUT_B2F",
+          "name": "Rocket Hideout B2F",
+          "time": "",
+          "method": "Static encounter",
+          "minLevel": 40,
+          "maxLevel": 40,
+          "rate": null
         }
       ],
+      "acquisitionPaths": [],
       "heldItems": [],
       "slug": "electrode"
     },
@@ -41576,6 +41555,15 @@
           "minLevel": 40,
           "maxLevel": 45,
           "rate": 4
+        },
+        {
+          "map": "MAP_LAKE_OF_RAGE",
+          "name": "Lake of Rage",
+          "time": "",
+          "method": "Static encounter",
+          "minLevel": 35,
+          "maxLevel": 35,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -42015,6 +42003,15 @@
           "minLevel": 40,
           "maxLevel": 60,
           "rate": 10
+        },
+        {
+          "map": "MAP_UNION_CAVE_B2F",
+          "name": "Union Cave B2F",
+          "time": "",
+          "method": "Static encounter",
+          "minLevel": 45,
+          "maxLevel": 45,
+          "rate": null
         }
       ],
       "acquisitionPaths": [],
@@ -57872,7 +57869,17 @@
         "MOVE_ENDURE"
       ],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ROUTE36",
+          "name": "Route 36",
+          "time": "",
+          "method": "Static encounter",
+          "minLevel": 30,
+          "maxLevel": 30,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [],
       "slug": "sudowoodo"
@@ -73851,7 +73858,17 @@
       ],
       "eggMoves": [],
       "evolutions": [],
-      "locations": [],
+      "locations": [
+        {
+          "map": "MAP_ILEX_FOREST",
+          "name": "Ilex Forest",
+          "time": "",
+          "method": "Legendary encounter",
+          "minLevel": 40,
+          "maxLevel": 40,
+          "rate": null
+        }
+      ],
       "acquisitionPaths": [],
       "heldItems": [
         {
@@ -109426,7 +109443,31 @@
         }
       ],
       "locations": [],
-      "acquisitionPaths": [],
+      "acquisitionPaths": [
+        {
+          "source": "SPECIES_SUDOWOODO",
+          "locations": [
+            {
+              "map": "MAP_ROUTE36",
+              "name": "Route 36",
+              "time": "",
+              "method": "Static encounter",
+              "minLevel": 30,
+              "maxLevel": 30,
+              "rate": null
+            }
+          ],
+          "steps": [
+            {
+              "kind": "breed",
+              "source": "SPECIES_SUDOWOODO",
+              "target": "SPECIES_BONSLY",
+              "requirement": "",
+              "evolution": null
+            }
+          ]
+        }
+      ],
       "heldItems": [],
       "slug": "bonsly"
     },
