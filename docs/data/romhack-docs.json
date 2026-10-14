@@ -234367,7 +234367,7 @@
     "ABILITY_INTIMIDATE": {
       "constant": "ABILITY_INTIMIDATE",
       "name": "Intimidate",
-      "description": "When entering a battle, lowers the Attack of of opponents by 1 stage. Reduces wild encounters 5 levels or lower by 50% when first in the party.",
+      "description": "When entering a battle, lowers the Attack of opponents by 1 stage. Reduces wild encounters 5 levels or lower by 50% when first in the party.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -237628,7 +237628,7 @@
     "ABILITY_SOUNDPROOF": {
       "constant": "ABILITY_SOUNDPROOF",
       "name": "Soundproof",
-      "description": "The Pokemon is immune to sound-based moves, including its own.",
+      "description": "The Pokemon is immune to sound-based moves.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -239247,7 +239247,7 @@
     "ABILITY_PICKUP": {
       "constant": "ABILITY_PICKUP",
       "name": "Pickup",
-      "description": "May pick up an item after battle if not already holding one.",
+      "description": "May pick up an item after battle if not already holding one. Can also recover own held item after it has been used.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -241450,7 +241450,7 @@
     "ABILITY_DROUGHT": {
       "constant": "ABILITY_DROUGHT",
       "name": "Drought",
-      "description": "Summons harsh sunlight in battle. Lasts for 5 turns unless cleared by Air Lock or Cloud Nine.",
+      "description": "Summons harsh sunlight in battle. Lasts for 5 turns unless cancelled by Air Lock or Cloud Nine.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -246044,7 +246044,7 @@
     "ABILITY_SCRAPPY": {
       "constant": "ABILITY_SCRAPPY",
       "name": "Scrappy",
-      "description": "Normal- and Fighting- type moves can hit Ghost- type Pokemon.",
+      "description": "Normal- and Fighting- type moves can hit Ghost- type Pokemon. Immune to Intimidate.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -248557,7 +248557,7 @@
     "ABILITY_WEAK_ARMOR": {
       "constant": "ABILITY_WEAK_ARMOR",
       "name": "Weak Armor",
-      "description": "Being hit by a physical move lowers Defense by 1 stage and raises Speed by 1 stage.",
+      "description": "Being hit by a physical move lowers Defense by 1 stage and raises Speed by 2 stage.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -250213,7 +250213,7 @@
     "ABILITY_IMPOSTER": {
       "constant": "ABILITY_IMPOSTER",
       "name": "Imposter",
-      "description": "Transforms into a random opposing Pokemon on entry.",
+      "description": "Transforms into the opposite Pokemon on entry.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -250775,7 +250775,7 @@
     "ABILITY_RATTLED": {
       "constant": "ABILITY_RATTLED",
       "name": "Rattled",
-      "description": "Taking Bug-, Ghost-, or Dark-type damage raises Speed by 1 stage.",
+      "description": "Taking Bug-, Ghost-, or Dark-type damage raises Speed by 1 stage. Can also trigger from Intimidate.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -252696,7 +252696,7 @@
     "ABILITY_STANCE_CHANGE": {
       "constant": "ABILITY_STANCE_CHANGE",
       "name": "Stance Change",
-      "description": "Transforms as it. battles",
+      "description": "Transforms to Sword form with offensive attacks and reverts to Shield form with moves such as King's Shield.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -253313,7 +253313,7 @@
     "ABILITY_PARENTAL_BOND": {
       "constant": "ABILITY_PARENTAL_BOND",
       "name": "Parental Bond",
-      "description": "The Pokemon attacks twice; the second hit deals 1/4 of the normal damage.",
+      "description": "The Pokemon attacks twice with the second hit dealing 25% of the first hits damage.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -255692,7 +255692,7 @@
     "ABILITY_SHADOW_SHIELD": {
       "constant": "ABILITY_SHADOW_SHIELD",
       "name": "Shadow Shield",
-      "description": "Damage from moves is halved while this Pokemon is at full HP; it cannot be bypassed.",
+      "description": "Damage from moves is halved while this Pokemon is at full HP. This effect cannot by bypassed by Mold Breaker.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -255764,7 +255764,7 @@
     "ABILITY_PRISM_ARMOR": {
       "constant": "ABILITY_PRISM_ARMOR",
       "name": "Prism Armor",
-      "description": "Reduces super effective damage to 75%; it cannot be bypassed.",
+      "description": "Reduces super effective damage to 75%. This effect cannot by bypassed by Mold Breaker.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -255854,7 +255854,7 @@
     "ABILITY_INTREPID_SWORD": {
       "constant": "ABILITY_INTREPID_SWORD",
       "name": "Intrepid Sword",
-      "description": "Raises Attack by 1 stage when the Pokemon enters a battle.",
+      "description": "Raises Attack by 1 stage when the Pokemon enters a battle. Can trigger once per battle.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -255883,7 +255883,7 @@
     "ABILITY_DAUNTLESS_SHIELD": {
       "constant": "ABILITY_DAUNTLESS_SHIELD",
       "name": "Dauntless Shield",
-      "description": "Raises Defense by 1 stage when the Pokemon enters a battle.",
+      "description": "Raises Defense by 1 stage when the Pokemon enters a battle. Can trigger once per battle.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -256145,7 +256145,7 @@
     "ABILITY_STEAM_ENGINE": {
       "constant": "ABILITY_STEAM_ENGINE",
       "name": "Steam Engine",
-      "description": "Raises Speed by 3 stages when hit by a Fire- or Water-type move.",
+      "description": "Raises Speed by 6 stages when hit by a Fire- or Water-type move.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
@@ -263638,7 +263638,7 @@
     "ABILITY_REEF_WARDEN": {
       "constant": "ABILITY_REEF_WARDEN",
       "name": "Reef Warden",
-      "description": "Restores 1/2 max HP on switch-out; contact with this Pokemon blocks the attacker's healing.",
+      "description": "Restores 1/2 max HP on switch-out and contact with this Pokemon blocks the attacker's healing.",
       "power": 0,
       "accuracy": 0,
       "pp": 0,
