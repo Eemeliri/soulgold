@@ -883,6 +883,7 @@ static const struct LevelUpMove sClefableLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 40, MOVE_COSMIC_POWER),
     LEVEL_UP_MOVE( 44, MOVE_MOONBLAST),
     LEVEL_UP_MOVE( 48, MOVE_HEALING_WISH),
+    LEVEL_UP_MOVE( 54, MOVE_AIR_SLASH),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_CLEFAIRY
