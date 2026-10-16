@@ -8279,6 +8279,7 @@ bool8 MovementAction_EnterPokeball_Step2(struct ObjectEvent *objectEvent, struct
     objectEvent->invisible = TRUE;
     sprite->sTypeFuncId = 0;
     sprite->sSpeedFlip = 0;
+    sprite->animCmdIndex = 0;
     sprite->animPaused = TRUE;
     return TRUE;
 }
