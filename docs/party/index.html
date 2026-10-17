@@ -40,12 +40,12 @@
     </div>
     <main class="party-main">
       <p id="partyStatus" class="panel-status" role="status" aria-live="polite">Loading your party…</p>
-      <button id="partyRetry" class="tab" type="button" hidden>Try again</button>
+      <button id="partyRetry" class="tab" type="button" onclick="window.location.reload()" hidden>Try again</button>
       <noscript><p>Enable JavaScript to read the party from your QR code.</p></noscript>
 
-      <section id="partyIntro" class="data-panel party-intro" aria-labelledby="partyIntroTitle">
-        <h2 id="partyIntroTitle">Share your team (someday!)</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <section id="partyIntro" class="data-panel party-intro" aria-labelledby="partyIntroTitle" hidden>
+        <h2 id="partyIntroTitle">Open your team</h2>
+        <p>Paste your party link below to view the team and export Showdown text.</p>
         <form id="partyLinkForm" class="party-link-form">
           <label for="partyLinkInput">Party link</label>
           <div class="party-link-row">
@@ -89,6 +89,6 @@
         </details>
       </article>
     </main>
-    <script type="module" src="assets/party-export.mjs?v=722ad8ba274c"></script>
+    <script type="module" src="assets/party-export.mjs?v=260abc6d8eff" onerror="document.getElementById('partyStatus').textContent = 'The party viewer could not load. Check your connection and try again.'; document.getElementById('partyRetry').hidden = false;"></script>
   </body>
 </html>

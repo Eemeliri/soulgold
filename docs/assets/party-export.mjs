@@ -511,17 +511,20 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
   let generation = 0;
   let snapshot = "";
   let ready = false;
+  let slowLoadTimer;
 
+  retry.onclick = null;
   setupTheme(document, window);
   const setStatus = (message, error = false) => {
     status.textContent = message;
     status.className = `panel-status${error ? " error" : ""}`;
   };
   const reset = () => {
+    window.clearTimeout(slowLoadTimer);
     ready = false;
     view.hidden = true;
     retry.hidden = true;
-    intro.hidden = false;
+    intro.hidden = true;
     paste.value = "";
     get("partyNotes").value = "";
     get("partyPasteTitle").value = "";
@@ -532,43 +535,64 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
     document.title = baseTitle;
     snapshot = "";
   };
-  const fetchJson = async (path, error) => {
-    const response = await fetchData(new URL(path, document.baseURI).href, { signal: request.signal, credentials: "omit" });
-    if (!response.ok) throw new Error(error);
-    try {
-      return await response.json();
-    } catch {
-      throw new Error(MAP_ERROR);
+  const fetchJson = async (path, error, signal) => {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const response = await fetchData(new URL(path, document.baseURI).href, { signal, credentials: "omit" });
+        if (response.status >= 500 && attempt === 0 && !signal.aborted) continue;
+        if (!response.ok) throw new Error(error);
+        try {
+          return await response.json();
+        } catch (failure) {
+          if (failure instanceof SyntaxError) throw new Error(MAP_ERROR);
+          throw failure;
+        }
+      } catch (failure) {
+        if (signal.aborted || !(failure instanceof TypeError) || attempt > 0) throw failure;
+      }
     }
   };
   const load = async () => {
     const current = ++generation;
     request?.abort();
     request = new AbortController();
+    const { signal } = request;
     reset();
     const fragment = window.location.hash;
     if (!fragment || fragment === "#") {
-      setStatus("Nothing here yet!");
+      intro.hidden = false;
+      setStatus("Open a party link or scan the QR code from the game.");
       return;
     }
     let party;
     try {
       party = decodePartyFragment(fragment);
     } catch (error) {
+      intro.hidden = false;
       setStatus(error.message, true);
       return;
     }
     setStatus("Loading your party…");
+    slowLoadTimer = window.setTimeout(() => {
+      if (current !== generation || ready) return;
+      setStatus("Your party is taking longer to load. You can keep waiting or reload the page.");
+      retry.hidden = false;
+    }, 15000);
     try {
       const version = document.querySelector?.('meta[name="docs-data-version"]')?.getAttribute("content") || "";
-      const [dictionary, links] = await Promise.all([
-        fetchJson(`data/party-export/${party.dataId}.json`, "Game data for this party is not available yet. Please try again after the Soulgold website has been updated."),
-        fetchJson(`data/party-links.json${version && !version.includes("{") ? `?v=${version}` : ""}`, "links").catch(error => {
-          if (error?.name === "AbortError") throw error;
-          return null;
-        }),
-      ]);
-      const described = describeParty(party, dictionary);
+      const dictionaryRequest = fetchJson(`data/party-export/${party.dataId}.json`, "Game data for this party is not available yet. Please try again after the Soulgold website has been updated.", signal);
+      let links = null;
+      let described;
+      // Sprites and documentation links must not hold up the actual team.
+      const linksRequest = fetchJson(`data/party-links.json${version && !version.includes("{") ? `?v=${version}` : ""}`, "links", signal).catch(() => null);
+      void linksRequest.then(loadedLinks => {
+        links = loadedLinks;
+        if (links && current === generation && ready) {
+          get("partyMembers").replaceChildren(...renderParty(document, described, links).members);
+        }
+      }).catch(() => {});
+      const dictionary = await dictionaryRequest;
+      described = describeParty(party, dictionary);
       if (current !== generation) return;
       const rendered = renderParty(document, described, links);
       const exported = formatPartyExport(described);
@@ -582,6 +606,7 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
       document.title = `${described.title} · Soulgold`;
       snapshot = window.location.href;
       ready = true;
+      retry.hidden = true;
       intro.hidden = true;
       view.hidden = false;
       setStatus(`${described.members.length} Pokémon loaded.`);
@@ -589,6 +614,8 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
       if (current !== generation || error?.name === "AbortError") return;
       setStatus(error instanceof TypeError ? "Your party could not load. Check your connection and try again." : error.message, true);
       retry.hidden = false;
+    } finally {
+      if (current === generation) window.clearTimeout(slowLoadTimer);
     }
   };
   const copy = async (value, message, fallback) => {

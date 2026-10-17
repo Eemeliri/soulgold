@@ -322,10 +322,13 @@ function browser(hash = `#${link(payload())}`, fetchData = async url => ({
     querySelector: () => ({ getAttribute: () => "abc123" }),
   };
   const writes = [];
+  const timers = new Map();
   const window = {
     location: { href: `https://example.test/soulgold/party/${hash}`, hash },
     navigator: { clipboard: { writeText: async text => { writes.push(text); } } },
     localStorage: { setItem() {} },
+    setTimeout(callback) { const id = Symbol(); timers.set(id, callback); return id; },
+    clearTimeout(id) { timers.delete(id); },
     listeners: {}, addEventListener(name, listener) { this.listeners[name] = listener; },
   };
   const requests = [];
@@ -333,7 +336,7 @@ function browser(hash = `#${link(payload())}`, fetchData = async url => ({
     requests.push(args); return fetchData(...args);
   } });
   const get = id => document.getElementById(id);
-  return { ...mounted, document, window, get, requests, writes };
+  return { ...mounted, document, window, get, requests, writes, timers };
 }
 
 test("empty and invalid links never fetch and keep the loader visible", async () => {
@@ -350,6 +353,7 @@ test("empty and invalid links never fetch and keep the loader visible", async ()
 test("loads the exact dictionary and link index, renders the team and sends no publish request", async () => {
   const app = browser();
   await app.initialLoad;
+  await new Promise(resolve => setImmediate(resolve));
   assert.deepEqual(app.requests.map(([url]) => url), [
     `https://example.test/soulgold/data/party-export/${DATA_ID}.json`,
     "https://example.test/soulgold/data/party-links.json?v=abc123",
@@ -388,6 +392,90 @@ test("a missing link index still renders the team without docs links", async () 
   const hrefs = app.get("partyMembers").children[0].findAll(node => node.href).map(node => node.href);
   assert.ok(!hrefs.some(href => href.startsWith("pokedex/")));
   assert.ok(hrefs.includes("moves/thunderbolt/"));
+});
+
+test("a stalled optional index does not block the team and late links preserve edited export text", async () => {
+  let respond;
+  const app = browser(undefined, url => url.includes("party-links")
+    ? new Promise(resolve => { respond = resolve; })
+    : Promise.resolve({ ok: true, json: async () => dictionary }));
+  assert.equal(app.get("partyIntro").hidden, true);
+  await app.initialLoad;
+  assert.equal(app.get("partyView").hidden, false);
+  assert.equal(app.get("partyMembers").children.length, 1);
+  assert.equal(app.timers.size, 0);
+  app.get("partyPaste").value = "Edited while links load";
+  respond({ ok: true, json: async () => ({ species: { SPECIES_PIKACHU: ["pikachu", "sprites/pokemon/pikachu.png"] } }) });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.ok(app.get("partyMembers").children[0].findAll(node => node.href === "pokedex/pikachu/").length);
+  assert.equal(app.get("partyPaste").value, "Edited while links load");
+});
+
+test("slow game data offers retry without aborting the original download or showing the intro", async () => {
+  let respond;
+  const app = browser(undefined, url => url.includes("party-links")
+    ? Promise.resolve({ ok: false })
+    : new Promise(resolve => { respond = resolve; }));
+  for (const callback of app.timers.values()) callback();
+  assert.equal(app.get("partyIntro").hidden, true);
+  assert.equal(app.get("partyView").hidden, true);
+  assert.equal(app.get("partyRetry").hidden, false);
+  assert.match(app.get("partyStatus").textContent, /keep waiting/);
+  assert.equal(app.requests[0][1].signal.aborted, false);
+  respond({ ok: true, json: async () => dictionary });
+  await app.initialLoad;
+  assert.equal(app.get("partyView").hidden, false);
+  assert.equal(app.get("partyRetry").hidden, true);
+  assert.equal(app.timers.size, 0);
+});
+
+test("transient network and server failures retry once and recover without reloading", async () => {
+  for (const failure of [
+    () => { throw new TypeError("connection reset"); },
+    () => ({ ok: false, status: 503 }),
+    () => ({ ok: true, json: async () => { throw new TypeError("body interrupted"); } }),
+  ]) {
+    let attempts = 0;
+    const app = browser(undefined, async url => {
+      if (url.includes("party-links")) return { ok: false };
+      if (++attempts === 1) return failure();
+      return { ok: true, json: async () => dictionary };
+    });
+    await app.initialLoad;
+    assert.equal(attempts, 2);
+    assert.equal(app.get("partyView").hidden, false);
+  }
+});
+
+test("a failed load can be retried in place with the same party link", async () => {
+  let offline = true;
+  const app = browser(undefined, async url => {
+    if (url.includes("party-links")) return { ok: false };
+    if (offline) throw new TypeError("offline");
+    return { ok: true, json: async () => dictionary };
+  });
+  await app.initialLoad;
+  assert.equal(app.requests.filter(([url]) => url.includes("party-export/")).length, 2);
+  assert.equal(app.get("partyRetry").hidden, false);
+  offline = false;
+  await app.get("partyRetry").listeners.click();
+  assert.equal(app.get("partyView").hidden, false);
+  assert.equal(app.get("partyRetry").hidden, true);
+});
+
+test("late optional links cannot restore a team after the URL changes", async () => {
+  let respond;
+  const app = browser(undefined, url => url.includes("party-links")
+    ? new Promise(resolve => { respond = resolve; })
+    : Promise.resolve({ ok: true, json: async () => dictionary }));
+  await app.initialLoad;
+  app.window.location.hash = "";
+  await app.window.listeners.hashchange();
+  respond({ ok: true, json: async () => ({ species: { SPECIES_PIKACHU: ["pikachu"] } }) });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(app.get("partyMembers").children.length, 0);
+  assert.equal(app.get("partyView").hidden, true);
+  assert.equal(app.timers.size, 0);
 });
 
 test("missing dictionaries and network failures keep the team hidden and offer retry", async () => {
