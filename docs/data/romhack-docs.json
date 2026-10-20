@@ -10962,6 +10962,10 @@
         {
           "level": 48,
           "move": "MOVE_HEALING_WISH"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_AIR_SLASH"
         }
       ],
       "tmhm": [
@@ -11270,6 +11274,10 @@
         {
           "level": 48,
           "move": "MOVE_HEALING_WISH"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_AIR_SLASH"
         }
       ],
       "tmhm": [
@@ -61895,74 +61903,6 @@
         {
           "level": 1,
           "move": "MOVE_HIDDEN_POWER"
-        },
-        {
-          "level": 6,
-          "move": "MOVE_POWER_SWAP"
-        },
-        {
-          "level": 11,
-          "move": "MOVE_POWER_TRIP"
-        },
-        {
-          "level": 16,
-          "move": "MOVE_ANCIENT_POWER"
-        },
-        {
-          "level": 21,
-          "move": "MOVE_POWER_SPLIT"
-        },
-        {
-          "level": 26,
-          "move": "MOVE_SECRET_POWER"
-        },
-        {
-          "level": 31,
-          "move": "MOVE_POWER_UP_PUNCH"
-        },
-        {
-          "level": 36,
-          "move": "MOVE_NATURE_POWER"
-        },
-        {
-          "level": 41,
-          "move": "MOVE_COSMIC_POWER"
-        },
-        {
-          "level": 46,
-          "move": "MOVE_STORED_POWER"
-        },
-        {
-          "level": 51,
-          "move": "MOVE_POWER_TRICK"
-        },
-        {
-          "level": 56,
-          "move": "MOVE_POWER_GEM"
-        },
-        {
-          "level": 66,
-          "move": "MOVE_EARTH_POWER"
-        },
-        {
-          "level": 71,
-          "move": "MOVE_POWER_WHIP"
-        },
-        {
-          "level": 74,
-          "move": "MOVE_POWER_SHIFT"
-        },
-        {
-          "level": 80,
-          "move": "MOVE_HIGH_HORSEPOWER"
-        },
-        {
-          "level": 85,
-          "move": "MOVE_SUPERPOWER"
-        },
-        {
-          "level": 90,
-          "move": "MOVE_MYSTICAL_POWER"
         }
       ],
       "tmhm": [
@@ -108376,7 +108316,7 @@
         "ABILITY_SCRAPPY"
       ],
       "innates": [
-        "ABILITY_ADRENALINE",
+        "ABILITY_IRON_FIST",
         "ABILITY_LUNAR_CYCLE",
         "ABILITY_STEEL_FEET"
       ],
@@ -243284,6 +243224,12 @@
             "sprite": "sprites/pokemon/regirock.png"
           },
           {
+            "species": "SPECIES_LOPUNNY_MEGA",
+            "name": "Lopunny",
+            "dex": 326,
+            "sprite": "sprites/pokemon/lopunny_mega.png"
+          },
+          {
             "species": "SPECIES_DUSKNOIR",
             "name": "Dusknoir",
             "dex": 365,
@@ -259789,12 +259735,6 @@
             "name": "Primeape",
             "dex": 49,
             "sprite": "sprites/pokemon/primeape.png"
-          },
-          {
-            "species": "SPECIES_LOPUNNY_MEGA",
-            "name": "Lopunny",
-            "dex": 326,
-            "sprite": "sprites/pokemon/lopunny_mega.png"
           },
           {
             "species": "SPECIES_SCRAFTY",

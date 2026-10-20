@@ -575,7 +575,7 @@ export function mountPartyExport({ document, window, fetch: fetchData = window.f
     setStatus("Loading your party…");
     slowLoadTimer = window.setTimeout(() => {
       if (current !== generation || ready) return;
-      setStatus("Your party is taking longer to load. You can keep waiting or reload the page.");
+      setStatus("Your party is taking longer to load. You can keep waiting or try again.");
       retry.hidden = false;
     }, 15000);
     try {
