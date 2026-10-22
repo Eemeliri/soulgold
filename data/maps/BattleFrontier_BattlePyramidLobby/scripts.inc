@@ -941,6 +941,7 @@ PyramidBPVendor:
 	.2byte ITEM_WHITE_HERB
 	.2byte ITEM_BLACK_SLUDGE
 	.2byte ITEM_ASSAULT_VEST
+	.2byte ITEM_LOADED_DICE
 	.2byte ITEM_NONE
 
 PyramidLobbyBPVendor_Text_0:
