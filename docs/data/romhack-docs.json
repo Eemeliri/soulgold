@@ -186,7 +186,8 @@
         "MOVE_SLUDGE",
         "MOVE_ENDURE",
         "MOVE_GIGA_DRAIN",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_TOXIC"
       ],
       "evolutions": [
         {
@@ -395,7 +396,8 @@
         "MOVE_SLUDGE",
         "MOVE_ENDURE",
         "MOVE_GIGA_DRAIN",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_TOXIC"
       ],
       "evolutions": [
         {
@@ -655,7 +657,8 @@
         "MOVE_SLUDGE",
         "MOVE_ENDURE",
         "MOVE_GIGA_DRAIN",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_TOXIC"
       ],
       "evolutions": [],
       "locations": [],
@@ -1104,7 +1107,10 @@
         "MOVE_COUNTER",
         "MOVE_DRAGON_PULSE",
         "MOVE_FOCUS_PUNCH",
-        "MOVE_AIR_CUTTER"
+        "MOVE_AIR_CUTTER",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_WING_ATTACK",
+        "MOVE_IRON_TAIL"
       ],
       "evolutions": [
         {
@@ -1320,7 +1326,10 @@
         "MOVE_COUNTER",
         "MOVE_DRAGON_PULSE",
         "MOVE_FOCUS_PUNCH",
-        "MOVE_AIR_CUTTER"
+        "MOVE_AIR_CUTTER",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_WING_ATTACK",
+        "MOVE_IRON_TAIL"
       ],
       "evolutions": [
         {
@@ -1601,7 +1610,10 @@
         "MOVE_COUNTER",
         "MOVE_DRAGON_PULSE",
         "MOVE_FOCUS_PUNCH",
-        "MOVE_AIR_CUTTER"
+        "MOVE_AIR_CUTTER",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_WING_ATTACK",
+        "MOVE_IRON_TAIL"
       ],
       "evolutions": [],
       "locations": [],
@@ -2311,7 +2323,8 @@
         "MOVE_WATER_SPOUT",
         "MOVE_BRINE",
         "MOVE_DRAGON_PULSE",
-        "MOVE_AURA_SPHERE"
+        "MOVE_AURA_SPHERE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -2535,7 +2548,8 @@
         "MOVE_WATER_SPOUT",
         "MOVE_BRINE",
         "MOVE_DRAGON_PULSE",
-        "MOVE_AURA_SPHERE"
+        "MOVE_AURA_SPHERE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -2796,7 +2810,8 @@
         "MOVE_WATER_SPOUT",
         "MOVE_BRINE",
         "MOVE_DRAGON_PULSE",
-        "MOVE_AURA_SPHERE"
+        "MOVE_AURA_SPHERE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [],
       "locations": [],
@@ -8367,7 +8382,8 @@
         "MOVE_CHIP_AWAY",
         "MOVE_ROCK_CLIMB",
         "MOVE_ROTOTILLER",
-        "MOVE_HONE_CLAWS"
+        "MOVE_HONE_CLAWS",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [
         {
@@ -8635,7 +8651,9 @@
         "MOVE_ICICLE_CRASH",
         "MOVE_ICICLE_SPEAR",
         "MOVE_METAL_CLAW",
-        "MOVE_NIGHT_SLASH"
+        "MOVE_NIGHT_SLASH",
+        "MOVE_ICE_SHARD",
+        "MOVE_MIRROR_COAT"
       ],
       "evolutions": [
         {
@@ -8880,7 +8898,8 @@
         "MOVE_CHIP_AWAY",
         "MOVE_ROCK_CLIMB",
         "MOVE_ROTOTILLER",
-        "MOVE_HONE_CLAWS"
+        "MOVE_HONE_CLAWS",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -9173,7 +9192,9 @@
         "MOVE_ICICLE_CRASH",
         "MOVE_ICICLE_SPEAR",
         "MOVE_METAL_CLAW",
-        "MOVE_NIGHT_SLASH"
+        "MOVE_NIGHT_SLASH",
+        "MOVE_ICE_SHARD",
+        "MOVE_MIRROR_COAT"
       ],
       "evolutions": [],
       "locations": [],
@@ -9390,7 +9411,8 @@
         "MOVE_POISON_TAIL",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_POISON_FANG"
       ],
       "evolutions": [
         {
@@ -9590,7 +9612,8 @@
         "MOVE_POISON_TAIL",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_POISON_FANG"
       ],
       "evolutions": [
         {
@@ -9849,7 +9872,8 @@
         "MOVE_POISON_TAIL",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_POISON_FANG"
       ],
       "evolutions": [],
       "locations": [
@@ -10039,7 +10063,9 @@
         "MOVE_POISON_TAIL",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_HORN_DRILL",
+        "MOVE_THRASH"
       ],
       "evolutions": [
         {
@@ -10240,7 +10266,9 @@
         "MOVE_POISON_TAIL",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_HORN_DRILL",
+        "MOVE_THRASH"
       ],
       "evolutions": [
         {
@@ -10500,7 +10528,9 @@
         "MOVE_POISON_TAIL",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_HORN_DRILL",
+        "MOVE_THRASH"
       ],
       "evolutions": [],
       "locations": [
@@ -11600,7 +11630,12 @@
         "MOVE_SECRET_POWER",
         "MOVE_HEX",
         "MOVE_TAIL_SLAP",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_BABY_DOLL_EYES",
+        "MOVE_FLAME_CHARGE",
+        "MOVE_MEMENTO",
+        "MOVE_ROAR",
+        "MOVE_HEALING_WISH"
       ],
       "evolutions": [
         {
@@ -11847,7 +11882,9 @@
         "MOVE_POWER_SWAP",
         "MOVE_SPITE",
         "MOVE_SECRET_POWER",
-        "MOVE_TAIL_SLAP"
+        "MOVE_TAIL_SLAP",
+        "MOVE_BABY_DOLL_EYES",
+        "MOVE_ROAR"
       ],
       "evolutions": [
         {
@@ -12076,7 +12113,12 @@
         "MOVE_SECRET_POWER",
         "MOVE_HEX",
         "MOVE_TAIL_SLAP",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_BABY_DOLL_EYES",
+        "MOVE_FLAME_CHARGE",
+        "MOVE_MEMENTO",
+        "MOVE_ROAR",
+        "MOVE_HEALING_WISH"
       ],
       "evolutions": [],
       "locations": [
@@ -12300,7 +12342,9 @@
         "MOVE_POWER_SWAP",
         "MOVE_SPITE",
         "MOVE_SECRET_POWER",
-        "MOVE_TAIL_SLAP"
+        "MOVE_TAIL_SLAP",
+        "MOVE_BABY_DOLL_EYES",
+        "MOVE_ROAR"
       ],
       "evolutions": [],
       "locations": [],
@@ -12612,7 +12656,8 @@
         "MOVE_CAPTIVATE",
         "MOVE_PUNISHMENT",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_HEAL_PULSE"
+        "MOVE_HEAL_PULSE",
+        "MOVE_ROLLOUT"
       ],
       "evolutions": [
         {
@@ -12900,7 +12945,8 @@
         "MOVE_CAPTIVATE",
         "MOVE_PUNISHMENT",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_HEAL_PULSE"
+        "MOVE_HEAL_PULSE",
+        "MOVE_ROLLOUT"
       ],
       "evolutions": [],
       "locations": [],
@@ -13119,7 +13165,8 @@
         "MOVE_GIGA_DRAIN",
         "MOVE_STEEL_WING",
         "MOVE_DEFOG",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_WING_ATTACK"
       ],
       "evolutions": [
         {
@@ -13341,7 +13388,8 @@
         "MOVE_GIGA_DRAIN",
         "MOVE_STEEL_WING",
         "MOVE_DEFOG",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_WING_ATTACK"
       ],
       "evolutions": [
         {
@@ -13614,7 +13662,8 @@
         "MOVE_SECRET_POWER",
         "MOVE_NATURE_POWER",
         "MOVE_AFTER_YOU",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_LEECH_SEED"
       ],
       "evolutions": [
         {
@@ -13828,7 +13877,8 @@
         "MOVE_SECRET_POWER",
         "MOVE_NATURE_POWER",
         "MOVE_AFTER_YOU",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_LEECH_SEED"
       ],
       "evolutions": [
         {
@@ -14049,7 +14099,8 @@
         "MOVE_SECRET_POWER",
         "MOVE_NATURE_POWER",
         "MOVE_AFTER_YOU",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_LEECH_SEED"
       ],
       "evolutions": [],
       "locations": [],
@@ -14269,7 +14320,8 @@
         "MOVE_HEADBUTT",
         "MOVE_ENDURE",
         "MOVE_FINAL_GAMBIT",
-        "MOVE_MEMENTO"
+        "MOVE_MEMENTO",
+        "MOVE_HONE_CLAWS"
       ],
       "evolutions": [
         {
@@ -14482,7 +14534,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_PURSUIT",
         "MOVE_REVERSAL",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_HONE_CLAWS"
       ],
       "evolutions": [
         {
@@ -14738,7 +14791,8 @@
         "MOVE_HEADBUTT",
         "MOVE_ENDURE",
         "MOVE_FINAL_GAMBIT",
-        "MOVE_MEMENTO"
+        "MOVE_MEMENTO",
+        "MOVE_HONE_CLAWS"
       ],
       "evolutions": [],
       "locations": [
@@ -14969,7 +15023,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_PURSUIT",
         "MOVE_REVERSAL",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_HONE_CLAWS"
       ],
       "evolutions": [],
       "locations": [],
@@ -15238,7 +15293,8 @@
         "MOVE_TAIL_WHIP",
         "MOVE_SNATCH",
         "MOVE_IRON_TAIL",
-        "MOVE_FOUL_PLAY"
+        "MOVE_FOUL_PLAY",
+        "MOVE_COVET"
       ],
       "evolutions": [
         {
@@ -15919,7 +15975,8 @@
         "MOVE_TAIL_WHIP",
         "MOVE_SNATCH",
         "MOVE_IRON_TAIL",
-        "MOVE_FOUL_PLAY"
+        "MOVE_FOUL_PLAY",
+        "MOVE_COVET"
       ],
       "evolutions": [],
       "locations": [],
@@ -16451,7 +16508,9 @@
         "MOVE_FOCUS_PUNCH",
         "MOVE_SLEEP_TALK",
         "MOVE_NIGHT_SLASH",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_CURSE",
+        "MOVE_SPITE"
       ],
       "evolutions": [
         {
@@ -16730,7 +16789,9 @@
         "MOVE_FOCUS_PUNCH",
         "MOVE_SLEEP_TALK",
         "MOVE_NIGHT_SLASH",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_CURSE",
+        "MOVE_SPITE"
       ],
       "evolutions": [
         {
@@ -16991,7 +17052,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_DOUBLE_KICK",
         "MOVE_CLOSE_COMBAT",
-        "MOVE_BURN_UP"
+        "MOVE_BURN_UP",
+        "MOVE_RAGING_FURY"
       ],
       "evolutions": [
         {
@@ -17428,7 +17490,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_DOUBLE_KICK",
         "MOVE_CLOSE_COMBAT",
-        "MOVE_BURN_UP"
+        "MOVE_BURN_UP",
+        "MOVE_RAGING_FURY"
       ],
       "evolutions": [],
       "locations": [
@@ -17854,7 +17917,8 @@
         "MOVE_ENDEAVOR",
         "MOVE_ENCORE",
         "MOVE_ENDURE",
-        "MOVE_WATER_PULSE"
+        "MOVE_WATER_PULSE",
+        "MOVE_MUDDY_WATER"
       ],
       "evolutions": [
         {
@@ -18492,7 +18556,8 @@
         "MOVE_ENDEAVOR",
         "MOVE_ENCORE",
         "MOVE_ENDURE",
-        "MOVE_WATER_PULSE"
+        "MOVE_WATER_PULSE",
+        "MOVE_MUDDY_WATER"
       ],
       "evolutions": [
         {
@@ -18910,7 +18975,8 @@
         "MOVE_ENDEAVOR",
         "MOVE_ENCORE",
         "MOVE_ENDURE",
-        "MOVE_WATER_PULSE"
+        "MOVE_WATER_PULSE",
+        "MOVE_MUDDY_WATER"
       ],
       "evolutions": [],
       "locations": [
@@ -19099,7 +19165,9 @@
         "MOVE_GUARD_SPLIT",
         "MOVE_PSYCHO_SHIFT",
         "MOVE_ALLY_SWITCH",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_CONFUSION",
+        "MOVE_MAGIC_COAT"
       ],
       "evolutions": [
         {
@@ -19333,7 +19401,9 @@
         "MOVE_GUARD_SPLIT",
         "MOVE_PSYCHO_SHIFT",
         "MOVE_ALLY_SWITCH",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_CONFUSION",
+        "MOVE_MAGIC_COAT"
       ],
       "evolutions": [
         {
@@ -19594,7 +19664,9 @@
         "MOVE_GUARD_SPLIT",
         "MOVE_PSYCHO_SHIFT",
         "MOVE_ALLY_SWITCH",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_CONFUSION",
+        "MOVE_MAGIC_COAT"
       ],
       "evolutions": [],
       "locations": [],
@@ -20066,7 +20138,8 @@
         "MOVE_HEAVY_SLAM",
         "MOVE_KNOCK_OFF",
         "MOVE_TICKLE",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_SUBMISSION"
       ],
       "evolutions": [
         {
@@ -20308,7 +20381,8 @@
         "MOVE_HEAVY_SLAM",
         "MOVE_KNOCK_OFF",
         "MOVE_TICKLE",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_SUBMISSION"
       ],
       "evolutions": [
         {
@@ -20590,7 +20664,8 @@
         "MOVE_HEAVY_SLAM",
         "MOVE_KNOCK_OFF",
         "MOVE_TICKLE",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_SUBMISSION"
       ],
       "evolutions": [],
       "locations": [
@@ -21026,7 +21101,8 @@
         "MOVE_POWER_WHIP",
         "MOVE_ACID_SPRAY",
         "MOVE_BELCH",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_SUCKER_PUNCH"
       ],
       "evolutions": [
         {
@@ -21246,7 +21322,8 @@
         "MOVE_POWER_WHIP",
         "MOVE_ACID_SPRAY",
         "MOVE_BELCH",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_SUCKER_PUNCH"
       ],
       "evolutions": [
         {
@@ -21480,7 +21557,8 @@
         "MOVE_POWER_WHIP",
         "MOVE_ACID_SPRAY",
         "MOVE_BELCH",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_SUCKER_PUNCH"
       ],
       "evolutions": [],
       "locations": [],
@@ -22683,7 +22761,8 @@
         "MOVE_ROCK_CLIMB",
         "MOVE_ENDURE",
         "MOVE_AUTOTOMIZE",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_DYNAMIC_PUNCH"
       ],
       "evolutions": [
         {
@@ -22948,7 +23027,8 @@
         "MOVE_MAGNET_RISE",
         "MOVE_ROCK_CLIMB",
         "MOVE_SCREECH",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_ZAP_CANNON"
       ],
       "evolutions": [
         {
@@ -23171,7 +23251,8 @@
         "MOVE_ROCK_CLIMB",
         "MOVE_ENDURE",
         "MOVE_AUTOTOMIZE",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_DYNAMIC_PUNCH"
       ],
       "evolutions": [
         {
@@ -23435,7 +23516,8 @@
         "MOVE_MAGNET_RISE",
         "MOVE_ROCK_CLIMB",
         "MOVE_SCREECH",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_ZAP_CANNON"
       ],
       "evolutions": [
         {
@@ -23688,7 +23770,8 @@
         "MOVE_ROCK_CLIMB",
         "MOVE_ENDURE",
         "MOVE_AUTOTOMIZE",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_DYNAMIC_PUNCH"
       ],
       "evolutions": [],
       "locations": [
@@ -23936,7 +24019,8 @@
         "MOVE_MAGNET_RISE",
         "MOVE_ROCK_CLIMB",
         "MOVE_SCREECH",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_ZAP_CANNON"
       ],
       "evolutions": [],
       "locations": [],
@@ -27024,7 +27108,8 @@
         "MOVE_TRUMP_CARD",
         "MOVE_SIMPLE_BEAM",
         "MOVE_FIRST_IMPRESSION",
-        "MOVE_FINAL_GAMBIT"
+        "MOVE_FINAL_GAMBIT",
+        "MOVE_SKY_ATTACK"
       ],
       "evolutions": [],
       "locations": [
@@ -28134,7 +28219,8 @@
         "MOVE_SPITE",
         "MOVE_SPIT_UP",
         "MOVE_STOCKPILE",
-        "MOVE_SWALLOW"
+        "MOVE_SWALLOW",
+        "MOVE_RECYCLE"
       ],
       "evolutions": [
         {
@@ -28617,7 +28703,8 @@
         "MOVE_SPITE",
         "MOVE_SPIT_UP",
         "MOVE_STOCKPILE",
-        "MOVE_SWALLOW"
+        "MOVE_SWALLOW",
+        "MOVE_RECYCLE"
       ],
       "evolutions": [],
       "locations": [],
@@ -28832,7 +28919,8 @@
         "MOVE_WATER_PULSE",
         "MOVE_AQUA_RING",
         "MOVE_AVALANCHE",
-        "MOVE_TWINEEDLE"
+        "MOVE_TWINEEDLE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -29204,7 +29292,8 @@
         "MOVE_WATER_PULSE",
         "MOVE_AQUA_RING",
         "MOVE_AVALANCHE",
-        "MOVE_TWINEEDLE"
+        "MOVE_TWINEEDLE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [],
       "locations": [
@@ -29445,7 +29534,8 @@
         "MOVE_SCARY_FACE",
         "MOVE_CLEAR_SMOG",
         "MOVE_SMOG",
-        "MOVE_REFLECT_TYPE"
+        "MOVE_REFLECT_TYPE",
+        "MOVE_TOXIC"
       ],
       "evolutions": [
         {
@@ -29668,7 +29758,8 @@
         "MOVE_SCARY_FACE",
         "MOVE_CLEAR_SMOG",
         "MOVE_SMOG",
-        "MOVE_REFLECT_TYPE"
+        "MOVE_REFLECT_TYPE",
+        "MOVE_TOXIC"
       ],
       "evolutions": [
         {
@@ -29961,7 +30052,8 @@
         "MOVE_SCARY_FACE",
         "MOVE_CLEAR_SMOG",
         "MOVE_SMOG",
-        "MOVE_REFLECT_TYPE"
+        "MOVE_REFLECT_TYPE",
+        "MOVE_TOXIC"
       ],
       "evolutions": [],
       "locations": [
@@ -30429,7 +30521,9 @@
         "MOVE_HEAVY_SLAM",
         "MOVE_STEALTH_ROCK",
         "MOVE_ROTOTILLER",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_HEAD_SMASH"
       ],
       "evolutions": [
         {
@@ -31455,7 +31549,10 @@
         "MOVE_SKILL_SWAP",
         "MOVE_NATURAL_GIFT",
         "MOVE_BLOCK",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_POISON_POWDER",
+        "MOVE_SLEEP_POWDER",
+        "MOVE_STUN_SPORE"
       ],
       "evolutions": [
         {
@@ -31720,7 +31817,10 @@
         "MOVE_SKILL_SWAP",
         "MOVE_NATURAL_GIFT",
         "MOVE_BLOCK",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_POISON_POWDER",
+        "MOVE_SLEEP_POWDER",
+        "MOVE_STUN_SPORE"
       ],
       "evolutions": [],
       "locations": [],
@@ -31994,7 +32094,10 @@
         "MOVE_SKILL_SWAP",
         "MOVE_NATURAL_GIFT",
         "MOVE_BLOCK",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_POISON_POWDER",
+        "MOVE_SLEEP_POWDER",
+        "MOVE_STUN_SPORE"
       ],
       "evolutions": [],
       "locations": [
@@ -32206,7 +32309,8 @@
         "MOVE_DETECT",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_CURSE"
+        "MOVE_CURSE",
+        "MOVE_LEER"
       ],
       "evolutions": [
         {
@@ -32480,7 +32584,8 @@
         "MOVE_DETECT",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_CURSE"
+        "MOVE_CURSE",
+        "MOVE_LEER"
       ],
       "evolutions": [],
       "locations": [
@@ -32738,7 +32843,8 @@
         "MOVE_DETECT",
         "MOVE_ENDURE",
         "MOVE_CHIP_AWAY",
-        "MOVE_CURSE"
+        "MOVE_CURSE",
+        "MOVE_LEER"
       ],
       "evolutions": [],
       "locations": [
@@ -33008,7 +33114,8 @@
         "MOVE_BULLET_PUNCH",
         "MOVE_ENDURE",
         "MOVE_PURSUIT",
-        "MOVE_FEINT"
+        "MOVE_FEINT",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [],
       "locations": [],
@@ -33285,7 +33392,8 @@
         "MOVE_BULLET_PUNCH",
         "MOVE_ENDURE",
         "MOVE_PURSUIT",
-        "MOVE_FEINT"
+        "MOVE_FEINT",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [],
       "locations": [],
@@ -34477,7 +34585,8 @@
         "MOVE_ROCK_CLIMB",
         "MOVE_ROTOTILLER",
         "MOVE_METAL_BURST",
-        "MOVE_GUARD_SPLIT"
+        "MOVE_GUARD_SPLIT",
+        "MOVE_ROCK_POLISH"
       ],
       "evolutions": [
         {
@@ -34773,7 +34882,8 @@
         "MOVE_ROCK_CLIMB",
         "MOVE_ROTOTILLER",
         "MOVE_METAL_BURST",
-        "MOVE_GUARD_SPLIT"
+        "MOVE_GUARD_SPLIT",
+        "MOVE_ROCK_POLISH"
       ],
       "evolutions": [
         {
@@ -37608,7 +37718,8 @@
         "MOVE_POWER_SPLIT",
         "MOVE_MAGIC_ROOM",
         "MOVE_ICY_WIND",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_TICKLE"
       ],
       "evolutions": [],
       "locations": [
@@ -38070,7 +38181,8 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_DEFOG",
         "MOVE_STEEL_WING",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_FEINT"
       ],
       "evolutions": [
         {
@@ -38304,7 +38416,8 @@
         "MOVE_DYNAMIC_PUNCH",
         "MOVE_FEINT",
         "MOVE_HAMMER_ARM",
-        "MOVE_FOCUS_PUNCH"
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FOLLOW_ME"
       ],
       "evolutions": [
         {
@@ -38531,7 +38644,9 @@
         "MOVE_IRON_TAIL",
         "MOVE_FOCUS_ENERGY",
         "MOVE_POWER_SWAP",
-        "MOVE_BELCH"
+        "MOVE_BELCH",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FOLLOW_ME"
       ],
       "evolutions": [
         {
@@ -38772,7 +38887,8 @@
         "MOVE_FEINT",
         "MOVE_ME_FIRST",
         "MOVE_BUG_BITE",
-        "MOVE_SUPERPOWER"
+        "MOVE_SUPERPOWER",
+        "MOVE_THRASH"
       ],
       "evolutions": [],
       "locations": [
@@ -38992,7 +39108,8 @@
         "MOVE_FEINT",
         "MOVE_ME_FIRST",
         "MOVE_BUG_BITE",
-        "MOVE_SUPERPOWER"
+        "MOVE_SUPERPOWER",
+        "MOVE_THRASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -41990,7 +42107,8 @@
         "MOVE_DRAGON_PULSE",
         "MOVE_AVALANCHE",
         "MOVE_FUTURE_SIGHT",
-        "MOVE_FREEZE_DRY"
+        "MOVE_FREEZE_DRY",
+        "MOVE_SPARKLING_ARIA"
       ],
       "evolutions": [],
       "locations": [
@@ -42233,7 +42351,8 @@
         "MOVE_DRAGON_PULSE",
         "MOVE_AVALANCHE",
         "MOVE_FUTURE_SIGHT",
-        "MOVE_FREEZE_DRY"
+        "MOVE_FREEZE_DRY",
+        "MOVE_SPARKLING_ARIA"
       ],
       "evolutions": [],
       "locations": [],
@@ -42506,7 +42625,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [
         {
@@ -42819,7 +42940,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [
@@ -43075,7 +43198,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [
@@ -43321,7 +43446,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -43592,7 +43719,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -44029,7 +44158,8 @@
         "MOVE_SCREECH",
         "MOVE_GIGA_DRAIN",
         "MOVE_FORESIGHT",
-        "MOVE_TAKE_DOWN"
+        "MOVE_TAKE_DOWN",
+        "MOVE_MEGA_DRAIN"
       ],
       "evolutions": [
         {
@@ -44303,7 +44433,8 @@
         "MOVE_SCREECH",
         "MOVE_GIGA_DRAIN",
         "MOVE_FORESIGHT",
-        "MOVE_TAKE_DOWN"
+        "MOVE_TAKE_DOWN",
+        "MOVE_MEGA_DRAIN"
       ],
       "evolutions": [],
       "locations": [
@@ -45058,7 +45189,8 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_AFTER_YOU",
         "MOVE_BELCH",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_GASTRO_ACID"
       ],
       "evolutions": [],
       "locations": [
@@ -45363,7 +45495,8 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_AFTER_YOU",
         "MOVE_BELCH",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_GASTRO_ACID"
       ],
       "evolutions": [],
       "locations": [],
@@ -49878,7 +50011,8 @@
         "MOVE_FLARE_BLITZ",
         "MOVE_EXTRASENSORY",
         "MOVE_NATURE_POWER",
-        "MOVE_FLAME_BURST"
+        "MOVE_FLAME_BURST",
+        "MOVE_CURSE"
       ],
       "evolutions": [
         {
@@ -50087,7 +50221,8 @@
         "MOVE_FLARE_BLITZ",
         "MOVE_EXTRASENSORY",
         "MOVE_NATURE_POWER",
-        "MOVE_FLAME_BURST"
+        "MOVE_FLAME_BURST",
+        "MOVE_CURSE"
       ],
       "evolutions": [
         {
@@ -50363,7 +50498,8 @@
         "MOVE_FLARE_BLITZ",
         "MOVE_EXTRASENSORY",
         "MOVE_NATURE_POWER",
-        "MOVE_FLAME_BURST"
+        "MOVE_FLAME_BURST",
+        "MOVE_CURSE"
       ],
       "evolutions": [],
       "locations": [],
@@ -50618,7 +50754,8 @@
         "MOVE_FLARE_BLITZ",
         "MOVE_EXTRASENSORY",
         "MOVE_NATURE_POWER",
-        "MOVE_FLAME_BURST"
+        "MOVE_FLAME_BURST",
+        "MOVE_CURSE"
       ],
       "evolutions": [],
       "locations": [],
@@ -51088,7 +51225,8 @@
         "MOVE_FAKE_TEARS",
         "MOVE_BLOCK",
         "MOVE_WATER_PULSE",
-        "MOVE_FLATTER"
+        "MOVE_FLATTER",
+        "MOVE_COUNTER"
       ],
       "evolutions": [
         {
@@ -51320,7 +51458,8 @@
         "MOVE_FAKE_TEARS",
         "MOVE_BLOCK",
         "MOVE_WATER_PULSE",
-        "MOVE_FLATTER"
+        "MOVE_FLATTER",
+        "MOVE_COUNTER"
       ],
       "evolutions": [
         {
@@ -51599,7 +51738,8 @@
         "MOVE_FAKE_TEARS",
         "MOVE_BLOCK",
         "MOVE_WATER_PULSE",
-        "MOVE_FLATTER"
+        "MOVE_FLATTER",
+        "MOVE_COUNTER"
       ],
       "evolutions": [],
       "locations": [],
@@ -52982,7 +53122,8 @@
         "MOVE_GIGA_DRAIN",
         "MOVE_STEEL_WING",
         "MOVE_DEFOG",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_WING_ATTACK"
       ],
       "evolutions": [],
       "locations": [],
@@ -53276,7 +53417,8 @@
         "MOVE_SHOCK_WAVE",
         "MOVE_BRINE",
         "MOVE_WATER_PULSE",
-        "MOVE_SOAK"
+        "MOVE_SOAK",
+        "MOVE_SUCKER_PUNCH"
       ],
       "evolutions": [
         {
@@ -53797,7 +53939,8 @@
         "MOVE_SHOCK_WAVE",
         "MOVE_BRINE",
         "MOVE_WATER_PULSE",
-        "MOVE_SOAK"
+        "MOVE_SOAK",
+        "MOVE_SUCKER_PUNCH"
       ],
       "evolutions": [],
       "locations": [
@@ -54776,7 +54919,8 @@
         "MOVE_CAPTIVATE",
         "MOVE_PUNISHMENT",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_HEAL_PULSE"
+        "MOVE_HEAL_PULSE",
+        "MOVE_ROLLOUT"
       ],
       "evolutions": [
         {
@@ -55054,7 +55198,8 @@
         "MOVE_EXTRASENSORY",
         "MOVE_SECRET_POWER",
         "MOVE_STORED_POWER",
-        "MOVE_MORNING_SUN"
+        "MOVE_MORNING_SUN",
+        "MOVE_AERIAL_ACE"
       ],
       "evolutions": [
         {
@@ -55312,7 +55457,8 @@
         "MOVE_EXTRASENSORY",
         "MOVE_SECRET_POWER",
         "MOVE_STORED_POWER",
-        "MOVE_MORNING_SUN"
+        "MOVE_MORNING_SUN",
+        "MOVE_AERIAL_ACE"
       ],
       "evolutions": [
         {
@@ -56002,7 +56148,8 @@
         "MOVE_AFTER_YOU",
         "MOVE_AGILITY",
         "MOVE_EERIE_IMPULSE",
-        "MOVE_ELECTRIC_TERRAIN"
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB"
       ],
       "evolutions": [
         {
@@ -56227,7 +56374,8 @@
         "MOVE_AFTER_YOU",
         "MOVE_AGILITY",
         "MOVE_EERIE_IMPULSE",
-        "MOVE_ELECTRIC_TERRAIN"
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB"
       ],
       "evolutions": [
         {
@@ -56487,7 +56635,8 @@
         "MOVE_AFTER_YOU",
         "MOVE_AGILITY",
         "MOVE_EERIE_IMPULSE",
-        "MOVE_ELECTRIC_TERRAIN"
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB"
       ],
       "evolutions": [],
       "locations": [],
@@ -56960,7 +57109,8 @@
         "MOVE_SECRET_POWER",
         "MOVE_NATURE_POWER",
         "MOVE_AFTER_YOU",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_LEECH_SEED"
       ],
       "evolutions": [],
       "locations": [],
@@ -57217,7 +57367,11 @@
         "MOVE_BODY_SLAM",
         "MOVE_WATER_SPORT",
         "MOVE_MUDDY_WATER",
-        "MOVE_CAMOUFLAGE"
+        "MOVE_CAMOUFLAGE",
+        "MOVE_COPYCAT",
+        "MOVE_SING",
+        "MOVE_SOAK",
+        "MOVE_TICKLE"
       ],
       "evolutions": [
         {
@@ -57563,7 +57717,11 @@
         "MOVE_BODY_SLAM",
         "MOVE_WATER_SPORT",
         "MOVE_MUDDY_WATER",
-        "MOVE_CAMOUFLAGE"
+        "MOVE_CAMOUFLAGE",
+        "MOVE_COPYCAT",
+        "MOVE_SING",
+        "MOVE_SOAK",
+        "MOVE_TICKLE"
       ],
       "evolutions": [],
       "locations": [
@@ -57874,7 +58032,8 @@
         "MOVE_SAND_TOMB",
         "MOVE_STEALTH_ROCK",
         "MOVE_CURSE",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_ROCK_POLISH"
       ],
       "evolutions": [],
       "locations": [
@@ -58094,7 +58253,8 @@
         "MOVE_ENDEAVOR",
         "MOVE_ENCORE",
         "MOVE_ENDURE",
-        "MOVE_WATER_PULSE"
+        "MOVE_WATER_PULSE",
+        "MOVE_MUDDY_WATER"
       ],
       "evolutions": [],
       "locations": [
@@ -58381,7 +58541,9 @@
         "MOVE_SEED_BOMB",
         "MOVE_ENDURE",
         "MOVE_GRASSY_TERRAIN",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_RAGE_POWDER",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [
         {
@@ -58601,7 +58763,9 @@
         "MOVE_SEED_BOMB",
         "MOVE_ENDURE",
         "MOVE_GRASSY_TERRAIN",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_RAGE_POWDER",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [
         {
@@ -58828,7 +58992,9 @@
         "MOVE_SEED_BOMB",
         "MOVE_ENDURE",
         "MOVE_GRASSY_TERRAIN",
-        "MOVE_STRENGTH_SAP"
+        "MOVE_STRENGTH_SAP",
+        "MOVE_RAGE_POWDER",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [],
       "locations": [],
@@ -59065,7 +59231,8 @@
         "MOVE_REVENGE",
         "MOVE_SWITCHEROO",
         "MOVE_QUICK_GUARD",
-        "MOVE_TAIL_SLAP"
+        "MOVE_TAIL_SLAP",
+        "MOVE_IRON_TAIL"
       ],
       "evolutions": [
         {
@@ -60333,7 +60500,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -60631,7 +60800,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -62254,7 +62425,9 @@
         "MOVE_SECRET_POWER",
         "MOVE_MEAN_LOOK",
         "MOVE_PSYCHIC_TERRAIN",
-        "MOVE_PSYCHIC_FANGS"
+        "MOVE_PSYCHIC_FANGS",
+        "MOVE_ALLY_SWITCH",
+        "MOVE_UPROAR"
       ],
       "evolutions": [
         {
@@ -62517,7 +62690,9 @@
         "MOVE_AGILITY",
         "MOVE_SECRET_POWER",
         "MOVE_SLEEP_TALK",
-        "MOVE_HEX"
+        "MOVE_HEX",
+        "MOVE_AQUA_TAIL",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [
         {
@@ -63085,7 +63260,9 @@
         "MOVE_HEAVY_SLAM",
         "MOVE_STEALTH_ROCK",
         "MOVE_ROTOTILLER",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_HEAD_SMASH"
       ],
       "evolutions": [],
       "locations": [
@@ -63604,7 +63781,9 @@
         "MOVE_AQUA_JET",
         "MOVE_WATER_PULSE",
         "MOVE_BRINE",
-        "MOVE_ACID_SPRAY"
+        "MOVE_ACID_SPRAY",
+        "MOVE_BARB_BARRAGE",
+        "MOVE_SELF_DESTRUCT"
       ],
       "evolutions": [],
       "locations": [
@@ -64226,7 +64405,8 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_DEFOG",
         "MOVE_STEEL_WING",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_FEINT"
       ],
       "evolutions": [],
       "locations": [
@@ -64676,7 +64856,10 @@
         "MOVE_SEISMIC_TOSS",
         "MOVE_FOCUS_PUNCH",
         "MOVE_MEGAHORN",
-        "MOVE_ROCK_BLAST"
+        "MOVE_ROCK_BLAST",
+        "MOVE_FEINT",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_TAKE_DOWN"
       ],
       "evolutions": [],
       "locations": [
@@ -64923,7 +65106,10 @@
         "MOVE_SEISMIC_TOSS",
         "MOVE_FOCUS_PUNCH",
         "MOVE_MEGAHORN",
-        "MOVE_ROCK_BLAST"
+        "MOVE_ROCK_BLAST",
+        "MOVE_FEINT",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_TAKE_DOWN"
       ],
       "evolutions": [],
       "locations": [],
@@ -65683,7 +65869,8 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_BELLY_DRUM",
         "MOVE_CHIP_AWAY",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_FURY_CUTTER"
       ],
       "evolutions": [
         {
@@ -65931,7 +66118,8 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_BELLY_DRUM",
         "MOVE_CHIP_AWAY",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_FURY_CUTTER"
       ],
       "evolutions": [
         {
@@ -67219,7 +67407,9 @@
         "MOVE_FREEZE_DRY",
         "MOVE_DESTINY_BOND",
         "MOVE_SPIKES",
-        "MOVE_COUNTER"
+        "MOVE_COUNTER",
+        "MOVE_AURORA_VEIL",
+        "MOVE_MEMENTO"
       ],
       "evolutions": [],
       "locations": [
@@ -67463,7 +67653,9 @@
         "MOVE_WATER_SPORT",
         "MOVE_SPLASH",
         "MOVE_WIDE_GUARD",
-        "MOVE_AMNESIA"
+        "MOVE_AMNESIA",
+        "MOVE_CONFUSE_RAY",
+        "MOVE_TAILWIND"
       ],
       "evolutions": [],
       "locations": [
@@ -67697,7 +67889,11 @@
         "MOVE_ASSURANCE",
         "MOVE_GUARD_SWAP",
         "MOVE_STEALTH_ROCK",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_AIR_CUTTER",
+        "MOVE_FEINT",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_ROOST"
       ],
       "evolutions": [],
       "locations": [
@@ -69796,7 +69992,8 @@
         "MOVE_MEGAHORN",
         "MOVE_MUD_SPORT",
         "MOVE_RAGE",
-        "MOVE_ME_FIRST"
+        "MOVE_ME_FIRST",
+        "MOVE_PSYSHIELD_BASH"
       ],
       "evolutions": [
         {
@@ -69949,7 +70146,8 @@
         "MOVE_BULLET_PUNCH",
         "MOVE_ENDURE",
         "MOVE_PURSUIT",
-        "MOVE_FEINT"
+        "MOVE_FEINT",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [
         {
@@ -70217,7 +70415,8 @@
         "MOVE_BULLET_PUNCH",
         "MOVE_ENDURE",
         "MOVE_PURSUIT",
-        "MOVE_FEINT"
+        "MOVE_FEINT",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [],
       "locations": [],
@@ -70434,7 +70633,8 @@
         "MOVE_DYNAMIC_PUNCH",
         "MOVE_FEINT",
         "MOVE_HAMMER_ARM",
-        "MOVE_FOCUS_PUNCH"
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FOLLOW_ME"
       ],
       "evolutions": [
         {
@@ -70691,7 +70891,9 @@
         "MOVE_IRON_TAIL",
         "MOVE_FOCUS_ENERGY",
         "MOVE_POWER_SWAP",
-        "MOVE_BELCH"
+        "MOVE_BELCH",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FOLLOW_ME"
       ],
       "evolutions": [
         {
@@ -70998,7 +71200,8 @@
         "MOVE_PUNISHMENT",
         "MOVE_NATURAL_GIFT",
         "MOVE_HEART_STAMP",
-        "MOVE_BELCH"
+        "MOVE_BELCH",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [],
       "locations": [
@@ -74020,7 +74223,10 @@
         "MOVE_RAZOR_WIND",
         "MOVE_BULLET_SEED",
         "MOVE_NATURAL_GIFT",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_ABSORB",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_SLASH"
       ],
       "evolutions": [
         {
@@ -74275,7 +74481,10 @@
         "MOVE_RAZOR_WIND",
         "MOVE_BULLET_SEED",
         "MOVE_NATURAL_GIFT",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_ABSORB",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_SLASH"
       ],
       "evolutions": [
         {
@@ -74596,7 +74805,10 @@
         "MOVE_RAZOR_WIND",
         "MOVE_BULLET_SEED",
         "MOVE_NATURAL_GIFT",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_ABSORB",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_SLASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -75109,7 +75321,8 @@
         "MOVE_FEATHER_DANCE",
         "MOVE_CURSE",
         "MOVE_FLAME_BURST",
-        "MOVE_LOW_KICK"
+        "MOVE_LOW_KICK",
+        "MOVE_PECK"
       ],
       "evolutions": [
         {
@@ -75353,7 +75566,8 @@
         "MOVE_FEATHER_DANCE",
         "MOVE_CURSE",
         "MOVE_FLAME_BURST",
-        "MOVE_LOW_KICK"
+        "MOVE_LOW_KICK",
+        "MOVE_PECK"
       ],
       "evolutions": [
         {
@@ -75642,7 +75856,8 @@
         "MOVE_FEATHER_DANCE",
         "MOVE_CURSE",
         "MOVE_FLAME_BURST",
-        "MOVE_LOW_KICK"
+        "MOVE_LOW_KICK",
+        "MOVE_PECK"
       ],
       "evolutions": [],
       "locations": [],
@@ -76131,7 +76346,8 @@
         "MOVE_SLUDGE",
         "MOVE_AVALANCHE",
         "MOVE_WIDE_GUARD",
-        "MOVE_BARRIER"
+        "MOVE_BARRIER",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [
         {
@@ -76377,7 +76593,8 @@
         "MOVE_SLUDGE",
         "MOVE_AVALANCHE",
         "MOVE_WIDE_GUARD",
-        "MOVE_BARRIER"
+        "MOVE_BARRIER",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [
         {
@@ -76674,7 +76891,8 @@
         "MOVE_SLUDGE",
         "MOVE_AVALANCHE",
         "MOVE_WIDE_GUARD",
-        "MOVE_BARRIER"
+        "MOVE_BARRIER",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -78043,7 +78261,9 @@
         "MOVE_BRINE",
         "MOVE_ROOST",
         "MOVE_SOAK",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_AERIAL_ACE",
+        "MOVE_AIR_CUTTER"
       ],
       "evolutions": [
         {
@@ -78303,7 +78523,9 @@
         "MOVE_BRINE",
         "MOVE_ROOST",
         "MOVE_SOAK",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_AERIAL_ACE",
+        "MOVE_AIR_CUTTER"
       ],
       "evolutions": [],
       "locations": [
@@ -78543,7 +78765,9 @@
         "MOVE_SYNCHRONOISE",
         "MOVE_SKILL_SWAP",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_ALLY_SWITCH"
+        "MOVE_ALLY_SWITCH",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MYSTICAL_FIRE"
       ],
       "evolutions": [
         {
@@ -78789,7 +79013,9 @@
         "MOVE_SYNCHRONOISE",
         "MOVE_SKILL_SWAP",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_ALLY_SWITCH"
+        "MOVE_ALLY_SWITCH",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MYSTICAL_FIRE"
       ],
       "evolutions": [
         {
@@ -79105,7 +79331,9 @@
         "MOVE_SYNCHRONOISE",
         "MOVE_SKILL_SWAP",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_ALLY_SWITCH"
+        "MOVE_ALLY_SWITCH",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MYSTICAL_FIRE"
       ],
       "evolutions": [],
       "locations": [],
@@ -80267,7 +80495,8 @@
         "MOVE_BUG_BUZZ",
         "MOVE_NIGHT_SLASH",
         "MOVE_BUG_BITE",
-        "MOVE_FINAL_GAMBIT"
+        "MOVE_FINAL_GAMBIT",
+        "MOVE_FLAIL"
       ],
       "evolutions": [
         {
@@ -80516,7 +80745,8 @@
         "MOVE_BUG_BUZZ",
         "MOVE_NIGHT_SLASH",
         "MOVE_BUG_BITE",
-        "MOVE_FINAL_GAMBIT"
+        "MOVE_FINAL_GAMBIT",
+        "MOVE_FLAIL"
       ],
       "evolutions": [],
       "locations": [
@@ -80705,7 +80935,8 @@
         "MOVE_BUG_BUZZ",
         "MOVE_NIGHT_SLASH",
         "MOVE_BUG_BITE",
-        "MOVE_FINAL_GAMBIT"
+        "MOVE_FINAL_GAMBIT",
+        "MOVE_FLAIL"
       ],
       "evolutions": [],
       "locations": [],
@@ -81394,7 +81625,12 @@
         "MOVE_SOAK",
         "MOVE_MUDDY_WATER",
         "MOVE_COPYCAT",
-        "MOVE_CAMOUFLAGE"
+        "MOVE_CAMOUFLAGE",
+        "MOVE_AQUA_JET",
+        "MOVE_BELLY_DRUM",
+        "MOVE_PERISH_SONG",
+        "MOVE_PRESENT",
+        "MOVE_SUPERSONIC"
       ],
       "evolutions": [
         {
@@ -81820,7 +82056,8 @@
         "MOVE_BLOCK",
         "MOVE_STEALTH_ROCK",
         "MOVE_ENDURE",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_HEAD_SMASH"
       ],
       "evolutions": [
         {
@@ -82127,7 +82364,8 @@
         "MOVE_CAPTIVATE",
         "MOVE_MEAN_LOOK",
         "MOVE_METAL_BURST",
-        "MOVE_IMPRISON"
+        "MOVE_IMPRISON",
+        "MOVE_TORMENT"
       ],
       "evolutions": [],
       "locations": [
@@ -82463,7 +82701,8 @@
         "MOVE_CAPTIVATE",
         "MOVE_MEAN_LOOK",
         "MOVE_METAL_BURST",
-        "MOVE_IMPRISON"
+        "MOVE_IMPRISON",
+        "MOVE_TORMENT"
       ],
       "evolutions": [],
       "locations": [],
@@ -83167,7 +83406,8 @@
         "MOVE_HEAD_SMASH",
         "MOVE_SUPERPOWER",
         "MOVE_STEALTH_ROCK",
-        "MOVE_REVERSAL"
+        "MOVE_REVERSAL",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [
         {
@@ -83393,7 +83633,8 @@
         "MOVE_HEAD_SMASH",
         "MOVE_SUPERPOWER",
         "MOVE_STEALTH_ROCK",
-        "MOVE_REVERSAL"
+        "MOVE_REVERSAL",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [
         {
@@ -83684,7 +83925,8 @@
         "MOVE_HEAD_SMASH",
         "MOVE_SUPERPOWER",
         "MOVE_STEALTH_ROCK",
-        "MOVE_REVERSAL"
+        "MOVE_REVERSAL",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [
@@ -84953,7 +85195,8 @@
         "MOVE_ELECTRO_BALL",
         "MOVE_SHOCK_WAVE",
         "MOVE_FLAME_BURST",
-        "MOVE_EERIE_IMPULSE"
+        "MOVE_EERIE_IMPULSE",
+        "MOVE_SPARK"
       ],
       "evolutions": [
         {
@@ -85166,7 +85409,8 @@
         "MOVE_ELECTRO_BALL",
         "MOVE_SHOCK_WAVE",
         "MOVE_FLAME_BURST",
-        "MOVE_EERIE_IMPULSE"
+        "MOVE_EERIE_IMPULSE",
+        "MOVE_SPARK"
       ],
       "evolutions": [],
       "locations": [
@@ -85616,7 +85860,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_GRASS_WHISTLE",
         "MOVE_BULLET_SEED",
-        "MOVE_POWER_WHIP"
+        "MOVE_POWER_WHIP",
+        "MOVE_EXTRASENSORY",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -85813,7 +86059,8 @@
         "MOVE_SWIFT",
         "MOVE_BRINE",
         "MOVE_DESTINY_BOND",
-        "MOVE_PSYCHIC_FANGS"
+        "MOVE_PSYCHIC_FANGS",
+        "MOVE_WATER_PULSE"
       ],
       "evolutions": [
         {
@@ -86233,7 +86480,8 @@
         "MOVE_SWIFT",
         "MOVE_BRINE",
         "MOVE_DESTINY_BOND",
-        "MOVE_PSYCHIC_FANGS"
+        "MOVE_PSYCHIC_FANGS",
+        "MOVE_WATER_PULSE"
       ],
       "evolutions": [],
       "locations": [
@@ -87388,7 +87636,9 @@
         "MOVE_SKULL_BASH",
         "MOVE_FLAME_BURST",
         "MOVE_CLEAR_SMOG",
-        "MOVE_SUPERPOWER"
+        "MOVE_SUPERPOWER",
+        "MOVE_ANCIENT_POWER",
+        "MOVE_FLAIL"
       ],
       "evolutions": [],
       "locations": [
@@ -87584,7 +87834,9 @@
         "MOVE_ENDURE",
         "MOVE_EARTH_POWER",
         "MOVE_BUG_BITE",
-        "MOVE_SIGNAL_BEAM"
+        "MOVE_SIGNAL_BEAM",
+        "MOVE_FEINT",
+        "MOVE_FIRST_IMPRESSION"
       ],
       "evolutions": [
         {
@@ -87842,7 +88094,9 @@
         "MOVE_ENDURE",
         "MOVE_EARTH_POWER",
         "MOVE_BUG_BITE",
-        "MOVE_SIGNAL_BEAM"
+        "MOVE_SIGNAL_BEAM",
+        "MOVE_FEINT",
+        "MOVE_FIRST_IMPRESSION"
       ],
       "evolutions": [
         {
@@ -88134,7 +88388,9 @@
         "MOVE_ENDURE",
         "MOVE_EARTH_POWER",
         "MOVE_BUG_BITE",
-        "MOVE_SIGNAL_BEAM"
+        "MOVE_SIGNAL_BEAM",
+        "MOVE_FEINT",
+        "MOVE_FIRST_IMPRESSION"
       ],
       "evolutions": [],
       "locations": [
@@ -88864,7 +89120,10 @@
         "MOVE_ROOST",
         "MOVE_HYPER_VOICE",
         "MOVE_STEEL_WING",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_ASTONISH",
+        "MOVE_DEFOG",
+        "MOVE_TAILWIND"
       ],
       "evolutions": [
         {
@@ -89119,7 +89378,10 @@
         "MOVE_ROOST",
         "MOVE_HYPER_VOICE",
         "MOVE_STEEL_WING",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_ASTONISH",
+        "MOVE_DEFOG",
+        "MOVE_TAILWIND"
       ],
       "evolutions": [],
       "locations": [],
@@ -90572,7 +90834,8 @@
         "MOVE_CURSE",
         "MOVE_MEGA_DRAIN",
         "MOVE_ENDURE",
-        "MOVE_STEALTH_ROCK"
+        "MOVE_STEALTH_ROCK",
+        "MOVE_BIND"
       ],
       "evolutions": [
         {
@@ -90812,7 +91075,8 @@
         "MOVE_CURSE",
         "MOVE_MEGA_DRAIN",
         "MOVE_ENDURE",
-        "MOVE_STEALTH_ROCK"
+        "MOVE_STEALTH_ROCK",
+        "MOVE_BIND"
       ],
       "evolutions": [],
       "locations": [
@@ -92965,7 +93229,9 @@
         "MOVE_SKILL_SWAP",
         "MOVE_COSMIC_POWER",
         "MOVE_CRAFTY_SHIELD",
-        "MOVE_PERISH_SONG"
+        "MOVE_PERISH_SONG",
+        "MOVE_ALLY_SWITCH",
+        "MOVE_RECYCLE"
       ],
       "evolutions": [],
       "locations": [
@@ -93189,7 +93455,9 @@
         "MOVE_SKILL_SWAP",
         "MOVE_COSMIC_POWER",
         "MOVE_CRAFTY_SHIELD",
-        "MOVE_PERISH_SONG"
+        "MOVE_PERISH_SONG",
+        "MOVE_ALLY_SWITCH",
+        "MOVE_RECYCLE"
       ],
       "evolutions": [],
       "locations": [],
@@ -93428,7 +93696,9 @@
         "MOVE_MEGAHORN",
         "MOVE_HEX",
         "MOVE_PERISH_SONG",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_BITE",
+        "MOVE_FEINT"
       ],
       "evolutions": [],
       "locations": [
@@ -93710,7 +93980,9 @@
         "MOVE_MEGAHORN",
         "MOVE_HEX",
         "MOVE_PERISH_SONG",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_BITE",
+        "MOVE_FEINT"
       ],
       "evolutions": [],
       "locations": [],
@@ -93946,7 +94218,9 @@
         "MOVE_MEGAHORN",
         "MOVE_HEX",
         "MOVE_PERISH_SONG",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_BITE",
+        "MOVE_FEINT"
       ],
       "evolutions": [],
       "locations": [],
@@ -94241,7 +94515,8 @@
         "MOVE_AVALANCHE",
         "MOVE_HEX",
         "MOVE_FAKE_TEARS",
-        "MOVE_SWITCHEROO"
+        "MOVE_SWITCHEROO",
+        "MOVE_ICICLE_CRASH"
       ],
       "evolutions": [
         {
@@ -94575,7 +94850,8 @@
         "MOVE_AVALANCHE",
         "MOVE_HEX",
         "MOVE_FAKE_TEARS",
-        "MOVE_SWITCHEROO"
+        "MOVE_SWITCHEROO",
+        "MOVE_ICICLE_CRASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -101385,7 +101661,8 @@
         "MOVE_EARTH_POWER",
         "MOVE_WIDE_GUARD",
         "MOVE_GRASSY_TERRAIN",
-        "MOVE_HEAVY_SLAM"
+        "MOVE_HEAVY_SLAM",
+        "MOVE_SHELL_SMASH"
       ],
       "evolutions": [
         {
@@ -101581,7 +101858,8 @@
         "MOVE_EARTH_POWER",
         "MOVE_WIDE_GUARD",
         "MOVE_GRASSY_TERRAIN",
-        "MOVE_HEAVY_SLAM"
+        "MOVE_HEAVY_SLAM",
+        "MOVE_SHELL_SMASH"
       ],
       "evolutions": [
         {
@@ -101832,7 +102110,8 @@
         "MOVE_EARTH_POWER",
         "MOVE_WIDE_GUARD",
         "MOVE_GRASSY_TERRAIN",
-        "MOVE_HEAVY_SLAM"
+        "MOVE_HEAVY_SLAM",
+        "MOVE_SHELL_SMASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -102074,7 +102353,8 @@
         "MOVE_QUICK_GUARD",
         "MOVE_FOCUS_PUNCH",
         "MOVE_SUBMISSION",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [
         {
@@ -102302,7 +102582,8 @@
         "MOVE_QUICK_GUARD",
         "MOVE_FOCUS_PUNCH",
         "MOVE_SUBMISSION",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [
         {
@@ -102577,7 +102858,8 @@
         "MOVE_QUICK_GUARD",
         "MOVE_FOCUS_PUNCH",
         "MOVE_SUBMISSION",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [],
       "locations": [],
@@ -102811,7 +103093,8 @@
         "MOVE_FEATHER_DANCE",
         "MOVE_BIDE",
         "MOVE_ICY_WIND",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_ROOST"
       ],
       "evolutions": [
         {
@@ -103027,7 +103310,8 @@
         "MOVE_FEATHER_DANCE",
         "MOVE_BIDE",
         "MOVE_ICY_WIND",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_ROOST"
       ],
       "evolutions": [
         {
@@ -103289,7 +103573,8 @@
         "MOVE_FEATHER_DANCE",
         "MOVE_BIDE",
         "MOVE_ICY_WIND",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_ROOST"
       ],
       "evolutions": [],
       "locations": [],
@@ -104303,7 +104588,8 @@
         "MOVE_SIGNAL_BEAM",
         "MOVE_HELPING_HAND",
         "MOVE_EERIE_IMPULSE",
-        "MOVE_FAKE_TEARS"
+        "MOVE_FAKE_TEARS",
+        "MOVE_BABY_DOLL_EYES"
       ],
       "evolutions": [
         {
@@ -104500,7 +104786,8 @@
         "MOVE_SIGNAL_BEAM",
         "MOVE_HELPING_HAND",
         "MOVE_EERIE_IMPULSE",
-        "MOVE_FAKE_TEARS"
+        "MOVE_FAKE_TEARS",
+        "MOVE_BABY_DOLL_EYES"
       ],
       "evolutions": [
         {
@@ -104721,7 +105008,8 @@
         "MOVE_SIGNAL_BEAM",
         "MOVE_HELPING_HAND",
         "MOVE_EERIE_IMPULSE",
-        "MOVE_FAKE_TEARS"
+        "MOVE_FAKE_TEARS",
+        "MOVE_BABY_DOLL_EYES"
       ],
       "evolutions": [],
       "locations": [
@@ -104876,7 +105164,8 @@
         "MOVE_SEED_BOMB",
         "MOVE_GIGA_DRAIN",
         "MOVE_NATURAL_GIFT",
-        "MOVE_GRASS_WHISTLE"
+        "MOVE_GRASS_WHISTLE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -105128,7 +105417,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_GRASS_WHISTLE",
         "MOVE_BULLET_SEED",
-        "MOVE_POWER_WHIP"
+        "MOVE_POWER_WHIP",
+        "MOVE_EXTRASENSORY",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [],
       "locations": [
@@ -107213,7 +107504,8 @@
         "MOVE_REVENGE",
         "MOVE_SWITCHEROO",
         "MOVE_QUICK_GUARD",
-        "MOVE_TAIL_SLAP"
+        "MOVE_TAIL_SLAP",
+        "MOVE_IRON_TAIL"
       ],
       "evolutions": [],
       "locations": [],
@@ -109163,7 +109455,9 @@
         "MOVE_RECOVER",
         "MOVE_STORED_POWER",
         "MOVE_SKILL_SWAP",
-        "MOVE_COSMIC_POWER"
+        "MOVE_COSMIC_POWER",
+        "MOVE_ALLY_SWITCH",
+        "MOVE_RECYCLE"
       ],
       "evolutions": [
         {
@@ -109368,7 +109662,8 @@
         "MOVE_SAND_TOMB",
         "MOVE_STEALTH_ROCK",
         "MOVE_CURSE",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_ROCK_POLISH"
       ],
       "evolutions": [
         {
@@ -109630,7 +109925,8 @@
         "MOVE_POWER_SPLIT",
         "MOVE_MAGIC_ROOM",
         "MOVE_ICY_WIND",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_TICKLE"
       ],
       "evolutions": [
         {
@@ -109903,7 +110199,8 @@
         "MOVE_LAST_RESORT",
         "MOVE_MUD_BOMB",
         "MOVE_NATURAL_GIFT",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_SEISMIC_TOSS"
       ],
       "evolutions": [
         {
@@ -110177,7 +110474,8 @@
         "MOVE_CAPTIVATE",
         "MOVE_NIGHTMARE",
         "MOVE_FOUL_PLAY",
-        "MOVE_DISABLE"
+        "MOVE_DISABLE",
+        "MOVE_ALLY_SWITCH"
       ],
       "evolutions": [],
       "locations": [
@@ -111553,7 +111851,8 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_AFTER_YOU",
         "MOVE_SELF_DESTRUCT",
-        "MOVE_BELCH"
+        "MOVE_BELCH",
+        "MOVE_FISSURE"
       ],
       "evolutions": [
         {
@@ -111805,7 +112104,9 @@
         "MOVE_BULLET_PUNCH",
         "MOVE_FOLLOW_ME",
         "MOVE_CIRCLE_THROW",
-        "MOVE_METEOR_MASH"
+        "MOVE_METEOR_MASH",
+        "MOVE_HIGH_JUMP_KICK",
+        "MOVE_HOWL"
       ],
       "evolutions": [
         {
@@ -112119,7 +112420,9 @@
         "MOVE_BULLET_PUNCH",
         "MOVE_FOLLOW_ME",
         "MOVE_CIRCLE_THROW",
-        "MOVE_METEOR_MASH"
+        "MOVE_METEOR_MASH",
+        "MOVE_HIGH_JUMP_KICK",
+        "MOVE_HOWL"
       ],
       "evolutions": [],
       "locations": [
@@ -114908,7 +115211,8 @@
         "MOVE_SIGNAL_BEAM",
         "MOVE_WIDE_GUARD",
         "MOVE_AMNESIA",
-        "MOVE_TAILWIND"
+        "MOVE_TAILWIND",
+        "MOVE_CONFUSE_RAY"
       ],
       "evolutions": [
         {
@@ -115119,7 +115423,8 @@
         "MOVE_SKULL_BASH",
         "MOVE_AVALANCHE",
         "MOVE_NATURAL_GIFT",
-        "MOVE_BULLET_SEED"
+        "MOVE_BULLET_SEED",
+        "MOVE_WEATHER_BALL"
       ],
       "evolutions": [
         {
@@ -115442,7 +115747,8 @@
         "MOVE_SKULL_BASH",
         "MOVE_AVALANCHE",
         "MOVE_NATURAL_GIFT",
-        "MOVE_BULLET_SEED"
+        "MOVE_BULLET_SEED",
+        "MOVE_WEATHER_BALL"
       ],
       "evolutions": [],
       "locations": [
@@ -116784,7 +117090,8 @@
         "MOVE_ROCK_CLIMB",
         "MOVE_ROTOTILLER",
         "MOVE_METAL_BURST",
-        "MOVE_GUARD_SPLIT"
+        "MOVE_GUARD_SPLIT",
+        "MOVE_ROCK_POLISH"
       ],
       "evolutions": [],
       "locations": [
@@ -117258,7 +117565,8 @@
         "MOVE_DYNAMIC_PUNCH",
         "MOVE_FEINT",
         "MOVE_HAMMER_ARM",
-        "MOVE_FOCUS_PUNCH"
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FOLLOW_ME"
       ],
       "evolutions": [],
       "locations": [
@@ -117498,7 +117806,9 @@
         "MOVE_IRON_TAIL",
         "MOVE_FOCUS_ENERGY",
         "MOVE_POWER_SWAP",
-        "MOVE_BELCH"
+        "MOVE_BELCH",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FOLLOW_ME"
       ],
       "evolutions": [],
       "locations": [
@@ -117767,7 +118077,8 @@
         "MOVE_EXTRASENSORY",
         "MOVE_SECRET_POWER",
         "MOVE_STORED_POWER",
-        "MOVE_MORNING_SUN"
+        "MOVE_MORNING_SUN",
+        "MOVE_AERIAL_ACE"
       ],
       "evolutions": [],
       "locations": [],
@@ -118285,7 +118596,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -118603,7 +118916,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -119788,7 +120103,9 @@
         "MOVE_SYNCHRONOISE",
         "MOVE_SKILL_SWAP",
         "MOVE_MISTY_TERRAIN",
-        "MOVE_ALLY_SWITCH"
+        "MOVE_ALLY_SWITCH",
+        "MOVE_KNOCK_OFF",
+        "MOVE_MYSTICAL_FIRE"
       ],
       "evolutions": [],
       "locations": [],
@@ -120371,7 +120688,8 @@
         "MOVE_BLOCK",
         "MOVE_STEALTH_ROCK",
         "MOVE_ENDURE",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_HEAD_SMASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -121007,7 +121325,8 @@
         "MOVE_AVALANCHE",
         "MOVE_HEX",
         "MOVE_FAKE_TEARS",
-        "MOVE_SWITCHEROO"
+        "MOVE_SWITCHEROO",
+        "MOVE_ICICLE_CRASH"
       ],
       "evolutions": [],
       "locations": [
@@ -126929,7 +127248,8 @@
         "MOVE_PURSUIT",
         "MOVE_MEAN_LOOK",
         "MOVE_TWISTER",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_SYNTHESIS"
       ],
       "evolutions": [
         {
@@ -127128,7 +127448,8 @@
         "MOVE_PURSUIT",
         "MOVE_MEAN_LOOK",
         "MOVE_TWISTER",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_SYNTHESIS"
       ],
       "evolutions": [
         {
@@ -127361,7 +127682,8 @@
         "MOVE_PURSUIT",
         "MOVE_MEAN_LOOK",
         "MOVE_TWISTER",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_SYNTHESIS"
       ],
       "evolutions": [],
       "locations": [],
@@ -128524,7 +128846,9 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_TRUMP_CARD",
         "MOVE_SCREECH",
-        "MOVE_SACRED_SWORD"
+        "MOVE_SACRED_SWORD",
+        "MOVE_AQUA_CUTTER",
+        "MOVE_KNOCK_OFF"
       ],
       "evolutions": [
         {
@@ -128732,7 +129056,9 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_TRUMP_CARD",
         "MOVE_SCREECH",
-        "MOVE_SACRED_SWORD"
+        "MOVE_SACRED_SWORD",
+        "MOVE_AQUA_CUTTER",
+        "MOVE_KNOCK_OFF"
       ],
       "evolutions": [
         {
@@ -128993,7 +129319,9 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_TRUMP_CARD",
         "MOVE_SCREECH",
-        "MOVE_SACRED_SWORD"
+        "MOVE_SACRED_SWORD",
+        "MOVE_AQUA_CUTTER",
+        "MOVE_KNOCK_OFF"
       ],
       "evolutions": [],
       "locations": [],
@@ -129241,7 +129569,9 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_TRUMP_CARD",
         "MOVE_SCREECH",
-        "MOVE_SACRED_SWORD"
+        "MOVE_SACRED_SWORD",
+        "MOVE_AQUA_CUTTER",
+        "MOVE_KNOCK_OFF"
       ],
       "evolutions": [],
       "locations": [
@@ -129429,7 +129759,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_SUBMISSION",
         "MOVE_SKULL_BASH",
-        "MOVE_ROCK_CLIMB"
+        "MOVE_ROCK_CLIMB",
+        "MOVE_SLASH"
       ],
       "evolutions": [
         {
@@ -129655,7 +129986,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_SUBMISSION",
         "MOVE_SKULL_BASH",
-        "MOVE_ROCK_CLIMB"
+        "MOVE_ROCK_CLIMB",
+        "MOVE_SLASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -130526,7 +130858,11 @@
         "MOVE_BATON_PASS",
         "MOVE_CAMOUFLAGE",
         "MOVE_AIR_SLASH",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_SNORE",
+        "MOVE_SWITCHEROO",
+        "MOVE_SYNTHESIS",
+        "MOVE_WORRY_SEED"
       ],
       "evolutions": [
         {
@@ -130713,7 +131049,11 @@
         "MOVE_BATON_PASS",
         "MOVE_CAMOUFLAGE",
         "MOVE_AIR_SLASH",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_SNORE",
+        "MOVE_SWITCHEROO",
+        "MOVE_SYNTHESIS",
+        "MOVE_WORRY_SEED"
       ],
       "evolutions": [
         {
@@ -130961,7 +131301,11 @@
         "MOVE_BATON_PASS",
         "MOVE_CAMOUFLAGE",
         "MOVE_AIR_SLASH",
-        "MOVE_GRASSY_TERRAIN"
+        "MOVE_GRASSY_TERRAIN",
+        "MOVE_SNORE",
+        "MOVE_SWITCHEROO",
+        "MOVE_SYNTHESIS",
+        "MOVE_WORRY_SEED"
       ],
       "evolutions": [],
       "locations": [
@@ -131142,7 +131486,9 @@
         "MOVE_TOXIC_SPIKES",
         "MOVE_SPIKES",
         "MOVE_TAKE_DOWN",
-        "MOVE_ROCK_CLIMB"
+        "MOVE_ROCK_CLIMB",
+        "MOVE_BITE",
+        "MOVE_FURY_CUTTER"
       ],
       "evolutions": [
         {
@@ -131350,7 +131696,9 @@
         "MOVE_TOXIC_SPIKES",
         "MOVE_SPIKES",
         "MOVE_TAKE_DOWN",
-        "MOVE_ROCK_CLIMB"
+        "MOVE_ROCK_CLIMB",
+        "MOVE_BITE",
+        "MOVE_FURY_CUTTER"
       ],
       "evolutions": [
         {
@@ -131607,7 +131955,9 @@
         "MOVE_TOXIC_SPIKES",
         "MOVE_SPIKES",
         "MOVE_TAKE_DOWN",
-        "MOVE_ROCK_CLIMB"
+        "MOVE_ROCK_CLIMB",
+        "MOVE_BITE",
+        "MOVE_FURY_CUTTER"
       ],
       "evolutions": [],
       "locations": [
@@ -132006,7 +132356,8 @@
         "MOVE_SWITCHEROO",
         "MOVE_WORRY_SEED",
         "MOVE_CAPTIVATE",
-        "MOVE_MISTY_TERRAIN"
+        "MOVE_MISTY_TERRAIN",
+        "MOVE_NATURE_POWER"
       ],
       "evolutions": [
         {
@@ -132244,7 +132595,8 @@
         "MOVE_SWITCHEROO",
         "MOVE_WORRY_SEED",
         "MOVE_CAPTIVATE",
-        "MOVE_MISTY_TERRAIN"
+        "MOVE_MISTY_TERRAIN",
+        "MOVE_NATURE_POWER"
       ],
       "evolutions": [],
       "locations": [],
@@ -133203,7 +133555,8 @@
         "MOVE_RAGE",
         "MOVE_BRINE",
         "MOVE_REVENGE",
-        "MOVE_HEAD_SMASH"
+        "MOVE_HEAD_SMASH",
+        "MOVE_ENDEAVOR"
       ],
       "evolutions": [],
       "locations": [
@@ -133420,7 +133773,8 @@
         "MOVE_RAGE",
         "MOVE_BRINE",
         "MOVE_REVENGE",
-        "MOVE_HEAD_SMASH"
+        "MOVE_HEAD_SMASH",
+        "MOVE_ENDEAVOR"
       ],
       "evolutions": [],
       "locations": [
@@ -134118,7 +134472,9 @@
         "MOVE_COUNTER",
         "MOVE_MEAN_LOOK",
         "MOVE_ME_FIRST",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_AQUA_TAIL",
+        "MOVE_SPITE"
       ],
       "evolutions": [
         {
@@ -134370,7 +134726,9 @@
         "MOVE_COUNTER",
         "MOVE_MEAN_LOOK",
         "MOVE_ME_FIRST",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_AQUA_TAIL",
+        "MOVE_SPITE"
       ],
       "evolutions": [
         {
@@ -134666,7 +135024,9 @@
         "MOVE_COUNTER",
         "MOVE_MEAN_LOOK",
         "MOVE_ME_FIRST",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_AQUA_TAIL",
+        "MOVE_SPITE"
       ],
       "evolutions": [],
       "locations": [],
@@ -137765,7 +138125,8 @@
         "MOVE_EARTH_POWER",
         "MOVE_BITE",
         "MOVE_ALLY_SWITCH",
-        "MOVE_SWITCHEROO"
+        "MOVE_SWITCHEROO",
+        "MOVE_DOUBLE_TEAM"
       ],
       "evolutions": [
         {
@@ -137990,7 +138351,8 @@
         "MOVE_EARTH_POWER",
         "MOVE_BITE",
         "MOVE_ALLY_SWITCH",
-        "MOVE_SWITCHEROO"
+        "MOVE_SWITCHEROO",
+        "MOVE_DOUBLE_TEAM"
       ],
       "evolutions": [],
       "locations": [
@@ -139079,7 +139441,8 @@
         "MOVE_FAKE_TEARS",
         "MOVE_SLEEP_TALK",
         "MOVE_ENDURE",
-        "MOVE_FLAIL"
+        "MOVE_FLAIL",
+        "MOVE_TIDY_UP"
       ],
       "evolutions": [
         {
@@ -139305,7 +139668,8 @@
         "MOVE_FAKE_TEARS",
         "MOVE_SLEEP_TALK",
         "MOVE_ENDURE",
-        "MOVE_FLAIL"
+        "MOVE_FLAIL",
+        "MOVE_TIDY_UP"
       ],
       "evolutions": [],
       "locations": [],
@@ -140280,7 +140644,8 @@
         "MOVE_TICKLE",
         "MOVE_BATON_PASS",
         "MOVE_ION_DELUGE",
-        "MOVE_SPEED_SWAP"
+        "MOVE_SPEED_SWAP",
+        "MOVE_DEFOG"
       ],
       "evolutions": [],
       "locations": [
@@ -140470,7 +140835,10 @@
         "MOVE_DISABLE",
         "MOVE_FEINT_ATTACK",
         "MOVE_CAMOUFLAGE",
-        "MOVE_LUNGE"
+        "MOVE_LUNGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_INFESTATION",
+        "MOVE_STRUGGLE_BUG"
       ],
       "evolutions": [
         {
@@ -140679,7 +141047,10 @@
         "MOVE_DISABLE",
         "MOVE_FEINT_ATTACK",
         "MOVE_CAMOUFLAGE",
-        "MOVE_LUNGE"
+        "MOVE_LUNGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_INFESTATION",
+        "MOVE_STRUGGLE_BUG"
       ],
       "evolutions": [],
       "locations": [
@@ -140864,7 +141235,9 @@
         "MOVE_GRAVITY",
         "MOVE_ROCK_CLIMB",
         "MOVE_STEALTH_ROCK",
-        "MOVE_ACID_SPRAY"
+        "MOVE_ACID_SPRAY",
+        "MOVE_KNOCK_OFF",
+        "MOVE_TOXIC"
       ],
       "evolutions": [
         {
@@ -141108,7 +141481,9 @@
         "MOVE_GRAVITY",
         "MOVE_ROCK_CLIMB",
         "MOVE_STEALTH_ROCK",
-        "MOVE_ACID_SPRAY"
+        "MOVE_ACID_SPRAY",
+        "MOVE_KNOCK_OFF",
+        "MOVE_TOXIC"
       ],
       "evolutions": [],
       "locations": [],
@@ -143037,7 +143412,9 @@
         "MOVE_ENDEAVOR",
         "MOVE_IRON_TAIL",
         "MOVE_DRAGON_PULSE",
-        "MOVE_HARDEN"
+        "MOVE_HARDEN",
+        "MOVE_FIRST_IMPRESSION",
+        "MOVE_AQUA_TAIL"
       ],
       "evolutions": [
         {
@@ -143354,7 +143731,9 @@
         "MOVE_ENDEAVOR",
         "MOVE_IRON_TAIL",
         "MOVE_DRAGON_PULSE",
-        "MOVE_HARDEN"
+        "MOVE_HARDEN",
+        "MOVE_FIRST_IMPRESSION",
+        "MOVE_AQUA_TAIL"
       ],
       "evolutions": [
         {
@@ -143612,7 +143991,9 @@
         "MOVE_ENDEAVOR",
         "MOVE_IRON_TAIL",
         "MOVE_DRAGON_PULSE",
-        "MOVE_HARDEN"
+        "MOVE_HARDEN",
+        "MOVE_FIRST_IMPRESSION",
+        "MOVE_AQUA_TAIL"
       ],
       "evolutions": [],
       "locations": [],
@@ -144274,7 +144655,8 @@
         "MOVE_FEINT",
         "MOVE_ME_FIRST",
         "MOVE_KNOCK_OFF",
-        "MOVE_ALLY_SWITCH"
+        "MOVE_ALLY_SWITCH",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [
         {
@@ -144531,7 +144913,8 @@
         "MOVE_FEINT",
         "MOVE_ME_FIRST",
         "MOVE_KNOCK_OFF",
-        "MOVE_ALLY_SWITCH"
+        "MOVE_ALLY_SWITCH",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [],
       "locations": [],
@@ -146603,7 +146986,8 @@
         "MOVE_SCARY_FACE",
         "MOVE_KNOCK_OFF",
         "MOVE_FAKE_TEARS",
-        "MOVE_FOUL_PLAY"
+        "MOVE_FOUL_PLAY",
+        "MOVE_TOXIC"
       ],
       "evolutions": [
         {
@@ -146847,7 +147231,8 @@
         "MOVE_SCARY_FACE",
         "MOVE_KNOCK_OFF",
         "MOVE_FAKE_TEARS",
-        "MOVE_FOUL_PLAY"
+        "MOVE_FOUL_PLAY",
+        "MOVE_TOXIC"
       ],
       "evolutions": [],
       "locations": [
@@ -147815,7 +148200,9 @@
         "MOVE_ENDURE",
         "MOVE_ZEN_HEADBUTT",
         "MOVE_MORNING_SUN",
-        "MOVE_MAGNET_RISE"
+        "MOVE_MAGNET_RISE",
+        "MOVE_ABSORB",
+        "MOVE_THRASH"
       ],
       "evolutions": [
         {
@@ -148067,7 +148454,9 @@
         "MOVE_ENDURE",
         "MOVE_ZEN_HEADBUTT",
         "MOVE_MORNING_SUN",
-        "MOVE_MAGNET_RISE"
+        "MOVE_MAGNET_RISE",
+        "MOVE_ABSORB",
+        "MOVE_THRASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -152807,7 +153196,9 @@
         "MOVE_SPIKES",
         "MOVE_DEFENSE_CURL",
         "MOVE_ROLLOUT",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_SUPER_FANG",
+        "MOVE_WIDE_GUARD"
       ],
       "evolutions": [
         {
@@ -153024,7 +153415,9 @@
         "MOVE_SPIKES",
         "MOVE_DEFENSE_CURL",
         "MOVE_ROLLOUT",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_SUPER_FANG",
+        "MOVE_WIDE_GUARD"
       ],
       "evolutions": [
         {
@@ -153296,7 +153689,9 @@
         "MOVE_SPIKES",
         "MOVE_DEFENSE_CURL",
         "MOVE_ROLLOUT",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_SUPER_FANG",
+        "MOVE_WIDE_GUARD"
       ],
       "evolutions": [],
       "locations": [],
@@ -153748,7 +154143,9 @@
         "MOVE_HYPNOSIS",
         "MOVE_HEAT_WAVE",
         "MOVE_MAGIC_COAT",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_COPYCAT",
+        "MOVE_MAGIC_ROOM"
       ],
       "evolutions": [
         {
@@ -153948,7 +154345,9 @@
         "MOVE_HYPNOSIS",
         "MOVE_HEAT_WAVE",
         "MOVE_MAGIC_COAT",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_COPYCAT",
+        "MOVE_MAGIC_ROOM"
       ],
       "evolutions": [
         {
@@ -154208,7 +154607,9 @@
         "MOVE_HYPNOSIS",
         "MOVE_HEAT_WAVE",
         "MOVE_MAGIC_COAT",
-        "MOVE_PSYCHIC_TERRAIN"
+        "MOVE_PSYCHIC_TERRAIN",
+        "MOVE_COPYCAT",
+        "MOVE_MAGIC_ROOM"
       ],
       "evolutions": [],
       "locations": [],
@@ -154646,7 +155047,11 @@
         "MOVE_MUD_SPORT",
         "MOVE_CAMOUFLAGE",
         "MOVE_WATER_SPORT",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_COUNTER",
+        "MOVE_RETALIATE",
+        "MOVE_SPIKES",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [
         {
@@ -154871,7 +155276,11 @@
         "MOVE_MUD_SPORT",
         "MOVE_CAMOUFLAGE",
         "MOVE_WATER_SPORT",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_COUNTER",
+        "MOVE_RETALIATE",
+        "MOVE_SPIKES",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [
         {
@@ -155161,7 +155570,11 @@
         "MOVE_MUD_SPORT",
         "MOVE_CAMOUFLAGE",
         "MOVE_WATER_SPORT",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_COUNTER",
+        "MOVE_RETALIATE",
+        "MOVE_SPIKES",
+        "MOVE_SWITCHEROO"
       ],
       "evolutions": [],
       "locations": [],
@@ -156072,7 +156485,9 @@
       "eggMoves": [
         "MOVE_TAILWIND",
         "MOVE_SNATCH",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_DEFOG",
+        "MOVE_FLAME_CHARGE"
       ],
       "evolutions": [
         {
@@ -156266,7 +156681,9 @@
       "eggMoves": [
         "MOVE_TAILWIND",
         "MOVE_SNATCH",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_DEFOG",
+        "MOVE_FLAME_CHARGE"
       ],
       "evolutions": [
         {
@@ -156496,7 +156913,9 @@
       "eggMoves": [
         "MOVE_TAILWIND",
         "MOVE_SNATCH",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_DEFOG",
+        "MOVE_FLAME_CHARGE"
       ],
       "evolutions": [],
       "locations": [
@@ -157303,7 +157722,8 @@
         "MOVE_COPYCAT",
         "MOVE_CAPTIVATE",
         "MOVE_CAMOUFLAGE",
-        "MOVE_TEARFUL_LOOK"
+        "MOVE_TEARFUL_LOOK",
+        "MOVE_ENDEAVOR"
       ],
       "evolutions": [
         {
@@ -157547,7 +157967,8 @@
         "MOVE_COPYCAT",
         "MOVE_CAPTIVATE",
         "MOVE_CAMOUFLAGE",
-        "MOVE_TEARFUL_LOOK"
+        "MOVE_TEARFUL_LOOK",
+        "MOVE_ENDEAVOR"
       ],
       "evolutions": [
         {
@@ -158102,7 +158523,8 @@
         "MOVE_COPYCAT",
         "MOVE_CAPTIVATE",
         "MOVE_CAMOUFLAGE",
-        "MOVE_TEARFUL_LOOK"
+        "MOVE_TEARFUL_LOOK",
+        "MOVE_ENDEAVOR"
       ],
       "evolutions": [],
       "locations": [],
@@ -158683,7 +159105,8 @@
         "MOVE_TRICK",
         "MOVE_YAWN",
         "MOVE_ASSIST",
-        "MOVE_BARRIER"
+        "MOVE_BARRIER",
+        "MOVE_TICKLE"
       ],
       "evolutions": [
         {
@@ -158930,7 +159353,8 @@
         "MOVE_TRICK",
         "MOVE_YAWN",
         "MOVE_ASSIST",
-        "MOVE_BARRIER"
+        "MOVE_BARRIER",
+        "MOVE_TICKLE"
       ],
       "evolutions": [],
       "locations": [
@@ -159158,7 +159582,8 @@
         "MOVE_TRICK",
         "MOVE_YAWN",
         "MOVE_ASSIST",
-        "MOVE_BARRIER"
+        "MOVE_BARRIER",
+        "MOVE_TICKLE"
       ],
       "evolutions": [],
       "locations": [
@@ -159751,7 +160176,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_SHADOW_SNEAK",
         "MOVE_DESTINY_BOND",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_BLOCK"
       ],
       "evolutions": [
         {
@@ -159925,7 +160351,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_SHADOW_SNEAK",
         "MOVE_DESTINY_BOND",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_BLOCK"
       ],
       "evolutions": [
         {
@@ -160126,7 +160553,8 @@
         "MOVE_METAL_SOUND",
         "MOVE_SHADOW_SNEAK",
         "MOVE_DESTINY_BOND",
-        "MOVE_WIDE_GUARD"
+        "MOVE_WIDE_GUARD",
+        "MOVE_BLOCK"
       ],
       "evolutions": [],
       "locations": [
@@ -160532,7 +160960,9 @@
         "MOVE_CAMOUFLAGE",
         "MOVE_FLATTER",
         "MOVE_DESTINY_BOND",
-        "MOVE_GUARD_SWAP"
+        "MOVE_GUARD_SWAP",
+        "MOVE_ACUPRESSURE",
+        "MOVE_DISABLE"
       ],
       "evolutions": [
         {
@@ -160780,7 +161210,9 @@
         "MOVE_CAMOUFLAGE",
         "MOVE_FLATTER",
         "MOVE_DESTINY_BOND",
-        "MOVE_GUARD_SWAP"
+        "MOVE_GUARD_SWAP",
+        "MOVE_ACUPRESSURE",
+        "MOVE_DISABLE"
       ],
       "evolutions": [],
       "locations": [
@@ -161212,7 +161644,9 @@
         "MOVE_TICKLE",
         "MOVE_SWITCHEROO",
         "MOVE_HELPING_HAND",
-        "MOVE_WATER_SPORT"
+        "MOVE_WATER_SPORT",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_SAND_ATTACK"
       ],
       "evolutions": [
         {
@@ -161505,7 +161939,9 @@
         "MOVE_TICKLE",
         "MOVE_SWITCHEROO",
         "MOVE_HELPING_HAND",
-        "MOVE_WATER_SPORT"
+        "MOVE_WATER_SPORT",
+        "MOVE_NIGHT_SLASH",
+        "MOVE_SAND_ATTACK"
       ],
       "evolutions": [],
       "locations": [
@@ -161908,7 +162344,9 @@
         "MOVE_PLAY_ROUGH",
         "MOVE_HAZE",
         "MOVE_ACID_ARMOR",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_TWISTER"
       ],
       "evolutions": [
         {
@@ -162232,7 +162670,9 @@
         "MOVE_PLAY_ROUGH",
         "MOVE_HAZE",
         "MOVE_ACID_ARMOR",
-        "MOVE_VENOM_DRENCH"
+        "MOVE_VENOM_DRENCH",
+        "MOVE_DRAGON_TAIL",
+        "MOVE_TWISTER"
       ],
       "evolutions": [],
       "locations": [
@@ -162633,7 +163073,9 @@
         "MOVE_ENTRAINMENT",
         "MOVE_ENDURE",
         "MOVE_CRABHAMMER",
-        "MOVE_HELPING_HAND"
+        "MOVE_HELPING_HAND",
+        "MOVE_AQUA_TAIL",
+        "MOVE_BUBBLE_BEAM"
       ],
       "evolutions": [
         {
@@ -162894,7 +163336,9 @@
         "MOVE_ENTRAINMENT",
         "MOVE_ENDURE",
         "MOVE_CRABHAMMER",
-        "MOVE_HELPING_HAND"
+        "MOVE_HELPING_HAND",
+        "MOVE_AQUA_TAIL",
+        "MOVE_BUBBLE_BEAM"
       ],
       "evolutions": [],
       "locations": [
@@ -163109,7 +163553,8 @@
         "MOVE_POISON_FANG",
         "MOVE_ROCK_POLISH",
         "MOVE_FIRE_FANG",
-        "MOVE_CURSE"
+        "MOVE_CURSE",
+        "MOVE_ROCK_THROW"
       ],
       "evolutions": [
         {
@@ -163336,7 +163781,8 @@
         "MOVE_POISON_FANG",
         "MOVE_ROCK_POLISH",
         "MOVE_FIRE_FANG",
-        "MOVE_CURSE"
+        "MOVE_CURSE",
+        "MOVE_ROCK_THROW"
       ],
       "evolutions": [],
       "locations": [
@@ -163545,7 +163991,10 @@
         "MOVE_BARRIER",
         "MOVE_MIRROR_COAT",
         "MOVE_MAGNET_RISE",
-        "MOVE_DISCHARGE"
+        "MOVE_DISCHARGE",
+        "MOVE_AURORA_VEIL",
+        "MOVE_ROCK_THROW",
+        "MOVE_TAKE_DOWN"
       ],
       "evolutions": [
         {
@@ -163776,7 +164225,10 @@
         "MOVE_BARRIER",
         "MOVE_MIRROR_COAT",
         "MOVE_MAGNET_RISE",
-        "MOVE_DISCHARGE"
+        "MOVE_DISCHARGE",
+        "MOVE_AURORA_VEIL",
+        "MOVE_ROCK_THROW",
+        "MOVE_TAKE_DOWN"
       ],
       "evolutions": [],
       "locations": [
@@ -164022,7 +164474,9 @@
         "MOVE_NATURAL_GIFT",
         "MOVE_STORED_POWER",
         "MOVE_SYNCHRONOISE",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_DOUBLE_KICK",
+        "MOVE_MUD_SLAP"
       ],
       "evolutions": [],
       "locations": [],
@@ -164290,7 +164744,10 @@
         "MOVE_MUD_SPORT",
         "MOVE_BATON_PASS",
         "MOVE_QUICK_GUARD",
-        "MOVE_FEINT"
+        "MOVE_FEINT",
+        "MOVE_CROSS_CHOP",
+        "MOVE_DEFOG",
+        "MOVE_MEAN_LOOK"
       ],
       "evolutions": [],
       "locations": [
@@ -164684,7 +165141,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_POISON_TAIL",
         "MOVE_COUNTER",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -164883,7 +165341,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_POISON_TAIL",
         "MOVE_COUNTER",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -165093,7 +165552,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_POISON_TAIL",
         "MOVE_COUNTER",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -165372,7 +165832,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_POISON_TAIL",
         "MOVE_COUNTER",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [],
       "locations": [],
@@ -165659,7 +166120,8 @@
         "MOVE_IRON_TAIL",
         "MOVE_POISON_TAIL",
         "MOVE_COUNTER",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [],
       "locations": [
@@ -165849,7 +166311,8 @@
         "MOVE_SWITCHEROO",
         "MOVE_THIEF",
         "MOVE_LOCK_ON",
-        "MOVE_IRON_DEFENSE"
+        "MOVE_IRON_DEFENSE",
+        "MOVE_MAGNET_RISE"
       ],
       "evolutions": [],
       "locations": [
@@ -166050,7 +166513,10 @@
         "MOVE_BESTOW",
         "MOVE_IMPRISON",
         "MOVE_VENOM_DRENCH",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_DISABLE",
+        "MOVE_SUCKER_PUNCH",
+        "MOVE_ALLY_SWITCH"
       ],
       "evolutions": [
         {
@@ -166275,7 +166741,10 @@
         "MOVE_BESTOW",
         "MOVE_IMPRISON",
         "MOVE_VENOM_DRENCH",
-        "MOVE_POWER_UP_PUNCH"
+        "MOVE_POWER_UP_PUNCH",
+        "MOVE_DISABLE",
+        "MOVE_SUCKER_PUNCH",
+        "MOVE_ALLY_SWITCH"
       ],
       "evolutions": [],
       "locations": [],
@@ -166484,7 +166953,8 @@
         "MOVE_RECOVER",
         "MOVE_MIST",
         "MOVE_BARRIER",
-        "MOVE_MIRROR_COAT"
+        "MOVE_MIRROR_COAT",
+        "MOVE_AURORA_VEIL"
       ],
       "evolutions": [
         {
@@ -166752,7 +167222,8 @@
         "MOVE_RECOVER",
         "MOVE_MIST",
         "MOVE_BARRIER",
-        "MOVE_MIRROR_COAT"
+        "MOVE_MIRROR_COAT",
+        "MOVE_AURORA_VEIL"
       ],
       "evolutions": [],
       "locations": [
@@ -166963,7 +167434,8 @@
         "MOVE_RECOVER",
         "MOVE_MIST",
         "MOVE_BARRIER",
-        "MOVE_MIRROR_COAT"
+        "MOVE_MIRROR_COAT",
+        "MOVE_AURORA_VEIL"
       ],
       "evolutions": [],
       "locations": [
@@ -167156,7 +167628,9 @@
         "MOVE_SWITCHEROO",
         "MOVE_SNATCH",
         "MOVE_OUTRAGE",
-        "MOVE_TAILWIND"
+        "MOVE_TAILWIND",
+        "MOVE_DEFOG",
+        "MOVE_DRAGON_RUSH"
       ],
       "evolutions": [
         {
@@ -167411,7 +167885,9 @@
         "MOVE_SWITCHEROO",
         "MOVE_SNATCH",
         "MOVE_OUTRAGE",
-        "MOVE_TAILWIND"
+        "MOVE_TAILWIND",
+        "MOVE_DEFOG",
+        "MOVE_DRAGON_RUSH"
       ],
       "evolutions": [],
       "locations": [
@@ -170287,7 +170763,10 @@
         "MOVE_OMINOUS_WIND",
         "MOVE_HAZE",
         "MOVE_BATON_PASS",
-        "MOVE_DEFOG"
+        "MOVE_DEFOG",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_KNOCK_OFF",
+        "MOVE_ROOST"
       ],
       "evolutions": [
         {
@@ -170488,7 +170967,10 @@
         "MOVE_OMINOUS_WIND",
         "MOVE_HAZE",
         "MOVE_BATON_PASS",
-        "MOVE_DEFOG"
+        "MOVE_DEFOG",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_KNOCK_OFF",
+        "MOVE_ROOST"
       ],
       "evolutions": [
         {
@@ -170757,7 +171239,10 @@
         "MOVE_OMINOUS_WIND",
         "MOVE_HAZE",
         "MOVE_BATON_PASS",
-        "MOVE_DEFOG"
+        "MOVE_DEFOG",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_KNOCK_OFF",
+        "MOVE_ROOST"
       ],
       "evolutions": [],
       "locations": [],
@@ -171019,7 +171504,10 @@
         "MOVE_OMINOUS_WIND",
         "MOVE_HAZE",
         "MOVE_BATON_PASS",
-        "MOVE_DEFOG"
+        "MOVE_DEFOG",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_KNOCK_OFF",
+        "MOVE_ROOST"
       ],
       "evolutions": [],
       "locations": [
@@ -171865,7 +172353,8 @@
         "MOVE_AQUA_RING",
         "MOVE_AROMATIC_MIST",
         "MOVE_PERISH_SONG",
-        "MOVE_WONDER_ROOM"
+        "MOVE_WONDER_ROOM",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -172056,7 +172545,8 @@
         "MOVE_AQUA_RING",
         "MOVE_AROMATIC_MIST",
         "MOVE_PERISH_SONG",
-        "MOVE_WONDER_ROOM"
+        "MOVE_WONDER_ROOM",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [
         {
@@ -172290,7 +172780,8 @@
         "MOVE_AQUA_RING",
         "MOVE_AROMATIC_MIST",
         "MOVE_PERISH_SONG",
-        "MOVE_WONDER_ROOM"
+        "MOVE_WONDER_ROOM",
+        "MOVE_LIFE_DEW"
       ],
       "evolutions": [],
       "locations": [],
@@ -172662,7 +173153,8 @@
         "MOVE_HARDEN",
         "MOVE_ELECTROWEB",
         "MOVE_MUD_SHOT",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_DISCHARGE"
       ],
       "evolutions": [
         {
@@ -172832,7 +173324,8 @@
         "MOVE_HARDEN",
         "MOVE_ELECTROWEB",
         "MOVE_MUD_SHOT",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_DISCHARGE"
       ],
       "evolutions": [
         {
@@ -173065,7 +173558,8 @@
         "MOVE_HARDEN",
         "MOVE_ELECTROWEB",
         "MOVE_MUD_SHOT",
-        "MOVE_ENDURE"
+        "MOVE_ENDURE",
+        "MOVE_DISCHARGE"
       ],
       "evolutions": [],
       "locations": [],
@@ -173312,7 +173806,8 @@
         "MOVE_WIDE_GUARD",
         "MOVE_SUPERPOWER",
         "MOVE_ENDEAVOR",
-        "MOVE_AMNESIA"
+        "MOVE_AMNESIA",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [
         {
@@ -173559,7 +174054,8 @@
         "MOVE_WIDE_GUARD",
         "MOVE_SUPERPOWER",
         "MOVE_ENDEAVOR",
-        "MOVE_AMNESIA"
+        "MOVE_AMNESIA",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [],
       "locations": [
@@ -173977,7 +174473,10 @@
         "MOVE_PLUCK",
         "MOVE_TAILWIND",
         "MOVE_SAFEGUARD",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_ATTRACT",
+        "MOVE_DEFOG",
+        "MOVE_QUIVER_DANCE"
       ],
       "evolutions": [],
       "locations": [],
@@ -174160,7 +174659,10 @@
         "MOVE_PLUCK",
         "MOVE_TAILWIND",
         "MOVE_SAFEGUARD",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_ATTRACT",
+        "MOVE_DEFOG",
+        "MOVE_QUIVER_DANCE"
       ],
       "evolutions": [],
       "locations": [],
@@ -174343,7 +174845,10 @@
         "MOVE_PLUCK",
         "MOVE_TAILWIND",
         "MOVE_SAFEGUARD",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_ATTRACT",
+        "MOVE_DEFOG",
+        "MOVE_QUIVER_DANCE"
       ],
       "evolutions": [],
       "locations": [],
@@ -174526,7 +175031,10 @@
         "MOVE_PLUCK",
         "MOVE_TAILWIND",
         "MOVE_SAFEGUARD",
-        "MOVE_CAPTIVATE"
+        "MOVE_CAPTIVATE",
+        "MOVE_ATTRACT",
+        "MOVE_DEFOG",
+        "MOVE_QUIVER_DANCE"
       ],
       "evolutions": [],
       "locations": [
@@ -174719,7 +175227,8 @@
         "MOVE_BESTOW",
         "MOVE_MOONBLAST",
         "MOVE_POWDER",
-        "MOVE_STICKY_WEB"
+        "MOVE_STICKY_WEB",
+        "MOVE_AROMATIC_MIST"
       ],
       "evolutions": [
         {
@@ -174927,7 +175436,8 @@
         "MOVE_BESTOW",
         "MOVE_MOONBLAST",
         "MOVE_POWDER",
-        "MOVE_STICKY_WEB"
+        "MOVE_STICKY_WEB",
+        "MOVE_AROMATIC_MIST"
       ],
       "evolutions": [],
       "locations": [],
@@ -175137,7 +175647,9 @@
         "MOVE_FIRE_FANG",
         "MOVE_THUNDER_FANG",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_ENDEAVOR",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [
         {
@@ -175336,7 +175848,9 @@
         "MOVE_FIRE_FANG",
         "MOVE_THUNDER_FANG",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_ENDEAVOR",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [
         {
@@ -175557,7 +176071,9 @@
         "MOVE_FIRE_FANG",
         "MOVE_THUNDER_FANG",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_ENDEAVOR",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [],
       "locations": [
@@ -175817,7 +176333,9 @@
         "MOVE_FIRE_FANG",
         "MOVE_THUNDER_FANG",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_ENDEAVOR",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [],
       "locations": [
@@ -176051,7 +176569,9 @@
         "MOVE_FIRE_FANG",
         "MOVE_THUNDER_FANG",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_THRASH"
+        "MOVE_THRASH",
+        "MOVE_ENDEAVOR",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [],
       "locations": [
@@ -176224,7 +176744,8 @@
         "MOVE_STOCKPILE",
         "MOVE_SWALLOW",
         "MOVE_SPIT_UP",
-        "MOVE_HAZE"
+        "MOVE_HAZE",
+        "MOVE_INFESTATION"
       ],
       "evolutions": [
         {
@@ -176488,7 +177009,8 @@
         "MOVE_STOCKPILE",
         "MOVE_SWALLOW",
         "MOVE_SPIT_UP",
-        "MOVE_HAZE"
+        "MOVE_HAZE",
+        "MOVE_INFESTATION"
       ],
       "evolutions": [],
       "locations": [
@@ -176611,7 +177133,8 @@
         "MOVE_METAL_CLAW",
         "MOVE_WIDE_GUARD",
         "MOVE_HARDEN",
-        "MOVE_AQUA_JET"
+        "MOVE_AQUA_JET",
+        "MOVE_ROLLOUT"
       ],
       "evolutions": [
         {
@@ -176917,7 +177440,8 @@
         "MOVE_METAL_CLAW",
         "MOVE_WIDE_GUARD",
         "MOVE_HARDEN",
-        "MOVE_AQUA_JET"
+        "MOVE_AQUA_JET",
+        "MOVE_ROLLOUT"
       ],
       "evolutions": [],
       "locations": [
@@ -177336,7 +177860,9 @@
         "MOVE_VENOM_DRENCH",
         "MOVE_BESTOW",
         "MOVE_TICKLE",
-        "MOVE_SPITE"
+        "MOVE_SPITE",
+        "MOVE_MIRROR_COAT",
+        "MOVE_SWAGGER"
       ],
       "evolutions": [],
       "locations": [
@@ -177858,7 +178384,8 @@
         "MOVE_DRAGON_RUSH",
         "MOVE_RAZOR_WIND",
         "MOVE_MIST",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_TICKLE"
       ],
       "evolutions": [],
       "locations": [
@@ -178445,7 +178972,8 @@
       "eggMoves": [
         "MOVE_COUNTER",
         "MOVE_REVERSAL",
-        "MOVE_DRAGON_BREATH"
+        "MOVE_DRAGON_BREATH",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [
         {
@@ -178689,7 +179217,8 @@
       "eggMoves": [
         "MOVE_COUNTER",
         "MOVE_REVERSAL",
-        "MOVE_DRAGON_BREATH"
+        "MOVE_DRAGON_BREATH",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [
         {
@@ -178987,7 +179516,8 @@
       "eggMoves": [
         "MOVE_COUNTER",
         "MOVE_REVERSAL",
-        "MOVE_DRAGON_BREATH"
+        "MOVE_DRAGON_BREATH",
+        "MOVE_FOCUS_PUNCH"
       ],
       "evolutions": [],
       "locations": [
@@ -179651,7 +180181,7 @@
         "ABILITY_TELEPATHY"
       ],
       "innates": [
-        "ABILITY_WATER_VEIL",
+        "ABILITY_OBLIVIOUS",
         "ABILITY_RAIN_DISH",
         "ABILITY_STORM_DRAIN"
       ],
@@ -184305,7 +184835,8 @@
         "MOVE_HIGH_JUMP_KICK",
         "MOVE_SAND_ATTACK",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_SUPER_FANG"
+        "MOVE_SUPER_FANG",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [
         {
@@ -184475,7 +185006,8 @@
         "MOVE_HIGH_JUMP_KICK",
         "MOVE_SAND_ATTACK",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_SUPER_FANG"
+        "MOVE_SUPER_FANG",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [
         {
@@ -184701,7 +185233,8 @@
         "MOVE_HIGH_JUMP_KICK",
         "MOVE_SAND_ATTACK",
         "MOVE_SUCKER_PUNCH",
-        "MOVE_SUPER_FANG"
+        "MOVE_SUPER_FANG",
+        "MOVE_HIGH_JUMP_KICK"
       ],
       "evolutions": [],
       "locations": [],
@@ -196857,7 +197390,8 @@
         "MOVE_MEGAHORN",
         "MOVE_MUD_SPORT",
         "MOVE_RAGE",
-        "MOVE_ME_FIRST"
+        "MOVE_ME_FIRST",
+        "MOVE_PSYSHIELD_BASH"
       ],
       "evolutions": [],
       "locations": [],
@@ -197119,7 +197653,8 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_DEFOG",
         "MOVE_STEEL_WING",
-        "MOVE_QUICK_GUARD"
+        "MOVE_QUICK_GUARD",
+        "MOVE_FEINT"
       ],
       "evolutions": [],
       "locations": [
@@ -197382,7 +197917,8 @@
         "MOVE_NIGHT_SLASH",
         "MOVE_BELLY_DRUM",
         "MOVE_CHIP_AWAY",
-        "MOVE_PLAY_ROUGH"
+        "MOVE_PLAY_ROUGH",
+        "MOVE_FURY_CUTTER"
       ],
       "evolutions": [],
       "locations": [],
@@ -201094,7 +201630,9 @@
         "MOVE_AGILITY",
         "MOVE_SECRET_POWER",
         "MOVE_SLEEP_TALK",
-        "MOVE_HEX"
+        "MOVE_HEX",
+        "MOVE_AQUA_TAIL",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [],
       "locations": [],
@@ -201401,7 +201939,9 @@
         "MOVE_AGILITY",
         "MOVE_SECRET_POWER",
         "MOVE_SLEEP_TALK",
-        "MOVE_HEX"
+        "MOVE_HEX",
+        "MOVE_AQUA_TAIL",
+        "MOVE_LAST_RESORT"
       ],
       "evolutions": [],
       "locations": [],
@@ -211812,7 +212352,9 @@
         "MOVE_FOCUS_PUNCH",
         "MOVE_SLEEP_TALK",
         "MOVE_NIGHT_SLASH",
-        "MOVE_POWER_TRIP"
+        "MOVE_POWER_TRIP",
+        "MOVE_CURSE",
+        "MOVE_SPITE"
       ],
       "evolutions": [],
       "locations": [],
@@ -212288,7 +212830,9 @@
         "MOVE_SECRET_POWER",
         "MOVE_MEAN_LOOK",
         "MOVE_PSYCHIC_TERRAIN",
-        "MOVE_PSYCHIC_FANGS"
+        "MOVE_PSYCHIC_FANGS",
+        "MOVE_ALLY_SWITCH",
+        "MOVE_UPROAR"
       ],
       "evolutions": [],
       "locations": [
@@ -233389,6 +233933,12 @@
             "name": "Ferrothorn",
             "dex": 429,
             "sprite": "sprites/pokemon/ferrothorn.png"
+          },
+          {
+            "species": "SPECIES_TAPU_FINI",
+            "name": "Tapu Fini",
+            "dex": 554,
+            "sprite": "sprites/pokemon/tapu_fini.png"
           }
         ]
       }
@@ -237447,12 +237997,6 @@
             "name": "Pyukumuku",
             "dex": 544,
             "sprite": "sprites/pokemon/pyukumuku.png"
-          },
-          {
-            "species": "SPECIES_TAPU_FINI",
-            "name": "Tapu Fini",
-            "dex": 554,
-            "sprite": "sprites/pokemon/tapu_fini.png"
           },
           {
             "species": "SPECIES_SOBBLE",
@@ -273603,11 +274147,15 @@
       "itemIcons": [],
       "locations": [
         {
+          "map": "Battle Frontier Battle Pyramid Lobby",
+          "source": "Mart"
+        },
+        {
           "map": "Goldenrod Shore",
           "source": "Gift"
         }
       ],
-      "location": "Goldenrod Shore (Gift)",
+      "location": "Battle Frontier Battle Pyramid Lobby (Mart); Goldenrod Shore (Gift)",
       "slug": "loaded-dice"
     },
     {
@@ -344236,7 +344784,7 @@
           "constant": "SPECIES_TAPU_FINI",
           "displayName": "Tapu Fini",
           "innates": [
-            "ABILITY_WATER_VEIL",
+            "ABILITY_OBLIVIOUS",
             "ABILITY_RAIN_DISH",
             "ABILITY_STORM_DRAIN"
           ],
@@ -344464,7 +345012,7 @@
           "constant": "SPECIES_TAPU_FINI",
           "displayName": "Tapu Fini",
           "innates": [
-            "ABILITY_WATER_VEIL",
+            "ABILITY_OBLIVIOUS",
             "ABILITY_RAIN_DISH",
             "ABILITY_STORM_DRAIN"
           ],
@@ -344882,7 +345430,7 @@
           "constant": "SPECIES_TAPU_FINI",
           "displayName": "Tapu Fini",
           "innates": [
-            "ABILITY_WATER_VEIL",
+            "ABILITY_OBLIVIOUS",
             "ABILITY_RAIN_DISH",
             "ABILITY_STORM_DRAIN"
           ],
@@ -345019,7 +345567,7 @@
           "constant": "SPECIES_TAPU_FINI",
           "displayName": "Tapu Fini",
           "innates": [
-            "ABILITY_WATER_VEIL",
+            "ABILITY_OBLIVIOUS",
             "ABILITY_RAIN_DISH",
             "ABILITY_STORM_DRAIN"
           ],
