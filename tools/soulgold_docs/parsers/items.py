@@ -102,6 +102,7 @@ def parse_item_records() -> dict[str, ItemRecord]:
         sort_type_match = re.search(r"\bITEM_TYPE_[A-Z0-9_]+\b", sort_type_expr)
         icon_pic_expr = extract_field(entry, "iconPic") or ""
         icon_pic_match = re.search(r"\bgItemIcon_([A-Za-z0-9_]+)\b", icon_pic_expr)
+        hold_effect_match = re.search(r"\bHOLD_EFFECT_[A-Z0-9_]+\b", extract_field(entry, "holdEffect") or "")
         records[key] = {
             "id": item_to_id.get(key, 0),
             "constant": key,
@@ -110,6 +111,7 @@ def parse_item_records() -> dict[str, ItemRecord]:
             "pocket": pocket_match.group(0) if pocket_match else "",
             "sortType": sort_type_match.group(0) if sort_type_match else "",
             "iconName": icon_pic_match.group(1) if icon_pic_match else "",
+            "holdEffect": hold_effect_match.group(0) if hold_effect_match else "",
         }
     return records
 

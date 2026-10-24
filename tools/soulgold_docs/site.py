@@ -23,7 +23,7 @@ from .models import (
 )
 from .paths import OUT_DIR, SRC_DIR, VERSION_H
 
-SECTION_ROUTES = ("pokedex", "moves", "encounters", "machines", "items", "trainers", "abilities", "guides")
+SECTION_ROUTES = ("pokedex", "moves", "encounters", "machines", "items", "trainers", "frontier", "abilities", "guides")
 
 SITE_NAME = "Soulgold Documentation"
 SITE_DESCRIPTION = "Pokédex, moves, encounters, items, trainers and guides for the Soulgold ROM hack."
@@ -35,6 +35,7 @@ SECTION_LABELS = {
     "machines": "TMs/HMs",
     "items": "Items",
     "trainers": "Trainers",
+    "frontier": "Frontier sets",
     "abilities": "Abilities",
     "guides": "Guides",
 }
@@ -46,6 +47,7 @@ SECTION_DESCRIPTIONS = {
     "machines": "Every TM and HM in alongside the move data and where to find them.",
     "items": "Notable items and where to find them.",
     "trainers": "Trainer parties with levels, abilities, moves and held items.",
+    "frontier": "Find Frontier Pokémon sets by species, held item, ability or moves, with natures, EVs and IVs.",
     "abilities": "Every ability and which Pokémon gets them.",
     "guides": "Guides for Soulgold.",
 }
@@ -57,6 +59,7 @@ SECTION_PRELOADS = {
     "machines": ("ui.json", "machines.json"),
     "items": ("items.json",),
     "trainers": ("ability-index.json", "move-index.json", "trainers.json"),
+    "frontier": ("ability-index.json", "move-index.json", "frontier.json"),
     "abilities": ("abilities.json",),
     "guides": ("guides.json",),
 }
@@ -562,6 +565,8 @@ def write_docs_payload(payload: DocsPayload) -> None:
         ("guides.json", "guides"),
     ):
         write_json(name, payload[key])
+    if "frontier" in payload:
+        write_json("frontier.json", payload["frontier"])
     for retired in ("common.json", "species-details.json"):
         (data_dir / retired).unlink(missing_ok=True)
     write_pages(payload)

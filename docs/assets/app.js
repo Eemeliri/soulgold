@@ -15,6 +15,7 @@ const state = {
     items: [],
     encounters: [],
     trainers: [],
+    frontier: [],
     guides: [],
     typeIcons: {},
     categoryIcons: {},
@@ -183,6 +184,7 @@ const searchPlaceholders = {
   machines: "Search TMs, moves, types, or locations…",
   items: "Search items or locations…",
   trainers: "Search trainers, parties, or locations…",
+  frontier: "Search Pokémon, items, abilities, natures or moves…",
   abilities: "Search abilities…",
   guides: "Search guides, FAQs, or secrets…",
 };
@@ -263,6 +265,7 @@ const tabRoutes = {
   machines: "machines",
   items: "items",
   trainers: "trainers",
+  frontier: "frontier",
   abilities: "abilities",
   guides: "guides",
 };
@@ -298,6 +301,11 @@ const sectionDataFiles = {
     ["trainers", "data/trainers.json"],
   ],
   abilities: [["abilities", "data/abilities.json"]],
+  frontier: [
+    ["abilityIndex", "data/ability-index.json"],
+    ["moveIndex", "data/move-index.json"],
+    ["frontier", "data/frontier.json"],
+  ],
   guides: [["guides", "data/guides.json"]],
 };
 const tabLabels = {
@@ -307,6 +315,7 @@ const tabLabels = {
   machines: "TMs/HMs",
   items: "Items",
   trainers: "Trainers",
+  frontier: "Frontier sets",
   abilities: "Abilities",
   guides: "Guides",
 };
@@ -405,7 +414,7 @@ function renderProgressively(container, entries, createNode, options = {}) {
       if (entries.some((entry) => entry.isIntersecting)) loadNextBatch();
     }, { rootMargin: "1200px 0px" });
     progressiveObserver.observe(loadingNode);
-    if (!mobileNavMedia.matches) scheduleProgressiveBatch(fillWhileIdle);
+    if (options.fillWhenIdle !== false && !mobileNavMedia.matches) scheduleProgressiveBatch(fillWhileIdle);
   } else {
     scheduleProgressiveBatch(fillWhileIdle);
   }
@@ -816,6 +825,8 @@ async function loadData(key, path) {
       } else if (key === "abilityUsage") {
         state.data.abilityUsage = payload;
         mergeAbilityUsage();
+      } else if (key === "frontier") {
+        state.data.frontier = decodeFrontierSets(payload);
       } else {
         state.data[key] = payload;
         if (key === "abilities") mergeAbilityUsage();
@@ -1219,6 +1230,7 @@ async function renderActive() {
   if (tab === "items") renderItems();
   if (tab === "abilities") renderAbilities();
   if (tab === "trainers") renderTrainers();
+  if (tab === "frontier") renderFrontier();
   if (tab === "guides") renderGuides();
   renderedSections.add(tab);
 }
@@ -3170,6 +3182,98 @@ function renderGuides() {
   `).join("");
   setPanelStatus("guides", "");
   syncGuideDetail();
+}
+
+const frontierStats = ["hp", "atk", "def", "spa", "spd", "spe"];
+const frontierSpeedNatures = { Timid: 110, Hasty: 110, Jolly: 110, Naive: 110, Brave: 90, Relaxed: 90, Quiet: 90, Sassy: 90 };
+
+function decodeFrontierSets({ species, items, sets }) {
+  return sets.map(([setId, speciesConstant, itemConstant, ability, nature, moves, evs, ivs]) => ({
+    setId, itemConstant, ability, nature, moves, evs, ivs,
+    species: species[speciesConstant],
+    item: items[itemConstant],
+  }));
+}
+
+function normalizeFrontierSearch(text) {
+  return text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function frontierFilter(query) {
+  if (/^frontier_mon_\w+$/.test(query)) return (mon) => mon.setId.toLowerCase() === query;
+  const words = normalizeFrontierSearch(query).split(" ").filter(Boolean);
+  return (mon) => {
+    mon.searchText ??= normalizeFrontierSearch([
+      mon.species.name, mon.item.name, mon.nature, abilityName(mon.ability), ...mon.moves.map(trainerMoveLabel),
+    ].join(" "));
+    return words.every((word) => mon.searchText.includes(word));
+  };
+}
+
+function frontierSetLabel(setId) {
+  const suffix = setId.slice(setId.lastIndexOf("_") + 1);
+  return /^\d+$/.test(suffix) ? `Set ${suffix}` : `${fmtTitle(suffix)} set`;
+}
+
+// Showdown-style: EVs list non-zero stats, IVs list stats below 31.
+function frontierSpread(values, implied) {
+  return values
+    .map((value, index) => (value === implied ? "" : `${value} ${statLabels[frontierStats[index]]}`))
+    .filter(Boolean)
+    .join(" / ");
+}
+
+// Mirrors CalculateMonStats, then the held-item step of GetBattlerTotalSpeedStat.
+function frontierSpeed(mon, level) {
+  const stat = Math.floor((2 * mon.species.baseSpeed + mon.ivs[5] + Math.floor(mon.evs[5] / 4)) * level / 100) + 5;
+  const natured = Math.floor(stat * (frontierSpeedNatures[mon.nature] || 100) / 100);
+  return Math.floor(natured * (mon.item.speedModifier || 1));
+}
+
+function frontierSetCard(mon) {
+  const { species, item } = mon;
+  const card = el("article", "trainer-mon frontier-set");
+  card.dataset.setId = mon.setId;
+  const name = escapeHtml(species.name);
+  const label = frontierSetLabel(mon.setId);
+  const itemHtml = mon.itemConstant === "ITEM_NONE"
+    ? `<span class="frontier-item">${escapeHtml(item.name)}</span>`
+    : `<button class="item-tooltip-target frontier-item" type="button" data-item="${escapeHtml(mon.itemConstant)}" data-item-name="${escapeHtml(item.name)}" data-item-description="${escapeHtml(item.description)}">${item.icon ? `<img src="${escapeHtml(item.icon)}" alt="" loading="lazy" decoding="async">` : ""}${escapeHtml(item.name)}</button>`;
+  const ability = mon.ability === "ABILITY_NONE"
+    ? "Random regular ability"
+    : `<button class="trainer-ability ability-pill" type="button" data-ability="${escapeHtml(mon.ability)}">${escapeHtml(abilityName(mon.ability))}</button>`;
+  const evs = frontierSpread(mon.evs, 0);
+  const ivs = frontierSpread(mon.ivs, 31);
+  const speed = mon.species.baseSpeed
+    ? [50, 100].map((level) => `<span>Lv ${level}</span> ${frontierSpeed(mon, level)}`).join(" · ")
+      + (item.speedModifier ? ` <span>with ${escapeHtml(item.name)}</span>` : "")
+    : "";
+  card.innerHTML = `
+    ${sprite(species.sprite, "mini-sprite")}
+    <div class="frontier-set-title">
+      <h3>${species.link ? `<button class="trainer-mon-name species-link" type="button" data-species="${escapeHtml(species.link)}">${name}</button>` : name}</h3>
+      ${itemHtml}
+    </div>
+    <a class="frontier-set-link" href="${escapeHtml(routeUrl("frontier", null, { query: mon.setId }).href)}" aria-label="Link to ${name}, ${label}">${label}</a>
+    <dl class="frontier-set-stats">
+      <div><dt>Ability</dt><dd>${ability}</dd></div>
+      <div><dt>Nature</dt><dd>${escapeHtml(mon.nature)}</dd></div>
+      ${evs ? `<div class="frontier-spread"><dt>EVs</dt><dd>${evs}</dd></div>` : ""}
+      ${ivs ? `<div class="frontier-spread"><dt>IVs</dt><dd>${ivs}</dd></div>` : ""}
+      ${speed ? `<div class="frontier-spread frontier-speed"><dt>Speed</dt><dd>${speed}</dd></div>` : ""}
+    </dl>
+    <ul class="frontier-moves">${mon.moves.map((move) => `<li><button class="move-name" type="button" data-move="${escapeHtml(move)}">${escapeHtml(trainerMoveLabel(move))}</button></li>`).join("")}</ul>`;
+  return card;
+}
+
+function renderFrontier() {
+  const rows = state.data.frontier.filter(frontierFilter(state.query));
+  renderProgressively(document.getElementById("frontierList"), rows, frontierSetCard, {
+    initialSize: 24,
+    batchSize: 24,
+    fillWhenIdle: false,
+  });
+  setPanelStatus("frontier", rows.length ? "" : "No Frontier sets match this search. Try a Pokémon name, held item or move.");
 }
 
 function renderTrainers() {

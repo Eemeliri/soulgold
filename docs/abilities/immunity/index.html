@@ -11,15 +11,15 @@
     <meta property="og:title" content="Immunity · Abilities">
     <meta property="og:description" content="The Pokemon cannot be poisoned or badly poisoned.">
     <meta name="theme-color" content="#263532">
-    <meta name="docs-data-version" content="c89a263e82c6">
+    <meta name="docs-data-version" content="7966448048e7">
     <script>
       try {
         if (localStorage.getItem("soulgold-docs-theme") === "light") document.documentElement.dataset.theme = "light";
       } catch {}
     </script>
-    <link rel="stylesheet" href="assets/styles.css?v=8d676cf7fb45">
-    <link rel="preload" href="data/abilities.json?v=c89a263e82c6" as="fetch" crossorigin="anonymous">
-    <link rel="preload" href="data/ability-usage.json?v=c89a263e82c6" as="fetch" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/styles.css?v=fcc694a4d098">
+    <link rel="preload" href="data/abilities.json?v=7966448048e7" as="fetch" crossorigin="anonymous">
+    <link rel="preload" href="data/ability-usage.json?v=7966448048e7" as="fetch" crossorigin="anonymous">
   </head>
   <body>
     <div class="top-chrome">
@@ -60,6 +60,7 @@
         <a class="tab" data-tab="machines" href="machines/">TMs/HMs</a>
         <a class="tab" data-tab="items" href="items/">Items</a>
         <a class="tab" data-tab="trainers" href="trainers/">Trainers</a>
+        <a class="tab" data-tab="frontier" href="frontier/">Frontier sets</a>
         <a class="tab" data-tab="abilities" href="abilities/">Abilities</a>
         <a class="tab" data-tab="guides" href="guides/">Guides</a>
       </nav>
@@ -229,6 +230,11 @@
         </div>
       </section>
 
+      <section id="frontier" class="panel" aria-label="Frontier sets">
+        <div id="frontierStatus" class="panel-status" role="status" aria-live="polite">Loading Frontier sets…</div>
+        <div id="frontierList" class="frontier-list"></div>
+      </section>
+
       <section id="guides" class="panel" aria-label="Guides">
         <div id="guidesStatus" class="panel-status" role="status" aria-live="polite">Loading guides…</div>
         <div id="guideList" class="guide-list"></div>
@@ -250,7 +256,7 @@
     </div>
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
 
-    <script src="assets/app.js?v=f6ce090e19d3"></script>
+    <script src="assets/app.js?v=3b41ee20adef"></script>
     <script type="module" src="assets/version-check.mjs?v=361f15e411b3"></script>
   </body>
 </html>

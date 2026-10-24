@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import TypedDict
+from typing import NotRequired, TypedDict
 
 
 class HeldItemRow(TypedDict, total=False):
@@ -120,6 +120,7 @@ class ItemRecord(TypedDict):
     pocket: str
     sortType: str
     iconName: str
+    holdEffect: str
 
 
 class ItemIconRow(TypedDict):
@@ -331,6 +332,7 @@ class OutputPaths:
 
 
 class DocsPayload(TypedDict):
+    frontier: NotRequired[dict]
     meta: dict[str, str]
     species: list[SpeciesPayloadRow]
     dedicatedTutors: dict[str, str]

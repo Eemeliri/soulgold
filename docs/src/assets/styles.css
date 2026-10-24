@@ -1817,6 +1817,78 @@ dialog[open] {
   font-size: 12px;
 }
 
+.frontier-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 10px;
+}
+
+.frontier-list .frontier-set {
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-content: start;
+  max-width: none;
+  padding: 8px 10px 10px;
+  gap: 6px 8px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 150px;
+}
+
+.frontier-set-title { display: grid; min-width: 0; gap: 1px; }
+.frontier-set-title h3 { margin: 0; font-size: 14px; line-height: 1.25; overflow-wrap: anywhere; }
+.frontier-set-link { font-size: 12px; color: var(--gold); white-space: nowrap; }
+
+.frontier-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted-strong);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  cursor: help;
+}
+
+.frontier-item img { width: 18px; height: 18px; flex: none; object-fit: contain; image-rendering: pixelated; }
+.frontier-item:hover, .frontier-item:focus-visible { color: var(--gold); }
+
+.frontier-set-stats,
+.frontier-moves {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.frontier-set-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+
+.frontier-set-stats > div { display: flex; gap: 6px; min-width: 0; }
+.frontier-set-stats .frontier-spread { flex-basis: 100%; }
+.frontier-set-stats dt { flex: none; color: var(--gold); font-weight: 700; }
+.frontier-set-stats dd { margin: 0; color: var(--muted-strong); font-weight: 700; }
+.frontier-speed dd span { color: var(--muted); font-weight: 400; }
+
+.frontier-moves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 10px;
+  list-style: none;
+}
+
+.frontier-moves .move-name { font-size: 13px; }
+.frontier-list .progressive-loader { grid-column: 1 / -1; }
+
 .trainer-party {
   display: flex;
   flex-wrap: wrap;
