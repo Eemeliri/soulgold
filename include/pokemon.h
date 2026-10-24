@@ -132,62 +132,70 @@ enum MonData {
 
 struct PokemonSecureData
 {
-    u16 species:11; // 2047 species.
-    enum Type teraType:5; // 30 types.
-    u16 heldItem:10; // 1023 items.
-    u16 pokeball:6; // 63 balls.
-    u32 experience:24; // 16777215 exp.
-    u32 heldItem2:10; // 1023 items.
+    u32 species:11;
+    u32 teraType:5;
+    u32 heldItem:10;
+    u32 pokeball:6;
+    u32 :0;
+
+    u32 experience:24;
+    u32 ppBonuses:8;
+    u32 :0;
+
+    u32 friendship:8;
+    u32 pokerus:8;
+    u32 metLocation:8;
+    u32 metLevel:7;
+    u32 otGender:1;
+    u32 :0;
+
+    u32 move1:11;
+    u32 evolutionTracker1:5;
+    u32 move2:11;
+    u32 evolutionTracker2:5;
+    u32 :0;
+
+    u32 move3:11;
+    u32 move4:11;
     u32 metLocationHiBit0:1;
-    u8 ppBonuses;
-    u8 friendship;
+    u32 metLocationHiBits1_5:5;
+    u32 metLocationHiBit6:1;
+    u32 abilityNum:2;
+    u32 isEgg:1;
+    u32 :0;
 
-    enum Move move1:11; // 2047 moves.
-    u16 evolutionTracker1:5;
-    enum Move move2:11; // 2047 moves.
-    u16 evolutionTracker2:5;
-    enum Move move3:11; // 2047 moves.
-    u16 metLocationHiBits1_5:5;
-    enum Move move4:11; // 2047 moves.
-    u16 metLocationHiBit6:1;
-    u16 abilityNum:2;
-    u16 hyperTrainedHP:1;
-    u16 hyperTrainedAttack:1;
-    u8 pp1:7; // 127 PP.
-    u8 hyperTrainedDefense:1;
-    u8 pp2:7; // 127 PP.
-    u8 hyperTrainedSpeed:1;
-    u8 pp3:7; // 127 PP.
-    u8 hyperTrainedSpAttack:1;
-    u8 pp4:7; // 127 PP.
-    u8 hyperTrainedSpDefense:1;
+    u32 pp1:7;
+    u32 pp2:7;
+    u32 pp3:7;
+    u32 pp4:7;
+    u32 metGame:4;
+    u32 :0;
 
-    u8 hpEV;
-    u8 attackEV;
-    u8 defenseEV;
-    u8 speedEV;
-    u8 spAttackEV;
-    u8 spDefenseEV;
-    u8 cool;
-    u8 beauty;
-    u8 cute;
-    u8 smart;
-    u8 tough;
-    u8 sheen;
+    u32 hpEV:8;
+    u32 attackEV:8;
+    u32 defenseEV:8;
+    u32 speedEV:8;
+    u32 :0;
 
-    u8 pokerus;
-    u8 metLocation;
-    u16 metLevel:7;
-    u16 metGame:4;
-    u16 otGender:1;
+    u32 spAttackEV:8;
+    u32 spDefenseEV:8;
+    u32 hyperTrainedHP:1;
+    u32 hyperTrainedAttack:1;
+    u32 hyperTrainedDefense:1;
+    u32 hyperTrainedSpeed:1;
+    u32 hyperTrainedSpAttack:1;
+    u32 hyperTrainedSpDefense:1;
+    u32 reserved7:10;
+    u32 :0;
+
     u32 hpIV:5;
     u32 attackIV:5;
     u32 defenseIV:5;
     u32 speedIV:5;
     u32 spAttackIV:5;
     u32 spDefenseIV:5;
-    u32 isEgg:1;
-    u32 gigantamaxFactor:1;
+    u32 reserved8:2;
+    u32 :0;
 };
 
 struct BoxPokemon
@@ -202,6 +210,7 @@ struct BoxPokemon
     u8 isEgg:1;
     u8 blockBoxRS:1; // Unused, but Pokémon Box Ruby & Sapphire will refuse to deposit a Pokémon with this flag set.
     u8 daysSinceFormChange:3; // 7 days.
+    u8 reservedOuter:1;
     u8 otName[PLAYER_NAME_LENGTH];
     u8 markings:4;
     u8 compressedStatus:4;
@@ -216,6 +225,7 @@ struct BoxPokemon
 struct Pokemon
 {
     struct BoxPokemon box;
+    u8 legacyCompatibility[8];
     u32 status;
     u8 level;
     u8 mail;
@@ -227,6 +237,13 @@ struct Pokemon
     u16 spAttack;
     u16 spDefense;
 };
+
+STATIC_ASSERT(sizeof(struct PokemonSecureData) == 36, CompactSecureSize);
+STATIC_ASSERT(sizeof(struct BoxPokemon) == 68, CompactBoxSize);
+STATIC_ASSERT(offsetof(struct BoxPokemon, secure) == 32, CompactSecureOffset);
+STATIC_ASSERT(sizeof(struct Pokemon) == 96, CompactPartySize);
+STATIC_ASSERT(offsetof(struct Pokemon, legacyCompatibility) == 68, CompactPartyCompatibilityOffset);
+STATIC_ASSERT(offsetof(struct Pokemon, status) == 76, CompactPartyStatusOffset);
 
 struct MonSpritesGfxManager
 {

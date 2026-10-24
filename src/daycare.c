@@ -266,6 +266,7 @@ void StorePokemonInDaycare(struct Pokemon *mon, struct DaycareMon *daycareMon)
     TryFormChange(mon, FORM_CHANGE_DEPOSIT);
 
     daycareMon->mon = mon->box;
+    memset(daycareMon->legacyCompatibility, 0, sizeof(daycareMon->legacyCompatibility));
     daycareMon->steps = 0;
     ZeroMonData(mon);
     CompactPartySlots();

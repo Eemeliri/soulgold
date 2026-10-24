@@ -9,10 +9,13 @@
 #include "overworld.h"
 #include "hall_of_fame.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_storage_legacy.h"
 #include "trainer_hill.h"
 #include "link.h"
 #include "malloc.h"
 #include "constants/game_stat.h"
+
+struct SaveSlotDescriptor;
 
 static u16 CalculateChecksum(void *, u16);
 static bool8 ReadFlashSector(u8, struct SaveSector *);
@@ -24,12 +27,12 @@ static u8 HandleReplaceSector(u16, const struct SaveSectorLocation *);
 static void CopyToSaveBlock3(u32, struct SaveSector *);
 static void CopyFromSaveBlock3(u32, struct SaveSector *);
 static bool8 PreparePokemonStorageExtensions(bool8);
-static void FinishPokemonStorageExtensions(bool8);
+static void FinishPokemonStorageExtensions(const struct SaveSlotDescriptor *);
 static bool8 CopyPokemonStorageExtensionTailToSaveSector(u16);
 static u8 WritePokemonStorageOverflow(void);
-static u8 WriteBx19AuxiliarySector(void);
+static u8 WriteBx21AuxiliarySector(struct SaveSlotDescriptor *);
+static bool8 IsBx21AuxiliarySectorValid(u8, u32);
 static bool8 IsBx19AuxiliarySectorValid(u8, u32);
-static void LoadPokemonStorageOverflow(void);
 static u8 LoadLegacyHallOfFameArchive(struct HallOfFameArchive *);
 static u8 LoadLegacyHallOfFameTeams(struct HallofFameTeam *, u8 *);
 static void ClearLegacyHallOfFameRetryArchive(void);
@@ -56,8 +59,8 @@ enum LegacyHallOfFameLoadStatus
  *
  * Sectors 0 - 13:      Save Slot 1
  * Sectors 14 - 27:     Save Slot 2
- * Sector 28:           Box 19 / Hall of Fame auxiliary for Save Slot 1
- * Sector 29:           Box 19 / Hall of Fame auxiliary for Save Slot 2
+ * Sector 28:           PC tail end / Hall of Fame auxiliary for Save Slot 1
+ * Sector 29:           PC tail end / Hall of Fame auxiliary for Save Slot 2
  * Sector 30:           Pokémon Storage overflow for Save Slot 1
  * Sector 31:           Pokémon Storage overflow for Save Slot 2
  *
@@ -69,6 +72,13 @@ enum LegacyHallOfFameLoadStatus
  * 14 sectors get written anyway.
  *
  * See SECTOR_ID_* constants in save.h
+ * 
+ * The 19->21 box migration was done in the following way:
+ * - Remove unused fields from the boxpokemon data, compressing the form from 76 bytes to 68. (Gigantamax flag, second held item (Bassforte's branch) and contest stats)
+ * - Have instructions for reading the old 16/19 box format so that we can do a one-way conversion of saves.
+ * - Old layout pokemon data is copied into the new format, dropping the discarded byte fields.
+ * - 8 byte saving per Pokémon translates to about two more boxes worth of space.
+ * - Once a save has been migrated to 19-box version, older versions of the game will not even recognize the newer format save, so it's one-way migration. 
  */
 
 #define SAVEBLOCK_CHUNK(structure, chunkNum)                                   \
@@ -134,19 +144,20 @@ STATIC_ASSERT(sizeof(struct SaveBlock1) == 0x3C54, SaveBlock1LegacySize);
 #define PKMN_STORAGE_BX16_SIZE 37036
 #define PKMN_STORAGE_BX17_SIZE 39336
 #define PKMN_STORAGE_BX18_SIZE 41624
+#define PKMN_STORAGE_BX19_SIZE 43916
 #define PKMN_STORAGE_BX16_OVERFLOW_SIZE (PKMN_STORAGE_BX16_SIZE - PKMN_STORAGE_REGULAR_SIZE)
 #define PKMN_STORAGE_BX17_OVERFLOW_SIZE (PKMN_STORAGE_BX17_SIZE - PKMN_STORAGE_REGULAR_SIZE)
-#define PKMN_STORAGE_BX17_PAYLOAD_SIZE (PKMN_STORAGE_BX17_SIZE - offsetof(struct PokemonStorage, extensionBoxes))
-#define PKMN_STORAGE_BX18_EXTENSION_SIZE (PKMN_STORAGE_BX18_SIZE - offsetof(struct PokemonStorage, box18ExtensionMagic))
-#define PKMN_STORAGE_BX18_PAYLOAD_SIZE (PKMN_STORAGE_BX18_SIZE - offsetof(struct PokemonStorage, extensionBoxes))
-#define PKMN_STORAGE_BX18_OVERFLOW_OFFSET (offsetof(struct PokemonStorage, box18ExtensionMagic) - PKMN_STORAGE_REGULAR_SIZE)
-#define PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET (offsetof(struct PokemonStorage, extensionBoxes) - PKMN_STORAGE_REGULAR_SIZE)
+#define PKMN_STORAGE_BX17_PAYLOAD_SIZE (PKMN_STORAGE_BX17_SIZE - offsetof(struct PokemonStorageV19, extensionBoxes))
+#define PKMN_STORAGE_BX18_EXTENSION_SIZE (PKMN_STORAGE_BX18_SIZE - offsetof(struct PokemonStorageV19, box18ExtensionMagic))
+#define PKMN_STORAGE_BX18_PAYLOAD_SIZE (PKMN_STORAGE_BX18_SIZE - offsetof(struct PokemonStorageV19, extensionBoxes))
+#define PKMN_STORAGE_BX18_OVERFLOW_OFFSET (offsetof(struct PokemonStorageV19, box18ExtensionMagic) - PKMN_STORAGE_REGULAR_SIZE)
+#define PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET (offsetof(struct PokemonStorageV19, extensionBoxes) - PKMN_STORAGE_REGULAR_SIZE)
 #define PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_SIZE (SECTOR_DATA_SIZE - PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET)
 #define PKMN_STORAGE_EXTENSION_TAIL_OFFSET (PKMN_STORAGE_REGULAR_SIZE + SECTOR_DATA_SIZE)
 #define PKMN_STORAGE_BX18_TAIL_SIZE (PKMN_STORAGE_BX18_SIZE - PKMN_STORAGE_EXTENSION_TAIL_OFFSET)
-#define PKMN_STORAGE_BOX19_RECORD_SIZE (sizeof(struct PokemonStorage) - offsetof(struct PokemonStorage, box19))
+#define PKMN_STORAGE_BOX19_RECORD_SIZE (PKMN_STORAGE_BX19_SIZE - PKMN_STORAGE_BX18_SIZE)
 #define SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET (offsetof(struct SaveBlock1, pokemonStorageExtensionTail) - 3 * SECTOR_DATA_SIZE)
-#define PKMN_STORAGE_EXTENSION_SECTOR_OFFSET (offsetof(struct PokemonStorage, boxExtensionMagic) - (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START)))
+#define PKMN_STORAGE_EXTENSION_SECTOR_OFFSET (offsetof(struct PokemonStorageV19, boxExtensionMagic) - (SECTOR_DATA_SIZE * (SECTOR_ID_PKMN_STORAGE_END - SECTOR_ID_PKMN_STORAGE_START)))
 
 #define BX19_SCHEMA_VERSION 1
 
@@ -157,20 +168,21 @@ struct Bx19AuxiliaryRecord
     u16 payloadLength;
     u16 checksum;
     u16 checksumInverse;
-    struct BoxPokemon box19[IN_BOX_COUNT];
+    struct BoxPokemonV19 box19[IN_BOX_COUNT];
     u8 box19Name[BOX_NAME_LENGTH + 1];
     u8 box19Wallpaper;
     u8 box19Padding[2];
     struct HallOfFameArchive hallOfFame;
 };
 
-STATIC_ASSERT(offsetof(struct PokemonStorage, boxExtensionMagic) == 34740, PokemonStorageLegacyLayout);
+STATIC_ASSERT(offsetof(struct PokemonStorageV19, boxExtensionMagic) == 34740, PokemonStorageLegacyLayout);
 STATIC_ASSERT(SECTOR_DATA_SIZE == 3968, PokemonStorageFlashOverflowSize);
 STATIC_ASSERT(PKMN_STORAGE_REGULAR_SIZE == 35712, PokemonStorageRegularSize);
 STATIC_ASSERT(PKMN_STORAGE_LEGACY_SIZE == 34740, PokemonStorageLegacyFrozenSize);
 STATIC_ASSERT(PKMN_STORAGE_BX16_SIZE == 37036, PokemonStorageBx16FrozenSize);
 STATIC_ASSERT(PKMN_STORAGE_BX17_SIZE == 39336, PokemonStorageBx17FrozenSize);
 STATIC_ASSERT(PKMN_STORAGE_BX18_SIZE == 41624, PokemonStorageBx18FrozenSize);
+STATIC_ASSERT(PKMN_STORAGE_BX19_SIZE == 43916, PokemonStorageBx19FrozenSize);
 STATIC_ASSERT(PKMN_STORAGE_BX16_OVERFLOW_SIZE == 1324, PokemonStorageBx16OverflowSize);
 STATIC_ASSERT(PKMN_STORAGE_BX17_OVERFLOW_SIZE == 3624, PokemonStorageBx17OverflowSize);
 STATIC_ASSERT(PKMN_STORAGE_BX17_PAYLOAD_SIZE == 2292, PokemonStorageBx17PayloadSize);
@@ -222,10 +234,48 @@ EWRAM_DATA static bool8 sDeferLinkFullSaveErrorScreen = FALSE;
 COMMON_DATA static struct HallOfFameArchive *sLegacyHallOfFameRetryArchive = NULL;
 COMMON_DATA static u32 sLegacyHallOfFameRetryCounter = 0;
 COMMON_DATA static bool8 sResetHallOfFameArchive = FALSE;
-EWRAM_DATA static u32 sPreviousBoxExtensionMagic = 0;
-EWRAM_DATA static u32 sPreviousBox18ExtensionMagic = 0;
-EWRAM_DATA static u16 sPreviousBox18Checksum = 0;
-EWRAM_DATA static u16 sPreviousBox18ChecksumInverse = 0;
+
+struct SaveSlotDescriptor
+{
+    u32 counter;
+    u8 slot;
+    u8 rotation;
+    u8 boxes;
+    u8 sectors[NUM_SECTORS_PER_SLOT];
+};
+COMMON_DATA static struct SaveSlotDescriptor sSelectedSlot = {0};
+EWRAM_DATA static bool8 sMigrationPending = FALSE;
+
+#define BX21_TAIL_SIZE 1832
+struct Bx21AuxiliaryRecord
+{
+    u32 magic;
+    u16 version;
+    u16 payloadLength;
+    u16 checksum;
+    u16 checksumInverse;
+    u8 storageTail[BX21_TAIL_SIZE];
+    struct HallOfFameArchive hallOfFame;
+};
+STATIC_ASSERT(offsetof(struct Bx21AuxiliaryRecord, storageTail) == 12, Bx21AuxHeader);
+STATIC_ASSERT(offsetof(struct Bx21AuxiliaryRecord, hallOfFame) == 1844, Bx21AuxArchive);
+STATIC_ASSERT(sizeof(struct Bx21AuxiliaryRecord) == 3432, Bx21AuxSize);
+STATIC_ASSERT(SECTOR_DATA_SIZE - sizeof(struct Bx21AuxiliaryRecord) == 536, Bx21AuxUnused);
+STATIC_ASSERT(PKMN_STORAGE_BX18_SIZE + BX21_TAIL_SIZE == sizeof(struct PokemonStorage), Bx21StorageBudget);
+
+static u8 GetSaveSlotStatus(u8, const struct SaveSectorLocation *, struct SaveSlotDescriptor *);
+
+static u8 WritingSlot(void)
+{
+    if (sSelectedSlot.boxes)
+        return sSelectedSlot.slot ^ sPokemonStorageFullSavePrepared;
+    return gSaveCounter % NUM_SAVE_SLOTS;
+}
+
+static u32 WritingSignature(void)
+{
+    return sMigrationPending && !sPokemonStorageFullSavePrepared ? SECTOR_SIGNATURE : SECTOR_SIGNATURE_BX21;
+}
 
 void ClearSaveData(void)
 {
@@ -244,6 +294,8 @@ void Save_ResetSaveCounters(void)
     gSaveCounter = 0;
     gLastWrittenSector = 0;
     gDamagedSaveSectors = 0;
+    memset(&sSelectedSlot, 0, sizeof(sSelectedSlot));
+    sMigrationPending = FALSE;
 }
 
 static bool32 SetDamagedSectorBits(u8 op, u8 sectorId)
@@ -269,6 +321,7 @@ static bool32 SetDamagedSectorBits(u8 op, u8 sectorId)
 
 static u8 WriteSaveSectorOrSlot(u16 sectorId, const struct SaveSectorLocation *locations, bool8 saveHallOfFame)
 {
+    struct SaveSlotDescriptor candidate;
     u32 status;
     u16 i;
 
@@ -292,9 +345,7 @@ static u8 WriteSaveSectorOrSlot(u16 sectorId, const struct SaveSectorLocation *l
         gSaveCounter++;
         status = SAVE_STATUS_OK;
 
-        // Write this first. The regular slot contains a marker which makes the
-        // overflow sector mandatory for new saves, so an interrupted save will
-        // fall back to the other complete slot.
+        // The previous slot remains valid if any of these writes fail.
         status = WritePokemonStorageOverflow();
         if (status == SAVE_STATUS_OK)
         {
@@ -309,7 +360,7 @@ static u8 WriteSaveSectorOrSlot(u16 sectorId, const struct SaveSectorLocation *l
         }
 
         if (status == SAVE_STATUS_OK)
-            status = WriteBx19AuxiliarySector();
+            status = WriteBx21AuxiliarySector(&candidate);
 
         if (status != SAVE_STATUS_OK || gDamagedSaveSectors)
         {
@@ -317,10 +368,10 @@ static u8 WriteSaveSectorOrSlot(u16 sectorId, const struct SaveSectorLocation *l
             status = SAVE_STATUS_ERROR;
             gLastWrittenSector = gLastKnownGoodSector;
             gSaveCounter = gLastSaveCounter;
-            FinishPokemonStorageExtensions(FALSE);
+            FinishPokemonStorageExtensions(NULL);
         }
         else
-            FinishPokemonStorageExtensions(TRUE);
+            FinishPokemonStorageExtensions(&candidate);
     }
 
     return status;
@@ -336,7 +387,7 @@ static u8 HandleWriteSector(u16 sectorId, const struct SaveSectorLocation *locat
     // Adjust sector id for current save slot
     sector = sectorId + gLastWrittenSector;
     sector %= NUM_SECTORS_PER_SLOT;
-    sector += NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+    sector += NUM_SECTORS_PER_SLOT * WritingSlot();
 
     // Get current save data
     data = locations[sectorId].data;
@@ -348,7 +399,7 @@ static u8 HandleWriteSector(u16 sectorId, const struct SaveSectorLocation *locat
 
     // Set footer data
     gReadWriteSector->id = sectorId;
-    gReadWriteSector->signature = SECTOR_SIGNATURE;
+    gReadWriteSector->signature = WritingSignature();
     gReadWriteSector->counter = gSaveCounter;
 
     // Copy current data to temp buffer for writing
@@ -384,7 +435,7 @@ static u8 TryWriteSector(u8 sector, u8 *data)
 static u8 WritePokemonStorageOverflow(void)
 {
     u16 i;
-    u8 sectorId = SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 + (gSaveCounter % NUM_SAVE_SLOTS);
+    u8 sectorId = SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 + WritingSlot();
     u8 *src = (u8 *)gPokemonStoragePtr + PKMN_STORAGE_REGULAR_SIZE;
 
     for (i = 0; i < SECTOR_SIZE; i++)
@@ -394,65 +445,72 @@ static u8 WritePokemonStorageOverflow(void)
         gReadWriteSector->data[i] = src[i];
 
     gReadWriteSector->id = sectorId;
-    gReadWriteSector->checksum = CalculateChecksum(src, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
-    gReadWriteSector->signature = SECTOR_SIGNATURE;
+    gReadWriteSector->checksum = CalculateChecksum(src, SECTOR_DATA_SIZE);
+    gReadWriteSector->signature = WritingSignature();
     gReadWriteSector->counter = gSaveCounter;
 
     return TryWriteSector(sectorId, gReadWriteSector->data);
 }
 
-static u8 WriteBx19AuxiliarySector(void)
+static struct HallOfFameArchive *ReadSelectedArchive(void)
 {
-    u16 i;
-    u8 sectorId = SECTOR_ID_BX19_AUXILIARY_1 + (gSaveCounter % NUM_SAVE_SLOTS);
-    struct Bx19AuxiliaryRecord *record;
+    if (sSelectedSlot.boxes == 21 && IsBx21AuxiliarySectorValid(sSelectedSlot.slot, sSelectedSlot.counter))
+        return &((struct Bx21AuxiliaryRecord *)gReadWriteSector->data)->hallOfFame;
+    if (sSelectedSlot.boxes == 19 && IsBx19AuxiliarySectorValid(sSelectedSlot.slot, sSelectedSlot.counter))
+        return &((struct Bx19AuxiliaryRecord *)gReadWriteSector->data)->hallOfFame;
+    return NULL;
+}
 
-    if (!sSaveHallOfFame
-     && !sResetHallOfFameArchive
-     && sPreviousBox18ExtensionMagic == POKEMON_STORAGE_BOX19_MAGIC)
+static u8 WriteBx21AuxiliarySector(struct SaveSlotDescriptor *candidate)
+{
+    u8 slot = WritingSlot();
+    u8 sectorId = SECTOR_ID_BX19_AUXILIARY_1 + slot;
+    u8 attempt;
+    u32 counter = gSaveCounter;
+    struct Bx21AuxiliaryRecord *record = (void *)gReadWriteSector->data;
+    struct HallOfFameArchive *archive = NULL;
+
+    if (!sSaveHallOfFame && !sResetHallOfFameArchive && sSelectedSlot.boxes >= 19)
     {
-        if (!IsBx19AuxiliarySectorValid(gLastSaveCounter % NUM_SAVE_SLOTS,
-                                        gLastSaveCounter))
+        archive = ReadSelectedArchive();
+        if (archive == NULL)
             return SAVE_STATUS_ERROR;
+        // The BX19 and BX21 archives overlap in the sector buffer.
+        memmove(&record->hallOfFame, archive, sizeof(*archive));
     }
     else
     {
-        for (i = 0; i < SECTOR_SIZE; i++)
-            ((u8 *)gReadWriteSector)[i] = 0;
+        memset(&record->hallOfFame, 0, sizeof(record->hallOfFame));
+        if (sSaveHallOfFame)
+        {
+            record->hallOfFame.count = CountRetainedHallOfFameTeams(gHoFSaveBuffer);
+            memcpy(record->hallOfFame.teams, gHoFSaveBuffer,
+                   record->hallOfFame.count * sizeof(struct HallofFameTeam));
+        }
+        else if (!sResetHallOfFameArchive && sLegacyHallOfFameRetryArchive != NULL)
+            record->hallOfFame = *sLegacyHallOfFameRetryArchive;
     }
-
-    record = (struct Bx19AuxiliaryRecord *)gReadWriteSector->data;
-    record->magic = POKEMON_STORAGE_BOX19_MAGIC;
-    record->version = BX19_SCHEMA_VERSION;
-    record->payloadLength = sizeof(*record)
-                          - offsetof(struct Bx19AuxiliaryRecord, box19);
-    memcpy(&record->box19,
-           &gPokemonStoragePtr->box19,
-           PKMN_STORAGE_BOX19_RECORD_SIZE);
-
-    if (sSaveHallOfFame)
-    {
-        record->hallOfFame.count = CountRetainedHallOfFameTeams(gHoFSaveBuffer);
-        memcpy(record->hallOfFame.teams,
-               gHoFSaveBuffer,
-               record->hallOfFame.count * sizeof(struct HallofFameTeam));
-    }
-    else if (!sResetHallOfFameArchive
-          && sPreviousBox18ExtensionMagic != POKEMON_STORAGE_BOX19_MAGIC
-          && sLegacyHallOfFameRetryArchive != NULL
-          && sLegacyHallOfFameRetryCounter == gLastSaveCounter)
-    {
-        record->hallOfFame = *sLegacyHallOfFameRetryArchive;
-    }
-
-    record->checksum = CalculateChecksum(&record->box19, record->payloadLength);
+    memset((u8 *)record + sizeof(*record), 0, SECTOR_SIZE - sizeof(*record));
+    record->magic = POKEMON_STORAGE_BX21_MAGIC;
+    record->version = 1;
+    record->payloadLength = sizeof(*record) - 12;
+    memcpy(record->storageTail, (u8 *)gPokemonStoragePtr + PKMN_STORAGE_BX18_SIZE, BX21_TAIL_SIZE);
+    record->checksum = CalculateChecksum(record->storageTail, record->payloadLength);
     record->checksumInverse = (u16)~record->checksum;
     gReadWriteSector->id = sectorId;
-    gReadWriteSector->checksum = CalculateChecksum(gReadWriteSector->data, SECTOR_DATA_SIZE);
-    gReadWriteSector->signature = SECTOR_SIGNATURE;
+    gReadWriteSector->checksum = CalculateChecksum(record, SECTOR_DATA_SIZE);
+    gReadWriteSector->signature = SECTOR_SIGNATURE_BX21;
     gReadWriteSector->counter = gSaveCounter;
+    if (TryWriteSector(sectorId, gReadWriteSector->data) != SAVE_STATUS_OK)
+        return SAVE_STATUS_ERROR;
 
-    return TryWriteSector(sectorId, gReadWriteSector->data);
+    for (attempt = 0; attempt < 2; attempt++)
+    {
+        if (GetSaveSlotStatus(slot, gRamSaveSectorLocations, candidate) == SAVE_STATUS_OK
+         && candidate->slot == slot && candidate->boxes == 21 && candidate->counter == counter)
+            return SAVE_STATUS_OK;
+    }
+    return SAVE_STATUS_ERROR;
 }
 
 static bool8 IsZeroed(const u8 *data, u16 size)
@@ -590,108 +648,164 @@ static enum PokemonStorageOverflowStatus GetPokemonStorageOverflowStatus(
     return PKMN_STORAGE_OVERFLOW_BX18;
 }
 
-static u8 FindSaveSlotSector(u8 slotId, u16 logicalSectorId, u32 counter)
+static bool8 IsBx21AuxiliarySectorValid(u8 slotId, u32 counter)
 {
-    u8 i;
-    u8 slotOffset = NUM_SECTORS_PER_SLOT * slotId;
-
-    for (i = 0; i < NUM_SECTORS_PER_SLOT; i++)
-    {
-        ReadFlashSector(slotOffset + i, gReadWriteSector);
-        if (gReadWriteSector->id == logicalSectorId
-         && gReadWriteSector->signature == SECTOR_SIGNATURE
-         && gReadWriteSector->counter == counter)
-            return slotOffset + i;
-    }
-
-    return SECTOR_ID_PKMN_STORAGE_OVERFLOW_1;
+    u8 sectorId = SECTOR_ID_BX19_AUXILIARY_1 + slotId;
+    struct Bx21AuxiliaryRecord *record = (void *)gReadWriteSector->data;
+    ReadFlashSector(sectorId, gReadWriteSector);
+    return gReadWriteSector->id == sectorId
+        && gReadWriteSector->signature == SECTOR_SIGNATURE_BX21
+        && gReadWriteSector->counter == counter
+        && gReadWriteSector->checksum == CalculateChecksum(record, SECTOR_DATA_SIZE)
+        && record->magic == POKEMON_STORAGE_BX21_MAGIC
+        && record->version == 1
+        && record->payloadLength == sizeof(*record) - 12
+        && record->checksumInverse == (u16)~record->checksum
+        && record->checksum == CalculateChecksum(record->storageTail, sizeof(*record) - 12)
+        && record->hallOfFame.count <= HALL_OF_FAME_RETAINED_TEAMS
+        && IsZeroed(record->hallOfFame.reserved, sizeof(record->hallOfFame.reserved))
+        && IsZeroed((u8 *)record + sizeof(*record), SECTOR_DATA_SIZE - sizeof(*record));
 }
 
-static void LoadPokemonStorageOverflow(void)
+static void ReadStorageBytes(const struct SaveSlotDescriptor *slot, u32 offset, void *dest, u32 size)
 {
-    u8 *dst;
-    u8 slotId;
-    u8 saveBlock1Sector;
-    u8 overflowSector;
-    enum PokemonStorageOverflowStatus status;
-
-    if (gPokemonStoragePtr->boxExtensionMagic != POKEMON_STORAGE_EXTENSION_MAGIC)
+    u8 *dst = dest;
+    while (size)
     {
-        InitPokemonStorageExtension();
-        return;
-    }
-
-    slotId = gSaveCounter % NUM_SAVE_SLOTS;
-    saveBlock1Sector = FindSaveSlotSector(slotId, SECTOR_ID_SAVEBLOCK1_END, gSaveCounter);
-    status = GetPokemonStorageOverflowStatus(slotId, gSaveCounter, saveBlock1Sector, gRamSaveSectorLocations);
-    if (status == PKMN_STORAGE_OVERFLOW_INVALID)
-        return;
-
-    overflowSector = SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 + slotId;
-    ReadFlashSector(overflowSector, gReadWriteSector);
-    dst = (u8 *)gPokemonStoragePtr + PKMN_STORAGE_REGULAR_SIZE;
-    if (status == PKMN_STORAGE_OVERFLOW_BX16)
-    {
-        memcpy(dst, gReadWriteSector->data, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
-        InitPokemonStorageBox18Extension();
-    }
-    else if (status == PKMN_STORAGE_OVERFLOW_BX17)
-    {
-        memcpy(dst, gReadWriteSector->data, PKMN_STORAGE_BX16_OVERFLOW_SIZE);
-        InitPokemonStorageBox18Extension();
-        memcpy(gPokemonStoragePtr->extensionBoxes[0],
-               &gReadWriteSector->data[PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET],
-               sizeof(gPokemonStoragePtr->extensionBoxes[0]));
-        memcpy(gPokemonStoragePtr->extensionBoxNames[0],
-               &gReadWriteSector->data[PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET
-                                     + sizeof(gPokemonStoragePtr->extensionBoxes[0])],
-               sizeof(gPokemonStoragePtr->extensionBoxNames[0]));
-        gPokemonStoragePtr->extensionBoxWallpapers[0]
-            = gReadWriteSector->data[PKMN_STORAGE_BX18_PAYLOAD_OVERFLOW_OFFSET
-                                   + sizeof(gPokemonStoragePtr->extensionBoxes[0])
-                                   + sizeof(gPokemonStoragePtr->extensionBoxNames[0])];
-    }
-    else
-    {
-        memcpy(dst, gReadWriteSector->data, SECTOR_DATA_SIZE);
-        memcpy((u8 *)gPokemonStoragePtr + PKMN_STORAGE_EXTENSION_TAIL_OFFSET,
-               gSaveBlock1Ptr->pokemonStorageExtensionTail,
-               PKMN_STORAGE_BX18_TAIL_SIZE);
-
-        if (status == PKMN_STORAGE_OVERFLOW_BX18)
+        u32 sector, position, available, chunk;
+        if (offset < PKMN_STORAGE_REGULAR_SIZE)
         {
-            InitPokemonStorageBox19Extension();
+            sector = slot->sectors[SECTOR_ID_PKMN_STORAGE_START + offset / SECTOR_DATA_SIZE];
+            position = offset % SECTOR_DATA_SIZE;
+            available = SECTOR_DATA_SIZE - position;
+        }
+        else if (offset < PKMN_STORAGE_EXTENSION_TAIL_OFFSET)
+        {
+            sector = SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 + slot->slot;
+            position = offset - PKMN_STORAGE_REGULAR_SIZE;
+            available = SECTOR_DATA_SIZE - position;
+        }
+        else if (offset < PKMN_STORAGE_BX18_SIZE)
+        {
+            sector = slot->sectors[SECTOR_ID_SAVEBLOCK1_END];
+            position = SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET + offset - PKMN_STORAGE_EXTENSION_TAIL_OFFSET;
+            available = PKMN_STORAGE_BX18_SIZE - offset;
         }
         else
         {
-            struct Bx19AuxiliaryRecord *record;
-
-            ReadFlashSector(SECTOR_ID_BX19_AUXILIARY_1 + slotId, gReadWriteSector);
-            record = (struct Bx19AuxiliaryRecord *)gReadWriteSector->data;
-            memcpy(&gPokemonStoragePtr->box19, &record->box19, PKMN_STORAGE_BOX19_RECORD_SIZE);
+            sector = SECTOR_ID_BX19_AUXILIARY_1 + slot->slot;
+            position = 12 + offset - PKMN_STORAGE_BX18_SIZE;
+            available = SECTOR_DATA_SIZE - position;
         }
+        chunk = min(size, available);
+        ReadFlash(sector, position, dst, chunk);
+        offset += chunk;
+        dst += chunk;
+        size -= chunk;
     }
+}
+
+void UpdatePokemonStorageHeader(void)
+{
+    struct Bx21StorageHeader *header = &gPokemonStoragePtr->header;
+    header->magic = POKEMON_STORAGE_BX21_MAGIC;
+    header->magicInverse = ~POKEMON_STORAGE_BX21_MAGIC;
+    header->version = 1;
+    header->payloadLength = sizeof(*gPokemonStoragePtr) - sizeof(*header);
+    header->payloadChecksum = CalculateChecksum(&gPokemonStoragePtr->currentBox, header->payloadLength);
+    header->checksumInverse = (u16)~header->payloadChecksum;
+}
+
+static void ConvertSavedPartyAndDaycare(void)
+{
+    u32 i;
+    struct PokemonV19 old;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        memcpy(&old, &gSaveBlock1Ptr->playerParty[i], sizeof(old));
+        BoxPokemonV19ToCurrent(&gSaveBlock1Ptr->playerParty[i].box, &old.box);
+        memset(gSaveBlock1Ptr->playerParty[i].legacyCompatibility, 0, 8);
+    }
+    for (i = 0; i < DAYCARE_MON_COUNT; i++)
+    {
+        memcpy(&old.box, &gSaveBlock1Ptr->daycare.mons[i].mon, sizeof(old.box));
+        BoxPokemonV19ToCurrent(&gSaveBlock1Ptr->daycare.mons[i].mon, &old.box);
+        memset(gSaveBlock1Ptr->daycare.mons[i].legacyCompatibility, 0, 8);
+    }
+}
+
+static void LoadSelectedStorage(void)
+{
+    u32 box, position, monOffset, nameOffset, wallpaperOffset;
+    struct PokemonV19 old;
+    memset(gPokemonStoragePtr, 0, sizeof(*gPokemonStoragePtr));
+    sMigrationPending = sSelectedSlot.boxes != 21;
+    if (!sMigrationPending)
+    {
+        ReadStorageBytes(&sSelectedSlot, 0, gPokemonStoragePtr, sizeof(*gPokemonStoragePtr));
+        return;
+    }
+    for (box = 0; box < sSelectedSlot.boxes; box++)
+    {
+        if (box < 15)
+        {
+            monOffset = 4 + box * 30 * 76;
+            nameOffset = 34204 + box * 9;
+            wallpaperOffset = 34339 + box;
+        }
+        else if (box == 15)
+        {
+            monOffset = 34744;
+            nameOffset = 37024;
+            wallpaperOffset = 37033;
+        }
+        else if (box < 18)
+        {
+            monOffset = 37044 + (box - 16) * 30 * 76;
+            nameOffset = (sSelectedSlot.boxes == 17 ? 39324 : 41604) + (box - 16) * 9;
+            wallpaperOffset = (sSelectedSlot.boxes == 17 ? 39333 : 41622) + box - 16;
+        }
+        else
+        {
+            monOffset = 41624;
+            nameOffset = 43904;
+            wallpaperOffset = 43913;
+        }
+        for (position = 0; position < IN_BOX_COUNT; position++)
+        {
+            ReadStorageBytes(&sSelectedSlot, monOffset + position * 76, &old.box, 76);
+            BoxPokemonV19ToCurrent(&gPokemonStoragePtr->boxes[box][position], &old.box);
+        }
+        ReadStorageBytes(&sSelectedSlot, nameOffset, gPokemonStoragePtr->boxNames[box], 9);
+        ReadStorageBytes(&sSelectedSlot, wallpaperOffset, &gPokemonStoragePtr->boxWallpapers[box], 1);
+    }
+    for (position = 0; position < MAX_FUSION_STORAGE; position++)
+    {
+        ReadStorageBytes(&sSelectedSlot, 34356 + position * 96, &old, 96);
+        BoxPokemonV19ToCurrent(&gPokemonStoragePtr->fusions[position].box, &old.box);
+        memcpy(&gPokemonStoragePtr->fusions[position].status, &old.status, 20);
+    }
+    ReadStorageBytes(&sSelectedSlot, 0, &gPokemonStoragePtr->currentBox, 1);
+    InitPokemonStorageMissingBoxes(sSelectedSlot.boxes);
+    ConvertSavedPartyAndDaycare();
+    UpdatePokemonStorageHeader();
 }
 
 static bool8 PreparePokemonStorageExtensions(bool8 saveHallOfFame)
 {
     u8 legacyStatus;
 
-    sPreviousBoxExtensionMagic = gPokemonStoragePtr->boxExtensionMagic;
-    sPreviousBox18ExtensionMagic = gPokemonStoragePtr->box18ExtensionMagic;
-    sPreviousBox18Checksum = gPokemonStoragePtr->box18Checksum;
-    sPreviousBox18ChecksumInverse = gPokemonStoragePtr->box18ChecksumInverse;
     sSaveHallOfFame = saveHallOfFame && gHoFSaveBuffer != NULL;
 
     if (sResetHallOfFameArchive)
     {
         ClearLegacyHallOfFameRetryArchive();
     }
-    else if (sPreviousBox18ExtensionMagic == POKEMON_STORAGE_BOX19_MAGIC)
+    else if (sSelectedSlot.boxes >= 19)
     {
         ClearLegacyHallOfFameRetryArchive();
         if (!sSaveHallOfFame
-         && !IsBx19AuxiliarySectorValid(gSaveCounter % NUM_SAVE_SLOTS, gSaveCounter))
+         && ReadSelectedArchive() == NULL)
             return FALSE;
     }
     else if (sLegacyHallOfFameRetryArchive == NULL
@@ -712,48 +826,63 @@ static bool8 PreparePokemonStorageExtensions(bool8 saveHallOfFame)
     }
 
     sPokemonStorageFullSavePrepared = TRUE;
-    gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
-    gPokemonStoragePtr->box18ExtensionMagic = POKEMON_STORAGE_BOX19_MAGIC;
-    gPokemonStoragePtr->box18Checksum = FoldChecksum(AddChecksumWords(
-        (u8 *)&gPokemonStoragePtr->extensionBoxes,
-        PKMN_STORAGE_BX18_PAYLOAD_SIZE,
-        POKEMON_STORAGE_BOX19_MAGIC));
-    gPokemonStoragePtr->box18ChecksumInverse = (u16)~gPokemonStoragePtr->box18Checksum;
+    UpdatePokemonStorageHeader();
     return TRUE;
 }
 
-static void FinishPokemonStorageExtensions(bool8 commit)
+static void FinishPokemonStorageExtensions(const struct SaveSlotDescriptor *committedSlot)
 {
     if (!sPokemonStorageFullSavePrepared)
         return;
 
-    if (commit)
+    if (committedSlot != NULL)
     {
         memcpy(gSaveBlock1Ptr->pokemonStorageExtensionTail,
                (u8 *)gPokemonStoragePtr + PKMN_STORAGE_EXTENSION_TAIL_OFFSET,
                PKMN_STORAGE_BX18_TAIL_SIZE);
         ClearLegacyHallOfFameRetryArchive();
         sResetHallOfFameArchive = FALSE;
-    }
-    else
-    {
-        gPokemonStoragePtr->boxExtensionMagic = sPreviousBoxExtensionMagic;
-        gPokemonStoragePtr->box18ExtensionMagic = sPreviousBox18ExtensionMagic;
-        gPokemonStoragePtr->box18Checksum = sPreviousBox18Checksum;
-        gPokemonStoragePtr->box18ChecksumInverse = sPreviousBox18ChecksumInverse;
+        sSelectedSlot = *committedSlot;
+        sMigrationPending = FALSE;
     }
     sSaveHallOfFame = FALSE;
     sPokemonStorageFullSavePrepared = FALSE;
 }
 
+static void StageLegacyMon(u32 sectorOffset, u32 monOffset, const struct BoxPokemon *mon)
+{
+    struct BoxPokemonV19 old;
+    u32 start = max(sectorOffset, monOffset);
+    u32 end = min(sectorOffset + SECTOR_DATA_SIZE, monOffset + sizeof(old));
+    if (start >= end)
+        return;
+    CurrentBoxPokemonToV19(&old, mon);
+    memcpy(gReadWriteSector->data + start - sectorOffset, (u8 *)&old + start - monOffset, end - start);
+}
+
 static bool8 CopyPokemonStorageExtensionTailToSaveSector(u16 sectorId)
 {
-    if (!sPokemonStorageFullSavePrepared || sectorId != SECTOR_ID_SAVEBLOCK1_END)
+    u32 i, offset;
+    if (sectorId < SECTOR_ID_SAVEBLOCK1_START || sectorId > SECTOR_ID_SAVEBLOCK1_END)
         return FALSE;
-
-    memcpy(&gReadWriteSector->data[SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET],
-           (u8 *)gPokemonStoragePtr + PKMN_STORAGE_EXTENSION_TAIL_OFFSET,
-           PKMN_STORAGE_BX18_TAIL_SIZE);
+    if (sPokemonStorageFullSavePrepared)
+    {
+        if (sectorId != SECTOR_ID_SAVEBLOCK1_END)
+            return FALSE;
+        memcpy(&gReadWriteSector->data[SAVEBLOCK1_EXTENSION_TAIL_SECTOR_OFFSET],
+               (u8 *)gPokemonStoragePtr + PKMN_STORAGE_EXTENSION_TAIL_OFFSET,
+               PKMN_STORAGE_BX18_TAIL_SIZE);
+        return TRUE;
+    }
+    if (!sMigrationPending)
+        return FALSE;
+    offset = (sectorId - SECTOR_ID_SAVEBLOCK1_START) * SECTOR_DATA_SIZE;
+    for (i = 0; i < PARTY_SIZE; i++)
+        StageLegacyMon(offset, offsetof(struct SaveBlock1, playerParty) + i * 96,
+                       &gSaveBlock1Ptr->playerParty[i].box);
+    for (i = 0; i < DAYCARE_MON_COUNT; i++)
+        StageLegacyMon(offset, offsetof(struct SaveBlock1, daycare.mons) + i * 136,
+                       &gSaveBlock1Ptr->daycare.mons[i].mon);
     return TRUE;
 }
 
@@ -908,7 +1037,7 @@ static u8 HandleReplaceSector(u16 sectorId, const struct SaveSectorLocation *loc
     // Adjust sector id for current save slot
     sector = sectorId + gLastWrittenSector;
     sector %= NUM_SECTORS_PER_SLOT;
-    sector += NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+    sector += NUM_SECTORS_PER_SLOT * WritingSlot();
 
     // Get current save data
     data = locations[sectorId].data;
@@ -920,7 +1049,7 @@ static u8 HandleReplaceSector(u16 sectorId, const struct SaveSectorLocation *loc
 
     // Set footer data
     gReadWriteSector->id = sectorId;
-    gReadWriteSector->signature = SECTOR_SIGNATURE;
+    gReadWriteSector->signature = WritingSignature();
     gReadWriteSector->counter = gSaveCounter;
 
     // Copy current data to temp buffer for writing
@@ -992,10 +1121,10 @@ static u8 WriteSectorSignatureByte_NoOffset(u16 sectorId, const struct SaveSecto
     // This first line lacking -1 is the only difference from WriteSectorSignatureByte
     u16 sector = sectorId + gLastWrittenSector;
     sector %= NUM_SECTORS_PER_SLOT;
-    sector += NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+    sector += NUM_SECTORS_PER_SLOT * WritingSlot();
 
     // Write just the first byte of the signature field, which was skipped by HandleReplaceSector
-    if (ProgramFlashByte(sector, SECTOR_SIGNATURE_OFFSET, SECTOR_SIGNATURE & 0xFF))
+    if (ProgramFlashByte(sector, SECTOR_SIGNATURE_OFFSET, WritingSignature() & 0xFF))
     {
         // Sector is damaged, so enable the bit in gDamagedSaveSectors and restore the last written sector and save counter.
         SetDamagedSectorBits(ENABLE, sector);
@@ -1016,7 +1145,7 @@ static u8 CopySectorSignatureByte(u16 sectorId, const struct SaveSectorLocation 
     // Adjust sector id for current save slot
     u16 sector = sectorId + gLastWrittenSector - 1;
     sector %= NUM_SECTORS_PER_SLOT;
-    sector += NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+    sector += NUM_SECTORS_PER_SLOT * WritingSlot();
 
     // Copy just the first byte of the signature field from the read/write buffer
     if (ProgramFlashByte(sector, SECTOR_SIGNATURE_OFFSET, ((u8 *)gReadWriteSector)[SECTOR_SIGNATURE_OFFSET]))
@@ -1040,10 +1169,10 @@ static u8 WriteSectorSignatureByte(u16 sectorId, const struct SaveSectorLocation
     // Adjust sector id for current save slot
     u16 sector = sectorId + gLastWrittenSector - 1;
     sector %= NUM_SECTORS_PER_SLOT;
-    sector += NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+    sector += NUM_SECTORS_PER_SLOT * WritingSlot();
 
     // Write just the first byte of the signature field, which was skipped by HandleReplaceSector
-    if (ProgramFlashByte(sector, SECTOR_SIGNATURE_OFFSET, SECTOR_SIGNATURE & 0xFF))
+    if (ProgramFlashByte(sector, SECTOR_SIGNATURE_OFFSET, WritingSignature() & 0xFF))
     {
         // Sector is damaged, so enable the bit in gDamagedSaveSectors and restore the last written sector and save counter.
         SetDamagedSectorBits(ENABLE, sector);
@@ -1064,58 +1193,104 @@ static u8 TryLoadSaveSlot(u16 sectorId, struct SaveSectorLocation *locations)
     u8 status;
     gReadWriteSector = &gSaveDataBuffer;
     if (sectorId != FULL_SAVE_SLOT)
+        return SAVE_STATUS_ERROR;
+    status = GetSaveValidStatus(locations);
+    if (sSelectedSlot.boxes)
     {
-        // This function may not be used with a specific sector id
-        status = SAVE_STATUS_ERROR;
-    }
-    else
-    {
-        status = GetSaveValidStatus(locations);
         CopySaveSlotData(FULL_SAVE_SLOT, locations);
-        LoadPokemonStorageOverflow();
+        LoadSelectedStorage();
     }
-
     return status;
 }
 
-// sectorId arg is ignored, this always reads the full save slot
 static u8 CopySaveSlotData(u16 sectorId, struct SaveSectorLocation *locations)
 {
-    u16 i;
-    u16 checksum;
-    u16 slotOffset = NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
-    u16 id;
-
-    for (i = 0; i < NUM_SECTORS_PER_SLOT; i++)
+    u32 id;
+    for (id = 0; id < NUM_SECTORS_PER_SLOT; id++)
     {
-        ReadFlashSector(i + slotOffset, gReadWriteSector);
-
-        id = gReadWriteSector->id;
-        if (id == 0)
-            gLastWrittenSector = i;
-
-        // Only copy data for sectors whose id, signature, and checksum fields are correct.
-        if (id < NUM_SECTORS_PER_SLOT)
-        {
-            checksum = CalculateChecksum(gReadWriteSector->data, locations[id].size);
-            if (gReadWriteSector->signature == SECTOR_SIGNATURE && gReadWriteSector->checksum == checksum)
-            {
-                u16 j;
-                for (j = 0; j < locations[id].size; j++)
-                    ((u8 *)locations[id].data)[j] = gReadWriteSector->data[j];
-                CopyToSaveBlock3(id, gReadWriteSector);
-            }
-        }
+        ReadFlashSector(sSelectedSlot.sectors[id], gReadWriteSector);
+        if (id < SECTOR_ID_PKMN_STORAGE_START)
+            memcpy(locations[id].data, gReadWriteSector->data, locations[id].size);
+        CopyToSaveBlock3(id, gReadWriteSector);
     }
-
+    gLastWrittenSector = sSelectedSlot.rotation;
     return SAVE_STATUS_OK;
+}
+
+static bool8 CompactRecordValid(const struct BoxPokemon *mon)
+{
+    return mon->reservedOuter == 0 && mon->secure.reserved7 == 0 && mon->secure.reserved8 == 0;
+}
+
+static void ReadSaveBlock1Bytes(const struct SaveSlotDescriptor *slot, u32 offset, void *dest, u32 size)
+{
+    u8 *dst = dest;
+    while (size)
+    {
+        u32 position = offset % SECTOR_DATA_SIZE;
+        u32 chunk = min(size, SECTOR_DATA_SIZE - position);
+        ReadFlash(slot->sectors[SECTOR_ID_SAVEBLOCK1_START + offset / SECTOR_DATA_SIZE], position, dst, chunk);
+        offset += chunk;
+        dst += chunk;
+        size -= chunk;
+    }
+}
+
+static bool8 ValidateBx21Payload(const struct SaveSlotDescriptor *slot)
+{
+    struct Bx21StorageHeader header;
+    struct Pokemon mon;
+    u8 bytes[256];
+    u32 offset, i, checksum = 0;
+    ReadStorageBytes(slot, 0, &header, sizeof(header));
+    if (header.magic != POKEMON_STORAGE_BX21_MAGIC || header.magicInverse != ~POKEMON_STORAGE_BX21_MAGIC
+     || header.version != 1 || header.payloadLength != sizeof(struct PokemonStorage) - 16
+     || header.checksumInverse != (u16)~header.payloadChecksum)
+        return FALSE;
+    for (offset = 16; offset < sizeof(struct PokemonStorage); offset += sizeof(bytes))
+    {
+        u32 size = min(sizeof(bytes), sizeof(struct PokemonStorage) - offset);
+        ReadStorageBytes(slot, offset, bytes, size);
+        checksum = AddChecksumWords(bytes, size, checksum);
+    }
+    if (FoldChecksum(checksum) != header.payloadChecksum)
+        return FALSE;
+    ReadStorageBytes(slot, 16, bytes, 4);
+    if (bytes[0] >= TOTAL_BOXES_COUNT || !IsZeroed(bytes + 1, 3))
+        return FALSE;
+    ReadStorageBytes(slot, 43454, bytes, 2);
+    if (!IsZeroed(bytes, 2))
+        return FALSE;
+    for (i = 0; i < MAX_FUSION_STORAGE; i++)
+    {
+        ReadStorageBytes(slot, 20 + i * 96, &mon, sizeof(mon));
+        if (!CompactRecordValid(&mon.box) || !IsZeroed(mon.legacyCompatibility, 8))
+            return FALSE;
+    }
+    for (i = 0; i < TOTAL_BOXES_COUNT * IN_BOX_COUNT; i++)
+    {
+        ReadStorageBytes(slot, 404 + i * 68, &mon.box, sizeof(mon.box));
+        if (!CompactRecordValid(&mon.box))
+            return FALSE;
+    }
+    for (i = 0; i < PARTY_SIZE + DAYCARE_MON_COUNT; i++)
+    {
+        offset = i < PARTY_SIZE
+            ? offsetof(struct SaveBlock1, playerParty) + i * 96
+            : offsetof(struct SaveBlock1, daycare.mons) + (i - PARTY_SIZE) * 136;
+        ReadSaveBlock1Bytes(slot, offset, &mon, 76);
+        if (!CompactRecordValid(&mon.box) || !IsZeroed(mon.legacyCompatibility, 8))
+            return FALSE;
+    }
+    return TRUE;
 }
 
 static u8 GetSaveSlotStatus(
     u8 slotId,
     const struct SaveSectorLocation *locations,
-    u32 *saveCounter)
+    struct SaveSlotDescriptor *descriptor)
 {
+    u32 signature = 0;
     u16 i;
     u16 checksum;
     u32 validSectorFlags = 0;
@@ -1129,10 +1304,13 @@ static u8 GetSaveSlotStatus(
     u8 currentBox = 0;
     enum PokemonStorageOverflowStatus overflowStatus = PKMN_STORAGE_OVERFLOW_INVALID;
 
+    memset(descriptor, 0, sizeof(*descriptor));
+    descriptor->slot = slotId;
+
     for (i = 0; i < NUM_SECTORS_PER_SLOT; i++)
     {
         ReadFlashSector(i + slotOffset, gReadWriteSector);
-        if (gReadWriteSector->signature == SECTOR_SIGNATURE)
+        if (gReadWriteSector->signature == SECTOR_SIGNATURE || gReadWriteSector->signature == SECTOR_SIGNATURE_BX21)
         {
             signatureValid = TRUE;
             if (gReadWriteSector->id < NUM_SECTORS_PER_SLOT)
@@ -1140,12 +1318,18 @@ static u8 GetSaveSlotStatus(
                 checksum = CalculateChecksum(gReadWriteSector->data, locations[gReadWriteSector->id].size);
                 if (gReadWriteSector->checksum == checksum)
                 {
+                    if (validSectorFlags & (1 << gReadWriteSector->id))
+                        countersMatch = FALSE;
+                    descriptor->sectors[gReadWriteSector->id] = i + slotOffset;
+                    if (gReadWriteSector->id == 0)
+                        descriptor->rotation = i;
                     if (!counterValid)
                     {
-                        *saveCounter = gReadWriteSector->counter;
+                        descriptor->counter = gReadWriteSector->counter;
                         counterValid = TRUE;
+                        signature = gReadWriteSector->signature;
                     }
-                    else if (*saveCounter != gReadWriteSector->counter)
+                    else if (descriptor->counter != gReadWriteSector->counter || signature != gReadWriteSector->signature)
                     {
                         countersMatch = FALSE;
                     }
@@ -1155,7 +1339,7 @@ static u8 GetSaveSlotStatus(
                         currentBox = gReadWriteSector->data[0];
                     if (gReadWriteSector->id == SECTOR_ID_SAVEBLOCK1_END)
                         saveBlock1Sector = i + slotOffset;
-                    if (gReadWriteSector->id == SECTOR_ID_PKMN_STORAGE_END)
+                    if (gReadWriteSector->signature == SECTOR_SIGNATURE && gReadWriteSector->id == SECTOR_ID_PKMN_STORAGE_END)
                     {
                         if (*(u32 *)&gReadWriteSector->data[PKMN_STORAGE_EXTENSION_SECTOR_OFFSET] == POKEMON_STORAGE_EXTENSION_MAGIC)
                             usesStorageOverflow = TRUE;
@@ -1174,13 +1358,27 @@ static u8 GetSaveSlotStatus(
      || !countersMatch
      || malformedStorageMarker)
         return SAVE_STATUS_ERROR;
+    if (signature == SECTOR_SIGNATURE_BX21)
+    {
+        u8 overflowSector = SECTOR_ID_PKMN_STORAGE_OVERFLOW_1 + slotId;
+        ReadFlashSector(overflowSector, gReadWriteSector);
+        if (gReadWriteSector->signature != SECTOR_SIGNATURE_BX21
+         || gReadWriteSector->id != overflowSector
+         || gReadWriteSector->counter != descriptor->counter
+         || gReadWriteSector->checksum != CalculateChecksum(gReadWriteSector->data, SECTOR_DATA_SIZE)
+         || !IsBx21AuxiliarySectorValid(slotId, descriptor->counter)
+         || !ValidateBx21Payload(descriptor))
+            return SAVE_STATUS_ERROR;
+        descriptor->boxes = 21;
+        return SAVE_STATUS_OK;
+    }
     if (usesStorageOverflow)
     {
         overflowStatus = GetPokemonStorageOverflowStatus(
-            slotId, *saveCounter, saveBlock1Sector, locations);
+            slotId, descriptor->counter, saveBlock1Sector, locations);
         if (overflowStatus == PKMN_STORAGE_OVERFLOW_INVALID
          || (overflowStatus == PKMN_STORAGE_OVERFLOW_BX19
-          && !IsBx19AuxiliarySectorValid(slotId, *saveCounter)))
+          && !IsBx19AuxiliarySectorValid(slotId, descriptor->counter)))
             return SAVE_STATUS_ERROR;
     }
 
@@ -1208,67 +1406,34 @@ static u8 GetSaveSlotStatus(
         break;
     }
 
+    descriptor->boxes = overflowStatus == PKMN_STORAGE_OVERFLOW_INVALID ? 15 : 15 + overflowStatus;
     return SAVE_STATUS_OK;
 }
 
 static u8 GetSaveValidStatus(const struct SaveSectorLocation *locations)
 {
-    u32 saveSlot1Counter = 0;
-    u32 saveSlot2Counter = 0;
-    u8 saveSlot1Status = GetSaveSlotStatus(0, locations, &saveSlot1Counter);
-    u8 saveSlot2Status = GetSaveSlotStatus(1, locations, &saveSlot2Counter);
-
-    if (saveSlot1Status == SAVE_STATUS_OK && saveSlot2Status == SAVE_STATUS_OK)
+    struct SaveSlotDescriptor slots[2];
+    u8 status[2];
+    u8 selected;
+    status[0] = GetSaveSlotStatus(0, locations, &slots[0]);
+    status[1] = GetSaveSlotStatus(1, locations, &slots[1]);
+    memset(&sSelectedSlot, 0, sizeof(sSelectedSlot));
+    if (status[0] == SAVE_STATUS_OK || status[1] == SAVE_STATUS_OK)
     {
-        if ((saveSlot1Counter == -1 && saveSlot2Counter ==  0)
-         || (saveSlot1Counter ==  0 && saveSlot2Counter == -1))
-        {
-            if ((unsigned)(saveSlot1Counter + 1) < (unsigned)(saveSlot2Counter + 1))
-                gSaveCounter = saveSlot2Counter;
-            else
-                gSaveCounter = saveSlot1Counter;
-        }
+        if (status[0] != SAVE_STATUS_OK)
+            selected = 1;
+        else if (status[1] != SAVE_STATUS_OK)
+            selected = 0;
         else
-        {
-            if (saveSlot1Counter < saveSlot2Counter)
-                gSaveCounter = saveSlot2Counter;
-            else
-                gSaveCounter = saveSlot1Counter;
-        }
-        return SAVE_STATUS_OK;
+            selected = (s32)(slots[1].counter - slots[0].counter) > 0;
+        sSelectedSlot = slots[selected];
+        gSaveCounter = sSelectedSlot.counter;
+        gLastWrittenSector = sSelectedSlot.rotation;
+        return status[selected ^ 1] == SAVE_STATUS_ERROR ? SAVE_STATUS_ERROR : SAVE_STATUS_OK;
     }
-
-    // One or both save slots are not OK
-
-    if (saveSlot1Status == SAVE_STATUS_OK)
-    {
-        gSaveCounter = saveSlot1Counter;
-        if (saveSlot2Status == SAVE_STATUS_ERROR)
-            return SAVE_STATUS_ERROR; // Slot 2 errored
-        return SAVE_STATUS_OK; // Slot 1 is OK, slot 2 is empty
-    }
-
-    if (saveSlot2Status == SAVE_STATUS_OK)
-    {
-        gSaveCounter = saveSlot2Counter;
-        if (saveSlot1Status == SAVE_STATUS_ERROR)
-            return SAVE_STATUS_ERROR; // Slot 1 errored
-        return SAVE_STATUS_OK; // Slot 2 is OK, slot 1 is empty
-    }
-
-    // Neither slot is OK, check if both are empty
-    if (saveSlot1Status == SAVE_STATUS_EMPTY
-     && saveSlot2Status == SAVE_STATUS_EMPTY)
-    {
-        gSaveCounter = 0;
-        gLastWrittenSector = 0;
-        return SAVE_STATUS_EMPTY;
-    }
-
-    // Both slots errored
     gSaveCounter = 0;
     gLastWrittenSector = 0;
-    return SAVE_STATUS_CORRUPT;
+    return status[0] == SAVE_STATUS_EMPTY && status[1] == SAVE_STATUS_EMPTY ? SAVE_STATUS_EMPTY : SAVE_STATUS_CORRUPT;
 }
 
 // Return value always ignored
@@ -1311,6 +1476,20 @@ static void UpdateSaveAddresses(void)
     }
 }
 
+#if TESTING
+u8 Save_TestDiscoverSlot(u8 *slot, u32 *counter, u8 *boxes)
+{
+    u8 status;
+    gReadWriteSector = &gSaveDataBuffer;
+    UpdateSaveAddresses();
+    status = GetSaveValidStatus(gRamSaveSectorLocations);
+    *slot = sSelectedSlot.slot;
+    *counter = sSelectedSlot.counter;
+    *boxes = sSelectedSlot.boxes;
+    return status;
+}
+#endif
+
 u8 HandleSavingData(u8 saveType)
 {
     u8 i;
@@ -1342,7 +1521,7 @@ u8 HandleSavingData(u8 saveType)
     case SAVE_EREADER: // Dummied, now duplicate of SAVE_LINK
         // Used by link / Battle Frontier
         // Write only SaveBlocks 1 and 2 (skips the PC)
-        FinishPokemonStorageExtensions(FALSE);
+        FinishPokemonStorageExtensions(NULL);
         CopyPartyAndObjectsToSave();
         for (i = SECTOR_ID_SAVEBLOCK2; i <= SECTOR_ID_SAVEBLOCK1_END; i++)
             HandleReplaceSector(i, gRamSaveSectorLocations);
@@ -1415,7 +1594,7 @@ bool8 LinkFullSave_Init(void)
         sLinkFullSaveResult = LINK_FULL_SAVE_RESULT_FLASH_ERROR;
         gLastWrittenSector = gLastKnownGoodSector;
         gSaveCounter = gLastSaveCounter;
-        FinishPokemonStorageExtensions(FALSE);
+        FinishPokemonStorageExtensions(NULL);
         if (!sDeferLinkFullSaveErrorScreen)
             DoSaveFailedScreen(SAVE_NORMAL);
         return TRUE;
@@ -1436,7 +1615,7 @@ bool8 LinkFullSave_WriteSector(void)
         sPokemonStorageOverflowWriteFailed = TRUE;
         gSaveAttemptStatus = SAVE_STATUS_ERROR;
         sLinkFullSaveResult = LINK_FULL_SAVE_RESULT_FLASH_ERROR;
-        FinishPokemonStorageExtensions(FALSE);
+        FinishPokemonStorageExtensions(NULL);
         if (!sDeferLinkFullSaveErrorScreen)
             DoSaveFailedScreen(SAVE_NORMAL);
     }
@@ -1461,7 +1640,7 @@ bool8 LinkFullSave_ReplaceLastSector(void)
         sPokemonStorageOverflowWriteFailed = TRUE;
         gSaveAttemptStatus = SAVE_STATUS_ERROR;
         sLinkFullSaveResult = LINK_FULL_SAVE_RESULT_FLASH_ERROR;
-        FinishPokemonStorageExtensions(FALSE);
+        FinishPokemonStorageExtensions(NULL);
         if (!sDeferLinkFullSaveErrorScreen)
             DoSaveFailedScreen(SAVE_NORMAL);
     }
@@ -1470,6 +1649,7 @@ bool8 LinkFullSave_ReplaceLastSector(void)
 
 bool8 LinkFullSave_SetLastSectorSignature(void)
 {
+    struct SaveSlotDescriptor candidate;
     u8 status;
 
     if (sPokemonStorageOverflowWriteFailed)
@@ -1477,7 +1657,7 @@ bool8 LinkFullSave_SetLastSectorSignature(void)
 
     status = CopySectorSignatureByte(NUM_SECTORS_PER_SLOT, gRamSaveSectorLocations);
     if (status == SAVE_STATUS_OK)
-        status = WriteBx19AuxiliarySector();
+        status = WriteBx21AuxiliarySector(&candidate);
 
     if (status != SAVE_STATUS_OK || gDamagedSaveSectors)
     {
@@ -1486,13 +1666,13 @@ bool8 LinkFullSave_SetLastSectorSignature(void)
         sLinkFullSaveResult = LINK_FULL_SAVE_RESULT_FLASH_ERROR;
         gLastWrittenSector = gLastKnownGoodSector;
         gSaveCounter = gLastSaveCounter;
-        FinishPokemonStorageExtensions(FALSE);
+        FinishPokemonStorageExtensions(NULL);
         if (!sDeferLinkFullSaveErrorScreen)
             DoSaveFailedScreen(SAVE_NORMAL);
     }
     else
     {
-        FinishPokemonStorageExtensions(TRUE);
+        FinishPokemonStorageExtensions(&candidate);
         gSaveAttemptStatus = SAVE_STATUS_OK;
         sLinkFullSaveResult = LINK_FULL_SAVE_RESULT_SUCCESS;
     }
@@ -1568,7 +1748,7 @@ u8 LoadGameSave(u8 saveType)
         if (sLegacyHallOfFameRetryArchive != NULL
          && ((status != SAVE_STATUS_OK
            && status != SAVE_STATUS_ERROR)
-          || gPokemonStoragePtr->box18ExtensionMagic == POKEMON_STORAGE_BOX19_MAGIC
+          || sSelectedSlot.boxes >= 19
           || sLegacyHallOfFameRetryCounter != gSaveCounter))
             ClearLegacyHallOfFameRetryArchive();
         CopyPartyAndObjectsFromSave();
@@ -1583,17 +1763,17 @@ u8 LoadGameSave(u8 saveType)
 
             status = SAVE_STATUS_OK;
             if (!sResetHallOfFameArchive
-             && gPokemonStoragePtr->box18ExtensionMagic == POKEMON_STORAGE_BOX19_MAGIC)
+             && sSelectedSlot.boxes >= 19)
             {
-                if (IsBx19AuxiliarySectorValid(gSaveCounter % NUM_SAVE_SLOTS, gSaveCounter))
+                if (ReadSelectedArchive() != NULL)
                 {
-                    struct Bx19AuxiliaryRecord *record = (struct Bx19AuxiliaryRecord *)gReadWriteSector->data;
+                    struct HallOfFameArchive *archive = ReadSelectedArchive();
                     memset(gHoFSaveBuffer,
                            0,
                            sizeof(struct HallofFameTeam) * HALL_OF_FAME_RETAINED_TEAMS);
                     memcpy(gHoFSaveBuffer,
-                           record->hallOfFame.teams,
-                           record->hallOfFame.count * sizeof(struct HallofFameTeam));
+                           archive->teams,
+                           archive->count * sizeof(struct HallofFameTeam));
                 }
                 else
                 {
@@ -1652,7 +1832,7 @@ u16 GetSaveBlocksPointersBaseOffset(void)
         return 0;
     UpdateSaveAddresses();
     GetSaveValidStatus(gRamSaveSectorLocations);
-    slotOffset = NUM_SECTORS_PER_SLOT * (gSaveCounter % NUM_SAVE_SLOTS);
+    slotOffset = NUM_SECTORS_PER_SLOT * WritingSlot();
     for (i = 0; i < NUM_SECTORS_PER_SLOT; i++)
     {
         ReadFlashSector(i + slotOffset, gReadWriteSector);

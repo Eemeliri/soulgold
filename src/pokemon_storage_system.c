@@ -183,7 +183,7 @@ enum {
     MENU_PIKAPIKA1,
     MENU_CONTEST,
     MENU_REVIVAL,
-    MENU_CROAGUNK,
+    MENU_POKEATHLON,
     MENU_FOREST,
     MENU_CITY,
     MENU_DESERT,
@@ -202,7 +202,7 @@ enum {
     MENU_GALACTIC1,
     MENU_GALACTIC2,
     MENU_BIGBROTHER,
-    MENU_POKEATHLON,
+    MENU_CROAGUNK,
     MENU_SELECT,
 };
 #define MENU_WALLPAPER_SETS_START MENU_SCENERY_1
@@ -1841,70 +1841,29 @@ static s16 UNUSED StorageSystemGetNextMonIndex(struct BoxPokemon *box, s8 startI
     return -1;
 }
 
-void ResetPokemonStorageSystem(void)
-{
-    u16 boxId, boxPosition;
-
-    SetCurrentBox(0);
-    for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
-    {
-        for (boxPosition = 0; boxPosition < IN_BOX_COUNT; boxPosition++)
-            ZeroBoxMonAt(boxId, boxPosition);
-    }
-    for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
-    {
-        u8 *dest = StringCopy(GetBoxNamePtr(boxId), gText_Box);
-        ConvertIntToDecimalStringN(dest, boxId + 1, STR_CONV_MODE_LEFT_ALIGN, 2);
-    }
-
-    for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
-        SetBoxWallpaper(boxId, boxId % (MAX_DEFAULT_WALLPAPER + 1));
-
-    InitPokemonStorageExtension();
-    ResetWaldaWallpaper();
-}
-
-void InitPokemonStorageExtension(void)
-{
-    u8 *dest;
-
-    memset(&gPokemonStoragePtr->boxExtensionMagic, 0,
-           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, boxExtensionMagic));
-    gPokemonStoragePtr->boxExtensionMagic = POKEMON_STORAGE_EXTENSION_MAGIC;
-    dest = StringCopy(gPokemonStoragePtr->extraBoxName, gText_Box);
-    ConvertIntToDecimalStringN(dest, LEGACY_BOXES_COUNT + 1, STR_CONV_MODE_LEFT_ALIGN, 2);
-    gPokemonStoragePtr->extraBoxWallpaper = LEGACY_BOXES_COUNT % (MAX_DEFAULT_WALLPAPER + 1);
-    InitPokemonStorageBox18Extension();
-}
-
-void InitPokemonStorageBox18Extension(void)
+void InitPokemonStorageMissingBoxes(u32 firstBox)
 {
     u32 box;
-    u8 *dest;
-
-    memset(&gPokemonStoragePtr->box18ExtensionMagic, 0,
-           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, box18ExtensionMagic));
-    gPokemonStoragePtr->box18ExtensionMagic = POKEMON_STORAGE_BOX18_MAGIC;
-    for (box = 0; box < ARRAY_COUNT(gPokemonStoragePtr->extensionBoxes); box++)
+    for (box = firstBox; box < TOTAL_BOXES_COUNT; box++)
     {
-        dest = StringCopy(gPokemonStoragePtr->extensionBoxNames[box], gText_Box);
-        ConvertIntToDecimalStringN(dest, LEGACY_BOXES_COUNT + 2 + box, STR_CONV_MODE_LEFT_ALIGN, 2);
-        gPokemonStoragePtr->extensionBoxWallpapers[box] = (LEGACY_BOXES_COUNT + 1 + box) % (MAX_DEFAULT_WALLPAPER + 1);
+        u8 *dest;
+        memset(gPokemonStoragePtr->boxes[box], 0, sizeof(gPokemonStoragePtr->boxes[box]));
+        memset(gPokemonStoragePtr->boxNames[box], 0, sizeof(gPokemonStoragePtr->boxNames[box]));
+        dest = StringCopy(gPokemonStoragePtr->boxNames[box], gText_Box);
+        ConvertIntToDecimalStringN(dest, box + 1, STR_CONV_MODE_LEFT_ALIGN, 2);
+        gPokemonStoragePtr->boxWallpapers[box] = box % (MAX_DEFAULT_WALLPAPER + 1);
     }
-    InitPokemonStorageBox19Extension();
 }
 
-void InitPokemonStorageBox19Extension(void)
+void ResetPokemonStorageSystem(void)
 {
-    u8 *dest;
-
-    memset(&gPokemonStoragePtr->box19, 0,
-           sizeof(*gPokemonStoragePtr) - offsetof(struct PokemonStorage, box19));
-    dest = StringCopy(gPokemonStoragePtr->box19Name, gText_Box);
-    ConvertIntToDecimalStringN(dest, TOTAL_BOXES_COUNT, STR_CONV_MODE_LEFT_ALIGN, 2);
-    gPokemonStoragePtr->box19Wallpaper = (TOTAL_BOXES_COUNT - 1) % (MAX_DEFAULT_WALLPAPER + 1);
+    gPokemonStoragePtr->currentBox = 0;
+    memset(gPokemonStoragePtr->reserved, 0, sizeof(gPokemonStoragePtr->reserved));
+    memset(gPokemonStoragePtr->alignmentPadding, 0, sizeof(gPokemonStoragePtr->alignmentPadding));
+    InitPokemonStorageMissingBoxes(0);
+    UpdatePokemonStorageHeader();
+    ResetWaldaWallpaper();
 }
-
 
 //------------------------------------------------------------------------------
 //  SECTION: Choose Box menu
@@ -10807,61 +10766,28 @@ void BoxMonAtToMon(u8 boxId, u8 boxPosition, struct Pokemon *dst)
 struct BoxPokemon *GetBoxedMonPtr(u8 boxId, u8 boxPosition)
 {
     if (boxId < TOTAL_BOXES_COUNT && boxPosition < IN_BOX_COUNT)
-    {
-        if (boxId < LEGACY_BOXES_COUNT)
-            return &gPokemonStoragePtr->legacyBoxes[boxId][boxPosition];
-        else if (boxId == LEGACY_BOXES_COUNT)
-            return &gPokemonStoragePtr->extraBox[boxPosition];
-        else if (boxId < TOTAL_BOXES_COUNT - 1)
-            return &gPokemonStoragePtr->extensionBoxes[boxId - LEGACY_BOXES_COUNT - 1][boxPosition];
-        else
-            return &gPokemonStoragePtr->box19[boxPosition];
-    }
-    else
-        return NULL;
+        return &gPokemonStoragePtr->boxes[boxId][boxPosition];
+    return NULL;
 }
 
 u8 *GetBoxNamePtr(u8 boxId)
 {
-    if (boxId < LEGACY_BOXES_COUNT)
-        return gPokemonStoragePtr->legacyBoxNames[boxId];
-    else if (boxId == LEGACY_BOXES_COUNT)
-        return gPokemonStoragePtr->extraBoxName;
-    else if (boxId < TOTAL_BOXES_COUNT - 1)
-        return gPokemonStoragePtr->extensionBoxNames[boxId - LEGACY_BOXES_COUNT - 1];
-    else if (boxId < TOTAL_BOXES_COUNT)
-        return gPokemonStoragePtr->box19Name;
-    else
-        return NULL;
+    if (boxId < TOTAL_BOXES_COUNT)
+        return gPokemonStoragePtr->boxNames[boxId];
+    return NULL;
 }
 
 static u8 GetBoxWallpaper(u8 boxId)
 {
-    if (boxId < LEGACY_BOXES_COUNT)
-        return gPokemonStoragePtr->legacyBoxWallpapers[boxId];
-    else if (boxId == LEGACY_BOXES_COUNT)
-        return gPokemonStoragePtr->extraBoxWallpaper;
-    else if (boxId < TOTAL_BOXES_COUNT - 1)
-        return gPokemonStoragePtr->extensionBoxWallpapers[boxId - LEGACY_BOXES_COUNT - 1];
-    else if (boxId < TOTAL_BOXES_COUNT)
-        return gPokemonStoragePtr->box19Wallpaper;
-    else
-        return 0;
+    if (boxId < TOTAL_BOXES_COUNT)
+        return gPokemonStoragePtr->boxWallpapers[boxId];
+    return 0;
 }
 
 static void SetBoxWallpaper(u8 boxId, u8 wallpaperId)
 {
     if (boxId < TOTAL_BOXES_COUNT && wallpaperId < WALLPAPER_COUNT)
-    {
-        if (boxId < LEGACY_BOXES_COUNT)
-            gPokemonStoragePtr->legacyBoxWallpapers[boxId] = wallpaperId;
-        else if (boxId == LEGACY_BOXES_COUNT)
-            gPokemonStoragePtr->extraBoxWallpaper = wallpaperId;
-        else if (boxId < TOTAL_BOXES_COUNT - 1)
-            gPokemonStoragePtr->extensionBoxWallpapers[boxId - LEGACY_BOXES_COUNT - 1] = wallpaperId;
-        else
-            gPokemonStoragePtr->box19Wallpaper = wallpaperId;
-    }
+        gPokemonStoragePtr->boxWallpapers[boxId] = wallpaperId;
 }
 
 #if TESTING

@@ -914,6 +914,7 @@ struct DaycareMail
 struct DaycareMon
 {
     struct BoxPokemon mon;
+    u8 legacyCompatibility[8];
     struct DaycareMail mail;
     u32 steps;
 };

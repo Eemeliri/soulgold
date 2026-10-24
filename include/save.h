@@ -13,6 +13,7 @@
 
 // If the sector's signature field is not this value then the sector is either invalid or empty.
 #define SECTOR_SIGNATURE 0x8012025
+#define SECTOR_SIGNATURE_BX21 0x21325842 // This sigmarker spells "BX2!" if you're curious
 
 #define SECTOR_ID_SAVEBLOCK2          0
 #define SECTOR_ID_SAVEBLOCK1_START    1
@@ -121,7 +122,9 @@ extern u16 gSaveAttemptStatus;
 // save_failed_screen.c
 void DoSaveFailedScreen(u8 saveType);
 #if TESTING
+u8 Save_TestDiscoverSlot(u8 *slot, u32 *counter, u8 *boxes);
 bool8 SaveFailedScreen_TestWipeDamagedSectors(void);
+bool8 SaveFailedScreen_TestRecover(u8 saveType);
 #endif
 
 #endif // GUARD_SAVE_H

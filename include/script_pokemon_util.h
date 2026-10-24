@@ -3,7 +3,7 @@
 
 struct ScriptContext;
 
-u32 ScriptGiveMon(u16 species, u8 level, enum Item item, u16 item2);
+u32 ScriptGiveMon(u16 species, u8 level, enum Item item);
 u8 ScriptGiveEgg(u16 species);
 void CreateScriptedWildMon(u16 species, u8 level, enum Item item, u16 item2);
 void CreateShinyScriptedMon(u16 species, u8 level, u16 item);

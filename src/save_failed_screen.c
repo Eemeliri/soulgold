@@ -253,57 +253,71 @@ static void CB2_SaveFailedScreen(void)
     }
 }
 
-static void CB2_WipeSave(void)
+enum SaveRecoveryResult
 {
-    u8 saveStatus;
-    u8 wipeTries = 0;
+    SAVE_RECOVERY_FAILED,
+    SAVE_RECOVERY_EXHAUSTED,
+    SAVE_RECOVERY_SUCCESS,
+};
 
-    sClockInfo[CLOCK_RUNNING] = TRUE;
+static enum SaveRecoveryResult RecoverSave(u8 saveType, void (*showMessage)(const u8 *))
+{
+    u8 wipeTries;
 
-    while (gDamagedSaveSectors != 0 && wipeTries < 3)
+    if (gDamagedSaveSectors == 0)
+        return SAVE_RECOVERY_FAILED;
+
+    for (wipeTries = 0; wipeTries < 3; wipeTries++)
     {
+        u8 saveStatus;
+
         if (WipeSectors(gDamagedSaveSectors))
-        {
-            FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
-            SaveFailedScreenTextPrint(gText_BackupMemoryDamaged, 1, 0);
-            SetMainCallback2(CB2_GameplayCannotBeContinued);
-            return;
-        }
+            return SAVE_RECOVERY_FAILED;
 
-        FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
-        SaveFailedScreenTextPrint(gText_CheckCompleted, 1, 0);
-        saveStatus = HandleSavingData(sSaveFailedType);
+        if (showMessage != NULL)
+            showMessage(gText_CheckCompleted);
+        saveStatus = HandleSavingData(saveType);
 
-        if (saveStatus == SAVE_STATUS_PREPARE_ERROR)
-        {
-            FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
-            SaveFailedScreenTextPrint(gText_BackupMemoryDamaged, 1, 0);
-            SetMainCallback2(CB2_GameplayCannotBeContinued);
-            return;
-        }
+        if (saveStatus == SAVE_STATUS_OK && gDamagedSaveSectors == 0)
+            return SAVE_RECOVERY_SUCCESS;
+        if (saveStatus == SAVE_STATUS_PREPARE_ERROR || gDamagedSaveSectors == 0)
+            return SAVE_RECOVERY_FAILED;
 
-        if (gDamagedSaveSectors != 0)
-        {
-            FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
-            SaveFailedScreenTextPrint(gText_SaveFailedCheckingBackup, 1, 0);
-        }
-
-        wipeTries++;
+        if (showMessage != NULL)
+            showMessage(gText_SaveFailedCheckingBackup);
     }
 
-    if (wipeTries == 3)
+    return SAVE_RECOVERY_EXHAUSTED;
+}
+
+static void ShowRecoveryMessage(const u8 *text)
+{
+    FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
+    SaveFailedScreenTextPrint(text, 1, 0);
+}
+
+static void CB2_WipeSave(void)
+{
+    enum SaveRecoveryResult result;
+
+    sClockInfo[CLOCK_RUNNING] = TRUE;
+    result = RecoverSave(sSaveFailedType, ShowRecoveryMessage);
+
+    if (result != SAVE_RECOVERY_SUCCESS)
     {
-        FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
-        SaveFailedScreenTextPrint(gText_BackupMemoryDamaged, 1, 0);
+        ShowRecoveryMessage(gText_BackupMemoryDamaged);
+        if (result == SAVE_RECOVERY_FAILED)
+        {
+            SetMainCallback2(CB2_GameplayCannotBeContinued);
+            return;
+        }
     }
     else
     {
-        FillWindowPixelBuffer(sWindowIds[TEXT_WIN_ID], PIXEL_FILL(1));
-
         if (gGameContinueCallback == NULL)
-            SaveFailedScreenTextPrint(gText_SaveCompleteGameCannotContinue, 1, 0);
+            ShowRecoveryMessage(gText_SaveCompleteGameCannotContinue);
         else
-            SaveFailedScreenTextPrint(gText_SaveCompletePressA, 1, 0);
+            ShowRecoveryMessage(gText_SaveCompletePressA);
     }
 
     SetMainCallback2(CB2_FadeAndReturnToTitleScreen);
@@ -425,6 +439,11 @@ static bool8 WipeSectors(u32 sectorBits)
 bool8 SaveFailedScreen_TestWipeDamagedSectors(void)
 {
     return WipeSectors(gDamagedSaveSectors);
+}
+
+bool8 SaveFailedScreen_TestRecover(u8 saveType)
+{
+    return RecoverSave(saveType, NULL) == SAVE_RECOVERY_SUCCESS;
 }
 #endif
 

@@ -1030,15 +1030,15 @@
 
 	@ Gives the player a Pokémon of the specified species and level, and allows to customize extra parameters.
 	@ VAR_RESULT will be set to MON_GIVEN_TO_PARTY, MON_GIVEN_TO_PC, or MON_CANT_GIVE depending on the outcome.
-	.macro givemon species:req, level:req, item, item2, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, shinyMode, gmaxFactor, teraType, dmaxLevel
+	.macro givemon species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, shinyMode, gmaxFactor, teraType, dmaxLevel
 	callnative ScrCmd_createmon, requests_effects=1
 	.byte 0
 	.byte PARTY_SIZE @ assign to first empty slot
+	@ Bit 1 was used for a second held item back when Bassforte's branch was merged.
 	.set givemon_flags, 0
 	.2byte \species
 	.2byte \level
 	.ifnb \item; .set givemon_flags, givemon_flags | (1 << 0); .endif
-	.ifnb \item2; .set givemon_flags, givemon_flags | (1 << 1); .endif
 	.ifnb \ball; .set givemon_flags, givemon_flags | (1 << 2); .endif
 	.set givemon_flags, givemon_flags | (1 << 3);
 	.ifnb \abilityNum; .set givemon_flags, givemon_flags | (1 << 4); .endif
@@ -1065,7 +1065,6 @@
 	.ifnb \dmaxLevel; .set givemon_flags, givemon_flags | (1 << 25); .endif
 	.4byte givemon_flags
 	.ifnb \item; .2byte \item; .endif
-	.ifnb \item2; .2byte \item2; .endif
 	.ifnb \ball; .2byte \ball; .endif
 	.ifnb \nature; .2byte \nature; .else; .2byte NATURE_MAY_SYNCHRONIZE; .endif
 	.ifnb \abilityNum; .2byte \abilityNum; .endif
@@ -1094,15 +1093,15 @@
 
 	@ creates a mon for a given party and slot
 	@ otherwise
-	.macro createmon side:req, slot:req, species:req, level:req, item, item2, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, shinyMode, gmaxFactor, teraType, dmaxLevel
+	.macro createmon side:req, slot:req, species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, shinyMode, gmaxFactor, teraType, dmaxLevel
 	callnative ScrCmd_createmon, requests_effects=1
 	.byte \side	 @ 0 - player, 1 - opponent
 	.byte \slot	 @ 0-5
+	@ Bit 1 was used for a second held item back when Bassforte's branch was merged
 	.set givemon_flags, 0
 	.2byte \species
 	.2byte \level
 	.ifnb \item; .set givemon_flags, givemon_flags | (1 << 0); .endif
-	.ifnb \item2; .set givemon_flags, givemon_flags | (1 << 1); .endif
 	.ifnb \ball; .set givemon_flags, givemon_flags | (1 << 2); .endif
 	.ifnb \nature; .set givemon_flags, givemon_flags | (1 << 3); .endif
 	.ifnb \abilityNum; .set givemon_flags, givemon_flags | (1 << 4); .endif
@@ -1129,7 +1128,6 @@
 	.ifnb \dmaxLevel; .set givemon_flags, givemon_flags | (1 << 25); .endif
 	.4byte givemon_flags
 	.ifnb \item; .2byte \item; .endif
-	.ifnb \item2; .2byte \item2; .endif
 	.ifnb \ball; .2byte \ball; .endif
 	.ifnb \nature; .2byte \nature; .endif
 	.ifnb \abilityNum; .2byte \abilityNum; .endif

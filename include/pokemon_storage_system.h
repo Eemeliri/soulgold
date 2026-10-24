@@ -4,7 +4,7 @@
 #include "main.h"
 
 #define LEGACY_BOXES_COUNT      15
-#define TOTAL_BOXES_COUNT       19
+#define TOTAL_BOXES_COUNT       21
 #define IN_BOX_ROWS             5 // Number of rows, 6 Pokémon per row
 #define IN_BOX_COLUMNS          6 // Number of columns, 5 Pokémon per column
 #define IN_BOX_COUNT            (IN_BOX_ROWS * IN_BOX_COLUMNS)
@@ -25,65 +25,40 @@ ROWS        0   1   2   3   4   5
             24  25  26  27  28  29
 */
 
-struct PokemonStorage
+#define POKEMON_STORAGE_BX21_MAGIC 0x31325842
+
+struct Bx21StorageHeader
 {
-    /*0x0000*/ u8 currentBox;
-    /*0x0004*/ struct BoxPokemon legacyBoxes[LEGACY_BOXES_COUNT][IN_BOX_COUNT];
-    /*0x859C*/ u8 legacyBoxNames[LEGACY_BOXES_COUNT][BOX_NAME_LENGTH + 1];
-    /*0x8623*/ u8 legacyBoxWallpapers[LEGACY_BOXES_COUNT];
-    /*0x8634*/ struct Pokemon fusions[MAX_FUSION_STORAGE];
-
-    // Keep all fields above in their original locations for save compatibility.
-    /*0x87B4*/ u32 boxExtensionMagic;
-    /*0x87B8*/ struct BoxPokemon extraBox[IN_BOX_COUNT];
-    /*0x90A0*/ u8 extraBoxName[BOX_NAME_LENGTH + 1];
-    /*0x90A9*/ u8 extraBoxWallpaper;
-    /*0x90AA*/ u8 extraBoxPadding[2];
-
-    /*0x90AC*/ u32 box18ExtensionMagic;
-    /*0x90B0*/ u16 box18Checksum;
-    /*0x90B2*/ u16 box18ChecksumInverse;
-    /*0x90B4*/ struct BoxPokemon extensionBoxes[2][IN_BOX_COUNT];
-    /*0xA284*/ u8 extensionBoxNames[2][BOX_NAME_LENGTH + 1];
-    /*0xA296*/ u8 extensionBoxWallpapers[2];
-
-    /*0xA298*/ struct BoxPokemon box19[IN_BOX_COUNT];
-    /*0xAB80*/ u8 box19Name[BOX_NAME_LENGTH + 1];
-    /*0xAB89*/ u8 box19Wallpaper;
-    /*0xAB8A*/ u8 box19Padding[2];
+    u32 magic;
+    u16 version;
+    u16 payloadLength;
+    u16 payloadChecksum;
+    u16 checksumInverse;
+    u32 magicInverse;
 };
 
-// Save-format contract. If one of these fails, the storage migration and
-// sector split in save.c must be reviewed before changing the values.
-STATIC_ASSERT(sizeof(struct BoxPokemon) == 76, BoxPokemonStorageSize);
-STATIC_ASSERT(offsetof(struct PokemonStorage, currentBox) == 0, PokemonStorageCurrentBoxOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, legacyBoxes) == 4, PokemonStorageBoxesOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, legacyBoxNames) == 34204, PokemonStorageBoxNamesOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, legacyBoxWallpapers) == 34339, PokemonStorageBoxWallpapersOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, fusions) == 34356, PokemonStorageFusionsOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, boxExtensionMagic) == 34740, PokemonStorageExtensionMagicOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extraBox) == 34744, PokemonStorageExtraBoxOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extraBoxName) == 37024, PokemonStorageExtraBoxNameOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extraBoxWallpaper) == 37033, PokemonStorageExtraBoxWallpaperOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extraBoxPadding) == 37034, PokemonStorageExtraBoxPaddingOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box18ExtensionMagic) == 37036, PokemonStorageBox18MagicOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box18Checksum) == 37040, PokemonStorageBox18ChecksumOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box18ChecksumInverse) == 37042, PokemonStorageBox18ChecksumInverseOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extensionBoxes) == 37044, PokemonStorageExtensionBoxesOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extensionBoxes[1]) == 39324, PokemonStorageExtensionBox18Offset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extensionBoxNames) == 41604, PokemonStorageExtensionBoxNamesOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extensionBoxNames[1]) == 41613, PokemonStorageExtensionBox18NameOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extensionBoxWallpapers) == 41622, PokemonStorageExtensionBoxWallpapersOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, extensionBoxWallpapers[1]) == 41623, PokemonStorageExtensionBox18WallpaperOffset);
-STATIC_ASSERT(sizeof(((struct PokemonStorage *)0)->extensionBoxes) == 4560, PokemonStorageExtensionBoxesSize);
-STATIC_ASSERT(sizeof(((struct PokemonStorage *)0)->extensionBoxNames) == 18, PokemonStorageExtensionBoxNamesSize);
-STATIC_ASSERT(sizeof(((struct PokemonStorage *)0)->extensionBoxWallpapers) == 2, PokemonStorageExtensionBoxWallpapersSize);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box19) == 41624, PokemonStorageBox19Offset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box19Name) == 43904, PokemonStorageBox19NameOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box19Wallpaper) == 43913, PokemonStorageBox19WallpaperOffset);
-STATIC_ASSERT(offsetof(struct PokemonStorage, box19Padding) == 43914, PokemonStorageBox19PaddingOffset);
-STATIC_ASSERT(sizeof(((struct PokemonStorage *)0)->box19) == 2280, PokemonStorageBox19PokemonSize);
-STATIC_ASSERT(sizeof(struct PokemonStorage) == 43916, PokemonStorageSize);
+struct PokemonStorage
+{
+    struct Bx21StorageHeader header;
+    u8 currentBox;
+    u8 reserved[3];
+    struct Pokemon fusions[MAX_FUSION_STORAGE];
+    struct BoxPokemon boxes[TOTAL_BOXES_COUNT][IN_BOX_COUNT];
+    u8 boxNames[TOTAL_BOXES_COUNT][BOX_NAME_LENGTH + 1];
+    u8 boxWallpapers[TOTAL_BOXES_COUNT];
+    u8 alignmentPadding[2];
+};
+
+STATIC_ASSERT(sizeof(struct Bx21StorageHeader) == 16, Bx21HeaderSize);
+STATIC_ASSERT(offsetof(struct Bx21StorageHeader, payloadChecksum) == 8, Bx21ChecksumOffset);
+STATIC_ASSERT(offsetof(struct Bx21StorageHeader, magicInverse) == 12, Bx21InverseOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, currentBox) == 16, Bx21CurrentBoxOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, fusions) == 20, Bx21FusionsOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, boxes) == 404, Bx21BoxesOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, boxNames) == 43244, Bx21NamesOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, boxWallpapers) == 43433, Bx21WallpapersOffset);
+STATIC_ASSERT(offsetof(struct PokemonStorage, alignmentPadding) == 43454, Bx21PaddingOffset);
+STATIC_ASSERT(sizeof(struct PokemonStorage) == 43456, Bx21StorageSize);
 
 extern struct PokemonStorage *gPokemonStoragePtr;
 
@@ -99,9 +74,8 @@ void ShowPokemonPCFromParty(void);
 void CB2_ShowPokemonPCFromParty(void);
 void PokemonPC_SetReturnToPartyCallback(MainCallback cb);
 void ResetPokemonStorageSystem(void);
-void InitPokemonStorageExtension(void);
-void InitPokemonStorageBox18Extension(void);
-void InitPokemonStorageBox19Extension(void);
+void InitPokemonStorageMissingBoxes(u32 firstBox);
+void UpdatePokemonStorageHeader(void);
 s16 CompactPartySlots(void);
 u8 StorageGetCurrentBox(void);
 u32 GetBoxMonDataAt(u8 boxId, u8 boxPosition, s32 request);

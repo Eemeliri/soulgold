@@ -986,6 +986,7 @@ void ZeroMonData(struct Pokemon *mon)
 {
     u32 arg;
     ZeroBoxMonData(&mon->box);
+    memset(mon->legacyCompatibility, 0, sizeof(mon->legacyCompatibility));
     arg = 0;
     SetMonData(mon, MON_DATA_STATUS, &arg);
     SetMonData(mon, MON_DATA_LEVEL, &arg);
@@ -1624,6 +1625,7 @@ void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest)
 {
     u32 value = 0;
     dest->box = *src;
+    memset(dest->legacyCompatibility, 0, sizeof(dest->legacyCompatibility));
     dest->status = GetBoxMonData(&dest->box, MON_DATA_STATUS);
     dest->hp = 0;
     dest->maxHP = 0;
@@ -2262,7 +2264,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->secure.heldItem;
             break;
         case MON_DATA_HELD_ITEM_TWO:
-            retVal = boxMon->secure.heldItem2;
+            retVal = 0;
             break;
         case MON_DATA_EXP:
             retVal = boxMon->secure.experience;
@@ -2316,22 +2318,22 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->secure.spDefenseEV;
             break;
         case MON_DATA_COOL:
-            retVal = boxMon->secure.cool;
+            retVal = 0;
             break;
         case MON_DATA_BEAUTY:
-            retVal = boxMon->secure.beauty;
+            retVal = 0;
             break;
         case MON_DATA_CUTE:
-            retVal = boxMon->secure.cute;
+            retVal = 0;
             break;
         case MON_DATA_SMART:
-            retVal = boxMon->secure.smart;
+            retVal = 0;
             break;
         case MON_DATA_TOUGH:
-            retVal = boxMon->secure.tough;
+            retVal = 0;
             break;
         case MON_DATA_SHEEN:
-            retVal = boxMon->secure.sheen;
+            retVal = 0;
             break;
         case MON_DATA_POKERUS:
             retVal = boxMon->secure.pokerus;
@@ -2475,7 +2477,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = 0;
             break;
         case MON_DATA_GIGANTAMAX_FACTOR:
-            retVal = boxMon->secure.gigantamaxFactor;
+            retVal = 0;
             break;
         case MON_DATA_TERA_TYPE:
             {
@@ -2702,7 +2704,6 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET16(boxMon->secure.heldItem);
             break;
         case MON_DATA_HELD_ITEM_TWO:
-            SET16(boxMon->secure.heldItem2);
             break;
         case MON_DATA_EXP:
             SET32(boxMon->secure.experience);
@@ -2756,22 +2757,16 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(boxMon->secure.spDefenseEV);
             break;
         case MON_DATA_COOL:
-            SET8(boxMon->secure.cool);
             break;
         case MON_DATA_BEAUTY:
-            SET8(boxMon->secure.beauty);
             break;
         case MON_DATA_CUTE:
-            SET8(boxMon->secure.cute);
             break;
         case MON_DATA_SMART:
-            SET8(boxMon->secure.smart);
             break;
         case MON_DATA_TOUGH:
-            SET8(boxMon->secure.tough);
             break;
         case MON_DATA_SHEEN:
-            SET8(boxMon->secure.sheen);
             break;
         case MON_DATA_POKERUS:
             SET8(boxMon->secure.pokerus);
@@ -2878,7 +2873,6 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_DYNAMAX_LEVEL:
             break;
         case MON_DATA_GIGANTAMAX_FACTOR:
-            SET8(boxMon->secure.gigantamaxFactor);
             break;
         case MON_DATA_TERA_TYPE:
             SET8(boxMon->secure.teraType);

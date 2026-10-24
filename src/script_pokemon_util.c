@@ -392,7 +392,7 @@ void SetTeraType(struct ScriptContext *ctx)
  * if side/slot are assigned, it will create the mon at the assigned party location
  * if slot == PARTY_SIZE, it will give the mon to first available party or storage slot
  */
-static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, enum Item item, enum Item item2, enum PokeBall ball, u8 nature, u8 abilityNum, u8 gender, u16 *evs, u16 *ivs, enum Move *moves, enum ShinyMode shinyMode, bool8 gmaxFactor, enum Type teraType, u8 dmaxLevel)
+static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, enum Item item, enum PokeBall ball, u8 nature, u8 abilityNum, u8 gender, u16 *evs, u16 *ivs, enum Move *moves, enum ShinyMode shinyMode, bool8 gmaxFactor, enum Type teraType, u8 dmaxLevel)
 {
     struct Pokemon mon;
     u32 i;
@@ -492,7 +492,6 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
 
     // held item
     SetMonData(&mon, MON_DATA_HELD_ITEM, &item);
-    SetMonData(&mon, MON_DATA_HELD_ITEM + 1, &item2);
 
     // In case a mon with a form changing item is given. Eg: SPECIES_ARCEUS_NORMAL with ITEM_SPLASH_PLATE will transform into SPECIES_ARCEUS_WATER upon gifted.
     TryFormChange(&mon, FORM_CHANGE_ITEM_HOLD);
@@ -508,11 +507,10 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
     return MON_GIVEN_TO_PARTY;
 }
 
-u32 ScriptGiveMon(u16 species, u8 level, enum Item item, enum Item item2)
+u32 ScriptGiveMon(u16 species, u8 level, enum Item item)
 {
     struct Pokemon mon;
     u8 heldItem[2];
-    u8 heldItem2[2];
 
     CreateRandomMon(&mon, species, level);
     if (item)
@@ -520,12 +518,6 @@ u32 ScriptGiveMon(u16 species, u8 level, enum Item item, enum Item item2)
         heldItem[0] = item;
         heldItem[1] = item >> 8;
         SetMonData(&mon, MON_DATA_HELD_ITEM, heldItem);
-    }
-    if (item)
-    {
-        heldItem2[0] = item2;
-        heldItem2[1] = item2 >> 8;
-        SetMonData(&mon, MON_DATA_HELD_ITEM + 1, heldItem2);
     }
 
     return GiveScriptedMonToPlayer(&mon, PARTY_SIZE);
@@ -560,7 +552,7 @@ void ScrCmd_createmon(struct ScriptContext *ctx)
 
     u32 flags          = ScriptReadWord(ctx);
     enum Item item     = PARSE_FLAG(0, ITEM_NONE);
-    enum Item item2    = PARSE_FLAG(1, ITEM_NONE);
+    // Bit 1 was used for a second held item in Bassforte's branch.
     enum PokeBall ball = PARSE_FLAG(2, BALL_POKE);
     u8 nature          = PARSE_FLAG(3, NATURE_RANDOM);
     u8 abilityNum      = PARSE_FLAG(4, NUM_ABILITY_PERSONALITY);
@@ -653,7 +645,7 @@ void ScrCmd_createmon(struct ScriptContext *ctx)
     if (nature == NATURE_MAY_SYNCHRONIZE)
         nature = GetSynchronizedNature(origin, species);
 
-    gSpecialVar_Result = ScriptGiveMonParameterized(side, slot, species, level, item, item2, ball, nature, abilityNum, gender, evs, ivs, moves, shinyMode, gmaxFactor, teraType, dmaxLevel);
+    gSpecialVar_Result = ScriptGiveMonParameterized(side, slot, species, level, item, ball, nature, abilityNum, gender, evs, ivs, moves, shinyMode, gmaxFactor, teraType, dmaxLevel);
 }
 
 #undef PARSE_FLAG
