@@ -20,6 +20,7 @@
 #include "string_util.h"
 #include "constants/map_event_ids.h"
 #include "constants/party_menu.h"
+#include "load_save.h"
 extern const struct SpeciesInfo gSpeciesInfo[];
 static bool32 IsPlayerDefeated(u32 battleOutcome);
 static u32 sBugContestStartTime;
@@ -50,6 +51,29 @@ void EnterBugContestMode(void)
 
 void ExitBugContestMode(void)
 {
+    struct Pokemon *savedLead = GetSavedPlayerPartyMon(0);
+
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+    {
+        struct Pokemon *mon = &gPlayerParty[i];
+
+        if (GetMonData(mon, MON_DATA_SPECIES) != SPECIES_NONE
+            && GetMonData(mon, MON_DATA_PERSONALITY) == sBugContestLeadPersonality
+            && GetMonData(mon, MON_DATA_OT_ID) == sBugContestLeadOtId)
+        {
+            for (u32 slot = 0; slot < MAX_MON_ITEMS; slot++)
+            {
+                u16 item = GetMonData(mon, MON_DATA_HELD_ITEM + slot);
+                SetMonData(savedLead, MON_DATA_HELD_ITEM + slot, &item);
+            }
+
+            u8 mail = GetMonData(mon, MON_DATA_MAIL);
+            SetMonData(savedLead, MON_DATA_MAIL, &mail);
+            break;
+        }
+    }
+
+    LoadPlayerParty();
     FlagClear(FLAG_SYS_BUG_CONTEST_MODE);
     sBugContestTimerActive = FALSE;
     sBugContestLeadPersonality = 0;

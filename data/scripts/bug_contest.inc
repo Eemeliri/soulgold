@@ -179,7 +179,6 @@ BugContest_EventScript_SetSecondPlaceWaterStone::
 
 BugContest_EventScript_End::
 	special HealPlayerParty
-	special LoadPlayerParty
 	special ExitBugContestMode
 	setvar VAR_BUG_CONTEST_STATE, 0
 	special RemoveSafariBalls
