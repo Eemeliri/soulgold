@@ -33,6 +33,11 @@ PortalDialga_4:
 
 PortalDialga_6:
 	finditem ITEM_ADAMANT_ORB
+	compare VAR_0x8007, TRUE
+	goto_if_eq PortalDialga_8
+	goto PortalDialga_1
+
+PortalDialga_8:
 	setflag FLAG_GOT_ADAMANT_ORB
 	goto PortalDialga_1
 
@@ -60,6 +65,11 @@ PortalPalkia_4:
 
 PortalPalkia_6:
 	finditem ITEM_LUSTROUS_ORB
+	compare VAR_0x8007, TRUE
+	goto_if_eq PortalPalkia_8
+	goto PortalPalkia_1
+
+PortalPalkia_8:
 	setflag FLAG_GOT_LUSTROUS_ORB
 	goto PortalPalkia_1
 
@@ -87,6 +97,11 @@ PortalGiratina_4:
 
 PortalGiratina_6:
 	finditem ITEM_GRISEOUS_ORB
+	compare VAR_0x8007, TRUE
+	goto_if_eq PortalGiratina_8
+	goto PortalGiratina_1
+
+PortalGiratina_8:
 	setflag FLAG_GOT_GRISEOUS_ORB
 	goto PortalGiratina_1
 

@@ -20,7 +20,9 @@ script PortalDialga {
         if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
             if (!flag(FLAG_GOT_ADAMANT_ORB)) {
                 finditem(ITEM_ADAMANT_ORB)
-                setflag(FLAG_GOT_ADAMANT_ORB)
+                if (var(VAR_0x8007) == TRUE) {
+                    setflag(FLAG_GOT_ADAMANT_ORB)
+                }
             }
         }
     }
@@ -40,7 +42,9 @@ script PortalPalkia {
         if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
             if (!flag(FLAG_GOT_LUSTROUS_ORB)) {
                 finditem(ITEM_LUSTROUS_ORB)
-                setflag(FLAG_GOT_LUSTROUS_ORB)
+                if (var(VAR_0x8007) == TRUE) {
+                    setflag(FLAG_GOT_LUSTROUS_ORB)
+                }
             }
         }
     }
@@ -60,7 +64,9 @@ script PortalGiratina {
         if (var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
             if (!flag(FLAG_GOT_GRISEOUS_ORB)) {
                 finditem(ITEM_GRISEOUS_ORB)
-                setflag(FLAG_GOT_GRISEOUS_ORB)
+                if (var(VAR_0x8007) == TRUE) {
+                    setflag(FLAG_GOT_GRISEOUS_ORB)
+                }
             }
         }
     }

@@ -132,7 +132,11 @@ script IndigoPlateau_StoneMerchant {
     faceplayer
     message("Welcome! How may I help you?")
     waitmessage
-    pokemart(IndigoPlateau_StoneMerchantMart)
+    if (flag(FLAG_GOT_ADAMANT_ORB) && flag(FLAG_GOT_LUSTROUS_ORB) && flag(FLAG_GOT_GRISEOUS_ORB)) {
+        pokemart(IndigoPlateau_StoneMerchantMart2)
+    } else {
+        pokemart(IndigoPlateau_StoneMerchantMart)
+    }
     msgbox("Come back soon!")
     release
     end
@@ -165,6 +169,27 @@ mart IndigoPlateau_StoneMerchantMart {
     ITEM_MALICIOUS_ARMOR
     ITEM_PEAT_BLOCK
     ITEM_BLACK_AUGURITE
+}
+
+mart IndigoPlateau_StoneMerchantMart2 {
+    ITEM_FIRE_STONE
+    ITEM_WATER_STONE
+    ITEM_LEAF_STONE
+    ITEM_THUNDER_STONE
+    ITEM_MOON_STONE
+    ITEM_ICE_STONE
+    ITEM_SUN_STONE
+    ITEM_SHINY_STONE
+    ITEM_DUSK_STONE
+    ITEM_DAWN_STONE
+    ITEM_LINKING_CORD
+    ITEM_AUSPICIOUS_ARMOR
+    ITEM_MALICIOUS_ARMOR
+    ITEM_PEAT_BLOCK
+    ITEM_BLACK_AUGURITE
+    ITEM_ADAMANT_ORB
+    ITEM_LUSTROUS_ORB
+    ITEM_GRISEOUS_ORB
 }
 
 mart IndigoPlateau_GemMerchantMart {
