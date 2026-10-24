@@ -18,6 +18,7 @@ s8 Daycare_FindEmptySpot(struct DayCare *daycare);
 void StoreSelectedPokemonInDaycare(void);
 u16 TakePokemonFromDaycare(void);
 void GetDaycareCost(void);
+u8 GetDaycareMonLevel(struct DaycareMon *daycareMon);
 u8 GetNumLevelsGainedFromDaycare(void);
 void TriggerPendingDaycareEgg(void);
 void RejectEggFromDayCare(void);
