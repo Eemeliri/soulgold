@@ -44078,11 +44078,11 @@
           "move": "MOVE_STONE_EDGE"
         },
         {
-          "level": 65,
+          "level": 64,
           "move": "MOVE_AQUA_CUTTER"
         },
         {
-          "level": 70,
+          "level": 75,
           "move": "MOVE_STONE_AXE"
         }
       ],
@@ -91212,16 +91212,6 @@
       ],
       "evolutions": [
         {
-          "method": "EVO_LEVEL",
-          "param": "0",
-          "target": "SPECIES_MILOTIC",
-          "conditions": [
-            "Beauty >= 170"
-          ],
-          "label": "Level Up (Beauty >= 170)",
-          "itemName": ""
-        },
-        {
           "method": "EVO_ITEM",
           "param": "ITEM_PRISM_SCALE",
           "target": "SPECIES_MILOTIC",
@@ -91507,65 +91497,6 @@
       "evolutions": [],
       "locations": [],
       "acquisitionPaths": [
-        {
-          "source": "SPECIES_FEEBAS",
-          "locations": [
-            {
-              "map": "MAP_ROUTE43",
-              "name": "Route 43",
-              "time": "",
-              "method": "Water Mons",
-              "minLevel": 10,
-              "maxLevel": 24,
-              "rate": 5
-            },
-            {
-              "map": "MAP_ROUTE43",
-              "name": "Route 43",
-              "time": "",
-              "method": "Fishing Mons",
-              "minLevel": 40,
-              "maxLevel": 40,
-              "rate": 20
-            },
-            {
-              "map": "MAP_ROUTE43",
-              "name": "Route 43",
-              "time": "",
-              "method": "Fishing Mons",
-              "minLevel": 40,
-              "maxLevel": 40,
-              "rate": 4
-            },
-            {
-              "map": "MAP_ROUTE34",
-              "name": "Route 34",
-              "time": "",
-              "method": "One-time Odd Egg (1/7 chance)",
-              "minLevel": 1,
-              "maxLevel": 1,
-              "rate": null
-            }
-          ],
-          "steps": [
-            {
-              "kind": "evolve",
-              "source": "SPECIES_FEEBAS",
-              "target": "SPECIES_MILOTIC",
-              "requirement": "",
-              "evolution": {
-                "method": "EVO_LEVEL",
-                "param": "0",
-                "target": "SPECIES_MILOTIC",
-                "conditions": [
-                  "Beauty >= 170"
-                ],
-                "label": "Level Up (Beauty >= 170)",
-                "itemName": ""
-              }
-            }
-          ]
-        },
         {
           "source": "SPECIES_FEEBAS",
           "locations": [
@@ -271277,11 +271208,15 @@
       "itemIcons": [],
       "locations": [
         {
+          "map": "Indigo Plateau Pokemon Center",
+          "source": "Mart"
+        },
+        {
           "map": "Spear Pillar Top",
           "source": "Hidden item"
         }
       ],
-      "location": "Spear Pillar Top (Hidden item)",
+      "location": "Indigo Plateau Pokemon Center (Mart); Spear Pillar Top (Hidden item)",
       "slug": "adamant-orb"
     },
     {
@@ -271295,11 +271230,15 @@
       "itemIcons": [],
       "locations": [
         {
+          "map": "Indigo Plateau Pokemon Center",
+          "source": "Mart"
+        },
+        {
           "map": "Spear Pillar Top",
           "source": "Hidden item"
         }
       ],
-      "location": "Spear Pillar Top (Hidden item)",
+      "location": "Indigo Plateau Pokemon Center (Mart); Spear Pillar Top (Hidden item)",
       "slug": "lustrous-orb"
     },
     {
@@ -271313,11 +271252,15 @@
       "itemIcons": [],
       "locations": [
         {
+          "map": "Indigo Plateau Pokemon Center",
+          "source": "Mart"
+        },
+        {
           "map": "Spear Pillar Top",
           "source": "Hidden item"
         }
       ],
-      "location": "Spear Pillar Top (Hidden item)",
+      "location": "Indigo Plateau Pokemon Center (Mart); Spear Pillar Top (Hidden item)",
       "slug": "griseous-orb"
     },
     {
