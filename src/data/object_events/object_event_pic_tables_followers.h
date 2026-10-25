@@ -1236,6 +1236,9 @@ static const struct SpriteFrameImage sPicTable_Ditto[] = {
 static const struct SpriteFrameImage sPicTable_Eevee[] = {
     overworld_ascending_frames(gObjectEventPic_Eevee, 4, 4),
 };
+static const struct SpriteFrameImage sPicTable_EeveePartner[] = {
+    overworld_ascending_frames(gObjectEventPic_EeveePartner, 4, 4),
+};
 #if P_GENDER_DIFFERENCES
 static const struct SpriteFrameImage sPicTable_EeveeF[] = {
     overworld_ascending_frames(gObjectEventPic_EeveeF, 4, 4),
@@ -1426,6 +1429,11 @@ static const struct SpriteFrameImage sPicTable_Bayleef[] = {
 static const struct SpriteFrameImage sPicTable_Meganium[] = {
     overworld_ascending_frames(gObjectEventPic_Meganium, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_MeganiumMega[] = {
+    overworld_ascending_frames(gObjectEventPic_MeganiumMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #if P_GENDER_DIFFERENCES
 static const struct SpriteFrameImage sPicTable_MeganiumF[] = {
     overworld_ascending_frames(gObjectEventPic_MeganiumF, 4, 4),
@@ -1443,6 +1451,11 @@ static const struct SpriteFrameImage sPicTable_Quilava[] = {
 static const struct SpriteFrameImage sPicTable_Typhlosion[] = {
     overworld_ascending_frames(gObjectEventPic_Typhlosion, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_TyphlosionMega[] = {
+    overworld_ascending_frames(gObjectEventPic_TyphlosionMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #if P_HISUIAN_FORMS
 static const struct SpriteFrameImage sPicTable_TyphlosionHisui[] = {
     overworld_ascending_frames(gObjectEventPic_TyphlosionHisui, 4, 4),
@@ -1460,6 +1473,11 @@ static const struct SpriteFrameImage sPicTable_Croconaw[] = {
 static const struct SpriteFrameImage sPicTable_Feraligatr[] = {
     overworld_ascending_frames(gObjectEventPic_Feraligatr, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_FeraligatrMega[] = {
+    overworld_ascending_frames(gObjectEventPic_FeraligatrMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_TOTODILE
 
 #if P_FAMILY_SENTRET
@@ -4595,6 +4613,11 @@ static const struct SpriteFrameImage sPicTable_Quilladin[] = {
 static const struct SpriteFrameImage sPicTable_Chesnaught[] = {
     overworld_ascending_frames(gObjectEventPic_Chesnaught, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_ChesnaughtMega[] = {
+    overworld_ascending_frames(gObjectEventPic_ChesnaughtMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_CHESPIN
 
 #if P_FAMILY_FENNEKIN
@@ -4628,6 +4651,14 @@ static const struct SpriteFrameImage sPicTable_Greninja[] = {
 static const struct SpriteFrameImage sPicTable_GreninjaAsh[] = {
     overworld_ascending_frames(gObjectEventPic_GreninjaAsh, 4, 4),
 };
+#if P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_GreninjaMega[] = {
+    overworld_ascending_frames(gObjectEventPic_GreninjaMega, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_GreninjaMegaShiny[] = {
+    overworld_ascending_frames(gObjectEventPic_GreninjaMegaShiny, 4, 4),
+};
+#endif //P_GEN_9_MEGA_EVOLUTIONS
 #endif //OW_BATTLE_ONLY_FORMS
 #endif //P_FAMILY_FROAKIE
 
@@ -5157,6 +5188,11 @@ static const struct SpriteFrameImage sPicTable_Brionne[] = {
 static const struct SpriteFrameImage sPicTable_Primarina[] = {
     overworld_ascending_frames(gObjectEventPic_Primarina, 4, 4),
 };
+#if OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_PrimarinaMega[] = {
+    overworld_ascending_frames(gObjectEventPic_PrimarinaMega, 4, 4),
+};
+#endif //OW_BATTLE_ONLY_FORMS && P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_POPPLIO
 
 #if P_FAMILY_PIKIPEK
@@ -6172,6 +6208,11 @@ static const struct SpriteFrameImage sPicTable_Floragato[] = {
 static const struct SpriteFrameImage sPicTable_Meowscarada[] = {
     overworld_ascending_frames(gObjectEventPic_Meowscarada, 4, 4),
 };
+#if P_GEN_9_MEGA_EVOLUTIONS
+static const struct SpriteFrameImage sPicTable_MeowscaradaMega[] = {
+    overworld_ascending_frames(gObjectEventPic_MeowscaradaMega, 4, 4),
+};
+#endif //P_GEN_9_MEGA_EVOLUTIONS
 #endif //P_FAMILY_SPRIGATITO
 
 #if P_FAMILY_FUECOCO

@@ -66,21 +66,37 @@
     .images = picTable,                                                                                                                 \
 }
 
+#define OVERWORLD_DATA_PTR(picTable, _size, shadow, _tracks, _anims) \
+    &(const struct ObjectEventGraphicsInfo)OVERWORLD_DATA(picTable, _size, shadow, _tracks, _anims)
+
 #define OVERWORLD(objEventPic, _size, shadow, _tracks, _anims, ...)                                 \
     .overworldData = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),                   \
+    OVERWORLD_PAL(__VA_ARGS__)
+
+#define OVERWORLD_SHINY(objEventPic, shinyObjEventPic, _size, shadow, _tracks, _anims, ...)           \
+    .overworldData = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),                     \
+    .overworldShinyData = OVERWORLD_DATA_PTR(shinyObjEventPic, _size, shadow, _tracks, _anims),       \
     OVERWORLD_PAL(__VA_ARGS__)
 
 #if P_GENDER_DIFFERENCES
 #define OVERWORLD_FEMALE(objEventPic, _size, shadow, _tracks, _anims, ...)                          \
     .overworldDataFemale = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),             \
     OVERWORLD_PAL_FEMALE(__VA_ARGS__)
+
+#define OVERWORLD_FEMALE_SHINY(objEventPic, shinyObjEventPic, _size, shadow, _tracks, _anims, ...)     \
+    .overworldDataFemale = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),                \
+    .overworldShinyDataFemale = OVERWORLD_DATA_PTR(shinyObjEventPic, _size, shadow, _tracks, _anims),  \
+    OVERWORLD_PAL_FEMALE(__VA_ARGS__)
 #else
 #define OVERWORLD_FEMALE(...)
+#define OVERWORLD_FEMALE_SHINY(...)
 #endif //P_GENDER_DIFFERENCES
 
 #else
 #define OVERWORLD(...)
+#define OVERWORLD_SHINY(...)
 #define OVERWORLD_FEMALE(...)
+#define OVERWORLD_FEMALE_SHINY(...)
 #define OVERWORLD_PAL(...)
 #define OVERWORLD_PAL_FEMALE(...)
 #endif //OW_POKEMON_OBJECT_EVENTS

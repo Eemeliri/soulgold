@@ -287,10 +287,23 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .palette = gMonPalette_MeganiumMega,
         .shinyPalette = gMonShinyPalette_MeganiumMega,
         .iconSprite = gMonIcon_MeganiumMega,
+        .iconPalette = gMonIconPalette_MeganiumMega,
+        .shinyIconPalette = gMonShinyIconPalette_MeganiumMega,
         .iconPalIndex = 1,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Meganium)
         SHADOW(-2, 13, SHADOW_SIZE_M)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_MeganiumMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_MeganiumMega,
+            gShinyOverworldPalette_MeganiumMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sMeganiumLevelUpLearnset,
         .teachableLearnset = sMeganiumTeachableLearnset,
@@ -578,6 +591,17 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Typhlosion)
         SHADOW(4, 14, SHADOW_SIZE_L)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_TyphlosionMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TyphlosionMega,
+            gShinyOverworldPalette_TyphlosionMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sTyphlosionLevelUpLearnset,
         .teachableLearnset = sTyphlosionTeachableLearnset,
@@ -934,10 +958,23 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .palette = gMonPalette_FeraligatrMega,
         .shinyPalette = gMonShinyPalette_FeraligatrMega,
         .iconSprite = gMonIcon_FeraligatrMega,
+        .iconPalette = gMonIconPalette_FeraligatrMega,
+        .shinyIconPalette = gMonShinyIconPalette_FeraligatrMega,
         .iconPalIndex = 0,
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Feraligatr)
         SHADOW(2, 13, SHADOW_SIZE_L)
+    #if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_FeraligatrMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_FeraligatrMega,
+            gShinyOverworldPalette_FeraligatrMega
+        )
+    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sFeraligatrLevelUpLearnset,
         .teachableLearnset = sFeraligatrTeachableLearnset,

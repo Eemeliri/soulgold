@@ -761,6 +761,17 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Primarina)
         SHADOW(-6, 11, SHADOW_SIZE_L)
+#if OW_BATTLE_ONLY_FORMS
+        OVERWORLD(
+            sPicTable_PrimarinaMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following_Asym,
+            gOverworldPalette_PrimarinaMega,
+            gShinyOverworldPalette_PrimarinaMega
+        )
+#endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sPrimarinaLevelUpLearnset,
         .teachableLearnset = sPrimarinaTeachableLearnset,

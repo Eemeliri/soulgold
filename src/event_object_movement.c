@@ -2179,6 +2179,17 @@ const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, bool32 
         break;
     }
 
+    if (shiny)
+    {
+    #if P_GENDER_DIFFERENCES
+        if (female && gSpeciesInfo[species].overworldShinyDataFemale != NULL)
+            graphicsInfo = gSpeciesInfo[species].overworldShinyDataFemale;
+        else
+    #endif
+        if (gSpeciesInfo[species].overworldShinyData != NULL)
+            graphicsInfo = gSpeciesInfo[species].overworldShinyData;
+    }
+
     // Try to avoid OOB or undefined access
     if ((graphicsInfo->tileTag == 0 && species < NUM_SPECIES) || (graphicsInfo->tileTag != TAG_NONE && species >= NUM_SPECIES))
     {

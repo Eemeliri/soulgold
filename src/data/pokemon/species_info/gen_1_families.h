@@ -19005,13 +19005,13 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         SHADOW(-2, 2, SHADOW_SIZE_S)
         FOOTPRINT(Eevee)
         OVERWORLD(
-            sPicTable_Eevee,
+            sPicTable_EeveePartner,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
             sAnimTable_Following,
-            gOverworldPalette_Eevee,
-            gShinyOverworldPalette_Eevee
+            gOverworldPalette_EeveePartner,
+            gShinyOverworldPalette_EeveePartner
         )
         .cannotBeTraded = TRUE,
         .perfectIVCount = NUM_STATS,

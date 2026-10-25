@@ -462,8 +462,10 @@ struct SpeciesInfo /*0xC4*/
     const struct FormChange *formChangeTable;
 #if OW_POKEMON_OBJECT_EVENTS
     struct ObjectEventGraphicsInfo overworldData;
+    const struct ObjectEventGraphicsInfo *overworldShinyData;
 #if P_GENDER_DIFFERENCES
     struct ObjectEventGraphicsInfo overworldDataFemale;
+    const struct ObjectEventGraphicsInfo *overworldShinyDataFemale;
 #endif //P_GENDER_DIFFERENCES
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const void* overworldPalette;

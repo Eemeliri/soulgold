@@ -259,6 +259,15 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         FOOTPRINT(Meowscarada)
         SHADOW(-3, 14, SHADOW_SIZE_S)
+        OVERWORLD(
+            sPicTable_MeowscaradaMega,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_MeowscaradaMega,
+            gShinyOverworldPalette_MeowscaradaMega
+        )
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sMeowscaradaLevelUpLearnset,
         .teachableLearnset = sMeowscaradaTeachableLearnset,
