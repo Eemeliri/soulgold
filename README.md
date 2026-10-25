@@ -1,3 +1,6 @@
+# Note about the status of repo
+- This repo is slightly behind the released version, as I've moved on to work on version 2.0 in my dev branch, from which I released 1.2.0 and 1.2.1.
+
 # Johto focused expansion hack
 # Features:
 - Explore expanded Johto with new areas and biomes
