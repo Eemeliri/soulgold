@@ -65,7 +65,7 @@ from tools.soulgold_docs.parsers.trainers import (
 from tools.soulgold_docs.site import build_docs_payload, prepare_output_tree, refresh_static_site, write_docs_payload
 
 
-def build(frontier_ref: str = "21boxes") -> None:
+def build() -> None:
     moves = parse_moves()
     abilities = parse_abilities()
     species_data = parse_species()
@@ -145,15 +145,15 @@ def build(frontier_ref: str = "21boxes") -> None:
         mega_evolutions,
         guides,
     )
-    payload["frontier"] = build_frontier_payload(frontier_ref, payload["species"], item_records, output_paths.item_icon_dir)
+    payload["frontier"] = build_frontier_payload(payload["species"], item_records, output_paths.item_icon_dir)
     write_docs_payload(payload)
 
 
-def build_frontier_only(frontier_ref: str) -> None:
-    """Refresh this branch-backed pool without rebuilding unrelated game data."""
+def build_frontier_only() -> None:
+    """Refresh the local Frontier tables without rebuilding unrelated game data."""
     data_dir = OUT_DIR / "data"
     payload = json.loads((data_dir / "romhack-docs.json").read_text(encoding="utf-8"))
-    frontier = build_frontier_payload(frontier_ref, payload["species"], parse_item_records(), OUT_DIR / "sprites/items")
+    frontier = build_frontier_payload(payload["species"], parse_item_records(), OUT_DIR / "sprites/items")
     payload["frontier"] = frontier
     (data_dir / "frontier.json").write_text(json.dumps(frontier, separators=(",", ":")), encoding="utf-8")
     (data_dir / "romhack-docs.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
@@ -165,11 +165,10 @@ if __name__ == "__main__":
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("--static-only", action="store_true", help="Refresh website UI and existing routes without rebuilding game data")
     mode.add_argument("--frontier-only", action="store_true", help="Refresh Frontier sets and website UI using the existing docs data")
-    parser.add_argument("--frontier-ref", default="21boxes", help="Git revision for Frontier sets (default: 21boxes)")
     args = parser.parse_args()
     if args.static_only:
         refresh_static_site()
     elif args.frontier_only:
-        build_frontier_only(args.frontier_ref)
+        build_frontier_only()
     else:
-        build(args.frontier_ref)
+        build()

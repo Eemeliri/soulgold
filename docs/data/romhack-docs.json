@@ -349713,11 +349713,9 @@
   ],
   "frontier": {
     "source": {
-      "ref": "21boxes",
-      "commit": "9a5830149e9cb844adbe8d96fa2d0522fd08c917",
       "files": [
-        "src/data/battle_frontier/battle_frontier_mons.h",
-        "src/data/battle_frontier/battle_frontier_mons_expansion.h"
+        "tools/soulgold_docs/data/frontier/battle_frontier_mons.h",
+        "tools/soulgold_docs/data/frontier/battle_frontier_mons_expansion.h"
       ]
     },
     "species": {

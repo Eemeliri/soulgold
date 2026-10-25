@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-import subprocess
 from pathlib import Path
 
 from ..c_parser import asset_stem, clean_constant_name, extract_braced_constants, extract_constant, split_designated_entries, strip_c_comments
@@ -12,8 +11,8 @@ from ..paths import OUT_DIR, REPO_ROOT
 from .trainers import front_pic_symbol_for_name
 
 FRONTIER_FILES = (
-    "src/data/battle_frontier/battle_frontier_mons.h",
-    "src/data/battle_frontier/battle_frontier_mons_expansion.h",
+    "tools/soulgold_docs/data/frontier/battle_frontier_mons.h",
+    "tools/soulgold_docs/data/frontier/battle_frontier_mons_expansion.h",
 )
 MACRO_STATS = ("hp", "atk", "def", "spe", "spa", "spd")
 DISPLAY_STATS = ("hp", "atk", "def", "spa", "spd", "spe")
@@ -90,22 +89,18 @@ def parse_frontier_entries(sources: list[str]) -> list[dict]:
     return sets
 
 
-def build_frontier_payload(ref: str, species: list[dict], items: dict, item_icon_dir: Path) -> dict:
-    def git(*args: str) -> str:
-        result = subprocess.run(["git", *args], cwd=REPO_ROOT, text=True, capture_output=True)
-        if result.returncode:
-            raise ValueError(f"Cannot read Frontier source {ref!r}: {result.stderr.strip()}")
-        return result.stdout
+def build_frontier_payload(species: list[dict], items: dict, item_icon_dir: Path) -> dict:
+    def read_source(path: str) -> str:
+        return (REPO_ROOT / path).read_text(encoding="utf-8")
 
-    commit = git("rev-parse", "--verify", "--end-of-options", f"{ref}^{{commit}}").strip()
-    sets = parse_frontier_entries([git("show", f"{commit}:{path}") for path in FRONTIER_FILES])
+    sets = parse_frontier_entries([read_source(path) for path in FRONTIER_FILES])
     aliases = dict(re.findall(
         r"^\s*#define\s+(SPECIES_\w+)\s+(SPECIES_\w+)\s*$",
-        strip_c_comments(git("show", f"{commit}:include/constants/species.h")), re.MULTILINE,
+        strip_c_comments(read_source("include/constants/species.h")), re.MULTILINE,
     ))
     move_aliases = dict(re.findall(
         r"\b(MOVE_\w+)\s*=\s*(MOVE_\w+)\s*,",
-        strip_c_comments(git("show", f"{commit}:include/constants/moves.h")),
+        strip_c_comments(read_source("include/constants/moves.h")),
     ))
     species_by_constant = {mon["constant"]: mon for mon in species}
     front_sources = None
@@ -158,7 +153,7 @@ def build_frontier_payload(ref: str, species: list[dict], items: dict, item_icon
                 item_table[item_constant]["speedModifier"] = SPEED_HOLD_EFFECTS[item["holdEffect"]]
     sets.sort(key=lambda entry: (species_table[entry["constant"]]["name"].casefold(), entry["constant"], entry["setNumber"] or 0))
     return {
-        "source": {"ref": ref, "commit": commit, "files": list(FRONTIER_FILES)},
+        "source": {"files": list(FRONTIER_FILES)},
         "species": species_table,
         "items": item_table,
         "sets": [[

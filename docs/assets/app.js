@@ -3215,7 +3215,6 @@ function frontierSetLabel(setId) {
   return /^\d+$/.test(suffix) ? `Set ${suffix}` : `${fmtTitle(suffix)} set`;
 }
 
-// Showdown-style: EVs list non-zero stats, IVs list stats below 31.
 function frontierSpread(values, implied) {
   return values
     .map((value, index) => (value === implied ? "" : `${value} ${statLabels[frontierStats[index]]}`))
@@ -3223,7 +3222,6 @@ function frontierSpread(values, implied) {
     .join(" / ");
 }
 
-// Mirrors CalculateMonStats, then the held-item step of GetBattlerTotalSpeedStat.
 function frontierSpeed(mon, level) {
   const stat = Math.floor((2 * mon.species.baseSpeed + mon.ivs[5] + Math.floor(mon.evs[5] / 4)) * level / 100) + 5;
   const natured = Math.floor(stat * (frontierSpeedNatures[mon.nature] || 100) / 100);
@@ -3245,7 +3243,7 @@ function frontierSetCard(mon) {
   const evs = frontierSpread(mon.evs, 0);
   const ivs = frontierSpread(mon.ivs, 31);
   const speed = mon.species.baseSpeed
-    ? [50, 100].map((level) => `<span>Lv ${level}</span> ${frontierSpeed(mon, level)}`).join(" · ")
+    ? [50, 100].map((level) => `<span>Lvl ${level}</span> ${frontierSpeed(mon, level)}`).join(" / ")
       + (item.speedModifier ? ` <span>with ${escapeHtml(item.name)}</span>` : "")
     : "";
   card.innerHTML = `

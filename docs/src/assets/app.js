@@ -3243,7 +3243,7 @@ function frontierSetCard(mon) {
   const evs = frontierSpread(mon.evs, 0);
   const ivs = frontierSpread(mon.ivs, 31);
   const speed = mon.species.baseSpeed
-    ? [50, 100].map((level) => `<span>Lv ${level}</span> ${frontierSpeed(mon, level)}`).join(" · ")
+    ? [50, 100].map((level) => `<span>Lvl ${level}</span> ${frontierSpeed(mon, level)}`).join(" / ")
       + (item.speedModifier ? ` <span>with ${escapeHtml(item.name)}</span>` : "")
     : "";
   card.innerHTML = `
