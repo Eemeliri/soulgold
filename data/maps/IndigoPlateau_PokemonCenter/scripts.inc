@@ -133,6 +133,8 @@ IndigoPlateau_StoneMerchant::
 	waitmessage
 	goto_if_set FLAG_GOT_ADAMANT_ORB, IndigoPlateau_StoneMerchant_5
 IndigoPlateau_StoneMerchant_3:
+	goto_if_set FLAG_ONETIME_GROUDON, IndigoPlateau_StoneMerchant_16
+IndigoPlateau_StoneMerchant_15:
 	pokemart IndigoPlateau_StoneMerchantMart
 IndigoPlateau_StoneMerchant_1:
 	msgbox IndigoPlateau_StoneMerchant_Text_1
@@ -140,6 +142,8 @@ IndigoPlateau_StoneMerchant_1:
 	end
 
 IndigoPlateau_StoneMerchant_2:
+	goto_if_set FLAG_ONETIME_GROUDON, IndigoPlateau_StoneMerchant_11
+IndigoPlateau_StoneMerchant_10:
 	pokemart IndigoPlateau_StoneMerchantMart2
 	goto IndigoPlateau_StoneMerchant_1
 
@@ -150,6 +154,22 @@ IndigoPlateau_StoneMerchant_4:
 IndigoPlateau_StoneMerchant_5:
 	goto_if_set FLAG_GOT_LUSTROUS_ORB, IndigoPlateau_StoneMerchant_4
 	goto IndigoPlateau_StoneMerchant_3
+
+IndigoPlateau_StoneMerchant_9:
+	pokemart IndigoPlateau_StoneMerchantMart4
+	goto IndigoPlateau_StoneMerchant_1
+
+IndigoPlateau_StoneMerchant_11:
+	goto_if_set FLAG_ONETIME_KYOGRE, IndigoPlateau_StoneMerchant_9
+	goto IndigoPlateau_StoneMerchant_10
+
+IndigoPlateau_StoneMerchant_14:
+	pokemart IndigoPlateau_StoneMerchantMart3
+	goto IndigoPlateau_StoneMerchant_1
+
+IndigoPlateau_StoneMerchant_16:
+	goto_if_set FLAG_ONETIME_KYOGRE, IndigoPlateau_StoneMerchant_14
+	goto IndigoPlateau_StoneMerchant_15
 
 
 IndigoPlateau_GemMerchant::
@@ -202,6 +222,51 @@ IndigoPlateau_StoneMerchantMart2:
 	.2byte ITEM_ADAMANT_ORB
 	.2byte ITEM_LUSTROUS_ORB
 	.2byte ITEM_GRISEOUS_ORB
+	.2byte ITEM_NONE
+
+	.align 2
+IndigoPlateau_StoneMerchantMart3:
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_DUSK_STONE
+	.2byte ITEM_DAWN_STONE
+	.2byte ITEM_LINKING_CORD
+	.2byte ITEM_AUSPICIOUS_ARMOR
+	.2byte ITEM_MALICIOUS_ARMOR
+	.2byte ITEM_PEAT_BLOCK
+	.2byte ITEM_BLACK_AUGURITE
+	.2byte ITEM_RED_ORB
+	.2byte ITEM_BLUE_ORB
+	.2byte ITEM_NONE
+
+	.align 2
+IndigoPlateau_StoneMerchantMart4:
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_DUSK_STONE
+	.2byte ITEM_DAWN_STONE
+	.2byte ITEM_LINKING_CORD
+	.2byte ITEM_AUSPICIOUS_ARMOR
+	.2byte ITEM_MALICIOUS_ARMOR
+	.2byte ITEM_PEAT_BLOCK
+	.2byte ITEM_BLACK_AUGURITE
+	.2byte ITEM_ADAMANT_ORB
+	.2byte ITEM_LUSTROUS_ORB
+	.2byte ITEM_GRISEOUS_ORB
+	.2byte ITEM_RED_ORB
+	.2byte ITEM_BLUE_ORB
 	.2byte ITEM_NONE
 
 	.align 2
