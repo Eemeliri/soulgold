@@ -44078,11 +44078,11 @@
           "move": "MOVE_STONE_EDGE"
         },
         {
-          "level": 65,
+          "level": 64,
           "move": "MOVE_AQUA_CUTTER"
         },
         {
-          "level": 70,
+          "level": 75,
           "move": "MOVE_STONE_AXE"
         }
       ],
@@ -90567,6 +90567,10 @@
         {
           "level": 48,
           "move": "MOVE_EXPLOSION"
+        },
+        {
+          "level": 54,
+          "move": "MOVE_SHORE_UP"
         }
       ],
       "tmhm": [
@@ -217495,7 +217499,7 @@
       ],
       "hiddenAbilities": [],
       "innates": [
-        "ABILITY_LEAF_GUARD",
+        "ABILITY_AFTERMATH",
         "ABILITY_NATURAL_CURE",
         "ABILITY_PLANTATION"
       ],
@@ -245317,12 +245321,6 @@
             "sprite": "sprites/pokemon/brute_bonnet.png"
           },
           {
-            "species": "SPECIES_IRON_LEAVES",
-            "name": "Iron Leaves",
-            "dex": 689,
-            "sprite": "sprites/pokemon/iron_leaves.png"
-          },
-          {
             "species": "SPECIES_DIPPLIN",
             "name": "Dipplin",
             "dex": 690,
@@ -245716,6 +245714,12 @@
             "name": "Hydreigon",
             "dex": 452,
             "sprite": "sprites/pokemon/hydreigon.png"
+          },
+          {
+            "species": "SPECIES_IRON_LEAVES",
+            "name": "Iron Leaves",
+            "dex": 689,
+            "sprite": "sprites/pokemon/iron_leaves.png"
           }
         ]
       }
@@ -273422,11 +273426,15 @@
       "itemIcons": [],
       "locations": [
         {
+          "map": "Battle Frontier Battle Pyramid Lobby",
+          "source": "Mart"
+        },
+        {
           "map": "Gate Route 39North",
           "source": "Gift"
         }
       ],
-      "location": "Gate Route 39North (Gift)",
+      "location": "Battle Frontier Battle Pyramid Lobby (Mart); Gate Route 39North (Gift)",
       "slug": "rocky-helmet"
     },
     {
@@ -330917,7 +330925,7 @@
           "constant": "SPECIES_IRON_LEAVES",
           "displayName": "Iron Leaves",
           "innates": [
-            "ABILITY_LEAF_GUARD",
+            "ABILITY_AFTERMATH",
             "ABILITY_NATURAL_CURE",
             "ABILITY_PLANTATION"
           ],
@@ -331123,7 +331131,7 @@
           "constant": "SPECIES_IRON_LEAVES",
           "displayName": "Iron Leaves",
           "innates": [
-            "ABILITY_LEAF_GUARD",
+            "ABILITY_AFTERMATH",
             "ABILITY_NATURAL_CURE",
             "ABILITY_PLANTATION"
           ],
