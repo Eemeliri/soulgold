@@ -11529,6 +11529,7 @@ const struct ItemInfo gItemsInfo[] =
     #else
         .price = 200,
     #endif
+        .bpCost = 25,
         .holdEffect = HOLD_EFFECT_ROCKY_HELMET,
         .holdEffectParam = 0,
         .description = COMPOUND_STRING(
@@ -16202,6 +16203,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Loaded Dice"),
         .pluralName = ITEM_PLURAL_NAME("Loaded Dice"),
         .price = 20000,
+        .bpCost = 25,
         .holdEffect = HOLD_EFFECT_LOADED_DICE,
         .description = COMPOUND_STRING(
             "Rolls high numbers.\n"
